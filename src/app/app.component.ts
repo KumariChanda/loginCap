@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HomePage } from './home/home.page';
 import { DashboardPage } from './dashboard/dashboard.page';
+import { Router } from '@angular/router';
 const { Storage } = Plugins;
 @Component({
   selector: 'app-root',
@@ -17,7 +18,9 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    //add this router for switching pages
+    private router : Router
   ) {
     this.initializeApp();    
   }
@@ -29,11 +32,19 @@ export class AppComponent {
       this.token=ret;
       if(ret===null)
       {
-        // this.rootPage=HomePage;
+        // call login page
+        this.router.navigateByUrl('/home');
+        console.log("aaa",ret)
+
       }
       else
       {
-        // this.rootPage=DashboardPage;
+
+        //call dashboard page
+        this.router.navigateByUrl('/dashboard');
+                console.log("aaa",ret)
+
+
       }
       this.statusBar.styleDefault();
       this.splashScreen.hide();

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 import { SingletonService } from '../service/singleton.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 const { Storage } = Plugins;
 @Component({
@@ -11,7 +12,7 @@ const { Storage } = Plugins;
 export class HomePage {
   usernameText;
   passwordText;
-  constructor( private webService:SingletonService) {
+  constructor( private webService:SingletonService, private router: Router ) {
     // this.setItem();
   }
 
@@ -21,6 +22,27 @@ export class HomePage {
   //       value: "Chanda Kumari"
   //     });    
   // }
+
+  //goto Dashboard page
+  goToDashboardPage() {
+
+    //data to be passed
+  const  complexe = {
+      reel : "12",
+      imag : "5"
+    }
+    
+    //used to pass data
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(complexe)
+      }
+    };
+
+    //call dashboard page and pass data 
+    this.router.navigate(['dashboard'],navigationExtras);
+    }
+
 
   async loginFun()
   {
@@ -32,7 +54,10 @@ export class HomePage {
       "password":this.passwordText
     }
     console.log(sending_obj);
+
+    //
     this.webService.presentLoading();
+
     this.webService.login(sending_obj).subscribe(async res=>{
       console.log("getting response : ",res); 
       if(res)
@@ -40,7 +65,10 @@ export class HomePage {
         await Storage.set({
           key: 'accessToken',
           value: res.token           
-        });         
+        });  
+        
+        //call dashboard page and pass data 
+         this.router.navigateByUrl("/dashboard");
       }  
       this.webService.stopLoading();                
     })
@@ -53,5 +81,9 @@ export class HomePage {
   var ret=Storage.get({ key:'accessToken'});
     console.log((await ret).value);
   }
+
+
+  
+
 
 }
