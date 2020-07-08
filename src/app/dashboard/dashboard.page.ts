@@ -60,9 +60,9 @@ export class DashboardPage implements OnInit {
   async getDataUser(){
     await this.getAllApi.getDataUser()
       .subscribe(res => {
-        console.log(res);
+     //   console.log(res);
         this.datauser = res;
-        console.log(this.datauser);
+     //   console.log(this.datauser);
       }, err => {
         console.log(err);
       });
@@ -83,10 +83,12 @@ export class DashboardPage implements OnInit {
 
 
      //getToken
-     this.token =Storage.get({ key:'accessToken'});
-     console.log((await this.token).value);
+     var res =Storage.get({ key:'accessToken'});
+     
+     this.token =(await res).value;
+     //console.log(this.token);
 
-     this.addApi.SaveData(this.dataToSend,this.token)
+     this.addApi.SaveData(this.dataToSend, this.token)
        .subscribe((dataReturnFromService)=>{
 
           // this.dataSaveReturn = JSON.stringify(dataReturnFromService);
@@ -112,7 +114,7 @@ export class DashboardPage implements OnInit {
     // empty rhe token
      Storage.set({
       key: 'accessToken',
-      value: null          
+      value: null     
     });  
   }
 

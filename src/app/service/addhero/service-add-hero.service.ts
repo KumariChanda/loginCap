@@ -18,17 +18,19 @@ export class ServiceAddHeroService {
 
   SaveData(dataToSend, token){
 
+    var myToken = 'Token '+token
+
 
     const httpOptions = {
       headers: new HttpHeaders
                       ({
                         'Content-Type' : 'application/json',
-                        'Authorization': 'Token '+token
+                        'Authorization': myToken
     
                       })
     
     }
-    
+    console.log(myToken)
 
    //return this.http.post(apiUrl, dataToSend,httpOptions);
    return this.http.post( proxyurl +apiUrl,dataToSend,httpOptions);
