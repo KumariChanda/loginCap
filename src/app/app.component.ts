@@ -26,15 +26,17 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then(async () => {
       var ret=Storage.get({ key: 'accessToken' });
-      console.log(ret);
-      this.token=ret;
-      if(ret===null)
+
+      this.token=(await ret).value;
+      //console.log("checKing data from storage ",this.token,typeof(this.token));
+      
+
+      if(this.token=="null")
       {
         // call login page
         this.router.navigateByUrl('/home');
-        console.log("aaa",ret)
 
       }
       else
@@ -42,8 +44,6 @@ export class AppComponent {
 
         //call dashboard page
         this.router.navigateByUrl('/dashboard');
-                console.log("aaa",ret)
-
 
       }
       this.statusBar.styleDefault();
