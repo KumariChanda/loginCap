@@ -1,9 +1,44 @@
 <ion-header>
   <ion-toolbar>
+   <ion-item>
     <ion-title>Dashboard</ion-title>
+
+    <ion-button (click) ="logOut()" right>Log out</ion-button>
+ </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+      
+      
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input name="name" [(ngModel)]="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Alias</ion-label>
+        <ion-input name="alias" [(ngModel)]="alias"></ion-input>
+      </ion-item>
+
+      <ion-button (click) ="SaveData(name,alias)">Save hero</ion-button>
+
+      <ion-label >{{dataSaveReturn}}</ion-label>
+
+
+      <p> ***************** List of Heroes *********************** </p>
+      
+      <ion-list>
+        <ion-item *ngFor="let data of datauser">
+            <ion-label>
+               <p>  Name : {{data.name}}</p>
+               <p>  Alias: {{data.alias}}</p>
+            </ion-label>
+        </ion-item>
+      </ion-list>
+
+
+
 
 </ion-content>
