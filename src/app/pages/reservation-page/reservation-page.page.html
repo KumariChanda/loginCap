@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+
+      <ion-item>
+          <ion-icon name="chevron-back" (click)="prev()" ></ion-icon>
+          <ion-title>Car Reservation</ion-title>
+      </ion-item>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+       <!-- <ion-item>
+          <ion-label>Reservation type : </ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="per day">Per Day - 65000 F Cfa</ion-select-option>
+            <ion-select-option value="per hour">Per Hour - 10000 F Cfa </ion-select-option>
+            <ion-select-option value="airport pickup">Airport pickup  - 50000 F Cfa</ion-select-option>
+          </ion-select>
+     </ion-item> -->
+
+      
+      <!-- type of reservation -->
+
+      <ion-card>
+     
+        <ion-card-header>
+          <ion-card-title>Reservation Type </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+              <ion-list>
+                <ion-radio-group value="">
+                  <!-- <ion-list-header>
+                    <strong> <ion-label>Reservation Type : </ion-label> </strong>
+                  </ion-list-header> -->
+
+                  <ion-item>
+                    <ion-label>Per Day - 65000 F Cfa </ion-label>
+                    <ion-radio slot="end" value="per day"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Per Hours - 15000 F Cfa </ion-label>
+                    <ion-radio slot="end" value="per hours"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Airport Pickup - 50000 F Cfa</ion-label>
+                    <ion-radio slot="end" value="airport Pickup"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-list>
+          </ion-card-content>
+       </ion-card>       
+
+  <!-- optional services -->
+       <ion-card>
+     
+        <ion-card-header>
+          <ion-card-title>Other Services  </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+                  
+                <!-- <strong> <ion-label style="text-decoration: underline; margin-left:4%"> Optional Services : </ion-label> </strong> -->
+                  
+                  <!-- baby seats -->
+                <ion-item>
+                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
+                    <ion-label>Baby Seats  -   12000 F cfa/Day  </ion-label>
+                </ion-item>
+                
+                  
+                  <!-- Additional co-pilot -->
+                <ion-item>
+                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
+                    <ion-label>Additional co-pilot   -  15000 F cfa/Day  </ion-label>
+                </ion-item>
+
+                  <!-- Assistant translator -->
+                <ion-item>
+                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
+                    <ion-label>Assistant translator  -   16000 F cfa/Day  </ion-label>
+                </ion-item>
+        </ion-card-content>
+        </ion-card>
+
+        <!-- departure and return date -->
+        <ion-card>
+     
+            <ion-card-header>
+              <ion-card-title>Dates and Times</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-item>
+                  <ion-label>Start Date</ion-label>
+                  <ion-datetime value="2020-02-19" min="2020" placeholder="Select Date"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Start Time</ion-label>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Return Date</ion-label>
+                  <ion-datetime value="2020-02-20"  min="2020" placeholder="Select Date"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Return Time</ion-label>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
+                </ion-item>
+
+            </ion-card-content>
+
+        </ion-card>
+
+        <!-- Message -->
+        <ion-card  style="height: 255px;">
+     
+            <ion-card-header>
+              <ion-card-title>Message</ion-card-title>
+            </ion-card-header>
+            <ion-card-content >
+                
+                  <ion-textarea  class="cell-input" auto-grow="true" maxlength="400" placeholder="Enter any meesage here..."></ion-textarea>
+
+            </ion-card-content>
+
+        </ion-card>
+
+           <!-- submit your reservation -->
+        <ion-button expand="round" class="center-button" >Submit</ion-button>
+
+
+</ion-content>
