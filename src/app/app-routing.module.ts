@@ -53,7 +53,7 @@ const routes: Routes = [
   },
   {
     path: 'reservation-page',
-    loadChildren: () => import('./pages/reservation-page/reservation-page.module').then( m => m.ReservationPagePageModule)
+   loadChildren: () => import('./pages/reservation-page/reservation-page.module').then( m => m.ReservationPagePageModule)
   },
   
   {
