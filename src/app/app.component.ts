@@ -15,6 +15,7 @@ const { Storage } = Plugins;
 export class AppComponent {
   rootPage:DashboardPage;
   token;
+  menuNavigator;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -50,4 +51,97 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+
+
+   //this method is for side menu 
+   sideMenu()
+   {
+    this.menuNavigator =
+    [
+      {
+        title : "Home",
+        url   : "/dashboard",
+        icon  : "home"
+      },
+      {
+        title : "Profile",
+        url   : "/profile",
+        icon  : "person"
+      },
+      {
+        title : "Car Fleet",
+        icon  : "car",
+        children :[
+
+          {
+            title : "Business Class",
+            url   : "/profile",
+            icon  : "person-outline"
+          },
+          {
+            title : "Family Class",
+            url   : "/profile",
+            icon  : "person-outline"
+          }
+          
+        ]
+      },
+      {
+        title : "My Bookings",
+        url   : "/my-bookings",
+        icon  : "cart"
+      },
+      {
+        title : "My Messages",
+        url   : "/my-messages",
+        icon  : "mail"
+      },
+      {
+        title : "Contact Us",
+        icon  : "call",
+        children :[
+
+          {
+            title : "About Us",
+            url   : "/about-us",
+            icon  : "information-circle-outline"
+          },
+          
+          {
+            title : "Our Contacts",
+            url   : "/our-contacts",
+            icon  : "call-outline"
+          },
+          {
+            title : "Send feedback",
+            url   : "/send-feedbacks",
+            icon  : "send-outline"
+          },
+          
+        ]
+      },
+      {
+        title : "Settings",
+        icon  : "settings",
+        children :[
+
+          {
+            title : "Language",
+            url   : "/signup",
+            icon  : "information-circle-outline"
+          },
+          
+          {
+            title : "Reset Password",
+            url   : "/home",
+            icon  : "call-outline"
+          },
+          
+        ]
+      },
+
+    ]
+
+   }
+
 }
