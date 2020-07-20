@@ -13,17 +13,6 @@ const { Storage } = Plugins;
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-
-  menuNavigator : any
-  menuNavigator2 : any
-
-  showSubmenu: boolean = false;
-
-  menuItemHandler(): void {
-    this.showSubmenu = !this.showSubmenu;
-  }
-
-
   rootPage:DashboardPage;
   token;
   constructor(
@@ -33,8 +22,6 @@ export class AppComponent {
     //add this router for switching pages
     private router : Router
   ) {
-
-    this.sideMenu();
     this.initializeApp();    
   }
 
@@ -49,8 +36,7 @@ export class AppComponent {
       if(this.token=="null")
       {
         // call login page
-       // this.router.navigateByUrl('/home');
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/home');
 
       }
       else
@@ -64,97 +50,4 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-
-
-   //this method is for side menu 
-   sideMenu()
-   {
-    this.menuNavigator =
-    [
-      {
-        title : "Home",
-        url   : "/dashboard",
-        icon  : "home"
-      },
-      {
-        title : "Profile",
-        url   : "/profile",
-        icon  : "person"
-      },
-      {
-        title : "Car Fleet",
-        icon  : "car",
-        children :[
-
-          {
-            title : "Business Class",
-            url   : "/profile",
-            icon  : "person-outline"
-          },
-          {
-            title : "Family Class",
-            url   : "/profile",
-            icon  : "person-outline"
-          }
-          
-        ]
-      },
-      {
-        title : "My Bookings",
-        url   : "/my-bookings",
-        icon  : "cart"
-      },
-      {
-        title : "My Messages",
-        url   : "/my-messages",
-        icon  : "mail"
-      },
-      {
-        title : "Contact Us",
-        icon  : "call",
-        children :[
-
-          {
-            title : "About Us",
-            url   : "/about-us",
-            icon  : "information-circle-outline"
-          },
-          
-          {
-            title : "Our Contacts",
-            url   : "/our-contacts",
-            icon  : "call-outline"
-          },
-          {
-            title : "Send feedback",
-            url   : "/send-feedbacks",
-            icon  : "send-outline"
-          },
-          
-        ]
-      },
-      {
-        title : "Settings",
-        icon  : "settings",
-        children :[
-
-          {
-            title : "Language",
-            url   : "/about-us",
-            icon  : "information-circle-outline"
-          },
-          
-          {
-            title : "Reset Password",
-            url   : "/our-contacts",
-            icon  : "call-outline"
-          },
-          
-        ]
-      },
-
-    ]
-
-   }
-
 }
