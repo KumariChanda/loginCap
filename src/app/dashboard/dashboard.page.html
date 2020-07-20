@@ -1,10 +1,15 @@
 <ion-header>
   <ion-toolbar>
-   <ion-item>
-    <ion-title>Dashboard</ion-title>
 
-    <ion-button (click) ="logOut()" right>Log out</ion-button>
- </ion-item>
+    <ion-item>
+
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>NYOKAH</ion-title>
+
+      <!-- <ion-button (click) ="logOut()" right>Log out</ion-button> -->
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -13,31 +18,88 @@
 
       
       
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input name="name" [(ngModel)]="name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Alias</ion-label>
-        <ion-input name="alias" [(ngModel)]="alias"></ion-input>
-      </ion-item>
-
-      <ion-button (click) ="SaveData(name,alias)">Save hero</ion-button>
-
-      <ion-label >{{dataSaveReturn}}</ion-label>
-
-
-      <p> ***************** List of Heroes *********************** </p>
-      
-      <ion-list>
-        <ion-item *ngFor="let data of datauser">
-            <ion-label>
-               <p>  Name : {{data.name}}</p>
-               <p>  Alias: {{data.alias}}</p>
-            </ion-label>
+        <!-- <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input name="name" [(ngModel)]="name"></ion-input>
         </ion-item>
-      </ion-list>
+        <ion-item>
+          <ion-label position="floating">Alias</ion-label>
+          <ion-input name="alias" [(ngModel)]="alias"></ion-input>
+        </ion-item>
 
+        <ion-button (click) ="SaveData(name,alias)">Save hero</ion-button>
+
+        <ion-label >{{dataSaveReturn}}</ion-label>
+
+
+        <p> ***************** List of Heroes *********************** </p>
+        
+        <ion-list>
+          <ion-item *ngFor="let data of datauser">
+              <ion-label>
+                <p>  Name : {{data.name}}</p>
+                <p>  Alias: {{data.alias}}</p>
+              </ion-label>
+          </ion-item>
+        </ion-list> -->
+
+
+
+  <!-- Search Bar -->
+  <ion-searchbar placeholder="Search here" [(ngModel)]="term" animated="true"></ion-searchbar>
+
+  <!-- List Items -->
+  <ion-list>
+    <!-- <ion-item *ngFor="let item of filterData | filter:term"> -->
+      <!-- <ion-label>{{item.firstName}} {{item.lastName}}</ion-label> -->
+
+     <ion-card *ngFor="let item of filterData | filter:term">
+    
+        <img [src]="item.picture" />
+        <ion-card-header>
+          <ion-card-subtitle>
+             
+                <!-- type of motor -->
+                <ion-chip >
+                  <ion-icon name="car"></ion-icon>
+                  <ion-label color="secondary">{{item.motorType}}</ion-label>
+                </ion-chip>
+                <!-- Car Model-->
+                <ion-chip >
+                  <ion-icon name="medal" ></ion-icon>
+                  <ion-label color="secondary" textWrap="true">{{item.model}}</ion-label>
+                </ion-chip> <br>
+                <!-- Number of Seats-->
+                <ion-chip >
+                  <ion-icon name="person"></ion-icon>
+                  <ion-label color="secondary">{{item.seatNumber}}</ion-label>
+                </ion-chip>
+
+              <ion-chip>
+                <ion-label color="primary"> {{item.pricePerDay}} F cfa/Jour </ion-label> 
+              </ion-chip>
+
+          </ion-card-subtitle>
+          <ion-card-title>{{item.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+                        
+               <!-- More-->
+             <ion-chip style="margin-left:30%" (click)="carDetails(item.title )" >
+                <ion-label color="secondary">View details </ion-label>
+                <ion-icon name="chevron-forward"></ion-icon>
+            </ion-chip>
+
+      
+        </ion-card-content>
+      </ion-card>
+
+    <!-- </ion-item> -->
+  </ion-list>
+
+
+
+ 
 
 
 
