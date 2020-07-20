@@ -140,7 +140,7 @@ export class AppComponent {
 
           {
             title : "Language",
-            url   : "signup",
+            url   : "/signup",
             icon  : "information-circle-outline"
           },
           
