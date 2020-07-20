@@ -55,7 +55,8 @@ const routes: Routes = [
     path: 'reservation-page',
     loadChildren: () => import('./pages/reservation-page/reservation-page.module').then( m => m.ReservationPagePageModule)
   },
-
+  
+  {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
