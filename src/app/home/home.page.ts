@@ -83,6 +83,17 @@ export class HomePage {
   }
 
 
+  RegisterBtnClicked()
+  {
+    this.router.navigateByUrl("/signup");
+  }
+
+  forgetPasswordBtnClicked()
+  {
+
+  }
+
+
   
 
 
