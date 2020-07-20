@@ -140,13 +140,13 @@ export class AppComponent {
 
           {
             title : "Language",
-            url   : "/about-us",
+            url   : "signup",
             icon  : "information-circle-outline"
           },
           
           {
             title : "Reset Password",
-            url   : "/our-contacts",
+            url   : "/home",
             icon  : "call-outline"
           },
           

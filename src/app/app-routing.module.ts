@@ -54,11 +54,11 @@ const routes: Routes = [
   {
     path: 'reservation-page',
     loadChildren: () => import('./pages/reservation-page/reservation-page.module').then( m => m.ReservationPagePageModule)
-  },
+  }, {
+    path: 'reservation-page',
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+  }
 
-    path: 'signup',
-    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
-  },
 ];
 
 @NgModule({
