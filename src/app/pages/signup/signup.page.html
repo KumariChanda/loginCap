@@ -1,0 +1,52 @@
+<ion-header>
+
+   <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <!-- <ion-title>signup</ion-title> -->
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+  <body class="backgroundcss">
+    <div id="container">
+      <ion-card class="cardcss" >
+        <br>
+          <h3 class="loginLabel">Sign up  </h3>
+           <hr/>
+        <ion-card-content>
+            <ion-input class="inputcomp" type="text"  placeholder="Full name"></ion-input>
+          <br>
+            <ion-input class="inputcomp" type="number"  placeholder="Mobile number"></ion-input>
+          <br>
+          <ion-input class="inputcomp" type="text"  placeholder="Email Address"></ion-input>
+          <br>
+          <ion-input class="inputcomp" type="password"  placeholder="Password"></ion-input>
+          <br>
+          <ion-input class="inputcomp" type="password"  placeholder="Confirm Password"></ion-input>
+          <br>
+          <input type="checkbox" >&nbsp;&nbsp;<span class="register"><b>I accept the terms & conditions of </b></span>
+          
+          <div class="divloginbtn">
+            <br>
+            <button class="loginbtn" (click)="signupFun()">Sign up</button>
+           </div>
+           <br>  
+           <br>
+           <div class="labelText">
+             <span>Already got an account?  </span>
+             <span class="register" clear  (click)="loginbtnCliced()" tappable>Login</span>
+             <br>
+            </div> 
+          <br>
+          <!-- <ion-button  expand="full"  >Login</ion-button> -->
+          <!-- <ion-button (click)="getData()" expand="full" >get</ion-button> -->
+          <!-- <ion-button (click)="goToDashboardPage()" expand="full">Move to dashboard page</ion-button> -->
+        </ion-card-content>
+      </ion-card>
+     </div>
+
+  </body>
+
+</ion-content>

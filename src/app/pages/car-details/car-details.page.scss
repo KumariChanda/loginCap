@@ -1,0 +1,26 @@
+.cell-class {
+    border-color: black; 
+    border-width: .01em; 
+    border-style:solid; margin-bottom : -1px;
+  }
+
+  .cell-yes{
+    border-color: black; 
+    border-width: .01em; 
+    border-style:solid; margin-bottom : -1px;
+    color: green;
+    text-align: right;
+  }
+  .cell-no{
+    border-color: black; 
+    border-width: .01em; 
+    border-style:solid; margin-bottom : -1px;
+    color: red;
+    text-align: right;
+  }
+  .center-button{
+    margin-left: 25%;
+    margin-right: 17%;
+    
+  
+  }
