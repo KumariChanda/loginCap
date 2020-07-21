@@ -30,6 +30,8 @@ export class AppComponent {
   profile='../assets/imgs/profile.png';
   defaultProfile='../assets/imgs/dummyProfile.jpg';
 
+ 
+  menuNavigator;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -37,8 +39,6 @@ export class AppComponent {
     //add this router for switching pages
     private router : Router
   ) {
-
-    this.sideMenu();
     this.initializeApp();    
   }
 
@@ -53,8 +53,7 @@ export class AppComponent {
       if(this.token=="null")
       {
         // call login page
-       // this.router.navigateByUrl('/home');
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/home');
 
       }
       else
