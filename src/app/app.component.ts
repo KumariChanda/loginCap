@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HomePage } from './home/home.page';
@@ -26,7 +26,7 @@ export class AppComponent {
 
   rootPage:DashboardPage;
   token;
-  testingToken=null;
+  testingToken="null";
   profile='../assets/imgs/profile.png';
   defaultProfile='../assets/imgs/dummyProfile.jpg';
 
@@ -34,6 +34,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private menuCtrl:MenuController,
     //add this router for switching pages
     private router : Router
   ) {
@@ -232,11 +233,13 @@ export class AppComponent {
 
   openUserProfilePage()
   {
+    this.menuCtrl.toggle();
     this.router.navigateByUrl("/profile");
   }
 
   login_signupPage()
   {
+    this.menuCtrl.toggle();
     this.router.navigateByUrl("/signup");
   }
 
