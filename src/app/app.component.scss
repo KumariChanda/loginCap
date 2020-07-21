@@ -16,3 +16,33 @@
       padding-left: 20px;
       font-size: small ;
   }
+
+  .image-icon {
+
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+  }
+
+  .btn {
+    background: white;
+    // color: color($colors, bluegreen);
+    color: black;
+    font-size: smaller;
+    padding: 2px 2px 2px 2px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .profileImage{
+    height:0vw;
+    width: 0vw;
+    margin: 0vw;
+    padding: 0vw;
+
+  }
+
+  .labelText{
+    padding-left: 80vm;
+    
+  }

@@ -14,8 +14,8 @@ const { Storage } = Plugins;
 })
 export class AppComponent {
 
-  menuNavigator : any
-  menuNavigator2 : any
+  menuNavigatorLogin : any
+  menuNavigatorWithoutLogin : any
 
   showSubmenu: boolean = false;
 
@@ -26,6 +26,10 @@ export class AppComponent {
 
   rootPage:DashboardPage;
   token;
+  testingToken=null;
+  profile='../assets/imgs/profile.png';
+  defaultProfile='../assets/imgs/dummyProfile.jpg';
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -69,17 +73,14 @@ export class AppComponent {
    //this method is for side menu 
    sideMenu()
    {
-    this.menuNavigator =
+   if(this.testingToken!=null)
+   {
+    this.menuNavigatorLogin =
     [
       {
         title : "Home",
         url   : "/dashboard",
         icon  : "home"
-      },
-      {
-        title : "Profile",
-        url   : "/profile",
-        icon  : "person"
       },
       {
         title : "Car Fleet",
@@ -154,7 +155,89 @@ export class AppComponent {
       },
 
     ]
+   }
+   else
+   {
+    this.menuNavigatorWithoutLogin =
+    [
+      {
+        title : "Home",
+        url   : "/dashboard",
+        icon  : "home"
+      },
+      {
+        title : "Car Fleet",
+        icon  : "car",
+        children :[
+
+          {
+            title : "Business Class",
+            url   : "/profile",
+            icon  : "person-outline"
+          },
+          {
+            title : "Family Class",
+            url   : "/profile",
+            icon  : "person-outline"
+          }
+        ]
+      },
+      {
+        title : "Contact Us",
+        icon  : "call",
+        children :[
+
+          {
+            title : "About Us",
+            url   : "/about-us",
+            icon  : "information-circle-outline"
+          },
+          
+          {
+            title : "Our Contacts",
+            url   : "/our-contacts",
+            icon  : "call-outline"
+          },          
+        ]
+      },
+      {
+        title : "Settings",
+        icon  : "settings",
+        children :[
+
+          {
+            title : "Language",
+            url   : "/signup",
+            icon  : "information-circle-outline"
+          },   
+          {
+            title : "Send feedback",
+            url   : "/send-feedbacks",
+            icon  : "send-outline"
+          },       
+        ]
+      },
+
+    ]
 
    }
+
+   }
+
+
+
+   openUserProfile(url){
+    console.log('Open this URL: ',url);
+  }
+
+  openUserProfilePage()
+  {
+    this.router.navigateByUrl("/profile");
+  }
+
+  login_signupPage()
+  {
+    this.router.navigateByUrl("/signup");
+  }
 
 }
