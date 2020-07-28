@@ -53,46 +53,28 @@
                 </ion-radio-group>
               </ion-list>
           </ion-card-content>
-       </ion-card>       
+       </ion-card>  
 
-  <!-- optional services -->
-       <ion-card>
-     
-        <ion-card-header>
-          <ion-card-title>Other Services  </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-                  
-                <!-- <strong> <ion-label style="text-decoration: underline; margin-left:4%"> Optional Services : </ion-label> </strong> -->
-                  
-                  <!-- baby seats -->
-                <ion-item>
-                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
-                    <ion-label>Baby Seats  -   12000 F cfa/Day  </ion-label>
-                </ion-item>
-                
-                  
-                  <!-- Additional co-pilot -->
-                <ion-item>
-                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
-                    <ion-label>Additional co-pilot   -  15000 F cfa/Day  </ion-label>
-                </ion-item>
 
-                  <!-- Assistant translator -->
-                <ion-item>
-                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
-                    <ion-label>Assistant translator  -   16000 F cfa/Day  </ion-label>
-                </ion-item>
-        </ion-card-content>
-        </ion-card>
-
-        <!-- departure and return date -->
+   <!-- departure and return date -->
         <ion-card>
      
             <ion-card-header>
-              <ion-card-title>Dates and Times</ion-card-title>
+              <!-- <ion-card-title>Dates and Times</ion-card-title> -->
+               <!-- Search Bar -->
+               <ion-searchbar placeholder="Destination * "[(ngModel)]="searchQuery" (click)="click_bar()" (ionCancel)="onCancel($event)" (ionClear)	="onCancel($event)" (ngModelChange)="change_query($event)" showCancelButton="focus"></ion-searchbar>
+                
+                <ion-list *ngIf="show_list">
+                   <ion-item *ngFor="let item of list_to_show; let i = index">
+                       <ion-label (click)="click_item(i)" > {{item}} </ion-label>
+                   </ion-item>
+                </ion-list>
+
             </ion-card-header>
             <ion-card-content>
+
+                  
+
                 <ion-item>
                   <ion-label>Start Date</ion-label>
                   <ion-datetime value="2020-02-19" min="2020" placeholder="Select Date"></ion-datetime>
@@ -112,7 +94,40 @@
 
             </ion-card-content>
 
+        </ion-card>     
+
+  <!-- optional services -->
+       <ion-card>
+     
+        <ion-card-header>
+          <ion-card-title>Other Services  </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+                  
+                <!-- <strong> <ion-label style="text-decoration: underline; margin-left:4%"> Optional Services : </ion-label> </strong> -->
+                  
+                  <!-- baby seats -->
+                <ion-item>
+                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
+                    <label  textWrap="true">Baby Seats  -   12000 F cfa/Day  </label>
+                </ion-item>
+                
+                  
+                  <!-- Additional co-pilot -->
+                <ion-item>
+                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
+                    <label  textWrap="true">Additional co-pilot   -  15000 F cfa/Day  </label>
+                </ion-item>
+
+                  <!-- Assistant translator -->
+                <ion-item>
+                    <ion-checkbox color="primary"  slot="end"></ion-checkbox>
+                    <label  textWrap="true">Assistant translator  -   16000 F cfa/Day  </label>
+                </ion-item>
+        </ion-card-content>
         </ion-card>
+
+       
 
         <!-- Message -->
         <ion-card  style="height: 255px;">
