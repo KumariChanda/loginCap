@@ -1,53 +1,109 @@
 <ion-header>
   <ion-toolbar>
 
-    <ion-item>
+    <ion-item *ngIf="!isSearchbarOpened">
 
-      <ion-buttons slot="start">
+           <!-- menu icon -->
+      <ion-buttons *ngIf="!isSearchbarOpened" slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>NYOKAH</ion-title>
 
-      <!-- <ion-button (click) ="logOut()" right>Log out</ion-button> -->
+      <!-- title -->
+      <ion-title *ngIf="!isSearchbarOpened" >NYOKAH</ion-title>
+
+   
+       <!-- search bar button -->
+       <ion-buttons slot="end">
+          <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
+              <ion-icon name="search"> </ion-icon>
+          </ion-button>
+      </ion-buttons>
+
+
     </ion-item>
+
+<!-- Search Bar -->
+   <ion-searchbar *ngIf="isSearchbarOpened" placeholder="Search here" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+
+     
   </ion-toolbar>
+    
 </ion-header>
 
 <ion-content>
 
 
+
+<!-- Default Segment -->
+ <!--   First main Search  -->
+
+  <ion-card  *ngIf="!isSearchbarOpened">
+        <ion-card-header>
+
+         <ion-card-title style="margin-buttom:10%; margin-left:30%"> RESERVATION </ion-card-title>
+              <!-- Label only -->
+          <ion-segment [(ngModel)]="rent_type">
+            <ion-segment-button  value="hour">
+              <ion-label>Per Hour </ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="day">
+              <ion-label>Per Day</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="airport">
+              <ion-label>Airport pickup</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+
+        </ion-card-header>
+
+        <ion-card-content>
+             
+              <!-- Search Bar -->
+               <ion-searchbar placeholder="Destination (*) "[(ngModel)]="searchQuery" (click)="click_bar()" (ionCancel)="onCancel($event)" (ionClear)	="onCancel($event)" (ngModelChange)="change_query($event)" showCancelButton="focus"></ion-searchbar>
+                
+                <ion-list *ngIf="show_list">
+                   <ion-item *ngFor="let item of list_to_show; let i = index">
+                       <ion-label (click)="click_item(i)" > {{item}} </ion-label>
+                   </ion-item>
+                </ion-list>
+
+
+                <ion-item  >
+                  <ion-label>Start Date (*)</ion-label>
+                  <ion-datetime value="2020-02-19" min="2020" placeholder="Select Date"></ion-datetime>
+                </ion-item>
+                <ion-item >
+                  <ion-label>Start Time (*)</ion-label>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
+                </ion-item>
+
+                <ion-item  *ngIf="rent_type =='day' ">
+                  <ion-label>Return Date (*)</ion-label>
+                  <ion-datetime value="2020-02-20"  min="2020" placeholder="Select Date"></ion-datetime>
+                </ion-item>
+                <ion-item  *ngIf="rent_type =='hour' || rent_type =='day' ">
+                  <ion-label>Return Time (*)</ion-label>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
+                </ion-item>
+                <!-- departure -->
+                <ion-item  *ngIf="rent_type =='airport' ">
+                  <ion-input placeholder='Departure Venue (*)' ></ion-input>
+                </ion-item>
+
+                <!-- button search -->
+
+                <ion-button expand="full"> 
+                      <ion-icon slot="start" name="search"></ion-icon>
+                      Search 
+                 </ion-button>
+
+        </ion-card-content>
       
-      
-        <!-- <ion-item>
-          <ion-label position="floating">Name</ion-label>
-          <ion-input name="name" [(ngModel)]="name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Alias</ion-label>
-          <ion-input name="alias" [(ngModel)]="alias"></ion-input>
-        </ion-item>
+  </ion-card>
 
-        <ion-button (click) ="SaveData(name,alias)">Save hero</ion-button>
-
-        <ion-label >{{dataSaveReturn}}</ion-label>
-
-
-        <p> ***************** List of Heroes *********************** </p>
-        
-        <ion-list>
-          <ion-item *ngFor="let data of datauser">
-              <ion-label>
-                <p>  Name : {{data.name}}</p>
-                <p>  Alias: {{data.alias}}</p>
-              </ion-label>
-          </ion-item>
-        </ion-list> -->
-
-
-
-  <!-- Search Bar -->
-  <ion-searchbar placeholder="Search here" [(ngModel)]="term" animated="true"></ion-searchbar>
-
+     <ion-list-header style=" margin-left:30%"> OUR VEHICLES : </ion-list-header>
+      <!-- <strong > <label style=" margin:30%"> OUR VEHICLES :</label> </strong> -->
+  
   <!-- List Items -->
   <ion-list>
     <!-- <ion-item *ngFor="let item of filterData | filter:term"> -->
