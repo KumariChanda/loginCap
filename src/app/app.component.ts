@@ -84,6 +84,11 @@ export class AppComponent {
         icon  : "home"
       },
       {
+        title : "Profile",
+        url   : "/profile",
+        icon  : "person"
+      },
+      {
         title : "Car Fleet",
         icon  : "car",
         children :[
@@ -233,8 +238,10 @@ export class AppComponent {
 
   openUserProfilePage()
   {
-    this.menuCtrl.toggle();
-    this.router.navigateByUrl("/profile");
+    //set token null
+    
+   // this.menuCtrl.toggle();
+   // this.router.navigateByUrl("/profile");
   }
 
   login_signupPage()

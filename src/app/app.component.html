@@ -2,12 +2,9 @@
     <ion-menu side="start" menuId="first" contentId="content1">
         <ion-header>
           <ion-toolbar>
-            <ion-title>NYOKAH </ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <div *ngIf="testingToken==null">
-          
+
+              <!-- menu -> null -->
+            <div *ngIf="testingToken==null">
               <div >
                 <ion-grid>
                   <ion-row>
@@ -27,7 +24,40 @@
                     </ion-col>
                     </ion-row>
                     </ion-grid>               
+               </div>
               </div>
+         
+             <!-- menu != null -->
+         
+          <div *ngIf="testingToken!=null">
+            <div >
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4" >
+                    <img  tappable  menuClose  [src]="defaultProfile"  class="image-icon" (click)="openUserProfile(defaultProfile)">
+                  </ion-col>
+                   <ion-col size="8">
+                    <div>
+                     
+                        <ion-label style="size: 20vw;">&nbsp;Hello! <b>Chanda</b></ion-label>
+                        <ion-button fill="outline" slot="end" (click)="openUserProfilePage()" >LOG OUT</ion-button>
+                      
+                    </div>                    
+                  </ion-col>
+                  </ion-row>
+                  </ion-grid>  
+                             
+              </div>
+            </div>
+         
+         
+         
+         
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <div *ngIf="testingToken==null">
+          
           <ion-list *ngFor="let pages of menuNavigatorWithoutLogin">
           <ion-menu-toggle auto-hide="true" *ngIf="pages.url" >
             <ion-item [routerLink]="pages.url" routerDirection="root" routerLinkActive="active">
@@ -62,24 +92,7 @@
         </div>
   
           <div *ngIf="testingToken!=null">
-            <div >
-              <ion-grid>
-                <ion-row>
-                  <ion-col size="4" >
-                    <img  tappable  menuClose  [src]="defaultProfile"  class="image-icon" (click)="openUserProfile(defaultProfile)">
-                  </ion-col>
-                   <ion-col size="8">
-                    <div>
-                     
-                        <ion-label style="size: 20vw;">&nbsp;Hello! <b>Chanda</b></ion-label>
-                        <ion-button fill="outline" slot="end" (click)="openUserProfilePage()" >View Profile</ion-button>
-                      
-                    </div>                    
-                  </ion-col>
-                  </ion-row>
-                  </ion-grid>  
-                             
-            </div>
+            
              
           <ion-list *ngFor="let pages of menuNavigatorLogin">
           <ion-menu-toggle auto-hide="true" *ngIf="pages.url" >
