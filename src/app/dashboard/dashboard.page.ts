@@ -23,7 +23,7 @@ export class DashboardPage implements OnInit {
   alias: any;
   datauser: any;
   token : any;
-
+  searchQuery:any;
   public dataToSend:any=
   {
     "name":"",
