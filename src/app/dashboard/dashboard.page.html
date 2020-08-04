@@ -9,13 +9,15 @@
       </ion-buttons>
 
       <!-- title -->
-      <ion-title *ngIf="!isSearchbarOpened" >NYOKAH</ion-title>
+      <ion-title *ngIf="!isSearchbarOpened" >NYOKAH
+      
+      </ion-title>
 
    
        <!-- search bar button -->
        <ion-buttons slot="end">
           <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
-              <ion-icon name="search"> </ion-icon>
+              <ion-icon color="primary" name="search"> </ion-icon>
           </ion-button>
       </ion-buttons>
 
@@ -30,7 +32,7 @@
     
 </ion-header>
 
-<ion-content>
+<ion-content >
 
 
 
@@ -92,7 +94,7 @@
 
                 <!-- button search -->
 
-                <ion-button expand="full"> 
+                <ion-button expand="block"> 
                       <ion-icon slot="start" name="search"></ion-icon>
                       Search 
                  </ion-button>
@@ -101,11 +103,15 @@
       
   </ion-card>
 
-     <ion-list-header style=" margin-left:30%"> OUR VEHICLES : </ion-list-header>
+     <ion-list-header  style=" margin-left:28%"> 
+          <ion-chip > OUR VEHICLES  <br>
+             <ion-icon   name="caret-down-sharp"></ion-icon>
+           </ion-chip >
+          
+     </ion-list-header>
       <!-- <strong > <label style=" margin:30%"> OUR VEHICLES :</label> </strong> -->
   
   <!-- List Items -->
-  <ion-list>
     <!-- <ion-item *ngFor="let item of filterData | filter:term"> -->
       <!-- <ion-label>{{item.firstName}} {{item.lastName}}</ion-label> -->
 
@@ -118,31 +124,31 @@
                 <!-- type of motor -->
                 <ion-chip >
                   <ion-icon name="car"></ion-icon>
-                  <ion-label color="secondary">{{item.motorType}}</ion-label>
+                  <ion-label >{{item.motorType}}</ion-label>
                 </ion-chip>
                 <!-- Car Model-->
                 <ion-chip >
                   <ion-icon name="medal" ></ion-icon>
-                  <ion-label color="secondary" textWrap="true">{{item.model}}</ion-label>
+                  <ion-label  textWrap="true">{{item.model}}</ion-label>
                 </ion-chip> <br>
                 <!-- Number of Seats-->
                 <ion-chip >
                   <ion-icon name="person"></ion-icon>
-                  <ion-label color="secondary">{{item.seatNumber}}</ion-label>
+                  <ion-label >{{item.seatNumber}}</ion-label>
                 </ion-chip>
 
               <ion-chip>
-                <ion-label color="primary"> {{item.pricePerDay}} F cfa/Jour </ion-label> 
+                <ion-label > {{item.pricePerDay}} F cfa/Jour </ion-label> 
               </ion-chip>
 
           </ion-card-subtitle>
-          <ion-card-title>{{item.title}}</ion-card-title>
+          <ion-card-title >{{item.title}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
                         
                <!-- More-->
              <ion-chip style="margin-left:30%" (click)="carDetails(item.title )" >
-                <ion-label color="secondary">View details </ion-label>
+                <ion-label >View details </ion-label>
                 <ion-icon name="chevron-forward"></ion-icon>
             </ion-chip>
 
@@ -151,7 +157,6 @@
       </ion-card>
 
     <!-- </ion-item> -->
-  </ion-list>
 
 
 

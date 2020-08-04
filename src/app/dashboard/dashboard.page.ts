@@ -24,6 +24,8 @@ export class DashboardPage implements OnInit {
   datauser: any;
   token : any;
 
+  logo1 ='../assets/images/logo1.jpg';
+  
   public dataToSend:any=
   {
     "name":"",

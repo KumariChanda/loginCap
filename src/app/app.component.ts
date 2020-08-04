@@ -26,7 +26,7 @@ export class AppComponent {
 
   rootPage:DashboardPage;
   token;
-  testingToken="null";
+  testingToken=null;
   profile='../assets/imgs/profile.png';
   defaultProfile='../assets/imgs/dummyProfile.jpg';
 
