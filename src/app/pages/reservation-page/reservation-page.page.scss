@@ -9,3 +9,38 @@
     border-width: .01em; 
     border-style:solid; margin-bottom : -1px;
   }
+
+  ion-card,ion-toolbar,ion-segment
+{
+    --background: black; 
+}
+
+
+
+ion-item
+{
+    --background: black; 
+    color:  #ffa60a;
+}
+
+ion-chip
+{
+    color: black; 
+    --background: white;
+}
+ion-button
+{
+    color: black; 
+    --background: #ffa60a;
+    border-color: black;
+}
+
+ion-segment-button
+{
+    color : #ffa60a;
+}
+
+ion-card-title,ion-textarea
+{
+    color : white;
+}

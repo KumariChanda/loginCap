@@ -99,3 +99,12 @@
   position: relative;
   // opacity: 0.5;
 }
+
+ion-toolbar,ion-segment,ion-content
+{
+    --background: black; 
+}
+ion-buttons
+{
+    color:  #ffa60a;
+}

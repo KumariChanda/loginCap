@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { SeetingsPageRoutingModule } from './seetings-routing.module';
 
 import { SeetingsPage } from './seetings.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SeetingsPageRoutingModule
+    SeetingsPageRoutingModule,
+    TranslateModule
+
   ],
   declarations: [SeetingsPage]
 })

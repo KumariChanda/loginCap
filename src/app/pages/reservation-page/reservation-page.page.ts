@@ -9,11 +9,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ReservationPagePage implements OnInit {
 
+ //////////////Date////////////////////
+ public  today: any ;     // today's date 
+ public  maxdate : any;   // the maximum date of a date picker
+ 
+ /////////////////////////////////
 
 
-  // term = '';
-  // filterData = ['item 1','item 2','item 3','item 4']
-
+  rent_type : any ="hour";
   list_original = ['item 1','item 2','item 3','item 4'];
   list_to_show = [];
   selected_index = -1;
@@ -21,7 +24,62 @@ export class ReservationPagePage implements OnInit {
 
 
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { 
+
+
+    let date : Date = new Date();
+    var month, day
+    //today's date
+    this.today = date.getFullYear() +"-"+ (date.getMonth()+1) + "-"+date.getDate();
+
+       if(date.getMonth()+1 <10)
+       {
+         month = "0"+(date.getMonth()+1)
+       }else{
+         month = date.getMonth()+1
+       }
+
+       if(date.getDate() <10)
+       {
+         day = "0"+date.getDate();
+       }else{
+         day = date.getDate();
+       }
+
+       this.today = date.getFullYear() +"-"+ month + "-"+day
+
+
+    //maximum date
+    var x =  new Date().setDate( date.getDate()+90 )
+    this.maxdate = new Date(x)
+
+    if(this.maxdate.getMonth()+1 <10)
+    {
+      month = "0"+(this.maxdate.getMonth()+1)
+    }else{
+       month = this.maxdate.getMonth()+1
+    }
+
+    if(this.maxdate.getDate() <10)
+    {
+      day = "0"+this.maxdate.getDate()
+    }else{
+      day = this.maxdate.getDate()
+    }
+
+    this.maxdate = this.maxdate.getFullYear() +"-"+ month + "-"+day
+    
+
+
+    console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
+
+
+
+
+
+
+
+  }
 
   ngOnInit() {
   }

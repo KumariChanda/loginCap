@@ -9,9 +9,7 @@
       </ion-buttons>
 
       <!-- title -->
-      <ion-title *ngIf="!isSearchbarOpened" >NYOKAH
-      
-      </ion-title>
+      <ion-title *ngIf="!isSearchbarOpened" >{{ 'DASHBOARD.title' | translate }}</ion-title>
 
    
        <!-- search bar button -->
@@ -25,7 +23,7 @@
     </ion-item>
 
 <!-- Search Bar -->
-   <ion-searchbar *ngIf="isSearchbarOpened" placeholder="Search here" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+   <ion-searchbar *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
 
      
   </ion-toolbar>
@@ -35,8 +33,8 @@
 <ion-content >
 
 
-
-<!-- Default Segment -->
+    
+<!-- Default Segment / Search for the car according to the type of reservation -->
  <!--   First main Search  -->
 
   <ion-card  *ngIf="!isSearchbarOpened">
@@ -46,13 +44,13 @@
               <!-- Label only -->
           <ion-segment [(ngModel)]="rent_type">
             <ion-segment-button  value="hour">
-              <ion-label>Per Hour </ion-label>
+              <ion-label>{{ 'DASHBOARD.per_hour' | translate }} </ion-label>
             </ion-segment-button>
             <ion-segment-button value="day">
-              <ion-label>Per Day</ion-label>
+              <ion-label>{{ 'DASHBOARD.per_day' | translate }}</ion-label>
             </ion-segment-button>
             <ion-segment-button value="airport">
-              <ion-label>Airport pickup</ion-label>
+              <label  textWrap="true" style="font-size:0.9em">{{ 'DASHBOARD.airport_pick' | translate }}</label>
             </ion-segment-button>
           </ion-segment>
 
@@ -71,49 +69,44 @@
 
 
                 <ion-item  >
-                  <ion-label>Start Date (*)</ion-label>
-                  <ion-datetime value="2020-02-19" min="2020" placeholder="Select Date"></ion-datetime>
+                  <ion-label> {{ 'DASHBOARD.start_date' | translate }}</ion-label>
+                  <ion-datetime [value]="today" [min]="today" [max]="maxdate" placeholder="Select Date"></ion-datetime>
                 </ion-item>
                 <ion-item >
-                  <ion-label>Start Time (*)</ion-label>
+                  <ion-label> {{ 'DASHBOARD.start_time' | translate }}</ion-label>
                   <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
                 </ion-item>
 
                 <ion-item  *ngIf="rent_type =='day' ">
-                  <ion-label>Return Date (*)</ion-label>
-                  <ion-datetime value="2020-02-20"  min="2020" placeholder="Select Date"></ion-datetime>
+                   <ion-label> {{ 'DASHBOARD.return_date' | translate }}</ion-label>
+                   <ion-datetime [value]="today"   [min]="today"  [max]="maxdate"   placeholder="Select Date"></ion-datetime>
                 </ion-item>
                 <ion-item  *ngIf="rent_type =='hour' || rent_type =='day' ">
-                  <ion-label>Return Time (*)</ion-label>
+                   <ion-label> {{ 'DASHBOARD.return_time' | translate }}</ion-label>
                   <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
                 </ion-item>
                 <!-- departure -->
                 <ion-item  *ngIf="rent_type =='airport' ">
-                  <ion-input placeholder='Departure Venue (*)' ></ion-input>
+                  <ion-input  placeholder="{{ 'DASHBOARD.departure_venue' | translate }}" ></ion-input>
                 </ion-item>
 
                 <!-- button search -->
 
                 <ion-button expand="block"> 
                       <ion-icon slot="start" name="search"></ion-icon>
-                      Search 
+                      {{ 'DASHBOARD.btn_search' | translate }}
                  </ion-button>
 
         </ion-card-content>
       
   </ion-card>
 
-     <ion-list-header  style=" margin-left:28%"> 
-          <ion-chip > OUR VEHICLES  <br>
+     <ion-list-header  style=" margin-left:23%"> 
+          <ion-chip > {{ 'DASHBOARD.our_vehicles' | translate }}  <br>
              <ion-icon   name="caret-down-sharp"></ion-icon>
            </ion-chip >
           
      </ion-list-header>
-      <!-- <strong > <label style=" margin:30%"> OUR VEHICLES :</label> </strong> -->
-  
-  <!-- List Items -->
-    <!-- <ion-item *ngFor="let item of filterData | filter:term"> -->
-      <!-- <ion-label>{{item.firstName}} {{item.lastName}}</ion-label> -->
 
      <ion-card *ngFor="let item of filterData | filter:term">
     
@@ -134,11 +127,11 @@
                 <!-- Number of Seats-->
                 <ion-chip >
                   <ion-icon name="person"></ion-icon>
-                  <ion-label >{{item.seatNumber}}</ion-label>
+                  <ion-label >{{item.seatNumber}} {{ 'DASHBOARD.seats' | translate }} </ion-label>
                 </ion-chip>
 
               <ion-chip>
-                <ion-label > {{item.pricePerDay}} F cfa/Jour </ion-label> 
+                <ion-label > {{item.pricePerDay}} F cfa/{{ 'DASHBOARD.day' | translate }} </ion-label> 
               </ion-chip>
 
           </ion-card-subtitle>
@@ -148,7 +141,7 @@
                         
                <!-- More-->
              <ion-chip style="margin-left:30%" (click)="carDetails(item.title )" >
-                <ion-label >View details </ion-label>
+                <ion-label >{{ 'DASHBOARD.btn_view_details' | translate }} </ion-label>
                 <ion-icon name="chevron-forward"></ion-icon>
             </ion-chip>
 

@@ -46,3 +46,22 @@
     padding-left: 80vm;
     
   }
+
+ion-item
+{
+    --background: black; 
+    color: white; 
+}
+ion-content,ion-toolbar
+{
+    --background: black; 
+}
+ion-label
+{
+    color: white; 
+}
+ion-icon
+{
+  color:  #ffa60a;
+ 
+}

@@ -3,7 +3,7 @@
 
       <ion-item>
 
-        <ion-icon name="chevron-back" (click)="prev()" ></ion-icon>
+        <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
         <ion-title>Car Details</ion-title>
 
       </ion-item>
@@ -38,23 +38,23 @@
                 <!-- type of motor -->
                 <ion-chip >
                   <ion-icon name="car"></ion-icon>
-                  <ion-label color="secondary"> diesel</ion-label>
+                  <ion-label > diesel</ion-label>
                 </ion-chip>
                 <!-- Car Model-->
                 <ion-chip >
                   <ion-icon name="medal" ></ion-icon>
-                  <ion-label color="secondary" textWrap="true">Model </ion-label>
+                  <ion-label  textWrap="true">Model </ion-label>
                 </ion-chip> <br>
                 <!-- Number of Seats-->
                 <ion-chip >
                   <ion-icon name="person"></ion-icon>
-                  <ion-label color="secondary">10 seats</ion-label>
+                  <ion-label >10 seats</ion-label>
                 </ion-chip>
 
                     <!-- number of baggages -->
               <ion-chip>
                 <ion-icon name="briefcase"></ion-icon>
-                <ion-label color="secondary"> X Baggages </ion-label> 
+                <ion-label > X Baggages </ion-label> 
               </ion-chip>
 
           </ion-card-subtitle>
@@ -102,12 +102,23 @@
       </ion-card>
 
       <!-- login to reserve or reserve if logged in  -->
-    <ion-button *ngIf="token==null" expand="round" class="center-button">Login To Reserve</ion-button>
+    <!-- <ion-button *ngIf="token==null" expand="round" class="center-button">Login To Reserve</ion-button> -->
        <!-- if the token is not null -->
-    <ion-button *ngIf="token!=null" expand="round" class="center-button" (click)="goToReservation()">Reserve Now</ion-button>
+    <!-- <ion-button *ngIf="token!=null" expand="round" class="center-button" (click)="goToReservation()">Reserve Now</ion-button> -->
 
 
 
 
 
 </ion-content>
+
+<ion-footer>
+  <!-- <ion-toolbar> -->
+          <!-- login to reserve or reserve if logged in  -->
+    <ion-button *ngIf="token==null" expand="full" >Login To Reserve</ion-button>
+       <!-- if the token is not null -->
+    <ion-button *ngIf="token!=null" expand="full"  (click)="goToReservation()">Reserve Now</ion-button>
+
+
+  <!-- </ion-toolbar> -->
+</ion-footer>
