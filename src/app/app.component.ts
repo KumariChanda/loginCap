@@ -62,7 +62,7 @@ export class AppComponent {
 
     
     this.initializeApp(); 
-    ///////////////////////////////////////////////////////
+    ///////////////////// after changiing a language //////////////////////////////////
     this.subscription = this.languageservice.getMessage().subscribe(text => {
       //console.log("//////////////// \ntext",text.language);
       this.sideMenu(text.language);
@@ -239,6 +239,16 @@ export class AppComponent {
                     },
                     {
                       title : "Family Class",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Class SUV",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Ordinary Class",
                       url   : "/profile",
                       icon  : "person-outline"
                     }
