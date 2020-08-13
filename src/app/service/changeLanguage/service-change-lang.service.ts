@@ -56,23 +56,19 @@ export class ServiceChangeLangService {
     
   }
 
-  getLanguages(){
+  async getCurrentLanguage(){
    
-    return [
-      {text: 'English', value:'en'},
-      {text: 'French', value:'fr'}
-    ];
+    var ret=Storage.get({ key: LNG_KEY });
+    var val = (await ret).value;
+    return val;
+
   }
  
 
   setLanguage(setLang) {
     this.translate.use(setLang);
     this.selected = setLang;
-    Storage.set({key:LNG_KEY, value:setLang});
-
-   
-
-    
+    Storage.set({key:LNG_KEY, value:setLang}); 
     
   }
 
@@ -84,6 +80,16 @@ export class ServiceChangeLangService {
   }
 
   getMessage():Observable<any>{
+  return this.subject.asObservable();
+  }
+  
+  //////////////////////////
+
+  sendLoggedToken(token){
+  this.subject.next(token);
+  }
+
+  getLoggedToken():Observable<any>{
   return this.subject.asObservable();
   }
 

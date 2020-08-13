@@ -36,7 +36,7 @@ export class SeetingsPage implements OnInit {
   var ret=Storage.get({ key: LNG_KEY });
   var val = (await ret).value;  
   this.selectedLanguage = val;
-  console.log("selected language ",this.selectedLanguage ,typeof(this.selectedLanguage ));
+  //console.log("selected language ",this.selectedLanguage ,typeof(this.selectedLanguage ));
  }
 
   //////////////////////
