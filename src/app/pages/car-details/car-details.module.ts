@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CarDetailsPageRoutingModule } from './car-details-routing.module';
 
 import { CarDetailsPage } from './car-details.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CarDetailsPageRoutingModule
+    CarDetailsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [CarDetailsPage]
 })

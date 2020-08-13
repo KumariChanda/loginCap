@@ -32,6 +32,42 @@
         "btn_logout" : "LOG OUT",
         "message" : "You're not logged in yet"
         
+    },
+
+    "CARDETAILS" : {
+
+        "title" : " CAR DETAILS",
+        "seats" : "seats" ,
+        "day" : "Day" ,
+        "hour" : "Hour" ,
+        "description" : " Description",
+        "accessories" : "Accessories" ,
+        "logintoreserve" : "LOG IN TO BOOK" ,
+        "reservenow" : "RESERVE NOW" ,
+        "baggages" : "Baggages" 
+       
+    },
+
+    "RESERVECAR" : {
+        "title": "CAR RESERVATION",
+        "start_date": "Start Date (*)",
+        "start_time": "Start Time (*)",
+        "return_date": "Return Date (*)",
+        "return_time": "Return Time (*)",
+        "per_hour": "PER HOUR",
+        "per_day": "PER DAY",
+        "day" : "Day" ,
+        "hour" : "Hour" ,
+        "airport_pick": "AIRPORT PICKUP",
+        "departure_venue" : "Departure Venue (*)" ,
+        "price" : "Price : ",
+        "otherservices" : " Other Services",
+        "babyseats" : "Baby Seats",
+        "additionalpilot" : "Additional co-pilot",
+        "assistanttranslator" : "Assistant Translator",
+        "message" : "Message",
+        "messageplaceholder" : "Enter any message here...",
+        "btn_submit" : "SUBMIT"
     }
 
 

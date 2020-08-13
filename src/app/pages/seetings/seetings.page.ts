@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Plugins } from '@capacitor/core';
 import { ServiceChangeLangService } from 'src/app/service/changeLanguage/service-change-lang.service';
-import { Storage } from '@ionic/storage';
 
 
+const { Storage } = Plugins;
 
 const LNG_KEY = 'SELECTED LANGUAGE';
-
 
 @Component({
   selector: 'app-seetings',
@@ -19,19 +19,25 @@ export class SeetingsPage implements OnInit {
   selectedLanguage:any ;
 
 
-  constructor( private languageService : ServiceChangeLangService,  private storage: Storage) {
-     
-      this.storage.get(LNG_KEY).then(val => {
-
-          this.selectedLanguage = val;
-                  
-      }) ;
-
+  constructor( private languageService : ServiceChangeLangService) {
+    
+        this.getcurrentlang();
    }
 
   ngOnInit() {
+
+    
   }
 
+ ////////////
+ async getcurrentlang()
+ {
+     
+  var ret=Storage.get({ key: LNG_KEY });
+  var val = (await ret).value;  
+  this.selectedLanguage = val;
+  console.log("selected language ",this.selectedLanguage ,typeof(this.selectedLanguage ));
+ }
 
   //////////////////////
 languageChanged(){
