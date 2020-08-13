@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Plugins } from '@capacitor/core';
-import { ServiceGetAllHeroService } from '../service/getAllhero/service-get-all-hero.service';
-import { ServiceAddHeroService } from '../service/addhero/service-add-hero.service';
+
+import { ServiceChangeLangService } from '../service/changeLanguage/service-change-lang.service';
+//import * as moment from 'moment';
 
 
 const { Storage } = Plugins;
@@ -15,7 +16,11 @@ const { Storage } = Plugins;
 })
 export class DashboardPage implements OnInit {
 
+ //////////////Date////////////////////
+public  today: any ;     // today's date 
+public  maxdate : any;   // the maximum date of a date picker
 
+/////////////////////////////////
   data: any;
 
 
@@ -24,6 +29,9 @@ export class DashboardPage implements OnInit {
   datauser: any;
   token : any;
   searchQuery:any;
+
+  logo1 ='../assets/images/logo1.jpg';
+  
   public dataToSend:any=
   {
     "name":"",
@@ -40,7 +48,7 @@ export class DashboardPage implements OnInit {
     {
       motorType:'Diesel',  // motor type
       model:'Model 2018',  // model of the car
-      seatNumber:'9 seats',  // number of seats of a car
+      seatNumber:'9',  // number of seats of a car
       pricePerDay:'65000', // price per day
       title:'MERCEDEZ BENZ, VEHICULE FAMILIAL', // title or designation of the car
       picture : '../assets/images/car1.jpg'  // picture of the car
@@ -49,7 +57,7 @@ export class DashboardPage implements OnInit {
     {
       motorType:'Diesel',  // motor type
       model:'Model 2016',  // model of the car
-      seatNumber:'8 seats',  // number of seats of a car
+      seatNumber:'8',  // number of seats of a car
       pricePerDay:'65000', // price per day
       title:'MERCEDEZ BENZ, MINI BUS METRIS', // title or designation of the car
       picture : '../assets/images/car2.jpg'  // picture of the car
@@ -59,7 +67,7 @@ export class DashboardPage implements OnInit {
     {
       motorType:'Diesel',  // motor type
       model:'Model 2018',  // model of the car
-      seatNumber:'5 seats',  // number of seats of a car
+      seatNumber:'5',  // number of seats of a car
       pricePerDay:'90000', // price per day
       title:'MITSUBISHI , PAJERO SUV 4X4', // title or designation of the car
       picture : '../assets/images/car3.jpg'  // picture of the car
@@ -69,7 +77,7 @@ export class DashboardPage implements OnInit {
     {
       motorType:'Diesel',  // motor type
       model:'Model 2019',  // model of the car
-      seatNumber:'5 seats',  // number of seats of a car
+      seatNumber:'5',  // number of seats of a car
       pricePerDay:'90000', // price per day
       title:'TOYOTA , Pick up 4X4 SUV', // title or designation of the car
       picture : '../assets/images/car4.jpg'  // picture of the car
@@ -79,7 +87,7 @@ export class DashboardPage implements OnInit {
     {
       motorType:'Diesel',  // motor type
       model:'Model 2016',  // model of the car
-      seatNumber:'5 seats',  // number of seats of a car
+      seatNumber:'5',  // number of seats of a car
       pricePerDay:'75000 ', // price per day
       title:'VOLKSWAGEN , CITADINE PSSAT', // title or designation of the car
       picture : '../assets/images/car5.jpg'  // picture of the car
@@ -96,12 +104,64 @@ export class DashboardPage implements OnInit {
   selected_index = -1;
   show_list = false;
 
-
-
+  
 
 
   constructor(private route: ActivatedRoute, private router: Router, 
-    public getAllApi : ServiceGetAllHeroService, public addApi: ServiceAddHeroService) {
+    private languageService: ServiceChangeLangService) {
+
+
+      //language
+     // this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
+
+        // date
+       let date : Date = new Date();
+       var month, day
+       //today's date
+       this.today = date.getFullYear() +"-"+ (date.getMonth()+1) + "-"+date.getDate();
+
+          if(date.getMonth()+1 <10)
+          {
+            month = "0"+(date.getMonth()+1)
+          }else{
+            month = date.getMonth()+1
+          }
+
+          if(date.getDate() <10)
+          {
+            day = "0"+date.getDate()
+          }else{
+            day = date.getDate()
+          }
+
+          this.today = date.getFullYear() +"-"+ month + "-"+day
+
+
+       //maximum date
+       var x =  new Date().setDate( date.getDate()+90 )
+       this.maxdate = new Date(x)
+
+       if(this.maxdate.getMonth()+1 <10)
+       {
+         month = "0"+(this.maxdate.getMonth()+1)
+       }else{
+          month = this.maxdate.getMonth()+1
+       }
+
+       if(this.maxdate.getDate() <10)
+       {
+         day = "0"+this.maxdate.getDate()
+       }else{
+         day = this.maxdate.getDate()
+       }
+
+       this.maxdate = this.maxdate.getFullYear() +"-"+ month + "-"+day
+       
+
+
+       console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
+
+
 
 
     //receive data from
@@ -110,6 +170,7 @@ export class DashboardPage implements OnInit {
         this.data = JSON.parse(params.special);
 
         console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
+
       }
     });
 
@@ -118,21 +179,11 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
 
-    this.getDataUser();
 
   }
 
 //////////////////////////////////////////////////////
-  async getDataUser(){
-    await this.getAllApi.getDataUser()
-      .subscribe(res => {
-     //   console.log(res);
-        this.datauser = res;
-     //   console.log(this.datauser);
-      }, err => {
-        console.log(err);
-      });
-  }
+
 ///////////////////////////////////////////////////////
 
 
@@ -142,34 +193,6 @@ export class DashboardPage implements OnInit {
 //     console.log((await ret).value);
 //   }
 
-  async SaveData(my_name,my_alias)
-  {
-     this.dataToSend['name'] = my_name ;
-     this.dataToSend['alias'] = my_alias ;
-
-
-     //getToken
-     var res =Storage.get({ key:'accessToken'});
-     
-     this.token =(await res).value;
-     //console.log(this.token);
-
-     this.addApi.SaveData(this.dataToSend, this.token)
-       .subscribe((dataReturnFromService)=>{
-
-          // this.dataSaveReturn = JSON.stringify(dataReturnFromService);
-          this.dataSaveReturn = "successful";
- 
-
-           this.getDataUser();
-       },err => {
-         this.dataSaveReturn = "failed";
-         console.log(err);
-       });
-
-       this.name = "";
-       this.alias = "";
-  }
 
 ///////////////////////////////////////////////////
   logOut()

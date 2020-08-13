@@ -6,7 +6,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HomePage } from './home/home.page';
 import { DashboardPage } from './dashboard/dashboard.page';
 import { Router } from '@angular/router';
+import { ServiceChangeLangService } from './service/changeLanguage/service-change-lang.service';
+//import {Storage} from '@ionic/storage'
+import { Subscription } from 'rxjs';
+
 const { Storage } = Plugins;
+const LNG_KEY = 'SELECTED LANGUAGE';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -26,9 +32,13 @@ export class AppComponent {
 
   rootPage:DashboardPage;
   token;
-  testingToken=123;
+  //testingToken=null;
+   testingToken=null;
   profile='../assets/imgs/profile.png';
   defaultProfile='../assets/imgs/dummyProfile.jpg';
+
+  /////
+  subscription: Subscription;
 
   constructor(
     private platform: Platform,
@@ -36,21 +46,46 @@ export class AppComponent {
     private statusBar: StatusBar,
     private menuCtrl:MenuController,
     //add this router for switching pages
-    private router : Router
+    private router : Router,
+    //language service
+    private languageservice : ServiceChangeLangService,
+   // private storage: Storage
+    
   ) {
 
-    this.sideMenu();
-    this.initializeApp();    
+       //set the initial language of the app
+      this.languageservice.setInitialAppLanguage().then(val =>{
+
+     // console.log("result",val);
+      this.sideMenu(val);
+     });
+
+    
+    this.initializeApp(); 
+    ///////////////////// after changiing a language //////////////////////////////////
+    this.subscription = this.languageservice.getMessage().subscribe(text => {
+      //console.log("//////////////// \ntext",text.language);
+      this.sideMenu(text.language);
+     
+  })
+  
   }
 
   initializeApp() {
     this.platform.ready().then(async () => {
-      var ret=Storage.get({ key: 'accessToken' });
 
-      this.token=(await ret).value;
-      //console.log("checKing data from storage ",this.token,typeof(this.token));
+      //initialize language 
+      this.languageservice.setInitialAppLanguage();
+    
+    
+      //token storage
+     // var ret=Storage.get({ key: 'accessToken' });
       
-
+     // this.token=(await ret).value;
+      // console.log("checKing data from storage ",this.token,typeof(this.token));
+      
+      
+     //check the token and call the appropriate page
       if(this.token=="null")
       {
         // call login page
@@ -68,168 +103,388 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    
   }
 
 
-   //this method is for side menu 
-   sideMenu()
+   //this method is for english side menu 
+   sideMenu( lang)
    {
-   if(this.testingToken!=null)
-   {
-    this.menuNavigatorLogin =
-    [
-      {
-        title : "Home",
-        url   : "/dashboard",
-        icon  : "home"
-      },
-      {
-        title : "Profile",
-        url   : "/profile",
-        icon  : "person"
-      },
-      {
-        title : "Car Fleet",
-        icon  : "car",
-        children :[
+     //console.log("Side Menu");
 
-          {
-            title : "Business Class",
-            url   : "/profile",
-            icon  : "person-outline"
-          },
-          {
-            title : "Family Class",
-            url   : "/profile",
-            icon  : "person-outline"
-          }
-          
-        ]
-      },
-      {
-        title : "My Bookings",
-        url   : "/my-bookings",
-        icon  : "cart"
-      },
-      {
-        title : "My Messages",
-        url   : "/my-messages",
-        icon  : "mail"
-      },
-      {
-        title : "Contact Us",
-        icon  : "call",
-        children :[
+     //check the language and print the appropriate menu
+     //store the initial language in the storage
+  
+        //console.log("val",lang);
+                  
+        if(lang=="en" )
+        {
+            if(this.testingToken!=null)
+            {
+              this.menuNavigatorLogin =
+              [
+                {
+                  title : "Home",
+                  url   : "/dashboard",
+                  icon  : "home"
+                },
+                {
+                  title : "Profile",
+                  url   : "/profile",
+                  icon  : "person"
+                },
+                {
+                  title : "Car Fleet",
+                  icon  : "car",
+                  children :[
 
-          {
-            title : "About Us",
-            url   : "/about-us",
-            icon  : "information-circle-outline"
-          },
-          
-          {
-            title : "Our Contacts",
-            url   : "/our-contacts",
-            icon  : "call-outline"
-          },
-          {
-            title : "Send feedback",
-            url   : "/send-feedbacks",
-            icon  : "send-outline"
-          },
-          
-        ]
-      },
-      {
-        title : "Settings",
-        icon  : "settings",
-        children :[
+                    {
+                      title : "Business Class",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Family Class",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Class SUV",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Ordinary Class",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    }
+                    
+                  ]
+                },
+                {
+                  title : "My Bookings",
+                  url   : "/my-bookings",
+                  icon  : "cart"
+                },
+                {
+                  title : "My Messages",
+                  url   : "/my-messages",
+                  icon  : "mail"
+                },
+                {
+                  title : "Contact Us",
+                  icon  : "call",
+                  children :[
 
-          {
-            title : "Language",
-            url   : "/signup",
-            icon  : "information-circle-outline"
-          },
-          
-          {
-            title : "Reset Password",
-            url   : "/home",
-            icon  : "call-outline"
-          },
-          
-        ]
-      },
+                    {
+                      title : "About Us",
+                      url   : "/about-us",
+                      icon  : "information-circle-outline"
+                    },
+                    
+                    {
+                      title : "Our Contacts",
+                      url   : "/our-contacts",
+                      icon  : "call-outline"
+                    },
+                    {
+                      title : "Send feedback",
+                      url   : "/send-feedbacks",
+                      icon  : "send-outline"
+                    },
+                    
+                  ]
+                },
+                {
+                  title : "Settings",
+                  icon  : "settings",
+                  children :[
 
-    ]
+                    {
+                      title : "Language",
+                      url   : "/seetings",
+                      icon  : "information-circle-outline"
+                    },
+                    
+                    {
+                      title : "Reset Password",
+                      url   : "/home",
+                      icon  : "call-outline"
+                    },
+                    
+                  ]
+                },
+
+              ]
+            }
+            else
+            {
+              this.menuNavigatorWithoutLogin =
+              [
+                {
+                  title : "Home",
+                  url   : "/dashboard",
+                  icon  : "home"
+                },
+                {
+                  title : "Car Fleet",
+                  icon  : "car",
+                  children :[
+
+                    {
+                      title : "Business Class",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Family Class",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Class SUV",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Ordinary Class",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    }
+                  ]
+                },
+                {
+                  title : "Contact Us",
+                  icon  : "call",
+                  children :[
+
+                    {
+                      title : "About Us",
+                      url   : "/about-us",
+                      icon  : "information-circle-outline"
+                    },
+                    
+                    {
+                      title : "Our Contacts",
+                      url   : "/our-contacts",
+                      icon  : "call-outline"
+                    },          
+                  ]
+                },
+                {
+                  title : "Settings",
+                  icon  : "settings",
+                  children :[
+
+                    {
+                      title : "Language",
+                      url   : "/seetings",
+                      icon  : "information-circle-outline"
+                    },   
+                    {
+                      title : "Send feedback",
+                      url   : "/send-feedbacks",
+                      icon  : "send-outline"
+                    },       
+                  ]
+                },
+
+              ]
+
+            }
+          } 
+          //french side menu
+          else if(lang=="fr")
+          {
+              if(this.testingToken!=null)
+              {
+              this.menuNavigatorLogin =
+              [
+                {
+                  title : "Accueil",
+                  url   : "/dashboard",
+                  icon  : "home"
+                },
+                {
+                  title : "Mon Profil",
+                  url   : "/profile",
+                  icon  : "person"
+                },
+                {
+                  title : "Flotte automobile",
+                  icon  : "car",
+                  children :[
+          
+                    {
+                      title : "Classe Business",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Classe Familiale",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Classe SUV",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Classe ordinaire",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    }
+                    
+                  ]
+                },
+                {
+                  title : "Mes reservations",
+                  url   : "/my-bookings",
+                  icon  : "cart"
+                },
+                {
+                  title : "Mes Messages",
+                  url   : "/my-messages",
+                  icon  : "mail"
+                },
+                {
+                  title : "Contactez-Nous",
+                  icon  : "call",
+                  children :[
+          
+                    {
+                      title : "À propos",
+                      url   : "/about-us",
+                      icon  : "information-circle-outline"
+                    },
+                    
+                    {
+                      title : "Nos Contacts",
+                      url   : "/our-contacts",
+                      icon  : "call-outline"
+                    },
+                    {
+                      title : "Envoyez Remarques",
+                      url   : "/send-feedbacks",
+                      icon  : "send-outline"
+                    },
+                    
+                  ]
+                },
+                {
+                  title : "Réglages",
+                  icon  : "settings",
+                  children :[
+          
+                    {
+                      title : "Langues",
+                      url   : "/seetings",
+                      icon  : "information-circle-outline"
+                    },
+                    
+                    {
+                      title : "Réinitialiser Password",
+                      url   : "/home",
+                      icon  : "call-outline"
+                    },
+                    
+                  ]
+                },
+          
+              ]
+              }
+              else
+              {
+              this.menuNavigatorWithoutLogin =
+              [
+                {
+                  title : "Accueil",
+                  url   : "/dashboard",
+                  icon  : "home"
+                },
+                {
+                  title : "Flotte automobile",
+                  icon  : "car",
+                  children :[
+          
+                    {
+                      title : "Classe Business",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Classe Familiale",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Classe SUV",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    },
+                    {
+                      title : "Classe ordinaire",
+                      url   : "/profile",
+                      icon  : "person-outline"
+                    }
+                    
+                  ]
+                },
+                {
+                  title : "Contactez-Nous",
+                  icon  : "call",
+                  children :[
+          
+                    {
+                      title : "À propos",
+                      url   : "/about-us",
+                      icon  : "information-circle-outline"
+                    },
+                    
+                    {
+                      title : "Nos Contacts",
+                      url   : "/our-contacts",
+                      icon  : "call-outline"
+                    },
+                    {
+                      title : "Envoyez Remarques",
+                      url   : "/send-feedbacks",
+                      icon  : "send-outline"
+                    },
+                    
+                  ]
+                },
+                {
+                  title : "Réglages",
+                  icon  : "settings",
+                  children :[
+          
+                    {
+                      title : "Langue",
+                      url   : "/seetings",
+                      icon  : "information-circle-outline"
+                    },
+                    
+                    {
+                      title : "Réinitialiser Password",
+                      url   : "/home",
+                      icon  : "call-outline"
+                    },
+                    
+                  ]
+                },
+          
+              ]
+          
+              }
+          } 
+     
+
    }
-   else
-   {
-    this.menuNavigatorWithoutLogin =
-    [
-      {
-        title : "Home",
-        url   : "/dashboard",
-        icon  : "home"
-      },
-      {
-        title : "Car Fleet",
-        icon  : "car",
-        children :[
 
-          {
-            title : "Business Class",
-            url   : "/profile",
-            icon  : "person-outline"
-          },
-          {
-            title : "Family Class",
-            url   : "/profile",
-            icon  : "person-outline"
-          }
-        ]
-      },
-      {
-        title : "Contact Us",
-        icon  : "call",
-        children :[
-
-          {
-            title : "About Us",
-            url   : "/about-us",
-            icon  : "information-circle-outline"
-          },
-          
-          {
-            title : "Our Contacts",
-            url   : "/our-contacts",
-            icon  : "call-outline"
-          },          
-        ]
-      },
-      {
-        title : "Settings",
-        icon  : "settings",
-        children :[
-
-          {
-            title : "Language",
-            url   : "/signup",
-            icon  : "information-circle-outline"
-          },   
-          {
-            title : "Send feedback",
-            url   : "/send-feedbacks",
-            icon  : "send-outline"
-          },       
-        ]
-      },
-
-    ]
-
-   }
-
-   }
-
+  
 
 
    openUserProfile(url){
@@ -247,7 +502,8 @@ export class AppComponent {
   login_signupPage()
   {
     this.menuCtrl.toggle();
-    this.router.navigateByUrl("/signup");
+    this.router.navigateByUrl("/home");
+    
   }
 
 }

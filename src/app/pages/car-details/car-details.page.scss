@@ -24,3 +24,37 @@
     
   
   }
+
+  ion-card,ion-toolbar,ion-segment
+{
+    --background: black; 
+}
+
+
+ion-item
+{
+    --background: black; 
+    color:  #ffa60a;
+}
+
+ion-chip,ion-button
+{
+    color: black; 
+    --background: #ffa60a;
+    border-color: black;
+}
+
+ion-segment-button
+{
+    color : #ffa60a;
+}
+
+ion-card-title,ion-card-content
+{
+    color : white;
+}
+
+ion-label
+{
+  color : black;
+}

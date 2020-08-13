@@ -1,0 +1,39 @@
+{
+    "DASHBOARD": {
+        "title": "NYOKAH",
+        "start_date": "Date de depart (*)",
+        "start_time": "Heure de depart (*)",
+        "return_date": "Date de retour (*)",
+        "return_time": "Heure de retour (*)",
+        "per_hour": "PAR HEURE",
+        "per_day": "PAR JOUR",
+        "airport_pick": "AIRPORT PICKUP",
+        "btn_search" : "Rechercher",
+        "search_here" : "Recherchez ici",
+        "departure_venue" : "Lieu de Depart (*)",
+        "our_vehicles" : "NOS VEHICULES" ,
+        "btn_view_details" : "Voir details"  ,
+        "seats" : "places" ,
+        "day" : "Jour" ,
+        "hour" : "Heure" 
+
+    },
+
+    "LANGUAGE" : {
+        "title" : "REGLAGE LANGUE",
+        "english" : "Anglais",
+        "french" : "Français",
+        "select_lang" : "Choisir une langue"
+        
+    },
+
+    
+    "MENU" : {
+        "welcome" : "Salut!",
+        "btn_login" : "Connexion",
+        "btn_logout" : "Déconnexion",
+        "message" : "Vous n'êtes pas encore connecté"
+        
+    }
+
+}
