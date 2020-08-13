@@ -34,6 +34,43 @@
         "btn_logout" : "Déconnexion",
         "message" : "Vous n'êtes pas encore connecté"
         
+    },
+
+    "CARDETAILS" : {
+
+        "title" : " DETAILS VOITURE",
+        "seats" : "places" ,
+        "day" : "Day" ,
+        "hour" : "Hour" ,
+        "description" : " Description",
+        "accessories" : "Accessoires",
+        "logintoreserve" : "SE CONNECTER POUR RESERVER" ,
+        "reservenow" : "RESERVEZ MAINTENANT" ,
+        "baggages" : "Bagages" 
+       
+    },
+
+    "RESERVECAR" : {
+        "title": "RESERVATION VOITURE",
+        "start_date": "Date de depart (*)",
+        "start_time": "Heure de depart (*)",
+        "return_date": "Date de retour (*)",
+        "return_time": "Heure de retour (*)",
+        "per_hour": "PAR HEURE",
+        "per_day": "PAR JOUR",
+        "day" : "Jour" ,
+        "hour" : "Heure" ,
+        "airport_pick": "AIRPORT PICKUP",
+        "departure_venue" : "Lieu de Depart (*)",
+        "price" : "Prix : ",
+        "otherservices" : " Autres Services",
+        "babyseats" : " Siège pour enfant",
+        "additionalpilot" : " Copilote supplémentaire",
+        "assistanttranslator" : " Assistant traducteur",
+        "message" : "Message",
+        "messageplaceholder" : "Laissez votre message ici...",
+        "btn_submit" : "SOUMETTRE"
     }
+
 
 }

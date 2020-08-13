@@ -62,6 +62,7 @@ export class AppComponent {
 
     
     this.initializeApp(); 
+    
     ///////////////////// after changiing a language //////////////////////////////////
     this.subscription = this.languageservice.getMessage().subscribe(text => {
       //console.log("//////////////// \ntext",text.language);
@@ -202,7 +203,7 @@ export class AppComponent {
                   children :[
 
                     {
-                      title : "Language",
+                      title : "App Language",
                       url   : "/seetings",
                       icon  : "information-circle-outline"
                     },
@@ -278,7 +279,7 @@ export class AppComponent {
                   children :[
 
                     {
-                      title : "Language",
+                      title : "App Language",
                       url   : "/seetings",
                       icon  : "information-circle-outline"
                     },   
@@ -379,7 +380,7 @@ export class AppComponent {
                   children :[
           
                     {
-                      title : "Langues",
+                      title : "Langue de l'application",
                       url   : "/seetings",
                       icon  : "information-circle-outline"
                     },
@@ -462,7 +463,7 @@ export class AppComponent {
                   children :[
           
                     {
-                      title : "Langue",
+                      title : "Langue de l'application",
                       url   : "/seetings",
                       icon  : "information-circle-outline"
                     },

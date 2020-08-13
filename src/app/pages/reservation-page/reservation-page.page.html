@@ -3,7 +3,7 @@
 
       <ion-item>
           <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
-          <ion-title>Car Reservation</ion-title>
+          <ion-title>{{"RESERVECAR.title"| translate}}</ion-title>
       </ion-item>  
   </ion-toolbar>
 </ion-header>
@@ -21,13 +21,13 @@
               <!-- Label only -->
           <ion-segment [(ngModel)]="rent_type">
             <ion-segment-button  value="hour">
-              <ion-label>Per Hour </ion-label>
+              <ion-label>{{"RESERVECAR.per_hour"| translate}} </ion-label>
             </ion-segment-button>
             <ion-segment-button value="day">
-              <ion-label>Per Day</ion-label>
+              <ion-label>{{"RESERVECAR.per_day"| translate}}</ion-label>
             </ion-segment-button>
             <ion-segment-button value="airport">
-              <ion-label>Airport pickup</ion-label>
+              <label textWrap="true" style="font-size:0.9em">{{"RESERVECAR.airport_pick"| translate}}</label>
             </ion-segment-button>
           </ion-segment>
 
@@ -48,30 +48,30 @@
                 <!-- Price -->
 
                 <ion-item>
-                    <ion-label > Price :</ion-label>
+                    <ion-label > {{"RESERVECAR.price"| translate}}</ion-label>
                     <ion-chip slot="end"> 65000 F Cfa </ion-chip>
                 </ion-item>
                 <!-- start date -->
                 <ion-item  >
-                  <ion-label>Start Date (*)</ion-label>
+                  <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
                   <ion-datetime [value]="today" [min]="today" [max]="maxdate" placeholder="Select Date"></ion-datetime>
                 </ion-item>
                 <ion-item >
-                  <ion-label>Start Time (*)</ion-label>
+                  <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
                   <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
                 </ion-item>
 
                 <ion-item  *ngIf="rent_type =='day' ">
-                  <ion-label>Return Date (*)</ion-label>
+                  <ion-label>{{"RESERVECAR.return_date"| translate}}</ion-label>
                   <ion-datetime [value]="today" [min]="today" [max]="maxdate" placeholder="Select Date"></ion-datetime>
                 </ion-item>
                 <ion-item  *ngIf="rent_type =='hour' || rent_type =='day' ">
-                  <ion-label>Return Time (*)</ion-label>
+                  <ion-label>{{"RESERVECAR.return_time"| translate}}</ion-label>
                   <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
                 </ion-item>
                 <!-- departure -->
                 <ion-item  *ngIf="rent_type =='airport' ">
-                  <ion-input placeholder='Departure Venue (*)' ></ion-input>
+                  <ion-input placeholder='{{"RESERVECAR.departure_venue"| translate}}' ></ion-input>
                 </ion-item>
 
                 
@@ -87,7 +87,7 @@
        <ion-card>
      
         <ion-card-header>
-          <ion-card-title>Other Services  </ion-card-title>
+          <ion-card-title>{{"RESERVECAR.otherservices"| translate}}  </ion-card-title>
         </ion-card-header>
         <ion-card-content>
                   
@@ -96,20 +96,20 @@
                   <!-- baby seats -->
                 <ion-item>
                     <ion-checkbox color="primary"  slot="end"></ion-checkbox>
-                    <label  textWrap="true">Baby Seats  -   12000 F cfa/Day  </label>
+                    <label  textWrap="true">{{"RESERVECAR.babyseats"| translate}}  -   12000 F cfa/ {{"RESERVECAR.day"| translate}} </label>
                 </ion-item>
                 
                   
                   <!-- Additional co-pilot -->
                 <ion-item>
                     <ion-checkbox color="primary"  slot="end"></ion-checkbox>
-                    <label  textWrap="true">Additional co-pilot   -  15000 F cfa/Day  </label>
+                    <label  textWrap="true">{{"RESERVECAR.additionalpilot"| translate}}   -  15000 F cfa/{{"RESERVECAR.day"| translate}}  </label>
                 </ion-item>
 
                   <!-- Assistant translator -->
                 <ion-item>
                     <ion-checkbox color="primary"  slot="end"></ion-checkbox>
-                    <label  textWrap="true">Assistant translator  -   16000 F cfa/Day  </label>
+                    <label  textWrap="true">{{"RESERVECAR.assistanttranslator"| translate}}  -   16000 F cfa/{{"RESERVECAR.day"| translate}}  </label>
                 </ion-item>
         </ion-card-content>
         </ion-card>
@@ -120,11 +120,11 @@
         <ion-card  style="height: 255px;">
      
             <ion-card-header>
-              <ion-card-title>Message</ion-card-title>
+              <ion-card-title>{{"RESERVECAR.message"| translate}}</ion-card-title>
             </ion-card-header>
             <ion-card-content >
                 
-                  <ion-textarea  class="cell-input" auto-grow="true" maxlength="400" placeholder="Enter any message here..."></ion-textarea>
+                  <ion-textarea  class="cell-input" auto-grow="true" maxlength="400" placeholder="{{'RESERVECAR.messageplaceholder'| translate}}"></ion-textarea>
 
             </ion-card-content>
 
@@ -137,6 +137,6 @@
 </ion-content>
 <ion-footer>
   <!-- <ion-toolbar> -->
-      <ion-button expand="full"> Submit </ion-button>
+      <ion-button expand="full"> {{"RESERVECAR.btn_submit"| translate}} </ion-button>
   <!-- </ion-toolbar> -->
 </ion-footer>

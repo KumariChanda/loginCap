@@ -10,6 +10,7 @@ import { IonicModule } from '@ionic/angular';
 import { ReservationPagePageRoutingModule } from './reservation-page-routing.module';
 
 import { ReservationPagePage } from './reservation-page.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ReservationPagePage } from './reservation-page.page';
     FormsModule,
     IonicModule,
     Ng2SearchPipeModule,
-    ReservationPagePageRoutingModule
+    ReservationPagePageRoutingModule,
+    TranslateModule
   ],
   declarations: [ReservationPagePage]
 })
