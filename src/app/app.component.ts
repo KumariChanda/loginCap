@@ -540,18 +540,19 @@ export class AppComponent {
     this.router.navigateByUrl("/login");
     
   }
-  logout()
-  {
-    console.log("Logout");
-    this.webService.presentLoading();
-    this.testingToken=null;
-    setTimeout(() => {
-      this.subscription = this.languageservice.getMessage().subscribe(text => {
-        this.sideMenu(text.language); 
-        this.webService.stopLoading();    
-      })
-    }, 2000);
+
+  // logout()
+  // {
+  //   console.log("Logout");
+  //   this.webService.presentLoading();
+  //   this.testingToken=null;
+  //   setTimeout(() => {
+  //     this.subscription = this.languageservice.getMessage().subscribe(text => {
+  //       this.sideMenu(text.language); 
+  //       this.webService.stopLoading();    
+  //     })
+  //   }, 2000);
     
-  }
+  // }
 
 }
