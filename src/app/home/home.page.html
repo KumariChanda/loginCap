@@ -1,12 +1,12 @@
-<ion-header>
+<!-- <ion-header>
 
    <ion-toolbar>
         <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    <!-- <ion-title>signup</ion-title> -->
+    <ion-title>Login</ion-title>
   </ion-toolbar> 
-</ion-header>
+</ion-header> -->
 
 <ion-content no-scroll padding >
   <div class="backgroundcss">
@@ -30,7 +30,8 @@
        <!-- </ion-item> -->
        <br>
        <div class="divloginbtn">
-         <button class="loginbtn" (click)="loginFun()">{{"LOGIN.btn_login"| translate}}</button>
+         <button [ngClass]="{'loginbtn_black':btnClicked == false,
+         'loginbtn_yellow':btnClicked == true}" (click)="loginFun()">{{"LOGIN.btn_login"| translate}}</button>
         </div>
         <br>  
         <br>
@@ -40,10 +41,11 @@
           <br>
           <span class="register" clear  (click)="forgetPasswordBtnClicked()" tappable>{{"LOGIN.forgot_password"| translate}}</span>
        </div> 
+          <br><br>
+          <span class="register" clear  (click)="backToHome()" tappable><u>Back To Home</u></span>
+          <br>
+        </div> 
        <br>
-       <!-- <ion-button  expand="full"  >Login</ion-button> -->
-       <!-- <ion-button (click)="getData()" expand="full" >get</ion-button> -->
-       <!-- <ion-button (click)="goToDashboardPage()" expand="full">Move to dashboard page</ion-button> -->
      </ion-card-content>
    </ion-card>
   </div>

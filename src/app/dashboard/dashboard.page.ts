@@ -28,6 +28,7 @@ public  maxdate : any;   // the maximum date of a date picker
   alias: any;
   datauser: any;
   token : any;
+  searchQuery:any;
 
   logo1 ='../assets/images/logo1.jpg';
   

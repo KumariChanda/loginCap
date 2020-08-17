@@ -27,9 +27,6 @@ export class SingletonService {
         ))
   }
 
-  
-
-
   login(data)
   {
     // var url1=this.url;
@@ -48,12 +45,21 @@ export class SingletonService {
   // // this.loading.dismissAll();
   // (await this.loading).dismissAll();
   // }
+
   async stopLoading() {
+    // this.loading = false;
     this.loading = false;
-    this.loadingCtrl.getTop().then(loader => {
-      if (loader) {
-        loader.dismiss();
-      }
-    });
+    return await this.loadingCtrl.dismiss().then(() => console.log('loading dismissed'));
   }
-}
+ 
+  
+    // this.loadingCtrl.getTop().then(loader => {
+    //   if (loader) {
+    //     loader.dismiss();
+    //   }
+    // });
+  }
+
+
+
+

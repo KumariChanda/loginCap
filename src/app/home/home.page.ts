@@ -13,8 +13,10 @@ const { Storage } = Plugins;
 export class HomePage {
   usernameText;
   passwordText;
-  constructor( private webService:SingletonService, private router: Router , private langService : ServiceChangeLangService) {
+  btnClicked:boolean=false;
+  constructor( private webService:SingletonService, private router: Router ) {
     // this.setItem();
+    this.btnClicked=false;
   }
 
   // async setItem() {
@@ -47,16 +49,17 @@ export class HomePage {
 
   async loginFun()
   {
-    // console.log("Button Clicked.");
-    // console.log("Username : ",this.usernameText);
-    // console.log("Password: ",this.passwordText);
-    // var sending_obj={
-    //   "username":this.usernameText,
-    //   "password":this.passwordText
-    // }
-    // console.log(sending_obj);
+    this.btnClicked=true;
+    console.log("Button Clicked.");
+    console.log("Username : ",this.usernameText);
+    console.log("Password: ",this.passwordText);
+    var sending_obj={
+      "username":this.usernameText,
+      "password":this.passwordText
+    }
+    console.log(sending_obj);
 
-    // //
+    //
     // this.webService.presentLoading();
 
     // this.webService.login(sending_obj).subscribe(async res=>{
@@ -73,23 +76,7 @@ export class HomePage {
     //   }  
     //   this.webService.stopLoading();                
     // })
-
-
-        await Storage.set({
-            key: 'accessToken',
-            value: "logged in"           
-          });  
-
-        this.langService.getCurrentLanguage().then(val =>{
-
-          // console.log("home  ",val)
-            this.langService.sendMessage({'token': "mytoken", 'language': val })
-
-                //call dashboard page and pass data 
-              this.router.navigateByUrl("/dashboard");
-
-        });
-
+    
     
   }
 
@@ -110,7 +97,10 @@ export class HomePage {
 
   }
 
-
+  backToHome()
+  {
+    this.router.navigateByUrl("/dashboard")
+  }
   
 
 
