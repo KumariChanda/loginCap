@@ -3,8 +3,7 @@ import { Plugins } from '@capacitor/core';
 import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { HomePage } from './home/home.page';
-import { DashboardPage } from './dashboard/dashboard.page';
+import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { Router } from '@angular/router';
 import { ServiceChangeLangService } from './service/changeLanguage/service-change-lang.service';
 //import {Storage} from '@ionic/storage'
@@ -536,7 +535,7 @@ export class AppComponent {
   login_signupPage()
   {
     this.menuCtrl.toggle();
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/login");
     
   }
 

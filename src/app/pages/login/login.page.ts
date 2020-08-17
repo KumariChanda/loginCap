@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-import { SingletonService } from '../service/singleton.service';
+import { SingletonService } from 'src/app/service/singleton.service';
 import { Router, NavigationExtras } from '@angular/router';
-import { ServiceChangeLangService } from '../service/changeLanguage/service-change-lang.service';
+import { ServiceChangeLangService } from 'src/app/service/changeLanguage/service-change-lang.service';
 
 const { Storage } = Plugins;
+
+
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class HomePage {
+export class LoginPage  {
+
   usernameText;
   passwordText;
   constructor( private webService:SingletonService, private router: Router , private langService : ServiceChangeLangService) {
     // this.setItem();
   }
+ 
 
   // async setItem() {
   //         await Storage.set({
@@ -109,9 +113,6 @@ export class HomePage {
   {
 
   }
-
-
-  
 
 
 }

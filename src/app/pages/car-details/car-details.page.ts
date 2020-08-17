@@ -138,7 +138,7 @@ export class CarDetailsPage implements OnInit {
 
   goToLogin(){
 
-    this.router.navigateByUrl("/home")
+    this.router.navigateByUrl("/login")
 
 
   }

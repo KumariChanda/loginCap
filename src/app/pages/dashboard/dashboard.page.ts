@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Plugins } from '@capacitor/core';
+import { ServiceChangeLangService } from 'src/app/service/changeLanguage/service-change-lang.service';
 
-import { ServiceChangeLangService } from '../service/changeLanguage/service-change-lang.service';
 //import * as moment from 'moment';
 
 
