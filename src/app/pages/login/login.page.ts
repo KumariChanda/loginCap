@@ -54,6 +54,25 @@ export class LoginPage  {
   async loginFun()
   {
     this.btnClicked=true;
+    setTimeout( async ()=>{
+      this.btnClicked=false;
+
+          await Storage.set({
+            key: 'accessToken',
+            value: "logged in"           
+          });  
+
+          this.langService.getCurrentLanguage().then(val =>{
+
+            // console.log("home  ",val)
+              this.langService.sendMessage({'token': "mytoken", 'language': val })
+
+                  //call dashboard page and pass data 
+                this.router.navigateByUrl("/dashboard");
+
+          });
+
+      }, 1000)
     // console.log("Button Clicked.");
     // console.log("Username : ",this.usernameText);
     // console.log("Password: ",this.passwordText);
@@ -83,20 +102,7 @@ export class LoginPage  {
     //   this.webService.stopLoading();                
     // })
 
-      await Storage.set({
-        key: 'accessToken',
-        value: "logged in"           
-      });  
-
-    this.langService.getCurrentLanguage().then(val =>{
-
-      // console.log("home  ",val)
-        this.langService.sendMessage({'token': "mytoken", 'language': val })
-
-            //call dashboard page and pass data 
-          this.router.navigateByUrl("/dashboard");
-
-    });
+      
     
     
   }

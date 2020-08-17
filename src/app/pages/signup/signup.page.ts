@@ -19,12 +19,15 @@ export class SignupPage implements OnInit {
   loginbtnCliced()
   {
     
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/login");
   }
 
   signupFun()
   {
     this.btnClicked=true;
+    setTimeout( ()=>{
+      this.btnClicked=false;
+      }, 1000)
     console.log("Signup cllicked!.");
   }
 
