@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Plugins } from '@capacitor/core';
 
-
+const {Storage} = Plugins
 
 @Component({
   selector: 'app-car-details',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class CarDetailsPage implements OnInit {
 
   //used to get the value of the token which represents if one user logged in or not 
-  token = "null";
+  public token ;
    
   //used for auomatic slider
   slideOptions = {
@@ -84,7 +85,13 @@ export class CarDetailsPage implements OnInit {
     }
   ]
 
-  constructor(private router: Router) { }
+ 
+
+  constructor(private router: Router) { 
+
+       this.getCurrentToken();
+    
+  }
 
   ngOnInit() {
   }
@@ -92,6 +99,20 @@ export class CarDetailsPage implements OnInit {
   //this is used for the auto slider
   slidesDidLoad(slides: IonSlides) {
     slides.startAutoplay();
+  }
+
+
+  /////////////////////////////////////////
+  //get current token
+  async getCurrentToken() 
+  {
+      var ret=Storage.get({ key: 'accessToken' });
+      this.token = (await ret).value;
+
+      console.log("token   ", this.token)
+
+   //  return (await ret).value;
+
   }
 
   //////////////////////////////////////////////////////////////
@@ -108,6 +129,16 @@ export class CarDetailsPage implements OnInit {
   goToReservation(){
 
     this.router.navigateByUrl("/reservation-page")
+
+
+  }
+
+  ////////////////////////////////////////////////////////////
+  /// call the login page  ////////////////////////////
+
+  goToLogin(){
+
+    this.router.navigateByUrl("/home")
 
 
   }

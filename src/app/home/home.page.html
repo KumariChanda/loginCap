@@ -15,30 +15,30 @@
   <div id="container">
    <ion-card class="cardcss" >
      <br>
-       <h3 class="loginLabel">Login</h3>
+      <h3 class="loginLabel">{{"LOGIN.login"| translate}}</h3>
         <hr/>
 
      <ion-card-content>
        <!-- <ion-item> -->
          <!-- <ion-label position="floating">Enter Username</ion-label> -->
-         <ion-input class="inputcomp" type="text" [(ngModel)]="usernameText" placeholder="Email address *"></ion-input>
+         <ion-input class="inputcomp" type="text" [(ngModel)]="usernameText" placeholder='{{"LOGIN.email_address"| translate}}'></ion-input>
        <!-- </ion-item> -->
        <br>
        <!-- <ion-item> -->
          <!-- <ion-label position="floating">Enter Password</ion-label> -->
-         <ion-input class="inputcomp" type="password" [(ngModel)]="passwordText" placeholder="Password *"></ion-input>
+         <ion-input class="inputcomp" type="password" [(ngModel)]="passwordText" placeholder='{{"LOGIN.password"| translate}}'></ion-input>
        <!-- </ion-item> -->
        <br>
        <div class="divloginbtn">
-         <button class="loginbtn" (click)="loginFun()">Login</button>
+         <button class="loginbtn" (click)="loginFun()">{{"LOGIN.btn_login"| translate}}</button>
         </div>
         <br>  
         <br>
         <div class="labelText">
-          <span>Don't have an account? </span>
-          <span class="register" clear  (click)="RegisterBtnClicked()" tappable>Signup Here</span>
+          <span>{{"LOGIN.no_account"| translate}} </span>
+          <span class="register" clear  (click)="RegisterBtnClicked()" tappable>{{"LOGIN.signup"| translate}}</span>
           <br>
-          <span class="register" clear  (click)="forgetPasswordBtnClicked()" tappable>Forgot Password?</span>
+          <span class="register" clear  (click)="forgetPasswordBtnClicked()" tappable>{{"LOGIN.forgot_password"| translate}}</span>
        </div> 
        <br>
        <!-- <ion-button  expand="full"  >Login</ion-button> -->

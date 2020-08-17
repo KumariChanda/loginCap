@@ -70,6 +70,16 @@
         "message" : "Message",
         "messageplaceholder" : "Laissez votre message ici...",
         "btn_submit" : "SOUMETTRE"
+    },
+
+    "LOGIN" : {
+        "login" : "Connexion",
+        "btn_login" : "CONNEXION",
+        "email_address" : "Adresse e-mail *",   
+        "password" : "Password *",   
+        "no_account" : "Vous n'avez pas de compte?",
+        "signup" : "Inscrivez-vous ici",
+        "forgot_password" : "Mot de passe oublié"
     }
 
 

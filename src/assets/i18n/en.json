@@ -68,7 +68,18 @@
         "message" : "Message",
         "messageplaceholder" : "Enter any message here...",
         "btn_submit" : "SUBMIT"
+    },
+
+    "LOGIN" : {
+        "login" : "Login",
+        "btn_login" : "Login",
+        "email_address" : "Email address *",   
+        "password" : "Password *" ,
+        "no_account" : "Don't have an account?",
+        "signup" : "Signup Here",
+        "forgot_password" : "Forgot Password"  
     }
+
 
 
 }
