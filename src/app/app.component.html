@@ -37,11 +37,9 @@
                     <img  tappable  menuClose  [src]="defaultProfile"  class="image-icon" (click)="openUserProfile(defaultProfile)">
                   </ion-col>
                    <ion-col size="8">
-                    <div>
-                     
+                    <div>                     
                         <ion-label style="size: 20vw;">&nbsp;{{'MENU.welcome' | translate}} <b>Chanda</b></ion-label>
-                        <ion-button fill="outline" slot="end" (click)="openUserProfilePage()" >{{'MENU.btn_logout' | translate}}</ion-button>
-                      
+                        <ion-button fill="outline" slot="end" (click)="logout()" >{{'MENU.btn_logout' | translate}}</ion-button>
                     </div>                    
                   </ion-col>
                   </ion-row>

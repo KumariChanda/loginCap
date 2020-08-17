@@ -30,7 +30,8 @@
        <!-- </ion-item> -->
        <br>
        <div class="divloginbtn">
-         <button class="loginbtn" (click)="loginFun()">Login</button>
+         <button [ngClass]="{'loginbtn_black':btnClicked == false,
+         'loginbtn_yellow':btnClicked == true}" (click)="loginFun()">Login</button>
         </div>
         <br>  
         <br>

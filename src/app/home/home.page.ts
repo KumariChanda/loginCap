@@ -12,8 +12,10 @@ const { Storage } = Plugins;
 export class HomePage {
   usernameText;
   passwordText;
+  btnClicked:boolean=false;
   constructor( private webService:SingletonService, private router: Router ) {
     // this.setItem();
+    this.btnClicked=false;
   }
 
   // async setItem() {
@@ -46,6 +48,7 @@ export class HomePage {
 
   async loginFun()
   {
+    this.btnClicked=true;
     console.log("Button Clicked.");
     console.log("Username : ",this.usernameText);
     console.log("Password: ",this.passwordText);
@@ -56,22 +59,22 @@ export class HomePage {
     console.log(sending_obj);
 
     //
-    this.webService.presentLoading();
+    // this.webService.presentLoading();
 
-    this.webService.login(sending_obj).subscribe(async res=>{
-      console.log("getting response : ",res); 
-      if(res)
-      {
-        await Storage.set({
-          key: 'accessToken',
-          value: res.token           
-        });  
+    // this.webService.login(sending_obj).subscribe(async res=>{
+    //   console.log("getting response : ",res); 
+    //   if(res)
+    //   {
+    //     await Storage.set({
+    //       key: 'accessToken',
+    //       value: res.token           
+    //     });  
         
-        //call dashboard page and pass data 
-         this.router.navigateByUrl("/dashboard");
-      }  
-      this.webService.stopLoading();                
-    })
+    //     //call dashboard page and pass data 
+    //      this.router.navigateByUrl("/dashboard");
+    //   }  
+    //   this.webService.stopLoading();                
+    // })
     
     
   }

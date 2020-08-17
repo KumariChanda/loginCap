@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { ServiceChangeLangService } from './service/changeLanguage/service-change-lang.service';
 //import {Storage} from '@ionic/storage'
 import { Subscription } from 'rxjs';
+import { SingletonService } from './service/singleton.service';
 
 const { Storage } = Plugins;
 const LNG_KEY = 'SELECTED LANGUAGE';
@@ -32,8 +33,8 @@ export class AppComponent {
 
   rootPage:DashboardPage;
   token;
-  //testingToken=null;
-   testingToken=null;
+  testingToken=null;
+  //  testingToken=123;
   profile='../assets/imgs/profile.png';
   defaultProfile='../assets/imgs/dummyProfile.jpg';
 
@@ -49,7 +50,8 @@ export class AppComponent {
     private router : Router,
     //language service
     private languageservice : ServiceChangeLangService,
-   // private storage: Storage
+   // private storage: Storage,
+   private webService:SingletonService
     
   ) {
 
@@ -91,14 +93,15 @@ export class AppComponent {
       {
         // call login page
        // this.router.navigateByUrl('/home');
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/signup');
 
       }
       else
       {
 
         //call dashboard page
-        this.router.navigateByUrl('/dashboard');
+        // this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/signup');
 
       }
       this.statusBar.styleDefault();
@@ -209,8 +212,8 @@ export class AppComponent {
                     },
                     
                     {
-                      title : "Reset Password",
-                      url   : "/home",
+                      title : "Change Password",
+                      url   : "/change-password",
                       icon  : "call-outline"
                     },
                     
@@ -504,6 +507,19 @@ export class AppComponent {
   {
     this.menuCtrl.toggle();
     this.router.navigateByUrl("/home");
+    
+  }
+  logout()
+  {
+    console.log("Logout");
+    this.webService.presentLoading();
+    this.testingToken=null;
+    setTimeout(() => {
+      this.subscription = this.languageservice.getMessage().subscribe(text => {
+        this.sideMenu(text.language); 
+        this.webService.stopLoading();    
+      })
+    }, 2000);
     
   }
 

@@ -30,13 +30,15 @@
           
           <div class="divloginbtn">
             <br>
-            <button class="loginbtn" (click)="signupFun()">Sign up</button>
+            <button [ngClass]="{'loginbtn_black':btnClicked == false,
+            'loginbtn_yellow':btnClicked == true}" (click)="signupFun()">Sign up</button>
            </div>
            <br>  
-           <br>
+           <!-- <br> -->
            <div class="labelText">
              <span>Already got an account?  </span>
              <span class="register" clear  (click)="loginbtnCliced()" tappable>Login</span>
+            
              <br>
              <hr/>
              <span class="register" clear  (click)="backToHome()" tappable><u>Back To Home</u></span>
