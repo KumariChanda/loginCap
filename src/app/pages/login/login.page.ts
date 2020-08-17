@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-import { SingletonService } from '../service/singleton.service';
+import { SingletonService } from 'src/app/service/singleton.service';
 import { Router, NavigationExtras } from '@angular/router';
-import { ServiceChangeLangService } from '../service/changeLanguage/service-change-lang.service';
+import { ServiceChangeLangService } from 'src/app/service/changeLanguage/service-change-lang.service';
 
 const { Storage } = Plugins;
+
+
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class HomePage {
+export class LoginPage  {
+
   usernameText;
   passwordText;
   btnClicked:boolean=false;
@@ -18,6 +21,7 @@ export class HomePage {
     // this.setItem();
     this.btnClicked=false;
   }
+ 
 
   // async setItem() {
   //         await Storage.set({
