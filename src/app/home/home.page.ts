@@ -93,7 +93,10 @@ export class HomePage {
 
   }
 
-
+  backToHome()
+  {
+    this.router.navigateByUrl("/dashboard")
+  }
   
 
 

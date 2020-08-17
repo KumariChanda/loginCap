@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { ServiceChangeLangService } from '../../service/changeLanguage/service-change-lang.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -7,7 +8,7 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class SignupPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private languageService: ServiceChangeLangService) { }
 
   ngOnInit() {
   }
@@ -22,4 +23,8 @@ export class SignupPage implements OnInit {
     console.log("Signup cllicked!.");
   }
 
+  backToHome()
+  {
+    this.router.navigateByUrl("/dashboard")
+  }
 }

@@ -1,15 +1,15 @@
-<ion-header>
-
+<!-- <ion-header class="header_signup">
    <ion-toolbar>
+     <div class="header_signup">
         <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    <!-- <ion-title>signup</ion-title> -->
+    </div>
   </ion-toolbar> 
-</ion-header>
+</ion-header> -->
 
-<ion-content>
-  <body class="backgroundcss">
+<ion-content >
+  <div class="backgroundcss">
     <div id="container">
       <ion-card class="cardcss" >
         <br>
@@ -38,15 +38,15 @@
              <span>Already got an account?  </span>
              <span class="register" clear  (click)="loginbtnCliced()" tappable>Login</span>
              <br>
+             <hr/>
+             <span class="register" clear  (click)="backToHome()" tappable><u>Back To Home</u></span>
+             <br>
             </div> 
           <br>
-          <!-- <ion-button  expand="full"  >Login</ion-button> -->
-          <!-- <ion-button (click)="getData()" expand="full" >get</ion-button> -->
-          <!-- <ion-button (click)="goToDashboardPage()" expand="full">Move to dashboard page</ion-button> -->
         </ion-card-content>
       </ion-card>
      </div>
 
-  </body>
+    </div>
 
 </ion-content>
