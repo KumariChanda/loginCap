@@ -1,0 +1,36 @@
+ion-card,ion-toolbar,ion-segment
+{
+    --background: black; 
+}
+
+
+
+ion-item, ion-fab-button
+{
+    --background: black; 
+    color:  #ffa60a;
+}
+
+ion-button
+{
+  color: black; 
+  --background:  #ffa60a;
+
+}
+
+ion-chip
+{
+    color: black; 
+    --background: white;
+    border-color: black;
+}
+
+ion-label,ion-icon
+{
+    color : #ffa60a;
+}
+
+ion-card-title
+{
+    color : white;
+}
