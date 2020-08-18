@@ -227,8 +227,8 @@ export class AppComponent {
                       },
                       
                       {
-                        title : "Reset Password",
-                        url   : "/home",
+                        title : "Change Password",
+                        url   : "/change-password",
                         icon  : "call-outline"
                       },
                       

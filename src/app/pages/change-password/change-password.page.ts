@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./change-password.page.scss'],
 })
 export class ChangePasswordPage implements OnInit {
-
+  btnClicked:boolean=false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changePassword()
+  {
+    this.btnClicked=true;
+    setTimeout( ()=>{
+      this.btnClicked=false;
+      }, 1000)
   }
 
 }
