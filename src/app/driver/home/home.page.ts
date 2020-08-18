@@ -47,7 +47,8 @@ public  maxdate : any;   // the maximum date of a date picker
       seatNumber:'9',  // number of seats of a car
       pricePerDay:'65000', // price per day
       title:'MERCEDEZ BENZ, VEHICULE FAMILIAL', // title or designation of the car
-      picture : '../assets/images/car1.jpg'  // picture of the car
+      picture : '../assets/images/car1.jpg',  // picture of the car
+      status : 0
      
     },
     {
@@ -56,7 +57,8 @@ public  maxdate : any;   // the maximum date of a date picker
       seatNumber:'8',  // number of seats of a car
       pricePerDay:'65000', // price per day
       title:'MERCEDEZ BENZ, MINI BUS METRIS', // title or designation of the car
-      picture : '../assets/images/car2.jpg'  // picture of the car
+      picture : '../assets/images/car2.jpg',  // picture of the car
+      status : 1
 
      
     },
@@ -66,8 +68,8 @@ public  maxdate : any;   // the maximum date of a date picker
       seatNumber:'5',  // number of seats of a car
       pricePerDay:'90000', // price per day
       title:'MITSUBISHI , PAJERO SUV 4X4', // title or designation of the car
-      picture : '../assets/images/car3.jpg'  // picture of the car
-
+      picture : '../assets/images/car3.jpg',  // picture of the car
+      status : 2
      
     },
     {
@@ -76,8 +78,8 @@ public  maxdate : any;   // the maximum date of a date picker
       seatNumber:'5',  // number of seats of a car
       pricePerDay:'90000', // price per day
       title:'TOYOTA , Pick up 4X4 SUV', // title or designation of the car
-      picture : '../assets/images/car4.jpg'  // picture of the car
-
+      picture : '../assets/images/car4.jpg',  // picture of the car
+      status : 2
      
     },
     {
@@ -86,8 +88,8 @@ public  maxdate : any;   // the maximum date of a date picker
       seatNumber:'5',  // number of seats of a car
       pricePerDay:'75000 ', // price per day
       title:'VOLKSWAGEN , CITADINE PSSAT', // title or designation of the car
-      picture : '../assets/images/car5.jpg'  // picture of the car
-
+      picture : '../assets/images/car5.jpg',  // picture of the car
+      status : 2
      
     },
   ]
@@ -205,13 +207,13 @@ public  maxdate : any;   // the maximum date of a date picker
 
 
   //////////////////////////////////////////////////////
-  //this method is used to print the details of a selected car //////////////
-  carDetails(carTitle){
+  //this method is used to print the details of a selected trip //////////////
+  tripDetails(carTitle){
 
     console.log("selected : -> ", carTitle);
 
     //call another page and fetch the details of the car
-    this.router.navigateByUrl("/car-details")
+    this.router.navigateByUrl("/trip-details")
 
 
   }

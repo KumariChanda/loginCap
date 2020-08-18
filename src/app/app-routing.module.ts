@@ -66,7 +66,12 @@ const routes: Routes = [
    },
    { path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'trip-details',
+    loadChildren: () => import('./driver/trip-details/trip-details.module').then( m => m.TripDetailsPageModule)
   }
+
 
 ];
 

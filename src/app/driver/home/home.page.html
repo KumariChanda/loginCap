@@ -43,38 +43,60 @@
     
         <img [src]="item.picture" />
         <ion-card-header>
+                 <ion-card-title >{{item.title}}</ion-card-title>
+
           <ion-card-subtitle>
              
-                <!-- type of motor -->
-                <ion-chip >
-                  <ion-icon name="car"></ion-icon>
-                  <ion-label >{{item.motorType}}</ion-label>
-                </ion-chip>
-                <!-- Car Model-->
-                <ion-chip >
-                  <ion-icon name="medal" ></ion-icon>
-                  <ion-label  textWrap="true">{{item.model}}</ion-label>
-                </ion-chip> <br>
-                <!-- Number of Seats-->
-                <ion-chip >
-                  <ion-icon name="person"></ion-icon>
-                  <ion-label >{{item.seatNumber}} {{ 'DASHBOARD.seats' | translate }} </ion-label>
-                </ion-chip>
+                <!-- Destination -->
+            
+               <ion-item>
+                    <ion-label > Destination : </ion-label>
+                    <ion-chip slot="end"> Daoukro </ion-chip>
+                </ion-item>
 
-              <ion-chip>
-                <ion-label > {{item.pricePerDay}} F cfa/{{ 'DASHBOARD.day' | translate }} </ion-label> 
-              </ion-chip>
+               <!-- Reservation Type -->
+                <ion-item>
+                    <ion-label > Booking Type : </ion-label>
+                    <ion-chip slot="end"> Per Hour </ion-chip>
+                </ion-item>
+                <!-- Starting date -->
+                <ion-item>
+                    <ion-label > Start Date : </ion-label>
+                    <ion-chip slot="end"> 12 Aug 2020 </ion-chip>
+                </ion-item>
+                
+                <!-- Starting time -->
+                <ion-item>
+                    <ion-label > Start Time : </ion-label>
+                    <ion-chip slot="end"> 12 : 10 </ion-chip>
+                </ion-item>
+               
+
+                <!-- Client name -->
+                <ion-item>
+                    <ion-label > Client Name: </ion-label>
+                    <ion-chip slot="end"> Oumarou Toto </ion-chip>
+                </ion-item>
+
+               
 
           </ion-card-subtitle>
-          <ion-card-title >{{item.title}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
                         
-               <!-- More-->
-             <ion-chip style="margin-left:30%" (click)="carDetails(item.title )" >
-                <ion-label >{{ 'DASHBOARD.btn_view_details' | translate }} </ion-label>
-                <ion-icon name="chevron-forward"></ion-icon>
-            </ion-chip>
+               <!-- button view more and start the trip-->
+             <ion-button  *ngIf="item.status == 0 " style="margin-left:3%" (click)="tripDetails(item.title )" >
+                <ion-label>View more and start the trip</ion-label>
+               
+            </ion-button>
+               <!-- button end the trip -->
+             <ion-button  *ngIf="item.status == 1 " style="margin-left:30%"  >
+                <ion-label *ngIf="item.status == 1 "> End the trip</ion-label>
+            </ion-button>
+               <!-- button View details-->
+             <ion-button  *ngIf="item.status == 2 " style="margin-left:30%"  >
+                <ion-label *ngIf="item.status == 2 ">View details</ion-label>
+            </ion-button>
 
       
         </ion-card-content>
