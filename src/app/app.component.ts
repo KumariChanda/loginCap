@@ -229,7 +229,7 @@ export class AppComponent {
                       {
                         title : "Change Password",
                         url   : "/change-password",
-                        icon  : "call-outline"
+                        icon  : "lock-closed-outline"
                       },
                       
                     ]
@@ -405,8 +405,8 @@ export class AppComponent {
                         
                         {
                           title : "Réinitialiser Password",
-                          url   : "/home",
-                          icon  : "call-outline"
+                          url   : "/change-password",
+                          icon  : "lock-closed-outline" 
                         },
                         
                       ]
@@ -488,10 +488,10 @@ export class AppComponent {
                         },
                         
                         {
-                          title : "Réinitialiser Password",
-                          url   : "/home",
-                          icon  : "call-outline"
-                        },
+                          title : "envoyez Remarques",
+                          url   : "/send-feedbacks",
+                          icon  : "send-outline"
+                        },  
                         
                       ]
                     },
