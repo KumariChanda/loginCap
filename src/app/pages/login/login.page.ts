@@ -121,7 +121,7 @@ export class LoginPage  {
 
   forgetPasswordBtnClicked()
   {
-
+    this.router.navigateByUrl("/forget-password");
   }
 
   backToHome()

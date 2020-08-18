@@ -70,7 +70,11 @@ const routes: Routes = [
   {
     path: 'trip-details',
     loadChildren: () => import('./driver/trip-details/trip-details.module').then( m => m.TripDetailsPageModule)
+  },  {
+    path: 'forget-password',
+    loadChildren: () => import('./pages/forget-password/forget-password.module').then( m => m.ForgetPasswordPageModule)
   }
+
 
 
 ];
