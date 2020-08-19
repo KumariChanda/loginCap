@@ -46,7 +46,8 @@
         "accessories" : "Accessories" ,
         "logintoreserve" : "LOG IN TO BOOK" ,
         "reservenow" : "RESERVE NOW" ,
-        "baggages" : "Baggages" 
+        "baggages" : "Baggages", 
+        "carnumber" : "Car Number : "
        
     },
 

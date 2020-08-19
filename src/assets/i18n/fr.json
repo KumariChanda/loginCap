@@ -48,7 +48,8 @@
         "accessories" : "Accessoires",
         "logintoreserve" : "SE CONNECTER POUR RESERVER" ,
         "reservenow" : "RESERVEZ MAINTENANT" ,
-        "baggages" : "Bagages" 
+        "baggages" : "Bagages",
+        "carnumber" : "Immatriculation : " 
        
     },
 
