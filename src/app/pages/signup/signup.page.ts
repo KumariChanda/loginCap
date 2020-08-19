@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { ServiceChangeLangService } from '../../service/changeLanguage/service-change-lang.service';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
 @Component({
   selector: 'app-signup',
