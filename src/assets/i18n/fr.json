@@ -15,7 +15,9 @@
         "btn_view_details" : "Voir details"  ,
         "seats" : "places" ,
         "day" : "Jour" ,
-        "hour" : "Heure" 
+        "hour" : "Heure" ,
+        "model" : "Modèle ",
+        "color" : "Couleur : "
 
     },
 

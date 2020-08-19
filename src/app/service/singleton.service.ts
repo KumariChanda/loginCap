@@ -9,7 +9,8 @@ import { LoadingController } from '@ionic/angular';
 export class SingletonService {
   data;
   loading;
-  url="http://othnieldona.pythonanywhere.com/myapi/api-token-auth/";
+  url="https://othnieldona.pythonanywhere.com/api/";
+ // url="http://othnieldona.pythonanywhere.com/myapi/api-token-auth/";
 
   constructor(private http:HttpClient,private loadingCtrl:LoadingController) { }
 

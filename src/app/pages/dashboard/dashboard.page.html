@@ -63,7 +63,7 @@
                 
                 <ion-list *ngIf="show_list">
                    <ion-item *ngFor="let item of list_to_show; let i = index">
-                       <ion-label (click)="click_item(i)" > {{item}} </ion-label>
+                       <ion-label (click)="click_item(i)" > {{item.destination}} </ion-label>
                    </ion-item>
                 </ion-list>
 
@@ -110,37 +110,42 @@
 
      <ion-card *ngFor="let item of filterData | filter:term">
     
-        <img [src]="item.picture" />
+        <div *ngFor="let photo of item.photo; let i = index " > 
+          
+          <img *ngIf="i== 0"  [src]="photo.image" />
+          
+        </div>
+        
         <ion-card-header>
           <ion-card-subtitle>
              
                 <!-- type of motor -->
                 <ion-chip >
                   <ion-icon name="car"></ion-icon>
-                  <ion-label >{{item.motorType}}</ion-label>
+                  <ion-label >{{item.type_caburant}}</ion-label>
                 </ion-chip>
-                <!-- Car Model-->
+                <!-- Car price-->
                 <ion-chip >
-                  <ion-icon name="medal" ></ion-icon>
-                  <ion-label  textWrap="true">{{item.model}}</ion-label>
+                  <!-- <ion-icon name="medal" ></ion-icon> -->
+                  <ion-label  textWrap="true">{{item.per_day}} / {{ 'DASHBOARD.per_day' | translate }}</ion-label>
                 </ion-chip> <br>
                 <!-- Number of Seats-->
                 <ion-chip >
                   <ion-icon name="person"></ion-icon>
-                  <ion-label >{{item.seatNumber}} {{ 'DASHBOARD.seats' | translate }} </ion-label>
+                  <ion-label >{{item.passager}} {{ 'DASHBOARD.seats' | translate }} </ion-label>
                 </ion-chip>
-
+                <!-- car color -->
               <ion-chip>
-                <ion-label > {{item.pricePerDay}} F cfa/{{ 'DASHBOARD.day' | translate }} </ion-label> 
+                <ion-label >{{ 'DASHBOARD.color' | translate }} {{item.couleur}} </ion-label> 
               </ion-chip>
 
           </ion-card-subtitle>
-          <ion-card-title >{{item.title}}</ion-card-title>
+          <ion-card-title  > {{item.modele.libelle}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
                         
                <!-- More-->
-             <ion-chip style="margin-left:30%" (click)="carDetails(item.title )" >
+             <ion-chip style="margin-left:30%" (click)="carDetails(item.id)" >
                 <ion-label >{{ 'DASHBOARD.btn_view_details' | translate }} </ion-label>
                 <ion-icon name="chevron-forward"></ion-icon>
             </ion-chip>

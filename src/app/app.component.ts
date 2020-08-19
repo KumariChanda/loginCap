@@ -9,6 +9,7 @@ import { ServiceChangeLangService } from './service/changeLanguage/service-chang
 //import {Storage} from '@ionic/storage'
 import { Subscription } from 'rxjs';
 import { SingletonService } from './service/singleton.service';
+import { AppServiceService } from './service/appService/app-service.service';
 
 const { Storage } = Plugins;
 const LNG_KEY = 'SELECTED LANGUAGE';
@@ -47,10 +48,9 @@ export class AppComponent {
     private menuCtrl:MenuController,
     //add this router for switching pages
     private router : Router,
-    //language service
-    private languageservice : ServiceChangeLangService,
-   // private storage: Storage,
-   private webService:SingletonService
+  
+   // our webservice,
+   private webService:AppServiceService
     
   ) {
 
@@ -60,7 +60,7 @@ export class AppComponent {
    
     ///////////////////// after changing a language //////////////////////////////////
       
-      this.subscription = this.languageservice.getMessage().subscribe( text => {
+      this.subscription = this.webService.getMessage().subscribe( text => {
 
      //   console.log("//////////////// \ntext",text.language);
         this.sideMenu(text.language);
@@ -97,7 +97,7 @@ export class AppComponent {
       // }
 
       //set the initial language of the app
-      this.languageservice.setInitialAppLanguage().then(val =>{
+      this.webService.setInitialAppLanguage().then(val =>{
 
         // console.log("result",val);
         this.sideMenu(val);
@@ -520,9 +520,9 @@ export class AppComponent {
       value: "null"           
     });  
 
-      this.languageservice.getCurrentLanguage().then(val =>{
+      this.webService.getCurrentLanguage().then(val =>{
 
-      this.languageservice.sendMessage({'token': "mytoken", 'language': val })
+      this.webService.sendMessage({'token': "mytoken", 'language': val })
 
    
     });

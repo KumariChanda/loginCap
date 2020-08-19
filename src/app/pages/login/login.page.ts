@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-import { SingletonService } from 'src/app/service/singleton.service';
 import { Router, NavigationExtras } from '@angular/router';
-import { ServiceChangeLangService } from 'src/app/service/changeLanguage/service-change-lang.service';
+import { AppServiceService } from 'src/app/service/appService/app-service.service';
 
 const { Storage } = Plugins;
 
@@ -14,10 +13,11 @@ const { Storage } = Plugins;
 })
 export class LoginPage  {
 
-  usernameText;
-  passwordText;
-  btnClicked:boolean=false;
-  constructor( private webService:SingletonService, private router: Router, private langService : ServiceChangeLangService ) {
+  usernameText // used to get the username entered by the user;
+  passwordText // used to get the password entered by the user;
+  btnClicked:boolean=false; // check if the button has been clicked or not
+
+  constructor( private webService:AppServiceService, private router: Router  ) {
     // this.setItem();
     this.btnClicked=false;
   }
@@ -53,54 +53,61 @@ export class LoginPage  {
 
   async loginFun()
   {
-    this.btnClicked=true;
-    setTimeout( async ()=>{
+    // console.log("Button Clicked.");
+     this.btnClicked=true;
+     setTimeout( async ()=>{
       this.btnClicked=false;
 
-          await Storage.set({
-            key: 'accessToken',
-            value: "logged in"           
-          });  
 
-          this.langService.getCurrentLanguage().then(val =>{
+          //object to be sent
+          // console.log("Username : ",this.usernameText);
+          // console.log("Password: ",this.passwordText);
+          var sending_obj={
+            "username":this.usernameText,
+            "password":this.passwordText
+          }
+          // console.log(sending_obj);
 
-            // console.log("home  ",val)
-              this.langService.sendMessage({'token': "mytoken", 'language': val })
+           this.webService.presentLoading();
 
-                  //call dashboard page and pass data 
-                this.router.navigateByUrl("/dashboard");
+          this.webService.login(sending_obj).subscribe(async res=>{
+            console.log("getting response : ",res.token); 
+            if(res)
+            {
+                
+              
+            
+              //get the current language of the app   
+                this.webService.getCurrentLanguage().then(async val =>{
 
-          });
+                  // change the value of token
+                await Storage.set({
+                  key: 'accessToken',
+                  value: res.token           
+                });  
+
+                  // console.log("home  ",val)
+                    this.webService.sendMessage({'token': "mytoken", 'language': val })
+
+                        //call dashboard page and pass data 
+                      this.router.navigateByUrl("/dashboard");
+
+                });
+                //////////////////////
+
+            }  
+            this.webService.stopLoading();                
+          },error =>{
+                        this.webService.stopLoading();                
+
+          }
+          )
+
+      
+
 
       }, 1000)
-    // console.log("Button Clicked.");
-    // console.log("Username : ",this.usernameText);
-    // console.log("Password: ",this.passwordText);
-    // var sending_obj={
-    //   "username":this.usernameText,
-    //   "password":this.passwordText
-    // }
-    // console.log(sending_obj);
-
-
-
-    //
-    // this.webService.presentLoading();
-
-    // this.webService.login(sending_obj).subscribe(async res=>{
-    //   console.log("getting response : ",res); 
-    //   if(res)
-    //   {
-    //     await Storage.set({
-    //       key: 'accessToken',
-    //       value: res.token           
-    //     });  
-        
-    //     //call dashboard page and pass data 
-    //      this.router.navigateByUrl("/dashboard");
-    //   }  
-    //   this.webService.stopLoading();                
-    // })
+    
 
       
     

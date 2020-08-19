@@ -12,21 +12,23 @@
   <div class="backgroundcss">
     <div id="container">
       <ion-card class="cardcss" >
-        <br>
           <h3 class="loginLabel">Sign up  </h3>
-           <hr/>
+           <!-- <hr/> -->
         <ion-card-content>
-            <ion-input class="inputcomp" type="text"  placeholder="Full name"></ion-input>
+            <ion-input class="inputcomp" type="text" [(ngModel)]="firstname"  placeholder="First name"></ion-input>
+            <br>
+            <ion-input class="inputcomp" type="text"  [(ngModel)]="lastname"  placeholder="Last name"></ion-input>
+      
           <br>
-            <ion-input class="inputcomp" type="number"  placeholder="Mobile number"></ion-input>
+            <ion-input class="inputcomp" type="number" [(ngModel)]="mobilenumber" placeholder="Mobile number"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="text"  placeholder="Email Address"></ion-input>
+          <ion-input class="inputcomp" type="text" [(ngModel)]="email"  placeholder="Email Address"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="password"  placeholder="Password"></ion-input>
+          <ion-input class="inputcomp" type="password" [(ngModel)]="password"  placeholder="Password"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="password"  placeholder="Confirm Password"></ion-input>
+          <ion-input class="inputcomp" type="password"  [(ngModel)]="confirmpassword" placeholder="Confirm Password"></ion-input>
           <br>
-          <input type="checkbox" >&nbsp;&nbsp;<span class="register"><b>I accept the terms & conditions of </b></span>
+          <input type="checkbox" [(ngModel)]="agreement">&nbsp;&nbsp;<span class="register"><b>I Agree with Terms and Conditions </b></span>
           
           <div class="divloginbtn">
             <br>
@@ -39,7 +41,7 @@
              <span class="register" clear  (click)="loginbtnCliced()" tappable>Login</span>
             
              <br>
-             <hr/>
+             <!-- <hr/> -->
              <span class="register" clear  (click)="backToHome()" tappable><u>Back To Home</u></span>
              <br>
             </div> 

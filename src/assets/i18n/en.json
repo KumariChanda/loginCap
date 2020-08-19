@@ -15,7 +15,9 @@
         "btn_view_details" : "View details" ,
         "seats" : "seats" ,
         "day" : "Day" ,
-        "hour" : "Hour" 
+        "hour" : "Hour" ,
+        "model" : "Model ",
+        "color" : "Color : "
     },
 
     "LANGUAGE" : {

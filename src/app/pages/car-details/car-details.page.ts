@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Plugins } from '@capacitor/core';
+import { AppServiceService } from 'src/app/service/appService/app-service.service';
+import { Subscription } from 'rxjs';
 
 const {Storage} = Plugins
 
@@ -30,66 +32,35 @@ export class CarDetailsPage implements OnInit {
     '../assets/images/car4.jpg',
     '../assets/images/car5.jpg'
   ]
+ 
+//my car : this var will receive the car with all its details
+car = {
+    'modele' : ''
+}
 
-  //dummy accessories data
 
-  myAccessory =
-  [
-    {
-      name : "Climatisation",
-      status : 'yes'
-    },
-    {
-      name : "Système de freinage antiblocage",
-      status : 'yes'
-    },
-    {
-      name : "Direction assistée",
-      status : 'no'
-    },
-    {
-      name : "Vitres électriques",
-      status : 'yes'
-    },
-    {
-      name : "Lecteur CD",
-      status : 'yes'
-    },
-    {
-      name : "Sièges en cuir",
-      status : 'yes'
-    },
-    {
-      name : "Verrouillage central",
-      status : 'yes'
-    },
-    {
-      name : "Serrures électriques",
-      status : 'yes'
-    },
-    {
-      name : "Assistance au freinage",
-      status : 'yes'
-    },
-    {
-      name : "Airbag conducteur",
-      status : 'yes'
-    },
-    {
-      name : "Airbag passager",
-      status : 'yes'
-    },
-    {
-      name : "Capteur de collision",
-      status : 'yes'
-    }
-  ]
+  subscription: Subscription;
 
  
 
-  constructor(private router: Router) { 
+  constructor( private router : Router, private route: ActivatedRoute, private webservice : AppServiceService) { 
 
        this.getCurrentToken();
+
+       this.subscription = this.route.queryParams.subscribe((data) => {
+        
+        console.log("selected ->", typeof(data.id))
+
+        this.webservice.getCarDetails(data.id).subscribe(res =>{
+
+             this.car = res;
+             console.log(res)
+        })
+   });
+
+   
+
+       
     
   }
 
