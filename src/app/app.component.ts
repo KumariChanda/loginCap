@@ -160,24 +160,24 @@ export class AppComponent {
 
                       {
                         title : "Business Class",
-                        url   : "/profile",
-                        icon  : "person-outline"
+                        url   : "/business-class",
+                        icon  : "aperture-outline"
                       },
                       {
                         title : "Family Class",
-                        url   : "/profile",
-                        icon  : "person-outline"
+                        url   : "/family-class",
+                        icon  : "aperture-outline"
                       },
                       {
                         title : "Class SUV",
-                        url   : "/profile",
-                        icon  : "person-outline"
+                        url   : "/suv-class",
+                        icon  : "aperture-outline"
                       },
-                      {
-                        title : "Ordinary Class",
-                        url   : "/profile",
-                        icon  : "person-outline"
-                      }
+                      // {
+                      //   title : "Ordinary Class",
+                      //   url   : "/profile",
+                      //   icon  : "aperture-outline"
+                      // }
                       
                     ]
                   },
@@ -253,24 +253,24 @@ export class AppComponent {
 
                       {
                         title : "Business Class",
-                        url   : "/profile",
-                        icon  : "person-outline"
+                        url   : "/business-class",
+                        icon  : "aperture-outline"
                       },
                       {
                         title : "Family Class",
-                        url   : "/profile",
-                        icon  : "person-outline"
+                        url   : "/family-class",
+                        icon  : "aperture-outline"
                       },
                       {
                         title : "Class SUV",
-                        url   : "/profile",
-                        icon  : "person-outline"
+                        url   : "/suv-class",
+                        icon  : "aperture-outline"
                       },
-                      {
-                        title : "Ordinary Class",
-                        url   : "/profile",
-                        icon  : "person-outline"
-                      }
+                      // {
+                      //   title : "Ordinary Class",
+                      //   url   : "/profile",
+                      //   icon  : "aperture-outline"
+                      // }
                     ]
                   },
                   {
@@ -336,25 +336,25 @@ export class AppComponent {
                       children :[
               
                         {
-                          title : "Classe Business",
-                          url   : "/profile",
-                          icon  : "person-outline"
+                          title : "Business Class",
+                          url   : "/business-class",
+                          icon  : "aperture-outline"
                         },
                         {
-                          title : "Classe Familiale",
-                          url   : "/profile",
-                          icon  : "person-outline"
+                          title : "Family Class",
+                          url   : "/family-class",
+                          icon  : "aperture-outline"
                         },
                         {
-                          title : "Classe SUV",
-                          url   : "/profile",
-                          icon  : "person-outline"
+                          title : "Class SUV",
+                          url   : "/suv-class",
+                          icon  : "aperture-outline"
                         },
-                        {
-                          title : "Classe ordinaire",
-                          url   : "/profile",
-                          icon  : "person-outline"
-                        }
+                        // {
+                        //   title : "Ordinary Class",
+                        //   url   : "/profile",
+                        //   icon  : "aperture-outline"
+                        // }
                         
                       ]
                     },
@@ -430,25 +430,25 @@ export class AppComponent {
                       children :[
               
                         {
-                          title : "Classe Business",
-                          url   : "/profile",
-                          icon  : "person-outline"
+                          title : "Business Class",
+                          url   : "/business-class",
+                          icon  : "aperture-outline"
                         },
                         {
-                          title : "Classe Familiale",
-                          url   : "/profile",
-                          icon  : "person-outline"
+                          title : "Family Class",
+                          url   : "/family-class",
+                          icon  : "aperture-outline"
                         },
                         {
-                          title : "Classe SUV",
-                          url   : "/profile",
-                          icon  : "person-outline"
+                          title : "Class SUV",
+                          url   : "/suv-class",
+                          icon  : "aperture-outline"
                         },
-                        {
-                          title : "Classe ordinaire",
-                          url   : "/profile",
-                          icon  : "person-outline"
-                        }
+                        // {
+                        //   title : "Ordinary Class",
+                        //   url   : "/profile",
+                        //   icon  : "aperture-outline"
+                        // }
                         
                       ]
                     },

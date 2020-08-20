@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Plugins } from '@capacitor/core';
-import { ServiceChangeLangService } from 'src/app/service/changeLanguage/service-change-lang.service';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
-import { SingletonService } from 'src/app/service/singleton.service';
 
 //import * as moment from 'moment';
 
@@ -26,19 +24,13 @@ public  maxdate : any;   // the maximum date of a date picker
   data: any;
 
 
-  name: any;
-  alias: any;
   datauser: any;
   token : any;
   searchQuery:any;
   destination_to_be_search : any;
   logo1 ='../assets/images/logo1.jpg';
   
-  public dataToSend:any=
-  {
-    "name":"",
-    "alias":" "
-  };
+ 
 
   public dataSaveReturn: any = "";
 
@@ -95,16 +87,7 @@ public  maxdate : any;   // the maximum date of a date picker
         // date
          this.setDate();
 
-    //receive data from
-    // this.route.queryParams.subscribe(params => {
-    //   if (params && params.special) {
-    //     this.data = JSON.parse(params.special);
-
-    //     console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
-
-    //   }
-    // });
-
+  
 
    }
 
@@ -217,7 +200,7 @@ setDate()
 
 
     //call another page and fetch the details of the car
-    this.router.navigate(['car-details'], {queryParams:{id: carID}})
+    this.router.navigate(['car-details'], {queryParams:{id: carID, prev : "/dashboard"} })
 
 
   }

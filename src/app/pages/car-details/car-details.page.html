@@ -89,15 +89,18 @@
                             {{ item.libelle }}
                       </ion-col>
                         <!-- column 2 has the status of the accessory -->
-                      <ion-col  *ngIf="item.status == 'yes' " text-right  class="cell-yes"   >
-                           {{ item.status }}
+                      <ion-col   text-right  class="cell-yes"   >
+                           <ion-icon name="checkmark-outline"></ion-icon>
+                      </ion-col>
+                      <!-- <ion-col  *ngIf="item.status == 'yes' " text-right  class="cell-yes"   >
+                           <ion-icon name="checkmark-outline"></ion-icon>
 
                       </ion-col>
-                        <!-- column 2 has the status of the accessory -->
-                      <ion-col  *ngIf="item.status == 'no' "   text-right  class="cell-no"  >
+                         column 2 has the status of the accessory -->
+                     <!--  <ion-col  *ngIf="item.status == 'no' "   text-right  class="cell-no"  >
                            {{ item.status }}
 
-                      </ion-col>
+                      </ion-col> -->
                 </ion-row>
               </ion-grid>
 
@@ -120,7 +123,7 @@
           <!-- login to reserve or reserve if logged in  -->
     <ion-button *ngIf="token=='null'" expand="full" (click)="goToLogin()" >{{"CARDETAILS.logintoreserve" | translate}}</ion-button>
        <!-- if the token is not null -->
-    <ion-button *ngIf="token!='null'" expand="full"  (click)="goToReservation()">{{"CARDETAILS.reservenow" | translate}}</ion-button>
+    <ion-button *ngIf="token!='null'" expand="full"  (click)="goToReservation( car.id)">{{"CARDETAILS.reservenow" | translate}}</ion-button>
 
 
   <!-- </ion-toolbar> -->
