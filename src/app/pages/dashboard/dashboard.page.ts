@@ -76,10 +76,7 @@ public  maxdate : any;   // the maximum date of a date picker
 
   constructor(private route: ActivatedRoute, private router: Router, 
     private webService: AppServiceService) {
-
-
       
-
 
       //language
      // this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
@@ -92,9 +89,8 @@ public  maxdate : any;   // the maximum date of a date picker
    }
 
   ngOnInit() {
-
    //get voitures list
-
+    this.webService.presentLoading();
    this.webService.getVoitures().subscribe(async res=>{
     console.log("getting voitures : ",res); 
     if(res)
@@ -126,8 +122,7 @@ public  maxdate : any;   // the maximum date of a date picker
         }
 
       //  console.log("res : ", this.list_original)
-
-
+        this.webService.stopLoading();
       });
       
 
@@ -137,7 +132,7 @@ public  maxdate : any;   // the maximum date of a date picker
   });
 
 
-  }
+  }//end of ngOnInit
 
 //////////////////////////////////////////////////////
 

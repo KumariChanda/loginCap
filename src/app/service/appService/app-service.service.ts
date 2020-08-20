@@ -36,6 +36,8 @@ export class AppServiceService {
   public selected = ''; // selected language
   
   loading : any ;  // used for showing and hiding loading
+  
+
 
 
   constructor( private http:HttpClient,private loadingCtrl:LoadingController, private translate: TranslateService) { }
@@ -60,6 +62,7 @@ export class AppServiceService {
           this.loading = false;
           return await this.loadingCtrl.dismiss().then(() => console.log('loading dismissed'));
         }
+
 //////////////////////////////////////// END : PRESENTATION LOADING//////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

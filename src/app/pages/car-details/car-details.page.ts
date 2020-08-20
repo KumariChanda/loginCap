@@ -45,31 +45,26 @@ car = {
   page_prev ="" 
  
 
-  constructor( private router : Router, private route: ActivatedRoute, private webservice : AppServiceService) { 
+  constructor( private router : Router, private route: ActivatedRoute, private webservice : AppServiceService) {  
 
-       this.getCurrentToken();
-
-       this.subscription = this.route.queryParams.subscribe((data) => {
-        
-        console.log("selected ->", typeof(data.id))
-
-       //set the prev page
-       this.page_prev = data.prev
-
-        this.webservice.getCarDetails(data.id).subscribe(res =>{
-
-             this.car = res;
-             console.log(res)
-        })
-   });
-
-   
-
-       
     
   }
 
   ngOnInit() {
+    this.webservice.presentLoading();
+    this.getCurrentToken();
+
+    this.subscription = this.route.queryParams.subscribe((data) => {
+     
+     console.log("selected ->", typeof(data.id))
+
+     this.webservice.getCarDetails(data.id).subscribe(res =>{
+
+          this.car = res;
+          console.log(res)
+          this.webservice.stopLoading();
+     });  
+      });
   }
 
   //this is used for the auto slider

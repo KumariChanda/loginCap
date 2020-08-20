@@ -16,7 +16,7 @@ export class SignupPage implements OnInit {
    email ="";
    password : string ;
    confirmpassword : string;
-   dob = "2020-08-19";
+   dob = "";
    address ="";
    agreement : boolean;
 
@@ -98,6 +98,8 @@ export class SignupPage implements OnInit {
 
   backToHome()
   {
-    this.router.navigateByUrl("/dashboard")
+    // this.webService.presentLoading();
+    this.router.navigateByUrl("/dashboard");
+    // this.webService.stopLoading();
   }
 }
