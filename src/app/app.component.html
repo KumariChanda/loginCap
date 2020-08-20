@@ -4,7 +4,7 @@
           <ion-toolbar>
 
               <!-- menu == null -->
-            <div *ngIf="testingToken=='null'">
+            <div *ngIf="testingToken==null">
               <div >
                 <ion-grid>
                   <ion-row>
@@ -29,7 +29,7 @@
          
              <!-- menu != null -->
          
-          <div *ngIf="testingToken!='null'">
+          <div *ngIf="testingToken!=null">
             <div >
               <ion-grid>
                 <ion-row>
@@ -57,7 +57,7 @@
 
            <!-- Menu if user is not logged in yet -->
 
-          <div *ngIf="testingToken=='null' ">
+          <div *ngIf="testingToken==null ">
           
           <div  style=" background: black " *ngFor="let pages of menuNavigatorWithoutLogin">
               
@@ -97,7 +97,7 @@
 
         </div>
   
-          <div *ngIf="testingToken!='null'">
+          <div *ngIf="testingToken!=null">
             
              
           <div *ngFor="let pages of menuNavigatorLogin">

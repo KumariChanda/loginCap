@@ -48,7 +48,6 @@ export class AppComponent {
     private menuCtrl:MenuController,
     //add this router for switching pages
     private router : Router,
-  
    // our webservice,
    private webService:AppServiceService
     
@@ -63,6 +62,7 @@ export class AppComponent {
       this.subscription = this.webService.getMessage().subscribe( text => {
 
      //   console.log("//////////////// \ntext",text.language);
+          alert("recev  -> "+text.language)
         this.sideMenu(text.language);
       
       })
@@ -72,6 +72,10 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(async () => {
 
+      //  openFirst() {
+        // this.menuCtrl.enable(true, 'first');
+        // this.menuCtrl.open('first');
+      // }
        
       //token storage
       var ret=Storage.get({ key: 'accessToken' });
@@ -96,14 +100,15 @@ export class AppComponent {
 
       // }
 
-      //set the initial language of the app
-      this.webService.setInitialAppLanguage().then(val =>{
-
-        // console.log("result",val);
-        this.sideMenu(val);
-        }); 
-        
-
+      // var a = " ";
+           // //set the initial language of the app
+       this.webService.setInitialAppLanguage().then(val =>{
+        alert("val : "+val);
+          this.sideMenu(val);
+         
+         }); 
+      //  this.sideMenu("fr");
+      // console.log("a out  : ",a);
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
@@ -134,12 +139,12 @@ export class AppComponent {
 
             this.testingToken = data;
         
-
+                  alert("Token : "+this.testingToken)
          // console.log(" sidemenu token  ",this.testingToken);
                     
           if(lang=="en" )
           {
-              if(this.testingToken!="null")
+              if(this.testingToken!=null)
               {
                 this.menuNavigatorLogin =
                 [
@@ -316,7 +321,7 @@ export class AppComponent {
             //french side menu
             else if(lang=="fr")
             {
-                if(this.testingToken!="null")
+                if(this.testingToken!=null)
                 {
                   this.menuNavigatorLogin =
                   [
@@ -517,7 +522,7 @@ export class AppComponent {
   {
     await Storage.set({
       key: 'accessToken',
-      value: "null"           
+      value: null           
     });  
 
       this.webService.getCurrentLanguage().then(val =>{

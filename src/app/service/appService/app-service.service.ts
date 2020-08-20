@@ -79,9 +79,10 @@ export class AppServiceService {
 
               console.log("initialize App Language");
 
-              let language = this.translate.getBrowserLang();
+              let language = "en";
+              //let language = this.translate.get;
               //console.log("my language :: ",language)
-              this.translate.setDefaultLang(language);
+              //this.translate.setDefaultLang(language);
               //store the initial language in the storage
               // this.storage.get(LNG_KEY).then(val => {
               //   console.log("get initial Val", val)
@@ -95,7 +96,7 @@ export class AppServiceService {
                 var val = (await ret).value;
                 console.log("data from storage ",val,typeof(val));
 
-                if(val != 'null')
+                if(val != null)
                 {
                   this.selected=(await ret).value;
                   this.setLanguage(this.selected);
@@ -103,9 +104,11 @@ export class AppServiceService {
                 
                 }else{
                   this.selected = language;
+                  
                 }
+                this.setLanguage(this.selected);
                 //console.log("storage ",this.selected,typeof(this.selected));
-
+                    alert(this.selected)
                 return this.selected
               // console.log("selected language :: ",this.selected)
 

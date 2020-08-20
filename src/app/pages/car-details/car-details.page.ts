@@ -56,7 +56,10 @@ car = {
 
     this.subscription = this.route.queryParams.subscribe((data) => {
      
-     console.log("selected ->", typeof(data.id))
+     console.log("selected ->", typeof(data.id));
+      //receive the  prev page 
+     this.page_prev = data.prev ;
+     //get the details of the car
 
      this.webservice.getCarDetails(data.id).subscribe(res =>{
 
