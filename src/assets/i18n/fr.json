@@ -17,7 +17,10 @@
         "day" : "Jour" ,
         "hour" : "Heure" ,
         "model" : "Modèle ",
-        "color" : "Couleur : "
+        "color" : "Couleur : ",
+        "business_class" : "CLASSE BUSINESS",
+        "family_class" : "CLASSE FAMILLE ",
+        "suv_class" : "CLASSE SUV"
 
     },
 

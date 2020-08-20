@@ -41,6 +41,8 @@ car = {
 
   subscription: Subscription;
 
+  //prev page
+  page_prev ="" 
  
 
   constructor( private router : Router, private route: ActivatedRoute, private webservice : AppServiceService) {  
@@ -89,15 +91,19 @@ car = {
 
   prev(){
 
-    this.router.navigateByUrl("/dashboard")
+    this.router.navigateByUrl(this.page_prev)
   }
 
   ////////////////////////////////////////////////////////////
   /// call the reservation page  ////////////////////////////
 
-  goToReservation(){
+  goToReservation(carID){
 
-    this.router.navigateByUrl("/reservation-page")
+   // this.router.navigateByUrl("/reservation-page")
+
+    //console.log("car id", carID);
+     //call another page and make the reservation of the car
+     this.router.navigate(['reservation-page'], {queryParams:{id: carID,  prev : this.page_prev }})
 
 
   }

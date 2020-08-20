@@ -39,10 +39,7 @@ const routes: Routes = [
     path: 'send-feedbacks',
     loadChildren: () => import('./pages/send-feedbacks/send-feedbacks.module').then( m => m.SendFeedbacksPageModule)
   },
-  {
-    path: 'car-fleet',
-    loadChildren: () => import('./pages/car-fleet/car-fleet.module').then( m => m.CarFleetPageModule)
-  },
+  
   {
     path: 'my-messages',
     loadChildren: () => import('./pages/my-messages/my-messages.module').then( m => m.MyMessagesPageModule)
@@ -70,9 +67,22 @@ const routes: Routes = [
   {
     path: 'trip-details',
     loadChildren: () => import('./driver/trip-details/trip-details.module').then( m => m.TripDetailsPageModule)
-  },  {
+  },
+  {
     path: 'forget-password',
     loadChildren: () => import('./pages/forget-password/forget-password.module').then( m => m.ForgetPasswordPageModule)
+  },
+  {
+    path: 'business-class',
+    loadChildren: () => import('./pages/business-class/business-class.module').then( m => m.BusinessClassPageModule)
+  },
+  {
+    path: 'family-class',
+    loadChildren: () => import('./pages/family-class/family-class.module').then( m => m.FamilyClassPageModule)
+  },
+  {
+    path: 'suv-class',
+    loadChildren: () => import('./pages/suv-class/suv-class.module').then( m => m.SuvClassPageModule)
   }
 
 
