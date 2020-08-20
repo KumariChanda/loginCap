@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "loginCap",
+  "appId": "com.cpckingdom.nyokah",
+  "appName": "Nyokah",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
