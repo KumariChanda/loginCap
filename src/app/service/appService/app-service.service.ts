@@ -15,6 +15,7 @@ const LNG_KEY = 'SELECTED LANGUAGE'; // this is used to fetch or manipulate the 
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
   // basic api url
 const base_url= proxyurl+"http://othnieldona.pythonanywhere.com/api/";
+// const base_url= "http://othnieldona.pythonanywhere.com/api/";
  
   //header used for API URL
   const httpOptions = {

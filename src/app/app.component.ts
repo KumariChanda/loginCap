@@ -5,10 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { Router } from '@angular/router';
-import { ServiceChangeLangService } from './service/changeLanguage/service-change-lang.service';
 //import {Storage} from '@ionic/storage'
 import { Subscription } from 'rxjs';
-import { SingletonService } from './service/singleton.service';
 import { AppServiceService } from './service/appService/app-service.service';
 
 const { Storage } = Plugins;
@@ -177,6 +175,10 @@ export class AppComponent {
 
 
 
+
+
+
+
  /////////////////////////////////////////////////////////////////////////////////////////////////////////
  ///////////////////////////////////START : SIDE MENU//////////////////////////////////////////////////////////////////////
  
@@ -203,6 +205,7 @@ export class AppComponent {
                 //////////////////check the status of the user///////////////////////////////////////
                 
                   var type = (await Storage.get({ key: "user_type" })).value;
+                  //getting user details
                   this.userInf = (await Storage.get({ key: "user_infos" })).value;
 
                 
