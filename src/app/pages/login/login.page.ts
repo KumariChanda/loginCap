@@ -16,6 +16,7 @@ export class LoginPage  {
   usernameText // used to get the username entered by the user;
   passwordText // used to get the password entered by the user;
   btnClicked:boolean=false; // check if the button has been clicked or not
+  isDriver; // used to check a the user is a driver or not
 
   constructor( private webService:AppServiceService, private router: Router  ) {
     // this.setItem();
@@ -23,37 +24,14 @@ export class LoginPage  {
   }
  
 
-  // async setItem() {
-  //         await Storage.set({
-  //       key: 'userinfo',
-  //       value: "Chanda Kumari"
-  //     });    
-  // }
 
-  //goto Dashboard page
-  // goToDashboardPage() {
-
-  //   //data to be passed
-  // const  complexe = {
-  //     reel : "12",
-  //     imag : "5"
-  //   }
-    
-  //   //used to pass data
-  //   let navigationExtras: NavigationExtras = {
-  //     queryParams: {
-  //       special: JSON.stringify(complexe)
-  //     }
-  //   };
-
-  //   //call dashboard page and pass data 
-  //   this.router.navigate(['dashboard'],navigationExtras);
-  //   }
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////START LOGIN FUN ///////////////////////////////////////////////////////////////////
   async loginFun()
   {
     // console.log("Button Clicked.");
+
+    ///set timeout for cliked on login button
      this.btnClicked=true;
      setTimeout( async ()=>{
       this.btnClicked=false;
@@ -71,12 +49,28 @@ export class LoginPage  {
            this.webService.presentLoading();
 
           this.webService.login(sending_obj).subscribe(async res=>{
-            console.log("getting response : ",res.token); 
+           // console.log("getting response : ",res); 
             if(res)
             {
-                
-              
-            
+
+                //store user status in storage 
+                  Storage.set({
+                      key : "user_type",
+                      value : res.status
+                  });
+              ////////////////////////////////////////////////////////
+              //get the details infos of the  user  
+              this.webService.getUserDetails(res.token,res.id,this.isDriver).subscribe(resp =>{
+
+               // console.log("clients : \n",resp);
+
+                //store user infos in storage 
+                  Storage.set({
+                      key : "user_infos",
+                      value : JSON.stringify(resp)
+                  });// end store user 
+
+                  ////////////////////////////////////////////////
               //get the current language of the app   
                 this.webService.getCurrentLanguage().then(async val =>{
 
@@ -89,26 +83,43 @@ export class LoginPage  {
                   // console.log("home  ",val)
                     this.webService.sendMessage({'token': "mytoken", 'language': val })
 
+                      if(this.isDriver)
+                      {
+                          //call dashboard page and pass data 
+                          this.router.navigateByUrl("/home");
+                      }
+                      else
+                      {
                         //call dashboard page and pass data 
-                      this.router.navigateByUrl("/dashboard");
+                        this.router.navigateByUrl("/dashboard");
+                      }
+                      ///stop loading
 
-                });
-                //////////////////////
-
+                });//end get app language
+                ////////////////////////////////////////////////
+                
+              
+              
+              }) //added end get user details
+              //////////////////////////////////////////////////
             }  
-            this.webService.stopLoading();                
+                           
           },error =>{
-                        this.webService.stopLoading();                
+                        this.webService.stopLoading();   
+                        alert("server error, please check your inputs") ;            
 
           }
+
+          
           )
 
       
 
 
       }, 1000)
-    
-
+    /// end set time out
+////////////////////////////////////////ENDLOGIN FUN//////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
     
     

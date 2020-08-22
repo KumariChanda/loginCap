@@ -42,7 +42,7 @@ filterData = [
   ngOnInit() {
 
     //get Business class cars list
-
+      this.webService.presentLoading();//to start loader
       this.webService.getCarClass(3).subscribe(async res=>{
 
         
@@ -83,6 +83,8 @@ filterData = [
                 }
                 );
               }
+              this.webService.stopLoading();//to stop loading
+
             
         }
       });

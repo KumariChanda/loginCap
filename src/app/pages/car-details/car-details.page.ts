@@ -35,7 +35,10 @@ export class CarDetailsPage implements OnInit {
  
 //my car : this var will receive the car with all its details
 car = {
-    'modele' : ''
+    'modele' : '',
+    'per_day' : '',
+    'per_hour' : '',
+    'airport' : ''
 }
 
 
@@ -65,9 +68,22 @@ car = {
 
           this.car = res;
           console.log(res)
+
+        // get the differents pice of the car
+        this.webservice.getPriceCar(data.id).subscribe( resp =>{
+
+          this.car.per_day = resp[0].prix;
+          this.car.per_hour = resp[1].prix;
+          this.car.airport = resp[2].prix;
+
+          //stop loading
           this.webservice.stopLoading();
-     });  
-      });
+
+         }); //end get prices
+
+          
+      });  
+    });
   }
 
   //this is used for the auto slider

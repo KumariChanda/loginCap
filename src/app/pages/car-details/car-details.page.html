@@ -121,9 +121,9 @@
 <ion-footer>
   <!-- <ion-toolbar> -->
           <!-- login to reserve or reserve if logged in  -->
-    <ion-button *ngIf="token=='null'" expand="full" (click)="goToLogin()" >{{"CARDETAILS.logintoreserve" | translate}}</ion-button>
+    <ion-button *ngIf="token==null" expand="full" (click)="goToLogin()" >{{"CARDETAILS.logintoreserve" | translate}}</ion-button>
        <!-- if the token is not null -->
-    <ion-button *ngIf="token!='null'" expand="full"  (click)="goToReservation( car.id)">{{"CARDETAILS.reservenow" | translate}}</ion-button>
+    <ion-button *ngIf="token!=null" expand="full"  (click)="goToReservation( car.id)">{{"CARDETAILS.reservenow" | translate}}</ion-button>
 
 
   <!-- </ion-toolbar> -->

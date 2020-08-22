@@ -44,7 +44,8 @@ public  maxdate : any;   // the maximum date of a date picker
       'id' : '',
       'per_day' : '',
       'per_hour' : '',
-      'airport' : ''
+      'airport' : '',
+      'color' : ''
   
   
     }
@@ -102,8 +103,8 @@ public  maxdate : any;   // the maximum date of a date picker
          this.webService.getPriceCar(this.filterData[i].id).subscribe( resp =>{
 
           this.filterData[i].per_day = resp[0].prix;
-          this.filterData[i].per_hour = resp[1].prix;
-          this.filterData[i].airport = resp[2].prix;
+        //  this.filterData[i].per_hour = resp[1].prix;
+        //  this.filterData[i].airport = resp[2].prix;
 
          }
          );
@@ -188,8 +189,10 @@ setDate()
 
 
 }
-
+///////////////end set Date//////////////////////////////////////
 //////////////////////////////////////////////////////
+
+
 //this method is used to print the details of a selected car //////////////
   carDetails(carID){
 
@@ -200,7 +203,7 @@ setDate()
 
   }
 
-
+//////////////////////end call carDetails///////////////////////////
 
 
 

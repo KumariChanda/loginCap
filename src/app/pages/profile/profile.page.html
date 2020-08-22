@@ -1,13 +1,103 @@
 <ion-header>
-  <ion-toolbar>
+    <ion-toolbar>
 
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    <ion-title>profile</ion-title>
+        <ion-item >
+
+           <!-- menu icon -->
+          <ion-buttons  slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+
+          <!-- title -->
+          <ion-title >{{ 'DASHBOARD.profile' | translate }}</ion-title>
+        </ion-item>
+ 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+          <!-- profile Image -->
+         
+     <ion-card >
+        
+        <ion-card-header>
+          <ion-card-subtitle>
+             
+            <div >
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4" >
+                    <img   [src]="profile"  class="image-icon" >
+                  </ion-col>
+                   <ion-col size="8">
+                    <div>                
+                       <br>
+                       <!-- name      -->
+                        <ion-label style="size: 20vw;">&nbsp; <b> Toto Tata </b></ion-label>
+                        <br><br>
+                        <!-- address -->
+                        <ion-label style="size: 20vw;">&nbsp; <b> Rajguru Nagar Market  </b></ion-label>
+                        <!-- city -->
+                        <br>
+                        <ion-label style="size: 20vw;">&nbsp; <b> Ludhiana , India </b></ion-label>
+
+                    </div>                    
+                  </ion-col>
+                  </ion-row>
+                  </ion-grid>  
+                             
+              </div>
+
+          </ion-card-subtitle>
+          <!-- <ion-card-title  >  My informations :</ion-card-title> -->
+        </ion-card-header>
+        <ion-card-content>
+                  <!-- name      -->
+                <ion-label style="size: 20vw;">&nbsp; <b> First Name : </b></ion-label>
+                <br>   
+                <ion-input  type="text" [(ngModel)]="firstname"  placeholder="First name"></ion-input>
+                <br>
+                <ion-label style="size: 20vw;">&nbsp; <b> Last Name : </b></ion-label>
+                <br>
+                <ion-input  type="text"  [(ngModel)]="lastname"  placeholder="Last name"></ion-input>
+                <br>
+                <ion-label style="size: 20vw;">&nbsp; <b> Email Address : </b></ion-label>
+                <br>
+                <ion-input  type="text" [(ngModel)]="email"  placeholder="Email Address"></ion-input>
+                <br>
+                <ion-label style="size: 20vw;">&nbsp; <b> Téléphone : </b></ion-label>
+                <br>
+                <ion-input  type="number" [(ngModel)]="mobilenumber" placeholder="Mobile number"></ion-input>
+                <br>
+                <ion-label style="size: 20vw;">&nbsp; <b> Date de naissance: </b></ion-label>
+                <br>
+                <ion-input  type="date"  [(ngModel)]="dob"></ion-input>
+                <br>
+                <ion-label style="size: 20vw;">&nbsp; <b> Adresse : </b></ion-label>
+                <br>
+                <ion-input  type="text" [(ngModel)]="address"  placeholder="Address"></ion-input>
+                <br>
+                <ion-label style="size: 20vw;">&nbsp; <b> City : </b></ion-label>
+                <br>
+                <ion-input  type="text" [(ngModel)]="city"  placeholder="City"></ion-input>
+                <br>
+                <ion-label style="size: 20vw;">&nbsp; <b> Pays : </b></ion-label>
+                <br>
+                <ion-input  type="text" [(ngModel)]="country"  placeholder="Country"></ion-input>
+                 <br>
+                <div class="divloginbtn">
+                  <button [ngClass]="{'loginbtn_black':btnClicked == true,
+                  'loginbtn_yellow':btnClicked == false}" (click)="save" >Save Modification</button>
+                </div>
+              
+        </ion-card-content>
+      </ion-card>
+
+    <!-- </ion-item> -->
+
+
+
 
 </ion-content>

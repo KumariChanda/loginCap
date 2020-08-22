@@ -28,6 +28,14 @@
          <ion-input class="inputcomp" type="password" [(ngModel)]="passwordText" placeholder='{{"LOGIN.password"| translate}}'></ion-input>
        <!-- </ion-item> -->
        <br>
+          <!-- check if you are a driver -->
+          <ion-item>
+                    <ion-checkbox color="primary" [(ngModel)]="isDriver" slot="end"></ion-checkbox>
+                    <label  textWrap="true">{{"LOGIN.isDriver"| translate}}   </label>
+         </ion-item>
+       <br>
+
+
        <div class="divloginbtn">
          <button [ngClass]="{'loginbtn_black':btnClicked == false,
          'loginbtn_yellow':btnClicked == true}" (click)="loginFun()">{{"LOGIN.btn_login"| translate}}</button>
