@@ -27,7 +27,10 @@ export class ReservationPagePage implements OnInit {
 
 //my car : this var will receive the car with all its details
 car = {
-  'modele' : ''
+  'modele' : '',
+  'per_day' : '',
+  'per_hour' : '',
+  'airport' : ''
 }
 
 subscription: Subscription;
@@ -49,6 +52,9 @@ subscription: Subscription;
 
   ngOnInit() {
 
+        //present loading
+        this.webservice.presentLoading();
+
         this.subscription = this.route.queryParams.subscribe((data) => {
                 
               console.log("selected ->", typeof(data.id))
@@ -61,6 +67,19 @@ subscription: Subscription;
               this.webservice.getCarDetails(data.id).subscribe(res =>{
 
                   this.car = res;
+
+                // get the differents pice of the car
+                this.webservice.getPriceCar(data.id).subscribe( resp =>{
+
+                  this.car.per_day = resp[0].prix;
+                  this.car.per_hour = resp[1].prix;
+                  this.car.airport = resp[2].prix;
+
+                  //stop loading
+                 this.webservice.stopLoading();
+                }); //end get prices
+
+
                   console.log(res)
               })
         });

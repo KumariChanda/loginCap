@@ -4,7 +4,7 @@
           <ion-toolbar>
 
               <!-- menu == null -->
-            <div *ngIf="testingToken=='null'">
+            <div *ngIf="testingToken==null">
               <div >
                 <ion-grid>
                   <ion-row>
@@ -29,16 +29,16 @@
          
              <!-- menu != null -->
          
-          <div *ngIf="testingToken!='null'">
+          <div *ngIf="testingToken!=null">
             <div >
               <ion-grid>
                 <ion-row>
                   <ion-col size="4" >
-                    <img  tappable  menuClose  [src]="defaultProfile"  class="image-icon" (click)="openUserProfile(defaultProfile)">
+                    <img  tappable  menuClose  [src]="profile"  class="image-icon" (click)="openUserProfile(defaultProfile)">
                   </ion-col>
                    <ion-col size="8">
                     <div>                     
-                        <ion-label style="size: 20vw;">&nbsp;{{'MENU.welcome' | translate}} <b>Chanda</b></ion-label>
+                        <ion-label style="size: 20vw;">&nbsp; <b>{{userInf.first_name}} {{userInf.last_name}} </b></ion-label><br>
                         <ion-button fill="outline" slot="end" (click)="logout()" >{{'MENU.btn_logout' | translate}}</ion-button>
                       
                     </div>                    
@@ -57,7 +57,7 @@
 
            <!-- Menu if user is not logged in yet -->
 
-          <div *ngIf="testingToken=='null' ">
+          <div *ngIf="testingToken==null ">
           
           <div  style=" background: black " *ngFor="let pages of menuNavigatorWithoutLogin">
               
@@ -97,7 +97,7 @@
 
         </div>
   
-          <div *ngIf="testingToken!='null'">
+          <div *ngIf="testingToken!=null">
             
              
           <div *ngFor="let pages of menuNavigatorLogin">

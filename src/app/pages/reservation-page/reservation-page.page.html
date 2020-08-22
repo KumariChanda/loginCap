@@ -49,7 +49,11 @@
 
                 <ion-item>
                     <ion-label > {{"RESERVECAR.price"| translate}}</ion-label>
-                    <ion-chip slot="end"> 65000 F Cfa </ion-chip>
+                   
+                    <ion-chip slot="end"  *ngIf="rent_type =='day'"> {{car.per_day}} F CFA </ion-chip>
+                    <ion-chip slot="end"  *ngIf="rent_type =='hour'"> {{car.per_hour}} F CFA</ion-chip>
+                    <ion-chip slot="end"  *ngIf="rent_type =='airport'"> {{car.airport}} F CFA </ion-chip>
+
                 </ion-item>
                 <!-- start date -->
                 <ion-item  >

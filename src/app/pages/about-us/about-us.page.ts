@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 @Component({
@@ -8,18 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsPage implements OnInit {
 
-  constructor() { }
+  constructor(private iab : InAppBrowser) { }
 
   ngOnInit() {
   }
 
  ///////////////////////////////////////
-//   openFacebook()
-//   {
-//     console.log("facebook")
-//     this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
-//     //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_system')
-//   }
+  openFacebook()
+  {
+    console.log("facebook")
+    this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+    //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_system')
+  }
 //  ///////////////////////////////////////
 //   openTwitter()
 //   {

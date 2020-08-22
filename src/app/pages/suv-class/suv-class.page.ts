@@ -34,7 +34,7 @@ filterData = [
 
 
      //get suv class cars list
-
+    this.webService.presentLoading();//to start loader
      this.webService.getCarClass(2).subscribe(async res=>{
 
         
@@ -75,7 +75,7 @@ filterData = [
               }
               );
             }
-          
+         this.webService.stopLoading();//stop loader 
       }
     });
 

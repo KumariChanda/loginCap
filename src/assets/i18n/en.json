@@ -20,7 +20,8 @@
         "color" : "Color : ",
         "business_class" : "BUSINESS CLASS",
         "family_class" : "FAMILY CLASS",
-        "suv_class" : "SUV CLASS"
+        "profile" : "PROFILE SETTINGS"
+        
     },
 
     "LANGUAGE" : {
@@ -84,7 +85,8 @@
         "no_account" : "Don't have an account?",
         "signup" : "Signup Here",
         "forgot_password" : "Forgot Password?",  
-        "back_to_home" : "Back to Home"  
+        "back_to_home" : "Back to Home",
+        "isDriver" : "Log in as a driver"  
     }
 
 

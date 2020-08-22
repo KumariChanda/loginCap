@@ -79,9 +79,10 @@ export class AppServiceService {
 
               console.log("initialize App Language");
 
-              let language = this.translate.getBrowserLang();
+              let language = "fr";
+              //let language = this.translate.get;
               //console.log("my language :: ",language)
-              this.translate.setDefaultLang(language);
+              //this.translate.setDefaultLang(language);
               //store the initial language in the storage
               // this.storage.get(LNG_KEY).then(val => {
               //   console.log("get initial Val", val)
@@ -95,7 +96,7 @@ export class AppServiceService {
                 var val = (await ret).value;
                 console.log("data from storage ",val,typeof(val));
 
-                if(val != 'null')
+                if(val != null)
                 {
                   this.selected=(await ret).value;
                   this.setLanguage(this.selected);
@@ -103,9 +104,11 @@ export class AppServiceService {
                 
                 }else{
                   this.selected = language;
+                  
                 }
+                this.setLanguage(this.selected);
                 //console.log("storage ",this.selected,typeof(this.selected));
-
+                  //  alert(this.selected)
                 return this.selected
               // console.log("selected language :: ",this.selected)
 
@@ -215,6 +218,8 @@ export class AppServiceService {
 ///////////////////////////////// END : SIGNUP SERVICE API////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////// START : GET DESTINATION ///////////////////////////////////////////////////////////////////////////////
 
@@ -288,6 +293,48 @@ export class AppServiceService {
 
         }
 
+
+
+
+///////////////////////////////////// END : GET CARS PER CLASS////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////STRAT : GET USER ////////////////////////////////////////////////////////////////////////
+
+      getUserDetails(token,id,type): Observable<any> {
+
+          console.log("is Driver : ", type);
+          var myToken = 'Token '+token
+
+
+          const httpOptions = {
+            headers: new HttpHeaders
+                            ({
+                              'Content-Type' : 'application/json',
+                              'Authorization': myToken
+          
+                            })
+          
+          }
+
+          if(!type) //client
+          {
+            return this.http.get(base_url+"clients/"+id, httpOptions).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+            );
+          }
+          else // driver
+          {
+            return this.http.get(base_url+"chauffeurs/"+id, httpOptions).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+            );
+          }
+      }
 
 
 

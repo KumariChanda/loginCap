@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-import { ServiceChangeLangService } from 'src/app/service/changeLanguage/service-change-lang.service';
+import { Router } from '@angular/router';
+import { AppServiceService } from 'src/app/service/appService/app-service.service';
 
 
 const { Storage } = Plugins;
@@ -19,7 +20,7 @@ export class SeetingsPage implements OnInit {
   selectedLanguage:any ;
 
 
-  constructor( private languageService : ServiceChangeLangService) {
+  constructor(private router : Router ,private webService : AppServiceService) {
     
         this.getcurrentlang();
    }
@@ -41,10 +42,15 @@ export class SeetingsPage implements OnInit {
 
   //////////////////////
 languageChanged(){
-  this.languageService.setLanguage(this.selectedLanguage);
+  this.webService.setLanguage(this.selectedLanguage);
+
+  //  Storage.set({key:LNG_KEY, value:this.selectedLanguage}); 
 
    //send the language for menu updation
-  this.languageService.sendMessage({'language': this.selectedLanguage});
+  this.webService.sendMessage({'language': this.selectedLanguage});
+
+ // this.router.navigateByUrl("/dashboard");
+
 
 }
 

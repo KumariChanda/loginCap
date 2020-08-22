@@ -40,7 +40,7 @@ filterData = [
   ngOnInit() {
 
     //get family class cars list
-
+    this.webService.presentLoading();//to start loader
     this.webService.getCarClass(1).subscribe(async res=>{
 
         
@@ -79,9 +79,10 @@ filterData = [
                 this.filterData[i].airport = resp[2].prix;
 
               }
+              
               );
             }
-          
+          this.webService.stopLoading();//to stop loading
       }
     });
 

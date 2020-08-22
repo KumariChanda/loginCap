@@ -20,7 +20,9 @@
         "color" : "Couleur : ",
         "business_class" : "CLASSE BUSINESS",
         "family_class" : "CLASSE FAMILLE ",
-        "suv_class" : "CLASSE SUV"
+        "suv_class" : "CLASSE SUV",
+        "profile" : "REGLAGES PROFILE"
+
 
     },
 
@@ -86,7 +88,9 @@
         "no_account" : "Vous n'avez pas de compte?",
         "signup" : "Inscrivez-vous ici",
         "forgot_password" : "Mot de passe oublié?",
-        "back_to_home" : "Retour à l'accueil"  
+        "back_to_home" : "Retour à l'accueil" ,
+        "isDriver" : "Se connecter en tant que chauffeur"  
+ 
 
     }
 
