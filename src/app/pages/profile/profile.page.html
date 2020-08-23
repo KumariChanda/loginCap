@@ -16,20 +16,13 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>
-        </ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-
-        </ion-card-content>
-  </ion-card> -->
-
+ 
 
           <!-- profile Image -->
          
-     <ion-card ngIf="editableText==true">
+
+     <ion-card>
+
         
         <ion-card-header>
           <ion-card-subtitle>
@@ -44,13 +37,13 @@
                     <div>                
                        <br>
                        <!-- name      -->
-                        <ion-label style="size: 20vw;">&nbsp; <b> Toto Tata </b></ion-label>
+                        <ion-label style="size: 20vw;">&nbsp; <b> {{profileData.firstname}}  {{profileData.lastname}} </b></ion-label>
                         <br><br>
                         <!-- address -->
-                        <ion-label style="size: 20vw;">&nbsp; <b> Rajguru Nagar Market  </b></ion-label>
+                        <ion-label style="size: 20vw;">&nbsp; <b>{{profileData.address}}  </b></ion-label>
                         <!-- city -->
                         <br>
-                        <ion-label style="size: 20vw;">&nbsp; <b> Ludhiana , India </b></ion-label>
+                        <ion-label style="size: 20vw;">&nbsp; <b> {{profileData.city}} , {{profileData.country}} </b></ion-label>
 
                     </div>                    
                   </ion-col>
@@ -64,45 +57,46 @@
         </ion-card-header>
         <ion-card-content>
                   <!-- name      -->
-                <ion-label style="size: 20vw;">&nbsp; <b> First Name : </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b>{{"PROFILE.first_name"| translate}} : </b></ion-label>
                 <br>   
-                <ion-input  type="text" [(ngModel)]="firstname"  placeholder="First name"></ion-input>
+                <ion-input  type="text" [(ngModel)]="profileData.firstname"  placeholder="First name" [disabled]="editableText"></ion-input>
                 <br>
-                <ion-label style="size: 20vw;">&nbsp; <b> Last Name : </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b> {{"PROFILE.last_name"| translate}} : </b></ion-label>
                 <br>
-                <ion-input  type="text"  [(ngModel)]="lastname"  placeholder="Last name"></ion-input>
+                <ion-input  type="text"  [(ngModel)]="profileData.lastname"  placeholder="Last name" [disabled]="editableText"></ion-input>
                 <br>
-                <ion-label style="size: 20vw;">&nbsp; <b> Email Address : </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b> {{"PROFILE.email_address"| translate}} : </b></ion-label>
                 <br>
-                <ion-input  type="text" [(ngModel)]="email"  placeholder="Email Address"></ion-input>
+                <ion-input  type="text" [(ngModel)]="profileData.email"  placeholder="Email Address" [disabled]="editableText"></ion-input>
                 <br>
-                <ion-label style="size: 20vw;">&nbsp; <b> Téléphone : </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b> {{"PROFILE.mobile"| translate}} : </b></ion-label>
                 <br>
-                <ion-input  type="number" [(ngModel)]="mobilenumber" placeholder="Mobile number"></ion-input>
+                <ion-input  type="number" [(ngModel)]="profileData.mobilenumber" placeholder="Mobile number" [disabled]="editableText"></ion-input>
                 <br>
-                <ion-label style="size: 20vw;">&nbsp; <b> Date de naissance: </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b> {{"PROFILE.dob"| translate}} : </b></ion-label>
                 <br>
-                <ion-input  type="date"  [(ngModel)]="dob"></ion-input>
+                <ion-input  type="date"  [(ngModel)]="profileData.dob" [disabled]="editableText"></ion-input>
                 <br>
-                <ion-label style="size: 20vw;">&nbsp; <b> Address : </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b> {{"PROFILE.address"| translate}} : </b></ion-label>
                 <br>
-                <ion-input  type="text" [(ngModel)]="address"  placeholder="Address"></ion-input>
+                <ion-input  type="text" [(ngModel)]="profileData.address"  placeholder="Address" [disabled]="editableText"></ion-input>
                 <br>
-                <ion-label style="size: 20vw;">&nbsp; <b> City : </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b> {{"PROFILE.city"| translate}} : </b></ion-label>
                 <br>
-                <ion-input  type="text" [(ngModel)]="city"  placeholder="City"></ion-input>
+                <ion-input  type="text" [(ngModel)]="profileData.city"  placeholder="City" [disabled]="editableText"></ion-input>
                 <br>
-                <ion-label style="size: 20vw;">&nbsp; <b> Pays : </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b> {{"PROFILE.country"| translate}} : </b></ion-label>
                 <br>
-                <ion-input  type="text" [(ngModel)]="country"  placeholder="Country"></ion-input>
+                <ion-input  type="text" [(ngModel)]="profileData.country"  placeholder="Country" [disabled]="editableText"></ion-input>
                  <br>
                 <div class="divloginbtn">
 
-                  <button [ngClass]="{'loginbtn_black':btnClicked == false,
-                   'loginbtn_yellow':btnClicked == true}" (click)="editProfile()">Edit Profile</button>
-                  <!-- <button [ngClass]="{'loginbtn_black':btnClicked == false,
-                  'loginbtn_yellow':btnClicked == true}" (click)="editProfile()" >Edit Profile </button> -->
-                </div>
+                  <button [ngClass]="{'loginbtn_black':btnClicked == true,
+                   'loginbtn_yellow':btnClicked == false}" (click)="editProfile()" *ngIf="editableText==true && userType=='client'"> {{"PROFILE.edit_profile"| translate}}</button>
+                 <button [ngClass]="{'loginbtn_black':btnClicked == true,
+                   'loginbtn_yellow':btnClicked == false}" (click)="saveProfile()" *ngIf="editableText==false && userType=='client'"> {{ 'DASHBOARD.save' | translate }}</button>
+                 
+                  </div>
               
         </ion-card-content>
       </ion-card>

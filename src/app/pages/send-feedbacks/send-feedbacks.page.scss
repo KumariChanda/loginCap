@@ -1,0 +1,74 @@
+ion-card,ion-toolbar,ion-segment
+{
+    --background: black; 
+}
+
+
+
+ion-item,ion-menu-button
+{
+    --background: black; 
+    color:  #ffa60a;
+}
+
+ion-chip,ion-button
+{
+    color: black; 
+    --background: #ffa60a;
+    border-color: black;
+}
+
+ion-segment-button,ion-card-title 
+{
+    color : #ffa60a;
+}
+
+ion-label
+{
+    color : #ffa60a;
+}
+.image-icon {
+
+    height: 90px;
+    width: 200px;
+    border-radius: 50px;
+  }
+ion-input
+{
+    border-radius: 30px;
+    color: black;
+    background-color: white;
+    // margin: 5vw 35vw;
+}
+.divloginbtn{
+    text-align: center;
+  }
+  .loginbtn_black
+  {
+      background-color: black;
+    //   border: medium none;
+      color: #ffa60a;
+      //font-size: 16px;
+      font-weight: 800;
+      //line-height: 30px;
+    //   margin: auto;
+    //   padding: 3vw 3vw;;
+    //   transition: all 0.3s linear 0s;
+    //   border-radius: 20px;
+    //   box-shadow: 0 2px 0 #d39e1a, 0 3px 0px #e4e4e4;
+    }
+    
+    .loginbtn_yellow
+  {
+      background-color: #ffa60a;
+    //   border: medium none;
+      color: black;
+      //font-size: 16px;
+      font-weight: 800;
+      //line-height: 30px;
+    //   margin: auto;
+    //   padding: 3vw 3vw;;
+    //   transition: all 0.3s linear 0s;
+    //   border-radius: 20px;
+    //   box-shadow: 0 2px 0 #d39e1a, 0 3px 0px #e4e4e4;
+    }
