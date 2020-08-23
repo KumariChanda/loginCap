@@ -5,10 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { Router } from '@angular/router';
-import { ServiceChangeLangService } from './service/changeLanguage/service-change-lang.service';
 //import {Storage} from '@ionic/storage'
 import { Subscription } from 'rxjs';
-import { SingletonService } from './service/singleton.service';
 import { AppServiceService } from './service/appService/app-service.service';
 
 const { Storage } = Plugins;
@@ -75,6 +73,13 @@ export class AppComponent {
         // this.menuCtrl.enable(true, 'first');
         // this.menuCtrl.open('first');
       // }
+     ////////////////splashcreen delay//////////////////////
+        this.platform.ready().then(() => {
+          setTimeout(() => {
+            this.splashScreen.hide();
+          }, 1000);
+        })
+     /////////////////////////////////////
        
       //token storage
       var ret=Storage.get({ key: 'accessToken' });
@@ -177,6 +182,10 @@ export class AppComponent {
 
 
 
+
+
+
+
  /////////////////////////////////////////////////////////////////////////////////////////////////////////
  ///////////////////////////////////START : SIDE MENU//////////////////////////////////////////////////////////////////////
  
@@ -201,9 +210,11 @@ export class AppComponent {
               {
                 /////////////////////////////////////////////////////////
                 //////////////////check the status of the user///////////////////////////////////////
-                
-                  var type = (await Storage.get({ key: "user_type" })).value;
-                  this.userInf = (await Storage.get({ key: "user_infos" })).value;
+                //getting user details
+                this.userInf =JSON.parse( (await Storage.get({ key: "user_infos" })).value); 
+                //getting user type
+                var type = (await Storage.get({ key: "user_type" })).value;
+                //console.log("Type : ",type, "\n user infos : \n",this.userInf);
 
                 
                 /////////if type is client /////////////////////////////
@@ -377,11 +388,7 @@ export class AppComponent {
                         url   : "/seetings",
                         icon  : "information-circle-outline"
                       },   
-                      {
-                        title : "Send feedback",
-                        url   : "/send-feedbacks",
-                        icon  : "send-outline"
-                      },       
+                     ,       
                     ]
                   },
 
@@ -397,9 +404,11 @@ export class AppComponent {
                 {
                    /////////////////////////////////////////////////////////
                   //////////////////check the status of the user///////////////////////////////////////
-                  this.userInf =JSON. parse( (await Storage.get({ key: "user_infos" })).value); 
+                  //getting user details
+                  this.userInf =JSON.parse( (await Storage.get({ key: "user_infos" })).value); 
+                  //getting user type
                   var type = (await Storage.get({ key: "user_type" })).value;
-                 // console.log("Type : ",type, "\n user infos : \n",this.userInf);
+                  // console.log("Type : ",type, "\n user infos : \n",this.userInf);
                 
                   /////////if type is client /////////////////////////////
                      if(type == "client")
@@ -561,11 +570,7 @@ export class AppComponent {
                           url   : "/our-contacts",
                           icon  : "call-outline"
                         },
-                        {
-                          title : "Envoyez Remarques",
-                          url   : "/send-feedbacks",
-                          icon  : "send-outline"
-                        },
+                        
                         
                       ]
                     },
@@ -580,11 +585,7 @@ export class AppComponent {
                           icon  : "information-circle-outline"
                         },
                         
-                        {
-                          title : "envoyez Remarques",
-                          url   : "/send-feedbacks",
-                          icon  : "send-outline"
-                        },  
+                        
                         
                       ]
                     },

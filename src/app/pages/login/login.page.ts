@@ -94,6 +94,8 @@ export class LoginPage  {
                         this.router.navigateByUrl("/dashboard");
                       }
                       ///stop loading
+                      this.webService.stopLoading();   
+
 
                 });//end get app language
                 ////////////////////////////////////////////////
@@ -106,7 +108,7 @@ export class LoginPage  {
                            
           },error =>{
                         this.webService.stopLoading();   
-                        alert("server error, please check your inputs") ;            
+                        alert("server error, please check your inputs ") ;            
 
           }
 

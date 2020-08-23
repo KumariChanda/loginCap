@@ -13,7 +13,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {IonicStorageModule} from '@ionic/storage'
-import { ServiceChangeLangService } from './service/changeLanguage/service-change-lang.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
@@ -45,7 +44,6 @@ export function LanguageLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    ServiceChangeLangService,
     { 
       provide: RouteReuseStrategy, 
       useClass: IonicRouteStrategy
