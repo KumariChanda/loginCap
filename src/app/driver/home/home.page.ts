@@ -194,9 +194,9 @@ public  maxdate : any;   // the maximum date of a date picker
   logOut()
   {
     //call dashboard page and pass data 
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/dashboard");
 
-    // empty rhe token
+    // empty the token
      Storage.set({
       key: 'accessToken',
       value: null     

@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>confidentiality</ion-title>
+     <ion-item>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Confidentiality  </ion-title>
+    </ion-item> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+     <!-- -------------------------------------------------------------------------------------- -->
+        <!-- Start contact -->
+       <ion-card *ngFor="let conf of myconf; " >
+          
+            <ion-card-content>
+                          
+               
+                    {{conf.text}}
+          
+            </ion-card-content>
+      </ion-card>
+        <!-- Stop Contact -->
+    <!-- -------------------------------------------------------------------------------------- -->
+
 
 </ion-content>

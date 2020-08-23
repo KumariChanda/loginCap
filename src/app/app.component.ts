@@ -287,6 +287,17 @@ export class AppComponent {
                             icon  : "call-outline"
                           },
                           {
+                            title : "Term of usage",
+                            url   : "/term-usage",
+                            icon  : "information-circle-outline"
+                          },
+                          
+                          {
+                            title : "Confidentiality principles",
+                            url   : "/confidentiality",
+                            icon  : "call-outline"
+                          },
+                          {
                             title : "Send feedback",
                             url   : "/send-feedbacks",
                             icon  : "send-outline"
@@ -310,6 +321,7 @@ export class AppComponent {
                             url   : "/change-password",
                             icon  : "lock-closed-outline"
                           },
+
                           
                         ]
                       },
@@ -375,20 +387,30 @@ export class AppComponent {
                         title : "Our Contacts",
                         url   : "/our-contacts",
                         icon  : "call-outline"
-                      },          
+                      }, 
+                      {
+                        title : "Term of usage",
+                        url   : "/term-usage",
+                        icon  : "information-circle-outline"
+                      },
+                      
+                      {
+                        title : "Confidentiality principles",
+                        url   : "/confidentiality",
+                        icon  : "call-outline"
+                      },         
                     ]
                   },
                   {
                     title : "Settings",
                     icon  : "settings",
                     children :[
-
                       {
                         title : "App Language",
                         url   : "/seetings",
                         icon  : "information-circle-outline"
                       },   
-                     ,       
+                            
                     ]
                   },
 
@@ -480,6 +502,17 @@ export class AppComponent {
                               icon  : "call-outline"
                             },
                             {
+                              title : "Conditions d'utilisation",
+                              url   : "/term-usage",
+                              icon  : "information-circle-outline"
+                            },
+                            
+                            {
+                              title : "Principes de confidentialités",
+                              url   : "/confidentiality",
+                              icon  : "call-outline"
+                            },
+                            {
                               title : "Envoyez Remarques",
                               url   : "/send-feedbacks",
                               icon  : "send-outline"
@@ -555,7 +588,7 @@ export class AppComponent {
                       ]
                     },
                     {
-                      title : "Contactez-Nous",
+                      title : "À propos",
                       icon  : "call",
                       children :[
               
@@ -570,6 +603,17 @@ export class AppComponent {
                           url   : "/our-contacts",
                           icon  : "call-outline"
                         },
+                        {
+                          title : "Conditions d'utilisation",
+                          url   : "/term-usage",
+                          icon  : "information-circle-outline"
+                        },
+                        
+                        {
+                          title : "Principes de confidentialités",
+                          url   : "/confidentiality",
+                          icon  : "call-outline"
+                        }
                         
                         
                       ]
