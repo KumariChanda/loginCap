@@ -7,20 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  profile='../assets/imgs/profile.png';
+  profile='../assets/imgs/dummyProfile.jpg';
 
   btnClicked:boolean=false;
+  editableText:boolean=false;
 
-
-   firstname ="";
-   lastname ="";
-   mobilenumber ="";
-   email ="";
-   password : string ;
-   confirmpassword : string;
-   dob = "";
-   address ="";
+   firstname ="Chanda";
+   lastname ="Kumari";
+   mobilenumber ="8559080443";
+   email ="kumarichanda658@gmail.com";
+   password : "1234";
+   confirmpassword : "1234";
+   dob = "26-06-1996";
+   address ="A-658";
+   city="New Delhi";
+   country="India";
    agreement : boolean;
+
+ 
 
 
 
@@ -33,12 +37,15 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
   }
 
-  save()
+  async editProfile()
   {
-      this.btnClicked=false;
-      setTimeout( ()=>{
-        this.btnClicked=true;
-        }, 1000)
+      this.btnClicked=true;
+      console.log("btnClicked : ",this.btnClicked);
+      // this.editableText=false;
+      // setTimeout( ()=>{
+      //   this.btnClicked=false;
+      //   // this.editableText=true;
+      //   }, 1000)
   }
 
 }

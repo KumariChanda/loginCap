@@ -75,7 +75,7 @@
                 <br>
                 <ion-input  type="date"  [(ngModel)]="dob"></ion-input>
                 <br>
-                <ion-label style="size: 20vw;">&nbsp; <b> Adresse : </b></ion-label>
+                <ion-label style="size: 20vw;">&nbsp; <b> Address : </b></ion-label>
                 <br>
                 <ion-input  type="text" [(ngModel)]="address"  placeholder="Address"></ion-input>
                 <br>
@@ -88,8 +88,11 @@
                 <ion-input  type="text" [(ngModel)]="country"  placeholder="Country"></ion-input>
                  <br>
                 <div class="divloginbtn">
-                  <button [ngClass]="{'loginbtn_black':btnClicked == true,
-                  'loginbtn_yellow':btnClicked == false}" (click)="save" >Save Modification</button>
+
+                  <button [ngClass]="{'loginbtn_black':btnClicked == false,
+                   'loginbtn_yellow':btnClicked == true}" (click)="editProfile()">Edit Profile</button>
+                  <!-- <button [ngClass]="{'loginbtn_black':btnClicked == false,
+                  'loginbtn_yellow':btnClicked == true}" (click)="editProfile()" >Edit Profile </button> -->
                 </div>
               
         </ion-card-content>
