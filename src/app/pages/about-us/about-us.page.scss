@@ -11,26 +11,24 @@ ion-item, ion-fab-button
     color:  #ffa60a;
 }
 
-ion-button
-{
-  color: black; 
-  --background:  #ffa60a;
-
-}
-
-ion-chip
+ion-chip,ion-button
 {
     color: black; 
-    --background: white;
+    --background: #ffa60a;
     border-color: black;
 }
 
-ion-label,ion-icon
+ion-icon
 {
-    color : #ffa60a;
+    color : black;
 }
 
-ion-card-title
+ion-label
 {
     color : white;
+}
+img
+{
+  width: 100vw;  
+  height: 60vh;
 }
