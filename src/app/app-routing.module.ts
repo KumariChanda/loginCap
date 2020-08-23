@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -83,7 +83,16 @@ const routes: Routes = [
   {
     path: 'suv-class',
     loadChildren: () => import('./pages/suv-class/suv-class.module').then( m => m.SuvClassPageModule)
+  },
+  {
+    path: 'term-usage',
+    loadChildren: () => import('./pages/term-usage/term-usage.module').then( m => m.TermUsagePageModule)
+  },  {
+    path: 'confidentiality',
+    loadChildren: () => import('./pages/confidentiality/confidentiality.module').then( m => m.ConfidentialityPageModule)
   }
+
+
 
 
 

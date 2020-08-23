@@ -28,7 +28,6 @@
               </div>
          
              <!-- menu != null -->
-         
           <div *ngIf="testingToken!=null">
             <div >
               <ion-grid>
@@ -38,14 +37,12 @@
                   </ion-col>
                    <ion-col size="8">
                     <div>                     
-                        <ion-label style="size: 20vw;">&nbsp; <b>{{userInf.first_name}} {{userInf.last_name}} </b></ion-label><br>
+                        <ion-label style="size: 20vw;">&nbsp; <b>{{userInf?.first_name}} {{userInf?.last_name}} </b></ion-label><br>
                         <ion-button fill="outline" slot="end" (click)="logout()" >{{'MENU.btn_logout' | translate}}</ion-button>
-                      
                     </div>                    
                   </ion-col>
                   </ion-row>
-                  </ion-grid>  
-                             
+                  </ion-grid>             
               </div>
             </div>
          
