@@ -41,7 +41,7 @@ export class ProfilePage implements OnInit {
   {
       this.btnClicked=true;
       console.log("btnClicked : ",this.btnClicked);
-      // this.editableText=false;
+      this.editableText=true;
       // setTimeout( ()=>{
       //   this.btnClicked=false;
       //   // this.editableText=true;
