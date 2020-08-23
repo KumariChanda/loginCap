@@ -266,7 +266,7 @@ export class AppComponent {
                         icon  : "cart"
                       },
                       {
-                        title : "My Messages",
+                        title : "My Testiminials",
                         url   : "/my-messages",
                         icon  : "mail"
                       },
@@ -481,7 +481,7 @@ export class AppComponent {
                           icon  : "cart"
                         },
                         {
-                          title : "Mes Messages",
+                          title : "Mes témoignages",
                           url   : "/my-messages",
                           icon  : "mail"
                         },

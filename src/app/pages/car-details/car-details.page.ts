@@ -35,10 +35,21 @@ export class CarDetailsPage implements OnInit {
  
 //my car : this var will receive the car with all its details
 car = {
-    'modele' : '',
+    'modele' : {
+      'libelle':''
+    },
     'per_day' : '',
     'per_hour' : '',
-    'airport' : ''
+    'airport' : '',
+    'photo':{},
+    'type_caburant':'',
+    'couleur':'',
+    'passager':'',
+    'bagage':'',
+    'immatriculation':'',
+    'description':'',
+    'accessoire':{},
+    'id':''
 }
 
 

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SendFeedbacksPageRoutingModule } from './send-feedbacks-routing.module';
 
 import { SendFeedbacksPage } from './send-feedbacks.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SendFeedbacksPageRoutingModule
+    SendFeedbacksPageRoutingModule,
+    TranslateModule
   ],
   declarations: [SendFeedbacksPage]
 })

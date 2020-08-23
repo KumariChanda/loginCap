@@ -90,6 +90,10 @@ const routes: Routes = [
   },  {
     path: 'confidentiality',
     loadChildren: () => import('./pages/confidentiality/confidentiality.module').then( m => m.ConfidentialityPageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./src/app/pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
   }
 
 

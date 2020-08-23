@@ -20,7 +20,11 @@
         "color" : "Color : ",
         "business_class" : "BUSINESS CLASS",
         "family_class" : "FAMILY CLASS",
-        "profile" : "PROFILE SETTINGS"
+        "profile" : "PROFILE SETTINGS",
+        "send_feedback":"POST TESTIMONIAL",
+        "post_a_testimonial":"POST A TESTIMONIAL",
+        "testimonial":"Testimonial",
+        "save":"SAVE"
         
     },
 
@@ -87,7 +91,20 @@
         "forgot_password" : "Forgot Password?",  
         "back_to_home" : "Back to Home",
         "isDriver" : "Log in as a driver"  
+    },
+    "PROFILE":{
+        "first_name":"First Name",
+        "last_name":"Last Name",
+        "email_address":"Email",
+        "mobile":"Mobile",
+        "dob":"Date of Birth",
+        "address":"Address",
+        "city":"City",
+        "country":"Country",
+        "edit_profile":"Edit Profile"
+
     }
+    
 
 
 

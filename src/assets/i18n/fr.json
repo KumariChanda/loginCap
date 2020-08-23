@@ -21,7 +21,11 @@
         "business_class" : "CLASSE BUSINESS",
         "family_class" : "CLASSE FAMILLE ",
         "suv_class" : "CLASSE SUV",
-        "profile" : "REGLAGES PROFILE"
+        "profile" : "REGLAGES PROFILE",
+        "send_feedback":"POST TESTIMONIAL",
+        "post_a_testimonial":"POSTER UN TÉMOIGNAGE",
+        "testimonial":"Témoignage",
+        "save":"SAVE"
 
 
     },
@@ -92,7 +96,21 @@
         "isDriver" : "Se connecter en tant que chauffeur"  
  
 
+    },
+    "PROFILE":{
+        "first_name":"Prénom",
+        "last_name":"Nom de famille",
+        "email_address":"Email",
+        "mobile":"Mobile",
+        "dob":"Date de naissance",
+        "address":"Adresse",
+        "city":"Ville",
+        "country":"Pays",
+        "edit_profile":"Editer le profil"
+        
+
     }
+
 
 
 }
