@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  },
   {
     path: 'home',
     loadChildren: () => import('./driver/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
   },
   {
     path: 'dashboard',
@@ -87,7 +88,8 @@ const routes: Routes = [
   {
     path: 'term-usage',
     loadChildren: () => import('./pages/term-usage/term-usage.module').then( m => m.TermUsagePageModule)
-  },  {
+  },
+  {
     path: 'confidentiality',
     loadChildren: () => import('./pages/confidentiality/confidentiality.module').then( m => m.ConfidentialityPageModule)
   },

@@ -20,11 +20,14 @@
         "color" : "Color : ",
         "business_class" : "BUSINESS CLASS",
         "family_class" : "FAMILY CLASS",
-        "profile" : "PROFILE SETTINGS",
+        "profile" : "MY PROFILE",
+        "edit_profile" : "EDIT PROFILE",
         "send_feedback":"POST TESTIMONIAL",
         "post_a_testimonial":"POST A TESTIMONIAL",
         "testimonial":"Testimonial",
-        "save":"SAVE"
+        "post_testimonial":"Send testimonial",
+        "edit_profile_title" : "EDIT PROFILE",
+        "save_profile":"Save Changes"
         
     },
 

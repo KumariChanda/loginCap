@@ -1,13 +1,69 @@
 <ion-header>
   <ion-toolbar>
 
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    <ion-title>my-bookings</ion-title>
+       <ion-item>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> My Bookings  </ion-title>
+    </ion-item> 
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+          <!-- -------------------------------------------------------------------------------------- -->
+        <!-- Start contact -->
+       <ion-card *ngFor="let item of filterData " >
+          
+          
+        <img [src]="item.picture" />
+
+            <ion-card-header>
+                    <ion-card-title >{{item.title}}</ion-card-title>
+
+              <ion-card-subtitle>
+
+                  
+               <!-- Status -->
+                <ion-item>
+                    <ion-label > Status : </ion-label>
+                    <ion-chip slot="end" *ngIf="item.status == 0" style="color:red"> Cancelled </ion-chip>
+                    <ion-chip slot="end" *ngIf="item.status == 1" style="color:orange"> Not yet confirmed </ion-chip>
+                    <ion-chip slot="end" *ngIf="item.status == 2" style="color:blue"> confirmed </ion-chip>
+                    <ion-chip slot="end" *ngIf="item.status == 3" style="color:violet"> Trip started </ion-chip>
+                    <ion-chip slot="end" *ngIf="item.status == 4" style="color:green"> Trip Completed </ion-chip>
+                </ion-item>
+                <!-- Starting date -->
+                <ion-item>
+                    <ion-label > Start Date : </ion-label>
+                    <ion-chip slot="end"> 12 Aug 2020 </ion-chip>
+                </ion-item>
+                  <!-- Destination -->
+            
+               <ion-item>
+                    <ion-label > Destination : </ion-label>
+                    <ion-chip slot="end"> Daoukro </ion-chip>
+                </ion-item>
+
+                
+
+              </ion-card-subtitle>
+            </ion-card-header>
+
+
+            <ion-card-content>
+                                        
+                   <!-- button View details-->
+                  <ion-button  style="margin-left:30%"  >
+                      <ion-label >View details</ion-label>
+                  </ion-button>
+          
+            </ion-card-content>
+      </ion-card>
+        <!-- Stop Contact -->
+    <!-- -------------------------------------------------------------------------------------- -->
+
 
 </ion-content>

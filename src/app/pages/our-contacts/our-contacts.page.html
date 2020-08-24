@@ -17,27 +17,62 @@
        <ion-card *ngFor="let contact of mycontact; " >
           
             <ion-card-content>
-                            
-                
-                <!-- Telephone-->
-                   <strong> <ion-label  > Phone Number : </ion-label></strong> <br>
-                    <ion-chip slot="end"> {{contact.telephone}} </ion-chip> <br><br>
-               <!-- Whatsapp -->
-                   <strong> <ion-label > Whatsapp : </ion-label> </strong> <br>
-                    <ion-chip slot="end"> {{contact.whatsapp}}</ion-chip><br><br>
-                <!-- Email -->
+
+
+
+               <div >
+              <ion-grid >
+                 <!--  Address -->
+                  <ion-row>
+                  
+                    <ion-col size="2" style="font:30vw" >
+
+                        <ion-icon name="pin-outline"></ion-icon>
+          
+                    </ion-col>
+
+                    <ion-col size="8">
+                      <b>  {{contact.adresse}}  </b> 
+                    </ion-col>
+
+                  </ion-row> 
               
-                    <strong> <ion-label > Email : </ion-label> </strong> <br>
-                    <ion-chip slot="end"> {{contact.email}} </ion-chip><br><br>
-                
+
+              </ion-grid>  
+                             
+              </div>
+
                 <!-- Postal Address -->
-                    <strong> <ion-label > Address : </ion-label> </strong> <br>
-                    <ion-chip slot="end"> {{contact.adresse_postal}} </ion-chip><br>
-                <!--  Address -->
-                     {{contact.adresse}} 
-                    <!-- <ion-label > {{contact.adresse}} </ion-label> -->
-                    <!-- <ion-chip slot="end"> {{contact.adresse}} </ion-chip> -->
+
+                    <ion-item>
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> {{contact.adresse_postal}}</b></ion-label>
+                    </ion-item>
+
+
+                <!-- Telephone-->
+                  <ion-item>
+                      <ion-icon name="call-outline"></ion-icon>
+                      <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> {{contact.telephone}}  </b></ion-label>
+                  </ion-item> 
                 
+               <!-- Whatsapp -->
+                    <ion-item>
+                        <ion-icon name="logo-whatsapp"></ion-icon>
+                        <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> {{contact.whatsapp}}</b></ion-label>
+                    </ion-item>
+
+                <!-- Email -->
+
+                   <ion-item>
+                        <ion-icon name="at-outline"></ion-icon>
+                        <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> {{contact.email}}</b></ion-label>
+                    </ion-item>
+              
+                
+                
+                   
+              
                
 
           
@@ -49,7 +84,7 @@
       
           <!-- Start : Fab button links -->
           <ion-fab vertical="bottom" horizontal="end">
-              <ion-fab-button><ion-label> Links </ion-label></ion-fab-button>
+              <ion-fab-button><ion-icon name="share-social-outline"></ion-icon></ion-fab-button>
               <ion-fab-list side="start">
                 <!-- facebook -->
                 <ion-fab-button (click)="openFacebook()">
