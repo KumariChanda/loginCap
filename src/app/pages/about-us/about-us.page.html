@@ -11,31 +11,75 @@
 
 <ion-content>
 
-   <ion-fab vertical="bottom" horizontal="end">
-      <ion-fab-button><ion-label> Links </ion-label></ion-fab-button>
-      <ion-fab-list side="start">
-        <!-- facebook -->
-        <ion-fab-button (click)="openFacebook()">
-          <ion-icon name="logo-facebook" ></ion-icon>
-        </ion-fab-button >
-          <!-- twitter -->
-        <ion-fab-button (click)="openTwitter()">
-          <ion-icon name="logo-twitter"></ion-icon>
-        </ion-fab-button>
-          <!-- linkedin -->
-        <ion-fab-button (click)="openLinkedin()">
-          <ion-icon name="logo-linkedin"></ion-icon>
-        </ion-fab-button>
-        <!-- instagram -->
-        <ion-fab-button (click)="openInstagram()">
-          <ion-icon name="logo-instagram"></ion-icon>
-        </ion-fab-button>
-        <!-- google plus -->
-        <ion-fab-button (click)="openGoogleplus()">
-          <ion-icon name="logo-google"></ion-icon>
-        </ion-fab-button>
-      </ion-fab-list>
+    <!-- ///////////////////////////////////////////////////////////////////////////////// -->
+            <!-- about us text -->
+       <ion-card >
+          
+            <ion-card-content>
+                <ion-label>          
+                  {{about_us}}
+                </ion-label> 
+            </ion-card-content>
+      </ion-card>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 
-  </ion-fab>
+
+
+
+
+         <!-- Start our team -->
+
+        <ion-list-header  style=" margin-left:30%"> 
+              <ion-chip *ngIf="!isSearchbarOpened" > Our Team   <br>
+                <ion-icon   name="caret-down-sharp"></ion-icon>
+              </ion-chip >
+
+        </ion-list-header>
+
+
+        <ion-card *ngFor="let team of myteam; " >
+        
+            <div  > 
+              
+              <img  [src]="team.photo" />
+              
+            </div>
+          
+            <ion-card-content>
+                            
+                
+                <!-- First Name -->
+            
+               <ion-item>
+                    <ion-label > First Name : </ion-label>
+                    <ion-chip slot="end"> {{team.nom}} </ion-chip>
+                </ion-item>
+
+               <!-- Second Name -->
+                <ion-item>
+                    <ion-label > Second Name : </ion-label>
+                    <ion-chip slot="end"> {{team.prenom}}</ion-chip>
+                </ion-item>
+                <!-- Position -->
+                <ion-item>
+                    <ion-label > Position : </ion-label>
+                    <ion-chip slot="end"> {{team.poste}} </ion-chip>
+                </ion-item>
+                
+                <!-- Email -->
+                <ion-item>
+                    <ion-label > Email : </ion-label>
+                    <ion-chip slot="end"> {{team.email}} </ion-chip>
+                </ion-item>
+               
+
+          
+            </ion-card-content>
+      </ion-card>
+
+
+
+              <!-- End :  our Team -->
+      
 
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { AppServiceService } from 'src/app/service/appService/app-service.service';
 
 
 @Component({
@@ -9,41 +9,57 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 })
 export class AboutUsPage implements OnInit {
 
-  constructor(private iab : InAppBrowser) { }
+    about_us : string;
+    myteam : any ;
+
+  constructor( private webService : AppServiceService) { }
 
   ngOnInit() {
+     
+    //start loader
+    this.webService.presentLoading();
+     /////////////////////////////////////////////////     
+     ///// start : get about us 
+     this.webService.getAboutUs().subscribe(res => {
+   
+       console.log(" about_us  ",res);
+        if(res)
+        {
+            this.about_us = res[0].text
+
+             
+            /////////////////////////////////////////////////     
+            ///// start : get team 
+            this.webService.getTeam().subscribe(res => {
+              console.log(" team : ",res);
+              if(res)
+              {
+                this.myteam = res
+              }
+              else{
+                // alert no response from server
+              }
+                //stop loader
+              this.webService.stopLoading();
+            });
+                ///// end : get team 
+            /////////////////////////////////////////////////  
+
+        }
+        else{
+           // alert no response from server
+        }
+         
+
+     });
+     ///// end : get about us 
+     /////////////////////////////////////////////////   
+    
+             
+            
+      
+
   }
 
- ///////////////////////////////////////
-  openFacebook()
-  {
-    console.log("facebook")
-    this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
-    //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_system')
-  }
-//  ///////////////////////////////////////
-//   openTwitter()
-//   {
-//     console.log("twitter")
-//     //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
-//   }
-//  ///////////////////////////////////////
-//   openLinkedin()
-//   {
-//     console.log("Linkedin")
-//    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
-//   }
-//  ///////////////////////////////////////
-//   openInstagram()
-//   {
-//     console.log("Instagram")
-//     //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
-//   }
-//  ///////////////////////////////////////
-//   openGoogleplus()
-//   {
-//     console.log("Google plus")
-//    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
-//   }
 
 }
