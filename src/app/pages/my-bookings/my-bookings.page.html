@@ -31,7 +31,9 @@
                     <ion-label > Status : </ion-label>
                     <ion-chip slot="end" *ngIf="item.status == 0" style="color:red"> Cancelled </ion-chip>
                     <ion-chip slot="end" *ngIf="item.status == 1" style="color:orange"> Not yet confirmed </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.status == 2" style="color:green"> confirmed </ion-chip>
+                    <ion-chip slot="end" *ngIf="item.status == 2" style="color:blue"> confirmed </ion-chip>
+                    <ion-chip slot="end" *ngIf="item.status == 3" style="color:violet"> Trip started </ion-chip>
+                    <ion-chip slot="end" *ngIf="item.status == 4" style="color:green"> Trip Completed </ion-chip>
                 </ion-item>
                 <!-- Starting date -->
                 <ion-item>

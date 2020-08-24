@@ -21,11 +21,14 @@
         "business_class" : "CLASSE BUSINESS",
         "family_class" : "CLASSE FAMILLE ",
         "suv_class" : "CLASSE SUV",
-        "profile" : "REGLAGES PROFILE",
-        "send_feedback":"POST TESTIMONIAL",
+        "profile" : "MON PROFIL",
+        "edit_profile" : "EDIT PROFIL",
+         "send_feedback":"POST TESTIMONIAL",
         "post_a_testimonial":"POSTER UN TÉMOIGNAGE",
         "testimonial":"Témoignage",
-        "save":"SAVE"
+        "post_testimonial":"Envoyer témoignage",
+        "edit_profile_title" : "EDITER PROFIL",
+        "save_profile":"Enregistrer Les Changements"
 
 
     },

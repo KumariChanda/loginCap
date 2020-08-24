@@ -48,28 +48,20 @@
             <ion-card-content>
                             
                 
-                <!-- First Name -->
-            
-               <ion-item>
-                    <ion-label > First Name : </ion-label>
-                    <ion-chip slot="end"> {{team.nom}} </ion-chip>
-                </ion-item>
-
-               <!-- Second Name -->
+                <!-- Full Name -->
                 <ion-item>
-                    <ion-label > Second Name : </ion-label>
-                    <ion-chip slot="end"> {{team.prenom}}</ion-chip>
+                  <strong>
+                      <ion-label> {{team.nom}} {{team.prenom}}</ion-label>
+                  </strong>
                 </ion-item>
                 <!-- Position -->
                 <ion-item>
-                    <ion-label > Position : </ion-label>
-                    <ion-chip slot="end"> {{team.poste}} </ion-chip>
+                    <ion-label > {{team.poste}} </ion-label>
                 </ion-item>
                 
                 <!-- Email -->
                 <ion-item>
-                    <ion-label > Email : </ion-label>
-                    <ion-chip slot="end"> {{team.email}} </ion-chip>
+                    <ion-label >{{team.email}} </ion-label>
                 </ion-item>
                
 

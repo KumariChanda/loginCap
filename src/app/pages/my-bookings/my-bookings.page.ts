@@ -37,9 +37,15 @@ export class MyBookingsPage implements OnInit {
      
     },
     {
+      title:'TOYOTA , Pick up 4X4 SUV', // title or designation of the car
+      picture : '../assets/images/car4.jpg',  // picture of the car
+      status : 3
+     
+    },
+    {
       title:'VOLKSWAGEN , CITADINE PSSAT', // title or designation of the car
       picture : '../assets/images/car5.jpg',  // picture of the car
-      status : 2
+      status : 4
      
     },
   ]

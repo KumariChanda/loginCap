@@ -9,7 +9,7 @@ const { Storage } = Plugins;
 })
 export class ProfilePage implements OnInit {
 
-  profile='../assets/imgs/dummyProfile.jpg';
+  profile='../assets/imgs/profile.png';
   btnClicked:boolean=false;
   editableText:boolean=true;
    profileData={
@@ -85,6 +85,11 @@ export class ProfilePage implements OnInit {
   saveProfile()
   {
     console.log("profileData : ",this.profileData);
+  }
+
+  prev()
+  {
+    this.editableText = true;
   }
 
 }

@@ -289,13 +289,13 @@ export class AppComponent {
                           {
                             title : "Term of usage",
                             url   : "/term-usage",
-                            icon  : "information-circle-outline"
+                            icon  : "help-circle-outline"
                           },
                           
                           {
                             title : "Confidentiality principles",
                             url   : "/confidentiality",
-                            icon  : "call-outline"
+                            icon  : "help-circle-outline"
                           },
                           {
                             title : "Send feedback",
@@ -391,13 +391,13 @@ export class AppComponent {
                       {
                         title : "Term of usage",
                         url   : "/term-usage",
-                        icon  : "information-circle-outline"
+                        icon  : "help-circle-outline"
                       },
                       
                       {
                         title : "Confidentiality principles",
                         url   : "/confidentiality",
-                        icon  : "call-outline"
+                        icon  : "help-circle-outline"
                       },         
                     ]
                   },
@@ -504,13 +504,13 @@ export class AppComponent {
                             {
                               title : "Conditions d'utilisation",
                               url   : "/term-usage",
-                              icon  : "information-circle-outline"
+                              icon  : "help-circle-outline"
                             },
                             
                             {
                               title : "Principes de confidentialités",
                               url   : "/confidentiality",
-                              icon  : "call-outline"
+                              icon  : "help-circle-outline"
                             },
                             {
                               title : "Envoyez Remarques",
@@ -606,13 +606,13 @@ export class AppComponent {
                         {
                           title : "Conditions d'utilisation",
                           url   : "/term-usage",
-                          icon  : "information-circle-outline"
+                          icon  : "help-circle-outline"
                         },
                         
                         {
                           title : "Principes de confidentialités",
                           url   : "/confidentiality",
-                          icon  : "call-outline"
+                          icon  : "help-circle-outline"
                         }
                         
                         
