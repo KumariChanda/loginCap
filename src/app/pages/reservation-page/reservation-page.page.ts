@@ -94,11 +94,11 @@ subscription: Subscription;
       "note_chauffeur": 0,
       "rapport_chauffeur": "",
       "client": 0,
-      "chauffeur": 0,
+      "chauffeur": 1,
       "voiture": 0,
-      "type_location": 0,
+      "type_location": 1,
       "destination": 0,
-      "etape_location": 0,
+      "etape_location": 1,
       //"lieu_depart": "",
       "optionnel": [
         0
@@ -287,8 +287,9 @@ subscription: Subscription;
         console.log("Token", this.token);
 
         /////////////////// set start date /////////////////////////////////////////////////////
+        this.dataToSend.date_debut = this.start_date
         this.start_date = this.start_date.split("T")[0]  ;     
-        this.dataToSend.date_debut = this.start_date + " "+this.start_time ;     
+        //this.dataToSend.date_debut = this.start_date + " "+this.start_time ;     
         //////////////////// set start hour /////////////////////////////////////////////////////
        // this.dataToSend.heure_debut = this.start_time;     
      
@@ -301,7 +302,8 @@ subscription: Subscription;
         /////////////////// set end hour /////////////////////////////////////////////////////
        //this.dataToSend.heure_fin = this.end_time;
         /////// set the end date to "";
-        this.dataToSend.date_fin = ""+ " "+this.end_time;
+        this.dataToSend.date_fin = this.start_date
+        //this.dataToSend.date_fin = ""+ " "+this.end_time;
         /////// set depart venue  (for airoort type)
         //this.dataToSend.lieu_depart = "";
 
@@ -314,8 +316,9 @@ subscription: Subscription;
         ///////set type rent to day id 
          this.dataToSend.type_location = 1;
         //////////////////////set end date ///////////////////////////////////////////////////////
+         this.dataToSend.date_fin = this.end_date
          this.end_date = this.end_date.split("T")[0] ;
-         this.dataToSend.date_fin = this.end_date+ " "+this.end_time;
+         //this.dataToSend.date_fin = this.end_date+ " "+this.end_time;
          /////////////////// set end hour /////////////////////////////////////////////////////
         // this.dataToSend.heure_fin = this.end_time;
         /////// set depart venue 
@@ -429,7 +432,10 @@ subscription: Subscription;
                          console.log("done");
                       }
 
-                }
+                },error =>{
+                  console.log("error : \n",error);          
+
+    }
                 );
 
 
