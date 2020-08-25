@@ -478,7 +478,7 @@ export class AppServiceService {
               headers: new HttpHeaders
                               ({
                                 'Content-Type' : 'application/json',
-                                'Authorization':'Token '+token
+                                'Authorization': 'Token '+ token
             
                               })
             
