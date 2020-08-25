@@ -76,9 +76,9 @@ export class OurContactsPage implements OnInit {
     // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
    }
    //////////////////////////////////////////////////////
-   openWhatsapp(no)
+   openWhatsapp()
    {
-     console.log("Number : ",no);
+    //  console.log("Number : ",no);
     //  this.iab.create('https://wa.me/+916284134683','_blank');
     //  this.iab.create("https://wa.me/+916284134683?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_blank');
      this.iab.create("https://wa.me/+916284134683/",'_blank');

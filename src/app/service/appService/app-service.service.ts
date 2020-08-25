@@ -471,14 +471,14 @@ export class AppServiceService {
 /////////////////////////////////////////STRAT : POST RESERVATION  ////////////////////////////////////////////////////////////////////////
           
         postData1(url,data,token):Observable<any>{
-          console.log("data To Send : \n", url, data)
+          console.log("APP Service : data To Send : \n", url, data,token)
 
 
             const httpOption = {
               headers: new HttpHeaders
                               ({
                                 'Content-Type' : 'application/json',
-                                'Authorization': token
+                                'Authorization':'Token '+token
             
                               })
             
