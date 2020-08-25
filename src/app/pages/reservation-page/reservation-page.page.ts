@@ -203,6 +203,8 @@ subscription: Subscription;
     {
       let date : Date = new Date();
       var month, day
+       ///////////////////////today's date or reservation date //////////////////////////
+       this.dataToSend.date_location =date.toISOString();
       //today's date
       this.today = date.getFullYear() +"-"+ (date.getMonth()+1) + "-"+date.getDate();
     
@@ -274,8 +276,7 @@ subscription: Subscription;
 
       //////////////////////////car id ///////////////////////////////////////////////
         this.dataToSend.voiture = id;   
-      ///////////////////////today's date or reservation date //////////////////////////
-        this.dataToSend.date_location = this.today;
+     
       /////////////////////////////////user id ///////////////////////////////////////////////  
    
         var ret =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
