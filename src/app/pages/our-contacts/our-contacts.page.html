@@ -57,9 +57,14 @@
                   </ion-item> 
                 
                <!-- Whatsapp -->
-                    <ion-item>
+                    <!-- <ion-item>
                         <ion-icon name="logo-whatsapp"></ion-icon>
                         <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> {{contact.whatsapp}}</b></ion-label>
+                    </ion-item>  -->
+                    <ion-item>
+                        <ion-icon name="logo-whatsapp"></ion-icon>
+                        <!-- <a href="whatsapp://send?phone=8559080443">8559080443</a> -->
+                        <ion-label style="size: 20vw;" tappable (click)="openWhatsapp()">&nbsp;&nbsp;&nbsp; <b>+91-6284134683</b></ion-label>
                     </ion-item>
 
                 <!-- Email -->
