@@ -117,19 +117,28 @@
             </div>     
                 <div class="divloginbtn">
 
-                  <button [ngClass]="{'loginbtn_black':btnClicked == true,
+                  <!-- <button [ngClass]="{'loginbtn_black':btnClicked == true,
                    'loginbtn_yellow':btnClicked == false}" (click)="editProfile()" *ngIf="editableText==true && userType=='client'"> {{"PROFILE.edit_profile"| translate}}</button>
                  <button [ngClass]="{'loginbtn_black':btnClicked == true,
                    'loginbtn_yellow':btnClicked == false}" (click)="saveProfile()" *ngIf="editableText==false && userType=='client'"> {{ 'DASHBOARD.save_profile' | translate }}</button>
-                 
+                  -->
                   </div>
               
         </ion-card-content>
       </ion-card>
 
     <!-- </ion-item> -->
-
-
-
-
 </ion-content>
+<ion-footer>
+  <!-- <ion-toolbar> -->
+       <!-- if the token is not null -->
+    <!-- <ion-button  expand="full"  [ngClass]="{'loginbtn_black':btnClicked == true,
+    'loginbtn_yellow':btnClicked == false}" (click)="save()">{{ 'DASHBOARD.post_testimonial' | translate }}</ion-button> -->
+    <button expand="full" [ngClass]="{'loginbtn_black':btnClicked == true,
+    'loginbtn_yellow':btnClicked == false}" (click)="editProfile()" *ngIf="editableText==true && userType=='client'"> {{"PROFILE.edit_profile"| translate}}</button>
+  <button [ngClass]="{'loginbtn_black':btnClicked == true,
+    'loginbtn_yellow':btnClicked == false}" (click)="saveProfile()" *ngIf="editableText==false && userType=='client'"> {{ 'DASHBOARD.save_profile' | translate }}</button>
+  
+
+  <!-- </ion-toolbar> -->
+</ion-footer>

@@ -85,6 +85,12 @@ export class ProfilePage implements OnInit {
   saveProfile()
   {
     console.log("profileData : ",this.profileData);
+    this.btnClicked=true;
+      console.log("btnClicked : ",this.btnClicked);
+      setTimeout( ()=>{
+        this.btnClicked=false;
+        // this.editableText=true;
+        }, 1000)
   }
 
   prev()

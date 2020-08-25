@@ -52,29 +52,37 @@ export class OurContactsPage implements OnInit {
      //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_system')
    }
  //  ///////////////////////////////////////
- //   openTwitter()
- //   {
- //     console.log("twitter")
- //     //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
- //   }
+   openTwitter()
+   {
+     console.log("twitter")
+     //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+   }
  //  ///////////////////////////////////////
- //   openLinkedin()
- //   {
- //     console.log("Linkedin")
- //    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
- //   }
+   openLinkedin()
+   {
+     console.log("Linkedin")
+    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+   }
  //  ///////////////////////////////////////
- //   openInstagram()
- //   {
- //     console.log("Instagram")
- //     //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
- //   }
+   openInstagram()
+   {
+     console.log("Instagram")
+     //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+   }
  //  ///////////////////////////////////////
- //   openGoogleplus()
- //   {
- //     console.log("Google plus")
- //    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
- //   }
+   openGoogleplus()
+   {
+     console.log("Google plus")
+    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+   }
+   //////////////////////////////////////////////////////
+   openWhatsapp(no)
+   {
+     console.log("Number : ",no);
+    //  this.iab.create('https://wa.me/+916284134683','_blank');
+    //  this.iab.create("https://wa.me/+916284134683?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_blank');
+     this.iab.create("https://wa.me/+916284134683/",'_blank');
+   }
  
 
 }

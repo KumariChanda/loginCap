@@ -47,29 +47,33 @@ ion-input
   .loginbtn_black
   {
       background-color: black;
-      border: medium none;
+    //   border: medium none;
       color: #d39e1a;
       //font-size: 16px;
       font-weight: 800;
       //line-height: 30px;
-      margin: auto;
-      padding: 3vw 3vw;;
+    //   margin: auto;
+    //   padding: 3vw 3vw;;
       transition: all 0.3s linear 0s;
-      border-radius: 20px;
+    //   border-radius: 20px;
+    width: 100vw;
+    height: 10vw;
       box-shadow: 0 2px 0 #d39e1a, 0 3px 0px #e4e4e4;
     }
     
     .loginbtn_yellow
   {
       background-color: #d39e1a;
-      border: medium none;
+    //   border: medium none;
       color: black;
       //font-size: 16px;
       font-weight: 800;
       //line-height: 30px;
-      margin: auto;
-      padding: 3vw 3vw;;
+    //   margin: auto;
+    //   padding: 3vw 3vw;;
       transition: all 0.3s linear 0s;
-      border-radius: 20px;
+    //   border-radius: 20px;
+    width: 100vw;
+    height: 10vw;
       box-shadow: 0 2px 0 #d39e1a, 0 3px 0px #e4e4e4;
     }
