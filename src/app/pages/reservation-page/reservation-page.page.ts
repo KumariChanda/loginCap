@@ -8,6 +8,8 @@ import { AlertController } from '@ionic/angular';
 
 
 const { Storage } = Plugins;
+const LNG_KEY = 'SELECTED LANGUAGE'; // this is used to fetch or manipulate the var(containing the selected language) present in the storage
+
 
 
 @Component({
@@ -42,6 +44,7 @@ export class ReservationPagePage implements OnInit {
   ];
   selected_index = -1;
   show_list = false;
+  coef : any //coefficient de reservation
 ///////////////////////end data for destination search ///////////////////
   
 
@@ -51,9 +54,9 @@ export class ReservationPagePage implements OnInit {
 //my car : this var will receive the car with all its details
 car = {
   'modele' : '',
-  'per_day' : '',
-  'per_hour' : '',
-  'airport' : ''
+  'per_day' : "",
+  'per_hour' : "",
+  'airport' : ""
 }
 
 ////////option values
@@ -203,6 +206,10 @@ subscription: Subscription;
     {
       let date : Date = new Date();
       var month, day
+
+       ///////////////////////today's date or reservation date //////////////////////////
+       this.dataToSend.date_location = date.toISOString();
+
       //today's date
       this.today = date.getFullYear() +"-"+ (date.getMonth()+1) + "-"+date.getDate();
     
@@ -224,8 +231,8 @@ subscription: Subscription;
 
          this.start_date = this.today;
          this.end_date = this.start_date;
-         this.start_time = "10:00";
-         this.end_time = this.start_time;
+         this.start_time = "09:00";
+         this.end_time = "10:00";
     
     
       //maximum date
@@ -272,131 +279,150 @@ subscription: Subscription;
     async submit(id)
     {
 
-      //////////////////////////car id ///////////////////////////////////////////////
-        this.dataToSend.voiture = id;   
-      ///////////////////////today's date or reservation date //////////////////////////
-        this.dataToSend.date_location = this.today;
-      /////////////////////////////////user id ///////////////////////////////////////////////  
-   
-        var ret =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
+        //check if destination is null
+        if(this.destination)
+        {
 
-        this.dataToSend.client = ret.id;
-    
-      //////////////////////////////get token storage////////////////////////////////////////
-        this.token =(await Storage.get({ key: 'accessToken' })).value;
-        console.log("Token", this.token);
 
-        /////////////////// set start date /////////////////////////////////////////////////////
-        this.dataToSend.date_debut = this.start_date
-        //this.start_date = this.start_date.split("T")[0]  ;     
-        //this.dataToSend.date_debut = this.start_date + " "+this.start_time ;     
-        //////////////////// set start hour /////////////////////////////////////////////////////
-       // this.dataToSend.heure_debut = this.start_time;     
-     
+          //////////////////////////car id ///////////////////////////////////////////////
+            this.dataToSend.voiture = id;   
 
-      ///////////////////////////////////////////////////////////////////////////////////////////
-      if(this.rent_type =="hour")
-      {
-        ///////set type rent to hour id 
-        this.dataToSend.type_location = 1;
-        /////////////////// set end hour /////////////////////////////////////////////////////
-       //this.dataToSend.heure_fin = this.end_time;
-        /////// set the end date to "";
-        this.dataToSend.date_fin = this.start_date
-        //this.dataToSend.date_fin = ""+ " "+this.end_time;
-        /////// set depart venue  (for airoort type)
-        //this.dataToSend.lieu_depart = "";
-
-        this.price = this.car.per_hour 
+            console.log("id : ",id,"\n coef : ",this.coef)
         
-      }
-      else if(this.rent_type =="day")
-      {
+          /////////////////////////////////user id ///////////////////////////////////////////////  
+      
+            // var ret =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
+            // console.log("user : ", ret);
+            // this.dataToSend.client = ret.id;
+        
+          //////////////////////////////get token storage////////////////////////////////////////
+            this.token =(await Storage.get({ key: 'accessToken' })).value;
+            console.log("Token : ", this.token);
 
-        ///////set type rent to day id 
-         this.dataToSend.type_location = 2;
-        //////////////////////set end date ///////////////////////////////////////////////////////
-         this.dataToSend.date_fin = this.end_date
-         //this.end_date = this.end_date.split("T")[0] ;
-         //this.dataToSend.date_fin = this.end_date+ " "+this.end_time;
-         /////////////////// set end hour /////////////////////////////////////////////////////
-        // this.dataToSend.heure_fin = this.end_time;
-        /////// set depart venue 
-        //this.dataToSend.lieu_depart = "";
+            /////////////////// set start date /////////////////////////////////////////////////////
+            //this.dataToSend.date_debut = this.start_date
+            this.start_date = this.start_date.split("T")[0]  ;     
+            this.dataToSend.date_debut = this.start_date + "T"+this.start_time+":44.625Z" ;     
+            //////////////////// set start hour /////////////////////////////////////////////////////
+          // this.dataToSend.heure_debut = this.start_time;     
+        
 
-         this.price = this.car.per_day
+          ///////////////////////////////////////////////////////////////////////////////////////////
+          if(this.rent_type =="hour")
+          {
+            ///////set type rent to hour id 
+            this.dataToSend.type_location = 1;
+            /////////////////// set end hour /////////////////////////////////////////////////////
+          //this.dataToSend.heure_fin = this.end_time;
+            /////// set the end date to "";
+            this.dataToSend.date_fin = this.start_date+"T"+this.end_time+"44.625Z" ; 
+            //this.dataToSend.date_fin = ""+ " "+this.end_time;
+            /////// set depart venue  (for airoort type)
+            //this.dataToSend.lieu_depart = "";
 
-      }
-      else if(this.rent_type =="airport")
-      {
-        ///////set type rent to airport id 
-        this.dataToSend.type_location = 3;
-        this.dataToSend.date_fin = this.start_date
-        /// set end time /////////////////////////
-        //this.dataToSend.date_fin = ""+ " "+this.end_time;
-        //////////////////////set departure venue ///////////////////////////////////////////////////////
-        //this.dataToSend.lieu_depart = this.depart_venue;
+            this.price = (parseInt(this.car.per_hour) * (1+ this.coef)).toFixed(2) 
+            
+          }
+          else if(this.rent_type =="day")
+          {
 
-        this.price = this.car.airport 
+            ///////set type rent to day id 
+            this.dataToSend.type_location = 2;
+            //////////////////////set end date ///////////////////////////////////////////////////////
+            // this.dataToSend.date_fin = this.end_date
+            this.end_date = this.end_date.split("T")[0] ;
+            this.dataToSend.date_fin = this.end_date+"T"+this.end_time+":44.625Z" ;
+            /////////////////// set end hour /////////////////////////////////////////////////////
+            // this.dataToSend.heure_fin = this.end_time;
+            /////// set depart venue 
+            //this.dataToSend.lieu_depart = "";
 
-      }
-      ///////////////////////////////////////////////////////////////////////////////////////////////////
-     
+            this.price = parseFloat(this.car.per_day)* (1+ this.coef) 
 
-      //////////////////////////////////////////////////////////////////////////////////////////////////
-      ////////////////////////////get the selected option and add price /////////////////////////////////////
-       var index = 0 ;
-      for(let i=0 ; i<this.option.length ; i++)
-       {
-           if(this.option[i].checked)
-           {
-             ////////////////////////////////////////////////////////////////////
-              if(this.rent_type =="hour")
+          }
+          else if(this.rent_type =="airport")
+          {
+            ///////set type rent to airport id 
+            this.dataToSend.type_location = 3;
+            this.dataToSend.date_fin = this.start_date+"T"+this.start_time+":44.625Z" 
+            /// set end time /////////////////////////
+            this.dataToSend.date_fin = ""+ " "+this.end_time+"T"+this.start_time+":44.625Z";
+            //////////////////////set departure venue ///////////////////////////////////////////////////////
+            //this.dataToSend.lieu_depart = this.depart_venue;
+
+            this.price = parseFloat(this.car.airport) * (1+ this.coef) 
+
+          }
+          ///////////////////////////////////////////////////////////////////////////////////////////////////
+        
+
+          //////////////////////////////////////////////////////////////////////////////////////////////////
+          ////////////////////////////get the selected option and add price /////////////////////////////////////
+          var index = 0 ;
+          for(let i=0 ; i<this.option.length ; i++)
+          {
+              if(this.option[i].checked)
               {
-                this.price = this.price + this.option[i].prix;
-                //add the optionnel id into the dataTosend field array
-                this.dataToSend.optionnel[index] = this.option[i].id;
-                index = index+1;
-              
+                ////////////////////////////////////////////////////////////////////
+                  if(this.rent_type =="hour")
+                  {
+                    console.log("price : ",typeof(this.price),"\n option price : ", typeof(this.option[i].prix))
+                    
+                    this.price = parseFloat(this.price) + this.option[i].prix;
+                    //add the optionnel id into the dataTosend field array
+                    this.dataToSend.optionnel[index] = this.option[i].id;
+                    index = index+1;
+                  
+                  }
+                  else if(this.rent_type =="day")
+                  {
+                    this.price = this.price + this.option[i].prix;
+                    //add the optionnel id into the dataTosend field array
+                    this.dataToSend.optionnel[index] = this.option[i].id;
+                    index = index+1;
+
+                  }
+                  else if(this.rent_type =="airport")
+                  {
+                    this.price =  this.price + this.option[i].prix;
+                    //add the optionnel id into the dataTosend field array
+                    this.dataToSend.optionnel[index] = this.option[i].id;
+                    index = index+1;
+            
+
+                  }
+                  //////////////////////////////////////////////////////////////
+                
+                  console.log(this.option[i]);
               }
-              else if(this.rent_type =="day")
-              {
-                this.price = this.price + this.option[i].prix;
-                //add the optionnel id into the dataTosend field array
-                this.dataToSend.optionnel[index] = this.option[i].id;
-                index = index+1;
+          }
 
-              }
-              else if(this.rent_type =="airport")
-              {
-                this.price = this.price + this.option[i].prix;
-                //add the optionnel id into the dataTosend field array
-                this.dataToSend.optionnel[index] = this.option[i].id;
-                index = index+1;
-         
+          //////////////////set destination ////////////////////////////////////////////
+          this.dataToSend.destination = this.destination
 
-              }
-              //////////////////////////////////////////////////////////////
-             
-              console.log(this.option[i]);
-           }
-       }
+          /////////////////////set price ///////////////////////////////////////////////////
+          this.dataToSend.montant = this.price;
+          
+          /////////////////////set commentaire client ///////////////////////////////////////////////////
+          this.dataToSend.commentaire_client = this.message;
+          
 
-       //////////////////set destination ////////////////////////////////////////////
-       this.dataToSend.destination = this.destination
+          console.log("\n data to send : \n", this.dataToSend);
 
-       /////////////////////set price ///////////////////////////////////////////////////
-       this.dataToSend.montant = this.price;
-       
-       /////////////////////set commentaire client ///////////////////////////////////////////////////
-       this.dataToSend.commentaire_client = this.message;
-       
-
-      console.log("\n data to send : \n", this.dataToSend);
-
-       // present alert
-          this.presentAlertConfirm(this.price,this.start_date,this.end_date)
-
+          // present alert
+              this.presentAlertConfirm(this.price,this.start_date,this.end_date)
+        }
+        else
+        {
+          var lang = (await Storage.get({ key: LNG_KEY })).value;
+          if(lang =="fr")
+          {
+            alert("Remplissez le champ Destination !");
+          }else{
+            alert("Fill the Destination Field !")
+          }
+            
+        }
 
    
    
@@ -406,10 +432,19 @@ subscription: Subscription;
     
       // present alert
       async presentAlertConfirm(price, start_date , end_date) {
+
+        var lang = (await Storage.get({ key: LNG_KEY })).value;
+        if(lang =="fr")
+        {
+          var text = "Prix Total : ";
+        }else{
+          var text = "Total Price : ";
+        }
+
         const alert = await this.alertController.create({
           cssClass: 'my-custom-class',
           header: 'Validation!!',
-          message: '<strong>Total Price : </strong>' + price + ' F CFA',
+          message: '<strong>'+text +'</strong>' + price + ' F CFA',
           buttons: [
             {
               text: 'Cancel',
@@ -425,16 +460,19 @@ subscription: Subscription;
 
                  ////send the data to the API
                 this.webservice.postReservation(this.token, this.dataToSend).subscribe(res=>{
-                      console.log(res)
+                      //console.log(res)
                       if(res)
                       {
                          console.log("done");
+                         this.myAlert(0,lang);     
+
+
                       }
 
                 },error =>{
-                  console.log("error : \n",error);          
-
-    }
+                  console.log("error : \n",error); 
+                     this.myAlert(1,lang);     
+                 }
                 );
 
 
@@ -447,9 +485,80 @@ subscription: Subscription;
         await alert.present();
       } 
 
+    //alert 2 method
+   myAlert(id,lang)
+   {
+     if(id==0)
+     {
+        if(lang =="fr" )
+        {
+           alert( "Votre Requête a été envoyée avec succès !");
+        }else{
+          alert("Your Request has been sent successfully !");
+         }
+         this.router.navigateByUrl("/dashboard");
+     }else{
+
+        if(lang =="fr" )
+        {
+          alert( "Désolé, une erreur s'est produite, veuillez vérifier à nouveau votre saisie.");
+        }else{
+          alert("Sorry, an error has occurred please, check your entry again.");
+        }
+
+     }
+   }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+////////////////change end time
+change(type)
+{
+   ////per hour
+   if(type == "hour")
+   {
+       // console.log("start : ",this.start_time,"\n type time :",typeof(this.start_time));
+        var x = parseInt(this.start_time.split(":")[0]) + 1;
+
+        if(x<10)
+        {
+          this.end_time = "0"+x+":00";
+        }else{
+          this.end_time = ""+x+":00";
+        }
+       
+   }
+   ////per day
+   if(type == "day")
+   {
+       // console.log("start : ",this.start_date,"\n type time :",typeof(this.start_date));
+        var dat = this.start_date.split("T")[0];
+        var x = parseInt(dat.split("-")[2])+1;
+        if(x<10)
+        {
+          this.end_date = ""+dat.split("-")[0]+"-"+dat.split("-")[1]+"-0"+x;
+        }
+        else
+        {
+          this.end_date = ""+dat.split("-")[0]+"-"+dat.split("-")[1]+"-"+x;
+        }
+
+        //console.log(this.end_date);
+       
+       
+   }
+}
 
 
 
@@ -483,11 +592,14 @@ subscription: Subscription;
     this.show_list = true;
   }
 
-  click_item(val, id)
+  click_item(val, id,coef)
   {
        
         //set destination
         this.destination = id;
+        //set coef 
+        this.coef = coef
+
         for (let i = 0 ; i < this.list_original.length; i++)
         {
             if (this.list_to_show[val].destination.toUpperCase() === this.list_original[i].destination.toUpperCase()) {

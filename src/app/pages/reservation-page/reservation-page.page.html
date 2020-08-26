@@ -40,7 +40,7 @@
                 
                 <ion-list *ngIf="show_list">
                    <ion-item *ngFor="let item of list_to_show; let i = index">
-                       <ion-label (click)="click_item(i, item.id)"  > {{item.destination}} </ion-label>
+                       <ion-label (click)="click_item(i, item.id,item.coefficient)"  > {{item.destination}} </ion-label>
                    </ion-item>
                 </ion-list>
 
@@ -62,17 +62,17 @@
                 <!-- start date -->
                 <ion-item  >
                   <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
-                  <ion-datetime  [min]="today" [max]="maxdate" placeholder="Select Date" [(ngModel)]="start_date" ></ion-datetime>
+                  <ion-datetime readonly [min]="today" [max]="maxdate" placeholder="Select Date" [(ngModel)]="start_date" ></ion-datetime>
                 </ion-item>
                 <!-- start time -->
                 <ion-item >
                   <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
-                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" (ionChange)="end_time = start_time"   [(ngModel)]="start_time" ></ion-datetime>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" (ionChange)="change('hour')"   [(ngModel)]="start_time" ></ion-datetime>
                 </ion-item>
                  <!-- return time -->
                 <ion-item  *ngIf="rent_type =='hour' || rent_type =='day' ">
                   <ion-label>{{"RESERVECAR.return_time"| translate}}</ion-label>
-                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	"  [min]="start_time" [(ngModel)]="end_time"> </ion-datetime>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	"  [min]="end_time" [(ngModel)]="end_time"> </ion-datetime>
                 </ion-item>
                </div>
 
@@ -86,12 +86,12 @@
                 <!-- start date -->
                 <ion-item  >
                   <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
-                  <ion-datetime [min]="today" [max]="maxdate" (ionChange)="end_date = start_date" placeholder="Select Date" [(ngModel)]="start_date"></ion-datetime>
+                  <ion-datetime [min]="today" [max]="maxdate" (ionChange)="change('day')" placeholder="Select Date" [(ngModel)]="start_date"></ion-datetime>
                 </ion-item>
                  <!-- return date  -->
                 <ion-item  >
                   <ion-label>{{"RESERVECAR.return_date"| translate}}</ion-label>
-                  <ion-datetime [min]="start_date" [max]="maxdate" placeholder="Select Date" [(ngModel)]="end_date"></ion-datetime>
+                  <ion-datetime [min]="end_date" [max]="maxdate" placeholder="Select Date" [(ngModel)]="end_date"></ion-datetime>
                 </ion-item>
                 <!-- start time -->
                 <ion-item >
@@ -101,7 +101,7 @@
                  <!-- return time -->
                 <ion-item >
                   <ion-label>{{"RESERVECAR.return_time"| translate}}</ion-label>
-                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	"  [min]="start_time" [(ngModel)]="end_time"></ion-datetime>
+                  <ion-datetime  display-format="HH:mm	" picker-format="HH:mm	"   [(ngModel)]="end_time"></ion-datetime>
                 </ion-item>
                </div>
 
@@ -120,7 +120,7 @@
                 <!-- start time -->
                 <ion-item >
                   <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
-                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" ></ion-datetime>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm" [(ngModel)]="start_time" ></ion-datetime>
                 </ion-item>
                  <!-- departure -->
                 <ion-item  *ngIf="rent_type =='airport' ">

@@ -11,6 +11,7 @@ export class AboutUsPage implements OnInit {
 
     about_us : string;
     myteam : any ;
+    show =false;
 
   constructor( private webService : AppServiceService) { }
 
@@ -41,6 +42,7 @@ export class AboutUsPage implements OnInit {
               }
                 //stop loader
               this.webService.stopLoading();
+              this.show = true;
             });
                 ///// end : get team 
             /////////////////////////////////////////////////  

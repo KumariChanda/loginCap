@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="show">
 
     <!-- ///////////////////////////////////////////////////////////////////////////////// -->
             <!-- about us text -->
@@ -41,7 +41,7 @@
         
             <div  > 
               
-              <img  [src]="team.photo" />
+              <img  [src]= "team.photo" />
               
             </div>
           

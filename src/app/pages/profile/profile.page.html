@@ -26,7 +26,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="show" >
  
 
           <!-- profile Image -->
@@ -129,7 +129,7 @@
 
     <!-- </ion-item> -->
 </ion-content>
-<ion-footer>
+<ion-footer *ngIf="show" >
   <!-- <ion-toolbar> -->
        <!-- if the token is not null -->
     <!-- <ion-button  expand="full"  [ngClass]="{'loginbtn_black':btnClicked == true,

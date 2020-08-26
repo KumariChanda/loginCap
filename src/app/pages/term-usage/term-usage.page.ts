@@ -9,6 +9,7 @@ import { AppServiceService } from 'src/app/service/appService/app-service.servic
 export class TermUsagePage implements OnInit {
 
   myterms: any
+  show = false;
 
 
   constructor( private webService : AppServiceService) { }
@@ -34,6 +35,7 @@ export class TermUsagePage implements OnInit {
           
             //Stop loader
             this.webService.stopLoading();
+            this.show = true;
       });
       ///// end : get term of usage
       /////////////////////////////////////////////////   

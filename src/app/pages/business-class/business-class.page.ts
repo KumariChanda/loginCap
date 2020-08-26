@@ -12,7 +12,7 @@ import { AppServiceService } from 'src/app/service/appService/app-service.servic
 export class BusinessClassPage implements OnInit {
 
 
- // token : any;
+  show = false // used to show page content
 
 //////////////////////////////search bar elements for cars ////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -30,6 +30,7 @@ filterData = [
   }
 
 ];
+  src_link: string;
 
 
   constructor( private router: Router, 
@@ -40,6 +41,10 @@ filterData = [
      }
 
   ngOnInit() {
+
+     //basic link
+     this.src_link = this.webService.base_url;
+
 
     //get Business class cars list
       this.webService.presentLoading();//to start loader
@@ -84,6 +89,7 @@ filterData = [
                 );
               }
               this.webService.stopLoading();//to stop loading
+              this.show = true// used to show page content
 
             
         }

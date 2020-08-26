@@ -12,7 +12,7 @@ import { AppServiceService } from 'src/app/service/appService/app-service.servic
 export class OurContactsPage implements OnInit {
 
   mycontact : any
-
+  show = false;
   constructor(private iab : InAppBrowser, private webService : AppServiceService) { }
 
   ngOnInit() {
@@ -36,6 +36,7 @@ export class OurContactsPage implements OnInit {
          
            //Stop loader
            this.webService.stopLoading();
+           this.show = true;
      });
      ///// end : get our contact
      /////////////////////////////////////////////////   

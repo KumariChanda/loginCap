@@ -13,9 +13,9 @@ const LNG_KEY = 'SELECTED LANGUAGE'; // this is used to fetch or manipulate the 
 
   //proxy url
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  // basic api url
-const base_url= proxyurl+"http://othnieldona.pythonanywhere.com/api/";
 // const base_url= "http://othnieldona.pythonanywhere.com/api/";
+  // basic api url
+  const base_url= proxyurl+"http://othnieldona.pythonanywhere.com/api/";
  
   //header used for API URL
   const httpOptions = {
@@ -33,6 +33,9 @@ const base_url= proxyurl+"http://othnieldona.pythonanywhere.com/api/";
   providedIn: 'root'
 })
 export class AppServiceService {
+
+    // basic api url
+ base_url= "http://othnieldona.pythonanywhere.com/api";
 
   public selected = ''; // selected language
   
@@ -82,17 +85,7 @@ export class AppServiceService {
               console.log("initialize App Language");
 
               let language = "fr";
-              //let language = this.translate.get;
-              //console.log("my language :: ",language)
-              //this.translate.setDefaultLang(language);
-              //store the initial language in the storage
-              // this.storage.get(LNG_KEY).then(val => {
-              //   console.log("get initial Val", val)
-              //   if(val){
-              //     this.setLanguage(val);
-              //     this.selected = val;
-              //   }
-              // }) ;
+              
 
                 var ret=Storage.get({ key: LNG_KEY });
                 var val = (await ret).value;
@@ -454,17 +447,52 @@ export class AppServiceService {
 /////////////////////////////////////////STRAT : POST TESTIMONIAL ////////////////////////////////////////////////////////////////////////
 
               
-        // postfeedbacks(data)
-        // {
+        postFeedbacks(data,token)
+        {
            
-        //   return this.postData( (base_url + "login/"),data);
-        // }
+          return this.postData1( (base_url + "/temoignage/"),data,token);
+        }
 
 
 
 
 ///////////////////////////////////// END : POST TESTIMONIAL////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////STRAT : GET USER TESTIMONIAL ////////////////////////////////////////////////////////////////////////
+
+              
+        getFeedbacks(id,token)
+        {
+            const httpOption = {
+              headers: new HttpHeaders
+                              ({
+                                'Content-Type' : 'application/json',
+                                'Authorization': 'Token '+ token
+            
+                              })
+            
+            }
+
+           
+            return this.http.get(base_url+"temoignage/"+id, httpOption).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+            );
+        }
+
+
+
+
+///////////////////////////////////// END : GET USER TESTIMONIAL////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -501,6 +529,33 @@ export class AppServiceService {
 
 
 ///////////////////////////////////// END : POST RESERVATION////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////STRAT : GET Client Reservation ////////////////////////////////////////////////////////////////////////
+
+          getClientReservation(id,token): Observable<any> {
+
+            const httpOption = {
+              headers: new HttpHeaders
+                              ({
+                                'Content-Type' : 'application/json',
+                                'Authorization': 'Token '+ token
+            
+                              })
+            
+            }
+
+
+            return this.http.get(base_url+"locations/"+id, httpOption).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+            );
+
+          }
+
+///////////////////////////////////// END : GET Client Reservation  ////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

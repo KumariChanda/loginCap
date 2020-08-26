@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class SuvClassPage implements OnInit {
 
 
+  show = false;
   //////////////////////////////search bar elements for cars ////////////
 //////////////////////////////////////////////////////////////////////////////
 public isSearchbarOpened = false;
@@ -76,6 +77,7 @@ filterData = [
               );
             }
          this.webService.stopLoading();//stop loader 
+         this.show = true; 
       }
     });
 

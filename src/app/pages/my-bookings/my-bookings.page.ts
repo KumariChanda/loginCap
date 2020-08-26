@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyBookingsPage implements OnInit {
 
-
+  show = false;
 
   filterData = [
     {
@@ -54,6 +54,7 @@ export class MyBookingsPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

@@ -141,10 +141,21 @@ export class AppComponent {
 //////////////////////////////////
   async logout()
   {
+    //set token free means to null
     await Storage.set({
       key: 'accessToken',
       value: null           
-    });  
+    }); 
+    //set the userinfos and userType to null
+    await Storage.set({
+      key: 'user_infos',
+      value: null           
+    }); 
+    ////////
+    await Storage.set({
+      key: 'user_infos',
+      value: null           
+    });
 
       this.webService.getCurrentLanguage().then(val =>{
 

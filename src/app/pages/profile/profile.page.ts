@@ -26,6 +26,8 @@ export class ProfilePage implements OnInit {
   userInfo: any;
   userType: string;
 
+  show = false;
+
   constructor(private webService: AppServiceService) {
 
     this.btnClicked=false;
@@ -35,7 +37,9 @@ export class ProfilePage implements OnInit {
    }
 
    async ngOnInit() {
-    // this.webService.presentLoading();
+
+     this.webService.presentLoading();
+
     this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
     console.log("Storage : ",this.userInfo);
     this.profileData.address=this.userInfo.address;
@@ -61,7 +65,8 @@ export class ProfilePage implements OnInit {
 
          
           ///stop loading
-          // this.webService.stopLoading();   
+           this.webService.stopLoading();   
+           this.show = true;
 
 
     });//end get app language
