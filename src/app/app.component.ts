@@ -6,9 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { Router } from '@angular/router';
 //import {Storage} from '@ionic/storage'
-import { Subscription } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 import { AppServiceService } from './service/appService/app-service.service';
-
+// import { timer } from 'rxjs/observable/timer';
 const { Storage } = Plugins;
 const LNG_KEY = 'SELECTED LANGUAGE';
 
@@ -23,7 +23,7 @@ export class AppComponent {
   menuNavigatorWithoutLogin : any
 
   showSubmenu: boolean = false;
-
+  showSplash=true;
   menuItemHandler(): void {
     this.showSubmenu = !this.showSubmenu;
   }
@@ -75,9 +75,17 @@ export class AppComponent {
       // }
      ////////////////splashcreen delay//////////////////////
         this.platform.ready().then(() => {
-          setTimeout(() => {
+          
             this.splashScreen.hide();
-          }, 1000);
+
+            // setTimeout( ()=>{
+            //     this.showSplash=false;
+            //   // this.editableText=true;
+            //   }, 3000)
+            timer(3000).subscribe(()=>{
+              this.showSplash=false;
+            })
+         
         })
      /////////////////////////////////////
        
@@ -114,7 +122,7 @@ export class AppComponent {
       //  this.sideMenu("fr");
       // console.log("a out  : ",a);
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      // this.splashScreen.hide();
     });
 
     

@@ -94,9 +94,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/confidentiality/confidentiality.module').then( m => m.ConfidentialityPageModule)
   },
   {
-    path: 'feedback',
-    loadChildren: () => import('./src/app/pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
-  },  {
     path: 'prestige',
     loadChildren: () => import('./pages/prestige/prestige.module').then( m => m.PrestigePageModule)
   },

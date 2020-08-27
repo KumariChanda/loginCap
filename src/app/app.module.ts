@@ -14,6 +14,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {IonicStorageModule} from '@ionic/storage'
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 
@@ -49,7 +50,9 @@ export function LanguageLoader(http: HttpClient) {
       useClass: IonicRouteStrategy
     },
     Storage,
-    InAppBrowser
+    InAppBrowser,
+    CallNumber
+
   ],
   bootstrap: [AppComponent]
 })
