@@ -36,6 +36,17 @@ export class ProfilePage implements OnInit {
 
    async ngOnInit() {
     // this.webService.presentLoading();
+    this.getdata();
+    
+  
+      
+   
+    ////////////////////////////////////////////////
+  }
+
+  async getdata()
+  {
+    if(true){
     this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
     console.log("Storage : ",this.userInfo);
     this.profileData.address=this.userInfo.address;
@@ -58,14 +69,10 @@ export class ProfilePage implements OnInit {
 
       // console.log("home  ",val)
         this.webService.sendMessage({'token': "mytoken", 'language': val })
-
-         
-          ///stop loading
-          // this.webService.stopLoading();   
-
-
     });//end get app language
-    ////////////////////////////////////////////////
+  }
+   ///stop loading
+  //  this.webService.stopLoading();
   }
 
   async editProfile()
