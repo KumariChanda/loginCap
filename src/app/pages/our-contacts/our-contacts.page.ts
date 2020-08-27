@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 @Component({
@@ -12,7 +13,9 @@ export class OurContactsPage implements OnInit {
 
   mycontact : any
   show = false;
-  constructor(private iab : InAppBrowser, private webService : AppServiceService) { }
+  constructor(private iab : InAppBrowser, private webService : AppServiceService,
+      private callnumber: CallNumber
+    ) { }
 
   ngOnInit() {
 
@@ -76,13 +79,18 @@ export class OurContactsPage implements OnInit {
     // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
    }
    //////////////////////////////////////////////////////
-   openWhatsapp(no)
+   openWhatsapp()
    {
-     console.log("Number : ",no);
+     //console.log("Number : ",no);
     //  this.iab.create('https://wa.me/+916284134683','_blank');
-    //  this.iab.create("https://wa.me/+916284134683?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_blank');
-     this.iab.create("https://wa.me/+916284134683/",'_blank');
+     this.iab.create("https://wa.me/+916284134683?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_system');
+     //this.iab.create('https://wa.me/0916284134683/','_system');
    }
- 
+   //////////////////////////////////////////////////////
+   callNumber(number) {
+    this.callnumber.callNumber('+916284134683', true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
 
 }

@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
 import { Plugins } from '@capacitor/core';
-import { Key } from 'protractor';
 import { AlertController } from '@ionic/angular';
 
 
@@ -53,6 +52,7 @@ export class ReservationPagePage implements OnInit {
 
 //my car : this var will receive the car with all its details
 car = {
+  'id' : '',
   'modele' : '',
   'per_day' : 0,
   'per_hour' : 0,

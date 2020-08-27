@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
 import { Plugins } from '@capacitor/core';
-import { async } from '@angular/core/testing';
 
 const { Storage } = Plugins;
 
