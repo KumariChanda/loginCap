@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 import { Platform, MenuController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { Router } from '@angular/router';
@@ -9,6 +8,7 @@ import { Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { AppServiceService } from './service/appService/app-service.service';
 // import { timer } from 'rxjs/observable/timer';
+const { SplashScreen } = Plugins;
 const { Storage } = Plugins;
 const LNG_KEY = 'SELECTED LANGUAGE';
 
@@ -40,7 +40,6 @@ export class AppComponent {
 
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private menuCtrl:MenuController,
     //add this router for switching pages
@@ -76,15 +75,13 @@ export class AppComponent {
      ////////////////splashcreen delay//////////////////////
         this.platform.ready().then(() => {
           
-            this.splashScreen.hide();
-
+      // Hide the splash (you should do this on app launch)
+      SplashScreen.hide();
             // setTimeout( ()=>{
             //     this.showSplash=false;
             //   // this.editableText=true;
             //   }, 3000)
-            timer(3000).subscribe(()=>{
-              this.showSplash=false;
-            })
+            
          
         })
      /////////////////////////////////////
