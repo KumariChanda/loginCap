@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-suv-class',
-  templateUrl: './suv-class.page.html',
-  styleUrls: ['./suv-class.page.scss'],
+  selector: 'app-economique',
+  templateUrl: './economique.page.html',
+  styleUrls: ['./economique.page.scss'],
 })
-export class SuvClassPage implements OnInit {
+export class EconomiquePage implements OnInit {
 
 
+
+  token : any;
   show = false;
-  //////////////////////////////search bar elements for cars ////////////
+
+//////////////////////////////search bar elements for cars ////////////
 //////////////////////////////////////////////////////////////////////////////
 public isSearchbarOpened = false;
 term = '';
@@ -28,15 +31,16 @@ filterData = [
 
 ];
 
-  constructor(private router: Router, 
+
+
+  constructor(private route: ActivatedRoute, private router: Router, 
     private webService: AppServiceService) { }
 
   ngOnInit() {
 
-
-     //get suv class cars list
+    //get family class cars list
     this.webService.presentLoading();//to start loader
-     this.webService.getCarClass(2).subscribe(async res=>{
+    this.webService.getCarClass(1).subscribe(async res=>{
 
         
       //console.log("getting business voitures : \n ",res); 
@@ -74,17 +78,15 @@ filterData = [
                 this.filterData[i].airport = resp[2].prix;
 
               }
+              
               );
             }
-         this.webService.stopLoading();//stop loader 
-         this.show = true; 
+          this.webService.stopLoading();//to stop loading
+          this.show =true;
       }
     });
 
-
-
   }
-
 
     //////////////////////////////////////////////////////
     //this method is used to print the details of a selected car //////////////
@@ -92,12 +94,10 @@ filterData = [
 
 
       //call another page and fetch the details of the car
-      this.router.navigate(['car-details'], {queryParams:{id: carID, prev : "/suv-class"} })
+      this.router.navigate(['car-details'], {queryParams:{id: carID, prev : "/economique"} })
 
 
     }
-
-
 
 
 }

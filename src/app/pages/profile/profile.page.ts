@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
 import { Plugins } from '@capacitor/core';
+import { async } from '@angular/core/testing';
+
 const { Storage } = Plugins;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -24,7 +27,7 @@ export class ProfilePage implements OnInit {
   }
    agreement : boolean;
   userInfo: any;
-  userType: string;
+  userType: string ="";
 
   show = false;
 
@@ -38,39 +41,34 @@ export class ProfilePage implements OnInit {
 
    async ngOnInit() {
 
-     this.webService.presentLoading();
+     //this.webService.presentLoading();
 
-    this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
-    console.log("Storage : ",this.userInfo);
-    this.profileData.address=this.userInfo.address;
-    this.profileData.dob=this.userInfo.birth_date;
-    this.profileData.email=this.userInfo.email;
-    this.profileData.firstname=this.userInfo.first_name;
-    this.profileData.lastname=this.userInfo.last_name;
-    this.profileData.mobilenumber=this.userInfo.telephone;
+      this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
+      console.log("Storage : ",this.userInfo);
+      this.profileData.address=this.userInfo.address;
+      this.profileData.dob=this.userInfo.birth_date;
+      this.profileData.email=this.userInfo.email;
+      this.profileData.firstname=this.userInfo.first_name;
+      this.profileData.lastname=this.userInfo.last_name;
+      this.profileData.mobilenumber=this.userInfo.telephone;
 
-    this.userType = (await Storage.get({ key: "user_type" })).value;
-    // this.webService.stopLoading();
-    //get the current language of the app   
-    this.webService.getCurrentLanguage().then(async val =>{
-
-      // change the value of token
-    // await Storage.set({
-    //   key: 'accessToken',
-    //   value: res.token           
-    // });  
-
-      // console.log("home  ",val)
-        this.webService.sendMessage({'token': "mytoken", 'language': val })
-
-         
-          ///stop loading
-           this.webService.stopLoading();   
+      this.userType = (await Storage.get({ key: "user_type" })).value;
+      console.log("user Type : ",this.userType, " \n ", this.profileData)
+   
+        // alert('Hello...')
+        if(this.userType)
+        {
+        //  setTimeout(() => {
+           ///stop loading
+           
            this.show = true;
+        //this.webService.stopLoading();
+       // }, 1000);
+        }
+    
+         
 
 
-    });//end get app language
-    ////////////////////////////////////////////////
   }
 
   async editProfile()

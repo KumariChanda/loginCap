@@ -12,10 +12,14 @@ export class AboutUsPage implements OnInit {
     about_us : string;
     myteam : any ;
     show =false;
+    src_link;
 
   constructor( private webService : AppServiceService) { }
 
   ngOnInit() {
+
+    
+    this.src_link = this.webService.base_url;
      
     //start loader
     this.webService.presentLoading();

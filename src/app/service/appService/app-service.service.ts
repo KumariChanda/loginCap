@@ -50,6 +50,7 @@ export class AppServiceService {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////// START : PRESENTATION LOADING ////////////////////////////////////////////////
         async presentLoading() {
+          console.log("loading starts");
           this.loading =  this.loadingCtrl.create({
             message: 'Fetching data',
           });
@@ -63,6 +64,8 @@ export class AppServiceService {
 
         async stopLoading() {
           // this.loading = false;
+         console.log("loading stop");
+
          if(this.loading)
             this.loading = false;
             return await this.loadingCtrl.dismiss().then(() => console.log('loading dismissed'));

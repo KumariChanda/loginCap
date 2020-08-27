@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AppServiceService } from 'src/app/service/appService/app-service.service';
 import { Router } from '@angular/router';
+import { AppServiceService } from 'src/app/service/appService/app-service.service';
 
 @Component({
-  selector: 'app-suv-class',
-  templateUrl: './suv-class.page.html',
-  styleUrls: ['./suv-class.page.scss'],
+  selector: 'app-prestige',
+  templateUrl: './prestige.page.html',
+  styleUrls: ['./prestige.page.scss'],
 })
-export class SuvClassPage implements OnInit {
-
+export class PrestigePage implements OnInit {
 
   show = false;
   //////////////////////////////search bar elements for cars ////////////
@@ -92,12 +91,10 @@ filterData = [
 
 
       //call another page and fetch the details of the car
-      this.router.navigate(['car-details'], {queryParams:{id: carID, prev : "/suv-class"} })
+      this.router.navigate(['car-details'], {queryParams:{id: carID, prev : "/prestige"} })
 
 
     }
-
-
 
 
 }

@@ -119,7 +119,7 @@
           <div  *ngIf="pages.open">
 
                 <ion-menu-toggle  >
-                  <ion-item class="sub-item" *ngFor="let sub of pages.children" [routerLink]="sub.url" routerDirection="root" routerLinkActive="active">
+                  <ion-item class="sub-item" auto-hide="true" *ngFor="let sub of pages.children" [routerLink]="sub.url" routerDirection="root" routerLinkActive="active">
                       <ion-icon [name]="sub.icon" slot="start"></ion-icon>
                         {{sub.title}} 
                   </ion-item>

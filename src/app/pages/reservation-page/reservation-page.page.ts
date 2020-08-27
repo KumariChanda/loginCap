@@ -54,9 +54,9 @@ export class ReservationPagePage implements OnInit {
 //my car : this var will receive the car with all its details
 car = {
   'modele' : '',
-  'per_day' : "",
-  'per_hour' : "",
-  'airport' : ""
+  'per_day' : 0,
+  'per_hour' : 0,
+  'airport' : 0
 }
 
 ////////option values
@@ -291,9 +291,9 @@ subscription: Subscription;
         
           /////////////////////////////////user id ///////////////////////////////////////////////  
       
-            // var ret =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
+             var ret =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
             // console.log("user : ", ret);
-            // this.dataToSend.client = ret.id;
+             this.dataToSend.client = ret.id;
         
           //////////////////////////////get token storage////////////////////////////////////////
             this.token =(await Storage.get({ key: 'accessToken' })).value;
@@ -315,12 +315,12 @@ subscription: Subscription;
             /////////////////// set end hour /////////////////////////////////////////////////////
           //this.dataToSend.heure_fin = this.end_time;
             /////// set the end date to "";
-            this.dataToSend.date_fin = this.start_date+"T"+this.end_time+"44.625Z" ; 
+            this.dataToSend.date_fin = this.start_date+"T"+this.end_time+":44.625Z" ; 
             //this.dataToSend.date_fin = ""+ " "+this.end_time;
             /////// set depart venue  (for airoort type)
             //this.dataToSend.lieu_depart = "";
 
-            this.price = (parseInt(this.car.per_hour) * (1+ this.coef)).toFixed(2) 
+            this.price =   this.car.per_hour * (1+ this.coef  )
             
           }
           else if(this.rent_type =="day")
@@ -337,7 +337,7 @@ subscription: Subscription;
             /////// set depart venue 
             //this.dataToSend.lieu_depart = "";
 
-            this.price = parseFloat(this.car.per_day)* (1+ this.coef) 
+            this.price = this.car.per_day * (1+ this.coef) 
 
           }
           else if(this.rent_type =="airport")
@@ -350,7 +350,7 @@ subscription: Subscription;
             //////////////////////set departure venue ///////////////////////////////////////////////////////
             //this.dataToSend.lieu_depart = this.depart_venue;
 
-            this.price = parseFloat(this.car.airport) * (1+ this.coef) 
+            this.price = this.car.airport * (1+ this.coef) 
 
           }
           ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -460,7 +460,7 @@ subscription: Subscription;
 
                  ////send the data to the API
                 this.webservice.postReservation(this.token, this.dataToSend).subscribe(res=>{
-                      //console.log(res)
+                      console.log(res)
                       if(res)
                       {
                          console.log("done");
@@ -598,7 +598,7 @@ change(type)
         //set destination
         this.destination = id;
         //set coef 
-        this.coef = coef
+        this.coef = parseFloat(coef);
 
         for (let i = 0 ; i < this.list_original.length; i++)
         {

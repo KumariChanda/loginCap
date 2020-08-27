@@ -18,8 +18,10 @@
         "hour" : "Hour" ,
         "model" : "Model ",
         "color" : "Color : ",
-        "business_class" : "BUSINESS CLASS",
-        "family_class" : "FAMILY CLASS",
+        "business_class" : "BUSINESS XXL",
+        "economic_class" : "ECONOMIC",
+        "premium_class" : "PREMIUM",
+        "prestige_class" : "PRESTIGE",
         "profile" : "MY PROFILE",
         "edit_profile" : "EDIT PROFILE",
         "send_feedback":"POST TESTIMONIAL",
@@ -27,7 +29,9 @@
         "testimonial":"Testimonial",
         "post_testimonial":"Send testimonial",
         "edit_profile_title" : "EDIT PROFILE",
-        "save_profile":"Save Changes"
+        "save_profile":"Save Changes",
+        "our_contact" : "Our Contacts",
+        "usage_term" : "Usage Terms"
         
     },
 

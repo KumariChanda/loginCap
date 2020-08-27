@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { Subscriber } from 'rxjs';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
 
 
