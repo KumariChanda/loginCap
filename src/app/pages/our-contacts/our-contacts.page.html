@@ -4,7 +4,7 @@
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ 'DASHBOARD.our_contact' | translate }} </ion-title>
+        <ion-title>{{'DASHBOARD.our_contact' | translate }} </ion-title>
     </ion-item> 
 
   </ion-toolbar>
@@ -51,9 +51,14 @@
 
 
                 <!-- Telephone-->
-                  <ion-item>
+                  <!-- <ion-item>
                       <ion-icon name="call-outline"></ion-icon>
                       <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> {{contact.telephone}}  </b></ion-label>
+                  </ion-item>   -->
+
+                  <ion-item (click)="callNumber()">
+                      <ion-icon name="call-outline"></ion-icon>
+                      <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> +91-9810836642 </b></ion-label>
                   </ion-item> 
                 
                <!-- Whatsapp -->
