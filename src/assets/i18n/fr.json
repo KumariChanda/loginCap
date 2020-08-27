@@ -18,8 +18,10 @@
         "hour" : "Heure" ,
         "model" : "Modèle ",
         "color" : "Couleur : ",
-        "business_class" : "CLASSE BUSINESS",
-        "family_class" : "CLASSE FAMILLE ",
+        "business_class" : "BUSINESS XXL",
+        "economic_class" : "ECONOMIQUE",
+        "premium_class" : "PREMIUM",
+        "prestige_class" : "PRESTIGE",
         "suv_class" : "CLASSE SUV",
         "profile" : "MON PROFIL",
         "edit_profile" : "EDIT PROFIL",
@@ -28,7 +30,10 @@
         "testimonial":"Témoignage",
         "post_testimonial":"Envoyer témoignage",
         "edit_profile_title" : "EDITER PROFIL",
-        "save_profile":"Enregistrer Les Changements"
+        "save_profile":"Enregistrer Les Changements",
+        "our_contact" : "Our Contacts",
+        "usage_term" : "Conditions Utilisation"
+
 
 
     },

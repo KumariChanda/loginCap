@@ -30,7 +30,7 @@
     
 </ion-header>
 
-<ion-content >
+<ion-content *ngIf="show"  >
 
 
      <ion-card *ngFor="let item of filterData | filter:term">
@@ -52,7 +52,7 @@
                 <!-- Car price-->
                 <ion-chip >
                   <!-- <ion-icon name="medal" ></ion-icon> -->
-                  <ion-label  textWrap="true">{{item.per_day}} / {{ 'DASHBOARD.per_day' | translate }}</ion-label>
+                  <ion-label  textWrap="true">{{item.per_day}} F CFA / {{ 'DASHBOARD.day' | translate }}</ion-label>
                 </ion-chip> <br>
                 <!-- Number of Seats-->
                 <ion-chip >

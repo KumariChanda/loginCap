@@ -49,8 +49,9 @@ export class LoginPage  {
            this.webService.presentLoading();
 
           this.webService.login(sending_obj).subscribe(async res=>{
-           // console.log("getting response : ",res); 
-            if(res)
+           console.log("getting response : ",res); 
+
+            if(!res.detail)
             {
 
                 //store user status in storage 
@@ -104,6 +105,10 @@ export class LoginPage  {
               
               }) //added end get user details
               //////////////////////////////////////////////////
+            }
+            else{
+                this.webService.stopLoading();
+                alert("bad credential !")
             }  
                            
           },error =>{

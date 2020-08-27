@@ -11,6 +11,7 @@ export class FamilyClassPage implements OnInit {
 
 
   token : any;
+  show = false;
 
 //////////////////////////////search bar elements for cars ////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -83,6 +84,7 @@ filterData = [
               );
             }
           this.webService.stopLoading();//to stop loading
+          this.show =true;
       }
     });
 

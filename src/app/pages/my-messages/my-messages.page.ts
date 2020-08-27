@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-messages.page.scss'],
 })
 export class MyMessagesPage implements OnInit {
+
+  show = false;
+
   filterData = [
     {
       text:"I had a lot of pleasure to benefit from the professionalism of NYOKAH, with them it's another story.", // title or designation of the car

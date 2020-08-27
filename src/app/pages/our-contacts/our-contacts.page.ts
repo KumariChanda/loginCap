@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { Subscriber } from 'rxjs';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
 
 
@@ -12,7 +11,7 @@ import { AppServiceService } from 'src/app/service/appService/app-service.servic
 export class OurContactsPage implements OnInit {
 
   mycontact : any
-
+  show = false;
   constructor(private iab : InAppBrowser, private webService : AppServiceService) { }
 
   ngOnInit() {
@@ -36,6 +35,7 @@ export class OurContactsPage implements OnInit {
          
            //Stop loader
            this.webService.stopLoading();
+           this.show = true;
      });
      ///// end : get our contact
      /////////////////////////////////////////////////   

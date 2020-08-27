@@ -9,7 +9,7 @@ import { AppServiceService } from 'src/app/service/appService/app-service.servic
 export class ConfidentialityPage implements OnInit {
 
   myconf: any
-
+  show = false; 
   constructor(private webService : AppServiceService) { }
 
   ngOnInit() {
@@ -33,6 +33,7 @@ export class ConfidentialityPage implements OnInit {
            
              //Stop loader
              this.webService.stopLoading();
+             this.show = true;
        });
        ///// end : get term of usage
        /////////////////////////////////////////////////   

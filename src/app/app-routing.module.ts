@@ -96,7 +96,19 @@ const routes: Routes = [
   {
     path: 'feedback',
     loadChildren: () => import('./src/app/pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },  {
+    path: 'prestige',
+    loadChildren: () => import('./pages/prestige/prestige.module').then( m => m.PrestigePageModule)
+  },
+  {
+    path: 'premium',
+    loadChildren: () => import('./pages/premium/premium.module').then( m => m.PremiumPageModule)
+  },
+  {
+    path: 'economique',
+    loadChildren: () => import('./pages/economique/economique.module').then( m => m.EconomiquePageModule)
   }
+
 
 
 

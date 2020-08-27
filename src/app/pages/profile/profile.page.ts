@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
 import { Plugins } from '@capacitor/core';
+import { async } from '@angular/core/testing';
+
 const { Storage } = Plugins;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -24,7 +27,9 @@ export class ProfilePage implements OnInit {
   }
    agreement : boolean;
   userInfo: any;
-  userType: string;
+  userType: string ="";
+
+  show = false;
 
   constructor(private webService: AppServiceService) {
 

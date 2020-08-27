@@ -69,14 +69,19 @@ export class SignupPage implements OnInit {
 
                   if(res)
                   {
-                    console.log(res)
+                    console.log(res);
+                    this.webService.stopLoading();
+                    alert("Sign up Ok !!!");
+                    this.router.navigateByUrl("/login");
                   }
 
-                  this.webService.stopLoading();                
+                                  
 
                    
                  },error=>{
-                  this.webService.stopLoading();                
+                  this.webService.stopLoading(); 
+                  alert("Sign up not Ok !!");
+                  this.router.navigateByUrl("/login");               
 
                  }
                  );

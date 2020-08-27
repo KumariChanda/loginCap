@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar>
 
-    
+    <ion-item *ngIf="!isSearchbarOpened">
            <!-- menu icon -->
       <ion-buttons *ngIf="!isSearchbarOpened" slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
 
-    <ion-item *ngIf="!isSearchbarOpened">
+    
       <!-- title -->
-      <ion-title *ngIf="!isSearchbarOpened">{{ 'DASHBOARD.family_class' | translate }}</ion-title>
+      <ion-title *ngIf="!isSearchbarOpened">{{ 'DASHBOARD.prestige_class' | translate }}</ion-title>
 
    
        <!-- search bar button -->
@@ -30,7 +30,7 @@
     
 </ion-header>
 
-<ion-content  *ngIf="show"  >
+<ion-content *ngIf="show"  >
 
 
      <ion-card *ngFor="let item of filterData | filter:term">
@@ -52,7 +52,7 @@
                 <!-- Car price-->
                 <ion-chip >
                   <!-- <ion-icon name="medal" ></ion-icon> -->
-                  <ion-label  textWrap="true">{{item.per_day}} F CFA/ {{ 'DASHBOARD.day' | translate }}</ion-label>
+                  <ion-label  textWrap="true">{{item.per_day}} F CFA / {{ 'DASHBOARD.day' | translate }}</ion-label>
                 </ion-chip> <br>
                 <!-- Number of Seats-->
                 <ion-chip >

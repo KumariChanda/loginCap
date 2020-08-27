@@ -2,14 +2,14 @@
   <ion-toolbar>
 
     
+    <ion-item *ngIf="!isSearchbarOpened">
            <!-- menu icon -->
       <ion-buttons *ngIf="!isSearchbarOpened" slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
 
-    <ion-item *ngIf="!isSearchbarOpened">
       <!-- title -->
-      <ion-title *ngIf="!isSearchbarOpened">{{ 'DASHBOARD.family_class' | translate }}</ion-title>
+      <ion-title *ngIf="!isSearchbarOpened">{{ 'DASHBOARD.economic_class' | translate }}</ion-title>
 
    
        <!-- search bar button -->
