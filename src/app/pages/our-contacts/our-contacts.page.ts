@@ -86,6 +86,13 @@ export class OurContactsPage implements OnInit {
      this.iab.create("https://wa.me/+916284134683?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_system');
      //this.iab.create('https://wa.me/0916284134683/','_system');
    }
-   
+   //////////////////////////////////////////////////////
+   callNumber(number) {
+    this.callnumber.callNumber('+916284134683', true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
 
 }
+
+
