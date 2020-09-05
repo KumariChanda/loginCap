@@ -49,6 +49,7 @@ export class AppComponent {
     
   ) {
 
+     
 
     this.initializeApp(); 
       
@@ -68,22 +69,16 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(async () => {
 
-      //  openFirst() {
-        // this.menuCtrl.enable(true, 'first');
-        // this.menuCtrl.open('first');
-      // }
+     
      ////////////////splashcreen delay//////////////////////
-        this.platform.ready().then(() => {
-          
-      // Hide the splash (you should do this on app launch)
+     // Hide the splash (you should do this on app launch)
+     setTimeout( ()=>{
       SplashScreen.hide();
-            // setTimeout( ()=>{
-            //     this.showSplash=false;
-            //   // this.editableText=true;
-            //   }, 3000)
-            
+      this.showSplash=false;
+    // this.editableText=true;
+    }, 1000)
+
          
-        })
      /////////////////////////////////////
        
       //token storage
@@ -93,38 +88,26 @@ export class AppComponent {
       console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
       
       
-     //check the token and call the appropriate page
-      // if(this.token=="null")
-      // {
-      //   // call login page
-      //  // this.router.navigateByUrl('/home');
-      //   this.router.navigateByUrl('/dashboard');
-
-      // }
-      // else
-      // {
-
-      //   //call dashboard page
-      //   this.router.navigateByUrl('/dashboard');
-
-      // }
-
-      // var a = " ";
            // //set the initial language of the app
        this.webService.setInitialAppLanguage().then(val =>{
        // alert("val : "+val);
           this.sideMenu(val);
          
          }); 
+
+   
+         
+    
+
       //  this.sideMenu("fr");
       // console.log("a out  : ",a);
       this.statusBar.styleDefault();
-      // this.splashScreen.hide();
+       SplashScreen.hide();
     });
 
     
   }
-
+////////////////////////////////////////////////////////////////////////////////////////////////
   //get current token
   async getCurrentToken()
   {
@@ -139,7 +122,7 @@ export class AppComponent {
   
   
 
-
+/////////////////////////////////////////////////////////////////
    openUserProfile(url){
     console.log('Open this URL: ',url);
   }
@@ -604,7 +587,7 @@ export class AppComponent {
                       ]
                     },
                     {
-                      title : "À propos",
+                      title : "Contactez-Nous",
                       icon  : "call",
                       children :[
               

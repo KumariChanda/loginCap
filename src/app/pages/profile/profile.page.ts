@@ -50,7 +50,7 @@ export class ProfilePage implements OnInit {
 
   async getdata()
   {
-    if(true){
+    
     this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
     console.log("Storage : ",this.userInfo);
     this.profileData.address=this.userInfo.address;
@@ -60,23 +60,19 @@ export class ProfilePage implements OnInit {
     this.profileData.lastname=this.userInfo.last_name;
     this.profileData.mobilenumber=this.userInfo.telephone;
 
+
+    //get user type
     this.userType = (await Storage.get({ key: "user_type" })).value;
     // this.webService.stopLoading();
     //get the current language of the app   
-    this.webService.getCurrentLanguage().then(async val =>{
-
-      // change the value of token
-    // await Storage.set({
-    //   key: 'accessToken',
-    //   value: res.token           
-    // });  
+    this.webService.getCurrentLanguage().then(async val =>{ 
 
       // console.log("home  ",val)
         this.webService.sendMessage({'token': "mytoken", 'language': val })
     });//end get app language
-  }
-   ///stop loading
-  //  this.webService.stopLoading();
+  
+   //show the contain
+   this.show = true;
   }
 
   async editProfile()

@@ -16,11 +16,11 @@
 
 
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="FadeSplashScreenDuration" value="0" />
-    <!-- <preference name="SplashShowOnlyFirstTime" value="false" /> -->
-    <!-- <preference name="SplashScreen" value="screen" /> -->
-    <preference name="SplashScreenDelay" value="0" />
-    <preference name="ShowSplashScreen" value="false" />
+    <preference name="FadeSplashScreenDuration" value="1000" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="1000" />
+    <preference name="ShowSplashScreen" value="true" />
     <preference name="AutoHideSplashScreen" value="false" />
 
 
