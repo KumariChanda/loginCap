@@ -125,7 +125,7 @@
         "email" : "Adresse Email (*)",
         "password" : "Mot de passe (*)",
         "confirm_password" : "Confirmez mot de passe (*)",
-        "mobile" : "Numéro de téléphone",
+        "mobile_num" : "Numéro de téléphone",
         "address" : "Adresse",
         "already_account":"Vous avez déjà un compte?",
         "term_condition":"Je suis d'accord avec les termes et les conditions"
