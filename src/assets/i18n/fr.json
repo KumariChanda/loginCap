@@ -19,22 +19,23 @@
         "model" : "Modèle ",
         "color" : "Couleur : ",
         "business_class" : "BUSINESS XXL",
-        "economic_class" : "ECONOMIQUE",
+        "economic_class" : "ÉCONOMIQUE",
         "premium_class" : "PREMIUM",
         "prestige_class" : "PRESTIGE",
         "suv_class" : "CLASSE SUV",
         "profile" : "MON PROFIL",
         "edit_profile" : "EDIT PROFIL",
-         "send_feedback":"POST TESTIMONIAL",
+         "send_feedback":"POSTEZ TÉMOIGNAGE",
         "post_a_testimonial":"POSTER UN TÉMOIGNAGE",
         "testimonial":"Témoignage",
         "post_testimonial":"Envoyer témoignage",
         "edit_profile_title" : "EDITER PROFIL",
         "save_profile":"Enregistrer Les Changements",
-        "our_contact" : "Our Contacts",
-        "usage_term" : "Conditions Utilisation"
-
-
+        "our_contact" : "Nos contacts",
+        "usage_term" : "Conditions Utilisation",
+        "about_us":"À propos de nous",
+        "confidentiality":"Confidentialité"
+        
 
     },
 
@@ -115,10 +116,29 @@
         "city":"Ville",
         "country":"Pays",
         "edit_profile":"Editer le profil"
-        
-
+    },
+    "SIGNUP" : {
+        "signup" : "Inscription",
+        "signup_btn" : "S'Inscrire",
+        "first_name" : "Prénom (*)",
+        "last_name" : "Nom",
+        "email" : "Adresse Email (*)",
+        "password" : "Mot de passe (*)",
+        "confirm_password" : "Confirmez mot de passe (*)",
+        "mobile" : "Numéro de téléphone",
+        "address" : "Adresse",
+        "already_account":"Vous avez déjà un compte?",
+        "term_condition":"Je suis d'accord avec les termes et les conditions"
+       
+    } ,
+    "Password":{
+        "old_password":"Ancien Mot de Passe (*)",
+        "new_password":"Nouveau Mot de Passe (*)",
+        "confirm_password":"Confirmez  Mot de Passe (*)",
+        "change_password":"Changer mot de passe",
+        "change_password_btn":"Valider",
+        "reset_password":"Réinitialiser le mot de passe"
     }
-
-
+    
 
 }

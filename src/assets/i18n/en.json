@@ -31,7 +31,11 @@
         "edit_profile_title" : "EDIT PROFILE",
         "save_profile":"Save Changes",
         "our_contact" : "Our Contacts",
-        "usage_term" : "Usage Terms"
+        "usage_term" : "Usage Terms",
+        "about_us":"About Us",
+        "confidentiality":"Confidentiality"
+        
+       
         
     },
 
@@ -52,7 +56,6 @@
     },
 
     "CARDETAILS" : {
-
         "title" : " CAR DETAILS",
         "seats" : "seats" ,
         "day" : "Day" ,
@@ -109,9 +112,27 @@
         "city":"City",
         "country":"Country",
         "edit_profile":"Edit Profile"
-
+    },
+    "SIGNUP" : {
+        "signup" : "Sign Up",
+        "signup_btn" : "Sign Up",
+        "first_name" : "First name (*)",
+        "last_name" : "Last name",
+        "email" : "Email Address (*)",
+        "password" : "Password (*)",
+        "confirm_password" : "Confirm Password (*)",
+        "mobile" : "Mobile number",
+        "address" : "Address",
+        "already_account":"Already have an account?",
+        "term_condition":"I Agree with Terms and Conditions"       
+    },
+    "Password":{
+        "old_password":"Old Password (*)",
+        "new_password":"New Password (*)",
+        "confirm_password":"Confirm Password (*)",
+        "change_password":"Change Password",
+        "reset_password":"Reset Password"
     }
-    
 
 
 
