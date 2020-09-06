@@ -96,6 +96,8 @@ export class MyBookingsPage implements OnInit {
                        //stop loader
                        this.show = true
                        this.webService.stopLoading();
+
+                       this.router.navigateByUrl("/dashboard");
                  }
                  else
                  {
