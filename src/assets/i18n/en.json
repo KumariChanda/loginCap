@@ -25,6 +25,7 @@
         "profile" : "MY PROFILE",
         "edit_profile" : "EDIT PROFILE",
         "send_feedback":"POST TESTIMONIAL",
+        "my_testimonial": "MY TESTIMONIALS",
         "post_a_testimonial":"POST A TESTIMONIAL",
         "testimonial":"Testimonial",
         "post_testimonial":"Send testimonial",

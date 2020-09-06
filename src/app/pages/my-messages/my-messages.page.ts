@@ -27,6 +27,7 @@ export class MyMessagesPage implements OnInit {
 
   token : any;
   userId : any;
+  lang: string;
 
 
   constructor(private webservice : AppServiceService, private router : Router) { }
@@ -41,7 +42,7 @@ export class MyMessagesPage implements OnInit {
     //get user id
     this.userId =JSON.parse( (await Storage.get({ key: "user_infos" })).value).id;
     //get Language
-    var lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+    this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
 
 
     //get testimonial list
@@ -49,7 +50,7 @@ export class MyMessagesPage implements OnInit {
 
       if(res.detail)
       {
-         if(lang=="fr")
+         if(this.lang=="fr")
          {
           alert("Aucun témoignage \n Retour à la page accueil");
 
@@ -61,8 +62,30 @@ export class MyMessagesPage implements OnInit {
 
          
       }else{
+        
+           if(res.length == 0)
+           {
+                if(this.lang == "fr")
+                {
+                  alert("Votre Liste de Temoignage est vide !! ")
+                }
+                else
+                {
+                  alert(" Your Testimonial List is Empty !!");
+                }
+                
+                //stop loader
+                this.show = true
+                this.webservice.stopLoading();
 
-        this.filterData = res;
+                this.router.navigateByUrl("/dashboard");
+             
+           }
+           else{
+               this.filterData = res;
+           }
+
+        
       }
 
 

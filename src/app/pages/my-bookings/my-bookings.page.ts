@@ -81,7 +81,7 @@ export class MyBookingsPage implements OnInit {
               
             }else{
                  //check if the booking list is empty or not
-                 if(res.length == 0)
+                 if(res.length == 0) 
                  {
 
                       if(this.lang == "fr")
@@ -90,7 +90,7 @@ export class MyBookingsPage implements OnInit {
                       }
                       else
                       {
-                        alert(" Your Booking List Empty !!");
+                        alert(" Your Booking List is Empty !!");
                       }
                        
                        //stop loader
