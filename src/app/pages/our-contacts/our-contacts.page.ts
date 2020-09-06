@@ -76,7 +76,7 @@ export class OurContactsPage implements OnInit {
    openGoogleplus()
    {
      console.log("Google plus")
-    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+      this.iab.create('https://mail.google.com/','_system')
    }
    //////////////////////////////////////////////////////
    openWhatsapp(number)
