@@ -56,9 +56,11 @@
                       <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> {{contact.telephone}}  </b></ion-label>
                   </ion-item>   -->
 
-                  <ion-item (click)="callNumber(6284134683)">
+                  <ion-item>
                       <ion-icon name="call-outline"></ion-icon>
-                      <ion-label style="size: 20vw;">&nbsp;&nbsp;&nbsp; <b> +91-6284134683 </b></ion-label>
+                      <ion-label style="size: 20vw;"  (click)="callNumber(phone)" *ngFor="let phone of contact.telephone">&nbsp;&nbsp;&nbsp;
+                        <b> {{phone}}</b>
+                       </ion-label>
                   </ion-item> 
                 
                <!-- Whatsapp -->
@@ -69,7 +71,9 @@
                     <ion-item>
                         <ion-icon name="logo-whatsapp"></ion-icon>
                         <!-- <a href="whatsapp://send?phone=8559080443">8559080443</a> -->
-                        <ion-label style="size: 20vw;" tappable (click)="openWhatsapp()">&nbsp;&nbsp;&nbsp; <b>+91-6284134683</b></ion-label>
+                        <ion-label style="size: 20vw;" tappable (click)="openWhatsapp(whatPhone)" *ngFor="let whatPhone of contact.whatsapp">&nbsp;&nbsp;&nbsp; 
+                          <b>{{whatPhone}}</b>
+                        </ion-label>
                     </ion-item>
 
                 <!-- Email -->

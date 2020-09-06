@@ -79,6 +79,10 @@ subscription: Subscription;
    end_time : string;
    depart_venue : string;
    message : string;
+
+   min_retunDate : any;// min return date for reservation per day
+   hourNbr = 0;  // coef of number of hour for reservation per hour
+
   
 
    ////////////////////////////////////////////////////////
@@ -89,23 +93,19 @@ subscription: Subscription;
       "date_location": "",
       "date_debut": "",
       "date_fin": "",
-      //"heure_debut": "",
-      //"heure_fin": "",
       "montant": 0,
-      "note_client": 0,
+      "note_client": null,
       "commentaire_client": "",
-      "note_chauffeur": 0,
+      "note_chauffeur": null,
       "rapport_chauffeur": "",
       "client": 0,
-      "chauffeur": 1,
+      "chauffeur": null,
       "voiture": 0,
       "type_location": 1,
       "destination": 0,
       "etape_location": 1,
       //"lieu_depart": "",
-      "optionnel": [
-        0
-      ]
+      "optionnel": []
     
    }//end of object to send
    ///////////////////////////////
@@ -114,6 +114,7 @@ subscription: Subscription;
 
 /////////////////////////////////////////////////////
    show = false; //is to show page content
+  lang: string;
  
 
 
@@ -126,7 +127,9 @@ subscription: Subscription;
       
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    this.lang = (await Storage.get({ key: LNG_KEY })).value;
 
         // //present loading
         this.webservice.presentLoading();
@@ -207,6 +210,18 @@ subscription: Subscription;
       let date : Date = new Date();
       var month, day
 
+
+
+       //set min date for return date reserv per day
+    
+       this.min_retunDate = new Date()
+       this.min_retunDate.setDate(this.min_retunDate.getDate() + 1);
+
+       this.min_retunDate = this.min_retunDate.toISOString();
+
+      
+
+
        ///////////////////////today's date or reservation date //////////////////////////
        this.dataToSend.date_location = date.toISOString();
 
@@ -234,6 +249,8 @@ subscription: Subscription;
          this.start_time = "09:00";
          this.end_time = "10:00";
     
+        
+       
     
       //maximum date
       var x =  new Date().setDate( date.getDate()+90 )
@@ -279,6 +296,7 @@ subscription: Subscription;
     async submit(id)
     {
 
+      
         //check if destination is null
         if(this.destination)
         {
@@ -310,23 +328,60 @@ subscription: Subscription;
           ///////////////////////////////////////////////////////////////////////////////////////////
           if(this.rent_type =="hour")
           {
-            ///////set type rent to hour id 
-            this.dataToSend.type_location = 1;
-            /////////////////// set end hour /////////////////////////////////////////////////////
-          //this.dataToSend.heure_fin = this.end_time;
-            /////// set the end date to "";
-            this.dataToSend.date_fin = this.start_date+"T"+this.end_time+":44.625Z" ; 
-            //this.dataToSend.date_fin = ""+ " "+this.end_time;
-            /////// set depart venue  (for airoort type)
-            //this.dataToSend.lieu_depart = "";
+            /////coef of the number of hour
+            if(this.hourNbr >0)
+            {
 
-            this.price =   this.car.per_hour * (1+ this.coef  )
+                ///////set type rent to hour id 
+                this.dataToSend.type_location = 1;
+                /////////////////// set end hour /////////////////////////////////////////////////////
+                //this.dataToSend.heure_fin = this.end_time;
+                /////// set the end date to "";
+                this.dataToSend.date_fin = this.start_date+"T"+this.end_time+":44.625Z" ; 
+                //this.dataToSend.date_fin = ""+ " "+this.end_time;
+                /////// set depart venue  (for airoort type)
+                //this.dataToSend.lieu_depart = "";
             
+      
+                  //////price with number of hour and destination coef included 
+      
+      
+                  this.price =  (this.car.per_hour * (1+ this.coef  )) * this.hourNbr;
+              
+            }
+            else
+            {
+                if(this.lang =="fr")
+                {
+                  alert("Entrez le nombre d'heure ! ( > 0) ");
+                }else{
+                  alert("Enter the number of Hour ! ( > 0) ")
+                }
+                return ;
+
+
+            }
+          
+           
           }
           else if(this.rent_type =="day")
           {
 
-            ///////set type rent to day id 
+             /////coef of the number of day
+            // To set two dates to two variables 
+            var date1 = new Date(this.start_date); 
+            var date2 = new Date(this.end_date); 
+              
+            // To calculate the time difference of two dates 
+            var Difference_In_Time = date2.getTime() - date1.getTime(); 
+              
+            // To calculate the no. of days between two dates 
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+
+            if(Difference_In_Days > 0)
+            {
+
+               ///////set type rent to day id 
             this.dataToSend.type_location = 2;
             //////////////////////set end date ///////////////////////////////////////////////////////
             // this.dataToSend.date_fin = this.end_date
@@ -337,7 +392,20 @@ subscription: Subscription;
             /////// set depart venue 
             //this.dataToSend.lieu_depart = "";
 
-            this.price = this.car.per_day * (1+ this.coef) 
+            this.price =( this.car.per_day * (1+ this.coef)) * Difference_In_Days; 
+
+
+            }
+            else{
+
+              if(this.lang =="fr")
+              {
+                alert("Le Nombre de jour doit être > 0 ");
+              }else{
+                alert("Number of Day Should be > 0")
+              }
+              return ;
+            }
 
           }
           else if(this.rent_type =="airport")
@@ -414,8 +482,7 @@ subscription: Subscription;
         }
         else
         {
-          var lang = (await Storage.get({ key: LNG_KEY })).value;
-          if(lang =="fr")
+          if(this.lang =="fr")
           {
             alert("Remplissez le champ Destination !");
           }else{
@@ -496,7 +563,8 @@ subscription: Subscription;
         }else{
           alert("Your Request has been sent successfully !");
          }
-         this.router.navigateByUrl("/dashboard");
+        //  this.router.navigateByUrl("/dashboard");
+        this.prev();
      }else{
 
         if(lang =="fr" )
@@ -529,32 +597,66 @@ change(type)
    if(type == "hour")
    {
        // console.log("start : ",this.start_time,"\n type time :",typeof(this.start_time));
-        var x = parseInt(this.start_time.split(":")[0]) + 1;
+        var x = parseInt(this.start_time.split(":")[0]) + this.hourNbr;
+        var y = parseInt(this.start_time.split(":")[1]) ;
 
-        if(x<10)
+
+
+        if(x<=23 && y <=59)
         {
-          this.end_time = "0"+x+":00";
-        }else{
-          this.end_time = ""+x+":00";
+            if(x<10)
+            {
+              if(y<10)
+              {
+                this.end_time = "0"+x+":0"+y;
+
+              }
+              else{
+                this.end_time = "0"+x+":"+y;
+              }
+            }else{
+              if(y<10)
+              {
+                this.end_time = ""+x+":0"+y;
+
+              }
+              else{
+                this.end_time = ""+x+":"+y;
+              }
+            }
         }
+        else
+        {
+
+            this.hourNbr = 0;
+
+  
+            if(this.lang == "fr")
+            {
+              alert("Désolé, l'heure de retour Max  est :  23 Hr : 59 min ");
+            }
+            else
+            {
+              alert("Sorry, the maximum return time is: 11 : 59 PM ");
+
+            }
+            
+        }  
        
    }
    ////per day
    if(type == "day")
    {
-       // console.log("start : ",this.start_date,"\n type time :",typeof(this.start_date));
-        var dat = this.start_date.split("T")[0];
-        var x = parseInt(dat.split("-")[2])+1;
-        if(x<10)
-        {
-          this.end_date = ""+dat.split("-")[0]+"-"+dat.split("-")[1]+"-0"+x;
-        }
-        else
-        {
-          this.end_date = ""+dat.split("-")[0]+"-"+dat.split("-")[1]+"-"+x;
-        }
 
-        //console.log(this.end_date);
+      // Create new Date instance
+      var date = new Date(this.start_date)
+
+      // Add a day
+      date.setDate(date.getDate() + 1);
+
+      this.end_date = date.toISOString();
+
+      this.min_retunDate = date.toISOString();
        
        
    }

@@ -36,6 +36,7 @@
 
 
 
+
     },
 
     "LANGUAGE" : {
@@ -89,7 +90,9 @@
         "assistanttranslator" : " Assistant traducteur",
         "message" : "Message",
         "messageplaceholder" : "Laissez votre message ici...",
-        "btn_submit" : "SOUMETTRE"
+        "btn_submit" : "SOUMETTRE",
+        "number_hour" : "Nombre d'heure (*)"
+
     },
 
     "LOGIN" : {

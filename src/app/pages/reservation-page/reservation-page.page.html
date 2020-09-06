@@ -70,10 +70,16 @@
                   <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" (ionChange)="change('hour')"   [(ngModel)]="start_time" ></ion-datetime>
                 </ion-item>
                  <!-- return time -->
-                <ion-item  *ngIf="rent_type =='hour' || rent_type =='day' ">
+                <ion-item  *ngIf="hourNbr > 0" >
                   <ion-label>{{"RESERVECAR.return_time"| translate}}</ion-label>
-                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	"  [min]="end_time" [(ngModel)]="end_time"> </ion-datetime>
+                  <ion-datetime readonly display-format="HH:mm	" picker-format="HH:mm	"  [min]="end_time" [(ngModel)]="end_time"> </ion-datetime>
                 </ion-item>
+                <!-- Number of Time-->
+                <ion-item >
+                  <ion-label>{{"RESERVECAR.number_hour"| translate}}</ion-label>
+                  <ion-input type="number"  style="width: 100px; margin-left : 40%" (ionChange)="change('hour')"  placeholder="0"  [(ngModel)]="hourNbr" ></ion-input>
+                </ion-item>
+                
                </div>
 
 
@@ -91,7 +97,7 @@
                  <!-- return date  -->
                 <ion-item  >
                   <ion-label>{{"RESERVECAR.return_date"| translate}}</ion-label>
-                  <ion-datetime [min]="end_date" [max]="maxdate" placeholder="Select Date" [(ngModel)]="end_date"></ion-datetime>
+                  <ion-datetime [min]="min_retunDate" [max]="maxdate" placeholder="Select Date" [(ngModel)]="end_date"></ion-datetime>
                 </ion-item>
                 <!-- start time -->
                 <ion-item >
