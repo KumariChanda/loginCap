@@ -50,7 +50,7 @@ export class MyBookingsPage implements OnInit {
 
   async ngOnInit() {
         //start laoder
-        this.webService.presentLoading();
+        // this.webService.presentLoading();
         //get token
         this.token =(await Storage.get({ key: 'accessToken' })).value;
 
@@ -109,7 +109,7 @@ export class MyBookingsPage implements OnInit {
 
                         //stop loader
                         this.show = true
-                        this.webService.stopLoading();
+                        // this.webService.stopLoading();
 
 
                   });

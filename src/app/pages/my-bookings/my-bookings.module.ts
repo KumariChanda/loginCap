@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MyBookingsPageRoutingModule } from './my-bookings-routing.module';
 
 import { MyBookingsPage } from './my-bookings.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyBookingsPageRoutingModule
+    MyBookingsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [MyBookingsPage]
 })
