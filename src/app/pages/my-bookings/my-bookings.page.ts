@@ -66,7 +66,7 @@ export class MyBookingsPage implements OnInit {
 
             console.log(res);
 
-            if(res.detail)
+            if(res.detail) // that means the is error or no value exist for this user
             {
               if(this.lang=="fr")
               {
@@ -80,45 +80,66 @@ export class MyBookingsPage implements OnInit {
 
               
             }else{
+                 //check if the booking list is empty or not
+                 if(res.length == 0) 
+                 {
 
-                for(let i=0 ; i <res.length ; i++)
-                {
-                    //receive the res
-                  this.filterData[i] = res[i];
-                  this.filterData[i].date_debut = res[i].date_debut.split("T")[0];
+                      if(this.lang == "fr")
+                      {
+                         alert("Votre Liste de Reservation est vide !! ")
+                      }
+                      else
+                      {
+                        alert(" Your Booking List is Empty !!");
+                      }
+                       
+                       //stop loader
+                       this.show = true
+                       this.webService.stopLoading();
 
-                  //call the car according to the id 
-                  this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
-
-                    console.log(car)
-                        //pictures of car
-                        this.filterData[i].photo_car = car.photo;
-                        //modele
-                        this.filterData[i].modele = car.modele.libelle;
-
-
-                        //get destination
-                        this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
-
-                            console.log(dest);
-
-                          this.filterData[i].destination = dest.destination;
-                        });
-                        //end get destination
-
-
-                        //stop loader
-                        this.show = true
-                        this.webService.stopLoading();
-
-
-                  });
-                  //end get car infos
-
-
-
-                }//end for loop
-
+                       this.router.navigateByUrl("/dashboard");
+                 }
+                 else
+                 {
+                    for(let i=0 ; i <res.length ; i++)
+                    {
+                        //receive the res
+                      this.filterData[i] = res[i];
+                      this.filterData[i].date_debut = res[i].date_debut.split("T")[0];
+    
+                      //call the car according to the id 
+                      this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
+    
+                        console.log(car)
+                            //pictures of car
+                            this.filterData[i].photo_car = car.photo;
+                            //modele
+                            this.filterData[i].modele = car.modele.libelle;
+    
+    
+                            //get destination
+                            this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
+    
+                                console.log(dest);
+    
+                              this.filterData[i].destination = dest.destination;
+                            });
+                            //end get destination
+    
+    
+                            //stop loader
+                            this.show = true
+                            this.webService.stopLoading();
+    
+    
+                      });
+                      //end get car infos
+    
+    
+    
+                    }//end for loop
+  
+                 }
                   
 
             }
