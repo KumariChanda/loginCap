@@ -36,7 +36,7 @@ export class MyBookingsPage implements OnInit {
       "destination": "",
       "etape_location": 0,
       "optionnel": [],
-      "photo_car":[{}],
+      "photo_car":[{"image":""}],
       "modele":""    
     }
   
@@ -50,7 +50,7 @@ export class MyBookingsPage implements OnInit {
 
   async ngOnInit() {
         //start laoder
-        // this.webService.presentLoading();
+        this.webService.presentLoading();
         //get token
         this.token =(await Storage.get({ key: 'accessToken' })).value;
 
