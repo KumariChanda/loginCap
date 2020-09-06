@@ -35,7 +35,7 @@ filterData = [
 
      //get suv class cars list
     this.webService.presentLoading();//to start loader
-     this.webService.getCarClass(2).subscribe(async res=>{
+     this.webService.getCarClass(3).subscribe(async res=>{
 
         
       //console.log("getting business voitures : \n ",res); 

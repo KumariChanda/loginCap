@@ -13,11 +13,9 @@ export class OurContactsPage implements OnInit {
 
   mycontact : any
   show = false;
-
-  constructor(private iab : InAppBrowser, private webService : AppServiceService, private callnumber: CallNumber) {
-   
-
-   }
+  constructor(private iab : InAppBrowser, private webService : AppServiceService,
+      private callnumber: CallNumber
+    ) { }
 
   ngOnInit() {
 
@@ -81,17 +79,20 @@ export class OurContactsPage implements OnInit {
       this.iab.create('https://mail.google.com/','_system')
    }
    //////////////////////////////////////////////////////
-   openWhatsapp()
+   openWhatsapp(number)
    {
-     this.iab.create("https://wa.me/+918559080443?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_system');
+     //console.log("Number : ",no);
+    //  this.iab.create('https://wa.me/+916284134683','_blank');
+     this.iab.create("https://wa.me/"+number+"?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_system');
+     //this.iab.create('https://wa.me/0916284134683/','_system');
    }
    //////////////////////////////////////////////////////
-   callNumber() {
-    this.callnumber.callNumber('+919810836642', true)
+   callNumber(number) {
+    this.callnumber.callNumber(number, true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
   }
 
- 
-
 }
+
+

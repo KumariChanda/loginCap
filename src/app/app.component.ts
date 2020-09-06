@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 import { Platform, MenuController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { Router } from '@angular/router';
@@ -9,6 +8,7 @@ import { Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { AppServiceService } from './service/appService/app-service.service';
 // import { timer } from 'rxjs/observable/timer';
+const { SplashScreen } = Plugins;
 const { Storage } = Plugins;
 const LNG_KEY = 'SELECTED LANGUAGE';
 
@@ -40,7 +40,6 @@ export class AppComponent {
 
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private menuCtrl:MenuController,
     //add this router for switching pages
@@ -50,6 +49,7 @@ export class AppComponent {
     
   ) {
 
+     
 
     this.initializeApp(); 
       
@@ -69,24 +69,16 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(async () => {
 
-      //  openFirst() {
-        // this.menuCtrl.enable(true, 'first');
-        // this.menuCtrl.open('first');
-      // }
+     
      ////////////////splashcreen delay//////////////////////
-        this.platform.ready().then(() => {
-          
-            this.splashScreen.hide();
+     // Hide the splash (you should do this on app launch)
+     setTimeout( ()=>{
+      SplashScreen.hide();
+      this.showSplash=false;
+    // this.editableText=true;
+    }, 1000)
 
-            // setTimeout( ()=>{
-            //     this.showSplash=false;
-            //   // this.editableText=true;
-            //   }, 3000)
-            timer(3000).subscribe(()=>{
-              this.showSplash=false;
-            })
          
-        })
      /////////////////////////////////////
        
       //token storage
@@ -96,38 +88,26 @@ export class AppComponent {
       console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
       
       
-     //check the token and call the appropriate page
-      // if(this.token=="null")
-      // {
-      //   // call login page
-      //  // this.router.navigateByUrl('/home');
-      //   this.router.navigateByUrl('/dashboard');
-
-      // }
-      // else
-      // {
-
-      //   //call dashboard page
-      //   this.router.navigateByUrl('/dashboard');
-
-      // }
-
-      // var a = " ";
            // //set the initial language of the app
        this.webService.setInitialAppLanguage().then(val =>{
        // alert("val : "+val);
           this.sideMenu(val);
          
          }); 
+
+   
+         
+    
+
       //  this.sideMenu("fr");
       // console.log("a out  : ",a);
       this.statusBar.styleDefault();
-      // this.splashScreen.hide();
+       SplashScreen.hide();
     });
 
     
   }
-
+////////////////////////////////////////////////////////////////////////////////////////////////
   //get current token
   async getCurrentToken()
   {
@@ -142,7 +122,7 @@ export class AppComponent {
   
   
 
-
+/////////////////////////////////////////////////////////////////
    openUserProfile(url){
     console.log('Open this URL: ',url);
   }
@@ -607,7 +587,7 @@ export class AppComponent {
                       ]
                     },
                     {
-                      title : "À propos",
+                      title : "Contactez-Nous",
                       icon  : "call",
                       children :[
               

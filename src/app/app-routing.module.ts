@@ -78,10 +78,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/business-class/business-class.module').then( m => m.BusinessClassPageModule)
   },
   {
-    path: 'family-class',
-    loadChildren: () => import('./pages/family-class/family-class.module').then( m => m.FamilyClassPageModule)
-  },
-  {
     path: 'suv-class',
     loadChildren: () => import('./pages/suv-class/suv-class.module').then( m => m.SuvClassPageModule)
   },

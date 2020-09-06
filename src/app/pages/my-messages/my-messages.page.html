@@ -12,7 +12,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content *ngIf="show">
 
           <!-- -------------------------------------------------------------------------------------- -->
         <!-- Start contact -->
@@ -25,12 +25,12 @@
                <!-- Status -->
                 <ion-item>
                     <ion-label > Status : </ion-label>
-                    <ion-chip slot="end"  *ngIf="item.status == 1" style="color:green;border:1px,solid,green"> Active </ion-chip>
+                    <ion-chip slot="end" style="color:green;border:1px,solid,green"> Active </ion-chip>
                   </ion-item>
                 <!-- Starting date -->
                 <ion-item>
                     <ion-label > Date : </ion-label>
-                    <ion-chip slot="end"> {{item.posting_date}}</ion-chip>
+                    <ion-chip slot="end"> {{item.date}}</ion-chip>
                 </ion-item>
                  
               </ion-card-subtitle>

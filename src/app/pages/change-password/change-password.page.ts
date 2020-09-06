@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { AppServiceService } from 'src/app/service/appService/app-service.service';
+
+import { Plugins } from '@capacitor/core';
+import { Router } from '@angular/router';
+
+const { Storage } = Plugins;
+
 
 @Component({
   selector: 'app-change-password',
@@ -7,11 +14,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChangePasswordPage implements OnInit {
   btnClicked:boolean=false;
-  constructor() { }
+  userInfo: any;
+  
+  constructor(private webService : AppServiceService, private router : Router) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    //get user Infos
+    this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
+    console.log("Storage : ",this.userInfo);
+
+    
+
   }
 
+
+
+
+
+  /////////////////////////////////////////////////////
   changePassword()
   {
     this.btnClicked=true;
@@ -19,5 +40,6 @@ export class ChangePasswordPage implements OnInit {
       this.btnClicked=false;
       }, 1000)
   }
+  ////////////////////////////////////////////////////
 
 }

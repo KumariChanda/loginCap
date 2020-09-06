@@ -88,7 +88,9 @@
         "assistanttranslator" : "Assistant Translator",
         "message" : "Message",
         "messageplaceholder" : "Enter any message here...",
-        "btn_submit" : "SUBMIT"
+        "btn_submit" : "SUBMIT",
+        "number_hour" : "Number of Hour (*)"
+
     },
 
     "LOGIN" : {
