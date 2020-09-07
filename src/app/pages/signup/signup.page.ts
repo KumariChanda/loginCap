@@ -51,7 +51,7 @@ export class SignupPage implements OnInit {
       }, 1000)
     console.log("Signup cllicked!.");
 
-     if(this.firstname &&  this.lastname && this.email && this.password && this.password && this.confirmpassword)
+     if(this.firstname &&  this.email && this.password && this.password && this.confirmpassword)
      {
           if(this.agreement == true)
         {
@@ -81,13 +81,7 @@ export class SignupPage implements OnInit {
                   {
                     console.log(res);
                     this.webService.stopLoading();
-                    if(this.lang =="fr")
-                  {
-                    alert("Inscription réussie !! ")
-                  }else{
-                    alert("Successful Sign Up   !! ")
-  
-                  }
+                    alert("Sign up Ok !!!");
                     this.router.navigateByUrl("/login");
                   }
 
@@ -96,14 +90,7 @@ export class SignupPage implements OnInit {
                    
                  },error=>{
                   this.webService.stopLoading(); 
-                  
-                  if(this.lang =="fr")
-                  {
-                    alert("Inscription échouée !! ")
-                  }else{
-                    alert("Sign Up Failed !! ")
-  
-                  }
+                  alert("Sign up not Ok !!");
                   this.router.navigateByUrl("/login");               
 
                  }

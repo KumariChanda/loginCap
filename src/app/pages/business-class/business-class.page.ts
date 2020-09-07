@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
-import { Plugins } from '@capacitor/core';
 
-
-const { Storage } = Plugins;
 
 
 @Component({
@@ -36,7 +33,6 @@ filterData = [
 
 ];
   src_link: string;
-  lang: any;
 
 
   constructor( private router: Router, 
@@ -46,41 +42,21 @@ filterData = [
 
      }
 
-  async ngOnInit() {
+  ngOnInit() {
 
      //basic link
      this.src_link = this.webService.base_url;
-     //get Language
-    this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
-
 
 
     //get Business class cars list
       this.webService.presentLoading();//to start loader
-
       this.webService.getCarClass(4).subscribe(async res=>{
 
         
         console.log("getting business voitures : \n ",res); 
-        if(!res.detail)
+        if(res)
         {
-            if(res.length ==0)
-            { 
-                 //no  cars
-                if(this.lang=="fr")
-                {
-                  alert("La Liste de voitures est vide \n Retour à la page accueil");
-        
-                }else{
-                  alert("The List of cars is Empty \n Back to Home Page")
-                }
-        
-                this.router.navigateByUrl("/dashboard");
-                this.webService.stopLoading();//to stop loading
 
-            }
-            else
-            {
               var index=0;
               for(let i=0; i< res.length; i++ )
               {
@@ -116,24 +92,8 @@ filterData = [
               }
               this.webService.stopLoading();//to stop loading
               this.show = true// used to show page content
-            }
-             
 
             
-        }
-        else{
-           //no  cars
-           if(this.lang=="fr")
-            {
-              alert("Erreur code  voiture !!  \n Retour à la page accueil");
-
-            }else{
-              alert("Car code error !! \n Back to Home Page")
-            }
-  
-           this.router.navigateByUrl("/dashboard");
-           this.webService.stopLoading();//to stop loading
-
         }
       });
 
