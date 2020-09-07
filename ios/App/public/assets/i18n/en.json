@@ -1,0 +1,155 @@
+{
+    "DASHBOARD": {
+        "title": "NYOKAH",
+        "start_date": "Start Date (*)",
+        "start_time": "Start Time (*)",
+        "return_date": "Return Date (*)",
+        "return_time": "Return Time (*)",
+        "per_hour": "PER HOUR",
+        "per_day": "PER DAY",
+        "per_class": "PER CLASS",
+        "per_price": "PER PRICE",
+        "other" : "OTHERS",
+        "airport_pick": "AIRPORT PICKUP",
+        "btn_search" : "search",
+        "search_here" : "Search here",
+        "departure_venue" : "Departure Venue (*)" ,
+        "our_vehicles" : "OUR VEHICLES" ,
+        "btn_view_details" : "View details" ,
+        "seats" : "seats" ,
+        "day" : "Day" ,
+        "hour" : "Hour" ,
+        "model" : "Model ",
+        "color" : "Color : ",
+        "business_class" : "BUSINESS XXL",
+        "economic_class" : "ECONOMIC",
+        "premium_class" : "PREMIUM",
+        "prestige_class" : "PRESTIGE",
+        "profile" : "MY PROFILE",
+        "edit_profile" : "EDIT PROFILE",
+        "send_feedback":"POST TESTIMONIAL",
+        "my_testimonial": "MY TESTIMONIALS",
+        "post_a_testimonial":"POST A TESTIMONIAL",
+        "testimonial":"Testimonial",
+        "post_testimonial":"Send testimonial",
+        "edit_profile_title" : "EDIT PROFILE",
+        "save_profile":"Save Changes",
+        "our_contact" : "Our Contacts",
+        "usage_term" : "Usage Terms",
+        "about_us":"About Us",
+        "confidentiality":"Confidentiality",
+        "search_car" : "SEARCH CAR",
+        "my_bookings":"My Bookings",
+        "price_sup" :"Price greater or equal to",
+        "price_less" :"Price less than",
+        "place_sup" :"Place greater or equal to",
+        "place_less" :"Place less than",
+        "baggage_sup" :"Baggage greater or equal to",
+        "baggage_less" :"Baggage less than"
+
+
+        
+       
+        
+    },
+
+    "LANGUAGE" : {
+        "title" : "SET LANGUAGE",
+        "english" : "English",
+        "french" : "French",
+        "select_lang" : "Select Language"
+        
+    },
+
+    "MENU" : {
+        "welcome" : "Hello!",
+        "btn_login" : "LOG IN",
+        "btn_logout" : "LOG OUT",
+        "message" : "You're not logged in yet"
+        
+    },
+
+    "CARDETAILS" : {
+        "title" : " CAR DETAILS",
+        "seats" : "seats" ,
+        "day" : "Day" ,
+        "hour" : "Hour" ,
+        "description" : " Description",
+        "accessories" : "Accessories" ,
+        "logintoreserve" : "LOG IN TO BOOK" ,
+        "reservenow" : "RESERVE NOW" ,
+        "baggages" : "Baggages", 
+        "carnumber" : "Car Number : "
+       
+    },
+
+    "RESERVECAR" : {
+        "title": "CAR RESERVATION",
+        "start_date": "Start Date (*)",
+        "start_time": "Start Time (*)",
+        "return_date": "Return Date (*)",
+        "return_time": "Return Time (*)",
+        "per_hour": "PER HOUR",
+        "per_day": "PER DAY",
+        "day" : "Day" ,
+        "hour" : "Hour" ,
+        "airport_pick": "AIRPORT PICKUP",
+        "departure_venue" : "Departure Venue (*)" ,
+        "price" : "Price : ",
+        "otherservices" : " Other Services",
+        "babyseats" : "Baby Seats",
+        "additionalpilot" : "Additional co-pilot",
+        "assistanttranslator" : "Assistant Translator",
+        "message" : "Message",
+        "messageplaceholder" : "Enter any message here...",
+        "btn_submit" : "SUBMIT",
+        "number_hour" : "Number of Hour (*)"
+
+    },
+
+    "LOGIN" : {
+        "login" : "Login",
+        "btn_login" : "Login",
+        "email_address" : "Email address *",   
+        "password" : "Password *" ,
+        "no_account" : "Don't have an account?",
+        "signup" : "Signup Here",
+        "forgot_password" : "Forgot Password?",  
+        "back_to_home" : "Back to Home",
+        "isDriver" : "Log in as a driver"  
+    },
+    "PROFILE":{
+        "first_name":"First Name",
+        "last_name":"Last Name",
+        "email_address":"Email",
+        "mobile":"Mobile",
+        "dob":"Date of Birth",
+        "address":"Address",
+        "city":"City",
+        "country":"Country",
+        "edit_profile":"Edit Profile"
+    },
+    "SIGNUP" : {
+        "signup" : "Sign Up",
+        "signup_btn" : "Sign Up",
+        "first_name" : "First name (*)",
+        "last_name" : "Last name",
+        "email" : "Email Address (*)",
+        "password" : "Password (*)",
+        "confirm_password" : "Confirm Password (*)",
+        "mobile_num" : "Mobile number",
+        "address" : "Address",
+        "already_account":"Already have an account?",
+        "term_condition":"I Agree with Terms and Conditions"       
+    },
+    "Password":{
+        "old_password":"Old Password (*)",
+        "new_password":"New Password (*)",
+        "confirm_password":"Confirm Password (*)",
+        "change_password":"Change Password",
+        "reset_password":"Reset Password"
+    }
+
+
+
+}

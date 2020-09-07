@@ -1,0 +1,160 @@
+{
+    "DASHBOARD": {
+        "title": "NYOKAH",
+        "start_date": "Date de depart (*)",
+        "start_time": "Heure de depart (*)",
+        "return_date": "Date de retour (*)",
+        "return_time": "Heure de retour (*)",
+        "per_hour": "PAR HEURE",
+        "per_day": "PAR JOUR",
+        "per_class": "PAR CLASS",
+        "per_price": "PAR PRIX",
+        "other" : "AUTRES",
+        "airport_pick": "AIRPORT PICKUP",
+        "btn_search" : "Rechercher",
+        "search_here" : "Recherchez ici",
+        "departure_venue" : "Lieu de Depart (*)",
+        "our_vehicles" : "NOS VEHICULES" ,
+        "btn_view_details" : "Voir details"  ,
+        "seats" : "places" ,
+        "day" : "Jour" ,
+        "hour" : "Heure" ,
+        "model" : "Modèle ",
+        "color" : "Couleur : ",
+        "business_class" : "BUSINESS XXL",
+        "economic_class" : "ÉCONOMIQUE",
+        "premium_class" : "PREMIUM",
+        "prestige_class" : "PRESTIGE",
+        "suv_class" : "CLASSE SUV",
+        "profile" : "MON PROFIL",
+        "edit_profile" : "EDIT PROFIL",
+         "send_feedback":"POSTEZ TÉMOIGNAGE",
+        "post_a_testimonial":"POSTER UN TÉMOIGNAGE",
+        "my_testimonial": "MES TEMOIGNAGES",
+        "testimonial":"Témoignage",
+        "post_testimonial":"Envoyer témoignage",
+        "edit_profile_title" : "EDITER PROFIL",
+        "save_profile":"Enregistrer Les Changements",
+        "our_contact" : "Nos contacts",
+        "usage_term" : "Conditions Utilisation",
+        "about_us":"À propos de nous",
+        "confidentiality":"Confidentialité",
+        "search_car" : "RECHERCHER VOITURE",
+        "my_bookings":"Mes Réservations",
+        "price_sup" :"Prix supérieur ou égal à",
+        "price_less" :"Prix inférieur à",
+        "place_sup" :"Place supérieur ou égal à",
+        "place_less" :"Place inférieur à",
+        "baggage_sup" :"Bagage supérieur ou égal à",
+        "baggage_less" :"Bagage inférieur à"
+
+        
+
+
+    },
+
+    "LANGUAGE" : {
+        "title" : "REGLAGE LANGUE",
+        "english" : "Anglais",
+        "french" : "Français",
+        "select_lang" : "Choisir une langue"
+        
+    },
+
+    
+    "MENU" : {
+        "welcome" : "Salut!",
+        "btn_login" : "Connexion",
+        "btn_logout" : "Déconnexion",
+        "message" : "Vous n'êtes pas encore connecté"
+        
+    },
+
+    "CARDETAILS" : {
+
+        "title" : " DETAILS VOITURE",
+        "seats" : "places" ,
+        "day" : "Day" ,
+        "hour" : "Hour" ,
+        "description" : " Description",
+        "accessories" : "Accessoires",
+        "logintoreserve" : "SE CONNECTER POUR RESERVER" ,
+        "reservenow" : "RESERVEZ MAINTENANT" ,
+        "baggages" : "Bagages",
+        "carnumber" : "Immatriculation : " 
+       
+    },
+
+    "RESERVECAR" : {
+        "title": "RESERVATION VOITURE",
+        "start_date": "Date de depart (*)",
+        "start_time": "Heure de depart (*)",
+        "return_date": "Date de retour (*)",
+        "return_time": "Heure de retour (*)",
+        "per_hour": "PAR HEURE",
+        "per_day": "PAR JOUR",
+        "day" : "Jour" ,
+        "hour" : "Heure" ,
+        "airport_pick": "AIRPORT PICKUP",
+        "departure_venue" : "Lieu de Depart (*)",
+        "price" : "Prix : ",
+        "otherservices" : " Autres Services",
+        "babyseats" : " Siège pour enfant",
+        "additionalpilot" : " Copilote supplémentaire",
+        "assistanttranslator" : " Assistant traducteur",
+        "message" : "Message",
+        "messageplaceholder" : "Laissez votre message ici...",
+        "btn_submit" : "SOUMETTRE",
+        "number_hour" : "Nombre d'heure (*)"
+
+    },
+
+    "LOGIN" : {
+        "login" : "Connexion",
+        "btn_login" : "CONNEXION",
+        "email_address" : "Adresse e-mail *",   
+        "password" : "Password *",   
+        "no_account" : "Vous n'avez pas de compte?",
+        "signup" : "Inscrivez-vous ici",
+        "forgot_password" : "Mot de passe oublié?",
+        "back_to_home" : "Retour à l'accueil" ,
+        "isDriver" : "Se connecter en tant que chauffeur"  
+ 
+
+    },
+    "PROFILE":{
+        "first_name":"Prénom",
+        "last_name":"Nom de famille",
+        "email_address":"Email",
+        "mobile":"Mobile",
+        "dob":"Date de naissance",
+        "address":"Adresse",
+        "city":"Ville",
+        "country":"Pays",
+        "edit_profile":"Editer le profil"
+    },
+    "SIGNUP" : {
+        "signup" : "Inscription",
+        "signup_btn" : "S'Inscrire",
+        "first_name" : "Prénom (*)",
+        "last_name" : "Nom",
+        "email" : "Adresse Email (*)",
+        "password" : "Mot de passe (*)",
+        "confirm_password" : "Confirmez mot de passe (*)",
+        "mobile_num" : "Numéro de téléphone",
+        "address" : "Adresse",
+        "already_account":"Vous avez déjà un compte?",
+        "term_condition":"Je suis d'accord avec les termes et les conditions"
+       
+    } ,
+    "Password":{
+        "old_password":"Ancien Mot de Passe (*)",
+        "new_password":"Nouveau Mot de Passe (*)",
+        "confirm_password":"Confirmez  Mot de Passe (*)",
+        "change_password":"Changer mot de passe",
+        "change_password_btn":"Valider",
+        "reset_password":"Réinitialiser le mot de passe"
+    }
+    
+
+}
