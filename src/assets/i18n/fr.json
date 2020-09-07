@@ -7,6 +7,9 @@
         "return_time": "Heure de retour (*)",
         "per_hour": "PAR HEURE",
         "per_day": "PAR JOUR",
+        "per_class": "PAR CLASS",
+        "per_price": "PAR PRIX",
+        "other" : "AUTRES",
         "airport_pick": "AIRPORT PICKUP",
         "btn_search" : "Rechercher",
         "search_here" : "Recherchez ici",
@@ -36,7 +39,15 @@
         "usage_term" : "Conditions Utilisation",
         "about_us":"À propos de nous",
         "confidentiality":"Confidentialité",
-        "my_bookings":"Mes Réservations"
+        "search_car" : "RECHERCHER VOITURE",
+        "my_bookings":"Mes Réservations",
+        "price_sup" :"Prix supérieur ou égal à",
+        "price_less" :"Prix inférieur à",
+        "place_sup" :"Place supérieur ou égal à",
+        "place_less" :"Place inférieur à",
+        "baggage_sup" :"Bagage supérieur ou égal à",
+        "baggage_less" :"Bagage inférieur à"
+
         
 
 

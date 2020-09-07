@@ -333,7 +333,7 @@ subscription: Subscription;
             {
 
                 ///////set type rent to hour id 
-                this.dataToSend.type_location = 1;
+                this.dataToSend.type_location = 2;
                 /////////////////// set end hour /////////////////////////////////////////////////////
                 //this.dataToSend.heure_fin = this.end_time;
                 /////// set the end date to "";
@@ -382,7 +382,7 @@ subscription: Subscription;
             {
 
                ///////set type rent to day id 
-            this.dataToSend.type_location = 2;
+            this.dataToSend.type_location = 1;
             //////////////////////set end date ///////////////////////////////////////////////////////
             // this.dataToSend.date_fin = this.end_date
             this.end_date = this.end_date.split("T")[0] ;

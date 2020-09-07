@@ -53,7 +53,7 @@ public  maxdate : any;   // the maximum date of a date picker
 
   //////////////////////////////////////////////////////////////////////
   ////////////data for destination////////////////////////
-  rent_type : any ="hour";
+  search_type : any ="class";
   list_original = [
     {
         'id': '',
