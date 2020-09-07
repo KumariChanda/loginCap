@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ConfidentialityPageRoutingModule } from './confidentiality-routing.module';
 
 import { ConfidentialityPage } from './confidentiality.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConfidentialityPageRoutingModule
+    ConfidentialityPageRoutingModule,
+    TranslateModule
   ],
   declarations: [ConfidentialityPage]
 })

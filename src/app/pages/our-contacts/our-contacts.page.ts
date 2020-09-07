@@ -76,19 +76,19 @@ export class OurContactsPage implements OnInit {
    openGoogleplus()
    {
      console.log("Google plus")
-    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+      this.iab.create('https://mail.google.com/','_system')
    }
    //////////////////////////////////////////////////////
-   openWhatsapp()
+   openWhatsapp(number)
    {
      //console.log("Number : ",no);
     //  this.iab.create('https://wa.me/+916284134683','_blank');
-     this.iab.create("https://wa.me/+916284134683?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_system');
+     this.iab.create("https://wa.me/"+number+"?text=I'm%20interested%20in%20your%20car%20for%20rent.",'_system');
      //this.iab.create('https://wa.me/0916284134683/','_system');
    }
    //////////////////////////////////////////////////////
    callNumber(number) {
-    this.callnumber.callNumber('+916284134683', true)
+    this.callnumber.callNumber(number, true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
   }

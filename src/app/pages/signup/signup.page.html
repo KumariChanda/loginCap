@@ -12,41 +12,41 @@
   <div class="backgroundcss">
     <div id="container">
       <ion-card class="cardcss" >
-          <h3 class="loginLabel">Sign up  </h3>
+          <h3 class="loginLabel">{{'SIGNUP.signup' | translate }}</h3>
            <!-- <hr/> -->
         <ion-card-content>
-          <ion-input class="inputcomp" type="text" [(ngModel)]="firstname"  placeholder="First name"></ion-input>
+          <ion-input class="inputcomp" type="text" [(ngModel)]="firstname"  placeholder="{{'SIGNUP.first_name' | translate }}"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="text"  [(ngModel)]="lastname"  placeholder="Last name"></ion-input>
+          <ion-input class="inputcomp" type="text"  [(ngModel)]="lastname"  placeholder="{{'SIGNUP.last_name' | translate }}"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="text" [(ngModel)]="email"  placeholder="Email Address"></ion-input>
+          <ion-input class="inputcomp" type="text" [(ngModel)]="email"  placeholder="{{'SIGNUP.email' | translate }}"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="password" [(ngModel)]="password"  placeholder="Password"></ion-input>
+          <ion-input class="inputcomp" type="password" [(ngModel)]="password"  placeholder="{{'SIGNUP.password' | translate }}"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="password"  [(ngModel)]="confirmpassword" placeholder="Confirm Password"></ion-input>
+          <ion-input class="inputcomp" type="password"  [(ngModel)]="confirmpassword" placeholder="{{'SIGNUP.confirm_password' | translate }}"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="number" [(ngModel)]="mobilenumber" placeholder="Mobile number"></ion-input>
+          <ion-input class="inputcomp" type="number" [(ngModel)]="mobilenumber" placeholder="{{'SIGNUP.mobile_num' | translate }}"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="text" [(ngModel)]="address"  placeholder="Address"></ion-input>
+          <ion-input class="inputcomp" type="text" [(ngModel)]="address"  placeholder="{{'SIGNUP.address' | translate }}"></ion-input>
           <br>
-          <ion-input class="inputcomp" type="date"  [(ngModel)]="dob"></ion-input>
-          <br>
+          <!-- <ion-input class="inputcomp" type="date"  [(ngModel)]="dob"></ion-input> -->
+          <!-- <br> -->
           
-          <input type="checkbox" [(ngModel)]="agreement">&nbsp;&nbsp;<span class="register"><b>I Agree with Terms and Conditions </b></span>
+          <input type="checkbox" [(ngModel)]="agreement">&nbsp;&nbsp;<span class="register"><b>{{'SIGNUP.term_condition' | translate }}</b></span>
           
           <div class="divloginbtn">
             <br>
             <button [ngClass]="{'loginbtn_black':btnClicked == false,
-            'loginbtn_yellow':btnClicked == true}" (click)="signupFun()">Sign up</button>
+            'loginbtn_yellow':btnClicked == true}" (click)="signupFun()">{{'SIGNUP.signup_btn' | translate }}</button>
            </div>
            <br>  
            <div class="labelText">
-             <span>Already got an account?  </span>
-             <span class="register" clear  (click)="loginbtnCliced()" tappable>Login</span>
+             <span>{{'SIGNUP.already_account' | translate }} </span>
+             <span class="register" clear  (click)="loginbtnCliced()" tappable>{{"LOGIN.login"| translate}}</span>
             
              <br>
              <!-- <hr/> -->
-             <span class="register" clear  (click)="backToHome()" tappable><u>Back To Home</u></span>
+             <span class="register" clear  (click)="backToHome()" tappable><u>{{"LOGIN.back_to_home"| translate}}</u></span>
              <br>
             </div> 
           <br>
