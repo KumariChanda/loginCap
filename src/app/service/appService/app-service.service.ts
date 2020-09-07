@@ -303,7 +303,7 @@ export class AppServiceService {
         //Family, business, SUV class
         getCarClass(id): Observable<any> {
 
-          return this.http.get(base_url+"marques/"+id, httpOptions).pipe(
+          return this.http.get(base_url+"classes/"+id+"/marques", httpOptions).pipe(
             map(this.extractData),
             catchError(this.handleError)
           );
