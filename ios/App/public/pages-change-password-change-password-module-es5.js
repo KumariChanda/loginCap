@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n   <ion-toolbar>\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title class=\"register\">{{'Password.change_password' | translate }}</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n           <hr/>\n        <ion-card-content>\n           <ion-input class=\"inputcomp\" type=\"password\"  placeholder=\"{{'Password.old_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\"  placeholder=\"{{'Password.new_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\"  placeholder=\"{{'Password.confirm_password' | translate }}\"></ion-input>\n          <br>\n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"changePassword()\">{{'Password.change_password_btn' | translate }}</button>\n           </div>\n           <br>  \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n\n";
+    __webpack_exports__["default"] = "<ion-header>\n   <ion-toolbar>\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title class=\"register\">Change Password</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n           <hr/>\n        <ion-card-content>\n           <ion-input class=\"inputcomp\" type=\"password\"  placeholder=\"Old Password*\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\"  placeholder=\"New Password*\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\"  placeholder=\"Confirm Password*\"></ion-input>\n          <br>\n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"changePassword()\">Change Password</button>\n           </div>\n           <br>  \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n\n";
     /***/
   },
 
@@ -146,19 +146,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _change_password_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./change-password.page */
     "./src/app/pages/change-password/change-password.page.ts");
-    /* harmony import */
-
-
-    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! @ngx-translate/core */
-    "./node_modules/@ngx-translate/core/__ivy_ngcc__/fesm2015/ngx-translate-core.js");
 
     var ChangePasswordPageModule = function ChangePasswordPageModule() {
       _classCallCheck(this, ChangePasswordPageModule);
     };
 
     ChangePasswordPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _change_password_routing_module__WEBPACK_IMPORTED_MODULE_5__["ChangePasswordPageRoutingModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _change_password_routing_module__WEBPACK_IMPORTED_MODULE_5__["ChangePasswordPageRoutingModule"]],
       declarations: [_change_password_page__WEBPACK_IMPORTED_MODULE_6__["ChangePasswordPage"]]
     })], ChangePasswordPageModule);
     /***/
@@ -215,64 +209,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-    /* harmony import */
-
-
-    var src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! src/app/service/appService/app-service.service */
-    "./src/app/service/appService/app-service.service.ts");
-    /* harmony import */
-
-
-    var _capacitor_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @capacitor/core */
-    "./node_modules/@capacitor/core/dist/esm/index.js");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-
-    var Storage = _capacitor_core__WEBPACK_IMPORTED_MODULE_3__["Plugins"].Storage;
 
     var ChangePasswordPage = /*#__PURE__*/function () {
-      function ChangePasswordPage(webService, router) {
+      function ChangePasswordPage() {
         _classCallCheck(this, ChangePasswordPage);
 
-        this.webService = webService;
-        this.router = router;
         this.btnClicked = false;
       }
 
       _createClass(ChangePasswordPage, [{
         key: "ngOnInit",
-        value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.t0 = JSON;
-                    _context.next = 3;
-                    return Storage.get({
-                      key: "user_infos"
-                    });
-
-                  case 3:
-                    _context.t1 = _context.sent.value;
-                    this.userInfo = _context.t0.parse.call(_context.t0, _context.t1);
-                    console.log("Storage : ", this.userInfo);
-
-                  case 6:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
-        } /////////////////////////////////////////////////////
-
+        value: function ngOnInit() {}
       }, {
         key: "changePassword",
         value: function changePassword() {
@@ -287,14 +234,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return ChangePasswordPage;
     }();
-
-    ChangePasswordPage.ctorParameters = function () {
-      return [{
-        type: src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_2__["AppServiceService"]
-      }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
-      }];
-    };
 
     ChangePasswordPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-change-password',

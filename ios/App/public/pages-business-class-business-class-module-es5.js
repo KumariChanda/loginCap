@@ -247,10 +247,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.isSearchbarOpened = false;
         this.term = '';
         this.filterData = [{
-          "libelle": "",
-          "classe": 3,
-          'modele': [{}],
-          'id': 0,
+          'modele': '',
+          'id': '',
           'per_day': '',
           'per_hour': '',
           'airport': ''
@@ -267,7 +265,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.webService.presentLoading(); //to start loader
 
-          this.webService.getCarClass(4).subscribe(function (res) {
+          this.webService.getCarClass(3).subscribe(function (res) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               var _this2 = this;
 
@@ -277,8 +275,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 while (1) {
                   switch (_context.prev = _context.next) {
                     case 0:
-                      console.log("getting business voitures : \n ", res);
-
+                      //console.log("getting business voitures : \n ",res); 
                       if (res) {
                         index = 0;
 
@@ -288,7 +285,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             // console.log("Modele ",i,j)
                             for (k = 0; k < res[i].modeles[j].voitures.length; k++) {
                               // console.log("car ",i,j,k)
-                              console.log(" voitures : \n ", res[i].modeles[j].voitures[k]);
+                              //console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
                               this.filterData[index] = res[i].modeles[j].voitures[k];
                               index = index + 1;
                             }
@@ -315,7 +312,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         this.show = true; // used to show page content
                       }
 
-                    case 2:
+                    case 1:
                     case "end":
                       return _context.stop();
                   }

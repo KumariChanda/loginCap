@@ -140,10 +140,8 @@ let BusinessClassPage = class BusinessClassPage {
         this.term = '';
         this.filterData = [
             {
-                "libelle": "",
-                "classe": 3,
-                'modele': [{}],
-                'id': 0,
+                'modele': '',
+                'id': '',
                 'per_day': '',
                 'per_hour': '',
                 'airport': ''
@@ -155,8 +153,8 @@ let BusinessClassPage = class BusinessClassPage {
         this.src_link = this.webService.base_url;
         //get Business class cars list
         this.webService.presentLoading(); //to start loader
-        this.webService.getCarClass(4).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            console.log("getting business voitures : \n ", res);
+        this.webService.getCarClass(3).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            //console.log("getting business voitures : \n ",res); 
             if (res) {
                 var index = 0;
                 for (let i = 0; i < res.length; i++) {
@@ -165,7 +163,7 @@ let BusinessClassPage = class BusinessClassPage {
                         // console.log("Modele ",i,j)
                         for (let k = 0; k < res[i].modeles[j].voitures.length; k++) {
                             // console.log("car ",i,j,k)
-                            console.log(" voitures : \n ", res[i].modeles[j].voitures[k]);
+                            //console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
                             this.filterData[index] = res[i].modeles[j].voitures[k];
                             index = index + 1;
                         }

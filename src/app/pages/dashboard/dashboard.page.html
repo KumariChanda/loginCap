@@ -11,17 +11,17 @@
       <!-- title -->
       <ion-title *ngIf="!isSearchbarOpened" >{{ 'DASHBOARD.title' | translate }}</ion-title>
 
-   
-       <!-- search bar button -->
-       <ion-buttons slot="end">
-          <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
-              <ion-icon color="primary" name="search"> </ion-icon>
-          </ion-button>
-      </ion-buttons>
-
 
     </ion-item>
 
+
+
+       <!-- search bar button -->
+       <ion-buttons slot="end">
+        <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
+            <ion-icon color="primary" name="search"> </ion-icon>
+        </ion-button>
+    </ion-buttons>
 <!-- Search Bar -->
    <ion-searchbar *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
 
@@ -40,17 +40,17 @@
   <ion-card  *ngIf="!isSearchbarOpened">
         <ion-card-header>
 
-         <ion-card-title style="margin-buttom:10%; margin-left:30%"> RESERVATION </ion-card-title>
+         <ion-card-title style=" margin-left:20%; text-size-adjust: 15px;"> {{ 'DASHBOARD.search_car' | translate }} </ion-card-title>
               <!-- Label only -->
-          <ion-segment [(ngModel)]="rent_type">
-            <ion-segment-button  value="hour">
-              <ion-label>{{ 'DASHBOARD.per_hour' | translate }} </ion-label>
+          <ion-segment [(ngModel)]="search_type">
+            <ion-segment-button  value="class">
+              <ion-label>{{ 'DASHBOARD.per_class' | translate }} </ion-label>
             </ion-segment-button>
-            <ion-segment-button value="day">
-              <ion-label>{{ 'DASHBOARD.per_day' | translate }}</ion-label>
+            <ion-segment-button value="price">
+              <ion-label>{{ 'DASHBOARD.per_price' | translate }}</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="airport">
-              <label  textWrap="true" style="font-size:0.9em">{{ 'DASHBOARD.airport_pick' | translate }}</label>
+            <ion-segment-button value="other">
+              <label  textWrap="true" style="font-size:0.9em">{{ 'DASHBOARD.other' | translate }}</label>
             </ion-segment-button>
           </ion-segment>
 
@@ -58,44 +58,131 @@
 
         <ion-card-content>
              
-              <!-- Search Bar -->
-               <ion-searchbar placeholder="Destination (*) "[(ngModel)]="searchQuery" (click)="click_bar()" (ionCancel)="onCancel($event)" (ionClear)	="onCancel($event)" (ngModelChange)="change_query($event)" showCancelButton="focus"></ion-searchbar>
-                
-                <ion-list *ngIf="show_list">
-                   <ion-item *ngFor="let item of list_to_show; let i = index">
-                       <ion-label (click)="click_item(i)" > {{item.destination}} </ion-label>
-                   </ion-item>
-                </ion-list>
+               <!-- ----------------------START search type = "per class"------------------------------- -->
+              <div *ngIf="search_type =='class'">
+                <!-- start date -->
+                <ion-radio-group allow-empty-selection >
+                   
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.business_class" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value="business"></ion-radio>
+                    </ion-item>
 
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.economic_class" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value="economic"></ion-radio>
+                    </ion-item>
 
-                <ion-item  >
-                  <ion-label> {{ 'DASHBOARD.start_date' | translate }}</ion-label>
-                  <ion-datetime [value]="today" [min]="today" [max]="maxdate" placeholder="Select Date"></ion-datetime>
-                </ion-item>
-                <ion-item >
-                  <ion-label> {{ 'DASHBOARD.start_time' | translate }}</ion-label>
-                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
-                </ion-item>
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.premium_class" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value="premium"></ion-radio>
+                    </ion-item>
 
-                <ion-item  *ngIf="rent_type =='day' ">
-                   <ion-label> {{ 'DASHBOARD.return_date' | translate }}</ion-label>
-                   <ion-datetime [value]="today"   [min]="today"  [max]="maxdate"   placeholder="Select Date"></ion-datetime>
-                </ion-item>
-                <ion-item  *ngIf="rent_type =='hour' || rent_type =='day' ">
-                   <ion-label> {{ 'DASHBOARD.return_time' | translate }}</ion-label>
-                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" value="1990-02-19T07:43Z"></ion-datetime>
-                </ion-item>
-                <!-- departure -->
-                <ion-item  *ngIf="rent_type =='airport' ">
-                  <ion-input  placeholder="{{ 'DASHBOARD.departure_venue' | translate }}" ></ion-input>
-                </ion-item>
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.prestige_class" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value="prestige"></ion-radio>
+                    </ion-item>
 
-                <!-- button search -->
+                  </ion-radio-group>
+
+                  <!-- button search -->
 
                 <ion-button expand="block"> 
                       <ion-icon slot="start" name="search"></ion-icon>
                       {{ 'DASHBOARD.btn_search' | translate }}
                  </ion-button>
+                
+               </div>
+
+
+            <!-- ----------------------END search type = "per class"------------------------------------------------------------------ -->
+            
+               <!-- ----------------------START search type = "per price"------------------------------- -->
+              <div *ngIf="search_type =='price'">
+                <!-- start date -->
+                <ion-radio-group allow-empty-selection >
+                   
+                    <ion-item>
+                      <label  textWrap="true"> {{"DASHBOARD.price_sup" | translate}} 50000 F CFA / {{"DASHBOARD.day" | translate}}</label>
+                      <ion-radio slot="end" color="primary" value="50000+"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                      <label  textWrap="true"> {{"DASHBOARD.price_less" | translate}} 50000 F CFA /  {{"DASHBOARD.day" | translate}}</label>
+                      <ion-radio slot="end" color="primary" value="50000-"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                      <label  textWrap="true"> {{"DASHBOARD.price_sup" | translate}} 5000 F CFA / {{"DASHBOARD.hour" | translate}}</label>
+                      <ion-radio slot="end" color="primary" value="5000+"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                      <label  textWrap="true">{{"DASHBOARD.price_less" | translate}} 5000 F CFA /  {{"DASHBOARD.hour" | translate}}</label>
+                      <ion-radio slot="end" color="primary" value="5000-"></ion-radio>
+                    </ion-item>
+
+                    
+
+                  </ion-radio-group>
+
+                  <!-- button search -->
+
+                <ion-button expand="block"> 
+                      <ion-icon slot="start" name="search"></ion-icon>
+                      {{ 'DASHBOARD.btn_search' | translate }}
+                 </ion-button>
+                
+               </div>
+
+
+            <!-- ----------------------END search type = "per price"------------------------------------------------------------------ -->
+            
+               <!-- ----------------------START search type = "Other"------------------------------- -->
+              <div *ngIf="search_type =='other'">
+                <!-- start date -->
+                <ion-radio-group allow-empty-selection >
+                   
+                    <ion-item>
+                      <label  textWrap="true"> {{"DASHBOARD.place_sup" | translate}} 5</label>
+                      <ion-radio slot="end" color="primary" value="5p+"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                      <label  textWrap="true"> {{"DASHBOARD.place_less" | translate}} 5</label>
+                      <ion-radio slot="end" color="primary" value="5p-"></ion-radio>
+                    </ion-item>
+                   
+                    <ion-item>
+                      <label  textWrap="true"> {{"DASHBOARD.baggage_sup" | translate}} 5</label>
+                      <ion-radio slot="end" color="primary" value="5b+"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                      <label  textWrap="true"> {{"DASHBOARD.baggage_less" | translate}} 5</label>
+                      <ion-radio slot="end" color="primary" value="5b-"></ion-radio>
+                    </ion-item>
+
+                   
+                    
+
+                  </ion-radio-group>
+
+                  <!-- button search -->
+
+                <ion-button expand="block"> 
+                      <ion-icon slot="start" name="search"></ion-icon>
+                      {{ 'DASHBOARD.btn_search' | translate }}
+                 </ion-button>
+                
+               </div>
+
+
+            <!-- ----------------------END search type = "Other"------------------------------------------------------------------ -->
+            
+
+
+                
 
         </ion-card-content>
 

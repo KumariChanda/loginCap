@@ -152,7 +152,7 @@ let EconomiquePage = class EconomiquePage {
     ngOnInit() {
         //get family class cars list
         this.webService.presentLoading(); //to start loader
-        this.webService.getCarClass(2).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+        this.webService.getCarClass(1).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             //console.log("getting business voitures : \n ",res); 
             if (res) {
                 var index = 0;

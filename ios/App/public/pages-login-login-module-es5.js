@@ -260,13 +260,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context4.prev = _context4.next) {
                   case 0:
-                    _context4.next = 2;
-                    return Storage.get({
-                      key: 'SELECTED LANGUAGE'
-                    });
-
-                  case 2:
-                    this.lang = _context4.sent.value;
                     // console.log("Button Clicked.");
                     ///set timeout for cliked on login button
                     this.btnClicked = true;
@@ -288,108 +281,96 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   "password": this.passwordText
                                 }; // console.log(sending_obj);
 
-                                if (this.usernameText && this.passwordText) {
-                                  this.webService.presentLoading();
-                                  this.webService.login(sending_obj).subscribe(function (res) {
-                                    return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                                      var _this3 = this;
+                                this.webService.presentLoading();
+                                this.webService.login(sending_obj).subscribe(function (res) {
+                                  return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                                    var _this3 = this;
 
-                                      return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                                        while (1) {
-                                          switch (_context2.prev = _context2.next) {
-                                            case 0:
-                                              console.log("getting response : ", res);
+                                    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                                      while (1) {
+                                        switch (_context2.prev = _context2.next) {
+                                          case 0:
+                                            console.log("getting response : ", res);
 
-                                              if (!res.detail) {
-                                                //store user status in storage 
+                                            if (!res.detail) {
+                                              //store user status in storage 
+                                              Storage.set({
+                                                key: "user_type",
+                                                value: res.status
+                                              }); ////////////////////////////////////////////////////////
+                                              //get the details infos of the  user  
+
+                                              this.webService.getUserDetails(res.token, res.id, this.isDriver).subscribe(function (resp) {
+                                                // console.log("clients : \n",resp);
+                                                //store user infos in storage 
                                                 Storage.set({
-                                                  key: "user_type",
-                                                  value: res.status
-                                                }); ////////////////////////////////////////////////////////
-                                                //get the details infos of the  user  
+                                                  key: "user_infos",
+                                                  value: JSON.stringify(resp)
+                                                }); // end store user 
+                                                ////////////////////////////////////////////////
+                                                //get the current language of the app   
 
-                                                this.webService.getUserDetails(res.token, res.id, this.isDriver).subscribe(function (resp) {
-                                                  // console.log("clients : \n",resp);
-                                                  //store user infos in storage 
-                                                  Storage.set({
-                                                    key: "user_infos",
-                                                    value: JSON.stringify(resp)
-                                                  }); // end store user 
-                                                  ////////////////////////////////////////////////
-                                                  //get the current language of the app   
+                                                _this3.webService.getCurrentLanguage().then(function (val) {
+                                                  return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this3, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                                                    return regeneratorRuntime.wrap(function _callee$(_context) {
+                                                      while (1) {
+                                                        switch (_context.prev = _context.next) {
+                                                          case 0:
+                                                            _context.next = 2;
+                                                            return Storage.set({
+                                                              key: 'accessToken',
+                                                              value: res.token
+                                                            });
 
-                                                  _this3.webService.getCurrentLanguage().then(function (val) {
-                                                    return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this3, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                                                      return regeneratorRuntime.wrap(function _callee$(_context) {
-                                                        while (1) {
-                                                          switch (_context.prev = _context.next) {
-                                                            case 0:
-                                                              _context.next = 2;
-                                                              return Storage.set({
-                                                                key: 'accessToken',
-                                                                value: res.token
-                                                              });
+                                                          case 2:
+                                                            // console.log("home  ",val)
+                                                            this.webService.sendMessage({
+                                                              'token': "mytoken",
+                                                              'language': val
+                                                            });
 
-                                                            case 2:
-                                                              // console.log("home  ",val)
-                                                              this.webService.sendMessage({
-                                                                'token': "mytoken",
-                                                                'language': val
-                                                              });
-
-                                                              if (this.isDriver) {
-                                                                //call dashboard page and pass data 
-                                                                this.router.navigateByUrl("/home");
-                                                              } else {
-                                                                //call dashboard page and pass data 
-                                                                this.router.navigateByUrl("/dashboard");
-                                                              } ///stop loading
+                                                            if (this.isDriver) {
+                                                              //call dashboard page and pass data 
+                                                              this.router.navigateByUrl("/home");
+                                                            } else {
+                                                              //call dashboard page and pass data 
+                                                              this.router.navigateByUrl("/dashboard");
+                                                            } ///stop loading
 
 
-                                                              this.webService.stopLoading();
+                                                            this.webService.stopLoading();
 
-                                                            case 5:
-                                                            case "end":
-                                                              return _context.stop();
-                                                          }
+                                                          case 5:
+                                                          case "end":
+                                                            return _context.stop();
                                                         }
-                                                      }, _callee, this);
-                                                    }));
-                                                  }); //end get app language
-                                                  ////////////////////////////////////////////////
+                                                      }
+                                                    }, _callee, this);
+                                                  }));
+                                                }); //end get app language
+                                                ////////////////////////////////////////////////
 
-                                                }); //added end get user details
-                                                //////////////////////////////////////////////////
-                                              } else {
-                                                this.webService.stopLoading();
-                                                alert("bad credential !");
-                                              }
+                                              }); //added end get user details
+                                              //////////////////////////////////////////////////
+                                            } else {
+                                              this.webService.stopLoading();
+                                              alert("bad credential !");
+                                            }
 
-                                            case 2:
-                                            case "end":
-                                              return _context2.stop();
-                                          }
+                                          case 2:
+                                          case "end":
+                                            return _context2.stop();
                                         }
-                                      }, _callee2, this);
-                                    }));
-                                  }, function (error) {
-                                    _this2.webService.stopLoading();
+                                      }
+                                    }, _callee2, this);
+                                  }));
+                                }, function (error) {
+                                  _this2.webService.stopLoading();
 
-                                    if (_this2.lang == "fr") {
-                                      alert("Erreur Serveur , SVP verifiez vos entrees et Votre Connexion Internet ");
-                                    } else {
-                                      alert("server error, please check your inputs ");
-                                    }
-                                  });
-                                } else {
-                                  if (this.lang == "fr") {
-                                    alert("Entrez tous les champs correctement, SVP! ");
-                                  } else {
-                                    alert("Please, Fill all the Fields Correctly ");
-                                  }
-                                }
+                                  alert("server error, please check your inputs ");
+                                });
 
-                              case 3:
+                              case 4:
                               case "end":
                                 return _context3.stop();
                             }
@@ -400,7 +381,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     ////////////////////////////////////////ENDLOGIN FUN//////////////////////////////////////////////////////////////////////
                     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                  case 5:
+                  case 2:
                   case "end":
                     return _context4.stop();
                 }

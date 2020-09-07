@@ -141,8 +141,6 @@ let LoginPage = class LoginPage {
     /////////////////////////////////////START LOGIN FUN ///////////////////////////////////////////////////////////////////
     loginFun() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            //get Language
-            this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
             // console.log("Button Clicked.");
             ///set timeout for cliked on login button
             this.btnClicked = true;
@@ -156,72 +154,57 @@ let LoginPage = class LoginPage {
                     "password": this.passwordText
                 };
                 // console.log(sending_obj);
-                if (this.usernameText && this.passwordText) {
-                    this.webService.presentLoading();
-                    this.webService.login(sending_obj).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                        console.log("getting response : ", res);
-                        if (!res.detail) {
-                            //store user status in storage 
+                this.webService.presentLoading();
+                this.webService.login(sending_obj).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                    console.log("getting response : ", res);
+                    if (!res.detail) {
+                        //store user status in storage 
+                        Storage.set({
+                            key: "user_type",
+                            value: res.status
+                        });
+                        ////////////////////////////////////////////////////////
+                        //get the details infos of the  user  
+                        this.webService.getUserDetails(res.token, res.id, this.isDriver).subscribe(resp => {
+                            // console.log("clients : \n",resp);
+                            //store user infos in storage 
                             Storage.set({
-                                key: "user_type",
-                                value: res.status
-                            });
-                            ////////////////////////////////////////////////////////
-                            //get the details infos of the  user  
-                            this.webService.getUserDetails(res.token, res.id, this.isDriver).subscribe(resp => {
-                                // console.log("clients : \n",resp);
-                                //store user infos in storage 
-                                Storage.set({
-                                    key: "user_infos",
-                                    value: JSON.stringify(resp)
-                                }); // end store user 
-                                ////////////////////////////////////////////////
-                                //get the current language of the app   
-                                this.webService.getCurrentLanguage().then((val) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                                    // change the value of token
-                                    yield Storage.set({
-                                        key: 'accessToken',
-                                        value: res.token
-                                    });
-                                    // console.log("home  ",val)
-                                    this.webService.sendMessage({ 'token': "mytoken", 'language': val });
-                                    if (this.isDriver) {
-                                        //call dashboard page and pass data 
-                                        this.router.navigateByUrl("/home");
-                                    }
-                                    else {
-                                        //call dashboard page and pass data 
-                                        this.router.navigateByUrl("/dashboard");
-                                    }
-                                    ///stop loading
-                                    this.webService.stopLoading();
-                                })); //end get app language
-                                ////////////////////////////////////////////////
-                            }); //added end get user details
-                            //////////////////////////////////////////////////
-                        }
-                        else {
-                            this.webService.stopLoading();
-                            alert("bad credential !");
-                        }
-                    }), error => {
-                        this.webService.stopLoading();
-                        if (this.lang == "fr") {
-                            alert("Erreur Serveur , SVP verifiez vos entrees et Votre Connexion Internet ");
-                        }
-                        else {
-                            alert("server error, please check your inputs ");
-                        }
-                    });
-                }
-                else {
-                    if (this.lang == "fr") {
-                        alert("Entrez tous les champs correctement, SVP! ");
+                                key: "user_infos",
+                                value: JSON.stringify(resp)
+                            }); // end store user 
+                            ////////////////////////////////////////////////
+                            //get the current language of the app   
+                            this.webService.getCurrentLanguage().then((val) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                                // change the value of token
+                                yield Storage.set({
+                                    key: 'accessToken',
+                                    value: res.token
+                                });
+                                // console.log("home  ",val)
+                                this.webService.sendMessage({ 'token': "mytoken", 'language': val });
+                                if (this.isDriver) {
+                                    //call dashboard page and pass data 
+                                    this.router.navigateByUrl("/home");
+                                }
+                                else {
+                                    //call dashboard page and pass data 
+                                    this.router.navigateByUrl("/dashboard");
+                                }
+                                ///stop loading
+                                this.webService.stopLoading();
+                            })); //end get app language
+                            ////////////////////////////////////////////////
+                        }); //added end get user details
+                        //////////////////////////////////////////////////
                     }
                     else {
-                        alert("Please, Fill all the Fields Correctly ");
+                        this.webService.stopLoading();
+                        alert("bad credential !");
                     }
-                }
+                }), error => {
+                    this.webService.stopLoading();
+                    alert("server error, please check your inputs ");
+                });
             }), 1000);
             /// end set time out
             ////////////////////////////////////////ENDLOGIN FUN//////////////////////////////////////////////////////////////////////

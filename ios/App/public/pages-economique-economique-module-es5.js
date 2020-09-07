@@ -263,7 +263,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           //get family class cars list
           this.webService.presentLoading(); //to start loader
 
-          this.webService.getCarClass(2).subscribe(function (res) {
+          this.webService.getCarClass(1).subscribe(function (res) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               var _this2 = this;
 

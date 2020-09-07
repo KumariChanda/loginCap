@@ -364,6 +364,10 @@ const routes = [
         loadChildren: () => __webpack_require__.e(/*! import() | pages-business-class-business-class-module */ "pages-business-class-business-class-module").then(__webpack_require__.bind(null, /*! ./pages/business-class/business-class.module */ "./src/app/pages/business-class/business-class.module.ts")).then(m => m.BusinessClassPageModule)
     },
     {
+        path: 'family-class',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-family-class-family-class-module */ "pages-family-class-family-class-module").then(__webpack_require__.bind(null, /*! ./pages/family-class/family-class.module */ "./src/app/pages/family-class/family-class.module.ts")).then(m => m.FamilyClassPageModule)
+    },
+    {
         path: 'suv-class',
         loadChildren: () => __webpack_require__.e(/*! import() | pages-suv-class-suv-class-module */ "pages-suv-class-suv-class-module").then(__webpack_require__.bind(null, /*! ./pages/suv-class/suv-class.module */ "./src/app/pages/suv-class/suv-class.module.ts")).then(m => m.SuvClassPageModule)
     },
@@ -1206,13 +1210,6 @@ let AppServiceService = class AppServiceService {
     ///////////////////////////////////// END : GET DESTINATION////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////// START : GET DESTINATION BY ID ///////////////////////////////////////////////////////////////////////////////
-    getSingleDestination(id) {
-        return this.http.get(base_url + "destinations/" + id, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
-    }
-    ///////////////////////////////////// END : GET DESTINATION By ID////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////// START : GET CARS ///////////////////////////////////////////////////////////////////////////////
     //voitures means cars
     getVoitures() {
@@ -1324,7 +1321,7 @@ let AppServiceService = class AppServiceService {
                 'Authorization': 'Token ' + token
             })
         };
-        return this.http.get(base_url + "clients/" + id + "/temoignages", httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        return this.http.get(base_url + "temoignage/" + id, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
     }
     ///////////////////////////////////// END : GET USER TESTIMONIAL////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1345,13 +1342,6 @@ let AppServiceService = class AppServiceService {
     }
     ///////////////////////////////////// END : POST RESERVATION////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////STRAT : Change Password  ////////////////////////////////////////////////////////////////////////
-    changeUserPassword(id, token, data) {
-        return this.postData1((base_url + "clients/" + id + "set_password/"), data, token);
-    }
-    ///////////////////////////////////// END : Change Password///////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////STRAT : GET Client Reservation ////////////////////////////////////////////////////////////////////////
     getClientReservation(id, token) {
@@ -1361,20 +1351,7 @@ let AppServiceService = class AppServiceService {
                 'Authorization': 'Token ' + token
             })
         };
-        return this.http.get(base_url + "clients/" + id + "/locations", httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
-    }
-    ///////////////////////////////////// END : GET Client Reservation  ////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////STRAT : EDIT CLIENT PROFILE ////////////////////////////////////////////////////////////////////////
-    EditClientProfile(id, token, data) {
-        const httpOption = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-                'Authorization': 'Token ' + token
-            })
-        };
-        return this.http.put(base_url + "clients/" + id + "/", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        return this.http.get(base_url + "locations/" + id, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
     }
 };
 AppServiceService.ctorParameters = () => [

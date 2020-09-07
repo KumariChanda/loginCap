@@ -366,6 +366,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
       }
     }, {
+      path: 'family-class',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | pages-family-class-family-class-module */
+        "pages-family-class-family-class-module").then(__webpack_require__.bind(null,
+        /*! ./pages/family-class/family-class.module */
+        "./src/app/pages/family-class/family-class.module.ts")).then(function (m) {
+          return m.FamilyClassPageModule;
+        });
+      }
+    }, {
       path: 'suv-class',
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
@@ -1579,15 +1590,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         } ///////////////////////////////////// END : GET DESTINATION////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////// START : GET DESTINATION BY ID ///////////////////////////////////////////////////////////////////////////////
-
-      }, {
-        key: "getSingleDestination",
-        value: function getSingleDestination(id) {
-          return this.http.get(base_url + "destinations/" + id, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
-        } ///////////////////////////////////// END : GET DESTINATION By ID////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////// START : GET CARS ///////////////////////////////////////////////////////////////////////////////
         //voitures means cars
 
@@ -1728,7 +1730,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Authorization': 'Token ' + token
             })
           };
-          return this.http.get(base_url + "clients/" + id + "/temoignages", httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+          return this.http.get(base_url + "temoignage/" + id, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
         } ///////////////////////////////////// END : GET USER TESTIMONIAL////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1752,15 +1754,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.postData1(base_url + "locations/", data, token);
         } ///////////////////////////////////// END : POST RESERVATION////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////STRAT : Change Password  ////////////////////////////////////////////////////////////////////////
-
-      }, {
-        key: "changeUserPassword",
-        value: function changeUserPassword(id, token, data) {
-          return this.postData1(base_url + "clients/" + id + "set_password/", data, token);
-        } ///////////////////////////////////// END : Change Password///////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////STRAT : GET Client Reservation ////////////////////////////////////////////////////////////////////////
 
@@ -1773,22 +1766,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Authorization': 'Token ' + token
             })
           };
-          return this.http.get(base_url + "clients/" + id + "/locations", httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
-        } ///////////////////////////////////// END : GET Client Reservation  ////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////STRAT : EDIT CLIENT PROFILE ////////////////////////////////////////////////////////////////////////
-
-      }, {
-        key: "EditClientProfile",
-        value: function EditClientProfile(id, token, data) {
-          var httpOption = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
-              'Content-Type': 'application/json',
-              'Authorization': 'Token ' + token
-            })
-          };
-          return this.http.put(base_url + "clients/" + id + "/", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+          return this.http.get(base_url + "locations/" + id, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
         }
       }]);
 

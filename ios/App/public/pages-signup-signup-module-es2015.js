@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header class=\"header_signup\">\n   <ion-toolbar>\n     <div class=\"header_signup\">\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    </div>\n  </ion-toolbar> \n</ion-header> -->\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n          <h3 class=\"loginLabel\">{{'SIGNUP.signup' | translate }}</h3>\n           <!-- <hr/> -->\n        <ion-card-content>\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"firstname\"  placeholder=\"{{'SIGNUP.first_name' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"text\"  [(ngModel)]=\"lastname\"  placeholder=\"{{'SIGNUP.last_name' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"email\"  placeholder=\"{{'SIGNUP.email' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)]=\"password\"  placeholder=\"{{'SIGNUP.password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\"  [(ngModel)]=\"confirmpassword\" placeholder=\"{{'SIGNUP.confirm_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"number\" [(ngModel)]=\"mobilenumber\" placeholder=\"{{'SIGNUP.mobile_num' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"address\"  placeholder=\"{{'SIGNUP.address' | translate }}\"></ion-input>\n          <br>\n          <!-- <ion-input class=\"inputcomp\" type=\"date\"  [(ngModel)]=\"dob\"></ion-input> -->\n          <!-- <br> -->\n          \n          <input type=\"checkbox\" [(ngModel)]=\"agreement\">&nbsp;&nbsp;<span class=\"register\"><b>{{'SIGNUP.term_condition' | translate }}</b></span>\n          \n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"signupFun()\">{{'SIGNUP.signup_btn' | translate }}</button>\n           </div>\n           <br>  \n           <div class=\"labelText\">\n             <span>{{'SIGNUP.already_account' | translate }} </span>\n             <span class=\"register\" clear  (click)=\"loginbtnCliced()\" tappable>{{\"LOGIN.login\"| translate}}</span>\n            \n             <br>\n             <!-- <hr/> -->\n             <span class=\"register\" clear  (click)=\"backToHome()\" tappable><u>{{\"LOGIN.back_to_home\"| translate}}</u></span>\n             <br>\n            </div> \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header class=\"header_signup\">\n   <ion-toolbar>\n     <div class=\"header_signup\">\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    </div>\n  </ion-toolbar> \n</ion-header> -->\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n          <h3 class=\"loginLabel\">Sign up  </h3>\n           <!-- <hr/> -->\n        <ion-card-content>\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"firstname\"  placeholder=\"First name\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"text\"  [(ngModel)]=\"lastname\"  placeholder=\"Last name\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"email\"  placeholder=\"Email Address\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)]=\"password\"  placeholder=\"Password\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\"  [(ngModel)]=\"confirmpassword\" placeholder=\"Confirm Password\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"number\" [(ngModel)]=\"mobilenumber\" placeholder=\"Mobile number\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"address\"  placeholder=\"Address\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"date\"  [(ngModel)]=\"dob\"></ion-input>\n          <br>\n          \n          <input type=\"checkbox\" [(ngModel)]=\"agreement\">&nbsp;&nbsp;<span class=\"register\"><b>I Agree with Terms and Conditions </b></span>\n          \n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"signupFun()\">Sign up</button>\n           </div>\n           <br>  \n           <div class=\"labelText\">\n             <span>Already got an account?  </span>\n             <span class=\"register\" clear  (click)=\"loginbtnCliced()\" tappable>Login</span>\n            \n             <br>\n             <!-- <hr/> -->\n             <span class=\"register\" clear  (click)=\"backToHome()\" tappable><u>Back To Home</u></span>\n             <br>\n            </div> \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -67,8 +67,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var _signup_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./signup-routing.module */ "./src/app/pages/signup/signup-routing.module.ts");
 /* harmony import */ var _signup_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./signup.page */ "./src/app/pages/signup/signup.page.ts");
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/__ivy_ngcc__/fesm2015/ngx-translate-core.js");
-
 
 
 
@@ -84,8 +82,7 @@ SignupPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
-            _signup_routing_module__WEBPACK_IMPORTED_MODULE_5__["SignupPageRoutingModule"],
-            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]
+            _signup_routing_module__WEBPACK_IMPORTED_MODULE_5__["SignupPageRoutingModule"]
         ],
         declarations: [_signup_page__WEBPACK_IMPORTED_MODULE_6__["SignupPage"]]
     })
@@ -122,13 +119,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/appService/app-service.service */ "./src/app/service/appService/app-service.service.ts");
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
 
 
 
 
-
-const { Storage } = _capacitor_core__WEBPACK_IMPORTED_MODULE_4__["Plugins"];
 let SignupPage = class SignupPage {
     constructor(router, webService) {
         this.router = router;
@@ -143,11 +137,7 @@ let SignupPage = class SignupPage {
         this.btnClicked = false;
     }
     ngOnInit() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
-        });
     }
-    ////////////////////////////////
     loginbtnCliced() {
         this.router.navigateByUrl("/login");
     }
@@ -157,7 +147,7 @@ let SignupPage = class SignupPage {
             this.btnClicked = false;
         }, 1000);
         console.log("Signup cllicked!.");
-        if (this.firstname && this.email && this.password && this.password && this.confirmpassword) {
+        if (this.firstname && this.lastname && this.email && this.password && this.mobilenumber && this.password && this.confirmpassword) {
             if (this.agreement == true) {
                 if (this.password == this.confirmpassword) {
                     // if all the fields are correct
@@ -189,32 +179,14 @@ let SignupPage = class SignupPage {
                 }
                 else {
                     //alert to tell that password and confrim password should be same 
-                    if (this.lang == "fr") {
-                        alert("Le champ mot de passe doit etre egal au champ confirmez mot de passe !! ");
-                    }
-                    else {
-                        alert("Password and Confirm Pasword Should be same !! ");
-                    }
                 }
             }
             else {
                 /// alert to ask to the user to accept the agreement then proceed
-                if (this.lang == "fr") {
-                    alert("Accepter les termes et condition avant de s'inscrire.  ");
-                }
-                else {
-                    alert("Accept the terms and conditions before signing. ");
-                }
             }
         }
         else {
             // alert to ask the user to fill all the fields
-            if (this.lang == "fr") {
-                alert("Remplir tous les chaps obligatoires (*)  ");
-            }
-            else {
-                alert("Fill Alln the mandatory fields (*) ");
-            }
         }
     }
     backToHome() {
