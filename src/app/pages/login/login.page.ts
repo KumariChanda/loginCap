@@ -116,8 +116,17 @@ export class LoginPage  {
               //////////////////////////////////////////////////
             }
             else{
-                this.webService.stopLoading();
-                alert("bad credential !")
+                       this.webService.stopLoading();
+                      if(this.lang =="fr")
+                        {
+                          alert("Mauvais username et/ou mot de passe !!! \n SVP entrez des valeurs correctes.") ;            
+
+                        } 
+                        else
+                        {
+                          alert("Bad user name and/or password !!! \n Please enter correct values. ") ;            
+
+                        }  
             }  
                            
           },error =>{
