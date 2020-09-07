@@ -4,12 +4,12 @@
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>About Us</ion-title>
+        <ion-title> {{ 'DASHBOARD.about_us' | translate }}</ion-title>
     </ion-item>    
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="show">
 
     <!-- ///////////////////////////////////////////////////////////////////////////////// -->
             <!-- about us text -->
@@ -30,7 +30,7 @@
          <!-- Start our team -->
 
         <ion-list-header  style=" margin-left:30%"> 
-              <ion-chip *ngIf="!isSearchbarOpened" > Our Team   <br>
+              <ion-chip > Our Team   <br>
                 <ion-icon   name="caret-down-sharp"></ion-icon>
               </ion-chip >
 
@@ -41,7 +41,7 @@
         
             <div  > 
               
-              <img  [src]="team.photo" />
+              <img  [src]= "team.photo" />
               
             </div>
           

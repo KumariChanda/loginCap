@@ -78,10 +78,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/business-class/business-class.module').then( m => m.BusinessClassPageModule)
   },
   {
-    path: 'family-class',
-    loadChildren: () => import('./pages/family-class/family-class.module').then( m => m.FamilyClassPageModule)
-  },
-  {
     path: 'suv-class',
     loadChildren: () => import('./pages/suv-class/suv-class.module').then( m => m.SuvClassPageModule)
   },
@@ -94,9 +90,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/confidentiality/confidentiality.module').then( m => m.ConfidentialityPageModule)
   },
   {
-    path: 'feedback',
-    loadChildren: () => import('./src/app/pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+    path: 'prestige',
+    loadChildren: () => import('./pages/prestige/prestige.module').then( m => m.PrestigePageModule)
+  },
+  {
+    path: 'premium',
+    loadChildren: () => import('./pages/premium/premium.module').then( m => m.PremiumPageModule)
+  },
+  {
+    path: 'economique',
+    loadChildren: () => import('./pages/economique/economique.module').then( m => m.EconomiquePageModule)
   }
+
 
 
 

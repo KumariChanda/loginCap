@@ -12,7 +12,7 @@ import { AppServiceService } from 'src/app/service/appService/app-service.servic
 export class BusinessClassPage implements OnInit {
 
 
- // token : any;
+  show = false // used to show page content
 
 //////////////////////////////search bar elements for cars ////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -20,8 +20,10 @@ public isSearchbarOpened = false;
 term = '';
 filterData = [
   {
-    'modele': '',
-    'id' : '',
+    "libelle": "",
+    "classe": 3,
+    'modele': [{}],
+    'id' : 0,
     'per_day' : '',
     'per_hour' : '',
     'airport' : ''
@@ -30,6 +32,7 @@ filterData = [
   }
 
 ];
+  src_link: string;
 
 
   constructor( private router: Router, 
@@ -41,12 +44,16 @@ filterData = [
 
   ngOnInit() {
 
+     //basic link
+     this.src_link = this.webService.base_url;
+
+
     //get Business class cars list
       this.webService.presentLoading();//to start loader
-      this.webService.getCarClass(3).subscribe(async res=>{
+      this.webService.getCarClass(4).subscribe(async res=>{
 
         
-        //console.log("getting business voitures : \n ",res); 
+        console.log("getting business voitures : \n ",res); 
         if(res)
         {
 
@@ -60,7 +67,7 @@ filterData = [
                   for(let k=0; k < res[i].modeles[j].voitures.length; k++ )
                   {
                    // console.log("car ",i,j,k)
-                    //console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
+                    console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
                     this.filterData[index] = res[i].modeles[j].voitures[k];
                     
                     index = index + 1;
@@ -84,6 +91,7 @@ filterData = [
                 );
               }
               this.webService.stopLoading();//to stop loading
+              this.show = true// used to show page content
 
             
         }

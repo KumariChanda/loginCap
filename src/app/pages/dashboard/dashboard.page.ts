@@ -25,7 +25,6 @@ public  maxdate : any;   // the maximum date of a date picker
 
 
   datauser: any;
-  token : any;
   searchQuery:any;
   destination_to_be_search : any;
   logo1 ='../assets/images/logo1.jpg';
@@ -54,7 +53,7 @@ public  maxdate : any;   // the maximum date of a date picker
 
   //////////////////////////////////////////////////////////////////////
   ////////////data for destination////////////////////////
-  rent_type : any ="hour";
+  search_type : any ="class";
   list_original = [
     {
         'id': '',
@@ -74,6 +73,7 @@ public  maxdate : any;   // the maximum date of a date picker
 ///////////////////////end data for destination search ///////////////////
   
 
+   show = false // used to show page content
 
   constructor(private route: ActivatedRoute, private router: Router, 
     private webService: AppServiceService) {
@@ -90,14 +90,16 @@ public  maxdate : any;   // the maximum date of a date picker
    }
 
   ngOnInit() {
+    /////////////////////////////////////////////////
    //get voitures list
+   //present loading
     this.webService.presentLoading();
-   this.webService.getVoitures().subscribe(async res=>{
+    this.webService.getVoitures().subscribe(async res=>{
     console.log("getting voitures : ",res); 
     if(res)
     {
         this.filterData = res;
-        //get the different prices of every car
+        ////get the different prices of every car
        for(let i=0 ; i< this.filterData.length ; i++)
        {
          this.webService.getPriceCar(this.filterData[i].id).subscribe( resp =>{
@@ -108,10 +110,11 @@ public  maxdate : any;   // the maximum date of a date picker
 
          }
          );
-       }
+       }/////end get the different price of each car
         
     }
 
+      ////////////////////////////////////////////////////////////////////////////   
       //get Destination list
 
       this.webService.getDestinations().subscribe(async res=>{
@@ -124,14 +127,16 @@ public  maxdate : any;   // the maximum date of a date picker
 
       //  console.log("res : ", this.list_original)
         this.webService.stopLoading();
-      });
+        this.show = true;
+      }); //// end get destinations
+      ////////////////////////////////////////////////////////////////////
       
 
   
 
 
-  });
-
+  });/// end get voitures
+ ////////////////////////////////////////////////////
 
   }//end of ngOnInit
 

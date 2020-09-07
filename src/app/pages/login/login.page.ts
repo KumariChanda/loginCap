@@ -17,10 +17,13 @@ export class LoginPage  {
   passwordText // used to get the password entered by the user;
   btnClicked:boolean=false; // check if the button has been clicked or not
   isDriver; // used to check a the user is a driver or not
+  lang: string;
 
   constructor( private webService:AppServiceService, private router: Router  ) {
     // this.setItem();
     this.btnClicked=false;
+
+
   }
  
 
@@ -29,6 +32,9 @@ export class LoginPage  {
 /////////////////////////////////////START LOGIN FUN ///////////////////////////////////////////////////////////////////
   async loginFun()
   {
+    
+    //get Language
+    this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
     // console.log("Button Clicked.");
 
     ///set timeout for cliked on login button
@@ -46,11 +52,15 @@ export class LoginPage  {
           }
           // console.log(sending_obj);
 
-           this.webService.presentLoading();
+        if(this.usernameText && this.passwordText)
+        {
+          this.webService.presentLoading();
+
 
           this.webService.login(sending_obj).subscribe(async res=>{
-           // console.log("getting response : ",res); 
-            if(res)
+           console.log("getting response : ",res); 
+
+            if(!res.detail)
             {
 
                 //store user status in storage 
@@ -104,16 +114,45 @@ export class LoginPage  {
               
               }) //added end get user details
               //////////////////////////////////////////////////
+            }
+            else{
+                this.webService.stopLoading();
+                alert("bad credential !")
             }  
                            
           },error =>{
-                        this.webService.stopLoading();   
-                        alert("server error, please check your inputs ") ;            
+                        this.webService.stopLoading();
+                        if(this.lang =="fr")
+                        {
+                          alert("Erreur Serveur , SVP verifiez vos entrees et Votre Connexion Internet ") ;            
 
-          }
+                        } 
+                        else
+                        {
+                          alert("server error, please check your inputs ") ;            
 
-          
+                        }  
+
+          }  
           )
+
+        }
+        else
+        {
+          
+              if(this.lang =="fr")
+              {
+                alert("Entrez tous les champs correctement, SVP! ") ;            
+
+              } 
+              else
+              {
+                alert("Please, Fill all the Fields Correctly ") ;            
+
+              }  
+        }
+
+           
 
       
 

@@ -11,7 +11,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content  *ngIf="show">
 
 
         <!-- slider images -->
@@ -64,9 +64,10 @@
           </ion-card-subtitle>
           <ion-card-title>Description</ion-card-title>
         </ion-card-header>
-        <ion-card-content>
+        <ion-card-content style="text-align : justify " >
                             
             {{car.description}}
+            
         </ion-card-content>
       </ion-card>
 
@@ -118,7 +119,7 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="show" >
   <!-- <ion-toolbar> -->
           <!-- login to reserve or reserve if logged in  -->
     <ion-button *ngIf="token==null" expand="full" (click)="goToLogin()" >{{"CARDETAILS.logintoreserve" | translate}}</ion-button>

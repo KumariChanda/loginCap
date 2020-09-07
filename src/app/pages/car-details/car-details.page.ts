@@ -54,8 +54,12 @@ car : any =
     'id':'',
     'accessoire ' :[
         {'libelle':''
-        },]
+        },],
 }
+
+/////////////////////////////////////////////////////
+show = false; //is to show page content
+
 
 
   subscription: Subscription;
@@ -97,6 +101,9 @@ car : any =
 
           //stop loading
           this.webservice.stopLoading();
+          //show the list
+          this.show = true;
+
 
          }); //end get prices
 

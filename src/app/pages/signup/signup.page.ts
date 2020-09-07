@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
+import { Plugins } from '@capacitor/core';
+
+const { Storage } = Plugins;
+
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -19,14 +24,19 @@ export class SignupPage implements OnInit {
    dob = "";
    address ="";
    agreement : boolean;
+  lang: any;
 
   constructor(private router: Router,private webService: AppServiceService) { 
     this.btnClicked=false;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+
   }
 
+  ////////////////////////////////
   loginbtnCliced()
   {
     
@@ -41,7 +51,7 @@ export class SignupPage implements OnInit {
       }, 1000)
     console.log("Signup cllicked!.");
 
-     if(this.firstname && this.lastname && this.email && this.password && this.mobilenumber && this.password && this.confirmpassword)
+     if(this.firstname &&  this.email && this.password && this.password && this.confirmpassword)
      {
           if(this.agreement == true)
         {
@@ -69,29 +79,61 @@ export class SignupPage implements OnInit {
 
                   if(res)
                   {
-                    console.log(res)
+                    console.log(res);
+                    this.webService.stopLoading();
+                    alert("Sign up Ok !!!");
+                    this.router.navigateByUrl("/login");
                   }
 
-                  this.webService.stopLoading();                
+                                  
 
                    
                  },error=>{
-                  this.webService.stopLoading();                
+                  this.webService.stopLoading(); 
+                  alert("Sign up not Ok !!");
+                  this.router.navigateByUrl("/login");               
 
                  }
                  );
             
 
-            }else{
+            }
+            else
+            {
               //alert to tell that password and confrim password should be same 
+
+                if(this.lang =="fr")
+                {
+                  alert("Le champ mot de passe doit etre egal au champ confirmez mot de passe !! ")
+                }else{
+                  alert("Password and Confirm Pasword Should be same !! ")
+
+              }
+              
             }
 
-          }else{
+          }
+          else{
               /// alert to ask to the user to accept the agreement then proceed
+              if(this.lang =="fr")
+                {
+                  alert("Accepter les termes et condition avant de s'inscrire.  ")
+                }else{
+                  alert("Accept the terms and conditions before signing. ")
+
+              }
           }
       }else{
 
           // alert to ask the user to fill all the fields
+          if(this.lang =="fr")
+          {
+            alert("Remplir tous les chaps obligatoires (*)  ")
+          }
+          else{
+            alert("Fill Alln the mandatory fields (*) ")
+
+          }
       }
 
   }

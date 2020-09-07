@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
 import { Plugins } from '@capacitor/core';
+import { Router } from '@angular/router';
+
 const { Storage } = Plugins;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -13,20 +16,24 @@ export class ProfilePage implements OnInit {
   btnClicked:boolean=false;
   editableText:boolean=true;
    profileData={
-   "firstname" :"Chanda",
-   "lastname" :"Kumari",
-   "mobilenumber" :"8559080443",
+   "first_name" :"Chanda",
+   "last_name" :"Kumari",
+   "telephone" :"8559080443",
    "email" :"kumarichanda658@gmail.com",
-   "dob" :"1996-06-26",
+   "birth_date" :"1996-06-26",
    "address" :"A-658",
-   "city":"New Delhi",
-   "country":"India"
+   "password":"string"
   }
    agreement : boolean;
   userInfo: any;
-  userType: string;
+  userType: string ="";
+  userId = 0;
 
-  constructor(private webService: AppServiceService) {
+  show = false;
+  token: string;
+  lang: string;
+
+  constructor(private webService: AppServiceService, private router : Router) {
 
     this.btnClicked=false;
     console.log("Before editableText : ",this.editableText);
@@ -36,55 +43,156 @@ export class ProfilePage implements OnInit {
 
    async ngOnInit() {
     // this.webService.presentLoading();
-    this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
-    console.log("Storage : ",this.userInfo);
-    this.profileData.address=this.userInfo.address;
-    this.profileData.dob=this.userInfo.birth_date;
-    this.profileData.email=this.userInfo.email;
-    this.profileData.firstname=this.userInfo.first_name;
-    this.profileData.lastname=this.userInfo.last_name;
-    this.profileData.mobilenumber=this.userInfo.telephone;
-
-    this.userType = (await Storage.get({ key: "user_type" })).value;
-    // this.webService.stopLoading();
-    //get the current language of the app   
-    this.webService.getCurrentLanguage().then(async val =>{
-
-      // change the value of token
-    // await Storage.set({
-    //   key: 'accessToken',
-    //   value: res.token           
-    // });  
-
-      // console.log("home  ",val)
-        this.webService.sendMessage({'token': "mytoken", 'language': val })
-
-         
-          ///stop loading
-          // this.webService.stopLoading();   
-
-
-    });//end get app language
+    this.getdata();
+    
+  
+      
+   
     ////////////////////////////////////////////////
   }
 
-  async editProfile()
+  async getdata()
+  {
+    
+    this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
+    console.log("Storage : ",this.userInfo);
+    this.profileData.address=this.userInfo.address;
+    this.profileData.birth_date=this.userInfo.birth_date;
+    this.profileData.email=this.userInfo.email;
+    this.profileData.first_name=this.userInfo.first_name;
+    this.profileData.last_name=this.userInfo.last_name;
+    this.profileData.telephone=this.userInfo.telephone;
+    this.userId =this.userInfo.id;
+
+
+    //get user type
+    this.userType = (await Storage.get({ key: "user_type" })).value;
+    // this.webService.stopLoading();
+    //get the current language of the app   
+    this.webService.getCurrentLanguage().then(async val =>{ 
+
+      // console.log("home  ",val)
+        this.webService.sendMessage({'token': "mytoken", 'language': val })
+    });//end get app language
+  
+   //show the contain
+   this.show = true;
+  }
+
+ editProfile()
   {
       this.btnClicked=true;
       this.editableText=false;
       console.log("btnClicked : ",this.btnClicked);
-      console.log("DOB : ",this.profileData.dob);     
+      console.log("DOB : ",this.userId);     
       setTimeout( ()=>{
         this.btnClicked=false;
         // this.editableText=true;
-        }, 1000)
-      
+        }, 1000);
+
         
   }
 
-  saveProfile()
+  async saveProfile()
   {
-    console.log("profileData : ",this.profileData);
+    
+        console.log("profileData : ",this.profileData);
+          this.btnClicked=true;
+            console.log("btnClicked : ",this.btnClicked);
+            setTimeout( ()=>{
+              this.btnClicked=false;
+              // this.editableText=true;
+              }, 1000)
+
+          //get token
+          this.token =(await Storage.get({ key: 'accessToken' })).value;
+          //get Language
+          this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+      
+
+      if(this.profileData.email)
+      {
+        
+              ///start loader
+              this.webService.presentLoading();
+      //////////////////////////////////////////////////////////////////////////////////////////////
+
+        
+                ///////////////call the edit profile API ////
+                this.webService.EditClientProfile(this.userId,this.token,this.profileData).subscribe(res =>{
+        
+                    //stop loader
+                    this.webService.stopLoading();
+                      if(res.detail)
+                      {
+                          if(this.lang=="fr")
+                          {
+                            alert("La modification a échoué !! ");
+                            // alert("Modification réussie avec succès !!");
+        
+                          }else{
+                            alert("Update Failed !");
+                          }
+        
+                      }else{
+
+                          
+                            //store the new result into userInfos
+                              //store user infos in storage 
+                              Storage.set({
+                                key : "user_infos",
+                                value : JSON.stringify(res)
+                            });// end store user 
+        
+
+                            if(this.lang=="fr")
+                            {
+                              alert("Modification réussie !!");
+          
+                            }else{
+                              alert("Update Successful !!");
+                            }
+        
+                            //back to prev page
+                            this.prev();
+        
+                      }
+
+
+
+        
+                },error =>{
+                  this.webService.stopLoading();   
+                    if(this.lang=="fr")
+                    {
+                      alert("Erreur Serveur, \n Verifiez Votre connexion internet \n Et vos Entrees ");
+                    // alert("Modification réussie avec succès !!");
+
+                    }
+                    else
+                    {
+                      alert("Server error, \n please check your internet connection \n and your inputs") ;
+                    }            
+
+              });
+              
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+      }
+      else
+      {
+
+            if(this.lang=="fr")
+            {
+              alert("SVP, Remplissez le champ email !");
+
+            }
+            else
+            {
+              alert("Please, Fill the email field !") ;
+            }  
+      }
+  
   }
 
   prev()

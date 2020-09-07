@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 import { Platform, MenuController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { Router } from '@angular/router';
 //import {Storage} from '@ionic/storage'
-import { Subscription } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 import { AppServiceService } from './service/appService/app-service.service';
-
+// import { timer } from 'rxjs/observable/timer';
+const { SplashScreen } = Plugins;
 const { Storage } = Plugins;
 const LNG_KEY = 'SELECTED LANGUAGE';
 
@@ -23,7 +23,7 @@ export class AppComponent {
   menuNavigatorWithoutLogin : any
 
   showSubmenu: boolean = false;
-
+  showSplash=true;
   menuItemHandler(): void {
     this.showSubmenu = !this.showSubmenu;
   }
@@ -40,7 +40,6 @@ export class AppComponent {
 
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private menuCtrl:MenuController,
     //add this router for switching pages
@@ -50,6 +49,7 @@ export class AppComponent {
     
   ) {
 
+     
 
     this.initializeApp(); 
       
@@ -69,16 +69,16 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(async () => {
 
-      //  openFirst() {
-        // this.menuCtrl.enable(true, 'first');
-        // this.menuCtrl.open('first');
-      // }
+     
      ////////////////splashcreen delay//////////////////////
-        this.platform.ready().then(() => {
-          setTimeout(() => {
-            this.splashScreen.hide();
-          }, 1000);
-        })
+     // Hide the splash (you should do this on app launch)
+     setTimeout( ()=>{
+      SplashScreen.hide();
+      this.showSplash=false;
+    // this.editableText=true;
+    }, 1000)
+
+         
      /////////////////////////////////////
        
       //token storage
@@ -88,38 +88,26 @@ export class AppComponent {
       console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
       
       
-     //check the token and call the appropriate page
-      // if(this.token=="null")
-      // {
-      //   // call login page
-      //  // this.router.navigateByUrl('/home');
-      //   this.router.navigateByUrl('/dashboard');
-
-      // }
-      // else
-      // {
-
-      //   //call dashboard page
-      //   this.router.navigateByUrl('/dashboard');
-
-      // }
-
-      // var a = " ";
            // //set the initial language of the app
        this.webService.setInitialAppLanguage().then(val =>{
        // alert("val : "+val);
           this.sideMenu(val);
          
          }); 
+
+   
+         
+    
+
       //  this.sideMenu("fr");
       // console.log("a out  : ",a);
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+       SplashScreen.hide();
     });
 
     
   }
-
+////////////////////////////////////////////////////////////////////////////////////////////////
   //get current token
   async getCurrentToken()
   {
@@ -134,17 +122,28 @@ export class AppComponent {
   
   
 
-
+/////////////////////////////////////////////////////////////////
    openUserProfile(url){
     console.log('Open this URL: ',url);
   }
 //////////////////////////////////
   async logout()
   {
+    //set token free means to null
     await Storage.set({
       key: 'accessToken',
       value: null           
-    });  
+    }); 
+    //set the userinfos and userType to null
+    await Storage.set({
+      key: 'user_infos',
+      value: null           
+    }); 
+    ////////
+    await Storage.set({
+      key: 'user_infos',
+      value: null           
+    });
 
       this.webService.getCurrentLanguage().then(val =>{
 
@@ -238,25 +237,25 @@ export class AppComponent {
                         children :[
     
                           {
-                            title : "Business Class",
+                            title : "Business XXL",
                             url   : "/business-class",
                             icon  : "aperture-outline"
                           },
                           {
-                            title : "Family Class",
-                            url   : "/family-class",
+                            title : "Economic",
+                            url   : "/economique",
                             icon  : "aperture-outline"
                           },
                           {
-                            title : "Class SUV",
-                            url   : "/suv-class",
+                            title : "Premium ",
+                            url   : "/premium",
                             icon  : "aperture-outline"
                           },
-                          // {
-                          //   title : "Ordinary Class",
-                          //   url   : "/profile",
-                          //   icon  : "aperture-outline"
-                          // }
+                          {
+                            title : "Prestige",
+                            url   : "/prestige",
+                            icon  : "aperture-outline"
+                          }
                           
                         ]
                       },
@@ -266,7 +265,7 @@ export class AppComponent {
                         icon  : "cart"
                       },
                       {
-                        title : "My Testiminials",
+                        title : "My Testimonials",
                         url   : "/my-messages",
                         icon  : "mail"
                       },
@@ -298,7 +297,7 @@ export class AppComponent {
                             icon  : "help-circle-outline"
                           },
                           {
-                            title : "Send feedback",
+                            title : "Send Testimonials",
                             url   : "/send-feedbacks",
                             icon  : "send-outline"
                           },
@@ -313,7 +312,7 @@ export class AppComponent {
                           {
                             title : "App Language",
                             url   : "/seetings",
-                            icon  : "information-circle-outline"
+                            icon  : "language-outline"
                           },
                           
                           {
@@ -351,25 +350,25 @@ export class AppComponent {
                     children :[
 
                       {
-                        title : "Business Class",
+                        title : "Business XXL",
                         url   : "/business-class",
                         icon  : "aperture-outline"
                       },
                       {
-                        title : "Family Class",
-                        url   : "/family-class",
+                        title : "Economic",
+                        url   : "/economique",
                         icon  : "aperture-outline"
                       },
                       {
-                        title : "Class SUV",
-                        url   : "/suv-class",
+                        title : "Premium",
+                        url   : "/premium",
                         icon  : "aperture-outline"
                       },
-                      // {
-                      //   title : "Ordinary Class",
-                      //   url   : "/profile",
-                      //   icon  : "aperture-outline"
-                      // }
+                      {
+                        title : "Prestige",
+                        url   : "/prestige",
+                        icon  : "aperture-outline"
+                      }
                     ]
                   },
                   {
@@ -408,7 +407,7 @@ export class AppComponent {
                       {
                         title : "App Language",
                         url   : "/seetings",
-                        icon  : "information-circle-outline"
+                        icon  : "language-outline"
                       },   
                             
                     ]
@@ -453,25 +452,25 @@ export class AppComponent {
                           children :[
                   
                             {
-                              title : "Business Class",
+                              title : "Business XXL",
                               url   : "/business-class",
                               icon  : "aperture-outline"
                             },
                             {
-                              title : "Family Class",
-                              url   : "/family-class",
+                              title : "Economique",
+                              url   : "/economique",
                               icon  : "aperture-outline"
                             },
                             {
-                              title : "Class SUV",
-                              url   : "/suv-class",
+                              title : "Premium",
+                              url   : "/premium",
                               icon  : "aperture-outline"
                             },
-                            // {
-                            //   title : "Ordinary Class",
-                            //   url   : "/profile",
-                            //   icon  : "aperture-outline"
-                            // }
+                            {
+                              title : "Prestige",
+                              url   : "/prestige",
+                              icon  : "aperture-outline"
+                            }
                             
                           ]
                         },
@@ -513,7 +512,7 @@ export class AppComponent {
                               icon  : "help-circle-outline"
                             },
                             {
-                              title : "Envoyez Remarques",
+                              title : "Postez Témoignages",
                               url   : "/send-feedbacks",
                               icon  : "send-outline"
                             },
@@ -528,7 +527,7 @@ export class AppComponent {
                             {
                               title : "Langue de l'application",
                               url   : "/seetings",
-                              icon  : "information-circle-outline"
+                              icon  : "language-outline"
                             },
                             
                             {
@@ -565,30 +564,30 @@ export class AppComponent {
                       children :[
               
                         {
-                          title : "Business Class",
+                          title : "Business XXL ",
                           url   : "/business-class",
                           icon  : "aperture-outline"
                         },
                         {
-                          title : "Family Class",
-                          url   : "/family-class",
+                          title : "Economique ",
+                          url   : "/economique",
                           icon  : "aperture-outline"
                         },
                         {
-                          title : "Class SUV",
-                          url   : "/suv-class",
+                          title : "Premium ",
+                          url   : "/premium",
                           icon  : "aperture-outline"
                         },
-                        // {
-                        //   title : "Ordinary Class",
-                        //   url   : "/profile",
-                        //   icon  : "aperture-outline"
-                        // }
+                        {
+                          title : "Prestige",
+                          url   : "/prestige",
+                          icon  : "aperture-outline"
+                        }
                         
                       ]
                     },
                     {
-                      title : "À propos",
+                      title : "Contactez-Nous",
                       icon  : "call",
                       children :[
               
@@ -626,7 +625,7 @@ export class AppComponent {
                         {
                           title : "Langue de l'application",
                           url   : "/seetings",
-                          icon  : "information-circle-outline"
+                          icon  : "language-outline"
                         },
                         
                         

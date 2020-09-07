@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class SuvClassPage implements OnInit {
 
 
+  show = false;
   //////////////////////////////search bar elements for cars ////////////
 //////////////////////////////////////////////////////////////////////////////
 public isSearchbarOpened = false;
@@ -76,6 +77,7 @@ filterData = [
               );
             }
          this.webService.stopLoading();//stop loader 
+         this.show = true; 
       }
     });
 
@@ -84,16 +86,16 @@ filterData = [
   }
 
 
-  //////////////////////////////////////////////////////
-//this method is used to print the details of a selected car //////////////
-carDetails(carID){
+    //////////////////////////////////////////////////////
+    //this method is used to print the details of a selected car //////////////
+    carDetails(carID){
 
 
-  //call another page and fetch the details of the car
-  this.router.navigate(['car-details'], {queryParams:{id: carID, prev : "/suv-class"} })
+      //call another page and fetch the details of the car
+      this.router.navigate(['car-details'], {queryParams:{id: carID, prev : "/suv-class"} })
 
 
-}
+    }
 
 
 
