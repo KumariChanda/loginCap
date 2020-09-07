@@ -13,17 +13,18 @@
 
    
        <!-- search bar button -->
-       <ion-buttons slot="end">
-          <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
-              <ion-icon color="primary" name="search"> </ion-icon>
-          </ion-button>
+      <ion-buttons slot="end">
+        <!-- <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" > -->
+            <ion-icon color="primary" name="search" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true"> </ion-icon>
+         <!-- </ion-button> -->
       </ion-buttons>
+      <!-- Search Bar -->
 
 
     </ion-item>
 
 <!-- Search Bar -->
-   <ion-searchbar *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+   <ion-searchbar color="primary" *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
 
      
   </ion-toolbar>
@@ -37,7 +38,7 @@
     
         <div *ngFor="let photo of item.photo; let i = index " > 
           
-          <img *ngIf="i== 0"  [src]="src_link + photo.image" />
+          <img *ngIf="i== 0"  [src]="src_link+photo.image" />
           
         </div>
         

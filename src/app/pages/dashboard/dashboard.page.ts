@@ -16,6 +16,17 @@ const { Storage } = Plugins;
 })
 export class DashboardPage implements OnInit {
 
+
+/////////search var///////
+
+searchClass : any;
+searchPrice : any;
+searchOther : any;
+/////////////////////////
+
+
+
+
  //////////////Date////////////////////
 public  today: any ;     // today's date 
 public  maxdate : any;   // the maximum date of a date picker
@@ -74,6 +85,7 @@ public  maxdate : any;   // the maximum date of a date picker
   
 
    show = false // used to show page content
+  lang: string;
 
   constructor(private route: ActivatedRoute, private router: Router, 
     private webService: AppServiceService) {
@@ -89,40 +101,95 @@ public  maxdate : any;   // the maximum date of a date picker
 
    }
 
-  ngOnInit() {
+  async ngOnInit() {
     /////////////////////////////////////////////////
+      //get Language
+      this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+      ////////////////////////////////////////////
    //get voitures list
    //present loading
     this.webService.presentLoading();
     this.webService.getVoitures().subscribe(async res=>{
     console.log("getting voitures : ",res); 
-    if(res)
+    if(!res.details)
     {
-        this.filterData = res;
-        ////get the different prices of every car
-       for(let i=0 ; i< this.filterData.length ; i++)
-       {
-         this.webService.getPriceCar(this.filterData[i].id).subscribe( resp =>{
-
-          this.filterData[i].per_day = resp[0].prix;
-        //  this.filterData[i].per_hour = resp[1].prix;
-        //  this.filterData[i].airport = resp[2].prix;
-
-         }
-         );
-       }/////end get the different price of each car
         
+      if(res.length>0)
+      {
+          this.filterData = res;
+            ////get the different prices of every car
+          for(let i=0 ; i< this.filterData.length ; i++)
+          {
+            this.webService.getPriceCar(this.filterData[i].id).subscribe( resp =>{
+
+              this.filterData[i].per_day = resp[0].prix;
+            //  this.filterData[i].per_hour = resp[1].prix;
+            //  this.filterData[i].airport = resp[2].prix;
+
+            }
+            );
+          }/////end get the different price of each car
+      }
+      else
+      {
+          //no  cars
+          if(this.lang=="fr")
+          {
+            alert("Aucune Voiture Disponible !!! ");
+
+          }else{
+            alert("No Car Available !!! ");
+          }
+      }
+            
     }
+    else
+    {
+        //no  cars
+        if(this.lang=="fr")
+        {
+          alert("Oops une erreur !!! ");
+
+        }else{
+          alert("Oops an Error !!! ");
+        }
+    }
+
 
       ////////////////////////////////////////////////////////////////////////////   
       //get Destination list
 
       this.webService.getDestinations().subscribe(async res=>{
         console.log("getting Destinations : ",res); 
-        if(res)
+        if(!res.details)
         {
-            this.list_original = res;
-            
+           if(res.length>0)
+           {
+              this.list_original = res;
+           }
+           else
+           {
+                //no  cars
+                if(this.lang=="fr")
+                {
+                  alert("Aucune Destination Disponible !!! ");
+
+                }else{
+                  alert("No Destination Available !!! ");
+                }
+            }
+
+        }
+        else
+        {
+            //no  cars
+            if(this.lang=="fr")
+            {
+              alert("Oops une erreur !!! ");
+    
+            }else{
+              alert("Oops an Error !!! ");
+            }
         }
 
       //  console.log("res : ", this.list_original)
@@ -209,6 +276,54 @@ setDate()
   }
 
 //////////////////////end call carDetails///////////////////////////
+
+
+//////////////// search class /////////////////////
+
+openClass()
+{
+   console.log(this.searchClass);
+      if(this.searchClass == 'business')
+      {
+         this.router.navigateByUrl("/business-class");
+      }
+      else if(this.searchClass == 'economic')
+      {
+        this.router.navigateByUrl("/economique");
+
+      }
+      else if(this.searchClass == 'premium')
+      {
+        this.router.navigateByUrl("/premium");
+
+      }
+      else if(this.searchClass == 'prestige')
+      {
+        this.router.navigateByUrl("/prestige");
+
+      }
+      else
+      {
+           //no  cars
+           if(this.lang=="fr")
+           {
+             alert("Faites un choix SVP !!! ");
+   
+           }else{
+             alert("Make a choice Please !!! ");
+           }
+   
+
+      }
+}
+
+////////////////  End search class ////////////////
+
+
+
+
+
+
 
 
 

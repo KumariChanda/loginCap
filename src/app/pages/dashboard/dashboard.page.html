@@ -9,21 +9,20 @@
       </ion-buttons>
 
       <!-- title -->
-      <ion-title *ngIf="!isSearchbarOpened" >{{ 'DASHBOARD.title' | translate }}</ion-title>
+      <ion-title  *ngIf="!isSearchbarOpened" >{{ 'DASHBOARD.title' | translate }}</ion-title>
 
-   
-       <!-- search bar button -->
-       <ion-buttons slot="end">
-          <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
-              <ion-icon color="primary" name="search"> </ion-icon>
-          </ion-button>
+      <!-- search bar button -->
+      <ion-buttons slot="end">
+        <!-- <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" > -->
+            <ion-icon color="primary" name="search" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true"> </ion-icon>
+         <!-- </ion-button> -->
       </ion-buttons>
-
+      <!-- Search Bar -->
 
     </ion-item>
 
-<!-- Search Bar -->
-   <ion-searchbar *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+
+   <ion-searchbar color="primary"  *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
 
      
   </ion-toolbar>
@@ -40,7 +39,7 @@
   <ion-card  *ngIf="!isSearchbarOpened">
         <ion-card-header>
 
-         <ion-card-title style="margin-buttom:10%; margin-left:20%"> {{ 'DASHBOARD.search_car' | translate }} </ion-card-title>
+         <ion-card-title style=" margin-left:15%; margin-bottom: 3%;font-size:1.5em"> {{ 'DASHBOARD.search_car' | translate }} </ion-card-title>
               <!-- Label only -->
           <ion-segment [(ngModel)]="search_type">
             <ion-segment-button  value="class">
@@ -61,7 +60,7 @@
                <!-- ----------------------START search type = "per class"------------------------------- -->
               <div *ngIf="search_type =='class'">
                 <!-- start date -->
-                <ion-radio-group allow-empty-selection >
+                <ion-radio-group allow-empty-selection [(ngModel)]="searchClass"  >
                    
                     <ion-item>
                       <ion-label>{{"DASHBOARD.business_class" | translate}}</ion-label>
@@ -87,7 +86,7 @@
 
                   <!-- button search -->
 
-                <ion-button expand="block"> 
+                <ion-button style="margin-left:15px" expand="block"  (click)="openClass()"> 
                       <ion-icon slot="start" name="search"></ion-icon>
                       {{ 'DASHBOARD.btn_search' | translate }}
                  </ion-button>

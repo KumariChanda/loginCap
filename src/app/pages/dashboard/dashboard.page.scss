@@ -5,10 +5,15 @@ ion-card,ion-toolbar,ion-segment
 
 
 
-ion-item
+ion-item,ion-menu-button
 {
     --background: black; 
     color:  #ffa60a;
+}
+
+ion-radio
+{
+     background-color: white;
 }
 
 ion-chip,ion-button
