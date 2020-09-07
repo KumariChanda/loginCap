@@ -270,7 +270,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<!-- <div *ngIf=\"showSplash\" class=\"splash\">\n  <div class=\"spinner\">  </div>\n\n</div> -->\n<ion-app>\n    <ion-menu side=\"start\" menuId=\"first\" contentId=\"content1\">\n        <ion-header>\n          <ion-toolbar>\n\n              <!-- menu == null -->\n            <div *ngIf=\"testingToken==null\">\n              <div >\n                <ion-grid>\n                  <ion-row>\n                    <ion-col size=\"4\" >\n                      <img  tappable  menuClose  [src]=\"profile\"  class=\"image-icon\" (click)=\"login_signupPage()\">\n                    </ion-col>\n                     <ion-col size=\"8\">\n                      <div>\n                        <ion-icon name=\"warning-outline\" style=\"color: red;\"></ion-icon>\n                          <ion-label>{{'MENU.message' | translate}}</ion-label>\n                          <ion-button fill=\"outline\" slot=\"end\" (click)=\"login_signupPage()\" >{{'MENU.btn_login' | translate}}</ion-button>\n               \n                        <!-- <ion-button>\n                          Login / Signup\n                        </ion-button> -->\n                      </div>                    \n                    </ion-col>\n                    </ion-row>\n                    </ion-grid>               \n               </div>\n              </div>\n         \n             <!-- menu != null -->\n          <div *ngIf=\"testingToken!=null\">\n            <div >\n              <ion-grid>\n                <ion-row>\n                  <ion-col size=\"4\" >\n                    <img  tappable  menuClose  [src]=\"profile\"  class=\"image-icon\" (click)=\"openUserProfile(defaultProfile)\">\n                  </ion-col>\n                   <ion-col size=\"8\">\n                    <div>                     \n                        <ion-label style=\"size: 20vw;\">&nbsp; <b>{{userInf?.first_name}} {{userInf?.last_name}} </b></ion-label><br>\n                        <ion-button fill=\"outline\" slot=\"end\" (click)=\"logout()\" >{{'MENU.btn_logout' | translate}}</ion-button>\n                    </div>                    \n                  </ion-col>\n                  </ion-row>\n                  </ion-grid>             \n              </div>\n            </div>\n         \n               \n         \n          </ion-toolbar>\n        </ion-header>\n        <ion-content>\n\n           <!-- Menu if user is not logged in yet -->\n\n          <div *ngIf=\"testingToken==null \">\n          \n          <div  style=\" background: black \" *ngFor=\"let pages of menuNavigatorWithoutLogin\">\n              \n              <ion-menu-toggle   auto-hide=\"true\" *ngIf=\"pages.url\" >\n                <ion-item [routerLink]=\"pages.url\" routerDirection=\"root\" routerLinkActive=\"active\">\n                    <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\n                     <ion-label> {{pages.title}} </ion-label> \n                </ion-item>\n              </ion-menu-toggle>\n\n                    <!-- if there is sub-cat -->\n              <ion-item button *ngIf=\"pages.children?.length > 0\" (click) = \"pages.open = !pages.open\"\n                [class.active-parent]=\"pages.open\" details=\"false\">\n                \n                <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\n                <ion-icon slot=\"end\" name=\"arrow-forward\" *ngIf=\"!pages.open\"></ion-icon>\n                <ion-icon slot=\"end\" name=\"arrow-down\" *ngIf=\"pages.open\"></ion-icon>\n                <ion-label> {{pages.title}} </ion-label>\n\n              </ion-item>\n\n              <div  *ngIf=\"pages.open\">\n\n                    <ion-menu-toggle  >\n                      <ion-item class=\"sub-item\" *ngFor=\"let sub of pages.children\" [routerLink]=\"sub.url\" routerDirection=\"root\" routerLinkActive=\"active\">\n                          <ion-icon [name]=\"sub.icon\" slot=\"start\"></ion-icon>\n                            {{sub.title}} \n                      </ion-item>\n                    </ion-menu-toggle>\n\n              </div>\n\n          </div>\n\n\n                   <!-- Menu if user is logged in -->\n\n        </div>\n  \n          <div *ngIf=\"testingToken!=null\">\n            \n             \n          <div *ngFor=\"let pages of menuNavigatorLogin\">\n          <ion-menu-toggle auto-hide=\"true\" *ngIf=\"pages.url\" >\n            <ion-item [routerLink]=\"pages.url\" routerDirection=\"root\" routerLinkActive=\"active\">\n                <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\n                   {{pages.title}} \n            </ion-item>\n          </ion-menu-toggle>\n\n                <!-- if there is sub-cat -->\n          <ion-item button *ngIf=\"pages.children?.length > 0\" (click) = \"pages.open = !pages.open\"\n            [class.active-parent]=\"pages.open\" details=\"false\">\n            \n            <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\n            <ion-icon slot=\"end\" name=\"arrow-forward\" *ngIf=\"!pages.open\"></ion-icon>\n            <ion-icon slot=\"end\" name=\"arrow-down\" *ngIf=\"pages.open\"></ion-icon>\n            <ion-label> {{pages.title}} </ion-label>\n\n          </ion-item>\n\n          <div  *ngIf=\"pages.open\">\n\n                <ion-menu-toggle  >\n                  <ion-item class=\"sub-item\" auto-hide=\"true\" *ngFor=\"let sub of pages.children\" [routerLink]=\"sub.url\" routerDirection=\"root\" routerLinkActive=\"active\">\n                      <ion-icon [name]=\"sub.icon\" slot=\"start\"></ion-icon>\n                        {{sub.title}} \n                  </ion-item>\n                </ion-menu-toggle>\n\n          </div>\n\n          </div>\n        </div>\n        </ion-content>\n\n        <ion-footer >\n            <ion-toolbar>\n             <ion-button  expand=\"full\" >NYOKAH VERSION 1.0 </ion-button>\n            </ion-toolbar> \n        </ion-footer>\n\n      </ion-menu>\n  <ion-router-outlet id=\"content1\"></ion-router-outlet>\n\n \n</ion-app>");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<!-- <div *ngIf=\"showSplash\" class=\"splash\">\n  <div class=\"spinner\">  </div>\n\n</div> -->\n<ion-app>\n    <ion-menu side=\"start\" menuId=\"first\" contentId=\"content1\">\n        <ion-header>\n          <ion-toolbar>\n\n              <!-- menu == null -->\n            <div *ngIf=\"testingToken==null\">\n              <div >\n                <ion-grid>\n                  <ion-row>\n                    <ion-col size=\"4\" >\n                      <img  tappable  menuClose  [src]=\"profile\"  class=\"image-icon\" (click)=\"login_signupPage()\">\n                    </ion-col>\n                     <ion-col size=\"8\">\n                      <div>\n                        <ion-icon name=\"warning-outline\" style=\"color: red;\"></ion-icon>\n                          <ion-label>{{'MENU.message' | translate}}</ion-label>\n                          <ion-button fill=\"outline\" slot=\"end\" (click)=\"login_signupPage()\" >{{'MENU.btn_login' | translate}}</ion-button>\n               \n                        <!-- <ion-button>\n                          Login / Signup\n                        </ion-button> -->\n                      </div>                    \n                    </ion-col>\n                    </ion-row>\n                    </ion-grid>               \n               </div>\n              </div>\n         \n             <!-- menu != null -->\n          <div *ngIf=\"testingToken!=null\">\n            <div >\n              <ion-grid>\n                <ion-row>\n                  <ion-col size=\"4\" >\n                    <img  tappable  menuClose  [src]=\"profile\"  class=\"image-icon\" (click)=\"openUserProfile(defaultProfile)\">\n                  </ion-col>\n                   <ion-col size=\"8\">\n                    <div>                     \n                        <ion-label style=\"size: 20vw;\">&nbsp; <b>{{userInf?.first_name}} {{userInf?.last_name}} </b></ion-label><br>\n                        <ion-button fill=\"outline\" slot=\"end\" (click)=\"logout()\" >{{'MENU.btn_logout' | translate}}</ion-button>\n                    </div>                    \n                  </ion-col>\n                  </ion-row>\n                  </ion-grid>             \n              </div>\n            </div>\n         \n               \n         \n          </ion-toolbar>\n        </ion-header>\n        <ion-content>\n\n           <!-- Menu if user is not logged in yet -->\n\n          <div *ngIf=\"testingToken==null \">\n          \n          <div  style=\" background: black \" *ngFor=\"let pages of menuNavigatorWithoutLogin\">\n              \n              <ion-menu-toggle   auto-hide=\"true\" *ngIf=\"pages.url\" >\n                <ion-item [routerLink]=\"pages.url\" routerDirection=\"root\" routerLinkActive=\"active\">\n                    <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\n                     <ion-label> {{pages.title}} </ion-label> \n                </ion-item>\n              </ion-menu-toggle>\n\n                    <!-- if there is sub-cat -->\n              <ion-item button *ngIf=\"pages.children?.length > 0\" (click) = \"pages.open = !pages.open\"\n                [class.active-parent]=\"pages.open\" details=\"false\">\n                \n                <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\n                <!-- <ion-icon slot=\"end\" name=\"arrow-forward\" *ngIf=\"!pages.open\"></ion-icon>\n                <ion-icon slot=\"end\" name=\"arrow-down\" *ngIf=\"pages.open\"></ion-icon> -->\n                <ion-label> {{pages.title}} </ion-label>\n\n              </ion-item>\n\n              <div  *ngIf=\"pages.open\">\n\n                    <ion-menu-toggle  >\n                      <ion-item class=\"sub-item\" *ngFor=\"let sub of pages.children\" [routerLink]=\"sub.url\" routerDirection=\"root\" routerLinkActive=\"active\">\n                          <ion-icon [name]=\"sub.icon\" slot=\"start\"></ion-icon>\n                            {{sub.title}} \n                      </ion-item>\n                    </ion-menu-toggle>\n\n              </div>\n\n          </div>\n\n\n                   <!-- Menu if user is logged in -->\n\n        </div>\n  \n          <div *ngIf=\"testingToken!=null\">\n            \n             \n          <div *ngFor=\"let pages of menuNavigatorLogin\">\n          <ion-menu-toggle auto-hide=\"true\" *ngIf=\"pages.url\" >\n            <ion-item [routerLink]=\"pages.url\" routerDirection=\"root\" routerLinkActive=\"active\">\n                <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\n                   {{pages.title}} \n            </ion-item>\n          </ion-menu-toggle>\n\n                <!-- if there is sub-cat -->\n          <ion-item button *ngIf=\"pages.children?.length > 0\" (click) = \"pages.open = !pages.open\"\n            [class.active-parent]=\"pages.open\" details=\"false\">\n            \n            <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\n            <!-- <ion-icon slot=\"end\" name=\"arrow-forward\" *ngIf=\"!pages.open\"></ion-icon>\n            <ion-icon slot=\"end\" name=\"arrow-down\" *ngIf=\"pages.open\"></ion-icon> -->\n            <ion-label> {{pages.title}} </ion-label>\n\n          </ion-item>\n\n          <div  *ngIf=\"pages.open\">\n\n                <ion-menu-toggle  >\n                  <ion-item class=\"sub-item\" auto-hide=\"true\" *ngFor=\"let sub of pages.children\" [routerLink]=\"sub.url\" routerDirection=\"root\" routerLinkActive=\"active\">\n                      <ion-icon [name]=\"sub.icon\" slot=\"start\"></ion-icon>\n                        {{sub.title}} \n                  </ion-item>\n                </ion-menu-toggle>\n\n          </div>\n\n          </div>\n        </div>\n        </ion-content>\n\n        <ion-footer >\n            <ion-toolbar>\n             <ion-button  expand=\"full\" >NYOKAH VERSION 1.0 </ion-button>\n            </ion-toolbar> \n        </ion-footer>\n\n      </ion-menu>\n  <ion-router-outlet id=\"content1\"></ion-router-outlet>\n\n \n</ion-app>");
 
 /***/ }),
 
@@ -362,10 +362,6 @@ const routes = [
     {
         path: 'business-class',
         loadChildren: () => __webpack_require__.e(/*! import() | pages-business-class-business-class-module */ "pages-business-class-business-class-module").then(__webpack_require__.bind(null, /*! ./pages/business-class/business-class.module */ "./src/app/pages/business-class/business-class.module.ts")).then(m => m.BusinessClassPageModule)
-    },
-    {
-        path: 'family-class',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-family-class-family-class-module */ "pages-family-class-family-class-module").then(__webpack_require__.bind(null, /*! ./pages/family-class/family-class.module */ "./src/app/pages/family-class/family-class.module.ts")).then(m => m.FamilyClassPageModule)
     },
     {
         path: 'suv-class',
@@ -1086,7 +1082,7 @@ let AppServiceService = class AppServiceService {
         this.loadingCtrl = loadingCtrl;
         this.translate = translate;
         // basic api url
-        this.base_url = "http://othnieldona.pythonanywhere.com/api";
+        this.base_url = "http://othnieldona.pythonanywhere.com";
         this.selected = ''; // selected language
         ///////////////////////////SEND DATA TO UPDATE THE MENU///////////////////////////////////////////////////////////////
         this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
@@ -1210,6 +1206,13 @@ let AppServiceService = class AppServiceService {
     ///////////////////////////////////// END : GET DESTINATION////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////// START : GET DESTINATION BY ID ///////////////////////////////////////////////////////////////////////////////
+    getSingleDestination(id) {
+        return this.http.get(base_url + "destinations/" + id, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+    }
+    ///////////////////////////////////// END : GET DESTINATION By ID////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////// START : GET CARS ///////////////////////////////////////////////////////////////////////////////
     //voitures means cars
     getVoitures() {
@@ -1230,7 +1233,7 @@ let AppServiceService = class AppServiceService {
     ///////////////////////////////////////START : GET CARS PER CLASS /////////////////////////////////////////////////////////////////////////
     //Family, business, SUV class
     getCarClass(id) {
-        return this.http.get(base_url + "marques/" + id, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        return this.http.get(base_url + "classes/" + id + "/marques", httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
     }
     ///////////////////////////////////// END : GET CARS PER CLASS////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1321,7 +1324,7 @@ let AppServiceService = class AppServiceService {
                 'Authorization': 'Token ' + token
             })
         };
-        return this.http.get(base_url + "temoignage/" + id, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        return this.http.get(base_url + "clients/" + id + "/temoignages", httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
     }
     ///////////////////////////////////// END : GET USER TESTIMONIAL////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1342,6 +1345,13 @@ let AppServiceService = class AppServiceService {
     }
     ///////////////////////////////////// END : POST RESERVATION////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////STRAT : Change Password  ////////////////////////////////////////////////////////////////////////
+    changeUserPassword(id, token, data) {
+        return this.postData1((base_url + "clients/" + id + "set_password/"), data, token);
+    }
+    ///////////////////////////////////// END : Change Password///////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////STRAT : GET Client Reservation ////////////////////////////////////////////////////////////////////////
     getClientReservation(id, token) {
@@ -1351,7 +1361,33 @@ let AppServiceService = class AppServiceService {
                 'Authorization': 'Token ' + token
             })
         };
-        return this.http.get(base_url + "locations/" + id, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        return this.http.get(base_url + "clients/" + id + "/locations", httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+    }
+    ///////////////////////////////////// END : GET Client Reservation  ////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////STRAT : EDIT CLIENT PROFILE ////////////////////////////////////////////////////////////////////////
+    EditClientProfile(id, token, data) {
+        const httpOption = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + token
+            })
+        };
+        return this.http.put(base_url + "clients/" + id + "/", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+    }
+    ///////////////////////////////////// END : EDIT CLIENT PROFILE  ////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////STRAT : EDIT CLIENT PASSWORD ////////////////////////////////////////////////////////////////////////
+    changeClientPasssword(id, token, data) {
+        const httpOption = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + token
+            })
+        };
+        return this.http.post(base_url + "clients/" + id + "/set_password", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
     }
 };
 AppServiceService.ctorParameters = () => [

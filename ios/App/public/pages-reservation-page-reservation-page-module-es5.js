@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n          <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n          <ion-title>{{\"RESERVECAR.title\"| translate}}</ion-title>\n      </ion-item>  \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n\n\n\n\n       <ion-card>\n        <ion-card-header>\n\n         <ion-card-title > RESERVATION </ion-card-title>\n              <!-- Label only -->\n          <ion-segment [(ngModel)]=\"rent_type\">\n            <ion-segment-button  value=\"hour\">\n              <ion-label>{{\"RESERVECAR.per_hour\"| translate}} </ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"day\">\n              <ion-label>{{\"RESERVECAR.per_day\"| translate}}</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"airport\">\n              <label textWrap=\"true\" style=\"font-size:0.9em\">{{\"RESERVECAR.airport_pick\"| translate}}</label>\n            </ion-segment-button>\n          </ion-segment>\n\n        </ion-card-header>\n\n        <ion-card-content>\n             \n              <!-- Search Bar -->\n               <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar()\" (ionCancel)=\"onCancel($event)\" (ionClear)\t=\"onCancel($event)\" (ngModelChange)=\"change_query($event)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list\">\n                   <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per hour\"------------------------------- -->\n              <div *ngIf=\"rent_type =='hour'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime readonly [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\" ></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"change('hour')\"   [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item  *ngIf=\"rent_type =='hour' || rent_type =='day' \">\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"  [min]=\"end_time\" [(ngModel)]=\"end_time\"> </ion-datetime>\n                </ion-item>\n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per hour\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per day\"------------------------------- -->\n              <div *ngIf=\"rent_type =='day'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"today\" [max]=\"maxdate\" (ionChange)=\"change('day')\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                </ion-item>\n                 <!-- return date  -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.return_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"end_date\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"end_date\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"end_time = start_time\"   [min]=\"start_time\" [(ngModel)]=\"start_time\"></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime  display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"   [(ngModel)]=\"end_time\"></ion-datetime>\n                </ion-item>\n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per day\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n           \n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"airport\"------------------------------- -->\n              <div *ngIf=\"rent_type =='airport'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [value]=\"today\" [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\" [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                 <!-- departure -->\n                <ion-item  *ngIf=\"rent_type =='airport' \">\n                  <ion-input [(ngModel)]= \"depart_venue\"  placeholder='{{\"RESERVECAR.departure_venue\"| translate}}' ></ion-input>\n                </ion-item>\n\n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"airport\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n\n                \n                \n\n        </ion-card-content>\n      \n  </ion-card>\n      \n      <!-- type of reservation -->\n\n\n  <!-- optional services -->\n       <ion-card>\n     \n        <ion-card-header>\n          <ion-card-title>{{\"RESERVECAR.otherservices\"| translate}}  </ion-card-title>\n        </ion-card-header>\n        <ion-card-content *ngFor=\"let item of option\">\n                  \n                <!-- <strong> <ion-label style=\"text-decoration: underline; margin-left:4%\"> Optional Services : </ion-label> </strong> -->\n                  \n                  <!-- baby seats -->\n                <ion-item>\n                    <ion-checkbox color=\"primary\" [(ngModel)] =\"item.checked\" slot=\"end\"></ion-checkbox>\n                    <label  textWrap=\"true\">{{item.libelle}}  -   {{item.prix}}F cfa/ {{\"RESERVECAR.day\"| translate}} </label>\n                </ion-item>\n                \n            \n        </ion-card-content>\n        </ion-card>\n\n       \n\n        <!-- Message -->\n        <ion-card  style=\"height: 255px;\">\n     \n            <ion-card-header>\n              <ion-card-title>{{\"RESERVECAR.message\"| translate}}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content >\n                \n                  <ion-textarea [(ngModel)]=\"message\" class=\"cell-input\" auto-grow=\"true\" maxlength=\"400\" placeholder=\"{{'RESERVECAR.messageplaceholder'| translate}}\"></ion-textarea>\n\n            </ion-card-content>\n\n        </ion-card>\n\n           <!-- submit your reservation -->\n        <!-- <ion-button expand=\"round\" class=\"center-button\" >Submit</ion-button> -->\n\n\n</ion-content>\n<ion-footer *ngIf=\"show\">\n  <!-- <ion-toolbar> -->\n      <ion-button  (click)=\"submit(car.id)\" expand=\"full\"> {{\"RESERVECAR.btn_submit\"| translate}} </ion-button>\n  <!-- </ion-toolbar> -->\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n          <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n          <ion-title>{{\"RESERVECAR.title\"| translate}}</ion-title>\n      </ion-item>  \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n\n\n\n\n       <ion-card>\n        <ion-card-header>\n\n         <ion-card-title > RESERVATION </ion-card-title>\n              <!-- Label only -->\n          <ion-segment [(ngModel)]=\"rent_type\">\n            <ion-segment-button  value=\"hour\">\n              <ion-label>{{\"RESERVECAR.per_hour\"| translate}} </ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"day\">\n              <ion-label>{{\"RESERVECAR.per_day\"| translate}}</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"airport\">\n              <label textWrap=\"true\" style=\"font-size:0.9em\">{{\"RESERVECAR.airport_pick\"| translate}}</label>\n            </ion-segment-button>\n          </ion-segment>\n\n        </ion-card-header>\n\n        <ion-card-content>\n             \n              <!-- Search Bar -->\n               <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar()\" (ionCancel)=\"onCancel($event)\" (ionClear)\t=\"onCancel($event)\" (ngModelChange)=\"change_query($event)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list\">\n                   <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per hour\"------------------------------- -->\n              <div *ngIf=\"rent_type =='hour'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime readonly [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\" ></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"change('hour')\"   [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item  *ngIf=\"hourNbr > 0\" >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime readonly display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"  [min]=\"end_time\" [(ngModel)]=\"end_time\"> </ion-datetime>\n                </ion-item>\n                <!-- Number of Time-->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.number_hour\"| translate}}</ion-label>\n                  <ion-input type=\"number\"  style=\"width: 100px; margin-left : 40%\" (ionChange)=\"change('hour')\"  placeholder=\"0\"  [(ngModel)]=\"hourNbr\" ></ion-input>\n                </ion-item>\n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per hour\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per day\"------------------------------- -->\n              <div *ngIf=\"rent_type =='day'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"today\" [max]=\"maxdate\" (ionChange)=\"change('day')\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                </ion-item>\n                 <!-- return date  -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.return_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"min_retunDate\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"end_date\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"end_time = start_time\"   [min]=\"start_time\" [(ngModel)]=\"start_time\"></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime  display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"   [(ngModel)]=\"end_time\"></ion-datetime>\n                </ion-item>\n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per day\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n           \n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"airport\"------------------------------- -->\n              <div *ngIf=\"rent_type =='airport'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [value]=\"today\" [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\" [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                 <!-- departure -->\n                <ion-item  *ngIf=\"rent_type =='airport' \">\n                  <ion-input [(ngModel)]= \"depart_venue\"  placeholder='{{\"RESERVECAR.departure_venue\"| translate}}' ></ion-input>\n                </ion-item>\n\n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"airport\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n\n                \n                \n\n        </ion-card-content>\n      \n  </ion-card>\n      \n      <!-- type of reservation -->\n\n\n  <!-- optional services -->\n       <ion-card>\n     \n        <ion-card-header>\n          <ion-card-title>{{\"RESERVECAR.otherservices\"| translate}}  </ion-card-title>\n        </ion-card-header>\n        <ion-card-content *ngFor=\"let item of option\">\n                  \n                <!-- <strong> <ion-label style=\"text-decoration: underline; margin-left:4%\"> Optional Services : </ion-label> </strong> -->\n                  \n                  <!-- baby seats -->\n                <ion-item>\n                    <ion-checkbox color=\"primary\" [(ngModel)] =\"item.checked\" slot=\"end\"></ion-checkbox>\n                    <label  textWrap=\"true\">{{item.libelle}}  -   {{item.prix}}F cfa/ {{\"RESERVECAR.day\"| translate}} </label>\n                </ion-item>\n                \n            \n        </ion-card-content>\n        </ion-card>\n\n       \n\n        <!-- Message -->\n        <ion-card  style=\"height: 255px;\">\n     \n            <ion-card-header>\n              <ion-card-title>{{\"RESERVECAR.message\"| translate}}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content >\n                \n                  <ion-textarea [(ngModel)]=\"message\" class=\"cell-input\" auto-grow=\"true\" maxlength=\"400\" placeholder=\"{{'RESERVECAR.messageplaceholder'| translate}}\"></ion-textarea>\n\n            </ion-card-content>\n\n        </ion-card>\n\n           <!-- submit your reservation -->\n        <!-- <ion-button expand=\"round\" class=\"center-button\" >Submit</ion-button> -->\n\n\n</ion-content>\n<ion-footer *ngIf=\"show\">\n  <!-- <ion-toolbar> -->\n      <ion-button  (click)=\"submit(car.id)\" expand=\"full\"> {{\"RESERVECAR.btn_submit\"| translate}} </ion-button>\n  <!-- </ion-toolbar> -->\n</ion-footer>";
     /***/
   },
 
@@ -285,28 +285,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.page_prev = ""; /////////////////////////////////////
         ////var data to be sent //////////
 
-        this.rent_type = "hour"; ////////////////////////////////////////////////////////
+        this.rent_type = "hour";
+        this.hourNbr = 0; // coef of number of hour for reservation per hour
+        ////////////////////////////////////////////////////////
         //this is the object we have to send to the API
 
         this.dataToSend = {
           "date_location": "",
           "date_debut": "",
           "date_fin": "",
-          //"heure_debut": "",
-          //"heure_fin": "",
           "montant": 0,
-          "note_client": 0,
+          "note_client": null,
           "commentaire_client": "",
-          "note_chauffeur": 0,
+          "note_chauffeur": null,
           "rapport_chauffeur": "",
           "client": 0,
-          "chauffeur": 1,
+          "chauffeur": null,
           "voiture": 0,
           "type_location": 1,
           "destination": 0,
           "etape_location": 1,
           //"lieu_depart": "",
-          "optionnel": [0]
+          "optionnel": []
         }; //end of object to send
         /////////////////////////////////////////////////////
 
@@ -319,80 +319,104 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ReservationPagePage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this = this;
 
-          // //present loading
-          this.webservice.presentLoading(); ////////////////////////////////////////////////////////////////
-          ///////////////receive car id/////////////////////////////////////////////////
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return Storage.get({
+                      key: LNG_KEY
+                    });
 
-          this.subscription = this.route.queryParams.subscribe(function (data) {
-            console.log("selected ->", typeof data.id); //set the prev page
+                  case 2:
+                    this.lang = _context2.sent.value;
+                    // //present loading
+                    this.webservice.presentLoading(); ////////////////////////////////////////////////////////////////
+                    ///////////////receive car id/////////////////////////////////////////////////
 
-            _this.page_prev = data.prev; //set the Car ID 
+                    this.subscription = this.route.queryParams.subscribe(function (data) {
+                      console.log("selected ->", typeof data.id); //set the prev page
 
-            _this.carID = data.id; ////////////////////////////////////////////////////////////////////////////   
-            //get Destination list
+                      _this.page_prev = data.prev; //set the Car ID 
 
-            _this.webservice.getDestinations().subscribe(function (res) {
-              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var _this2 = this;
+                      _this.carID = data.id; ////////////////////////////////////////////////////////////////////////////   
+                      //get Destination list
 
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                  while (1) {
-                    switch (_context.prev = _context.next) {
-                      case 0:
-                        console.log("getting Destinations : ", res);
+                      _this.webservice.getDestinations().subscribe(function (res) {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                          var _this2 = this;
 
-                        if (res) {
-                          this.list_original = res;
-                        } ////////////////////////////////////////////////////////////////////////////////////////////////
-                        ////////////////////////Start : Get Optionnels/////////////////////////////////////////////////
+                          return regeneratorRuntime.wrap(function _callee$(_context) {
+                            while (1) {
+                              switch (_context.prev = _context.next) {
+                                case 0:
+                                  console.log("getting Destinations : ", res);
 
-
-                        this.webservice.getOption().subscribe(function (resp) {
-                          _this2.option = resp;
-                          console.log(resp); ///////////////////////////////////////////////////////////////////////////////////////////
-                          //////////////////Start : Get Car details/////////////////////////////////////////////////
-
-                          _this2.webservice.getCarDetails(data.id).subscribe(function (res) {
-                            _this2.car = res; // get the differents pice of the car
-
-                            _this2.webservice.getPriceCar(data.id).subscribe(function (resp) {
-                              _this2.car.per_day = resp[0].prix;
-                              _this2.car.per_hour = resp[1].prix;
-                              _this2.car.airport = resp[2].prix; //stop loading
-
-                              _this2.webservice.stopLoading();
-
-                              _this2.show = true;
-                            }); //end get prices
+                                  if (res) {
+                                    this.list_original = res;
+                                  } ////////////////////////////////////////////////////////////////////////////////////////////////
+                                  ////////////////////////Start : Get Optionnels/////////////////////////////////////////////////
 
 
-                            console.log(res);
-                          }); //////////////////Stop : Get Car details//////////////////////////////////////////////////
-                          /////////////////////////////////////////////////////////////////////////////////////////
+                                  this.webservice.getOption().subscribe(function (resp) {
+                                    _this2.option = resp;
+                                    console.log(resp); ///////////////////////////////////////////////////////////////////////////////////////////
+                                    //////////////////Start : Get Car details/////////////////////////////////////////////////
 
-                        }); //////////////////////////Stop : Get  Optionnels//////////////////////////////////////////////////
-                        /////////////////////////////////////////////////////////////////////////////////////////
+                                    _this2.webservice.getCarDetails(data.id).subscribe(function (res) {
+                                      _this2.car = res; // get the differents pice of the car
 
-                      case 3:
-                      case "end":
-                        return _context.stop();
-                    }
-                  }
-                }, _callee, this);
-              }));
-            }); //// end get destinations
-            ////////////////////////////////////////////////////////////////////
+                                      _this2.webservice.getPriceCar(data.id).subscribe(function (resp) {
+                                        _this2.car.per_day = resp[0].prix;
+                                        _this2.car.per_hour = resp[1].prix;
+                                        _this2.car.airport = resp[2].prix; //stop loading
 
-          });
+                                        _this2.webservice.stopLoading();
+
+                                        _this2.show = true;
+                                      }); //end get prices
+
+
+                                      console.log(res);
+                                    }); //////////////////Stop : Get Car details//////////////////////////////////////////////////
+                                    /////////////////////////////////////////////////////////////////////////////////////////
+
+                                  }); //////////////////////////Stop : Get  Optionnels//////////////////////////////////////////////////
+                                  /////////////////////////////////////////////////////////////////////////////////////////
+
+                                case 3:
+                                case "end":
+                                  return _context.stop();
+                              }
+                            }
+                          }, _callee, this);
+                        }));
+                      }); //// end get destinations
+                      ////////////////////////////////////////////////////////////////////
+
+                    });
+
+                  case 5:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
         } ////////////////////////////////////////////////////////////////////////////////    
 
       }, {
         key: "setDate",
         value: function setDate() {
           var date = new Date();
-          var month, day; ///////////////////////today's date or reservation date //////////////////////////
+          var month, day; //set min date for return date reserv per day
+
+          this.min_retunDate = new Date();
+          this.min_retunDate.setDate(this.min_retunDate.getDate() + 1);
+          this.min_retunDate = this.min_retunDate.toISOString(); ///////////////////////today's date or reservation date //////////////////////////
 
           this.dataToSend.date_location = date.toISOString(); //today's date
 
@@ -452,14 +476,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit(id) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var ret, index, i, lang;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var ret, date1, date2, Difference_In_Time, Difference_In_Days, index, i;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
-                switch (_context2.prev = _context2.next) {
+                switch (_context3.prev = _context3.next) {
                   case 0:
                     if (!this.destination) {
-                      _context2.next = 25;
+                      _context3.next = 52;
                       break;
                     }
 
@@ -467,25 +491,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.dataToSend.voiture = id;
                     console.log("id : ", id, "\n coef : ", this.coef); /////////////////////////////////user id ///////////////////////////////////////////////  
 
-                    _context2.t0 = JSON;
-                    _context2.next = 6;
+                    _context3.t0 = JSON;
+                    _context3.next = 6;
                     return Storage.get({
                       key: "user_infos"
                     });
 
                   case 6:
-                    _context2.t1 = _context2.sent.value;
-                    ret = _context2.t0.parse.call(_context2.t0, _context2.t1);
+                    _context3.t1 = _context3.sent.value;
+                    ret = _context3.t0.parse.call(_context3.t0, _context3.t1);
                     // console.log("user : ", ret);
                     this.dataToSend.client = ret.id; //////////////////////////////get token storage////////////////////////////////////////
 
-                    _context2.next = 11;
+                    _context3.next = 11;
                     return Storage.get({
                       key: 'accessToken'
                     });
 
                   case 11:
-                    this.token = _context2.sent.value;
+                    this.token = _context3.sent.value;
                     console.log("Token : ", this.token); /////////////////// set start date /////////////////////////////////////////////////////
                     //this.dataToSend.date_debut = this.start_date
 
@@ -494,30 +518,92 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     // this.dataToSend.heure_debut = this.start_time;     
                     ///////////////////////////////////////////////////////////////////////////////////////////
 
-                    if (this.rent_type == "hour") {
-                      ///////set type rent to hour id 
-                      this.dataToSend.type_location = 1; /////////////////// set end hour /////////////////////////////////////////////////////
-                      //this.dataToSend.heure_fin = this.end_time;
-                      /////// set the end date to "";
+                    if (!(this.rent_type == "hour")) {
+                      _context3.next = 26;
+                      break;
+                    }
 
-                      this.dataToSend.date_fin = this.start_date + "T" + this.end_time + ":44.625Z"; //this.dataToSend.date_fin = ""+ " "+this.end_time;
-                      /////// set depart venue  (for airoort type)
-                      //this.dataToSend.lieu_depart = "";
+                    if (!(this.hourNbr > 0)) {
+                      _context3.next = 22;
+                      break;
+                    }
 
-                      this.price = this.car.per_hour * (1 + this.coef);
-                    } else if (this.rent_type == "day") {
-                      ///////set type rent to day id 
-                      this.dataToSend.type_location = 2; //////////////////////set end date ///////////////////////////////////////////////////////
-                      // this.dataToSend.date_fin = this.end_date
+                    ///////set type rent to hour id 
+                    this.dataToSend.type_location = 2; /////////////////// set end hour /////////////////////////////////////////////////////
+                    //this.dataToSend.heure_fin = this.end_time;
+                    /////// set the end date to "";
 
-                      this.end_date = this.end_date.split("T")[0];
-                      this.dataToSend.date_fin = this.end_date + "T" + this.end_time + ":44.625Z"; /////////////////// set end hour /////////////////////////////////////////////////////
-                      // this.dataToSend.heure_fin = this.end_time;
-                      /////// set depart venue 
-                      //this.dataToSend.lieu_depart = "";
+                    this.dataToSend.date_fin = this.start_date + "T" + this.end_time + ":44.625Z"; //this.dataToSend.date_fin = ""+ " "+this.end_time;
+                    /////// set depart venue  (for airoort type)
+                    //this.dataToSend.lieu_depart = "";
+                    //////price with number of hour and destination coef included 
 
-                      this.price = this.car.per_day * (1 + this.coef);
-                    } else if (this.rent_type == "airport") {
+                    this.price = this.car.per_hour * (1 + this.coef) * this.hourNbr;
+                    _context3.next = 24;
+                    break;
+
+                  case 22:
+                    if (this.lang == "fr") {
+                      alert("Entrez le nombre d'heure ! ( > 0) ");
+                    } else {
+                      alert("Enter the number of Hour ! ( > 0) ");
+                    }
+
+                    return _context3.abrupt("return");
+
+                  case 24:
+                    _context3.next = 43;
+                    break;
+
+                  case 26:
+                    if (!(this.rent_type == "day")) {
+                      _context3.next = 42;
+                      break;
+                    }
+
+                    /////coef of the number of day
+                    // To set two dates to two variables 
+                    date1 = new Date(this.start_date);
+                    date2 = new Date(this.end_date); // To calculate the time difference of two dates 
+
+                    Difference_In_Time = date2.getTime() - date1.getTime(); // To calculate the no. of days between two dates 
+
+                    Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+                    if (!(Difference_In_Days > 0)) {
+                      _context3.next = 38;
+                      break;
+                    }
+
+                    ///////set type rent to day id 
+                    this.dataToSend.type_location = 1; //////////////////////set end date ///////////////////////////////////////////////////////
+                    // this.dataToSend.date_fin = this.end_date
+
+                    this.end_date = this.end_date.split("T")[0];
+                    this.dataToSend.date_fin = this.end_date + "T" + this.end_time + ":44.625Z"; /////////////////// set end hour /////////////////////////////////////////////////////
+                    // this.dataToSend.heure_fin = this.end_time;
+                    /////// set depart venue 
+                    //this.dataToSend.lieu_depart = "";
+
+                    this.price = this.car.per_day * (1 + this.coef) * Difference_In_Days;
+                    _context3.next = 40;
+                    break;
+
+                  case 38:
+                    if (this.lang == "fr") {
+                      alert("Le Nombre de jour doit être > 0 ");
+                    } else {
+                      alert("Number of Day Should be > 0");
+                    }
+
+                    return _context3.abrupt("return");
+
+                  case 40:
+                    _context3.next = 43;
+                    break;
+
+                  case 42:
+                    if (this.rent_type == "airport") {
                       ///////set type rent to airport id 
                       this.dataToSend.type_location = 3;
                       this.dataToSend.date_fin = this.start_date + "T" + this.start_time + ":44.625Z"; /// set end time /////////////////////////
@@ -526,11 +612,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       //this.dataToSend.lieu_depart = this.depart_venue;
 
                       this.price = this.car.airport * (1 + this.coef);
-                    } ///////////////////////////////////////////////////////////////////////////////////////////////////
+                    }
+
+                  case 43:
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////
                     //////////////////////////////////////////////////////////////////////////////////////////////////
                     ////////////////////////////get the selected option and add price /////////////////////////////////////
-
-
                     index = 0;
 
                     for (i = 0; i < this.option.length; i++) {
@@ -568,30 +655,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     console.log("\n data to send : \n", this.dataToSend); // present alert
 
                     this.presentAlertConfirm(this.price, this.start_date, this.end_date);
-                    _context2.next = 29;
+                    _context3.next = 53;
                     break;
 
-                  case 25:
-                    _context2.next = 27;
-                    return Storage.get({
-                      key: LNG_KEY
-                    });
-
-                  case 27:
-                    lang = _context2.sent.value;
-
-                    if (lang == "fr") {
+                  case 52:
+                    if (this.lang == "fr") {
                       alert("Remplissez le champ Destination !");
                     } else {
                       alert("Fill the Destination Field !");
                     }
 
-                  case 29:
+                  case 53:
                   case "end":
-                    return _context2.stop();
+                    return _context3.stop();
                 }
               }
-            }, _callee2, this);
+            }, _callee3, this);
           }));
         } ////// present Confirmation alert///////////
         // present alert
@@ -599,21 +678,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "presentAlertConfirm",
         value: function presentAlertConfirm(price, start_date, end_date) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
             var _this3 = this;
 
             var lang, text, alert;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
-                switch (_context3.prev = _context3.next) {
+                switch (_context4.prev = _context4.next) {
                   case 0:
-                    _context3.next = 2;
+                    _context4.next = 2;
                     return Storage.get({
                       key: LNG_KEY
                     });
 
                   case 2:
-                    lang = _context3.sent.value;
+                    lang = _context4.sent.value;
 
                     if (lang == "fr") {
                       text = "Prix Total : ";
@@ -621,7 +700,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       text = "Total Price : ";
                     }
 
-                    _context3.next = 6;
+                    _context4.next = 6;
                     return this.alertController.create({
                       cssClass: 'my-custom-class',
                       header: 'Validation!!',
@@ -656,16 +735,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
 
                   case 6:
-                    alert = _context3.sent;
-                    _context3.next = 9;
+                    alert = _context4.sent;
+                    _context4.next = 9;
                     return alert.present();
 
                   case 9:
                   case "end":
-                    return _context3.stop();
+                    return _context4.stop();
                 }
               }
-            }, _callee3, this);
+            }, _callee4, this);
           }));
         } //alert 2 method
 
@@ -677,9 +756,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               alert("Votre Requête a été envoyée avec succès !");
             } else {
               alert("Your Request has been sent successfully !");
-            }
+            } //  this.router.navigateByUrl("/dashboard");
 
-            this.router.navigateByUrl("/dashboard");
+
+            this.prev();
           } else {
             if (lang == "fr") {
               alert("Désolé, une erreur s'est produite, veuillez vérifier à nouveau votre saisie.");
@@ -695,27 +775,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           ////per hour
           if (type == "hour") {
             // console.log("start : ",this.start_time,"\n type time :",typeof(this.start_time));
-            var x = parseInt(this.start_time.split(":")[0]) + 1;
+            var x = parseInt(this.start_time.split(":")[0]) + this.hourNbr;
+            var y = parseInt(this.start_time.split(":")[1]);
 
-            if (x < 10) {
-              this.end_time = "0" + x + ":00";
+            if (x <= 23 && y <= 59) {
+              if (x < 10) {
+                if (y < 10) {
+                  this.end_time = "0" + x + ":0" + y;
+                } else {
+                  this.end_time = "0" + x + ":" + y;
+                }
+              } else {
+                if (y < 10) {
+                  this.end_time = "" + x + ":0" + y;
+                } else {
+                  this.end_time = "" + x + ":" + y;
+                }
+              }
             } else {
-              this.end_time = "" + x + ":00";
+              this.hourNbr = 0;
+
+              if (this.lang == "fr") {
+                alert("Désolé, l'heure de retour Max  est :  23 Hr : 59 min ");
+              } else {
+                alert("Sorry, the maximum return time is: 11 : 59 PM ");
+              }
             }
           } ////per day
 
 
           if (type == "day") {
-            // console.log("start : ",this.start_date,"\n type time :",typeof(this.start_date));
-            var dat = this.start_date.split("T")[0];
-            var x = parseInt(dat.split("-")[2]) + 1;
+            // Create new Date instance
+            var date = new Date(this.start_date); // Add a day
 
-            if (x < 10) {
-              this.end_date = "" + dat.split("-")[0] + "-" + dat.split("-")[1] + "-0" + x;
-            } else {
-              this.end_date = "" + dat.split("-")[0] + "-" + dat.split("-")[1] + "-" + x;
-            } //console.log(this.end_date);
-
+            date.setDate(date.getDate() + 1);
+            this.end_date = date.toISOString();
+            this.min_retunDate = date.toISOString();
           }
         } /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////Search methods //////////////////////////////

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n\n    <ion-item *ngIf=\"!isSearchbarOpened\">\n\n           <!-- menu icon -->\n      <ion-buttons *ngIf=\"!isSearchbarOpened\" slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n\n      <!-- title -->\n      <ion-title *ngIf=\"!isSearchbarOpened\" >{{ 'DASHBOARD.title' | translate }}</ion-title>\n\n\n    </ion-item>\n\n\n\n       <!-- search bar button -->\n       <ion-buttons slot=\"end\">\n        <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\" >\n            <ion-icon color=\"primary\" name=\"search\"> </ion-icon>\n        </ion-button>\n    </ion-buttons>\n<!-- Search Bar -->\n   <ion-searchbar *ngIf=\"isSearchbarOpened\" placeholder=\"{{ 'DASHBOARD.search_here' | translate }}\" [(ngModel)]=\"term\" animated=\"true\" showCancelButton=\"true\" (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n\n     \n  </ion-toolbar>\n    \n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n\n\n    \n<!-- Default Segment / Search for the car according to the type of reservation -->\n <!--   First main Search  -->\n\n  <ion-card  *ngIf=\"!isSearchbarOpened\">\n        <ion-card-header>\n\n         <ion-card-title style=\" margin-left:20%; text-size-adjust: 15px;\"> {{ 'DASHBOARD.search_car' | translate }} </ion-card-title>\n              <!-- Label only -->\n          <ion-segment [(ngModel)]=\"search_type\">\n            <ion-segment-button  value=\"class\">\n              <ion-label>{{ 'DASHBOARD.per_class' | translate }} </ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"price\">\n              <ion-label>{{ 'DASHBOARD.per_price' | translate }}</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"other\">\n              <label  textWrap=\"true\" style=\"font-size:0.9em\">{{ 'DASHBOARD.other' | translate }}</label>\n            </ion-segment-button>\n          </ion-segment>\n\n        </ion-card-header>\n\n        <ion-card-content>\n             \n               <!-- ----------------------START search type = \"per class\"------------------------------- -->\n              <div *ngIf=\"search_type =='class'\">\n                <!-- start date -->\n                <ion-radio-group allow-empty-selection >\n                   \n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.business_class\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"business\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.economic_class\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"economic\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.premium_class\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"premium\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.prestige_class\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"prestige\"></ion-radio>\n                    </ion-item>\n\n                  </ion-radio-group>\n\n                  <!-- button search -->\n\n                <ion-button expand=\"block\"> \n                      <ion-icon slot=\"start\" name=\"search\"></ion-icon>\n                      {{ 'DASHBOARD.btn_search' | translate }}\n                 </ion-button>\n                \n               </div>\n\n\n            <!-- ----------------------END search type = \"per class\"------------------------------------------------------------------ -->\n            \n               <!-- ----------------------START search type = \"per price\"------------------------------- -->\n              <div *ngIf=\"search_type =='price'\">\n                <!-- start date -->\n                <ion-radio-group allow-empty-selection >\n                   \n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.price_sup\" | translate}} 50000 F CFA / {{\"DASHBOARD.day\" | translate}}</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"50000+\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.price_less\" | translate}} 50000 F CFA /  {{\"DASHBOARD.day\" | translate}}</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"50000-\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.price_sup\" | translate}} 5000 F CFA / {{\"DASHBOARD.hour\" | translate}}</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5000+\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\">{{\"DASHBOARD.price_less\" | translate}} 5000 F CFA /  {{\"DASHBOARD.hour\" | translate}}</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5000-\"></ion-radio>\n                    </ion-item>\n\n                    \n\n                  </ion-radio-group>\n\n                  <!-- button search -->\n\n                <ion-button expand=\"block\"> \n                      <ion-icon slot=\"start\" name=\"search\"></ion-icon>\n                      {{ 'DASHBOARD.btn_search' | translate }}\n                 </ion-button>\n                \n               </div>\n\n\n            <!-- ----------------------END search type = \"per price\"------------------------------------------------------------------ -->\n            \n               <!-- ----------------------START search type = \"Other\"------------------------------- -->\n              <div *ngIf=\"search_type =='other'\">\n                <!-- start date -->\n                <ion-radio-group allow-empty-selection >\n                   \n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.place_sup\" | translate}} 5</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5p+\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.place_less\" | translate}} 5</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5p-\"></ion-radio>\n                    </ion-item>\n                   \n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.baggage_sup\" | translate}} 5</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5b+\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.baggage_less\" | translate}} 5</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5b-\"></ion-radio>\n                    </ion-item>\n\n                   \n                    \n\n                  </ion-radio-group>\n\n                  <!-- button search -->\n\n                <ion-button expand=\"block\"> \n                      <ion-icon slot=\"start\" name=\"search\"></ion-icon>\n                      {{ 'DASHBOARD.btn_search' | translate }}\n                 </ion-button>\n                \n               </div>\n\n\n            <!-- ----------------------END search type = \"Other\"------------------------------------------------------------------ -->\n            \n\n\n                \n\n        </ion-card-content>\n\n        <!-- List of cars -->\n      \n  </ion-card>\n\n     <ion-list-header  style=\" margin-left:23%\"> \n          <ion-chip *ngIf=\"!isSearchbarOpened\" > {{ 'DASHBOARD.our_vehicles' | translate }}  <br>\n             <ion-icon   name=\"caret-down-sharp\"></ion-icon>\n           </ion-chip >\n\n    \n     </ion-list-header>\n\n\n     <ion-card *ngFor=\"let item of filterData | filter:term\">\n    \n        <div *ngFor=\"let photo of item.photo; let i = index \" > \n          \n          <img *ngIf=\"i== 0\"  [src]=\"photo.image\" />\n          \n        </div>\n        \n        <ion-card-header>\n          <ion-card-subtitle>\n             \n                <!-- type of motor -->\n                <ion-chip >\n                  <ion-icon name=\"car\"></ion-icon>\n                  <ion-label >{{item.type_caburant}}</ion-label>\n                </ion-chip>\n                <!-- Car price-->\n                <ion-chip >\n                  <!-- <ion-icon name=\"medal\" ></ion-icon> -->\n                  <ion-label  textWrap=\"true\">{{item.per_day}} F CFA / {{ 'DASHBOARD.day' | translate }}</ion-label>\n                </ion-chip> <br>\n                <!-- Number of Seats-->\n                <ion-chip >\n                  <ion-icon name=\"person\"></ion-icon>\n                  <ion-label >{{item.passager}} {{ 'DASHBOARD.seats' | translate }} </ion-label>\n                </ion-chip>\n                <!-- car color -->\n              <ion-chip>\n                <ion-label >{{ 'DASHBOARD.color' | translate }} {{item.couleur}} </ion-label> \n              </ion-chip>\n\n          </ion-card-subtitle>\n          <ion-card-title  > {{item.modele.libelle}}</ion-card-title>\n        </ion-card-header>\n        <ion-card-content>\n                        \n               <!-- More-->\n             <ion-chip style=\"margin-left:30%\" (click)=\"carDetails(item.id)\" >\n                <ion-label >{{ 'DASHBOARD.btn_view_details' | translate }} </ion-label>\n                <ion-icon name=\"chevron-forward\"></ion-icon>\n            </ion-chip>\n\n      \n        </ion-card-content>\n      </ion-card>\n\n    <!-- </ion-item> -->\n\n\n\n \n\n\n\n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n\n    <ion-item *ngIf=\"!isSearchbarOpened\">\n\n           <!-- menu icon -->\n      <ion-buttons *ngIf=\"!isSearchbarOpened\" slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n\n      <!-- title -->\n      <ion-title  *ngIf=\"!isSearchbarOpened\" >{{ 'DASHBOARD.title' | translate }}</ion-title>\n\n      <!-- search bar button -->\n      <ion-buttons slot=\"end\">\n        <!-- <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\" > -->\n            <ion-icon color=\"primary\" name=\"search\" *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\"> </ion-icon>\n         <!-- </ion-button> -->\n      </ion-buttons>\n      <!-- Search Bar -->\n\n    </ion-item>\n\n\n   <ion-searchbar color=\"primary\"  *ngIf=\"isSearchbarOpened\" placeholder=\"{{ 'DASHBOARD.search_here' | translate }}\" [(ngModel)]=\"term\" animated=\"true\" showCancelButton=\"true\" (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n\n     \n  </ion-toolbar>\n    \n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n\n\n    \n<!-- Default Segment / Search for the car according to the type of reservation -->\n <!--   First main Search  -->\n\n  <ion-card  *ngIf=\"!isSearchbarOpened\">\n        <ion-card-header>\n\n         <ion-card-title style=\" margin-left:15%; margin-bottom: 3%;font-size:1.5em\"> {{ 'DASHBOARD.search_car' | translate }} </ion-card-title>\n              <!-- Label only -->\n          <ion-segment [(ngModel)]=\"search_type\">\n            <ion-segment-button  value=\"class\">\n              <ion-label>{{ 'DASHBOARD.per_class' | translate }} </ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"price\">\n              <ion-label>{{ 'DASHBOARD.per_price' | translate }}</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"other\">\n              <label  textWrap=\"true\" style=\"font-size:0.9em\">{{ 'DASHBOARD.other' | translate }}</label>\n            </ion-segment-button>\n          </ion-segment>\n\n        </ion-card-header>\n\n        <ion-card-content>\n             \n               <!-- ----------------------START search type = \"per class\"------------------------------- -->\n              <div *ngIf=\"search_type =='class'\">\n                <!-- start date -->\n                <ion-radio-group allow-empty-selection [(ngModel)]=\"searchClass\"  >\n                   \n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.business_class\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"business\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.economic_class\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"economic\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.premium_class\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"premium\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.prestige_class\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"prestige\"></ion-radio>\n                    </ion-item>\n\n                  </ion-radio-group>\n\n                  <!-- button search -->\n\n                <ion-button style=\"margin-left:15px\" expand=\"block\"  (click)=\"openClass()\"> \n                      <ion-icon slot=\"start\" name=\"search\"></ion-icon>\n                      {{ 'DASHBOARD.btn_search' | translate }}\n                 </ion-button>\n                \n               </div>\n\n\n            <!-- ----------------------END search type = \"per class\"------------------------------------------------------------------ -->\n            \n               <!-- ----------------------START search type = \"per price\"------------------------------- -->\n              <div *ngIf=\"search_type =='price'\">\n                <!-- start date -->\n                <ion-radio-group allow-empty-selection >\n                   \n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.price_sup\" | translate}} 50000 F CFA / {{\"DASHBOARD.day\" | translate}}</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"50000+\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.price_less\" | translate}} 50000 F CFA /  {{\"DASHBOARD.day\" | translate}}</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"50000-\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.price_sup\" | translate}} 5000 F CFA / {{\"DASHBOARD.hour\" | translate}}</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5000+\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\">{{\"DASHBOARD.price_less\" | translate}} 5000 F CFA /  {{\"DASHBOARD.hour\" | translate}}</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5000-\"></ion-radio>\n                    </ion-item>\n\n                    \n\n                  </ion-radio-group>\n\n                  <!-- button search -->\n\n                <ion-button expand=\"block\"> \n                      <ion-icon slot=\"start\" name=\"search\"></ion-icon>\n                      {{ 'DASHBOARD.btn_search' | translate }}\n                 </ion-button>\n                \n               </div>\n\n\n            <!-- ----------------------END search type = \"per price\"------------------------------------------------------------------ -->\n            \n               <!-- ----------------------START search type = \"Other\"------------------------------- -->\n              <div *ngIf=\"search_type =='other'\">\n                <!-- start date -->\n                <ion-radio-group allow-empty-selection >\n                   \n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.place_sup\" | translate}} 5</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5p+\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.place_less\" | translate}} 5</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5p-\"></ion-radio>\n                    </ion-item>\n                   \n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.baggage_sup\" | translate}} 5</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5b+\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <label  textWrap=\"true\"> {{\"DASHBOARD.baggage_less\" | translate}} 5</label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5b-\"></ion-radio>\n                    </ion-item>\n\n                   \n                    \n\n                  </ion-radio-group>\n\n                  <!-- button search -->\n\n                <ion-button expand=\"block\"> \n                      <ion-icon slot=\"start\" name=\"search\"></ion-icon>\n                      {{ 'DASHBOARD.btn_search' | translate }}\n                 </ion-button>\n                \n               </div>\n\n\n            <!-- ----------------------END search type = \"Other\"------------------------------------------------------------------ -->\n            \n\n\n                \n\n        </ion-card-content>\n\n        <!-- List of cars -->\n      \n  </ion-card>\n\n     <ion-list-header  style=\" margin-left:23%\"> \n          <ion-chip *ngIf=\"!isSearchbarOpened\" > {{ 'DASHBOARD.our_vehicles' | translate }}  <br>\n             <ion-icon   name=\"caret-down-sharp\"></ion-icon>\n           </ion-chip >\n\n    \n     </ion-list-header>\n\n\n     <ion-card *ngFor=\"let item of filterData | filter:term\">\n    \n        <div *ngFor=\"let photo of item.photo; let i = index \" > \n          \n          <img *ngIf=\"i== 0\"  [src]=\"photo.image\" />\n          \n        </div>\n        \n        <ion-card-header>\n          <ion-card-subtitle>\n             \n                <!-- type of motor -->\n                <ion-chip >\n                  <ion-icon name=\"car\"></ion-icon>\n                  <ion-label >{{item.type_caburant}}</ion-label>\n                </ion-chip>\n                <!-- Car price-->\n                <ion-chip >\n                  <!-- <ion-icon name=\"medal\" ></ion-icon> -->\n                  <ion-label  textWrap=\"true\">{{item.per_day}} F CFA / {{ 'DASHBOARD.day' | translate }}</ion-label>\n                </ion-chip> <br>\n                <!-- Number of Seats-->\n                <ion-chip >\n                  <ion-icon name=\"person\"></ion-icon>\n                  <ion-label >{{item.passager}} {{ 'DASHBOARD.seats' | translate }} </ion-label>\n                </ion-chip>\n                <!-- car color -->\n              <ion-chip>\n                <ion-label >{{ 'DASHBOARD.color' | translate }} {{item.couleur}} </ion-label> \n              </ion-chip>\n\n          </ion-card-subtitle>\n          <ion-card-title  > {{item.modele.libelle}}</ion-card-title>\n        </ion-card-header>\n        <ion-card-content>\n                        \n               <!-- More-->\n             <ion-chip style=\"margin-left:30%\" (click)=\"carDetails(item.id)\" >\n                <ion-label >{{ 'DASHBOARD.btn_view_details' | translate }} </ion-label>\n                <ion-icon name=\"chevron-forward\"></ion-icon>\n            </ion-chip>\n\n      \n        </ion-card-content>\n      </ion-card>\n\n    <!-- </ion-item> -->\n\n\n\n \n\n\n\n\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -107,7 +107,7 @@ DashboardPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-chip, ion-button {\n  color: black;\n  --background: #ffa60a;\n  border-color: black;\n}\n\nion-segment-button {\n  color: #ffa60a;\n}\n\nion-card-title {\n  color: white;\n}\n\nimg {\n  height: 250px;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jcGNraW5nZG9tL0RvY3VtZW50cy9pb25pYy10dXRvcmlhbC1tYXN0ZXIvaW9uaWNfcHJvamVjdC9sb2dpbkNhcC9sb2dpbkNhcC9zcmMvYXBwL3BhZ2VzL2Rhc2hib2FyZC9kYXNoYm9hcmQucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9kYXNoYm9hcmQvZGFzaGJvYXJkLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVJLG1CQUFBO0FDQUo7O0FES0E7RUFFSSxtQkFBQTtFQUNBLGNBQUE7QUNISjs7QURPQTtFQUVJLFlBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBO0FDTEo7O0FEUUE7RUFFSSxjQUFBO0FDTko7O0FEU0E7RUFFSSxZQUFBO0FDUEo7O0FEU0E7RUFFSSxhQUFBO0VBQ0EsV0FBQTtBQ1BKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvZGFzaGJvYXJkL2Rhc2hib2FyZC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2FyZCxpb24tdG9vbGJhcixpb24tc2VnbWVudFxue1xuICAgIC0tYmFja2dyb3VuZDogYmxhY2s7IFxufVxuXG5cblxuaW9uLWl0ZW1cbntcbiAgICAtLWJhY2tncm91bmQ6IGJsYWNrOyBcbiAgICBjb2xvcjogICNmZmE2MGE7XG59XG5cblxuaW9uLWNoaXAsaW9uLWJ1dHRvblxue1xuICAgIGNvbG9yOiBibGFjazsgXG4gICAgLS1iYWNrZ3JvdW5kOiAjZmZhNjBhO1xuICAgIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbmlvbi1zZWdtZW50LWJ1dHRvblxue1xuICAgIGNvbG9yIDogI2ZmYTYwYTtcbn1cblxuaW9uLWNhcmQtdGl0bGVcbntcbiAgICBjb2xvciA6IHdoaXRlO1xufVxuaW1nXG57XG4gICAgaGVpZ2h0OiAyNTBweDtcbiAgICB3aWR0aDogMTAwJTtcblxufSIsImlvbi1jYXJkLCBpb24tdG9vbGJhciwgaW9uLXNlZ21lbnQge1xuICAtLWJhY2tncm91bmQ6IGJsYWNrO1xufVxuXG5pb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG4gIGNvbG9yOiAjZmZhNjBhO1xufVxuXG5pb24tY2hpcCwgaW9uLWJ1dHRvbiB7XG4gIGNvbG9yOiBibGFjaztcbiAgLS1iYWNrZ3JvdW5kOiAjZmZhNjBhO1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5pb24tc2VnbWVudC1idXR0b24ge1xuICBjb2xvcjogI2ZmYTYwYTtcbn1cblxuaW9uLWNhcmQtdGl0bGUge1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmltZyB7XG4gIGhlaWdodDogMjUwcHg7XG4gIHdpZHRoOiAxMDAlO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-item, ion-menu-button {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-radio {\n  background-color: white;\n}\n\nion-chip, ion-button {\n  color: black;\n  --background: #ffa60a;\n  border-color: black;\n}\n\nion-segment-button {\n  color: #ffa60a;\n}\n\nion-card-title {\n  color: white;\n}\n\nimg {\n  height: 250px;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jcGNraW5nZG9tL0RvY3VtZW50cy9pb25pYy10dXRvcmlhbC1tYXN0ZXIvaW9uaWNfcHJvamVjdC9sb2dpbkNhcC9sb2dpbkNhcC9zcmMvYXBwL3BhZ2VzL2Rhc2hib2FyZC9kYXNoYm9hcmQucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9kYXNoYm9hcmQvZGFzaGJvYXJkLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVJLG1CQUFBO0FDQUo7O0FES0E7RUFFSSxtQkFBQTtFQUNBLGNBQUE7QUNISjs7QURNQTtFQUVLLHVCQUFBO0FDSkw7O0FET0E7RUFFSSxZQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtBQ0xKOztBRFFBO0VBRUksY0FBQTtBQ05KOztBRFNBO0VBRUksWUFBQTtBQ1BKOztBRFNBO0VBRUksYUFBQTtFQUNBLFdBQUE7QUNQSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2Rhc2hib2FyZC9kYXNoYm9hcmQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNhcmQsaW9uLXRvb2xiYXIsaW9uLXNlZ21lbnRcbntcbiAgICAtLWJhY2tncm91bmQ6IGJsYWNrOyBcbn1cblxuXG5cbmlvbi1pdGVtLGlvbi1tZW51LWJ1dHRvblxue1xuICAgIC0tYmFja2dyb3VuZDogYmxhY2s7IFxuICAgIGNvbG9yOiAgI2ZmYTYwYTtcbn1cblxuaW9uLXJhZGlvXG57XG4gICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG5pb24tY2hpcCxpb24tYnV0dG9uXG57XG4gICAgY29sb3I6IGJsYWNrOyBcbiAgICAtLWJhY2tncm91bmQ6ICNmZmE2MGE7XG4gICAgYm9yZGVyLWNvbG9yOiBibGFjaztcbn1cblxuaW9uLXNlZ21lbnQtYnV0dG9uXG57XG4gICAgY29sb3IgOiAjZmZhNjBhO1xufVxuXG5pb24tY2FyZC10aXRsZVxue1xuICAgIGNvbG9yIDogd2hpdGU7XG59XG5pbWdcbntcbiAgICBoZWlnaHQ6IDI1MHB4O1xuICAgIHdpZHRoOiAxMDAlO1xuXG59IiwiaW9uLWNhcmQsIGlvbi10b29sYmFyLCBpb24tc2VnbWVudCB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG59XG5cbmlvbi1pdGVtLCBpb24tbWVudS1idXR0b24ge1xuICAtLWJhY2tncm91bmQ6IGJsYWNrO1xuICBjb2xvcjogI2ZmYTYwYTtcbn1cblxuaW9uLXJhZGlvIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbmlvbi1jaGlwLCBpb24tYnV0dG9uIHtcbiAgY29sb3I6IGJsYWNrO1xuICAtLWJhY2tncm91bmQ6ICNmZmE2MGE7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbmlvbi1zZWdtZW50LWJ1dHRvbiB7XG4gIGNvbG9yOiAjZmZhNjBhO1xufVxuXG5pb24tY2FyZC10aXRsZSB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuaW1nIHtcbiAgaGVpZ2h0OiAyNTBweDtcbiAgd2lkdGg6IDEwMCU7XG59Il19 */");
 
 /***/ }),
 
@@ -158,7 +158,7 @@ let DashboardPage = class DashboardPage {
         ];
         //////////////////////////////////////////////////////////////////////
         ////////////data for destination////////////////////////
-        this.rent_type = "hour";
+        this.search_type = "class";
         this.list_original = [
             {
                 'id': '',
@@ -181,37 +181,82 @@ let DashboardPage = class DashboardPage {
         this.setDate();
     }
     ngOnInit() {
-        /////////////////////////////////////////////////
-        //get voitures list
-        //present loading
-        this.webService.presentLoading();
-        this.webService.getVoitures().subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            console.log("getting voitures : ", res);
-            if (res) {
-                this.filterData = res;
-                ////get the different prices of every car
-                for (let i = 0; i < this.filterData.length; i++) {
-                    this.webService.getPriceCar(this.filterData[i].id).subscribe(resp => {
-                        this.filterData[i].per_day = resp[0].prix;
-                        //  this.filterData[i].per_hour = resp[1].prix;
-                        //  this.filterData[i].airport = resp[2].prix;
-                    });
-                } /////end get the different price of each car
-            }
-            ////////////////////////////////////////////////////////////////////////////   
-            //get Destination list
-            this.webService.getDestinations().subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                console.log("getting Destinations : ", res);
-                if (res) {
-                    this.list_original = res;
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            /////////////////////////////////////////////////
+            //get Language
+            this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+            ////////////////////////////////////////////
+            //get voitures list
+            //present loading
+            this.webService.presentLoading();
+            this.webService.getVoitures().subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                console.log("getting voitures : ", res);
+                if (!res.details) {
+                    if (res.length > 0) {
+                        this.filterData = res;
+                        ////get the different prices of every car
+                        for (let i = 0; i < this.filterData.length; i++) {
+                            this.webService.getPriceCar(this.filterData[i].id).subscribe(resp => {
+                                this.filterData[i].per_day = resp[0].prix;
+                                //  this.filterData[i].per_hour = resp[1].prix;
+                                //  this.filterData[i].airport = resp[2].prix;
+                            });
+                        } /////end get the different price of each car
+                    }
+                    else {
+                        //no  cars
+                        if (this.lang == "fr") {
+                            alert("Aucune Voiture Disponible !!! ");
+                        }
+                        else {
+                            alert("No Car Available !!! ");
+                        }
+                    }
                 }
-                //  console.log("res : ", this.list_original)
-                this.webService.stopLoading();
-                this.show = true;
-            })); //// end get destinations
-            ////////////////////////////////////////////////////////////////////
-        })); /// end get voitures
-        ////////////////////////////////////////////////////
+                else {
+                    //no  cars
+                    if (this.lang == "fr") {
+                        alert("Oops une erreur !!! ");
+                    }
+                    else {
+                        alert("Oops an Error !!! ");
+                    }
+                }
+                ////////////////////////////////////////////////////////////////////////////   
+                //get Destination list
+                this.webService.getDestinations().subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                    console.log("getting Destinations : ", res);
+                    if (!res.details) {
+                        if (res.length > 0) {
+                            this.list_original = res;
+                        }
+                        else {
+                            //no  cars
+                            if (this.lang == "fr") {
+                                alert("Aucune Destination Disponible !!! ");
+                            }
+                            else {
+                                alert("No Destination Available !!! ");
+                            }
+                        }
+                    }
+                    else {
+                        //no  cars
+                        if (this.lang == "fr") {
+                            alert("Oops une erreur !!! ");
+                        }
+                        else {
+                            alert("Oops an Error !!! ");
+                        }
+                    }
+                    //  console.log("res : ", this.list_original)
+                    this.webService.stopLoading();
+                    this.show = true;
+                })); //// end get destinations
+                ////////////////////////////////////////////////////////////////////
+            })); /// end get voitures
+            ////////////////////////////////////////////////////
+        });
     } //end of ngOnInit
     //////////////////////////////////////////////////////
     setDate() {
@@ -258,6 +303,32 @@ let DashboardPage = class DashboardPage {
         this.router.navigate(['car-details'], { queryParams: { id: carID, prev: "/dashboard" } });
     }
     //////////////////////end call carDetails///////////////////////////
+    //////////////// search class /////////////////////
+    openClass() {
+        console.log(this.searchClass);
+        if (this.searchClass == 'business') {
+            this.router.navigateByUrl("/business-class");
+        }
+        else if (this.searchClass == 'economic') {
+            this.router.navigateByUrl("/economique");
+        }
+        else if (this.searchClass == 'premium') {
+            this.router.navigateByUrl("/premium");
+        }
+        else if (this.searchClass == 'prestige') {
+            this.router.navigateByUrl("/prestige");
+        }
+        else {
+            //no  cars
+            if (this.lang == "fr") {
+                alert("Faites un choix SVP !!! ");
+            }
+            else {
+                alert("Make a choice Please !!! ");
+            }
+        }
+    }
+    ////////////////  End search class ////////////////
     //////////////method for destination search //////////////////
     /////////////////////////////////////////////////////
     onCancel(val) {

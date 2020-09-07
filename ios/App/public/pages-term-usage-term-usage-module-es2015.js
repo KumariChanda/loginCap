@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n   <ion-item>\n        <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title> Usage Terms  </ion-title>\n    </ion-item> \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n\n     <!-- -------------------------------------------------------------------------------------- -->\n        <!-- Start contact -->\n       <ion-card *ngFor=\"let term of myterms; \" >\n          \n            <ion-card-content>\n                          \n               \n                    {{term.text}}\n          \n            </ion-card-content>\n      </ion-card>\n        <!-- Stop Contact -->\n    <!-- -------------------------------------------------------------------------------------- -->\n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n   <ion-item>\n        <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title>{{'DASHBOARD.usage_term' | translate }} </ion-title>\n    </ion-item> \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n\n     <!-- -------------------------------------------------------------------------------------- -->\n        <!-- Start contact -->\n       <ion-card *ngFor=\"let term of myterms; \" >\n          \n            <ion-card-content>\n                          \n               \n                    {{term.text}}\n          \n            </ion-card-content>\n      </ion-card>\n        <!-- Stop Contact -->\n    <!-- -------------------------------------------------------------------------------------- -->\n\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -67,6 +67,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var _term_usage_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./term-usage-routing.module */ "./src/app/pages/term-usage/term-usage-routing.module.ts");
 /* harmony import */ var _term_usage_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./term-usage.page */ "./src/app/pages/term-usage/term-usage.page.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/__ivy_ngcc__/fesm2015/ngx-translate-core.js");
+
 
 
 
@@ -82,7 +84,8 @@ TermUsagePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
-            _term_usage_routing_module__WEBPACK_IMPORTED_MODULE_5__["TermUsagePageRoutingModule"]
+            _term_usage_routing_module__WEBPACK_IMPORTED_MODULE_5__["TermUsagePageRoutingModule"],
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]
         ],
         declarations: [_term_usage_page__WEBPACK_IMPORTED_MODULE_6__["TermUsagePage"]]
     })

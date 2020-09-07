@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n\n        <ion-item *ngIf=\"(editableText==true && userType=='client') ||userType=='chauffeur' \">\n\n           <!-- menu icon -->\n          <ion-buttons  slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n          </ion-buttons>\n\n          <!-- title -->\n          <ion-title >{{ 'DASHBOARD.profile' | translate }}</ion-title>\n        </ion-item>\n\n       <!-- ------------------------------------------------------------------------------ -->\n        <!-- ----------------------If edit has been clicked --------------------------------------------- -->\n        <ion-item *ngIf=\"editableText==false && userType=='client'\" >\n\n           <!-- prev icon -->\n           <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n\n          <!-- title -->\n          <ion-title >{{ 'DASHBOARD.edit_profile_title' | translate }}</ion-title>\n        </ion-item>\n \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n \n          <!-- profile Image -->\n         \n     <ion-card>\n\n        \n        <ion-card-header>\n          <ion-card-subtitle>\n             \n            <div >\n              <ion-grid *ngIf=\"editableText==true && userType=='client'\">\n                <ion-row>\n                  <ion-col size=\"4\" >\n                    <img   [src]=\"profile\"  class=\"image-icon\" >\n                  </ion-col>\n                   <ion-col size=\"8\">\n                    <div>                \n                       <br><br> <br>\n                       <!-- Full name      -->\n                       <strong> <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.firstname}}  {{profileData.lastname}} </b>\n                       </ion-label> </strong>\n                        <br><br>\n                       \n\n                    </div>                    \n                  </ion-col>\n                  </ion-row> \n                      \n                       <!-- DOB      -->\n                       <ion-item>\n                         <ion-icon name=\"calendar-outline\"></ion-icon>\n                         <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.dob}}  </b></ion-label>\n                       </ion-item> \n                       <!-- Email id     -->\n                       <ion-item>\n                          <ion-icon name=\"at-outline\"></ion-icon>\n                          <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.email}}  </b></ion-label>\n                        </ion-item> \n                       <!-- phone number    -->\n                        <ion-item>\n                          <ion-icon name=\"call-outline\"></ion-icon>\n                        <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.mobilenumber}}  </b></ion-label>\n                        </ion-item> \n                        <!-- address -->\n                        <ion-item>\n                          <ion-icon name=\"pin-outline\"></ion-icon>\n                        <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.address}}  </b></ion-label>\n                        </ion-item> \n                  </ion-grid>  \n                             \n              </div>\n\n          </ion-card-subtitle>\n          <!-- <ion-card-title  >  My informations :</ion-card-title> -->\n        </ion-card-header>\n        <ion-card-content>\n                \n            <div *ngIf=\"editableText==false && userType=='client'\">\n                  <!-- name      -->\n                <ion-label style=\"size: 20vw;\" >&nbsp; <b>{{\"PROFILE.first_name\"| translate}} : </b></ion-label>\n                <br>   \n                <ion-input  type=\"text\" [(ngModel)]=\"profileData.firstname\"  placeholder=\"First name\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.last_name\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"text\"  [(ngModel)]=\"profileData.lastname\"  placeholder=\"Last name\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.email_address\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"text\" [(ngModel)]=\"profileData.email\"  placeholder=\"Email Address\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.mobile\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"number\" [(ngModel)]=\"profileData.mobilenumber\" placeholder=\"Mobile number\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.dob\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"date\"  [(ngModel)]=\"profileData.dob\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.address\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"text\" [(ngModel)]=\"profileData.address\"  placeholder=\"Address\" [disabled]=\"editableText\"></ion-input>\n                <br>\n               \n\n            </div>     \n                <div class=\"divloginbtn\">\n\n                  <!-- <button [ngClass]=\"{'loginbtn_black':btnClicked == true,\n                   'loginbtn_yellow':btnClicked == false}\" (click)=\"editProfile()\" *ngIf=\"editableText==true && userType=='client'\"> {{\"PROFILE.edit_profile\"| translate}}</button>\n                 <button [ngClass]=\"{'loginbtn_black':btnClicked == true,\n                   'loginbtn_yellow':btnClicked == false}\" (click)=\"saveProfile()\" *ngIf=\"editableText==false && userType=='client'\"> {{ 'DASHBOARD.save_profile' | translate }}</button>\n                  -->\n                  </div>\n              \n        </ion-card-content>\n      </ion-card>\n\n    <!-- </ion-item> -->\n</ion-content>\n<ion-footer *ngIf=\"show\" >\n  <!-- <ion-toolbar> -->\n       <!-- if the token is not null -->\n    <!-- <ion-button  expand=\"full\"  [ngClass]=\"{'loginbtn_black':btnClicked == true,\n    'loginbtn_yellow':btnClicked == false}\" (click)=\"save()\">{{ 'DASHBOARD.post_testimonial' | translate }}</ion-button> -->\n    <button expand=\"full\" [ngClass]=\"{'loginbtn_black':btnClicked == true,\n    'loginbtn_yellow':btnClicked == false}\" (click)=\"editProfile()\" *ngIf=\"editableText==true && userType=='client'\"> {{\"PROFILE.edit_profile\"| translate}}</button>\n  <button [ngClass]=\"{'loginbtn_black':btnClicked == true,\n    'loginbtn_yellow':btnClicked == false}\" (click)=\"saveProfile()\" *ngIf=\"editableText==false && userType=='client'\"> {{ 'DASHBOARD.save_profile' | translate }}</button>\n  \n\n  <!-- </ion-toolbar> -->\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n\n        <ion-item *ngIf=\"(editableText==true && userType=='client') ||userType=='chauffeur' \">\n\n           <!-- menu icon -->\n          <ion-buttons  slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n          </ion-buttons>\n\n          <!-- title -->\n          <ion-title >{{ 'DASHBOARD.profile' | translate }}</ion-title>\n        </ion-item>\n\n       <!-- ------------------------------------------------------------------------------ -->\n        <!-- ----------------------If edit has been clicked --------------------------------------------- -->\n        <ion-item *ngIf=\"editableText==false && userType=='client'\" >\n\n           <!-- prev icon -->\n           <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n\n          <!-- title -->\n          <ion-title >{{ 'DASHBOARD.edit_profile_title' | translate }}</ion-title>\n        </ion-item>\n \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n \n          <!-- profile Image -->\n         \n     <ion-card>\n\n        \n        <ion-card-header>\n          <ion-card-subtitle>\n             \n            <div >\n              <ion-grid *ngIf=\"editableText==true && userType=='client'\">\n                <ion-row>\n                  <ion-col size=\"4\" >\n                    <img   [src]=\"profile\"  class=\"image-icon\" >\n                  </ion-col>\n                   <ion-col size=\"8\">\n                    <div>                \n                       <br><br> <br>\n                       <!-- Full name      -->\n                       <strong> <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.first_name}}  {{profileData.last_name}} </b>\n                       </ion-label> </strong>\n                        <br><br>\n                       \n\n                    </div>                    \n                  </ion-col>\n                  </ion-row> \n                      \n                       <!-- DOB      -->\n                       <ion-item>\n                         <ion-icon name=\"calendar-outline\"></ion-icon>\n                         <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.birth_date}}  </b></ion-label>\n                       </ion-item> \n                       <!-- Email id     -->\n                       <ion-item>\n                          <ion-icon name=\"at-outline\"></ion-icon>\n                          <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.email}}  </b></ion-label>\n                        </ion-item> \n                       <!-- phone number    -->\n                        <ion-item>\n                          <ion-icon name=\"call-outline\"></ion-icon>\n                        <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.telephone}}  </b></ion-label>\n                        </ion-item> \n                        <!-- address -->\n                        <ion-item>\n                          <ion-icon name=\"pin-outline\"></ion-icon>\n                        <ion-label style=\"size: 20vw;\">&nbsp; <b> {{profileData.address}}  </b></ion-label>\n                        </ion-item> \n                  </ion-grid>  \n                             \n              </div>\n\n          </ion-card-subtitle>\n          <!-- <ion-card-title  >  My informations :</ion-card-title> -->\n        </ion-card-header>\n        <ion-card-content>\n                \n            <div *ngIf=\"editableText==false && userType=='client'\">\n                  <!-- name      -->\n                <ion-label style=\"size: 20vw;\" >&nbsp; <b>{{\"PROFILE.first_name\"| translate}} : </b></ion-label>\n                <br>   \n                <ion-input  type=\"text\" [(ngModel)]=\"profileData.first_name\"  placeholder=\"First name\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.last_name\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"text\"  [(ngModel)]=\"profileData.last_name\"  placeholder=\"Last name\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.email_address\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"text\" [(ngModel)]=\"profileData.email\"  placeholder=\"Email Address\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.mobile\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"number\" [(ngModel)]=\"profileData.telephone\" placeholder=\"Mobile number\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.dob\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"date\"  [(ngModel)]=\"profileData.birth_date\" [disabled]=\"editableText\"></ion-input>\n                <br>\n                <ion-label style=\"size: 20vw;\">&nbsp; <b> {{\"PROFILE.address\"| translate}} : </b></ion-label>\n                <br>\n                <ion-input  type=\"text\" [(ngModel)]=\"profileData.address\"  placeholder=\"Address\" [disabled]=\"editableText\"></ion-input>\n                <br>\n               \n\n            </div>     \n                <div class=\"divloginbtn\">\n\n                  <!-- <button [ngClass]=\"{'loginbtn_black':btnClicked == true,\n                   'loginbtn_yellow':btnClicked == false}\" (click)=\"editProfile()\" *ngIf=\"editableText==true && userType=='client'\"> {{\"PROFILE.edit_profile\"| translate}}</button>\n                 <button [ngClass]=\"{'loginbtn_black':btnClicked == true,\n                   'loginbtn_yellow':btnClicked == false}\" (click)=\"saveProfile()\" *ngIf=\"editableText==false && userType=='client'\"> {{ 'DASHBOARD.save_profile' | translate }}</button>\n                  -->\n                  </div>\n              \n        </ion-card-content>\n      </ion-card>\n\n    <!-- </ion-item> -->\n</ion-content>\n<ion-footer *ngIf=\"show\" >\n  <!-- <ion-toolbar> -->\n       <!-- if the token is not null -->\n    <!-- <ion-button  expand=\"full\"  [ngClass]=\"{'loginbtn_black':btnClicked == true,\n    'loginbtn_yellow':btnClicked == false}\" (click)=\"save()\">{{ 'DASHBOARD.post_testimonial' | translate }}</ion-button> -->\n    <button expand=\"full\" [ngClass]=\"{'loginbtn_black':btnClicked == true,\n    'loginbtn_yellow':btnClicked == false}\" (click)=\"editProfile()\" *ngIf=\"editableText==true && userType=='client'\"> {{\"PROFILE.edit_profile\"| translate}}</button>\n  <button [ngClass]=\"{'loginbtn_black':btnClicked == true,\n    'loginbtn_yellow':btnClicked == false}\" (click)=\"saveProfile()\" *ngIf=\"editableText==false && userType=='client'\"> {{ 'DASHBOARD.save_profile' | translate }}</button>\n  \n\n  <!-- </ion-toolbar> -->\n</ion-footer>";
     /***/
   },
 
@@ -227,28 +227,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _capacitor_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @capacitor/core */
     "./node_modules/@capacitor/core/dist/esm/index.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
     var Storage = _capacitor_core__WEBPACK_IMPORTED_MODULE_3__["Plugins"].Storage;
 
     var ProfilePage = /*#__PURE__*/function () {
-      function ProfilePage(webService) {
+      function ProfilePage(webService, router) {
         _classCallCheck(this, ProfilePage);
 
         this.webService = webService;
+        this.router = router;
         this.profile = '../assets/imgs/profile.png';
         this.btnClicked = false;
         this.editableText = true;
         this.profileData = {
-          "firstname": "Chanda",
-          "lastname": "Kumari",
-          "mobilenumber": "8559080443",
+          "first_name": "Chanda",
+          "last_name": "Kumari",
+          "telephone": "8559080443",
           "email": "kumarichanda658@gmail.com",
-          "dob": "1996-06-26",
+          "birth_date": "1996-06-26",
           "address": "A-658",
-          "city": "New Delhi",
-          "country": "India"
+          "password": "string"
         };
         this.userType = "";
+        this.userId = 0;
         this.show = false;
         this.btnClicked = false;
         console.log("Before editableText : ", this.editableText);
@@ -294,18 +301,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.userInfo = _context3.t0.parse.call(_context3.t0, _context3.t1);
                     console.log("Storage : ", this.userInfo);
                     this.profileData.address = this.userInfo.address;
-                    this.profileData.dob = this.userInfo.birth_date;
+                    this.profileData.birth_date = this.userInfo.birth_date;
                     this.profileData.email = this.userInfo.email;
-                    this.profileData.firstname = this.userInfo.first_name;
-                    this.profileData.lastname = this.userInfo.last_name;
-                    this.profileData.mobilenumber = this.userInfo.telephone; //get user type
+                    this.profileData.first_name = this.userInfo.first_name;
+                    this.profileData.last_name = this.userInfo.last_name;
+                    this.profileData.telephone = this.userInfo.telephone;
+                    this.userId = this.userInfo.id; //get user type
 
-                    _context3.next = 14;
+                    _context3.next = 15;
                     return Storage.get({
                       key: "user_type"
                     });
 
-                  case 14:
+                  case 15:
                     this.userType = _context3.sent.value;
                     // this.webService.stopLoading();
                     //get the current language of the app   
@@ -333,7 +341,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     this.show = true;
 
-                  case 17:
+                  case 18:
                   case "end":
                     return _context3.stop();
                 }
@@ -344,40 +352,104 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "editProfile",
         value: function editProfile() {
+          var _this2 = this;
+
+          this.btnClicked = true;
+          this.editableText = false;
+          console.log("btnClicked : ", this.btnClicked);
+          console.log("DOB : ", this.userId);
+          setTimeout(function () {
+            _this2.btnClicked = false; // this.editableText=true;
+          }, 1000);
+        }
+      }, {
+        key: "saveProfile",
+        value: function saveProfile() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-            var _this2 = this;
+            var _this3 = this;
 
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
                 switch (_context4.prev = _context4.next) {
                   case 0:
+                    console.log("profileData : ", this.profileData);
                     this.btnClicked = true;
-                    this.editableText = false;
                     console.log("btnClicked : ", this.btnClicked);
-                    console.log("DOB : ", this.profileData.dob);
                     setTimeout(function () {
-                      _this2.btnClicked = false; // this.editableText=true;
-                    }, 1000);
+                      _this3.btnClicked = false; // this.editableText=true;
+                    }, 1000); //get token
 
-                  case 5:
+                    _context4.next = 6;
+                    return Storage.get({
+                      key: 'accessToken'
+                    });
+
+                  case 6:
+                    this.token = _context4.sent.value;
+                    _context4.next = 9;
+                    return Storage.get({
+                      key: 'SELECTED LANGUAGE'
+                    });
+
+                  case 9:
+                    this.lang = _context4.sent.value;
+
+                    if (this.profileData.email) {
+                      ///start loader
+                      this.webService.presentLoading(); //////////////////////////////////////////////////////////////////////////////////////////////
+                      ///////////////call the edit profile API ////
+
+                      this.webService.EditClientProfile(this.userId, this.token, this.profileData).subscribe(function (res) {
+                        //stop loader
+                        _this3.webService.stopLoading();
+
+                        if (res.detail) {
+                          if (_this3.lang == "fr") {
+                            alert("La modification a échoué !! "); // alert("Modification réussie avec succès !!");
+                          } else {
+                            alert("Update Failed !");
+                          }
+                        } else {
+                          //store the new result into userInfos
+                          //store user infos in storage 
+                          Storage.set({
+                            key: "user_infos",
+                            value: JSON.stringify(res)
+                          }); // end store user 
+
+                          if (_this3.lang == "fr") {
+                            alert("Modification réussie !!");
+                          } else {
+                            alert("Update Successful !!");
+                          } //back to prev page
+
+
+                          _this3.prev();
+                        }
+                      }, function (error) {
+                        _this3.webService.stopLoading();
+
+                        if (_this3.lang == "fr") {
+                          alert("Erreur Serveur, \n Verifiez Votre connexion internet \n Et vos Entrees "); // alert("Modification réussie avec succès !!");
+                        } else {
+                          alert("Server error, \n please check your internet connection \n and your inputs");
+                        }
+                      }); ////////////////////////////////////////////////////////////////////////////////////////
+                    } else {
+                      if (this.lang == "fr") {
+                        alert("SVP, Remplissez le champ email !");
+                      } else {
+                        alert("Please, Fill the email field !");
+                      }
+                    }
+
+                  case 11:
                   case "end":
                     return _context4.stop();
                 }
               }
             }, _callee4, this);
           }));
-        }
-      }, {
-        key: "saveProfile",
-        value: function saveProfile() {
-          var _this3 = this;
-
-          console.log("profileData : ", this.profileData);
-          this.btnClicked = true;
-          console.log("btnClicked : ", this.btnClicked);
-          setTimeout(function () {
-            _this3.btnClicked = false; // this.editableText=true;
-          }, 1000);
         }
       }, {
         key: "prev",
@@ -392,6 +464,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     ProfilePage.ctorParameters = function () {
       return [{
         type: src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_2__["AppServiceService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
       }];
     };
 

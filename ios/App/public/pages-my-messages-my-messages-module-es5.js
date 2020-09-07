@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n       <ion-item>\n        <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title> MY TESTIMONIALS  </ion-title>\n    </ion-item> \n\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n\n          <!-- -------------------------------------------------------------------------------------- -->\n        <!-- Start contact -->\n       <ion-card *ngFor=\"let item of filterData \" >\n             <ion-card-header>\n                    <ion-card-title style=\"font-size: medium;\">{{item.text}}</ion-card-title>\n              <ion-card-subtitle>\n\n                  \n               <!-- Status -->\n                <ion-item>\n                    <ion-label > Status : </ion-label>\n                    <ion-chip slot=\"end\"  *ngIf=\"item.status == 1\" style=\"color:green;border:1px,solid,green\"> Active </ion-chip>\n                  </ion-item>\n                <!-- Starting date -->\n                <ion-item>\n                    <ion-label > Date : </ion-label>\n                    <ion-chip slot=\"end\"> {{item.posting_date}}</ion-chip>\n                </ion-item>\n                 \n              </ion-card-subtitle>\n            </ion-card-header>\n\n      </ion-card>\n        <!-- Stop Contact -->\n    <!-- -------------------------------------------------------------------------------------- -->\n\n\n</ion-content>\n\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n       \n        <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-item>\n        <ion-title> {{\"DASHBOARD.my_testimonial\" | translate}} </ion-title>\n    </ion-item> \n\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content *ngIf=\"show\">\n\n          <!-- -------------------------------------------------------------------------------------- -->\n        <!-- Start contact -->\n       <ion-card *ngFor=\"let item of filterData \" >\n             <ion-card-header>\n                    <ion-card-title style=\"font-size: medium;\">{{item.text}}</ion-card-title>\n              <ion-card-subtitle>\n\n                  \n               <!-- Status -->\n                <ion-item>\n                    <ion-label > Status : </ion-label>\n                    <ion-chip slot=\"end\" style=\"color:green;border:1px,solid,green\"> Active </ion-chip>\n                  </ion-item>\n                <!-- Starting date -->\n                <ion-item>\n                    <ion-label > Date : </ion-label>\n                    <ion-chip slot=\"end\"> {{item.date}}</ion-chip>\n                </ion-item>\n                 \n              </ion-card-subtitle>\n            </ion-card-header>\n\n      </ion-card>\n        <!-- Stop Contact -->\n    <!-- -------------------------------------------------------------------------------------- -->\n\n\n</ion-content>\n\n";
     /***/
   },
 
@@ -146,13 +146,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _my_messages_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./my-messages.page */
     "./src/app/pages/my-messages/my-messages.page.ts");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/__ivy_ngcc__/fesm2015/ngx-translate-core.js");
 
     var MyMessagesPageModule = function MyMessagesPageModule() {
       _classCallCheck(this, MyMessagesPageModule);
     };
 
     MyMessagesPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _my_messages_routing_module__WEBPACK_IMPORTED_MODULE_5__["MyMessagesPageRoutingModule"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _my_messages_routing_module__WEBPACK_IMPORTED_MODULE_5__["MyMessagesPageRoutingModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
       declarations: [_my_messages_page__WEBPACK_IMPORTED_MODULE_6__["MyMessagesPage"]]
     })], MyMessagesPageModule);
     /***/
@@ -209,30 +215,131 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/service/appService/app-service.service */
+    "./src/app/service/appService/app-service.service.ts");
+    /* harmony import */
+
+
+    var _capacitor_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @capacitor/core */
+    "./node_modules/@capacitor/core/dist/esm/index.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+    var Storage = _capacitor_core__WEBPACK_IMPORTED_MODULE_3__["Plugins"].Storage;
 
     var MyMessagesPage = /*#__PURE__*/function () {
-      function MyMessagesPage() {
+      function MyMessagesPage(webservice, router) {
         _classCallCheck(this, MyMessagesPage);
 
+        this.webservice = webservice;
+        this.router = router;
         this.show = false;
         this.filterData = [{
-          text: "I had a lot of pleasure to benefit from the professionalism of NYOKAH, with them it's another story.",
-          posting_date: '2020-02-08 11:20:31',
-          status: 1
-        }, {
-          text: "I am very happy with the quality of service from Nyokah. I am surprised",
-          posting_date: '2020-03-11 17:03:24',
-          status: 1
+          text: "",
+          date: '',
+          //status : 1
+          client: 1
         }];
       }
 
       _createClass(MyMessagesPage, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this = this;
+
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    //start laoder
+                    this.webservice.presentLoading(); //get token
+
+                    _context.next = 3;
+                    return Storage.get({
+                      key: 'accessToken'
+                    });
+
+                  case 3:
+                    this.token = _context.sent.value;
+                    _context.t0 = JSON;
+                    _context.next = 7;
+                    return Storage.get({
+                      key: "user_infos"
+                    });
+
+                  case 7:
+                    _context.t1 = _context.sent.value;
+                    this.userId = _context.t0.parse.call(_context.t0, _context.t1).id;
+                    _context.next = 11;
+                    return Storage.get({
+                      key: 'SELECTED LANGUAGE'
+                    });
+
+                  case 11:
+                    this.lang = _context.sent.value;
+                    //get testimonial list
+                    this.webservice.getFeedbacks(this.userId, this.token).subscribe(function (res) {
+                      if (res.detail) {
+                        if (_this.lang == "fr") {
+                          alert("Aucun témoignage \n Retour à la page accueil");
+                        } else {
+                          alert("No testimony \ n Back Home Page");
+                        }
+
+                        _this.router.navigateByUrl("/dashboard");
+                      } else {
+                        if (res.length == 0) {
+                          if (_this.lang == "fr") {
+                            alert("Votre Liste de Temoignage est vide !! ");
+                          } else {
+                            alert(" Your Testimonial List is Empty !!");
+                          } //stop loader
+
+
+                          _this.webservice.stopLoading();
+
+                          _this.router.navigateByUrl("/dashboard");
+                        } else {
+                          _this.filterData = res;
+                        }
+                      } //stop loader
+
+
+                      _this.show = true;
+
+                      _this.webservice.stopLoading();
+                    }); ///end get testimonial
+
+                  case 13:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
       }]);
 
       return MyMessagesPage;
     }();
+
+    MyMessagesPage.ctorParameters = function () {
+      return [{
+        type: src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_2__["AppServiceService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+      }];
+    };
 
     MyMessagesPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-my-messages',

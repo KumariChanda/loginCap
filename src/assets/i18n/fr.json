@@ -137,7 +137,7 @@
         "signup" : "Inscription",
         "signup_btn" : "S'Inscrire",
         "first_name" : "Prénom (*)",
-        "last_name" : "Nom",
+        "last_name" : "Nom(*)",
         "email" : "Adresse Email (*)",
         "password" : "Mot de passe (*)",
         "confirm_password" : "Confirmez mot de passe (*)",

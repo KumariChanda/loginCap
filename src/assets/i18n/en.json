@@ -133,7 +133,7 @@
         "signup" : "Sign Up",
         "signup_btn" : "Sign Up",
         "first_name" : "First name (*)",
-        "last_name" : "Last name",
+        "last_name" : "Last name (*)",
         "email" : "Email Address (*)",
         "password" : "Password (*)",
         "confirm_password" : "Confirm Password (*)",
