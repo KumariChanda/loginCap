@@ -9,15 +9,16 @@
       </ion-buttons>
 
       <!-- title -->
-      <ion-title *ngIf="!isSearchbarOpened">{{ 'DASHBOARD.economic_class' | translate }}</ion-title>
+      <ion-title  *ngIf="!isSearchbarOpened">{{ 'DASHBOARD.economic_class' | translate }}</ion-title>
 
    
        <!-- search bar button -->
-       <ion-buttons slot="end">
-          <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
-              <ion-icon color="primary" name="search"> </ion-icon>
-          </ion-button>
+      <ion-buttons slot="end">
+        <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
+            <ion-icon color="primary" name="search" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true"> </ion-icon>
+         </ion-button>
       </ion-buttons>
+      <!-- Search Bar -->
 
 
     </ion-item>
@@ -37,7 +38,7 @@
     
         <div *ngFor="let photo of item.photo; let i = index " > 
           
-          <img *ngIf="i== 0"  [src]="photo.image" />
+          <img *ngIf="i== 0"  [src]="src_link + photo.image" />
           
         </div>
         

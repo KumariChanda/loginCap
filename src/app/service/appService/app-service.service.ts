@@ -35,7 +35,7 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 export class AppServiceService {
 
     // basic api url
- base_url= "http://othnieldona.pythonanywhere.com/api";
+ base_url= "http://othnieldona.pythonanywhere.com";
 
   public selected = ''; // selected language
   
@@ -624,7 +624,31 @@ export class AppServiceService {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////STRAT : EDIT CLIENT PASSWORD ////////////////////////////////////////////////////////////////////////
 
+changeClientPasssword(id,token,data): Observable<any> {
+
+  const httpOption = {
+    headers: new HttpHeaders
+                    ({
+                      'Content-Type' : 'application/json',
+                      'Authorization': 'Token '+ token
+  
+                    })
+  
+  }
+
+
+  return this.http.post(base_url+"clients/"+id+"/set_password",data, httpOption).pipe(
+    map(this.extractData),
+    catchError(this.handleError)
+  );
+
+}
+
+///////////////////////////////////// END : EDIT CLIENT PASSWORD  ////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
