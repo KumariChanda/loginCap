@@ -152,7 +152,7 @@ export class ChangePasswordPage implements OnInit {
     
                     if(this.lang =="fr")
                     {
-                      alert("Le champ nouveau mot de passe doit etre egal au champ confirmez mot de passe !! ")
+                      alert("Le champ nouveau mot de passe doit être egal au champ confirmez mot de passe !! ")
                     }else{
                       alert("New Password and Confirm Pasword Should be same !! ")
     

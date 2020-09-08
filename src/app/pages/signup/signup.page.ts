@@ -117,7 +117,7 @@ export class SignupPage implements OnInit {
 
                 if(this.lang =="fr")
                 {
-                  alert("Le champ mot de passe doit etre egal au champ confirmez mot de passe !! ")
+                  alert("Le champ mot de passe doit être egal au champ confirmez mot de passe !! ")
                 }else{
                   alert("Password and Confirm Pasword Should be same !! ")
 
