@@ -99,7 +99,7 @@
                <!-- ----------------------START search type = "per price"------------------------------- -->
               <div *ngIf="search_type =='price'">
                 <!-- start date -->
-                <ion-radio-group allow-empty-selection >
+                <ion-radio-group allow-empty-selection [(ngModel)]="searchPrice">
                    
                     <ion-item>
                       <label  textWrap="true"> {{"DASHBOARD.price_sup" | translate}} 50000 F CFA / {{"DASHBOARD.day" | translate}}</label>
@@ -127,7 +127,7 @@
 
                   <!-- button search -->
 
-                <ion-button expand="block"> 
+                <ion-button expand="block"  (click)="openPrice()"> 
                       <ion-icon slot="start" name="search"></ion-icon>
                       {{ 'DASHBOARD.btn_search' | translate }}
                  </ion-button>
@@ -140,7 +140,7 @@
                <!-- ----------------------START search type = "Other"------------------------------- -->
               <div *ngIf="search_type =='other'">
                 <!-- start date -->
-                <ion-radio-group allow-empty-selection >
+                <ion-radio-group allow-empty-selection [(ngModel)]="searchOther">
                    
                     <ion-item>
                       <label  textWrap="true"> {{"DASHBOARD.place_sup" | translate}} 5</label>
@@ -169,7 +169,7 @@
 
                   <!-- button search -->
 
-                <ion-button expand="block"> 
+                <ion-button expand="block" (click)="openOther()"> 
                       <ion-icon slot="start" name="search"></ion-icon>
                       {{ 'DASHBOARD.btn_search' | translate }}
                  </ion-button>

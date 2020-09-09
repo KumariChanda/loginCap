@@ -4,24 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SuvClassPageRoutingModule } from './suv-class-routing.module';
+import { CarFilterPageRoutingModule } from './car-filter-routing.module';
 
-import { SuvClassPage } from './suv-class.page';
+import { CarFilterPage } from './car-filter.page';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { TranslateModule } from '@ngx-translate/core';
-
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SuvClassPageRoutingModule,
+    CarFilterPageRoutingModule,
     Ng2SearchPipeModule,
     TranslateModule
-
   ],
-  declarations: [SuvClassPage]
+  declarations: [CarFilterPage]
 })
-export class SuvClassPageModule {}
+export class CarFilterPageModule {}

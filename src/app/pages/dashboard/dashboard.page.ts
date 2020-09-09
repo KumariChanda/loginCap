@@ -319,6 +319,95 @@ openClass()
 
 ////////////////  End search class ////////////////
 
+//////////////// search per price /////////////////////
+
+openPrice()
+{
+   console.log(this.searchPrice);
+      if(this.searchPrice == '50000+')
+      {
+         this.router.navigate(['car-filter'],{queryParams : {id : this.searchPrice ,type : "price"}} );
+      }
+      else if(this.searchPrice == '50000-')
+      {
+        this.router.navigate(['car-filter'],{queryParams : {id : this.searchPrice,type : "price" }});
+
+      }
+      else if(this.searchPrice == '5000+')
+      {
+        this.router.navigate(['car-filter'],{queryParams : {id : this.searchPrice,type : "price" }});
+
+      }
+      else if(this.searchPrice == '5000-')
+      {
+        this.router.navigate(['car-filter'],{queryParams : {id : this.searchPrice, type : "price" }});
+
+      }
+      else
+      {
+           //no  cars
+           if(this.lang=="fr")
+           {
+             alert("Faites un choix SVP !!! ");
+   
+           }else{
+             alert("Make a choice Please !!! ");
+           }
+   
+
+      }
+}
+
+////////////////  End search per price ////////////////
+
+//////////////// search per Other /////////////////////
+
+openOther()
+{
+      console.log(this.searchOther);
+      if(this.searchOther == '5p+')
+      {
+         this.router.navigate(['car-filter'],{queryParams : {id : this.searchOther ,type : "other"}} );
+      }
+      else if(this.searchOther == '5p-')
+      {
+        this.router.navigate(['car-filter'],{queryParams : {id : this.searchOther,type : "other" }});
+
+      }
+      else if(this.searchOther == '5b+')
+      {
+        this.router.navigate(['car-filter'],{queryParams : {id : this.searchOther,type : "other" }});
+
+      }
+      else if(this.searchOther == '5b-')
+      {
+        this.router.navigate(['car-filter'],{queryParams : {id : this.searchOther, type : "other" }});
+
+      }
+      else
+      {
+           //no  cars
+           if(this.lang=="fr")
+           {
+             alert("Faites un choix SVP !!! ");
+   
+           }else{
+             alert("Make a choice Please !!! ");
+           }
+   
+
+      }
+}
+
+////////////////  End search per Other////////////////
+
+
+
+
+
+
+
+
 
 
 

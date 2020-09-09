@@ -9,28 +9,29 @@
 
     
       <!-- title -->
-      <ion-title *ngIf="!isSearchbarOpened">{{ 'DASHBOARD.suv_class' | translate }}</ion-title>
+      <ion-title *ngIf="!isSearchbarOpened">{{ 'DASHBOARD.title' | translate }}</ion-title>
 
    
        <!-- search bar button -->
-       <ion-buttons slot="end">
-          <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
-              <ion-icon color="primary" name="search"> </ion-icon>
-          </ion-button>
+      <ion-buttons slot="end">
+        <!-- <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" > -->
+            <ion-icon color="primary" name="search" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true"> </ion-icon>
+         <!-- </ion-button> -->
       </ion-buttons>
+      <!-- Search Bar -->
 
 
     </ion-item>
 
 <!-- Search Bar -->
-   <ion-searchbar *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+   <ion-searchbar color="primary" *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
 
      
   </ion-toolbar>
     
 </ion-header>
 
-<ion-content *ngIf="show"  >
+<ion-content *ngIf="show" >
 
 
      <ion-card *ngFor="let item of filterData | filter:term">
@@ -50,10 +51,19 @@
                   <ion-label >{{item.type_caburant}}</ion-label>
                 </ion-chip>
                 <!-- Car price-->
-                <ion-chip >
+                <ion-chip *ngIf="search_id == '50000+' || search_id == '50000-' ">
                   <!-- <ion-icon name="medal" ></ion-icon> -->
                   <ion-label  textWrap="true">{{item.per_day}} F CFA / {{ 'DASHBOARD.day' | translate }}</ion-label>
-                </ion-chip> <br>
+                </ion-chip> 
+
+                <ion-chip *ngIf="search_id == '5000+' || search_id == '5000-' ">
+                  <!-- <ion-icon name="medal" ></ion-icon> -->
+                  <ion-label  textWrap="true">{{item.per_hour}} F CFA / {{ 'DASHBOARD.hour' | translate }}</ion-label>
+                </ion-chip> 
+                
+                <br>
+
+
                 <!-- Number of Seats-->
                 <ion-chip >
                   <ion-icon name="person"></ion-icon>

@@ -16,7 +16,7 @@
 }
 ion-card-title
 {
-    margin-left:30%
+    margin-left:20%;
 }
 
 
@@ -46,4 +46,10 @@ ion-segment-button
 ion-card-title,ion-textarea
 {
     color : white;
+}
+
+ion-searchbar
+{
+    background : white;
+    color : black;
 }

@@ -77,10 +77,7 @@ const routes: Routes = [
     path: 'business-class',
     loadChildren: () => import('./pages/business-class/business-class.module').then( m => m.BusinessClassPageModule)
   },
-  {
-    path: 'suv-class',
-    loadChildren: () => import('./pages/suv-class/suv-class.module').then( m => m.SuvClassPageModule)
-  },
+  
   {
     path: 'term-usage',
     loadChildren: () => import('./pages/term-usage/term-usage.module').then( m => m.TermUsagePageModule)
@@ -100,6 +97,10 @@ const routes: Routes = [
   {
     path: 'economique',
     loadChildren: () => import('./pages/economique/economique.module').then( m => m.EconomiquePageModule)
+  },
+  {
+    path: 'car-filter',
+    loadChildren: () => import('./pages/car-filter/car-filter.module').then( m => m.CarFilterPageModule)
   }
 
 
