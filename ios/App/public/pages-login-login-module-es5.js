@@ -289,7 +289,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 }; // console.log(sending_obj);
 
                                 if (this.usernameText && this.passwordText) {
-                                  this.webService.presentLoading();
                                   this.webService.login(sending_obj).subscribe(function (res) {
                                     return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                                       var _this3 = this;
@@ -298,7 +297,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                         while (1) {
                                           switch (_context2.prev = _context2.next) {
                                             case 0:
-                                              console.log("getting response : ", res);
+                                              console.log("getting response : ", res); // this.webService.presentLoading();
 
                                               if (!res.detail) {
                                                 //store user status in storage 
@@ -358,6 +357,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                                   }); //end get app language
                                                   ////////////////////////////////////////////////
 
+                                                }, function (error) {
+                                                  _this3.webService.stopLoading();
+
+                                                  if (_this3.lang == "fr") {
+                                                    alert("Etes-vous Chauffeur ?? \n SVP selectionnez l'option \n se connecter en tant que chaffeur.");
+                                                  } else {
+                                                    alert("Are you a driver? please choose the option \n login as a driver. ");
+                                                  }
                                                 }); //added end get user details
                                                 //////////////////////////////////////////////////
                                               } else {
@@ -368,6 +375,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                                 } else {
                                                   alert("Bad user name and/or password !!! \n Please enter correct values. ");
                                                 }
+
+                                                this.router.navigateByUrl("/login");
                                               }
 
                                             case 2:

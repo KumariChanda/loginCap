@@ -431,6 +431,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return m.CarFilterPageModule;
         });
       }
+    }, {
+      path: 'my-reports',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | driver-my-reports-my-reports-module */
+        "driver-my-reports-my-reports-module").then(__webpack_require__.bind(null,
+        /*! ./driver/my-reports/my-reports.module */
+        "./src/app/driver/my-reports/my-reports.module.ts")).then(function (m) {
+          return m.MyReportsPageModule;
+        });
+      }
+    }, {
+      path: 'send-reports',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | driver-send-reports-send-reports-module */
+        "driver-send-reports-send-reports-module").then(__webpack_require__.bind(null,
+        /*! ./driver/send-reports/send-reports.module */
+        "./src/app/driver/send-reports/send-reports.module.ts")).then(function (m) {
+          return m.SendReportsPageModule;
+        });
+      }
+    }, {
+      path: 'send-rides',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | driver-send-rides-send-rides-module */
+        "driver-send-rides-send-rides-module").then(__webpack_require__.bind(null,
+        /*! ./driver/send-rides/send-rides.module */
+        "./src/app/driver/send-rides/send-rides.module.ts")).then(function (m) {
+          return m.SendRidesPageModule;
+        });
+      }
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -573,7 +606,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               var _this3 = this;
 
-              var ret;
+              var ret, type;
               return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                   switch (_context.prev = _context.next) {
@@ -594,6 +627,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     case 4:
                       this.testingToken = _context.sent.value;
+
+                      if (!this.testingToken) {
+                        _context.next = 10;
+                        break;
+                      }
+
+                      _context.next = 8;
+                      return Storage.get({
+                        key: 'user_type'
+                      });
+
+                    case 8:
+                      type = _context.sent.value;
+
+                      if (type == "chauffeur") {
+                        this.router.navigateByUrl("/home");
+                      }
+
+                    case 10:
                       console.log("checKing token from storage ", this.testingToken, typeof this.testingToken); // //set the initial language of the app
 
                       this.webService.setInitialAppLanguage().then(function (val) {
@@ -605,7 +657,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       this.statusBar.styleDefault();
                       SplashScreen.hide();
 
-                    case 9:
+                    case 14:
                     case "end":
                       return _context.stop();
                   }
@@ -674,13 +726,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
 
                   case 4:
-                    _context3.next = 6;
-                    return Storage.set({
-                      key: 'user_infos',
-                      value: null
-                    });
-
-                  case 6:
+                    ////////
                     this.webService.getCurrentLanguage().then(function (val) {
                       _this4.webService.sendMessage({
                         'token': "mytoken",
@@ -691,7 +737,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.menuCtrl.toggle();
                     this.router.navigateByUrl("/dashboard");
 
-                  case 9:
+                  case 7:
                   case "end":
                     return _context3.stop();
                 }
@@ -833,8 +879,59 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }];
                       } /////////if type is driver ////////////////////////////
                       else if (type == "chauffeur") {
-                          //not yet ready 
-                          this.menuNavigatorLogin = [];
+                          this.menuNavigatorLogin = [{
+                            title: "Home",
+                            url: "/dashboard",
+                            icon: "home"
+                          }, {
+                            title: "Profile",
+                            url: "/profile",
+                            icon: "person"
+                          }, {
+                            title: "My Rides",
+                            url: "/my-rides",
+                            icon: "cart"
+                          }, {
+                            title: "My Reports",
+                            url: "/my-reports",
+                            icon: "mail"
+                          }, {
+                            title: "Support",
+                            icon: "call",
+                            children: [{
+                              title: "About Us",
+                              url: "/about-us",
+                              icon: "information-circle-outline"
+                            }, {
+                              title: "Our Contacts",
+                              url: "/our-contacts",
+                              icon: "call-outline"
+                            }, {
+                              title: "Term of usage",
+                              url: "/term-usage",
+                              icon: "help-circle-outline"
+                            }, {
+                              title: "Confidentiality principles",
+                              url: "/confidentiality",
+                              icon: "help-circle-outline"
+                            }, {
+                              title: "Send Reports",
+                              url: "/send-reports",
+                              icon: "send-outline"
+                            }]
+                          }, {
+                            title: "Settings",
+                            icon: "settings",
+                            children: [{
+                              title: "App Language",
+                              url: "/seetings",
+                              icon: "language-outline"
+                            }, {
+                              title: "Change Password",
+                              url: "/change-password",
+                              icon: "lock-closed-outline"
+                            }]
+                          }];
                         }
 
                       _context4.next = 15;
@@ -1006,7 +1103,59 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       } ///////////if type is driver ////////////////////////////
                       else if (type == "chauffeur") {
                           //not yet ready 
-                          this.menuNavigatorLogin = [];
+                          this.menuNavigatorLogin = [{
+                            title: "Accueil",
+                            url: "/dashboard",
+                            icon: "home"
+                          }, {
+                            title: "Mon Profil",
+                            url: "/profile",
+                            icon: "person"
+                          }, {
+                            title: "Mes Sorties",
+                            url: "/my-rides",
+                            icon: "cart"
+                          }, {
+                            title: "Mes Rapports",
+                            url: "/my-reports",
+                            icon: "mail"
+                          }, {
+                            title: "Support",
+                            icon: "call",
+                            children: [{
+                              title: "À propos",
+                              url: "/about-us",
+                              icon: "information-circle-outline"
+                            }, {
+                              title: "Nos Contacts",
+                              url: "/our-contacts",
+                              icon: "call-outline"
+                            }, {
+                              title: "Conditions d'utilisation",
+                              url: "/term-usage",
+                              icon: "help-circle-outline"
+                            }, {
+                              title: "Principes de confidentialités",
+                              url: "/confidentiality",
+                              icon: "help-circle-outline"
+                            }, {
+                              title: "Envoyez Rapport",
+                              url: "/send-reports",
+                              icon: "send-outline"
+                            }]
+                          }, {
+                            title: "Réglages",
+                            icon: "settings",
+                            children: [{
+                              title: "Langue de l'application",
+                              url: "/seetings",
+                              icon: "language-outline"
+                            }, {
+                              title: "Réinitialiser Password",
+                              url: "/change-password",
+                              icon: "lock-closed-outline"
+                            }]
+                          }];
                         }
 
                       _context4.next = 31;

@@ -386,6 +386,18 @@ const routes = [
     {
         path: 'car-filter',
         loadChildren: () => __webpack_require__.e(/*! import() | pages-car-filter-car-filter-module */ "pages-car-filter-car-filter-module").then(__webpack_require__.bind(null, /*! ./pages/car-filter/car-filter.module */ "./src/app/pages/car-filter/car-filter.module.ts")).then(m => m.CarFilterPageModule)
+    },
+    {
+        path: 'my-reports',
+        loadChildren: () => __webpack_require__.e(/*! import() | driver-my-reports-my-reports-module */ "driver-my-reports-my-reports-module").then(__webpack_require__.bind(null, /*! ./driver/my-reports/my-reports.module */ "./src/app/driver/my-reports/my-reports.module.ts")).then(m => m.MyReportsPageModule)
+    },
+    {
+        path: 'send-reports',
+        loadChildren: () => __webpack_require__.e(/*! import() | driver-send-reports-send-reports-module */ "driver-send-reports-send-reports-module").then(__webpack_require__.bind(null, /*! ./driver/send-reports/send-reports.module */ "./src/app/driver/send-reports/send-reports.module.ts")).then(m => m.SendReportsPageModule)
+    },
+    {
+        path: 'send-rides',
+        loadChildren: () => __webpack_require__.e(/*! import() | driver-send-rides-send-rides-module */ "driver-send-rides-send-rides-module").then(__webpack_require__.bind(null, /*! ./driver/send-rides/send-rides.module */ "./src/app/driver/send-rides/send-rides.module.ts")).then(m => m.SendRidesPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -483,6 +495,12 @@ let AppComponent = class AppComponent {
             //token storage
             var ret = Storage.get({ key: 'accessToken' });
             this.testingToken = (yield ret).value;
+            if (this.testingToken) {
+                var type = (yield (Storage.get({ key: 'user_type' }))).value;
+                if (type == "chauffeur") {
+                    this.router.navigateByUrl("/home");
+                }
+            }
             console.log("checKing token from storage ", this.testingToken, typeof (this.testingToken));
             // //set the initial language of the app
             this.webService.setInitialAppLanguage().then(val => {
@@ -522,10 +540,6 @@ let AppComponent = class AppComponent {
                 value: null
             });
             ////////
-            yield Storage.set({
-                key: 'user_infos',
-                value: null
-            });
             this.webService.getCurrentLanguage().then(val => {
                 this.webService.sendMessage({ 'token': "mytoken", 'language': val });
             });
@@ -661,8 +675,76 @@ let AppComponent = class AppComponent {
                     }
                     /////////if type is driver ////////////////////////////
                     else if (type == "chauffeur") {
-                        //not yet ready 
-                        this.menuNavigatorLogin = [];
+                        this.menuNavigatorLogin =
+                            [
+                                {
+                                    title: "Home",
+                                    url: "/dashboard",
+                                    icon: "home"
+                                },
+                                {
+                                    title: "Profile",
+                                    url: "/profile",
+                                    icon: "person"
+                                },
+                                {
+                                    title: "My Rides",
+                                    url: "/my-rides",
+                                    icon: "cart"
+                                },
+                                {
+                                    title: "My Reports",
+                                    url: "/my-reports",
+                                    icon: "mail"
+                                },
+                                {
+                                    title: "Support",
+                                    icon: "call",
+                                    children: [
+                                        {
+                                            title: "About Us",
+                                            url: "/about-us",
+                                            icon: "information-circle-outline"
+                                        },
+                                        {
+                                            title: "Our Contacts",
+                                            url: "/our-contacts",
+                                            icon: "call-outline"
+                                        },
+                                        {
+                                            title: "Term of usage",
+                                            url: "/term-usage",
+                                            icon: "help-circle-outline"
+                                        },
+                                        {
+                                            title: "Confidentiality principles",
+                                            url: "/confidentiality",
+                                            icon: "help-circle-outline"
+                                        },
+                                        {
+                                            title: "Send Reports",
+                                            url: "/send-reports",
+                                            icon: "send-outline"
+                                        },
+                                    ]
+                                },
+                                {
+                                    title: "Settings",
+                                    icon: "settings",
+                                    children: [
+                                        {
+                                            title: "App Language",
+                                            url: "/seetings",
+                                            icon: "language-outline"
+                                        },
+                                        {
+                                            title: "Change Password",
+                                            url: "/change-password",
+                                            icon: "lock-closed-outline"
+                                        },
+                                    ]
+                                },
+                            ];
                     }
                 }
                 else {
@@ -852,7 +934,76 @@ let AppComponent = class AppComponent {
                     ///////////if type is driver ////////////////////////////
                     else if (type == "chauffeur") {
                         //not yet ready 
-                        this.menuNavigatorLogin = [];
+                        this.menuNavigatorLogin =
+                            [
+                                {
+                                    title: "Accueil",
+                                    url: "/dashboard",
+                                    icon: "home"
+                                },
+                                {
+                                    title: "Mon Profil",
+                                    url: "/profile",
+                                    icon: "person"
+                                },
+                                {
+                                    title: "Mes Sorties",
+                                    url: "/my-rides",
+                                    icon: "cart"
+                                },
+                                {
+                                    title: "Mes Rapports",
+                                    url: "/my-reports",
+                                    icon: "mail"
+                                },
+                                {
+                                    title: "Support",
+                                    icon: "call",
+                                    children: [
+                                        {
+                                            title: "À propos",
+                                            url: "/about-us",
+                                            icon: "information-circle-outline"
+                                        },
+                                        {
+                                            title: "Nos Contacts",
+                                            url: "/our-contacts",
+                                            icon: "call-outline"
+                                        },
+                                        {
+                                            title: "Conditions d'utilisation",
+                                            url: "/term-usage",
+                                            icon: "help-circle-outline"
+                                        },
+                                        {
+                                            title: "Principes de confidentialités",
+                                            url: "/confidentiality",
+                                            icon: "help-circle-outline"
+                                        },
+                                        {
+                                            title: "Envoyez Rapport",
+                                            url: "/send-reports",
+                                            icon: "send-outline"
+                                        },
+                                    ]
+                                },
+                                {
+                                    title: "Réglages",
+                                    icon: "settings",
+                                    children: [
+                                        {
+                                            title: "Langue de l'application",
+                                            url: "/seetings",
+                                            icon: "language-outline"
+                                        },
+                                        {
+                                            title: "Réinitialiser Password",
+                                            url: "/change-password",
+                                            icon: "lock-closed-outline"
+                                        },
+                                    ]
+                                },
+                            ];
                     }
                 }
                 else {

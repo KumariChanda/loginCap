@@ -157,9 +157,9 @@ let LoginPage = class LoginPage {
                 };
                 // console.log(sending_obj);
                 if (this.usernameText && this.passwordText) {
-                    this.webService.presentLoading();
                     this.webService.login(sending_obj).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                         console.log("getting response : ", res);
+                        // this.webService.presentLoading();
                         if (!res.detail) {
                             //store user status in storage 
                             Storage.set({
@@ -197,6 +197,14 @@ let LoginPage = class LoginPage {
                                     this.webService.stopLoading();
                                 })); //end get app language
                                 ////////////////////////////////////////////////
+                            }, error => {
+                                this.webService.stopLoading();
+                                if (this.lang == "fr") {
+                                    alert("Etes-vous Chauffeur ?? \n SVP selectionnez l'option \n se connecter en tant que chaffeur.");
+                                }
+                                else {
+                                    alert("Are you a driver? please choose the option \n login as a driver. ");
+                                }
                             }); //added end get user details
                             //////////////////////////////////////////////////
                         }
@@ -208,6 +216,7 @@ let LoginPage = class LoginPage {
                             else {
                                 alert("Bad user name and/or password !!! \n Please enter correct values. ");
                             }
+                            this.router.navigateByUrl("/login");
                         }
                     }), error => {
                         this.webService.stopLoading();

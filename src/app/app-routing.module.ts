@@ -101,6 +101,18 @@ const routes: Routes = [
   {
     path: 'car-filter',
     loadChildren: () => import('./pages/car-filter/car-filter.module').then( m => m.CarFilterPageModule)
+  },
+  {
+    path: 'my-reports',
+    loadChildren: () => import('./driver/my-reports/my-reports.module').then( m => m.MyReportsPageModule)
+  },
+  {
+    path: 'send-reports',
+    loadChildren: () => import('./driver/send-reports/send-reports.module').then( m => m.SendReportsPageModule)
+  },
+  {
+    path: 'send-rides',
+    loadChildren: () => import('./driver/send-rides/send-rides.module').then( m => m.SendRidesPageModule)
   }
 
 

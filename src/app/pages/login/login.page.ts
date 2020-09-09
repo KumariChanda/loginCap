@@ -54,11 +54,11 @@ export class LoginPage  {
 
         if(this.usernameText && this.passwordText)
         {
-          this.webService.presentLoading();
 
 
           this.webService.login(sending_obj).subscribe(async res=>{
            console.log("getting response : ",res); 
+          // this.webService.presentLoading();
 
             if(!res.detail)
             {
@@ -112,6 +112,19 @@ export class LoginPage  {
                 
               
               
+              },error =>{
+                this.webService.stopLoading();
+                if(this.lang =="fr")
+                {
+                  alert("Etes-vous Chauffeur ?? \n SVP selectionnez l'option \n se connecter en tant que chaffeur.") ;            
+
+                } 
+                else
+                {
+                  alert("Are you a driver? please choose the option \n login as a driver. ") ;            
+
+                }  
+
               }) //added end get user details
               //////////////////////////////////////////////////
             }
@@ -127,6 +140,7 @@ export class LoginPage  {
                           alert("Bad user name and/or password !!! \n Please enter correct values. ") ;            
 
                         }  
+                        this.router.navigateByUrl("/login")
             }  
                            
           },error =>{
@@ -142,7 +156,7 @@ export class LoginPage  {
 
                         }  
 
-          }  
+          } 
           )
 
         }
