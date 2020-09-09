@@ -62,7 +62,7 @@ export class ProfilePage implements OnInit {
     this.profileData.first_name=this.userInfo.first_name;
     this.profileData.last_name=this.userInfo.last_name;
     this.profileData.telephone=this.userInfo.telephone;
-    this.userId =this.userInfo.id;
+     this.userId =this.userInfo.id;
 
 
     //get user type
