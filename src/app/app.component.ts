@@ -85,6 +85,16 @@ export class AppComponent {
       var ret=Storage.get({ key: 'accessToken' });
       
       this.testingToken=(await ret).value;
+      
+      if(this.testingToken)
+      {
+        var type =(await (Storage.get({ key: 'user_type' }))).value;
+        if(type == "chauffeur")
+        {
+          this.router.navigateByUrl("/home");
+        }
+      }
+
       console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
       
       
@@ -140,10 +150,7 @@ export class AppComponent {
       value: null           
     }); 
     ////////
-    await Storage.set({
-      key: 'user_infos',
-      value: null           
-    });
+    
 
       this.webService.getCurrentLanguage().then(val =>{
 
@@ -330,8 +337,86 @@ export class AppComponent {
                /////////if type is driver ////////////////////////////
                    else if(type == "chauffeur")
                    {
-                     //not yet ready 
-                     this.menuNavigatorLogin =[];
+                     
+                     this.menuNavigatorLogin =
+                     [
+                       {
+                         title : "Home",
+                         url   : "/dashboard",
+                         icon  : "home"
+                       },
+                       {
+                         title : "Profile",
+                         url   : "/profile",
+                         icon  : "person"
+                       },
+                       {
+                         title : "My Rides",
+                         url   : "/my-rides",
+                         icon  : "cart"
+                       },
+                       {
+                         title : "My Reports",
+                         url   : "/my-reports",
+                         icon  : "mail"
+                       },
+                       {
+                         title : "Support",
+                         icon  : "call",
+                         children :[
+     
+                           {
+                             title : "About Us",
+                             url   : "/about-us",
+                             icon  : "information-circle-outline"
+                           },
+                           
+                           {
+                             title : "Our Contacts",
+                             url   : "/our-contacts",
+                             icon  : "call-outline"
+                           },
+                           {
+                             title : "Term of usage",
+                             url   : "/term-usage",
+                             icon  : "help-circle-outline"
+                           },
+                           
+                           {
+                             title : "Confidentiality principles",
+                             url   : "/confidentiality",
+                             icon  : "help-circle-outline"
+                           },
+                           {
+                             title : "Send Reports",
+                             url   : "/send-reports",
+                             icon  : "send-outline"
+                           },
+                           
+                         ]
+                       },
+                       {
+                         title : "Settings",
+                         icon  : "settings",
+                         children :[
+     
+                           {
+                             title : "App Language",
+                             url   : "/seetings",
+                             icon  : "language-outline"
+                           },
+                           
+                           {
+                             title : "Change Password",
+                             url   : "/change-password",
+                             icon  : "lock-closed-outline"
+                           },
+ 
+                           
+                         ]
+                       },
+     
+                     ]
                    }    
                
               }
@@ -545,7 +630,84 @@ export class AppComponent {
                       else if(type == "chauffeur")
                       {
                         //not yet ready 
-                        this.menuNavigatorLogin =[];
+                        this.menuNavigatorLogin =
+                      [
+                        {
+                          title : "Accueil",
+                          url   : "/dashboard",
+                          icon  : "home"
+                        },
+                        {
+                          title : "Mon Profil",
+                          url   : "/profile",
+                          icon  : "person"
+                        },
+                        {
+                          title : "Mes Sorties",
+                          url   : "/my-rides",
+                          icon  : "cart"
+                        },
+                        {
+                          title : "Mes Rapports",
+                          url   : "/my-reports",
+                          icon  : "mail"
+                        },
+                        {
+                          title : "Support",
+                          icon  : "call",
+                          children :[
+                  
+                            {
+                              title : "À propos",
+                              url   : "/about-us",
+                              icon  : "information-circle-outline"
+                            },
+                            
+                            {
+                              title : "Nos Contacts",
+                              url   : "/our-contacts",
+                              icon  : "call-outline"
+                            },
+                            {
+                              title : "Conditions d'utilisation",
+                              url   : "/term-usage",
+                              icon  : "help-circle-outline"
+                            },
+                            
+                            {
+                              title : "Principes de confidentialités",
+                              url   : "/confidentiality",
+                              icon  : "help-circle-outline"
+                            },
+                            {
+                              title : "Envoyez Rapport",
+                              url   : "/send-reports",
+                              icon  : "send-outline"
+                            },
+                            
+                          ]
+                        },
+                        {
+                          title : "Réglages",
+                          icon  : "settings",
+                          children :[
+                  
+                            {
+                              title : "Langue de l'application",
+                              url   : "/seetings",
+                              icon  : "language-outline"
+                            },
+                            
+                            {
+                              title : "Réinitialiser Password",
+                              url   : "/change-password",
+                              icon  : "lock-closed-outline" 
+                            },
+                            
+                          ]
+                        },
+                  
+                      ]
                       }  
                 }
                 else
