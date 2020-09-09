@@ -171,6 +171,7 @@ filterData = [
                                   }else{
                                     alert("Empty List !! \n Back to Home Page")
                                   }
+                                  this.webService.stopLoading();//to stop loading
                                   this.router.navigateByUrl("/dashboard");
             
                               }
@@ -178,7 +179,7 @@ filterData = [
                               {
                                    //no  cars
                                    this.show = true// used to show page content
-            
+                                   this.webService.stopLoading();//to stop loading
                               }
 
 
@@ -249,6 +250,7 @@ filterData = [
                               }else{
                                 alert("Empty List !! \n Back to Home Page")
                               }
+                              this.webService.stopLoading();//to stop loading
                               this.router.navigateByUrl("/dashboard");
         
                           }
@@ -256,6 +258,7 @@ filterData = [
                           {
                                //no  cars
                                this.show = true// used to show page content
+                               this.webService.stopLoading();//to stop loading
         
                           }
                          
@@ -270,7 +273,7 @@ filterData = [
 
 
 
-                  this.webService.stopLoading();//to stop loading
+                 
                 }
                  
     
