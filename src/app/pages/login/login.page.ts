@@ -112,7 +112,21 @@ export class LoginPage  {
                 
               
               
-              }) //added end get user details
+              },error =>{
+                this.webService.stopLoading();
+                if(this.lang =="fr")
+                {
+                  alert("Etes-vous Chauffeur ?? \n SVP selectionnez l'option \n se connecter en tant que chaffeur.") ;            
+
+                } 
+                else
+                {
+                  alert("Are you a driver? please choose the option \n login as a driver. ") ;            
+
+                }  
+
+              }
+              ) //added end get user details
               //////////////////////////////////////////////////
             }
             else{
