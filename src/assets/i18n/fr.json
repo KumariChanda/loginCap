@@ -105,7 +105,15 @@
         "message" : "Message",
         "messageplaceholder" : "Laissez votre message ici...",
         "btn_submit" : "SOUMETTRE",
-        "number_hour" : "Nombre d'heure (*)"
+        "number_hour" : "Nombre d'heure (*)",
+        "booking_status" : "Statut :",
+        "booking_date" : "Date Reservation :",
+        "booking_start_date" : "Date de Debut:",
+        "booking_end_date" : "Date de Retour:",
+        "booking_price" : "Prix :",
+        "booking_your_message" : "Votre Message :",
+        "booking_destination" : "Destination : ",
+        "booking_view_detail" : "Voir Details"
 
     },
 
@@ -137,7 +145,7 @@
         "signup" : "Inscription",
         "signup_btn" : "S'Inscrire",
         "first_name" : "Prénom (*)",
-        "last_name" : "Nom",
+        "last_name" : "Nom(*)",
         "email" : "Adresse Email (*)",
         "password" : "Mot de passe (*)",
         "confirm_password" : "Confirmez mot de passe (*)",
