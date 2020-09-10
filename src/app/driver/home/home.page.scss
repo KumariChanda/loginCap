@@ -5,23 +5,21 @@ ion-card,ion-toolbar,ion-segment
 
 
 
-ion-item
+ion-item,ion-menu-button
 {
     --background: black; 
     color:  #ffa60a;
 }
 
-ion-button
+ion-radio
 {
-  color: black; 
-  --background:  #ffa60a;
-
+     background-color: white;
 }
 
-ion-chip
+ion-chip,ion-button
 {
     color: black; 
-    --background: white;
+    --background: #ffa60a;
     border-color: black;
 }
 
@@ -33,4 +31,10 @@ ion-segment-button
 ion-card-title
 {
     color : white;
+}
+img
+{
+    height: 250px;
+    width: 100%;
+
 }

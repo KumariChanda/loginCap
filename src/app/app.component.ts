@@ -144,9 +144,15 @@ export class AppComponent {
       key: 'accessToken',
       value: null           
     }); 
-    //set the userinfos and userType to null
+    //set the userinfos and userInfos to null
     await Storage.set({
       key: 'user_infos',
+      value: null           
+    }); 
+    ////////
+     //set the userinfos and userType to null
+     await Storage.set({
+      key: 'user_type',
       value: null           
     }); 
     ////////
@@ -207,7 +213,7 @@ export class AppComponent {
 
             this.testingToken = data;
         
-               //   alert("Token : "+this.testingToken)
+                 // alert("Token : "+this.testingToken)
          // console.log(" sidemenu token  ",this.testingToken);
            ////////////english side menu ////////////////////////////////////////////         
            if(lang=="en" )
@@ -277,8 +283,8 @@ export class AppComponent {
                         icon  : "mail"
                       },
                       {
-                        title : "Contact Us",
-                        icon  : "call",
+                        title : "Support",
+                        icon  : "help-buoy-outline",
                         children :[
     
                           {
@@ -362,7 +368,7 @@ export class AppComponent {
                        },
                        {
                          title : "Support",
-                         icon  : "call",
+                         icon  : "help-buoy-outline",
                          children :[
      
                            {
@@ -457,8 +463,8 @@ export class AppComponent {
                     ]
                   },
                   {
-                    title : "Contact Us",
-                    icon  : "call",
+                    title : "Support",
+                    icon  : "help-buoy-outline",
                     children :[
 
                       {
@@ -570,8 +576,8 @@ export class AppComponent {
                           icon  : "mail"
                         },
                         {
-                          title : "Contactez-Nous",
-                          icon  : "call",
+                          title : "Support",
+                          icon  : "help-buoy-outline",
                           children :[
                   
                             {
@@ -654,7 +660,7 @@ export class AppComponent {
                         },
                         {
                           title : "Support",
-                          icon  : "call",
+                          icon  : "help-buoy-outline",
                           children :[
                   
                             {
@@ -749,8 +755,8 @@ export class AppComponent {
                       ]
                     },
                     {
-                      title : "Contactez-Nous",
-                      icon  : "call",
+                      title : "Support",
+                      icon  : "help-buoy-outline",
                       children :[
               
                         {

@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n   <ion-toolbar>\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title class=\"register\">{{'Password.change_password' | translate }}</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n           <hr/>\n        <ion-card-content>\n           <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"old_password\" placeholder=\"{{'Password.old_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"new_password\"  placeholder=\"{{'Password.new_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"confirm_pass\" placeholder=\"{{'Password.confirm_password' | translate }}\"></ion-input>\n          <br>\n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"changePassword()\">{{'Password.change_password_btn' | translate }}</button>\n           </div>\n           <br>  \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n\n";
+    __webpack_exports__["default"] = "<ion-header>\n   <ion-toolbar>\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title class=\"register\">{{'Password.change_password' | translate }}</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n           <hr/>\n        <ion-card-content>\n           <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"email\" placeholder=\"{{'SIGNUP.email' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"new_password\"  placeholder=\"{{'Password.new_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"confirm_pass\" placeholder=\"{{'Password.confirm_password' | translate }}\"></ion-input>\n          <br>\n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"changePassword()\">{{'Password.change_password_btn' | translate }}</button>\n           </div>\n           <br>  \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n\n";
     /***/
   },
 
@@ -243,7 +243,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.webService = webService;
         this.router = router;
         this.btnClicked = false;
-        this.old_password = "";
+        this.email = "";
         this.new_password = "";
         this.confirm_pass = "";
         this.dataToSend = {
@@ -251,7 +251,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           "password": "",
           "first_name": "",
           "last_name": "",
-          "birth_date": "",
+          "birth_date": null,
           "telephone": "",
           "address": ""
         };
@@ -310,9 +310,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this.btnClicked = false;
           }, 1000); /////////////////////////////////
 
-          if (this.old_password && this.new_password && this.confirm_pass) {
+          if (this.email && this.new_password && this.confirm_pass) {
             if (this.new_password == this.confirm_pass) {
-              if (this.old_password == this.userInfo.password) {
+              if (this.email == this.userInfo.email) {
                 // if all the fields are correct
                 //data to be sent
                 // console.log(typeof(this.mobilenumber.toString( )))
@@ -355,9 +355,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
               } else {
                 if (this.lang == "fr") {
-                  alert("Ancien mot de passe incorrect !! ");
+                  alert("email incorrect !! ");
                 } else {
-                  alert("Incorrect old password!! ");
+                  alert("Incorrect email !! ");
                 }
               }
             } else {

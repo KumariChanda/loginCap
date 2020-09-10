@@ -73,7 +73,14 @@ ion-input
     //   box-shadow: 0 2px 0 #d39e1a, 0 3px 0px #e4e4e4;
     }
 
-    ion-textarea
-    {
-      color : white
-    }
+ion-textarea
+{
+  color : white
+}
+ion-title
+{
+    margin-left : -10%;
+    text-overflow: unset;
+    white-space: unset;
+    font-size: 20px;
+}

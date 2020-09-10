@@ -195,14 +195,40 @@ public  maxdate : any;   // the maximum date of a date picker
       //  console.log("res : ", this.list_original)
         this.webService.stopLoading();
         this.show = true;
-      }); //// end get destinations
+      },error=>{
+        this.webService.stopLoading(); 
+        
+        if(this.lang =="fr")
+        {
+          alert("Erreur serveur !! ")
+        }else{
+          alert("Server error !! ")
+
+        }
+        //this.router.navigateByUrl("/login");               
+
+       }
+       ); //// end get destinations
       ////////////////////////////////////////////////////////////////////
       
 
   
 
 
-  });/// end get voitures
+  },error=>{
+    this.webService.stopLoading(); 
+    
+    if(this.lang =="fr")
+    {
+      alert("Erreur serveur !! ")
+    }else{
+      alert("Server error !! ")
+
+    }
+    //this.router.navigateByUrl("/login");               
+
+   }
+   );/// end get voitures
  ////////////////////////////////////////////////////
 
   }//end of ngOnInit

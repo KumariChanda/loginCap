@@ -5,7 +5,7 @@ ion-card,ion-toolbar,ion-segment
 
 
 
-ion-item
+ion-item,ion-buttons
 {
     --background: black; 
     color:  #ffa60a;
@@ -33,4 +33,11 @@ ion-segment-button
 ion-card-title
 {
     color : white;
+}
+ion-title
+{
+    margin-left : -10%;
+    text-overflow: unset;
+    white-space: unset;
+    font-size: 20px;
 }

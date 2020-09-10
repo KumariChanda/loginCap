@@ -76,3 +76,10 @@ ion-input
     height: 10vw;
       box-shadow: 0 2px 0 #ffa60a, 0 3px 0px #e4e4e4;
     }
+ion-title
+{
+    margin-left : -10%;
+    text-overflow: unset;
+    white-space: unset;
+    font-size: 20px;
+}

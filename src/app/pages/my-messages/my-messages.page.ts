@@ -76,23 +76,37 @@ export class MyMessagesPage implements OnInit {
                 
                 //stop loader
                 this.webservice.stopLoading();
-
+      
                 this.router.navigateByUrl("/dashboard");
              
            }
            else{
                this.filterData = res;
+                     //stop loader
+                 this.show = true
+                 this.webservice.stopLoading();
+
            }
 
         
       }
 
 
-      //stop loader
-      this.show = true
-      this.webservice.stopLoading();
 
-    });
+
+    },error=>{
+      this.webservice.stopLoading(); 
+      
+      if(this.lang =="fr")
+      {
+        alert("Erreur serveur !! ")
+      }else{
+        alert("Server Error !! ")
+
+      }
+      this.router.navigateByUrl("/dashboard");               
+
+     });
     ///end get testimonial
 
 

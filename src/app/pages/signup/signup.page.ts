@@ -21,10 +21,10 @@ export class SignupPage implements OnInit {
    email ="";
    password : string ;
    confirmpassword : string;
-   dob = "";
+   dob = null;
    address ="";
    agreement : boolean;
-  lang: any;
+   lang: any;
 
   constructor(private router: Router,private webService: AppServiceService) { 
     this.btnClicked=false;
@@ -69,7 +69,6 @@ export class SignupPage implements OnInit {
                   "birth_date": this.dob,
                   "telephone": this.mobilenumber.toString(),
                   "address": this.address,
-                  "is_active": true
                  }
 
                  this.webService.presentLoading();                
@@ -99,9 +98,9 @@ export class SignupPage implements OnInit {
                   
                   if(this.lang =="fr")
                   {
-                    alert("Inscription échouée !! ")
+                    alert("Erreur Serveur \n Inscription échouée !! ")
                   }else{
-                    alert("Sign Up Failed !! ")
+                    alert("Server Error \n Sign Up Failed !! ")
   
                   }
                   this.router.navigateByUrl("/login");               

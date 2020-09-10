@@ -726,6 +726,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
 
                   case 4:
+                    _context3.next = 6;
+                    return Storage.set({
+                      key: 'user_type',
+                      value: null
+                    });
+
+                  case 6:
                     ////////
                     this.webService.getCurrentLanguage().then(function (val) {
                       _this4.webService.sendMessage({
@@ -737,7 +744,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.menuCtrl.toggle();
                     this.router.navigateByUrl("/dashboard");
 
-                  case 7:
+                  case 9:
                   case "end":
                     return _context3.stop();
                 }
@@ -770,7 +777,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 while (1) {
                   switch (_context4.prev = _context4.next) {
                     case 0:
-                      this.testingToken = data; //   alert("Token : "+this.testingToken)
+                      this.testingToken = data; // alert("Token : "+this.testingToken)
                       // console.log(" sidemenu token  ",this.testingToken);
                       ////////////english side menu ////////////////////////////////////////////         
 
@@ -841,8 +848,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           url: "/my-messages",
                           icon: "mail"
                         }, {
-                          title: "Contact Us",
-                          icon: "call",
+                          title: "Support",
+                          icon: "help-buoy-outline",
                           children: [{
                             title: "About Us",
                             url: "/about-us",
@@ -897,7 +904,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             icon: "mail"
                           }, {
                             title: "Support",
-                            icon: "call",
+                            icon: "help-buoy-outline",
                             children: [{
                               title: "About Us",
                               url: "/about-us",
@@ -963,8 +970,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           icon: "aperture-outline"
                         }]
                       }, {
-                        title: "Contact Us",
-                        icon: "call",
+                        title: "Support",
+                        icon: "help-buoy-outline",
                         children: [{
                           title: "About Us",
                           url: "/about-us",
@@ -1064,8 +1071,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           url: "/my-messages",
                           icon: "mail"
                         }, {
-                          title: "Contactez-Nous",
-                          icon: "call",
+                          title: "Support",
+                          icon: "help-buoy-outline",
                           children: [{
                             title: "À propos",
                             url: "/about-us",
@@ -1121,7 +1128,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             icon: "mail"
                           }, {
                             title: "Support",
-                            icon: "call",
+                            icon: "help-buoy-outline",
                             children: [{
                               title: "À propos",
                               url: "/about-us",
@@ -1187,8 +1194,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           icon: "aperture-outline"
                         }]
                       }, {
-                        title: "Contactez-Nous",
-                        icon: "call",
+                        title: "Support",
+                        icon: "help-buoy-outline",
                         children: [{
                           title: "À propos",
                           url: "/about-us",

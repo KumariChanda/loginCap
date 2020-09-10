@@ -3,7 +3,11 @@ ion-card,ion-toolbar,ion-segment
     --background: black; 
 }
 
-
+ion-badge
+{
+    --background : white;
+    color : black;
+}
 
 ion-item
 {
@@ -33,4 +37,11 @@ ion-segment-button
 ion-card-title
 {
     color : white;
+}
+ion-title
+{
+    margin-left : -10%;
+    text-overflow: unset;
+    white-space: unset;
+    font-size: 20px;
 }
