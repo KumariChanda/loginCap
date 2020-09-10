@@ -94,10 +94,9 @@ export class MyBookingsPage implements OnInit {
                       }
                        
                        //stop loader
-                       this.show = true
                        this.webService.stopLoading();
 
-                       this.router.navigateByUrl("/dashboard");
+                       this.router.navigate(["/dashboard"]);
                  }
                  else
                  {
@@ -140,6 +139,8 @@ export class MyBookingsPage implements OnInit {
                     }//end for loop
   
                  }
+
+             
                   
 
             }

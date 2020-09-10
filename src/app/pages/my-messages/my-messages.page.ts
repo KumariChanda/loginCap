@@ -75,7 +75,6 @@ export class MyMessagesPage implements OnInit {
                 }
                 
                 //stop loader
-                this.show = true
                 this.webservice.stopLoading();
 
                 this.router.navigateByUrl("/dashboard");
