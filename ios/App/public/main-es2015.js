@@ -679,7 +679,7 @@ let AppComponent = class AppComponent {
                             [
                                 {
                                     title: "Home",
-                                    url: "/dashboard",
+                                    url: "/home",
                                     icon: "home"
                                 },
                                 {
@@ -938,7 +938,7 @@ let AppComponent = class AppComponent {
                             [
                                 {
                                     title: "Accueil",
-                                    url: "/dashboard",
+                                    url: "/home",
                                     icon: "home"
                                 },
                                 {

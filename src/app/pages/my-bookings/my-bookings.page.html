@@ -33,7 +33,7 @@
                   
                <!-- Status -->
                 <ion-item>
-                    <ion-label > Status : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_status" | translate }} </ion-label>
                     <ion-chip slot="end" *ngIf="item.etape_location == 1 && lang=='fr'" style="color:orange"> En cours de traitement </ion-chip>
                     <ion-chip slot="end" *ngIf="item.etape_location == 1 && lang=='en'" style="color:orange"> Being processed </ion-chip>
                     <ion-chip slot="end" *ngIf="item.etape_location == 2 && lang=='fr'" style="color:purple"> Confirmée </ion-chip>
@@ -48,13 +48,13 @@
                 </ion-item>
                 <!-- Starting date -->
                 <ion-item>
-                    <ion-label > Start Date : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_start_date" | translate }} </ion-label>
                     <ion-chip slot="end"> {{item.date_debut}} </ion-chip>
                 </ion-item>
                   <!-- Destination -->
             
                <ion-item>
-                    <ion-label > Destination : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_destination" | translate }} </ion-label>
                     <ion-chip slot="end"> {{item.destination}} </ion-chip>
                 </ion-item>
 
@@ -68,7 +68,7 @@
                                         
                    <!-- button View details-->
                   <ion-button  style="margin-left:30%" (click) = "viewDetails(i)" >
-                      <ion-label >View details</ion-label>
+                      <ion-label >{{ "RESERVECAR.booking_view_detail" | translate }}</ion-label>
                   </ion-button>
           
           
@@ -98,7 +98,7 @@
                   
                <!-- Status -->
                 <ion-item>
-                    <ion-label > Status : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_status" | translate }} </ion-label>
                     <ion-chip slot="end" *ngIf="reservDetails.etape_location == 1 && lang=='fr'" style="color:orange"> En cours de traitement </ion-chip>
                     <ion-chip slot="end" *ngIf="reservDetails.etape_location == 1 && lang=='en'" style="color:orange"> Being processed </ion-chip>
                     <ion-chip slot="end" *ngIf="reservDetails.etape_location == 2 && lang=='fr'" style="color:purple"> Confirmée </ion-chip>
@@ -114,35 +114,35 @@
                
                 <!-- Location date -->
                 <ion-item>
-                    <ion-label > Booking Date : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_date" | translate }}</ion-label>
                     <ion-chip slot="end"> {{reservDetails.date_location}} </ion-chip>
                 </ion-item>
                 <!-- Starting date -->
                 <ion-item>
-                    <ion-label > Start Date : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_start_date" | translate }} </ion-label>
                     <ion-chip slot="end"> {{reservDetails.date_debut}} </ion-chip>
                 </ion-item>
                 <!-- Return date -->
                 <ion-item>
-                    <ion-label > Return Date : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_end_date" | translate }}</ion-label>
                     <ion-chip slot="end"> {{reservDetails.date_fin}} </ion-chip>
                 </ion-item>
                   <!-- Destination -->
             
                <ion-item>
-                    <ion-label > Destination : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_destination" | translate }} </ion-label>
                     <ion-chip slot="end"> {{reservDetails.destination}} </ion-chip>
                 </ion-item>
                   <!-- Price -->
             
                <ion-item>
-                    <ion-label > Montant : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_price" | translate }} </ion-label>
                     <ion-chip slot="end"> {{reservDetails.montant}} F CFA </ion-chip>
                 </ion-item>
                   <!-- your comment/ message -->
             
                <ion-item>
-                    <ion-label > Your Message : </ion-label>
+                    <ion-label > {{ "RESERVECAR.booking_your_message" | translate }} </ion-label>
                 </ion-item> 
     
                 <ion-label style="color:white;margin-right:10%; margin-left:7%; text-align:justify;">

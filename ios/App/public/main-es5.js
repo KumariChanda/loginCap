@@ -881,7 +881,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       else if (type == "chauffeur") {
                           this.menuNavigatorLogin = [{
                             title: "Home",
-                            url: "/dashboard",
+                            url: "/home",
                             icon: "home"
                           }, {
                             title: "Profile",
@@ -1105,7 +1105,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           //not yet ready 
                           this.menuNavigatorLogin = [{
                             title: "Accueil",
-                            url: "/dashboard",
+                            url: "/home",
                             icon: "home"
                           }, {
                             title: "Mon Profil",
