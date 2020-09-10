@@ -166,6 +166,9 @@ public  maxdate : any;   // the maximum date of a date picker
            if(res.length>0)
            {
               this.list_original = res;
+
+              this.show = true;
+
            }
            else
            {
@@ -194,7 +197,6 @@ public  maxdate : any;   // the maximum date of a date picker
 
       //  console.log("res : ", this.list_original)
         this.webService.stopLoading();
-        this.show = true;
       }); //// end get destinations
       ////////////////////////////////////////////////////////////////////
       
@@ -202,7 +204,18 @@ public  maxdate : any;   // the maximum date of a date picker
   
 
 
-  });/// end get voitures
+  },error=>{
+    this.webService.stopLoading(); 
+    
+    if(this.lang =="fr")
+    {
+      alert("Erreur server !! ")
+    }else{
+      alert("Server Error!! ")
+
+    }
+
+   });/// end get voitures
  ////////////////////////////////////////////////////
 
   }//end of ngOnInit

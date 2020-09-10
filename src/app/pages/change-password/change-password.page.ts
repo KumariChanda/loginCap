@@ -16,7 +16,7 @@ export class ChangePasswordPage implements OnInit {
   btnClicked:boolean=false;
   userInfo: any;
   lang: string;
-  old_password ="";
+  email ="";
   new_password ="";
   confirm_pass="";
 
@@ -25,7 +25,7 @@ export class ChangePasswordPage implements OnInit {
     "password" : "",
     "first_name" : "",
     "last_name" : "",
-    "birth_date": "",
+    "birth_date": null,
     "telephone": "",
     "address": "",
 
@@ -63,12 +63,12 @@ export class ChangePasswordPage implements OnInit {
       }, 1000)
 
           /////////////////////////////////
-          if(this.old_password && this.new_password && this.confirm_pass)
+          if(this.email && this.new_password && this.confirm_pass)
           {
             
               if(this.new_password == this.confirm_pass)
               {
-                 if(this.old_password == this.userInfo.password)
+                 if(this.email == this.email)
                  {
                     // if all the fields are correct
                     //data to be sent
@@ -138,9 +138,9 @@ export class ChangePasswordPage implements OnInit {
                   {
                     if(this.lang =="fr")
                     {
-                      alert("Ancien mot de passe incorrect !! ")
+                      alert("Email incorrect !! ")
                     }else{
-                      alert("Incorrect old password!! ")
+                      alert("Incorrect email !! ")
     
                     }
                   }

@@ -58,7 +58,10 @@ export class MyMessagesPage implements OnInit {
            alert("No testimony \ n Back Home Page")
          }
 
-         this.router.navigateByUrl("/dashboard");
+         
+          //stop loader
+          this.webservice.stopLoading();
+          this.router.navigateByUrl("/dashboard");
 
          
       }else{
@@ -82,17 +85,30 @@ export class MyMessagesPage implements OnInit {
            }
            else{
                this.filterData = res;
+               this.show = true
+               
+              //stop loader
+              this.webservice.stopLoading();
            }
 
         
       }
 
 
-      //stop loader
-      this.show = true
-      this.webservice.stopLoading();
 
-    });
+    },error=>{
+      this.webservice.stopLoading(); 
+      
+      if(this.lang =="fr")
+      {
+        alert("Erreur serveur !! ")
+      }else{
+        alert("Server error !! ")
+
+      }
+      this.router.navigateByUrl("/dashboard");               
+
+     });
     ///end get testimonial
 
 
