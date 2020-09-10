@@ -21,10 +21,10 @@ export class SignupPage implements OnInit {
    email ="";
    password : string ;
    confirmpassword : string;
-   dob = "";
+   dob = null;
    address ="";
    agreement : boolean;
-  lang: any;
+   lang: any;
 
   constructor(private router: Router,private webService: AppServiceService) { 
     this.btnClicked=false;
@@ -51,7 +51,7 @@ export class SignupPage implements OnInit {
       }, 1000)
     console.log("Signup cllicked!.");
 
-     if(this.firstname &&  this.email && this.password && this.password && this.confirmpassword)
+     if(this.firstname &&  this.lastname && this.email && this.password && this.password && this.confirmpassword)
      {
           if(this.agreement == true)
         {
@@ -69,7 +69,6 @@ export class SignupPage implements OnInit {
                   "birth_date": this.dob,
                   "telephone": this.mobilenumber.toString(),
                   "address": this.address,
-                  "is_active": true
                  }
 
                  this.webService.presentLoading();                
@@ -81,7 +80,13 @@ export class SignupPage implements OnInit {
                   {
                     console.log(res);
                     this.webService.stopLoading();
-                    alert("Sign up Ok !!!");
+                    if(this.lang =="fr")
+                  {
+                    alert("Inscription réussie !! ")
+                  }else{
+                    alert("Successful Sign Up   !! ")
+  
+                  }
                     this.router.navigateByUrl("/login");
                   }
 
@@ -90,7 +95,14 @@ export class SignupPage implements OnInit {
                    
                  },error=>{
                   this.webService.stopLoading(); 
-                  alert("Sign up not Ok !!");
+                  
+                  if(this.lang =="fr")
+                  {
+                    alert("Erreur Serveur \n Inscription échouée !! ")
+                  }else{
+                    alert("Server Error \n Sign Up Failed !! ")
+  
+                  }
                   this.router.navigateByUrl("/login");               
 
                  }
@@ -104,7 +116,7 @@ export class SignupPage implements OnInit {
 
                 if(this.lang =="fr")
                 {
-                  alert("Le champ mot de passe doit etre egal au champ confirmez mot de passe !! ")
+                  alert("Le champ mot de passe doit être egal au champ confirmez mot de passe !! ")
                 }else{
                   alert("Password and Confirm Pasword Should be same !! ")
 

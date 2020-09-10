@@ -34,7 +34,20 @@
      
         <ion-card-header>
           <ion-card-subtitle>
-             
+
+
+             <!-- price per day -->
+                <ion-chip >
+                  <ion-label > {{car.per_day}} F CFA / {{"DASHBOARD.day"|translate}}</ion-label>
+                </ion-chip> 
+                <!-- price per hour -->
+                <ion-chip >
+                  <ion-label > {{car.per_hour}} F CFA / {{"DASHBOARD.hour"|translate}}</ion-label>
+                </ion-chip> 
+                <!-- Price Airport -->
+                <ion-chip >
+                  <ion-label > {{car.per_hour}} F CFA / {{"DASHBOARD.airport_pick"|translate}}</ion-label>
+                </ion-chip> 
                 <!-- type of motor -->
                 <ion-chip >
                   <ion-icon name="car"></ion-icon>

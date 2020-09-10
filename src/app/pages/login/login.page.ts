@@ -116,12 +116,12 @@ export class LoginPage  {
                 this.webService.stopLoading();
                 if(this.lang =="fr")
                 {
-                  alert("Etes-vous Chauffeur ?? \n SVP selectionnez l'option \n se connecter en tant que chaffeur.") ;            
+                  alert("Etes-vous Chauffeur ?? \n Si oui, selectionnez l'option \n se connecter en tant que chaffeur.") ;            
 
                 } 
                 else
                 {
-                  alert("Are you a driver? please choose the option \n login as a driver. ") ;            
+                  alert("Are you a driver?\n If yes,  choose the option \n login as a driver. ") ;            
 
                 }  
 
@@ -131,7 +131,16 @@ export class LoginPage  {
             }
             else{
                 this.webService.stopLoading();
-                alert("bad credential !")
+                if(this.lang =="fr")
+                {
+                  alert("Mauvais username et/ou mot de passe !!! \n SVP entrez des valeurs correctes. ") ;            
+
+                } 
+                else
+                {
+                  alert("Bad username and/or password !!! \n Please enter correct values. ") ;            
+
+                }  
             }  
                            
           },error =>{

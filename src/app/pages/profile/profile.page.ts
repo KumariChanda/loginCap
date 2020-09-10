@@ -16,13 +16,13 @@ export class ProfilePage implements OnInit {
   btnClicked:boolean=false;
   editableText:boolean=true;
    profileData={
-   "first_name" :"Chanda",
-   "last_name" :"Kumari",
-   "telephone" :"8559080443",
-   "email" :"kumarichanda658@gmail.com",
-   "birth_date" :"1996-06-26",
-   "address" :"A-658",
-   "password":"string"
+   "first_name" :"",
+   "last_name" :"",
+   "telephone" :"",
+   "email" :"",
+   "birth_date" :"",
+   "address" :"",
+   "password":null
   }
    agreement : boolean;
   userInfo: any;
@@ -62,7 +62,7 @@ export class ProfilePage implements OnInit {
     this.profileData.first_name=this.userInfo.first_name;
     this.profileData.last_name=this.userInfo.last_name;
     this.profileData.telephone=this.userInfo.telephone;
-    this.userId =this.userInfo.id;
+     this.userId =this.userInfo.id;
 
 
     //get user type
