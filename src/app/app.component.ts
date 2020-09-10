@@ -342,7 +342,7 @@ export class AppComponent {
                      [
                        {
                          title : "Home",
-                         url   : "/dashboard",
+                         url   : "/home",
                          icon  : "home"
                        },
                        {
@@ -634,7 +634,7 @@ export class AppComponent {
                       [
                         {
                           title : "Accueil",
-                          url   : "/dashboard",
+                          url   : "/home",
                           icon  : "home"
                         },
                         {
