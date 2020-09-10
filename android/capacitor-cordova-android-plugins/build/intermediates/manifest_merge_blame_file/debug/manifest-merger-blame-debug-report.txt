@@ -1,0 +1,36 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:amazon="http://schemas.amazon.com/apk/res/android"
+3    xmlns:android="http://schemas.android.com/apk/res/android"
+4    package="capacitor.android.plugins"
+5    android:versionCode="1"
+6    android:versionName="1.0" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="21"
+9-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+10        android:targetSdkVersion="29" />
+10-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+11
+12    <uses-permission android:name="android.permission.CALL_PHONE" />
+12-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:8:1-64
+12-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:8:18-62
+13
+14    <uses-feature
+14-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:1-83
+15        android:name="android.hardware.telephony"
+15-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:15-56
+16        android:required="false" />
+16-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:57-81
+17
+18    <uses-permission android:name="android.permission.INTERNET" />
+18-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:1-62
+18-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:18-60
+19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+19-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:1-76
+19-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:18-74
+20
+21    <application>
+21-->D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:5:1-7:15
+22    </application>
+23
+24</manifest>

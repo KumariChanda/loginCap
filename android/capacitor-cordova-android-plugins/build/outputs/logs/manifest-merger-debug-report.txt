@@ -1,0 +1,59 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+	xmlns:amazon
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:4:1-57
+	package
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:11-46
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:3:1-59
+application
+ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:5:1-7:15
+uses-permission#android.permission.CALL_PHONE
+ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:8:1-64
+	android:name
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:8:18-62
+uses-feature#android.hardware.telephony
+ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:1-83
+	android:required
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:57-81
+	android:name
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:15-56
+uses-permission#android.permission.INTERNET
+ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:1-62
+	android:name
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:18-60
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:1-76
+	android:name
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:18-74
+uses-sdk
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+		ADDED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
+		INJECTED from D:\ionic4\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
