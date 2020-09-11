@@ -66,6 +66,7 @@ show = false; //is to show page content
 
   //prev page
   page_prev ="" 
+  lang: string;
  
 
   constructor( private router : Router, private route: ActivatedRoute, private webservice : AppServiceService) {  
@@ -73,8 +74,10 @@ show = false; //is to show page content
     
   }
 
-  ngOnInit() {
-    this.webservice.presentLoading();
+ async ngOnInit() {
+    this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+    // this.webservice.presentLoading();
+    
     this.getCurrentToken();
 
     this.subscription = this.route.queryParams.subscribe((data) => {
@@ -100,15 +103,35 @@ show = false; //is to show page content
           this.car.airport = resp[2].prix;
 
           //stop loading
-          this.webservice.stopLoading();
+          // this.webservice.stopLoading();
           //show the list
           this.show = true;
 
 
-         }); //end get prices
+         },error=>{
+          this.webservice.stopLoading(); 
+          
+          if(this.lang =="fr")
+          {
+            alert("Erreur server !! ")
+          }else{
+            alert("Server Error!! ")
+      
+          }
+        }); //end get prices
 
           
       });  
+    },error=>{
+      this.webservice.stopLoading(); 
+      
+      if(this.lang =="fr")
+      {
+        alert("Erreur server !! ")
+      }else{
+        alert("Server Error!! ")
+  
+      }
     });
   }
 

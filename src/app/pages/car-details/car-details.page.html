@@ -35,19 +35,54 @@
         <ion-card-header>
           <ion-card-subtitle>
 
+           <ion-grid>  
+            <ion-row>
+              <ion-col size="4" size-lg >
+                <ion-chip >
+                  <ion-label >{{"DASHBOARD.day"|translate}}</ion-label>
+                </ion-chip>
+               <!-- <b> {{"DASHBOARD.day"|translate}}</b> -->
+              </ion-col>
+              <ion-col size="4" size-lg>
+                <ion-chip >
+                  <ion-label > {{"DASHBOARD.hour"|translate}}</ion-label>
+                </ion-chip>
+               <!-- <b> {{"DASHBOARD.hour"|translate}}</b> -->
+              </ion-col>
+              <ion-col size="4" size-lg>
+                <ion-chip >
+                  <ion-label > {{"DASHBOARD.airport_pick"|translate}}</ion-label>
+                </ion-chip> 
+               <!-- <b> {{"DASHBOARD.airport_pick"|translate}}</b> -->
+              </ion-col>
+            </ion-row>  
+            <ion-row>
+              <ion-col size="4" size-lg>
+                {{car.per_day}}
+              </ion-col>
+              <ion-col size="4" size-lg>
+                {{car.per_hour}}
+              </ion-col>
+              <ion-col size="4" size-lg>
+                {{car.per_hour}}
+              </ion-col>
+            </ion-row>
+
+            
+          </ion-grid>
 
              <!-- price per day -->
-                <ion-chip >
+                <!-- <ion-chip >
                   <ion-label > {{car.per_day}} F CFA / {{"DASHBOARD.day"|translate}}</ion-label>
-                </ion-chip> 
+                </ion-chip>  -->
                 <!-- price per hour -->
-                <ion-chip >
+                <!-- <ion-chip >
                   <ion-label > {{car.per_hour}} F CFA / {{"DASHBOARD.hour"|translate}}</ion-label>
-                </ion-chip> 
+                </ion-chip>  -->
                 <!-- Price Airport -->
-                <ion-chip >
+                <!-- <ion-chip >
                   <ion-label > {{car.per_hour}} F CFA / {{"DASHBOARD.airport_pick"|translate}}</ion-label>
-                </ion-chip> 
+                </ion-chip>  -->
                 <!-- type of motor -->
                 <ion-chip >
                   <ion-icon name="car"></ion-icon>
