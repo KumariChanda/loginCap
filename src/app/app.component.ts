@@ -150,6 +150,11 @@ export class AppComponent {
       value: null           
     }); 
     ////////
+    await Storage.set({
+      key: 'user_type',
+      value: null           
+    }); 
+    ////////
     
 
       this.webService.getCurrentLanguage().then(val =>{
@@ -272,9 +277,23 @@ export class AppComponent {
                         icon  : "cart"
                       },
                       {
-                        title : "My Testimonials",
-                        url   : "/my-messages",
-                        icon  : "mail"
+                        title : "Testimonials",
+                        icon  : "mail",
+                        children :[
+                  
+                          {
+                            title : "My testimonials",
+                            url   : "/my-messages",
+                            icon  : "mail"
+                          },
+                          
+                          {
+                            title : "Send testimonial",
+                            url   : "/send-feedbacks",
+                            icon  : "send-outline"
+                          }
+                        ]
+
                       },
                       {
                         title : "Support",
@@ -302,11 +321,6 @@ export class AppComponent {
                             title : "Confidentiality principles",
                             url   : "/confidentiality",
                             icon  : "help-circle-outline"
-                          },
-                          {
-                            title : "Send Testimonials",
-                            url   : "/send-feedbacks",
-                            icon  : "send-outline"
                           },
                           
                         ]
@@ -352,14 +366,14 @@ export class AppComponent {
                        },
                        {
                          title : "My Rides",
-                         url   : "/my-rides",
+                         url   : "/send-rides",
                          icon  : "cart"
                        },
-                       {
-                         title : "My Reports",
-                         url   : "/my-reports",
-                         icon  : "mail"
-                       },
+                      //  {
+                      //    title : "My Reports",
+                      //    url   : "/my-reports",
+                      //    icon  : "mail"
+                      //  },
                        {
                          title : "Support",
                          icon  : "help-buoy-outline",
@@ -376,22 +390,22 @@ export class AppComponent {
                              url   : "/our-contacts",
                              icon  : "call-outline"
                            },
-                           {
-                             title : "Term of usage",
-                             url   : "/term-usage",
-                             icon  : "help-circle-outline"
-                           },
+                          //  {
+                          //    title : "Term of usage",
+                          //    url   : "/term-usage",
+                          //    icon  : "help-circle-outline"
+                          //  },
                            
-                           {
-                             title : "Confidentiality principles",
-                             url   : "/confidentiality",
-                             icon  : "help-circle-outline"
-                           },
-                           {
-                             title : "Send Reports",
-                             url   : "/send-reports",
-                             icon  : "send-outline"
-                           },
+                          //  {
+                          //    title : "Confidentiality principles",
+                          //    url   : "/confidentiality",
+                          //    icon  : "help-circle-outline"
+                          //  },
+                          //  {
+                          //    title : "Send Reports",
+                          //    url   : "/send-reports",
+                          //    icon  : "send-outline"
+                          //  },
                            
                          ]
                        },
@@ -565,9 +579,23 @@ export class AppComponent {
                           icon  : "cart"
                         },
                         {
-                          title : "Mes témoignages",
-                          url   : "/my-messages",
-                          icon  : "mail"
+                          title : "Témoignages",
+                          icon  : "mail",
+                          
+                          children :[
+                  
+                            {
+                              title : "Mes témoignages",
+                              url   : "/my-messages",
+                              icon  : "mail"
+                            },
+                            
+                            {
+                              title : "Postez témoignages",
+                              url   : "/send-feedbacks",
+                              icon  : "send-outline"
+                            }
+                          ]
                         },
                         {
                           title : "Support",
@@ -596,16 +624,12 @@ export class AppComponent {
                               url   : "/confidentiality",
                               icon  : "help-circle-outline"
                             },
-                            {
-                              title : "Postez Témoignages",
-                              url   : "/send-feedbacks",
-                              icon  : "send-outline"
-                            },
+                            
                             
                           ]
                         },
                         {
-                          title : "Réglages",
+                          title : "Paramètres",
                           icon  : "settings",
                           children :[
                   
@@ -643,15 +667,15 @@ export class AppComponent {
                           icon  : "person"
                         },
                         {
-                          title : "Mes Sorties",
-                          url   : "/my-rides",
+                          title : "Mes Trajets",
+                          url   : "/send-rides",
                           icon  : "cart"
                         },
-                        {
-                          title : "Mes Rapports",
-                          url   : "/my-reports",
-                          icon  : "mail"
-                        },
+                        // {
+                        //   title : "Mes Rapports",
+                        //   url   : "/my-reports",
+                        //   icon  : "mail"
+                        // },
                         {
                           title : "Support",
                           icon  : "help-buoy-outline",
@@ -668,27 +692,27 @@ export class AppComponent {
                               url   : "/our-contacts",
                               icon  : "call-outline"
                             },
-                            {
-                              title : "Conditions d'utilisation",
-                              url   : "/term-usage",
-                              icon  : "help-circle-outline"
-                            },
+                            // {
+                            //   title : "Conditions d'utilisation",
+                            //   url   : "/term-usage",
+                            //   icon  : "help-circle-outline"
+                            // },
                             
-                            {
-                              title : "Principes de confidentialités",
-                              url   : "/confidentiality",
-                              icon  : "help-circle-outline"
-                            },
-                            {
-                              title : "Envoyez Rapport",
-                              url   : "/send-reports",
-                              icon  : "send-outline"
-                            },
+                            // {
+                            //   title : "Principes de confidentialités",
+                            //   url   : "/confidentiality",
+                            //   icon  : "help-circle-outline"
+                            // },
+                            // {
+                            //   title : "Envoyez Rapport",
+                            //   url   : "/send-reports",
+                            //   icon  : "send-outline"
+                            // },
                             
                           ]
                         },
                         {
-                          title : "Réglages",
+                          title : "Paramètres",
                           icon  : "settings",
                           children :[
                   
@@ -780,7 +804,7 @@ export class AppComponent {
                       ]
                     },
                     {
-                      title : "Réglages",
+                      title : "Paramètres",
                       icon  : "settings",
                       children :[
               

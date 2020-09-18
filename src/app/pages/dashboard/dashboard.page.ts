@@ -84,7 +84,7 @@ public  maxdate : any;   // the maximum date of a date picker
 ///////////////////////end data for destination search ///////////////////
   
 
-   show = false // used to show page content
+  show = false // used to show page content
   lang: string;
 
   constructor(private route: ActivatedRoute, private router: Router, 
@@ -204,25 +204,25 @@ public  maxdate : any;   // the maximum date of a date picker
   
 
 
-  },error=>{
-    this.webService.stopLoading(); 
-    
-    if(this.lang =="fr")
-    {
-      alert("Erreur server !! ")
-    }else{
-      alert("Server Error!! ")
+    },error=>{
+      this.webService.stopLoading(); 
+      
+      if(this.lang =="fr")
+      {
+        alert("Erreur Serveur !! ")
+      }else{
+        alert("Server Error!! ")
 
-    }
+      }
 
-   });/// end get voitures
+    });/// end get voitures
  ////////////////////////////////////////////////////
 
   }//end of ngOnInit
 
-//////////////////////////////////////////////////////
 
-
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 setDate()
 {
   let date : Date = new Date();
@@ -274,8 +274,8 @@ setDate()
 
 
 }
-///////////////end set Date//////////////////////////////////////
-//////////////////////////////////////////////////////
+///////////////end set Date////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 
 //this method is used to print the details of a selected car //////////////

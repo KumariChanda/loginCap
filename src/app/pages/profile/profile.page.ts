@@ -22,7 +22,6 @@ export class ProfilePage implements OnInit {
    "email" :"",
    "birth_date" :"",
    "address" :"",
-   "password":null
   }
    agreement : boolean;
   userInfo: any;

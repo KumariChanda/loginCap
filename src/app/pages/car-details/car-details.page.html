@@ -4,7 +4,7 @@
       <ion-item>
 
         <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
-        <ion-title>{{ 'CARDETAILS.title' | translate }}</ion-title>
+        <ion-title style="margin-left : 15%">{{ 'CARDETAILS.title' | translate }}</ion-title>
 
       </ion-item>
 
@@ -20,10 +20,10 @@
              <ion-slide *ngFor="let item of car.photo">
                 <img [src]="item.image" />
             </ion-slide>
-        </ion-slides>
+        </ion-slides> <br>
 
         <!-- tile or designation of the car -->
-          <br>
+          
         <strong class="ion-text-center">
             <ion-label style="margin-left:5%; "> {{car.modele.libelle}} </ion-label> 
          </strong>
@@ -35,49 +35,61 @@
         <ion-card-header>
           <ion-card-subtitle>
 
+             
+              <!-- Car Number-->
+              <!-- <ion-chip>
+                <ion-label > {{ 'CARDETAILS.carnumber' | translate }} {{car.immatriculation}}  </ion-label> 
+              </ion-chip><br><br> -->
+               
 
+              {{"CARDETAILS.price" | translate}} <br><br>
              <!-- price per day -->
                 <ion-chip >
                   <ion-label > {{car.per_day}} F CFA / {{"DASHBOARD.day"|translate}}</ion-label>
-                </ion-chip> 
+                </ion-chip> <br>
                 <!-- price per hour -->
                 <ion-chip >
                   <ion-label > {{car.per_hour}} F CFA / {{"DASHBOARD.hour"|translate}}</ion-label>
-                </ion-chip> 
+                </ion-chip> <br>
                 <!-- Price Airport -->
                 <ion-chip >
                   <ion-label > {{car.per_hour}} F CFA / {{"DASHBOARD.airport_pick"|translate}}</ion-label>
                 </ion-chip> 
+                
+
+          </ion-card-subtitle>
+
+
+          <ion-card-title>Description</ion-card-title>
+        </ion-card-header>
+
+
+        <ion-card-content style="text-align : justify " >
+
+                <!-- Number of Seats-->
+                <ion-chip ><br>
+                  <ion-icon name="person"></ion-icon>
+                  <ion-label >{{car.passager}} {{ 'CARDETAILS.seats' | translate }}</ion-label>
+                </ion-chip> <br>
+
                 <!-- type of motor -->
                 <ion-chip >
                   <ion-icon name="car"></ion-icon>
                   <ion-label > {{car.type_caburant}}</ion-label>
-                </ion-chip> 
-                <!-- Car Color-->
-                <ion-chip >
-                  <ion-icon name="medal" ></ion-icon>
-                  <ion-label  textWrap="true"> {{ 'DASHBOARD.color' | translate }} {{car.couleur}} </ion-label>
                 </ion-chip> <br>
-                <!-- Number of Seats-->
-                <ion-chip >
-                  <ion-icon name="person"></ion-icon>
-                  <ion-label >{{car.passager}} {{ 'CARDETAILS.seats' | translate }}</ion-label>
-                </ion-chip>
-
                     <!-- number of baggages -->
               <ion-chip>
                 <ion-icon name="briefcase"></ion-icon>
                 <ion-label > {{car.bagage}} {{ 'CARDETAILS.baggages' | translate }} </ion-label> 
               </ion-chip> <br>
-                    <!-- Car Number-->
-              <ion-chip>
-                <ion-label > {{ 'CARDETAILS.carnumber' | translate }} {{car.immatriculation}}  </ion-label> 
-              </ion-chip>
-
-          </ion-card-subtitle>
-          <ion-card-title>Description</ion-card-title>
-        </ion-card-header>
-        <ion-card-content style="text-align : justify " >
+                
+                <!-- Car Color-->
+                <ion-chip >
+                  <ion-icon name="medal" ></ion-icon>
+                  <ion-label  textWrap="true"> {{ 'DASHBOARD.color' | translate }} {{car.couleur}} </ion-label>
+                </ion-chip> <br><br>
+                
+              
                             
             {{car.description}}
             

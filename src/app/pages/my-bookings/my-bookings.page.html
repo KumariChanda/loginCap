@@ -7,8 +7,8 @@
         </ion-buttons>
 
       <!-- prev icon -->
-           <ion-icon color="light" name="chevron-back" (click)="prev()" *ngIf="reservDetails!=null" ></ion-icon>
-        <ion-title> {{"DASHBOARD.my_bookings" | translate}} </ion-title>
+           <ion-icon style="margin-right:20%" color="light" name="chevron-back" (click)="prev()" *ngIf="reservDetails!=null" ></ion-icon>
+        <ion-title > {{"DASHBOARD.my_bookings" | translate}} </ion-title>
     </ion-item> 
 
   </ion-toolbar>
@@ -26,36 +26,50 @@
         <img [src]="item?.photo_car[0]?.image" />
 
             <ion-card-header>
-                    <ion-card-title >{{item.modele}}</ion-card-title>
+                    <ion-item> 
+                        <ion-card-title >{{item.modele}}</ion-card-title>
 
+                        <ion-icon *ngIf="item.etape_location==1" style="color: #ffa60a" slot="end"
+                          name="close-circle-outline" (click)="cancel(i)">
+                         
+                         </ion-icon>
+                        
+                        <ion-icon *ngIf="item.etape_location==5 && (item.note_client == 0 ||item.note_client==null)" style="color:#ffa60a " slot="end"
+                          name="open-outline" (click)="Mark(i)">
+                         
+                         </ion-icon> 
+
+                    </ion-item>
               <ion-card-subtitle>
 
                   
                <!-- Status -->
                 <ion-item>
                     <ion-label > {{ "RESERVECAR.booking_status" | translate }} </ion-label>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 1 && lang=='fr'" style="color:orange"> En cours de traitement </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 1 && lang=='en'" style="color:orange"> Being processed </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 2 && lang=='fr'" style="color:purple"> Confirmée </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 2 && lang=='en'" style="color:purple"> Confirmed </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 3 && lang=='fr'" style="color:red"> Rejetée pour défaut paiement</ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 3 && lang=='en'" style="color:red"> Rejected for default of payment </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 4 && lang=='fr'" style="color:blue"> Réservation Débutée </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 4 && lang=='en'" style="color:blue"> Reservation started </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 5 && lang=='fr'" style="color:green"> Réservation terminée </ion-chip>
-                    <ion-chip slot="end" *ngIf="item.etape_location == 5 && lang=='en'" style="color:green">Reservation completed </ion-chip>
-                   
+                    <label textWrap="true" style="color:white;width: 150px" *ngIf="item.etape_location == 1 && lang=='fr'" > En cours de traitement </label>
+                    <label textWrap="true" style="color:white;width: 150px" *ngIf="item.etape_location == 1 && lang=='en'"> Being processed </label>
+                    <label textWrap="true" style="color:white;width: 150px" *ngIf="item.etape_location == 2 && lang=='fr'" > Confirmée </label>
+                    <label  *ngIf="item.etape_location == 2 && lang=='en'" textWrap="true" style="color:white;width: 150px"> Confirmed </label>
+                    <label *ngIf="item.etape_location == 3 && lang=='fr'" textWrap="true" style="color:white;width: 150px"> Rejetée </label>
+                    <label  *ngIf="item.etape_location == 3 && lang=='en'" textWrap="true" style="color:white;width: 150px"> Rejected  </label>
+                    <label  *ngIf="item.etape_location == 4 && lang=='fr'" textWrap="true" style="color:white;width: 150px"> Réservation Débutée </label>
+                    <label  *ngIf="item.etape_location == 4 && lang=='en'" textWrap="true" style="color:white;width: 150px"> Reservation started </label>
+                    <label  *ngIf="item.etape_location == 5 && lang=='fr'" textWrap="true" style="color:white;width: 150px"> Réservation terminée </label>
+                    <label  *ngIf="item.etape_location == 5 && lang=='en'" textWrap="true" style="color:white;width: 150px">Reservation completed </label>
+                    <label  *ngIf="item.etape_location == 6 && lang=='fr'" textWrap="true" style="color:white;width: 150px"> Annulée </label>
+                    <label  *ngIf="item.etape_location == 6 && lang=='en'" textWrap="true" style="color:white;width: 150px"> Cancelled </label>
+                  
                 </ion-item>
                 <!-- Starting date -->
                 <ion-item>
                     <ion-label > {{ "RESERVECAR.booking_start_date" | translate }} </ion-label>
-                    <ion-chip slot="end"> {{item.date_debut}} </ion-chip>
+                    <label textWrap="true" style="color:white;width: 150px"> {{item.date_debut}} </label>
                 </ion-item>
                   <!-- Destination -->
             
                <ion-item>
-                    <ion-label > {{ "RESERVECAR.booking_destination" | translate }} </ion-label>
-                    <ion-chip slot="end"> {{item.destination}} </ion-chip>
+                    <label  > {{ "RESERVECAR.booking_destination" | translate }} </label>
+                    <label textWrap="true" style="color:white; width: 150px"> {{item.destination}} </label>
                 </ion-item>
 
                 
@@ -65,16 +79,15 @@
 
 
             <ion-card-content>
-                                        
-                   <!-- button View details-->
+
+                  <!-- button View details-->
                   <ion-button  style="margin-left:30%" (click) = "viewDetails(i)" >
                       <ion-label >{{ "RESERVECAR.booking_view_detail" | translate }}</ion-label>
                   </ion-button>
           
-          
             </ion-card-content>
-      </ion-card>
-        <!-- Stop Reservation -->
+        </ion-card>
+                  <!-- Stop Reservation -->
       </div>  
     <!-- -------------------------------------------------------------------------------------- -->
     <!-- -------------------------------------------------------------------------------------- -->
@@ -98,56 +111,99 @@
                   
                <!-- Status -->
                 <ion-item>
-                    <ion-label > {{ "RESERVECAR.booking_status" | translate }} </ion-label>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 1 && lang=='fr'" style="color:orange"> En cours de traitement </ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 1 && lang=='en'" style="color:orange"> Being processed </ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 2 && lang=='fr'" style="color:purple"> Confirmée </ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 2 && lang=='en'" style="color:purple"> Confirmed </ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 3 && lang=='fr'" style="color:red"> Rejetée pour défaut paiement</ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 3 && lang=='en'" style="color:red"> Rejected for default of payment </ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 4 && lang=='fr'" style="color:blue"> Réservation Débutée </ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 4 && lang=='en'" style="color:blue"> Reservation started </ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 5 && lang=='fr'" style="color:green"> Réservation terminée </ion-chip>
-                    <ion-chip slot="end" *ngIf="reservDetails.etape_location == 5 && lang=='en'" style="color:green">Reservation completed </ion-chip>
-                   
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_status" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 1 && lang=='fr'" > En cours de traitement </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 1 && lang=='en'" > Being processed </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 2 && lang=='fr'" > Confirmée </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 2 && lang=='en'" > Confirmed </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 3 && lang=='fr'"> Rejetée </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 3 && lang=='en'" > Rejected  </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 4 && lang=='fr'" > Réservation Débutée </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 4 && lang=='en'" > Reservation started </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 5 && lang=='fr'" > Réservation terminée </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 5 && lang=='en'" >Reservation completed </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 6 && lang=='fr'" > Annulée </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 6 && lang=='en'" > Cancelled </label>             
                 </ion-item>
                
-                <!-- Location date -->
+                <!-- Booking Type  -->
                 <ion-item>
-                    <ion-label > {{ "RESERVECAR.booking_date" | translate }}</ion-label>
-                    <ion-chip slot="end"> {{reservDetails.date_location}} </ion-chip>
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_type" | translate }}</label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"  *ngIf="reservDetails.type_location == 3"> {{ "RESERVECAR.airport_pick" | translate }}  </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.type_location == 2"> {{ "RESERVECAR.per_hour" | translate }}  </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.type_location == 1"> {{ "RESERVECAR.per_day" | translate }}   </label>
                 </ion-item>
+                <!-- Location date -->
+                 <ion-item>
+                    <label textWrap="true" style="width: 150px"  > {{ "RESERVECAR.booking_date" | translate }}</label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{reservDetails.date_location}} </label>
+                </ion-item>
+                
                 <!-- Starting date -->
                 <ion-item>
-                    <ion-label > {{ "RESERVECAR.booking_start_date" | translate }} </ion-label>
-                    <ion-chip slot="end"> {{reservDetails.date_debut}} </ion-chip>
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_start_date" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{reservDetails.date_debut}} </label>
+                </ion-item>
+                  <!-- Starting time -->
+                <ion-item >
+                    <label textWrap="true" style="width: 150px" > {{ "DASHBOARD.start_time" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{reservDetails.heure_debut}} </label>
                 </ion-item>
                 <!-- Return date -->
                 <ion-item>
-                    <ion-label > {{ "RESERVECAR.booking_end_date" | translate }}</ion-label>
-                    <ion-chip slot="end"> {{reservDetails.date_fin}} </ion-chip>
+                    <label textWrap="true" style="width: 150px"> {{ "RESERVECAR.booking_end_date" | translate }}</label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{reservDetails.date_fin}} </label>
+                </ion-item>
+              
+                <!-- Return time -->
+                <ion-item *ngIf="reservDetails.type_location == 2">
+                    <label textWrap="true" style="width: 150px" > {{ "DASHBOARD.return_time" | translate }}</label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{reservDetails.heure_fin}} </label>
+                </ion-item>
+                  <!-- Departure -->
+            
+               <ion-item  *ngIf="reservDetails.type_location == 3">
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.departure" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{reservDetails.depart}} </label>
                 </ion-item>
                   <!-- Destination -->
             
                <ion-item>
-                    <ion-label > {{ "RESERVECAR.booking_destination" | translate }} </ion-label>
-                    <ion-chip slot="end"> {{reservDetails.destination}} </ion-chip>
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_destination" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{reservDetails.destination}} </label>
                 </ion-item>
+
                   <!-- Price -->
             
                <ion-item>
-                    <ion-label > {{ "RESERVECAR.booking_price" | translate }} </ion-label>
-                    <ion-chip slot="end"> {{reservDetails.montant}} F CFA </ion-chip>
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_price" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{reservDetails.montant}} F CFA </label>
                 </ion-item>
                   <!-- your comment/ message -->
             
                <ion-item>
-                    <ion-label > {{ "RESERVECAR.booking_your_message" | translate }} </ion-label>
+                    <label > {{ "RESERVECAR.booking_your_message" | translate }} </label>
                 </ion-item> 
     
                 <ion-label style="color:white;margin-right:10%; margin-left:7%; text-align:justify;">
-                   {{reservDetails.commentaire_client}}  
+                   {{reservDetails.message}}  
                 </ion-label>
+
+                <!-- your marks: -->
+            
+               <ion-item *ngIf="reservDetails.note_client>0">
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.marks" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==1 && lang == 'fr'"> Très Mauvais </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==1 && lang == 'en'"> Very Bad </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==2 && lang == 'fr'"> Mauvais </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==2 && lang == 'en'"> Bad </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==3 && lang == 'fr'"> Moyen </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==3 && lang == 'en'"> Average </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==4 && lang == 'fr'"> Bien </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==4 && lang == 'en'"> Bien </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'fr'"> Très Bien </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'en'"> Very good </label>
+                </ion-item>
 
                 
 
@@ -156,10 +212,9 @@
 
 
             <ion-card-content>
-                                        
-                  
+  
             </ion-card-content>
-      </ion-card>
+          </ion-card>
         <!-- Stop Reservation -->
       </div>  
     <!-- -------------------------------------------------------------------------------------- -->

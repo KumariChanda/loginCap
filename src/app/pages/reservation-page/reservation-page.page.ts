@@ -26,8 +26,18 @@ export class ReservationPagePage implements OnInit {
  //////////////////////////////////////////////////////////////////////
   ////////////data for destination////////////////////////
   searchQuery:any;
+  searchQuery1:any;
   destination_to_be_search : any;
+  depart_to_be_search : any;
   list_original = [
+    {
+        'id': '',
+        'destination' :'',
+        'coefficient' : ''
+    }
+  ];
+  //for departure
+  list_original1 = [
     {
         'id': '',
         'destination' :'',
@@ -41,9 +51,21 @@ export class ReservationPagePage implements OnInit {
         'coefficient' : ''
     }
   ];
+  
+  //for departure
+  list_to_show1 = [
+    {
+        'id': '',
+        'destination' :'',
+        'coefficient' : ''
+    }
+  ];
   selected_index = -1;
+  show_list1 = false; // for destination
+
   show_list = false;
   coef : any //coefficient de reservation
+  coef1 : any //coefficient de reservation
 ///////////////////////end data for destination search ///////////////////
   
 
@@ -77,7 +99,7 @@ subscription: Subscription;
    start_time : string;
    end_date : string;
    end_time : string;
-   depart_venue : string;
+   depart_venue : any;
    message : string;
 
    min_retunDate : any;// min return date for reservation per day
@@ -94,17 +116,13 @@ subscription: Subscription;
       "date_debut": "",
       "date_fin": "",
       "montant": 0,
-      "note_client": null,
-      "commentaire_client": "",
-      "note_chauffeur": null,
-      "rapport_chauffeur": "",
+      "message": "",
       "client": 0,
-      "chauffeur": null,
       "voiture": 0,
-      "type_location": 1,
+      "type_location": 0,
       "destination": 0,
       "etape_location": 1,
-      //"lieu_depart": "",
+      "depart" : null,
       "optionnel": []
     
    }//end of object to send
@@ -115,6 +133,7 @@ subscription: Subscription;
 /////////////////////////////////////////////////////
    show = false; //is to show page content
   lang: string;
+  customPickerOptions: { buttons: { text: string; handler: () => void; }[]; };
  
 
 
@@ -124,6 +143,7 @@ subscription: Subscription;
 
       // date
       this.setDate();
+
       
   }
 
@@ -154,6 +174,7 @@ subscription: Subscription;
             if(res)
             {
                 this.list_original = res;
+                this.list_original1 = res;
                 
             }
 
@@ -410,15 +431,64 @@ subscription: Subscription;
           }
           else if(this.rent_type =="airport")
           {
-            ///////set type rent to airport id 
-            this.dataToSend.type_location = 3;
-            this.dataToSend.date_fin = this.start_date+"T"+this.start_time+":44.625Z" 
-            /// set end time /////////////////////////
-            this.dataToSend.date_fin = ""+ " "+this.end_time+"T"+this.start_time+":44.625Z";
-            //////////////////////set departure venue ///////////////////////////////////////////////////////
-            //this.dataToSend.lieu_depart = this.depart_venue;
+             
+                console.log("Depar Id", this.depart_venue)
+             if(this.depart_venue)
+             {
+               //check if depart != destination
+               if(this.depart_venue != this.destination)
+                {
+                  //check if aeroport is selected 
+                  if(this.depart_venue == 203 || this.destination == 203 )
+                   {     
+                        ///////////////////set depart//////////////////
+                        this.dataToSend.depart = this.depart_venue;
+                            ///////set type rent to airport id 
+                        this.dataToSend.type_location = 3;
+                        this.dataToSend.date_fin = this.start_date+"T"+this.start_time+":44.625Z" 
+                        /// set end time /////////////////////////
+                        this.dataToSend.date_fin = this.start_date+"T"+this.end_time+":44.625Z";
+                        //////////////////////set departure venue ///////////////////////////////////////////////////////
+                        //this.dataToSend.lieu_depart = this.depart_venue;
+                        var c = (this.coef1 + this.coef)/2
 
-            this.price = this.car.airport * (1+ this.coef) 
+                        this.price = (this.car.airport + this.car.airport * c);
+                   }
+                   else{
+
+                    if(this.lang =="fr")
+                    {
+                      alert("Assurez-vous d'avoir choisi Aéroport comme départ ou destination.");
+                    }else{
+                      alert("Make sure you have chosen airport either as departure or destination.")
+                    }
+                    return ;
+
+                   }     
+                }else{
+
+                  if(this.lang =="fr")
+                  {
+                    alert("Désolé, le départ doit être différent de la destination.");
+                  }else{
+                    alert("Sorry, the departure must be different from the destination.")
+                  }
+                  return ;
+
+                } 
+             }
+             else
+             {
+              if(this.lang =="fr")
+              {
+                alert("SVP  \n Remplissez correctement le champ Lieu de depart !");
+              }else{
+                alert("Please \n Fill the Departure venue Field correctly !")
+              }
+              return ;
+             }
+
+            
 
           }
           ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -471,8 +541,8 @@ subscription: Subscription;
           /////////////////////set price ///////////////////////////////////////////////////
           this.dataToSend.montant = this.price;
           
-          /////////////////////set commentaire client ///////////////////////////////////////////////////
-          this.dataToSend.commentaire_client = this.message;
+          /////////////////////set message///////////////////////////////////////////////////
+          this.dataToSend.message = this.message;
           
 
           console.log("\n data to send : \n", this.dataToSend);
@@ -484,9 +554,9 @@ subscription: Subscription;
         {
           if(this.lang =="fr")
           {
-            alert("Remplissez le champ Destination !");
+            alert("Remplissez correctement le champ Destination !");
           }else{
-            alert("Fill the Destination Field !")
+            alert("Fill the Destination Field correctly !")
           }
             
         }
@@ -500,12 +570,19 @@ subscription: Subscription;
       // present alert
       async presentAlertConfirm(price, start_date , end_date) {
 
+    
         var lang = (await Storage.get({ key: LNG_KEY })).value;
         if(lang =="fr")
         {
           var text = "Prix Total : ";
+          var textcancel = "Annuler ";
+          var textok = "Valider ";
+          
         }else{
           var text = "Total Price : ";
+          var textcancel = "Cancel ";
+          var textok = "OK ";
+          
         }
 
         const alert = await this.alertController.create({
@@ -514,22 +591,24 @@ subscription: Subscription;
           message: '<strong>'+text +'</strong>' + price + ' F CFA',
           buttons: [
             {
-              text: 'Cancel',
+              text: textcancel,
               role: 'cancel',
               cssClass: 'secondary',
               handler: (blah) => {
                 console.log('Confirm Cancel: blah');
               }
             }, {
-              text: 'Okay',
+              text: textok,
               handler: () => {
                 console.log('Confirm Okay');
-
+                  //preseent loader
+                 this.webservice.presentLoading()    
                  ////send the data to the API
                 this.webservice.postReservation(this.token, this.dataToSend).subscribe(res=>{
                       console.log(res)
                       if(res)
                       {
+                        this.webservice.stopLoading();
                          console.log("done");
                          this.myAlert(0,lang);     
 
@@ -537,6 +616,9 @@ subscription: Subscription;
                       }
 
                 },error =>{
+                  
+                  //stop loader
+                  this.webservice.stopLoading();
                   console.log("error : \n",error); 
                      this.myAlert(1,lang);     
                  }
@@ -671,57 +753,153 @@ change(type)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   ///////////////////////Search methods //////////////////////////////
-  onCancel(val) {
-    this.show_list = false;
-    this.list_to_show = [
-      {
-          'id': '',
-          'destination' :'',
-          'coefficient' : ''
-      }
-    ];
+  onCancel(val,i) {
 
-  }
+    this.depart_venue = null;
+    this.destination = null;
 
-  click_bar() {
-    this.list_to_show = [
-      {
-          'id': '',
-          'destination' :'',
-          'coefficient' : ''
-      }
-    ];
-    this.show_list = true;
-  }
-
-  click_item(val, id,coef)
-  {
-       
-        //set destination
-        this.destination = id;
-        //set coef 
-        this.coef = parseFloat(coef);
-
-        for (let i = 0 ; i < this.list_original.length; i++)
+    if(i==0)
+    {
+      
+      this.show_list1 = false;
+      this.list_to_show1 = [
         {
-            if (this.list_to_show[val].destination.toUpperCase() === this.list_original[i].destination.toUpperCase()) {
-                this.selected_index = i;
-
-                //print the selected destination
-                this.searchQuery = this.list_to_show[val].destination;
-
-                // set the destinatination to be search
-                this.destination_to_be_search  = this.list_to_show[val];
-
-                break;
-            }
+            'id': '',
+            'destination' :'',
+            'coefficient' : ''
         }
-        this.show_list = false;
+      ];
+    }
+    else
+    {
+      this.show_list = false;
+      this.list_to_show = [
+        {
+            'id': '',
+            'destination' :'',
+            'coefficient' : ''
+        }
+      ];
+    }
+  
+
+   
+
   }
 
-  change_query(query)
+  click_bar(i) {
+
+
+    if(i == 0)
+    {
+      this.list_to_show1 = [
+        {
+            'id': '',
+            'destination' :'',
+            'coefficient' : ''
+        }
+      ];
+      this.show_list1 = true;
+    }
+    else
+    {
+      this.list_to_show = [
+        {
+            'id': '',
+            'destination' :'',
+            'coefficient' : ''
+        }
+      ];
+      this.show_list = true;
+    }
+    
+  }
+
+  click_item(val, id,coef, type)   // here type is used to mention if it is departure or destination
+  {                                // 0 for departure 1 - for destination 
+      //this.depart_venue = null;
+      //this.destination = null; 
+
+        if(type==0)
+        {
+            //set departure
+            this.depart_venue = id;
+            console.log("depart id :", this.depart_venue);
+
+            //set coef 
+            this.coef1 = parseFloat(coef);
+
+          for (let i = 0 ; i < this.list_original1.length; i++)
+          {
+              if (this.list_to_show1[val].destination.toUpperCase() === this.list_original1[i].destination.toUpperCase()) {
+                  this.selected_index = i;
+                
+                
+                      //print the selected departure
+                      this.searchQuery1 = this.list_to_show1[val].destination;
+                
+                  
+
+                  // set the depart to be search
+                  this.depart_to_be_search  = this.list_to_show1[val];
+
+                  break;
+              }
+          }
+          this.show_list1 = false;
+
+            
+        }
+        else{
+          //set destination
+          this.destination = id;
+        
+          //set coef 
+          this.coef = parseFloat(coef);
+
+          for (let i = 0 ; i < this.list_original.length; i++)
+          {
+              if (this.list_to_show[val].destination.toUpperCase() === this.list_original[i].destination.toUpperCase()) {
+                  this.selected_index = i;
+                
+                 
+                      //print the selected destination
+                      this.searchQuery = this.list_to_show[val].destination;
+                  
+
+                  // set the destinatination to be search
+                  this.destination_to_be_search  = this.list_to_show[val];
+
+                  break;
+              }
+          }
+          this.show_list = false;
+       }
+  }
+
+  change_query(query,i)
   {
   
+        if(i==0)
+        {
+          let k = 0;
+          this. list_to_show1 = [
+            {
+                'id': '',
+                'destination' :'',
+                'coefficient' : ''
+            }
+          ];
+          for (let i = 0 ; i < this.list_original1.length; i++)
+          {
+              if (this.list_original1[i].destination.toUpperCase().includes(query.toUpperCase()))
+              {
+                  this.list_to_show1[k] =  this.list_original1[i];
+                  k += 1;
+              }
+          }
+
+        }else{
             let k = 0;
             this. list_to_show = [
               {
@@ -738,6 +916,7 @@ change(type)
                     k += 1;
                 }
             }
+          }  
     
   }
 

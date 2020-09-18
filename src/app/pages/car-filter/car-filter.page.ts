@@ -166,10 +166,10 @@ filterData = [
                                   //no  cars
                                   if(this.lang=="fr")
                                   {
-                                    alert("Liste Vide !!  \n Retour à la page accueil");
-                      
+                                    alert(" Pas de véhicule, veuillez affiner votre recherche.");
+                          
                                   }else{
-                                    alert("Empty List !! \n Back to Home Page")
+                                    alert(" No vehicle, please refine your search.")
                                   }
                                   this.webService.stopLoading();//to stop loading
                                   this.router.navigateByUrl("/dashboard");

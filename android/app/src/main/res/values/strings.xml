@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Nyokah</string>
+    <string name="title_activity_main">Nyokah</string>
+    <string name="package_name">com.cpckingdom.nyokah</string>
+    <string name="custom_url_scheme">com.cpckingdom.nyokah</string>
+</resources>

@@ -63,13 +63,13 @@ filterData = [
              if(res.length ==0)
              { 
                   //no  cars
-                 if(this.lang=="fr")
-                 {
-                   alert("La Liste de voitures est vide \n Retour à la page accueil");
-         
-                 }else{
-                   alert("The List of cars is Empty \ n Back Home Page")
-                 }
+                if(this.lang=="fr")
+                {
+                  alert(" Pas de véhicule, veuillez affiner votre recherche.");
+        
+                }else{
+                  alert(" No vehicle, please refine your search.")
+                }
          
                  this.router.navigateByUrl("/dashboard");
                  this.webService.stopLoading();//to stop loading
@@ -120,12 +120,12 @@ filterData = [
          else{
             //no  cars
             if(this.lang=="fr")
-             {
-               alert("Erreur code  voiture !!  \n Retour à la page accueil");
- 
-             }else{
-               alert("Car code error !! \ n Back Home Page")
-             }
+            {
+              alert("Erreur Serveur \n code vehicule incorrect  ");
+
+            }else{
+              alert(" Server error \n incorrect vehicle code ");
+            }
    
             this.router.navigateByUrl("/dashboard");
             this.webService.stopLoading();//to stop loading

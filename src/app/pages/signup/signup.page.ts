@@ -143,7 +143,7 @@ export class SignupPage implements OnInit {
             alert("Remplir tous les chaps obligatoires (*)  ")
           }
           else{
-            alert("Fill Alln the mandatory fields (*) ")
+            alert("Fill All the mandatory fields (*) ")
 
           }
       }
