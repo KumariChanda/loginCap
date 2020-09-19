@@ -251,8 +251,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           "telephone": "",
           "email": "",
           "birth_date": "",
-          "address": "",
-          "password": null
+          "address": ""
         };
         this.userType = "";
         this.userId = 0;

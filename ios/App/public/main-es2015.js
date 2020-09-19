@@ -1544,7 +1544,7 @@ let AppServiceService = class AppServiceService {
                 'Authorization': 'Token ' + token
             })
         };
-        return this.http.post(base_url + "clients/" + id + "/set_password", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        return this.http.post(base_url + "clients/" + id + "/set_password/", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
     }
 };
 AppServiceService.ctorParameters = () => [

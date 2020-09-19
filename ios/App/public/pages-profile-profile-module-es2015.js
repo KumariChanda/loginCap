@@ -143,7 +143,6 @@ let ProfilePage = class ProfilePage {
             "email": "",
             "birth_date": "",
             "address": "",
-            "password": null
         };
         this.userType = "";
         this.userId = 0;

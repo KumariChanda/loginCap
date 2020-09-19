@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n   <ion-toolbar>\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title class=\"register\">{{'Password.change_password' | translate }}</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n           <hr/>\n        <ion-card-content>\n           <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"email\" placeholder=\"{{'SIGNUP.email' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"new_password\"  placeholder=\"{{'Password.new_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"confirm_pass\" placeholder=\"{{'Password.confirm_password' | translate }}\"></ion-input>\n          <br>\n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"changePassword()\">{{'Password.change_password_btn' | translate }}</button>\n           </div>\n           <br>  \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n\n";
+    __webpack_exports__["default"] = "<ion-header>\n   <ion-toolbar>\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title class=\"register\">{{'Password.change_password' | translate }}</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n           <hr/>\n        <ion-card-content>\n           <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"old_password\" placeholder=\"{{'Password.old_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"new_password\"  placeholder=\"{{'Password.new_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"confirm_pass\" placeholder=\"{{'Password.confirm_password' | translate }}\"></ion-input>\n          <br>\n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"changePassword()\">{{'Password.change_password_btn' | translate }}</button>\n           </div>\n           <br>  \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n\n";
     /***/
   },
 
@@ -243,17 +243,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.webService = webService;
         this.router = router;
         this.btnClicked = false;
-        this.email = "";
+        this.old_password = "";
         this.new_password = "";
         this.confirm_pass = "";
         this.dataToSend = {
-          "email": "",
-          "password": "",
-          "first_name": "",
-          "last_name": "",
-          "birth_date": null,
-          "telephone": "",
-          "address": ""
+          "new_password": "",
+          "old_password": ""
         };
       }
 
@@ -310,56 +305,53 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this.btnClicked = false;
           }, 1000); /////////////////////////////////
 
-          if (this.email && this.new_password && this.confirm_pass) {
+          if (this.old_password && this.new_password && this.confirm_pass) {
             if (this.new_password == this.confirm_pass) {
-              if (this.email == this.userInfo.email) {
-                // if all the fields are correct
-                //data to be sent
-                // console.log(typeof(this.mobilenumber.toString( )))
-                this.dataToSend.email = this.userInfo.email, this.dataToSend.password = this.new_password, //present loader
-                this.webService.presentLoading(); //call the web service
+              // if all the fields are correct
+              //data to be sent
+              // console.log(typeof(this.mobilenumber.toString( )))
+              this.dataToSend.old_password = this.old_password, this.dataToSend.new_password = this.new_password, //present loader
+              this.webService.presentLoading(); //call the web service
 
-                this.webService.changeClientPasssword(this.userInfo.id, this.token, this.dataToSend).subscribe(function (res) {
-                  //check if action failed or not
-                  if (!res.details) {
-                    console.log(res);
+              this.webService.changeClientPasssword(this.userInfo.id, this.token, this.dataToSend).subscribe(function (res) {
+                //check if action failed or not
+                if (!res.old_password) {
+                  console.log(res);
 
-                    _this.webService.stopLoading();
+                  _this.webService.stopLoading();
 
-                    if (_this.lang == "fr") {
-                      alert("Opération réussie!!!");
-                    } else {
-                      alert("Successful operation!!!");
-                    }
-
-                    _this.router.navigateByUrl("/dashboard");
+                  if (_this.lang == "fr") {
+                    alert("Opération réussie!!!");
                   } else {
-                    _this.webService.stopLoading();
-
-                    if (_this.lang == "fr") {
-                      alert("Opération pas réussie!!!");
-                    } else {
-                      alert("Unsuccessful operation!!!");
-                    } // this.router.navigateByUrl("/dashboard");
-
+                    alert("Successful operation!!!");
                   }
-                }, function (error) {
+
+                  _this.old_password = "";
+                  _this.new_password = "";
+
+                  _this.router.navigateByUrl("/dashboard");
+                } else {
                   _this.webService.stopLoading();
 
                   if (_this.lang == "fr") {
                     alert("Opération pas réussie!!!");
                   } else {
                     alert("Unsuccessful operation!!!");
-                  } // this.router.navigateByUrl("/dashboard");               
+                  }
 
-                });
-              } else {
-                if (this.lang == "fr") {
-                  alert("email incorrect !! ");
-                } else {
-                  alert("Incorrect email !! ");
+                  _this.router.navigateByUrl("/dashboard");
                 }
-              }
+              }, function (error) {
+                _this.webService.stopLoading();
+
+                if (_this.lang == "fr") {
+                  alert("Erreur serveur, \n Opération pas réussie!!!");
+                } else {
+                  alert("Server Error , \n Unsuccessful operation!!!");
+                }
+
+                _this.router.navigateByUrl("/dashboard");
+              });
             } else {
               //alert to tell that password and confrim password should be same 
               if (this.lang == "fr") {

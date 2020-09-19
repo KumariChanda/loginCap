@@ -178,11 +178,20 @@ let MyMessagesPage = class MyMessagesPage {
                     }
                     else {
                         this.filterData = res;
+                        //stop loader
+                        this.show = true;
+                        this.webservice.stopLoading();
                     }
                 }
-                //stop loader
-                this.show = true;
+            }, error => {
                 this.webservice.stopLoading();
+                if (this.lang == "fr") {
+                    alert("Erreur serveur !! ");
+                }
+                else {
+                    alert("Server Error !! ");
+                }
+                this.router.navigateByUrl("/dashboard");
             });
             ///end get testimonial
         });

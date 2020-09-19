@@ -16,19 +16,14 @@ export class ChangePasswordPage implements OnInit {
   btnClicked:boolean=false;
   userInfo: any;
   lang: string;
-  email ="";
+  old_password ="";
   new_password ="";
   confirm_pass="";
 
   dataToSend ={
-    "email" : "",
-    "password" : "",
-    "first_name" : "",
-    "last_name" : "",
-    "birth_date": null,
-    "telephone": "",
-    "address": "",
-
+    "new_password" : "",
+    "old_password" : ""
+   
   }
   token: string;
 
@@ -63,18 +58,16 @@ export class ChangePasswordPage implements OnInit {
       }, 1000)
 
           /////////////////////////////////
-          if(this.email && this.new_password && this.confirm_pass)
+          if(this.old_password && this.new_password && this.confirm_pass)
           {
             
               if(this.new_password == this.confirm_pass)
               {
-                 if(this.email == this.userInfo.email)
-                 {
                     // if all the fields are correct
                     //data to be sent
                    // console.log(typeof(this.mobilenumber.toString( )))
-                    this.dataToSend.email =  this.userInfo.email,
-                     this.dataToSend.password =  this.new_password,
+                    this.dataToSend.old_password =  this.old_password,
+                     this.dataToSend.new_password =  this.new_password,
                       
                      
                       //present loader
@@ -84,7 +77,7 @@ export class ChangePasswordPage implements OnInit {
                      this.webService.changeClientPasssword(this.userInfo.id,this.token,this.dataToSend).subscribe(res=>{
                      
                       //check if action failed or not
-                      if(!res.details)
+                      if(!res.old_password)
                       {
                         console.log(res);
                         this.webService.stopLoading();
@@ -97,6 +90,8 @@ export class ChangePasswordPage implements OnInit {
                           alert("Successful operation!!!")
         
                         }
+                        this.old_password ="";
+                        this.new_password="";
                         this.router.navigateByUrl("/dashboard");
 
                       }
@@ -112,7 +107,7 @@ export class ChangePasswordPage implements OnInit {
                             alert("Unsuccessful operation!!!")
           
                           }
-                         // this.router.navigateByUrl("/dashboard");
+                          this.router.navigateByUrl("/dashboard");
                         }
     
                                       
@@ -122,28 +117,18 @@ export class ChangePasswordPage implements OnInit {
                       this.webService.stopLoading(); 
                         if(this.lang =="fr")
                           {
-                            alert("Opération pas réussie!!!")
+                            alert("Erreur serveur, \n Opération pas réussie!!!")
                           }else{
-                            alert("Unsuccessful operation!!!")
+                            alert("Server Error , \n Unsuccessful operation!!!")
           
                           }
 
 
-                     // this.router.navigateByUrl("/dashboard");               
+                      this.router.navigateByUrl("/dashboard");               
     
                      }
                      );
-                  }
-                  else
-                  {
-                    if(this.lang =="fr")
-                    {
-                      alert("email incorrect !! ")
-                    }else{
-                      alert("Incorrect email !! ")
-    
-                    }
-                  }
+                 
     
               }
               else

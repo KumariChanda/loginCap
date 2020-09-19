@@ -176,30 +176,54 @@ let CarDetailsPage = class CarDetailsPage {
         this.page_prev = "";
     }
     ngOnInit() {
-        this.webservice.presentLoading();
-        this.getCurrentToken();
-        this.subscription = this.route.queryParams.subscribe((data) => {
-            console.log("selected ->", typeof (data.id));
-            //receive the  prev page 
-            this.page_prev = data.prev;
-            //get the details of the car
-            //receive the  prev page 
-            this.page_prev = data.prev;
-            //get the details of the car
-            this.webservice.getCarDetails(data.id).subscribe(res => {
-                this.car = res;
-                console.log(res);
-                // get the differents pice of the car
-                this.webservice.getPriceCar(data.id).subscribe(resp => {
-                    this.car.per_day = resp[0].prix;
-                    this.car.per_hour = resp[1].prix;
-                    this.car.airport = resp[2].prix;
-                    //stop loading
-                    this.webservice.stopLoading();
-                    //show the list
-                    this.show = true;
-                }); //end get prices
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            //get Language
+            this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+            this.webservice.presentLoading();
+            this.getCurrentToken();
+            this.subscription = this.route.queryParams.subscribe((data) => {
+                console.log("selected ->", typeof (data.id));
+                //receive the  prev page 
+                this.page_prev = data.prev;
+                //get the details of the car
+                //receive the  prev page 
+                this.page_prev = data.prev;
+                //get the details of the car
+                this.webservice.getCarDetails(data.id).subscribe(res => {
+                    this.car = res;
+                    console.log(res);
+                    // get the differents pice of the car
+                    this.webservice.getPriceCar(data.id).subscribe(resp => {
+                        this.car.per_day = resp[0].prix;
+                        this.car.per_hour = resp[1].prix;
+                        this.car.airport = resp[2].prix;
+                        //stop loading
+                        this.webservice.stopLoading();
+                        //show the list
+                        this.show = true;
+                    }, error => {
+                        this.webservice.stopLoading();
+                        if (this.lang == "fr") {
+                            alert("Erreur serveur !! ");
+                        }
+                        else {
+                            alert("Server Error !! ");
+                        }
+                        this.router.navigateByUrl("/dashboard");
+                    });
+                    //); //end get prices
+                });
+            }, error => {
+                this.webservice.stopLoading();
+                if (this.lang == "fr") {
+                    alert("Erreur serveur !! ");
+                }
+                else {
+                    alert("Server Error !! ");
+                }
+                this.router.navigateByUrl("/dashboard");
             });
+            //);
         });
     }
     //this is used for the auto slider

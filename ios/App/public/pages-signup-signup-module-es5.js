@@ -327,9 +327,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _this.webService.stopLoading();
 
                   if (_this.lang == "fr") {
-                    alert("Inscription échouée !! ");
+                    alert("Erreur Serveur \n Inscription échouée !! ");
                   } else {
-                    alert("Sign Up Failed !! ");
+                    alert("Server Error \n Sign Up Failed !! ");
                   }
 
                   _this.router.navigateByUrl("/login");

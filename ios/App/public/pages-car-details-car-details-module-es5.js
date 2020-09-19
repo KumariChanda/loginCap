@@ -282,35 +282,75 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(CarDetailsPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this = this;
 
-          this.webservice.presentLoading();
-          this.getCurrentToken();
-          this.subscription = this.route.queryParams.subscribe(function (data) {
-            console.log("selected ->", typeof data.id); //receive the  prev page 
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return Storage.get({
+                      key: 'SELECTED LANGUAGE'
+                    });
 
-            _this.page_prev = data.prev; //get the details of the car
-            //receive the  prev page 
+                  case 2:
+                    this.lang = _context.sent.value;
+                    this.webservice.presentLoading();
+                    this.getCurrentToken();
+                    this.subscription = this.route.queryParams.subscribe(function (data) {
+                      console.log("selected ->", typeof data.id); //receive the  prev page 
 
-            _this.page_prev = data.prev; //get the details of the car
+                      _this.page_prev = data.prev; //get the details of the car
+                      //receive the  prev page 
 
-            _this.webservice.getCarDetails(data.id).subscribe(function (res) {
-              _this.car = res;
-              console.log(res); // get the differents pice of the car
+                      _this.page_prev = data.prev; //get the details of the car
 
-              _this.webservice.getPriceCar(data.id).subscribe(function (resp) {
-                _this.car.per_day = resp[0].prix;
-                _this.car.per_hour = resp[1].prix;
-                _this.car.airport = resp[2].prix; //stop loading
+                      _this.webservice.getCarDetails(data.id).subscribe(function (res) {
+                        _this.car = res;
+                        console.log(res); // get the differents pice of the car
 
-                _this.webservice.stopLoading(); //show the list
+                        _this.webservice.getPriceCar(data.id).subscribe(function (resp) {
+                          _this.car.per_day = resp[0].prix;
+                          _this.car.per_hour = resp[1].prix;
+                          _this.car.airport = resp[2].prix; //stop loading
+
+                          _this.webservice.stopLoading(); //show the list
 
 
-                _this.show = true;
-              }); //end get prices
+                          _this.show = true;
+                        }, function (error) {
+                          _this.webservice.stopLoading();
 
-            });
-          });
+                          if (_this.lang == "fr") {
+                            alert("Erreur serveur !! ");
+                          } else {
+                            alert("Server Error !! ");
+                          }
+
+                          _this.router.navigateByUrl("/dashboard");
+                        }); //); //end get prices
+
+                      });
+                    }, function (error) {
+                      _this.webservice.stopLoading();
+
+                      if (_this.lang == "fr") {
+                        alert("Erreur serveur !! ");
+                      } else {
+                        alert("Server Error !! ");
+                      }
+
+                      _this.router.navigateByUrl("/dashboard");
+                    }); //);
+
+                  case 6:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         } //this is used for the auto slider
 
       }, {
@@ -323,28 +363,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCurrentToken",
         value: function getCurrentToken() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var ret;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
-                switch (_context.prev = _context.next) {
+                switch (_context2.prev = _context2.next) {
                   case 0:
                     ret = Storage.get({
                       key: 'accessToken'
                     });
-                    _context.next = 3;
+                    _context2.next = 3;
                     return ret;
 
                   case 3:
-                    this.token = _context.sent.value;
+                    this.token = _context2.sent.value;
                     console.log("token   ", this.token); //  return (await ret).value;
 
                   case 5:
                   case "end":
-                    return _context.stop();
+                    return _context2.stop();
                 }
               }
-            }, _callee, this);
+            }, _callee2, this);
           }));
         } //////////////////////////////////////////////////////////////
         ////back to home ///

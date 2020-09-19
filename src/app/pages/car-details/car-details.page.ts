@@ -66,6 +66,7 @@ show = false; //is to show page content
 
   //prev page
   page_prev ="" 
+  lang: string;
  
 
   constructor( private router : Router, private route: ActivatedRoute, private webservice : AppServiceService) {  
@@ -73,7 +74,12 @@ show = false; //is to show page content
     
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+     //get Language
+     this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+
+
     this.webservice.presentLoading();
     this.getCurrentToken();
 
@@ -105,11 +111,37 @@ show = false; //is to show page content
           this.show = true;
 
 
-         }); //end get prices
+         },error=>{
+          this.webservice.stopLoading(); 
+          
+          if(this.lang =="fr")
+          {
+            alert("Erreur serveur !! ")
+          }else{
+            alert("Server Error !! ")
+    
+          }
+          this.router.navigateByUrl("/dashboard");               
+    
+         });
+        //); //end get prices
 
           
       });  
-    });
+    },error=>{
+      this.webservice.stopLoading(); 
+      
+      if(this.lang =="fr")
+      {
+        alert("Erreur serveur !! ")
+      }else{
+        alert("Server Error !! ")
+
+      }
+      this.router.navigateByUrl("/dashboard");               
+
+     });
+    //);
   }
 
   //this is used for the auto slider

@@ -188,10 +188,10 @@ let SignupPage = class SignupPage {
                     }, error => {
                         this.webService.stopLoading();
                         if (this.lang == "fr") {
-                            alert("Inscription échouée !! ");
+                            alert("Erreur Serveur \n Inscription échouée !! ");
                         }
                         else {
-                            alert("Sign Up Failed !! ");
+                            alert("Server Error \n Sign Up Failed !! ");
                         }
                         this.router.navigateByUrl("/login");
                     });

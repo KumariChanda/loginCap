@@ -310,14 +310,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                           _this.router.navigateByUrl("/dashboard");
                         } else {
-                          _this.filterData = res;
+                          _this.filterData = res; //stop loader
+
+                          _this.show = true;
+
+                          _this.webservice.stopLoading();
                         }
-                      } //stop loader
-
-
-                      _this.show = true;
-
+                      }
+                    }, function (error) {
                       _this.webservice.stopLoading();
+
+                      if (_this.lang == "fr") {
+                        alert("Erreur serveur !! ");
+                      } else {
+                        alert("Server Error !! ");
+                      }
+
+                      _this.router.navigateByUrl("/dashboard");
                     }); ///end get testimonial
 
                   case 13:

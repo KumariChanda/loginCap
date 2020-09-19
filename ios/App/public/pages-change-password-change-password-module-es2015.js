@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n   <ion-toolbar>\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title class=\"register\">{{'Password.change_password' | translate }}</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n           <hr/>\n        <ion-card-content>\n           <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"email\" placeholder=\"{{'SIGNUP.email' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"new_password\"  placeholder=\"{{'Password.new_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"confirm_pass\" placeholder=\"{{'Password.confirm_password' | translate }}\"></ion-input>\n          <br>\n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"changePassword()\">{{'Password.change_password_btn' | translate }}</button>\n           </div>\n           <br>  \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n   <ion-toolbar>\n        <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title class=\"register\">{{'Password.change_password' | translate }}</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content >\n  <div class=\"backgroundcss\">\n    <div id=\"container\">\n      <ion-card class=\"cardcss\" >\n           <hr/>\n        <ion-card-content>\n           <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"old_password\" placeholder=\"{{'Password.old_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"new_password\"  placeholder=\"{{'Password.new_password' | translate }}\"></ion-input>\n          <br>\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)] = \"confirm_pass\" placeholder=\"{{'Password.confirm_password' | translate }}\"></ion-input>\n          <br>\n          <div class=\"divloginbtn\">\n            <br>\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"changePassword()\">{{'Password.change_password_btn' | translate }}</button>\n           </div>\n           <br>  \n          <br>\n        </ion-card-content>\n      </ion-card>\n     </div>\n\n    </div>\n\n</ion-content>\n\n");
 
 /***/ }),
 
@@ -134,17 +134,12 @@ let ChangePasswordPage = class ChangePasswordPage {
         this.webService = webService;
         this.router = router;
         this.btnClicked = false;
-        this.email = "";
+        this.old_password = "";
         this.new_password = "";
         this.confirm_pass = "";
         this.dataToSend = {
-            "email": "",
-            "password": "",
-            "first_name": "",
-            "last_name": "",
-            "birth_date": null,
-            "telephone": "",
-            "address": "",
+            "new_password": "",
+            "old_password": ""
         };
     }
     ngOnInit() {
@@ -165,41 +160,32 @@ let ChangePasswordPage = class ChangePasswordPage {
             this.btnClicked = false;
         }, 1000);
         /////////////////////////////////
-        if (this.email && this.new_password && this.confirm_pass) {
+        if (this.old_password && this.new_password && this.confirm_pass) {
             if (this.new_password == this.confirm_pass) {
-                if (this.email == this.userInfo.email) {
-                    // if all the fields are correct
-                    //data to be sent
-                    // console.log(typeof(this.mobilenumber.toString( )))
-                    this.dataToSend.email = this.userInfo.email,
-                        this.dataToSend.password = this.new_password,
-                        //present loader
-                        this.webService.presentLoading();
-                    //call the web service
-                    this.webService.changeClientPasssword(this.userInfo.id, this.token, this.dataToSend).subscribe(res => {
-                        //check if action failed or not
-                        if (!res.details) {
-                            console.log(res);
-                            this.webService.stopLoading();
-                            if (this.lang == "fr") {
-                                alert("Opération réussie!!!");
-                            }
-                            else {
-                                alert("Successful operation!!!");
-                            }
-                            this.router.navigateByUrl("/dashboard");
+                // if all the fields are correct
+                //data to be sent
+                // console.log(typeof(this.mobilenumber.toString( )))
+                this.dataToSend.old_password = this.old_password,
+                    this.dataToSend.new_password = this.new_password,
+                    //present loader
+                    this.webService.presentLoading();
+                //call the web service
+                this.webService.changeClientPasssword(this.userInfo.id, this.token, this.dataToSend).subscribe(res => {
+                    //check if action failed or not
+                    if (!res.old_password) {
+                        console.log(res);
+                        this.webService.stopLoading();
+                        if (this.lang == "fr") {
+                            alert("Opération réussie!!!");
                         }
                         else {
-                            this.webService.stopLoading();
-                            if (this.lang == "fr") {
-                                alert("Opération pas réussie!!!");
-                            }
-                            else {
-                                alert("Unsuccessful operation!!!");
-                            }
-                            // this.router.navigateByUrl("/dashboard");
+                            alert("Successful operation!!!");
                         }
-                    }, error => {
+                        this.old_password = "";
+                        this.new_password = "";
+                        this.router.navigateByUrl("/dashboard");
+                    }
+                    else {
                         this.webService.stopLoading();
                         if (this.lang == "fr") {
                             alert("Opération pas réussie!!!");
@@ -207,17 +193,18 @@ let ChangePasswordPage = class ChangePasswordPage {
                         else {
                             alert("Unsuccessful operation!!!");
                         }
-                        // this.router.navigateByUrl("/dashboard");               
-                    });
-                }
-                else {
+                        this.router.navigateByUrl("/dashboard");
+                    }
+                }, error => {
+                    this.webService.stopLoading();
                     if (this.lang == "fr") {
-                        alert("email incorrect !! ");
+                        alert("Erreur serveur, \n Opération pas réussie!!!");
                     }
                     else {
-                        alert("Incorrect email !! ");
+                        alert("Server Error , \n Unsuccessful operation!!!");
                     }
-                }
+                    this.router.navigateByUrl("/dashboard");
+                });
             }
             else {
                 //alert to tell that password and confrim password should be same 
