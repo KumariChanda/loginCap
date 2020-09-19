@@ -184,6 +184,7 @@
         "new_password":"New Password (*)",
         "confirm_password":"Confirm Password (*)",
         "change_password":"Change Password",
+        "change_password_btn":"Submit",
         "reset_password":"Reset Password"
     }
 

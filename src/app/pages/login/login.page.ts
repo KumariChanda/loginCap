@@ -58,7 +58,7 @@ export class LoginPage  {
 
 
           this.webService.login(sending_obj).subscribe(async res=>{
-           console.log("getting response : ",res); 
+           //console.log("getting response : ",res); 
 
             if(!res.detail)
             {
@@ -192,7 +192,7 @@ export class LoginPage  {
   async getData()
   {
   var ret=Storage.get({ key:'accessToken'});
-    console.log((await ret).value);
+    //console.log((await ret).value);
   }
 
 

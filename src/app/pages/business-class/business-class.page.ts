@@ -61,7 +61,7 @@ filterData = [
       this.webService.getCarClass(4).subscribe(async res=>{
 
         
-        console.log("getting business voitures : \n ",res); 
+        //console.log("getting business voitures : \n ",res); 
         if(!res.detail)
         {
             if(res.length ==0)
@@ -91,7 +91,7 @@ filterData = [
                   for(let k=0; k < res[i].modeles[j].voitures.length; k++ )
                   {
                    // console.log("car ",i,j,k)
-                    console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
+                   // console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
                     this.filterData[index] = res[i].modeles[j].voitures[k];
                     
                     index = index + 1;
@@ -100,7 +100,7 @@ filterData = [
                 }
               // console.log("business voitures : \n ",res.modeles.voitures);
               }
-              console.log(this.filterData);
+             // console.log(this.filterData);
 
               //get the different prices of every car
               for(let i=0 ; i< this.filterData.length ; i++)

@@ -35,7 +35,7 @@ export class ProfilePage implements OnInit {
   constructor(private webService: AppServiceService, private router : Router) {
 
     this.btnClicked=false;
-    console.log("Before editableText : ",this.editableText);
+    //console.log("Before editableText : ",this.editableText);
     
     
    }
@@ -54,7 +54,7 @@ export class ProfilePage implements OnInit {
   {
     
     this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
-    console.log("Storage : ",this.userInfo);
+   // console.log("Storage : ",this.userInfo);
     this.profileData.address=this.userInfo.address;
     this.profileData.birth_date=this.userInfo.birth_date;
     this.profileData.email=this.userInfo.email;
@@ -82,8 +82,8 @@ export class ProfilePage implements OnInit {
   {
       this.btnClicked=true;
       this.editableText=false;
-      console.log("btnClicked : ",this.btnClicked);
-      console.log("DOB : ",this.userId);     
+      //console.log("btnClicked : ",this.btnClicked);
+      //console.log("DOB : ",this.userId);     
       setTimeout( ()=>{
         this.btnClicked=false;
         // this.editableText=true;
@@ -95,9 +95,9 @@ export class ProfilePage implements OnInit {
   async saveProfile()
   {
     
-        console.log("profileData : ",this.profileData);
+       // console.log("profileData : ",this.profileData);
           this.btnClicked=true;
-            console.log("btnClicked : ",this.btnClicked);
+            //console.log("btnClicked : ",this.btnClicked);
             setTimeout( ()=>{
               this.btnClicked=false;
               // this.editableText=true;

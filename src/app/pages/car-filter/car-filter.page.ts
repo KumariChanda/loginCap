@@ -116,13 +116,13 @@ filterData = [
                    var nbr = 0;
                   this.filterData1 = res;
 
-                   console.log("search type : ", this.search_type, "search id : ", this.search_id);
+                   //console.log("search type : ", this.search_type, "search id : ", this.search_id);
                   
     
                   //get the different prices of every car
                   for(let i=0 ; i< this.filterData1.length ; i++)
                   {
-                    console.log("res pass : ", this.filterData1[i].passager);
+                   // console.log("res pass : ", this.filterData1[i].passager);
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                               ///if search type is other
                           if(this.search_type=="other")
@@ -150,7 +150,7 @@ filterData = [
                               } 
                               else if(this.search_id == "5b-" && this.filterData1[i].bagage<5)
                               {
-                                console.log("5b-");
+                                //console.log("5b-");
     
                                   this.filterData[nbr] = this.filterData1[i]; 
                                   nbr++;
@@ -202,7 +202,7 @@ filterData = [
                        {
                           if(this.search_id == "50000+" && this.filterData1[i].per_day >= parseInt(this.search_id.split("+")[0] ))
                           {
-                            console.log("filter data per day : ",this.filterData1[i].per_day);
+                            //console.log("filter data per day : ",this.filterData1[i].per_day);
 
                               this.filterData[nbr] = this.filterData1[i]; 
                               nbr++;
@@ -210,7 +210,7 @@ filterData = [
                           }
                           else if(this.search_id == "50000-" && this.filterData1[i].per_day < parseInt(this.search_id.split("-")[0] ))
                           {
-                            console.log("filter data per day : ",this.filterData1[i].per_day);
+                            //console.log("filter data per day : ",this.filterData1[i].per_day);
 
                               this.filterData[nbr] = this.filterData1[i]; 
                               nbr++;
@@ -218,7 +218,7 @@ filterData = [
                           }
                           else if(this.search_id == "5000+" && this.filterData1[i].per_hour >= parseInt(this.search_id.split("+")[0] )  )
                           {
-                            console.log("filter data per day : ",this.filterData1[i].per_hour);
+                           // console.log("filter data per day : ",this.filterData1[i].per_hour);
 
                               this.filterData[nbr] = this.filterData1[i]; 
                               nbr++;
@@ -226,7 +226,7 @@ filterData = [
                           } 
                           else if(this.search_id == "5000-" && this.filterData1[i].per_hour < parseInt(this.search_id.split("-")[0] )  )
                           {
-                            console.log("filter data per hour : ",this.filterData1[i].per_hour);
+                            //console.log("filter data per hour : ",this.filterData1[i].per_hour);
 
                               this.filterData[nbr] = this.filterData1[i]; 
                               nbr++;
@@ -234,10 +234,10 @@ filterData = [
                           } 
                           else{
 
-                            console.log("th ",typeof(parseInt(this.search_id.split("-")[0] )), "\n type : ",typeof(this.filterData1[i].per_day))
+                            //console.log("th ",typeof(parseInt(this.search_id.split("-")[0] )), "\n type : ",typeof(this.filterData1[i].per_day))
                           }
 
-                          console.log("data ",i," ", this.filterData[i] );
+                          //console.log("data ",i," ", this.filterData[i] );
 
                       
                           if(i== this.filterData1.length - 1 && nbr ==0)

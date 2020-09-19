@@ -158,7 +158,7 @@ subscription: Subscription;
         ///////////////receive car id/////////////////////////////////////////////////
         this.subscription = this.route.queryParams.subscribe((data) => {
                 
-              console.log("selected ->", typeof(data.id))
+              //console.log("selected ->", typeof(data.id))
 
             //set the prev page
             this.page_prev = data.prev
@@ -170,7 +170,7 @@ subscription: Subscription;
       //get Destination list
 
       this.webservice.getDestinations().subscribe(async res=>{
-            console.log("getting Destinations : ",res); 
+            //console.log("getting Destinations : ",res); 
             if(res)
             {
                 this.list_original = res;
@@ -184,7 +184,7 @@ subscription: Subscription;
                 this.webservice.getOption().subscribe(resp =>{
 
                   this.option = resp;
-                  console.log(resp)
+                  //console.log(resp)
 
                 ///////////////////////////////////////////////////////////////////////////////////////////
                 //////////////////Start : Get Car details/////////////////////////////////////////////////
@@ -206,7 +206,7 @@ subscription: Subscription;
                     }); //end get prices
 
 
-                      console.log(res)
+                      //console.log(res)
                   }) ;
                 //////////////////Stop : Get Car details//////////////////////////////////////////////////
                 /////////////////////////////////////////////////////////////////////////////////////////
@@ -295,7 +295,7 @@ subscription: Subscription;
       
     
     
-      console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
+     // console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
     
     
     
@@ -326,7 +326,7 @@ subscription: Subscription;
           //////////////////////////car id ///////////////////////////////////////////////
             this.dataToSend.voiture = id;   
 
-            console.log("id : ",id,"\n coef : ",this.coef)
+            //console.log("id : ",id,"\n coef : ",this.coef)
         
           /////////////////////////////////user id ///////////////////////////////////////////////  
       
@@ -336,7 +336,7 @@ subscription: Subscription;
         
           //////////////////////////////get token storage////////////////////////////////////////
             this.token =(await Storage.get({ key: 'accessToken' })).value;
-            console.log("Token : ", this.token);
+           // console.log("Token : ", this.token);
 
             /////////////////// set start date /////////////////////////////////////////////////////
             //this.dataToSend.date_debut = this.start_date
@@ -432,7 +432,7 @@ subscription: Subscription;
           else if(this.rent_type =="airport")
           {
              
-                console.log("Depar Id", this.depart_venue)
+               // console.log("Depar Id", this.depart_venue)
              if(this.depart_venue)
              {
                //check if depart != destination
@@ -460,7 +460,7 @@ subscription: Subscription;
                     {
                       alert("Assurez-vous d'avoir choisi Aéroport comme départ ou destination.");
                     }else{
-                      alert("Make sure you have chosen airport either as departure or destination.")
+                      alert("Make sure you have chosen Aéroport either as departure or destination.")
                     }
                     return ;
 
@@ -481,9 +481,9 @@ subscription: Subscription;
              {
               if(this.lang =="fr")
               {
-                alert("SVP  \n Remplissez correctement le champ Lieu de depart !");
+                alert("Choisissez un Lieu de depart !");
               }else{
-                alert("Please \n Fill the Departure venue Field correctly !")
+                alert("Select a Departure venue !")
               }
               return ;
              }
@@ -504,7 +504,7 @@ subscription: Subscription;
                 ////////////////////////////////////////////////////////////////////
                   if(this.rent_type =="hour")
                   {
-                    console.log("price : ",typeof(this.price),"\n option price : ", typeof(this.option[i].prix))
+                    //console.log("price : ",typeof(this.price),"\n option price : ", typeof(this.option[i].prix))
                     
                     this.price = parseFloat(this.price) + this.option[i].prix;
                     //add the optionnel id into the dataTosend field array
@@ -531,7 +531,7 @@ subscription: Subscription;
                   }
                   //////////////////////////////////////////////////////////////
                 
-                  console.log(this.option[i]);
+                  //console.log(this.option[i]);
               }
           }
 
@@ -545,7 +545,7 @@ subscription: Subscription;
           this.dataToSend.message = this.message;
           
 
-          console.log("\n data to send : \n", this.dataToSend);
+          //console.log("\n data to send : \n", this.dataToSend);
 
           // present alert
               this.presentAlertConfirm(this.price,this.start_date,this.end_date)
@@ -554,9 +554,9 @@ subscription: Subscription;
         {
           if(this.lang =="fr")
           {
-            alert("Remplissez correctement le champ Destination !");
+            alert("Choisissez une Destination !");
           }else{
-            alert("Fill the Destination Field correctly !")
+            alert("Select one destination !")
           }
             
         }
@@ -595,21 +595,21 @@ subscription: Subscription;
               role: 'cancel',
               cssClass: 'secondary',
               handler: (blah) => {
-                console.log('Confirm Cancel: blah');
+                //console.log('Confirm Cancel: blah');
               }
             }, {
               text: textok,
               handler: () => {
-                console.log('Confirm Okay');
+                //console.log('Confirm Okay');
                   //preseent loader
                  this.webservice.presentLoading()    
                  ////send the data to the API
                 this.webservice.postReservation(this.token, this.dataToSend).subscribe(res=>{
-                      console.log(res)
+                      //console.log(res)
                       if(res)
                       {
                         this.webservice.stopLoading();
-                         console.log("done");
+                        // console.log("done");
                          this.myAlert(0,lang);     
 
 
@@ -619,7 +619,7 @@ subscription: Subscription;
                   
                   //stop loader
                   this.webservice.stopLoading();
-                  console.log("error : \n",error); 
+                 // console.log("error : \n",error); 
                      this.myAlert(1,lang);     
                  }
                 );
@@ -755,12 +755,12 @@ change(type)
   ///////////////////////Search methods //////////////////////////////
   onCancel(val,i) {
 
-    this.depart_venue = null;
-    this.destination = null;
+    
 
     if(i==0)
     {
-      
+      this.depart_venue = null;
+
       this.show_list1 = false;
       this.list_to_show1 = [
         {
@@ -772,6 +772,7 @@ change(type)
     }
     else
     {
+      this.destination = null;
       this.show_list = false;
       this.list_to_show = [
         {
@@ -824,7 +825,7 @@ change(type)
         {
             //set departure
             this.depart_venue = id;
-            console.log("depart id :", this.depart_venue);
+            //console.log("depart id :", this.depart_venue);
 
             //set coef 
             this.coef1 = parseFloat(coef);

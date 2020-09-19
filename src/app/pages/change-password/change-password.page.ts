@@ -38,7 +38,7 @@ export class ChangePasswordPage implements OnInit {
 
     //get user Infos
     this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
-    console.log("Storage : ",this.userInfo);
+    //console.log("Storage : ",this.userInfo);
 
          //get Language
          this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
@@ -81,7 +81,7 @@ export class ChangePasswordPage implements OnInit {
                       //check if action failed or not
                       if(!res.old_password)
                       {
-                        console.log(res);
+                        //console.log(res);
                         this.webService.stopLoading();
                         
 

@@ -58,7 +58,16 @@
         "trip_details" : "Details Du Trajet",
         "my_rides" : "Mes Trajets",
         "empty_list" : "Liste Vide",
-        "empty_trip" : "Vous n'êtes associé à aucun Trajet pour le moment"
+        "empty_trip" : "Vous n'êtes associé à aucun Trajet pour le moment",
+        "my_report" : "Mon Impression",
+        "very_good" : "Très Bien",
+        "good" : "Bien",
+        "average" : "Moyen",
+        "bad" : "Mauvais",
+        "very_bad" : "Très Mauvais",
+        "question" : "Comment était le Trajet ? ",
+        "comment" : "Laissez un commentaire...."
+
 
         
 

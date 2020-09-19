@@ -92,7 +92,7 @@ export class MyBookingsPage implements OnInit {
 
           this.webService.getClientReservation(this.userId,this.token).subscribe(res =>{
 
-            console.log(res);
+            //console.log(res);
 
             if(res.detail) // that means the is error or no value exist for this user
             {
@@ -144,7 +144,7 @@ export class MyBookingsPage implements OnInit {
                       //call the car according to the id 
                       this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
     
-                        console.log(car)
+                       // console.log(car)
                             //pictures of car
                             this.filterData[i].photo_car = car.photo;
                             //modele
@@ -165,7 +165,7 @@ export class MyBookingsPage implements OnInit {
                             //get destination
                             this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
     
-                                console.log(dest);
+                               // console.log(dest);
                               
                               this.filterData[i].destination = dest.destination;
 
@@ -175,7 +175,7 @@ export class MyBookingsPage implements OnInit {
                                     //get depart
                                     this.webService.getSingleDestination(res[i].depart).subscribe(dep =>{
                           
-                                      console.log(dep);
+                                     // console.log(dep);
                       
                                     this.filterData[i].depart = dep.destination;
                                     
@@ -241,7 +241,7 @@ export class MyBookingsPage implements OnInit {
     // this.filterData[i].heure_fin = (res[i].date_fin.split("T")[1]).split(".")[0];
 
 
-    console.log(this.reservDetails)
+    //console.log(this.reservDetails)
   }
 
    //////////////////////////////////////////////////////////////////////////////////////
@@ -276,7 +276,7 @@ export class MyBookingsPage implements OnInit {
               role: 'cancel',
               cssClass: 'secondary',
               handler: (blah) => {
-                console.log('Confirm Cancel: blah');
+               // console.log('Confirm Cancel: blah');
               }
             }, {
               text: textok,
@@ -301,7 +301,7 @@ export class MyBookingsPage implements OnInit {
                 this.DataTosend.etape_location = 6;
                 this.DataTosend.optionnel = this.filterData[id].optionnel;
 
-                console.log(this.DataTosend);
+               // console.log(this.DataTosend);
 
                 //call the EditLocation API 
                 this.webService.presentLoading(); // present loader
@@ -411,12 +411,12 @@ export class MyBookingsPage implements OnInit {
                 role: 'cancel',
                 cssClass: 'secondary',
                 handler: () => {
-                  console.log('Confirm Cancel');
+                  //console.log('Confirm Cancel');
                 }
               }, {
                 text: textok,
                 handler: (data:number) => {
-                  console.log('Radio', data);
+                 // console.log('Radio', data);
 
                   //change the  Marks given by the customer ;
                   this.filterData[id].note_client = data;
@@ -437,7 +437,7 @@ export class MyBookingsPage implements OnInit {
                    this.DataTosend.etape_location = this.filterData[id].etape_location;
                    this.DataTosend.optionnel = this.filterData[id].optionnel;
    
-                   console.log(this.DataTosend);
+                  // console.log(this.DataTosend);
 
                     //call the EditLocation API 
                 this.webService.presentLoading(); // present loader

@@ -51,9 +51,22 @@ export class AppServiceService {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////// START : PRESENTATION LOADING ////////////////////////////////////////////////
         async presentLoading() {
-          console.log("loading starts");
+
+          var lang = (await Storage.get({ key: LNG_KEY })).value;
+
+          var myMessage =""
+          if(lang =="fr")
+          {
+            myMessage = "Récupération des données" 
+          }else{
+
+            myMessage ='Fetching data'
+          }
+
+         
+         // console.log("loading starts");
           this.loading =  this.loadingCtrl.create({
-            message: 'Fetching data',
+            message: myMessage,
           });
           (await this.loading).present();
         }
@@ -65,7 +78,7 @@ export class AppServiceService {
 
         async stopLoading() {
           // this.loading = false;
-         console.log("loading stop");
+        // console.log("loading stop");
 
          if(this.loading)
             this.loading = false;
@@ -86,14 +99,14 @@ export class AppServiceService {
             //set the initial app language
             async setInitialAppLanguage(){
 
-              console.log("initialize App Language");
+              //console.log("initialize App Language");
 
               let language = "fr";
               
 
                 var ret=Storage.get({ key: LNG_KEY });
                 var val = (await ret).value;
-                console.log("data from storage ",val,typeof(val));
+               // console.log("data from storage ",val,typeof(val));
 
                 if(val != null)
                 {
@@ -184,7 +197,7 @@ export class AppServiceService {
   
 
       postData(url,data):Observable<any>{
-        console.log("data To Send : \n", url, data)
+        //console.log("data To Send : \n", url, data)
 
         return this.http.post(url,data,httpOptions
             ).pipe(
@@ -324,7 +337,7 @@ export class AppServiceService {
 
       getUserDetails(token,id,type): Observable<any> {
 
-          console.log("is Driver : ", type);
+         // console.log("is Driver : ", type);
           var myToken = 'Token '+token
 
 
@@ -551,7 +564,7 @@ export class AppServiceService {
 /////////////////////////////////////////STRAT : POST RESERVATION  ////////////////////////////////////////////////////////////////////////
           
         postData1(url,data,token):Observable<any>{
-          console.log("APP Service : data To Send : \n", url, data,token)
+         // console.log("APP Service : data To Send : \n", url, data,token)
 
 
             const httpOption = {

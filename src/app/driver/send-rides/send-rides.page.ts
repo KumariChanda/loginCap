@@ -139,7 +139,7 @@ public  maxdate : any;   // the maximum date of a date picker
        
 
 
-       console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
+       //console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
 
 
 
@@ -149,7 +149,7 @@ public  maxdate : any;   // the maximum date of a date picker
       if (params && params.special) {
         this.data = JSON.parse(params.special);
 
-        console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
+       // console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
 
       }
     });
@@ -170,7 +170,7 @@ public  maxdate : any;   // the maximum date of a date picker
       //present loading
       this.webService.presentLoading();
       this.webService.getDriverRide(this.userId,this.token).subscribe(async res=>{
-        console.log("getting Rides : ",res);
+       // console.log("getting Rides : ",res);
 
          if(!res.detail)
          {
@@ -187,7 +187,7 @@ public  maxdate : any;   // the maximum date of a date picker
                //call the car according to the id 
                this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
     
-                console.log(car)
+               // console.log(car)
                     //pictures of car
                     this.filterData[i].photo= car.photo;
                     //modele
@@ -208,14 +208,14 @@ public  maxdate : any;   // the maximum date of a date picker
                   //get the client name
                   this.webService.getClient(res[i].client,this.token).subscribe(resp=>{
                     
-                    console.log("client", resp);
+                    //console.log("client", resp);
                       this.filterData[i].clientname = resp.first_name +" "+resp.last_name;
 
                 
                       //get destination
                     this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
         
-                     console.log(dest);
+                     //console.log(dest);
                    
                       this.filterData[i].destination = dest.destination;
 
@@ -224,7 +224,7 @@ public  maxdate : any;   // the maximum date of a date picker
                             //get depart
                             this.webService.getSingleDestination(res[i].depart).subscribe(dep =>{
                   
-                              console.log(dep);
+                              //console.log(dep);
               
                             this.filterData[i].depart = dep.destination;
                             
@@ -304,13 +304,13 @@ public  maxdate : any;   // the maximum date of a date picker
   //this method is used to print the details of a selected trip //////////////
   tripDetails(id){
 
-    console.log("selected : -> ", this.filterData[id].id);
+   // console.log("selected : -> ", this.filterData[id].id);
 
     //call another page and fetch the details of the car
     //this.router.navigateByUrl("/trip-details")
 
       //call another page and fetch the details of the car
-      this.router.navigate(['trip-details'], {queryParams:{id: this.filterData[id].id, prev : "/home"} })
+      this.router.navigate(['trip-details'], {queryParams:{id: this.filterData[id].id, prev : "/send-rides"} })
 
 
 

@@ -79,7 +79,7 @@ show = false; //is to show page content
 
     this.subscription = this.route.queryParams.subscribe((data) => {
      
-     console.log("selected ->", typeof(data.id));
+     //console.log("selected ->", typeof(data.id));
       //receive the  prev page 
      this.page_prev = data.prev ;
      //get the details of the car
@@ -90,7 +90,7 @@ show = false; //is to show page content
      this.webservice.getCarDetails(data.id).subscribe(res =>{
 
           this.car = res;
-          console.log(res)
+         // console.log(res)
 
         // get the differents pice of the car
         this.webservice.getPriceCar(data.id).subscribe( resp =>{
@@ -125,7 +125,7 @@ show = false; //is to show page content
       var ret=Storage.get({ key: 'accessToken' });
       this.token = (await ret).value;
 
-      console.log("token   ", this.token)
+     // console.log("token   ", this.token)
 
    //  return (await ret).value;
 

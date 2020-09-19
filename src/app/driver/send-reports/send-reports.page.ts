@@ -120,7 +120,7 @@ async ngOnInit() {
   
    this.subscription = this.route.queryParams.subscribe((data) => {
    
-    console.log("selected ->", typeof(data.id));
+   // console.log("selected ->", typeof(data.id));
      //receive the  prev page 
     this.page_prev = data.prev ;
     //get the details of the car
@@ -143,11 +143,11 @@ async ngOnInit() {
               if(data.id == res[i].id)
               {
                 this.filterData = res[i];
-                console.log("getting Ride : ",this.filterData);
+               // console.log("getting Ride : ",this.filterData);
                     //call the car according to the id 
                 this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
   
-                console.log(car)
+                //console.log(car)
                     //pictures of car
                     this.filterData.photo= car.photo;
                     //modele
@@ -166,14 +166,14 @@ async ngOnInit() {
                   //get the client name
                   this.webService.getClient(res[i].client,this.token).subscribe(resp=>{
                     
-                    console.log("client", resp);
+                   // console.log("client", resp);
                       this.filterData.clientname = resp.first_name +" "+resp.last_name;
 
                 
                       //get destination
                     this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
         
-                     console.log(dest);
+                   //  console.log(dest);
                    
                       this.filterData.destination = dest.destination;
 
@@ -182,7 +182,7 @@ async ngOnInit() {
                             //get depart
                             this.webService.getSingleDestination(res[i].depart).subscribe(dep =>{
                   
-                              console.log(dep);
+                             // console.log(dep);
               
                             this.filterData.depart = dep.destination;
                             
@@ -286,7 +286,7 @@ async end()
             role: 'cancel',
             cssClass: 'secondary',
             handler: (blah) => {
-              console.log('Confirm Cancel: blah');
+              //console.log('Confirm Cancel: blah');
             }
           }, {
             text: textok,
@@ -321,7 +321,7 @@ async end()
               }
  
 
-              console.log(this.DataTosend);
+              //console.log(this.DataTosend);
 
               //call the EditLocation API 
               this.webService.presentLoading(); // present loader

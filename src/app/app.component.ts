@@ -95,7 +95,7 @@ export class AppComponent {
         }
       }
 
-      console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
+     // console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
       
       
            // //set the initial language of the app
@@ -134,7 +134,7 @@ export class AppComponent {
 
 /////////////////////////////////////////////////////////////////
    openUserProfile(url){
-    console.log('Open this URL: ',url);
+   // console.log('Open this URL: ',url);
   }
 //////////////////////////////////
   async logout()
@@ -217,7 +217,7 @@ export class AppComponent {
            ////////////english side menu ////////////////////////////////////////////         
            if(lang=="en" )
            {
-              if(this.testingToken!=null)
+              if(this.testingToken!=null && this.testingToken!='null')
               {
                 /////////////////////////////////////////////////////////
                 //////////////////check the status of the user///////////////////////////////////////
@@ -367,7 +367,7 @@ export class AppComponent {
                        {
                          title : "My Rides",
                          url   : "/send-rides",
-                         icon  : "cart"
+                         icon  : "car"
                        },
                       //  {
                       //    title : "My Reports",
@@ -520,7 +520,7 @@ export class AppComponent {
             //french side menu
             else if(lang=="fr")
             {
-                if(this.testingToken!=null)
+                if(this.testingToken!=null && this.testingToken!='null')
                 {
                    /////////////////////////////////////////////////////////
                   //////////////////check the status of the user///////////////////////////////////////
@@ -669,7 +669,7 @@ export class AppComponent {
                         {
                           title : "Mes Trajets",
                           url   : "/send-rides",
-                          icon  : "cart"
+                          icon  : "car"
                         },
                         // {
                         //   title : "Mes Rapports",

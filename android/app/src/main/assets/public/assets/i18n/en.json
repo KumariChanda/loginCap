@@ -56,7 +56,14 @@
         "trip_details" : "Trip Details",
         "my_rides" : "My Rides",
         "empty_list" : "Empty List",
-        "empty_trip" : "You are not associated with any Trip for the moment"
+        "empty_trip" : "You are not associated with any Trip for the moment",
+        "very_good" : "Very Good",
+        "good" : "good",
+        "average" : "Average",
+        "bad" : "Bad",
+        "very_bad" : "Very Bad",
+        "question" : "How was the Ride ? ",
+        "comment" : "Comment Here...."
 
 
 
@@ -177,6 +184,7 @@
         "new_password":"New Password (*)",
         "confirm_password":"Confirm Password (*)",
         "change_password":"Change Password",
+        "change_password_btn":"Submit",
         "reset_password":"Reset Password"
     }
 

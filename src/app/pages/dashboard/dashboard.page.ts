@@ -110,7 +110,7 @@ public  maxdate : any;   // the maximum date of a date picker
    //present loading
     this.webService.presentLoading();
     this.webService.getVoitures().subscribe(async res=>{
-    console.log("getting voitures : ",res); 
+   // console.log("getting voitures : ",res); 
     if(!res.details)
     {
         
@@ -160,7 +160,7 @@ public  maxdate : any;   // the maximum date of a date picker
       //get Destination list
 
       this.webService.getDestinations().subscribe(async res=>{
-        console.log("getting Destinations : ",res); 
+        //console.log("getting Destinations : ",res); 
         if(!res.details)
         {
            if(res.length>0)
@@ -269,7 +269,7 @@ setDate()
   
 
 
-  console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
+ // console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
 
 
 
@@ -295,7 +295,7 @@ setDate()
 
 openClass()
 {
-   console.log(this.searchClass);
+   //console.log(this.searchClass);
       if(this.searchClass == 'business')
       {
          this.router.navigateByUrl("/business-class");
@@ -336,7 +336,7 @@ openClass()
 
 openPrice()
 {
-   console.log(this.searchPrice);
+   //console.log(this.searchPrice);
       if(this.searchPrice == '50000+')
       {
          this.router.navigate(['car-filter'],{queryParams : {id : this.searchPrice ,type : "price"}} );
@@ -377,7 +377,7 @@ openPrice()
 
 openOther()
 {
-      console.log(this.searchOther);
+     // console.log(this.searchOther);
       if(this.searchOther == '5p+')
       {
          this.router.navigate(['car-filter'],{queryParams : {id : this.searchOther ,type : "other"}} );

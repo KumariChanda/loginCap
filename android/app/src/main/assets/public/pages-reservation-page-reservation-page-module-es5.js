@@ -654,7 +654,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     if (this.lang == "fr") {
                       alert("Assurez-vous d'avoir choisi Aéroport comme départ ou destination.");
                     } else {
-                      alert("Make sure you have chosen airport either as departure or destination.");
+                      alert("Make sure you have chosen Aéroport either as departure or destination.");
                     }
 
                     return _context3.abrupt("return");
@@ -678,9 +678,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 63:
                     if (this.lang == "fr") {
-                      alert("SVP  \n Remplissez correctement le champ Lieu de depart !");
+                      alert("Choisissez un Lieu de depart !");
                     } else {
-                      alert("Please \n Fill the Departure venue Field correctly !");
+                      alert("Select a Departure venue !");
                     }
 
                     return _context3.abrupt("return");
@@ -731,9 +731,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 74:
                     if (this.lang == "fr") {
-                      alert("Remplissez correctement le champ Destination !");
+                      alert("Choisissez une Destination !");
                     } else {
-                      alert("Fill the Destination Field correctly !");
+                      alert("Select one destination !");
                     }
 
                   case 75:
@@ -901,10 +901,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onCancel",
         value: function onCancel(val, i) {
-          this.depart_venue = null;
-          this.destination = null;
-
           if (i == 0) {
+            this.depart_venue = null;
             this.show_list1 = false;
             this.list_to_show1 = [{
               'id': '',
@@ -912,6 +910,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'coefficient': ''
             }];
           } else {
+            this.destination = null;
             this.show_list = false;
             this.list_to_show = [{
               'id': '',
