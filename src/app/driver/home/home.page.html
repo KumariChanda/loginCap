@@ -29,52 +29,90 @@
     
 </ion-header>
 
-<ion-content >
+
+<ion-content *ngIf="show" >
 
 
     
 <!-- Default Segment / Search for the car according to the type of reservation -->
  <!--   First main Search  -->
 
-
-
-     <ion-card *ngFor="let item of filterData | filter:term">
+    <ion-card  *ngIf="nbr==0"> 
+          
+       <label textWrap="true" style="margin-bottom: 20%; margin-top: 20%;margin-left: 10%;color:white;">  
+            {{"DASHBOARD.empty_trip" | translate}}
+        
+         </label> 
     
-        <img [src]="item.picture" />
+     </ion-card>
+
+     
+     
+
+     <ion-card *ngFor="let item of filterData | filter:term ; index as i">
+       <div  *ngIf="item.etape_location == 2 || item.etape_location == 4 ">
+        <!-- <img [src]="item?.photo[0]?.image" /> -->
         <ion-card-header>
-                 <ion-card-title >{{item.title}}</ion-card-title>
+                 <!-- <ion-card-title >{{item.modele}}</ion-card-title> -->
 
           <ion-card-subtitle>
+
              
+              <!-- Car title -->
+                <ion-item>
+                    <label textWrap="true" style="width: 150px"> {{ "RESERVECAR.car" | translate }} </label>
+                   <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"  > {{item.modele}}  </label>
+     
+                    <!-- <ion-chip slot="end"> Per Hour </ion-chip> -->
+                </ion-item>
+              <!-- Reservation Type -->
+                <ion-item>
+                    <label textWrap="true" style="width: 120px"> {{ "RESERVECAR.booking_type" | translate }} </label>
+                   <label textWrap="true" style="margin-left: 15%;color:white;width: 150px"  *ngIf="item.type_location == 3"> {{ "RESERVECAR.airport_pick" | translate }}  </label>
+                    <label textWrap="true" style="margin-left: 15%;color:white;width: 150px" *ngIf="item.type_location == 2"> {{ "RESERVECAR.per_hour" | translate }}  </label>
+                    <label textWrap="true" style="margin-left: 15%;color:white;width: 150px" *ngIf="item.type_location == 1"> {{ "RESERVECAR.per_day" | translate }}   </label>
+                
+                    <!-- <ion-chip slot="end"> Per Hour </ion-chip> -->
+                </ion-item>
+              <!-- Depart -->
+                <ion-item  *ngIf="item.type_location == 3">
+                    <label textWrap="true" style="width: 150px"> {{ "RESERVECAR.departure" | translate }} </label>
+                   <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" > {{ item.depart }}  </label>
+                
+                    <!-- <ion-chip slot="end"> Per Hour </ion-chip> -->
+                </ion-item>
+
+
                 <!-- Destination -->
             
                <ion-item>
-                    <ion-label > Destination : </ion-label>
-                    <ion-chip slot="end"> Daoukro </ion-chip>
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_destination" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" > {{item.destination}}  </label>
+
+                    <!-- <ion-chip slot="end"> Daoukro </ion-chip> -->
                 </ion-item>
 
-               <!-- Reservation Type -->
-                <ion-item>
-                    <ion-label > Booking Type : </ion-label>
-                    <ion-chip slot="end"> Per Hour </ion-chip>
-                </ion-item>
+              
                 <!-- Starting date -->
                 <ion-item>
-                    <ion-label > Start Date : </ion-label>
-                    <ion-chip slot="end"> 12 Aug 2020 </ion-chip>
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_start_date" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"  > {{item.date_debut}} </label>
                 </ion-item>
                 
                 <!-- Starting time -->
                 <ion-item>
-                    <ion-label > Start Time : </ion-label>
-                    <ion-chip slot="end"> 12 : 10 </ion-chip>
+                    <label textWrap="true" style="width: 150px" > {{ "DASHBOARD.start_time" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{item.heure_debut}} </label>
+
+                    <!-- <ion-chip slot="end"> 12 : 10 </ion-chip> -->
                 </ion-item>
                
 
                 <!-- Client name -->
                 <ion-item>
-                    <ion-label > Client Name: </ion-label>
-                    <ion-chip slot="end"> Oumarou Toto </ion-chip>
+                    <label textWrap="true" style="width: 150px"  > {{ "RESERVECAR.clientname" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" > {{item.clientname}} </label>
+                    <!-- <ion-chip slot="end"> Oumarou Toto </ion-chip> -->
                 </ion-item>
 
                
@@ -84,28 +122,29 @@
         <ion-card-content>
                         
                <!-- button view more and start the trip-->
-             <ion-button  *ngIf="item.status == 0 " style="margin-left:3%" (click)="tripDetails(item.title )" >
-                <ion-label>View more and start the trip</ion-label>
+             <ion-button  *ngIf="item.etape_location == 2 " style="margin-left:18%" (click)="tripDetails(i)" >
+                <ion-label>{{"DASHBOARD.start_trip" | translate }}</ion-label>
                
             </ion-button>
                <!-- button end the trip -->
-             <ion-button  *ngIf="item.status == 1 " style="margin-left:30%"  >
-                <ion-label *ngIf="item.status == 1 "> End the trip</ion-label>
+             <ion-button  *ngIf="item.etape_location == 4 " style="margin-left:18%"  (click)="endTrip(i)" >
+                <ion-label > {{"DASHBOARD.end_trip" | translate }}</ion-label>
             </ion-button>
                <!-- button View details-->
-             <ion-button  *ngIf="item.status == 2 " style="margin-left:30%"  >
-                <ion-label *ngIf="item.status == 2 ">View details</ion-label>
+             <ion-button  *ngIf="item.etape_location == 5 " style="margin-left:30%"   >
+                <ion-label *ngIf="item.etape_location == 5 ">{{"DASHBOARD.btn_view_details" | translate }}</ion-label>
             </ion-button>
 
       
         </ion-card-content>
+         
+     </div>
+
       </ion-card>
 
     <!-- </ion-item> -->
 
 
-
- 
 
 
 

@@ -27,7 +27,7 @@ export class AboutUsPage implements OnInit {
      ///// start : get about us 
      this.webService.getAboutUs().subscribe(res => {
    
-       console.log(" about_us  ",res);
+       //console.log(" about_us  ",res);
         if(res)
         {
             this.about_us = res[0].text
@@ -36,7 +36,7 @@ export class AboutUsPage implements OnInit {
             /////////////////////////////////////////////////     
             ///// start : get team 
             this.webService.getTeam().subscribe(res => {
-              console.log(" team : ",res);
+              //console.log(" team : ",res);
               if(res)
               {
                 this.myteam = res

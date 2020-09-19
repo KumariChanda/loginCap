@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
 
-      <ion-item>
-          <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
-          <ion-title>{{"RESERVECAR.title"| translate}}</ion-title>
-      </ion-item>  
+    <ion-item>
+      <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
+      <ion-title>{{"RESERVECAR.title"| translate}}</ion-title>  
+  </ion-item>  
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +17,7 @@
        <ion-card>
         <ion-card-header>
 
-         <ion-card-title style = "margin-bottom: 5px;"> RESERVATION </ion-card-title>
+         <ion-card-title  title style="margin-left: 30%;margin-bottom: 5px;" > RESERVATION </ion-card-title>
               <!-- Label only -->
           <ion-segment [(ngModel)]="rent_type">
             <ion-segment-button  value="hour">
@@ -35,14 +35,21 @@
 
         <ion-card-content>
              
-              <!-- Search Bar -->
-               <ion-searchbar placeholder="Destination (*) "[(ngModel)]="searchQuery" (click)="click_bar()" (ionCancel)="onCancel($event)" (ionClear)	="onCancel($event)" (ngModelChange)="change_query($event)" showCancelButton="focus"></ion-searchbar>
+              
+
+            <!-- ----------------------------------------------------------------------------------- -->
+            <!-- ----------------------START rent type = "per hour"------------------------------- -->
+              <div *ngIf="rent_type =='hour'">
+
+                <!-- Search Bar -->
+                  <ion-searchbar placeholder="Destination (*) "[(ngModel)]="searchQuery" (click)="click_bar(1)" (ionCancel)="onCancel($event,1)" (ionClear)	="onCancel($event,1)" (ngModelChange)="change_query($event,1)" showCancelButton="focus"></ion-searchbar>
                 
-                <ion-list *ngIf="show_list">
-                   <ion-item *ngFor="let item of list_to_show; let i = index">
-                       <ion-label (click)="click_item(i, item.id,item.coefficient)"  > {{item.destination}} </ion-label>
-                   </ion-item>
-                </ion-list>
+                    <ion-list *ngIf="show_list">
+                      <ion-item *ngFor="let item of list_to_show; let i = index">
+                          <ion-label (click)="click_item(i, item.id,item.coefficient,1)"  > {{item.destination}} </ion-label>
+                      </ion-item>
+                    </ion-list>
+
 
 
                 <!-- Price -->
@@ -56,18 +63,22 @@
 
                 </ion-item>
 
-            <!-- ----------------------------------------------------------------------------------- -->
-            <!-- ----------------------START rent type = "per hour"------------------------------- -->
-              <div *ngIf="rent_type =='hour'">
                 <!-- start date -->
                 <ion-item  >
                   <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
                   <ion-datetime readonly [min]="today" [max]="maxdate" placeholder="Select Date" [(ngModel)]="start_date" ></ion-datetime>
                 </ion-item>
                 <!-- start time -->
-                <ion-item >
+                <ion-item *ngIf="lang=='en'">
                   <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
                   <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" (ionChange)="change('hour')"   [(ngModel)]="start_time" ></ion-datetime>
+                </ion-item>
+                <ion-item *ngIf="lang=='fr'">
+                  <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	"
+                   (ionChange)="change('hour')"   [(ngModel)]="start_time"
+                   cancelText="Annuler"
+                   doneText="Valider" ></ion-datetime>
                 </ion-item>
                  <!-- return time -->
                 <ion-item  *ngIf="hourNbr > 0" >
@@ -79,6 +90,8 @@
                   <ion-label>{{"RESERVECAR.number_hour"| translate}}</ion-label>
                   <ion-input type="number"  style="width: 100px; margin-left : 40%" (ionChange)="change('hour')"  placeholder="0"  [(ngModel)]="hourNbr" ></ion-input>
                 </ion-item>
+                <!-- ----------------French version ------------------------------------------->
+              
                 
                </div>
 
@@ -89,26 +102,84 @@
             <!-- ----------------------------------------------------------------------------------- -->
             <!-- ----------------------START rent type = "per day"------------------------------- -->
               <div *ngIf="rent_type =='day'">
+
+
+               <!-- Search Bar -->
+               <ion-searchbar placeholder="Destination (*) "[(ngModel)]="searchQuery" (click)="click_bar(1)" (ionCancel)="onCancel($event,1)" (ionClear)	="onCancel($event,1)" (ngModelChange)="change_query($event,1)" showCancelButton="focus"></ion-searchbar>
+                
+                <ion-list *ngIf="show_list">
+                   <ion-item *ngFor="let item of list_to_show; let i = index">
+                       <ion-label (click)="click_item(i, item.id,item.coefficient,1)"  > {{item.destination}} </ion-label>
+                   </ion-item>
+                </ion-list>
+
+
+
+                <!-- Price -->
+
+                <ion-item>
+                    <ion-label > {{"RESERVECAR.price"| translate}}</ion-label>
+                   
+                    <ion-chip slot="end"    *ngIf="rent_type =='day'"> {{car.per_day}} F CFA </ion-chip>
+                    <ion-chip slot="end"    *ngIf="rent_type =='hour'"> {{car.per_hour}} F CFA</ion-chip>
+                    <ion-chip slot="end"    *ngIf="rent_type =='airport'"> {{car.airport}} F CFA </ion-chip>
+
+                </ion-item>
                 <!-- start date -->
-                <ion-item  >
+                <ion-item *ngIf="lang=='en'" >
                   <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
                   <ion-datetime [min]="today" [max]="maxdate" (ionChange)="change('day')" placeholder="Select Date" [(ngModel)]="start_date"></ion-datetime>
                 </ion-item>
                  <!-- return date  -->
-                <ion-item  >
+                <ion-item *ngIf="lang=='en'"  >
                   <ion-label>{{"RESERVECAR.return_date"| translate}}</ion-label>
                   <ion-datetime [min]="min_retunDate" [max]="maxdate" placeholder="Select Date" [(ngModel)]="end_date"></ion-datetime>
                 </ion-item>
                 <!-- start time -->
-                <ion-item >
+                <ion-item *ngIf="lang=='en'" >
                   <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
                   <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" (ionChange)="end_time = start_time"   [min]="start_time" [(ngModel)]="start_time"></ion-datetime>
                 </ion-item>
                  <!-- return time -->
-                <ion-item >
+                <ion-item *ngIf="lang=='en'">
                   <ion-label>{{"RESERVECAR.return_time"| translate}}</ion-label>
                   <ion-datetime  display-format="HH:mm	" picker-format="HH:mm	"   [(ngModel)]="end_time"></ion-datetime>
                 </ion-item>
+                <!-- ------------------------french version ----------------------------------------- -->
+                  <ion-item *ngIf="lang=='fr'" >
+                  <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
+                  <ion-datetime [min]="today" [max]="maxdate" (ionChange)="change('day')" 
+                    placeholder="Select Date" [(ngModel)]="start_date"
+                    cancelText="Annuler"
+                   doneText="Valider"></ion-datetime>
+                </ion-item>
+                 <!-- return date  -->
+                <ion-item *ngIf="lang=='fr'"  >
+                  <ion-label>{{"RESERVECAR.return_date"| translate}}</ion-label>
+                  <ion-datetime [min]="min_retunDate" [max]="maxdate" placeholder="Select Date" 
+                  [(ngModel)]="end_date"
+                  cancelText="Annuler"
+                   doneText="Valider"></ion-datetime>
+                </ion-item>
+                <!-- start time -->
+                <ion-item *ngIf="lang=='fr'">
+                  <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm	" 
+                  (ionChange)="end_time = start_time"   [min]="start_time" [(ngModel)]="start_time"
+                  cancelText="Annuler"
+                   doneText="Valider"></ion-datetime>
+                </ion-item>
+                 <!-- return time -->
+                <ion-item *ngIf="lang=='fr'" >
+                  <ion-label>{{"RESERVECAR.return_time"| translate}}</ion-label>
+                  <ion-datetime  display-format="HH:mm	" picker-format="HH:mm	" 
+                    [(ngModel)]="end_time"
+                    cancelText="Annuler"
+                   doneText="Valider" ></ion-datetime>
+                </ion-item>     
+
+
+
                </div>
 
 
@@ -118,20 +189,76 @@
             <!-- ----------------------------------------------------------------------------------- -->
             <!-- ----------------------START rent type = "airport"------------------------------- -->
               <div *ngIf="rent_type =='airport'">
-                <!-- start date -->
-                <ion-item  >
-                  <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
-                  <ion-datetime [value]="today" [min]="today" [max]="maxdate" placeholder="Select Date" [(ngModel)]="start_date"></ion-datetime>
+
+                <!-- Search Bar Departure venue -->
+               <ion-searchbar placeholder="{{'RESERVECAR.departure_venue'| translate}} "[(ngModel)]="searchQuery1" (click)="click_bar(0)" (ionCancel)="onCancel($event,0)" (ionClear)	="onCancel($event,0)" (ngModelChange)="change_query($event,0)" showCancelButton="focus"></ion-searchbar>
+                
+                <ion-list *ngIf="show_list1">
+                   <ion-item *ngFor="let item of list_to_show1; let i = index">
+                       <ion-label (click)="click_item(i, item.id,item.coefficient,0)"  > {{item.destination}} </ion-label>
+                   </ion-item>
+                </ion-list>
+                <!-- Search Bar Destination -->
+               <ion-searchbar placeholder="Destination (*) "[(ngModel)]="searchQuery" (click)="click_bar(1)" (ionCancel)="onCancel($event,1)" (ionClear)	="onCancel($event,1)" (ngModelChange)="change_query($event,1)" showCancelButton="focus"></ion-searchbar>
+                
+                <ion-list *ngIf="show_list">
+                   <ion-item *ngFor="let item of list_to_show; let i = index">
+                       <ion-label (click)="click_item(i, item.id,item.coefficient,1)"  > {{item.destination}} </ion-label>
+                   </ion-item>
+                </ion-list>
+
+                <!-- departure -->
+                <!-- <ion-item  *ngIf="rent_type =='airport' ">
+                  <ion-input [(ngModel)]= "depart_venue"  placeholder='{{"RESERVECAR.departure_venue"| translate}}' ></ion-input>
+                </ion-item> -->
+
+
+                <!-- Price -->
+
+                <ion-item>
+                    <ion-label > {{"RESERVECAR.price"| translate}}</ion-label>
+                   
+                    <ion-chip slot="end"    *ngIf="rent_type =='day'"> {{car.per_day}} F CFA </ion-chip>
+                    <ion-chip slot="end"    *ngIf="rent_type =='hour'"> {{car.per_hour}} F CFA</ion-chip>
+                    <ion-chip slot="end"    *ngIf="rent_type =='airport'"> {{car.airport}} F CFA </ion-chip>
+
                 </ion-item>
-                <!-- start time -->
-                <ion-item >
+
+                <!-- start date -->
+                <ion-item *ngIf="lang=='fr'" >
+                  <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
+                  <ion-datetime [value]="today" [min]="today" [max]="maxdate"
+                   placeholder="Select Date" [(ngModel)]="start_date"
+                   monthShortNames="Jan, Fev, Mars, Avr, Mai, Juin, Juil, Août, Sep, Oct, Nov, Dec"
+                   cancelText="Annuler"
+                  doneText="Valider"></ion-datetime>
+                  
+                </ion-item>
+                <!-- start date in english --> 
+                <ion-item *ngIf="lang=='en'" >
+                  <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
+                  <ion-datetime [value]="today" [min]="today" [max]="maxdate"
+                   placeholder="Select Date" [(ngModel)]="start_date"></ion-datetime>
+                  
+                </ion-item>
+
+
+            
+
+                <!-- start time in french  -->
+                <ion-item *ngIf="lang=='fr'" >
+                  <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
+                  <ion-datetime display-format="HH:mm	" picker-format="HH:mm"
+                   [(ngModel)]="start_time"
+                   cancelText="Annuler"
+                   doneText="Valider" ></ion-datetime>
+                </ion-item>
+                <!-- start time in english-->
+                <ion-item *ngIf="lang=='en'" >
                   <ion-label>{{"RESERVECAR.start_time"| translate}}</ion-label>
                   <ion-datetime display-format="HH:mm	" picker-format="HH:mm" [(ngModel)]="start_time" ></ion-datetime>
                 </ion-item>
-                 <!-- departure -->
-                <ion-item  *ngIf="rent_type =='airport' ">
-                  <ion-input [(ngModel)]= "depart_venue"  placeholder='{{"RESERVECAR.departure_venue"| translate}}' ></ion-input>
-                </ion-item>
+                 
 
                 
                </div>
@@ -151,25 +278,25 @@
       <!-- type of reservation -->
 
 
-  <!-- optional services -->
-       <ion-card>
+   <!-- optional services -->
+   <ion-card>
      
-        <ion-card-header>
-          <ion-card-title >{{"RESERVECAR.otherservices"| translate}}  </ion-card-title>
-        </ion-card-header>
-        <ion-card-content *ngFor="let item of option">
-                  
-                <!-- <strong> <ion-label style="text-decoration: underline; margin-left:4%"> Optional Services : </ion-label> </strong> -->
-                  
-                  <!-- baby seats -->
-                <ion-item>
-                    <ion-checkbox color="primary" [(ngModel)] ="item.checked" slot="end"></ion-checkbox>
-                    <label  textWrap="true">{{item.libelle}}  -   {{item.prix}}F cfa/ {{"RESERVECAR.day"| translate}} </label>
-                </ion-item>
-                
+    <ion-card-header>
+      <ion-card-title style="margin-left: 25%;">{{"RESERVECAR.otherservices"| translate}}  </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngFor="let item of option">
+              
+            <!-- <strong> <ion-label style="text-decoration: underline; margin-left:4%"> Optional Services : </ion-label> </strong> -->
+              
+              <!-- baby seats -->
+            <ion-item>
+                <ion-checkbox color="primary" [(ngModel)] ="item.checked" slot="end"></ion-checkbox>
+                <label  textWrap="true">{{item.libelle}}  -   {{item.prix}}F cfa/ {{"RESERVECAR.day"| translate}} </label>
+            </ion-item>
             
-        </ion-card-content>
-        </ion-card>
+        
+    </ion-card-content>
+    </ion-card>
 
        
 
@@ -177,7 +304,7 @@
         <ion-card  style="height: 255px;">
      
             <ion-card-header>
-              <ion-card-title >{{"RESERVECAR.message"| translate}}</ion-card-title>
+              <ion-card-title style="margin-left:32%">{{"RESERVECAR.message"| translate}}</ion-card-title>
             </ion-card-header>
             <ion-card-content >
                 

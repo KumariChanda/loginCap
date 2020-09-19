@@ -17,7 +17,7 @@ export class TermUsagePage implements OnInit {
   ngOnInit() {
 
       //start loader
-      this.webService.presentLoading();
+     // this.webService.presentLoading();
       /////////////////////////////////////////////////     
       ///// start : get term of usage
       this.webService.getTerms().subscribe(res => {
@@ -34,7 +34,7 @@ export class TermUsagePage implements OnInit {
          }
           
             //Stop loader
-            this.webService.stopLoading();
+           // this.webService.stopLoading();
             this.show = true;
       });
       ///// end : get term of usage

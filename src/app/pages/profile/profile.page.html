@@ -1,31 +1,30 @@
 <ion-header>
-    <ion-toolbar>
+  <ion-toolbar>
 
-        <ion-item *ngIf="(editableText==true && userType=='client') ||userType=='chauffeur' ">
+      <ion-item *ngIf="(editableText==true && userType=='client') ||userType=='chauffeur' ">
 
-           <!-- menu icon -->
-          <ion-buttons  slot="start">
-            <ion-menu-button></ion-menu-button>
-          </ion-buttons>
+         <!-- menu icon -->
+        <ion-buttons  slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
 
-          <!-- title -->
-          <ion-title >{{ 'DASHBOARD.profile' | translate }}</ion-title>
-        </ion-item>
+        <!-- title -->
+        <ion-title >{{ 'DASHBOARD.profile' | translate }}</ion-title>
+      </ion-item>
 
-       <!-- ------------------------------------------------------------------------------ -->
-        <!-- ----------------------If edit has been clicked --------------------------------------------- -->
-        <ion-item *ngIf="editableText==false && userType=='client'" >
+     <!-- ------------------------------------------------------------------------------ -->
+      <!-- ----------------------If edit has been clicked --------------------------------------------- -->
+      <ion-item *ngIf="editableText==false && userType=='client'" >
 
-           <!-- prev icon -->
-           <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
+         <!-- prev icon -->
+         <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
 
-          <!-- title -->
-          <ion-title >{{ 'DASHBOARD.edit_profile_title' | translate }}</ion-title>
-        </ion-item>
- 
-  </ion-toolbar>
+        <!-- title -->
+        <ion-title >{{ 'DASHBOARD.edit_profile_title' | translate }}</ion-title>
+      </ion-item>
+
+</ion-toolbar>
 </ion-header>
-
 <ion-content *ngIf="show" >
  
           <!-- profile Image -->

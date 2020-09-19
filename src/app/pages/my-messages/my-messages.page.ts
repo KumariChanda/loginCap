@@ -58,7 +58,10 @@ export class MyMessagesPage implements OnInit {
            alert("No testimony \ n Back Home Page")
          }
 
-         this.router.navigateByUrl("/dashboard");
+         
+          //stop loader
+          this.webservice.stopLoading();
+          this.router.navigateByUrl("/dashboard");
 
          
       }else{
@@ -76,21 +79,20 @@ export class MyMessagesPage implements OnInit {
                 
                 //stop loader
                 this.webservice.stopLoading();
-      
+
                 this.router.navigateByUrl("/dashboard");
              
            }
            else{
                this.filterData = res;
-                     //stop loader
-                 this.show = true
-                 this.webservice.stopLoading();
-
+               this.show = true
+               
+              //stop loader
+              this.webservice.stopLoading();
            }
 
         
       }
-
 
 
 
@@ -101,7 +103,7 @@ export class MyMessagesPage implements OnInit {
       {
         alert("Erreur serveur !! ")
       }else{
-        alert("Server Error !! ")
+        alert("Server error !! ")
 
       }
       this.router.navigateByUrl("/dashboard");               

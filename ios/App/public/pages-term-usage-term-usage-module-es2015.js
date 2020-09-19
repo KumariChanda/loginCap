@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n   <ion-item>\n        <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title size=\"small\">{{'DASHBOARD.usage_term' | translate }} </ion-title>\n    </ion-item> \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n\n     <!-- -------------------------------------------------------------------------------------- -->\n        <!-- Start contact -->\n       <ion-card *ngFor=\"let term of myterms; \" >\n          \n            <ion-card-content>\n                          \n               \n                    {{term.text}}\n          \n            </ion-card-content>\n      </ion-card>\n        <!-- Stop Contact -->\n    <!-- -------------------------------------------------------------------------------------- -->\n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n   <ion-item>\n        <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title size=\"small\">{{'DASHBOARD.usage_term' | translate }} </ion-title>\n    </ion-item> \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n\n     <!-- --------------------------------------------------------------------------------------------- -->\n        <!-- Start contact -->\n       <ion-card *ngFor=\"let term of myterms; \" >\n          \n            <ion-card-content>\n                          \n               \n                    {{term.text}}\n          \n            </ion-card-content>\n      </ion-card>\n        <!-- Stop Contact -->\n    <!-- -------------------------------------------------------------------------------------------------- -->\n\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -131,7 +131,7 @@ let TermUsagePage = class TermUsagePage {
     }
     ngOnInit() {
         //start loader
-        this.webService.presentLoading();
+        // this.webService.presentLoading();
         /////////////////////////////////////////////////     
         ///// start : get term of usage
         this.webService.getTerms().subscribe(res => {
@@ -143,7 +143,7 @@ let TermUsagePage = class TermUsagePage {
                 // alert no response from server
             }
             //Stop loader
-            this.webService.stopLoading();
+            // this.webService.stopLoading();
             this.show = true;
         });
         ///// end : get term of usage

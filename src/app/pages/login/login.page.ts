@@ -54,11 +54,11 @@ export class LoginPage  {
 
         if(this.usernameText && this.passwordText)
         {
+          this.webService.presentLoading();
 
 
           this.webService.login(sending_obj).subscribe(async res=>{
-           console.log("getting response : ",res); 
-          // this.webService.presentLoading();
+           //console.log("getting response : ",res); 
 
             if(!res.detail)
             {
@@ -116,31 +116,31 @@ export class LoginPage  {
                 this.webService.stopLoading();
                 if(this.lang =="fr")
                 {
-                  alert("Etes-vous Chauffeur ?? \n SVP selectionnez l'option \n se connecter en tant que chaffeur.") ;            
+                  alert("Etes-vous Chauffeur ? \n Si oui, connectez-vous en tant que chaffeur.") ;            
 
                 } 
                 else
                 {
-                  alert("Are you a driver? please choose the option \n login as a driver. ") ;            
+                  alert("Are you a driver ? \n If yes, login as a driver. ") ;            
 
                 }  
 
-              }) //added end get user details
+              }
+              ) //added end get user details
               //////////////////////////////////////////////////
             }
             else{
-                       this.webService.stopLoading();
-                      if(this.lang =="fr")
-                        {
-                          alert("Mauvais username et/ou mot de passe !!! \n SVP entrez des valeurs correctes.") ;            
+                this.webService.stopLoading();
+                if(this.lang =="fr")
+                {
+                  alert("Mauvais username et/ou mot de passe !!! \n SVP entrez des valeurs correctes. ") ;            
 
-                        } 
-                        else
-                        {
-                          alert("Bad user name and/or password !!! \n Please enter correct values. ") ;            
+                } 
+                else
+                {
+                  alert("Bad username and/or password !!! \n Please enter correct values. ") ;            
 
-                        }  
-                        this.router.navigateByUrl("/login")
+                }  
             }  
                            
           },error =>{
@@ -156,7 +156,7 @@ export class LoginPage  {
 
                         }  
 
-          } 
+          }  
           )
 
         }
@@ -192,7 +192,7 @@ export class LoginPage  {
   async getData()
   {
   var ret=Storage.get({ key:'accessToken'});
-    console.log((await ret).value);
+    //console.log((await ret).value);
   }
 
 

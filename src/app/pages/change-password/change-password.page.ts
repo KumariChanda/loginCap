@@ -22,8 +22,9 @@ export class ChangePasswordPage implements OnInit {
 
   dataToSend ={
     "new_password" : "",
-    "old_password" : ""
-   
+    "old_password" : "",
+    
+
   }
   token: string;
 
@@ -37,7 +38,7 @@ export class ChangePasswordPage implements OnInit {
 
     //get user Infos
     this.userInfo =JSON.parse( (await Storage.get({ key: "user_infos" })).value);
-    console.log("Storage : ",this.userInfo);
+    //console.log("Storage : ",this.userInfo);
 
          //get Language
          this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
@@ -63,6 +64,7 @@ export class ChangePasswordPage implements OnInit {
             
               if(this.new_password == this.confirm_pass)
               {
+                
                     // if all the fields are correct
                     //data to be sent
                    // console.log(typeof(this.mobilenumber.toString( )))
@@ -79,7 +81,7 @@ export class ChangePasswordPage implements OnInit {
                       //check if action failed or not
                       if(!res.old_password)
                       {
-                        console.log(res);
+                        //console.log(res);
                         this.webService.stopLoading();
                         
 
@@ -90,8 +92,8 @@ export class ChangePasswordPage implements OnInit {
                           alert("Successful operation!!!")
         
                         }
-                        this.old_password ="";
-                        this.new_password="";
+                        this.old_password = "";
+                        this.new_password = ""
                         this.router.navigateByUrl("/dashboard");
 
                       }
@@ -107,7 +109,7 @@ export class ChangePasswordPage implements OnInit {
                             alert("Unsuccessful operation!!!")
           
                           }
-                          this.router.navigateByUrl("/dashboard");
+                         // this.router.navigateByUrl("/dashboard");
                         }
     
                                       
@@ -117,19 +119,18 @@ export class ChangePasswordPage implements OnInit {
                       this.webService.stopLoading(); 
                         if(this.lang =="fr")
                           {
-                            alert("Erreur serveur, \n Opération pas réussie!!!")
+                            alert("Opération pas réussie!!!")
                           }else{
-                            alert("Server Error , \n Unsuccessful operation!!!")
+                            alert("Unsuccessful operation!!!")
           
                           }
 
 
-                      this.router.navigateByUrl("/dashboard");               
+                     // this.router.navigateByUrl("/dashboard");               
     
                      }
                      );
-                 
-    
+                  
               }
               else
                 {

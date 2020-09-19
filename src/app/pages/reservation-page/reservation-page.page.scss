@@ -43,7 +43,13 @@ ion-segment-button
     color : #ffa60a;
 }
 
-ion-card-title,ion-textarea
+ion-card-title
+{
+    color : white;
+    font-size: 1.3em ;
+}
+
+ion-textarea
 {
     color : white;
 }

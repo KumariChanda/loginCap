@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Plugins } from '@capacitor/core';
+
+import { AppServiceService } from 'src/app/service/appService/app-service.service';
 //import * as moment from 'moment';
 
 
@@ -24,6 +26,8 @@ public  maxdate : any;   // the maximum date of a date picker
   alias: any;
   datauser: any;
   token : any;
+  lang: string;
+  nbr = 0;
 
   logo1 ='../assets/images/logo1.jpg';
   
@@ -41,70 +45,51 @@ public  maxdate : any;   // the maximum date of a date picker
   term = '';
   filterData = [
     {
-      motorType:'Diesel',  // motor type
-      model:'Model 2018',  // model of the car
-      seatNumber:'9',  // number of seats of a car
-      pricePerDay:'65000', // price per day
-      title:'MERCEDEZ BENZ, VEHICULE FAMILIAL', // title or designation of the car
-      picture : '../assets/images/car1.jpg',  // picture of the car
-      status : 0
-     
-    },
-    {
-      motorType:'Diesel',  // motor type
-      model:'Model 2016',  // model of the car
-      seatNumber:'8',  // number of seats of a car
-      pricePerDay:'65000', // price per day
-      title:'MERCEDEZ BENZ, MINI BUS METRIS', // title or designation of the car
-      picture : '../assets/images/car2.jpg',  // picture of the car
-      status : 1
+      "id": 0,
+      "date_location": "",
+      "date_debut": "",
+      "date_fin": "",
+      "heure_debut": "",
+      "heure_fin": "",
+      "montant": 0,
+      "note_client": 0,
+      "commentaire_client": "",
+      "note_chauffeur": 0,
+      "rapport_chauffeur": "",
+      "client": 0,
+      "clientname": "",
+      "chauffeur": 0,
+      "voiture": 0,
+      "type_location": 0,
+      "depart":0,
+      "depart_id":0,
+      "destination": 0,
+      "destination_id": 0,
+      "message":"",
+      "photo":[{"image":""}],
+      "modele":"" ,
+      "etape_location": 0,
+      "optionnel": [],
+         
+    }
+  
+  ];
 
-     
-    },
-    {
-      motorType:'Diesel',  // motor type
-      model:'Model 2018',  // model of the car
-      seatNumber:'5',  // number of seats of a car
-      pricePerDay:'90000', // price per day
-      title:'MITSUBISHI , PAJERO SUV 4X4', // title or designation of the car
-      picture : '../assets/images/car3.jpg',  // picture of the car
-      status : 2
-     
-    },
-    {
-      motorType:'Diesel',  // motor type
-      model:'Model 2019',  // model of the car
-      seatNumber:'5',  // number of seats of a car
-      pricePerDay:'90000', // price per day
-      title:'TOYOTA , Pick up 4X4 SUV', // title or designation of the car
-      picture : '../assets/images/car4.jpg',  // picture of the car
-      status : 2
-     
-    },
-    {
-      motorType:'Diesel',  // motor type
-      model:'Model 2016',  // model of the car
-      seatNumber:'5',  // number of seats of a car
-      pricePerDay:'75000 ', // price per day
-      title:'VOLKSWAGEN , CITADINE PSSAT', // title or designation of the car
-      picture : '../assets/images/car5.jpg',  // picture of the car
-      status : 2
-     
-    },
-  ]
-
-  //////////////////////////////////////////////////////////////////////
-  ////////////data for destination
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////// data for destination //////////////////////////////////////////////////
   rent_type : any ="hour";
-  list_original = ['item 1','item 2','item 3','item 4'];
+  list_original = [];
   list_to_show = [];
   selected_index = -1;
   show_list = false;
-
+  userId: any;
+  
+  show = false
   
 
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, 
+    private webService: AppServiceService) {
 
 
       //language
@@ -155,7 +140,7 @@ public  maxdate : any;   // the maximum date of a date picker
        
 
 
-       console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
+      // console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
 
 
 
@@ -165,7 +150,7 @@ public  maxdate : any;   // the maximum date of a date picker
       if (params && params.special) {
         this.data = JSON.parse(params.special);
 
-        console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
+       // console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
 
       }
     });
@@ -173,14 +158,124 @@ public  maxdate : any;   // the maximum date of a date picker
 
    }
 
-  ngOnInit() {
+  async ngOnInit() {
+      /////////////////////////////////////////////////
+      //get token
+      this.token =(await Storage.get({ key: 'accessToken' })).value;
 
+      //get user id
+      this.userId =JSON.parse( (await Storage.get({ key: "user_infos" })).value).id;
+      //get Language
+       this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+
+      //present loading
+      this.webService.presentLoading();
+      this.webService.getDriverRide(this.userId,this.token).subscribe(async res=>{
+       // console.log("getting Rides : ",res);
+
+         if(!res.detail)
+         {
+          
+            this.filterData = res;
+            for(let i=0; i< res.length;i++)
+            {
+
+              if(this.filterData[i].etape_location == 4 || this.filterData[i].etape_location == 2)
+              {
+                this.nbr = this.nbr + 1 ;
+              }
+
+               //call the car according to the id 
+               this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
+    
+                //console.log(car)
+                    //pictures of car
+                    this.filterData[i].photo= car.photo;
+                    //modele
+                    this.filterData[i].modele = car.modele.libelle;
+
+                    //receive the res
+                    this.filterData[i] = res[i];
+                    this.filterData[i].heure_debut = (res[i].date_debut.split("T")[1]).split(".")[0];
+                    this.filterData[i].date_debut = res[i].date_debut.split("T")[0];
+                    this.filterData[i].heure_fin = (res[i].date_fin.split("T")[1]).split(".")[0];
+                    this.filterData[i].date_fin = res[i].date_fin.split("T")[0];
+                    this.filterData[i].date_location = res[i].date_location.split("T")[0];
+                    this.filterData[i].destination_id = res[i].destination;
+                    this.filterData[i].depart_id = res[i].depart;
+
+                  //get the client name
+                  this.webService.getClient(res[i].client,this.token).subscribe(resp=>{
+                    
+                    //console.log("client", resp);
+                      this.filterData[i].clientname = resp.first_name +" "+resp.last_name;
+
+                
+                      //get destination
+                    this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
+        
+                     //console.log(dest);
+                   
+                      this.filterData[i].destination = dest.destination;
+
+                      if(res[i].depart > 0)
+                      {
+                            //get depart
+                            this.webService.getSingleDestination(res[i].depart).subscribe(dep =>{
+                  
+                              //console.log(dep);
+              
+                            this.filterData[i].depart = dep.destination;
+                            
+
+                            this.list_original = this.filterData
+                            //stop loader
+                            this.show = true
+                            this.webService.stopLoading();
+                          });
+                          //end get depart
+                      } 
+                    
+                });
+                    //end get destination
+                  
+                  });
+                  //end get client name
+           
+             });
+              
+            }
+
+         }else{
+              this.webService.stopLoading();
+              if(this.lang =="fr")
+              {
+                
+                alert("Aucun Trajet disponible !! ")
+              }else{
+                alert("No Ride available !!  ")
+          
+              }
+
+         }
+
+      },error=>{
+        this.webService.stopLoading(); 
+        
+        if(this.lang =="fr")
+        {
+          alert("Erreur Serveur !! ")
+        }else{
+          alert("Server Error!! ")
+    
+        }
+    
+       });
 
   }
 
-//////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // async getToken()
@@ -190,31 +285,49 @@ public  maxdate : any;   // the maximum date of a date picker
 //   }
 
 
-///////////////////////////////////////////////////
-  logOut()
-  {
-    //call dashboard page and pass data 
-    this.router.navigateByUrl("/dashboard");
-
-    // empty the token
-     Storage.set({
-      key: 'accessToken',
-      value: null     
-    });  
-  }
-
 
   //////////////////////////////////////////////////////
   //this method is used to print the details of a selected trip //////////////
-  tripDetails(carTitle){
+  tripDetails(id){
 
-    console.log("selected : -> ", carTitle);
+    //console.log("selected : -> ", this.filterData[id].id);
 
     //call another page and fetch the details of the car
-    this.router.navigateByUrl("/trip-details")
+    //this.router.navigateByUrl("/trip-details")
+
+      //call another page and fetch the details of the car
+      this.router.navigate(['trip-details'], {queryParams:{id: this.filterData[id].id, prev : "/home"} })
+
 
 
   }
+  //////////////////////////////////////////////////////
+  //this method is used to print the details of a selected trip //////////////
+  endTrip(id){
+
+    //console.log("selected : -> ", this.filterData[id].id);
+
+    //call another page and fetch the details of the car
+    //this.router.navigateByUrl("/trip-details")
+
+      //call another page and fetch the details of the car
+      this.router.navigate(['send-reports'], {queryParams:{id: this.filterData[id].id, prev : "/home"} })
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

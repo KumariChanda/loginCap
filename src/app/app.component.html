@@ -9,7 +9,7 @@
           <ion-toolbar>
 
               <!-- menu == null -->
-            <div *ngIf="testingToken==null">
+            <div *ngIf="testingToken==null || testingToken=='null'">
               <div >
                 <ion-grid>
                   <ion-row>
@@ -33,7 +33,7 @@
               </div>
          
              <!-- menu != null -->
-          <div *ngIf="testingToken!=null">
+          <div *ngIf="testingToken!=null && testingToken!='null'">
             <div >
               <ion-grid>
                 <ion-row>
@@ -59,7 +59,7 @@
 
            <!-- Menu if user is not logged in yet -->
 
-          <div *ngIf="testingToken==null ">
+          <div *ngIf="testingToken==null || testingToken=='null' ">
           
           <div  style=" background: black " *ngFor="let pages of menuNavigatorWithoutLogin">
               
@@ -75,8 +75,8 @@
                 [class.active-parent]="pages.open" details="false">
                 
                 <ion-icon [name]="pages.icon" slot="start"></ion-icon>
-                <!-- <ion-icon slot="end" name="arrow-forward" *ngIf="!pages.open"></ion-icon>
-                <ion-icon slot="end" name="arrow-down" *ngIf="pages.open"></ion-icon> -->
+                <!-- <ion-icon slot="end" name="arrow-forward" *ngIf="!pages.open"></ion-icon> -->
+                <!-- <ion-icon slot="end" name="arrow-down" *ngIf="pages.open"></ion-icon> -->
                 <ion-label> {{pages.title}} </ion-label>
 
               </ion-item>
@@ -99,7 +99,7 @@
 
         </div>
   
-          <div *ngIf="testingToken!=null">
+          <div *ngIf="testingToken!=null && testingToken!='null'">
             
              
           <div *ngFor="let pages of menuNavigatorLogin">
@@ -115,8 +115,8 @@
             [class.active-parent]="pages.open" details="false">
             
             <ion-icon [name]="pages.icon" slot="start"></ion-icon>
-            <!-- <ion-icon slot="end" name="arrow-forward" *ngIf="!pages.open"></ion-icon>
-            <ion-icon slot="end" name="arrow-down" *ngIf="pages.open"></ion-icon> -->
+            <!-- <ion-icon slot="end" name="arrow-forward" *ngIf="!pages.open"></ion-icon> -->
+            <ion-icon slot="end" name="arrow-down" *ngIf="pages.open"></ion-icon>
             <ion-label> {{pages.title}} </ion-label>
 
           </ion-item>

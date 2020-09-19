@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n          <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n          <ion-title>{{\"RESERVECAR.title\"| translate}}</ion-title>\n      </ion-item>  \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n\n\n\n\n       <ion-card>\n        <ion-card-header>\n\n         <ion-card-title style = \"margin-bottom: 5px;\"> RESERVATION </ion-card-title>\n              <!-- Label only -->\n          <ion-segment [(ngModel)]=\"rent_type\">\n            <ion-segment-button  value=\"hour\">\n              <ion-label>{{\"RESERVECAR.per_hour\"| translate}} </ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"day\">\n              <ion-label>{{\"RESERVECAR.per_day\"| translate}}</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"airport\">\n              <label textWrap=\"true\" style=\"font-size:0.9em\">{{\"RESERVECAR.airport_pick\"| translate}}</label>\n            </ion-segment-button>\n          </ion-segment>\n\n        </ion-card-header>\n\n        <ion-card-content>\n             \n              <!-- Search Bar -->\n               <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar()\" (ionCancel)=\"onCancel($event)\" (ionClear)\t=\"onCancel($event)\" (ngModelChange)=\"change_query($event)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list\">\n                   <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per hour\"------------------------------- -->\n              <div *ngIf=\"rent_type =='hour'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime readonly [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\" ></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"change('hour')\"   [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item  *ngIf=\"hourNbr > 0\" >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime readonly display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"  [min]=\"end_time\" [(ngModel)]=\"end_time\"> </ion-datetime>\n                </ion-item>\n                <!-- Number of Time-->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.number_hour\"| translate}}</ion-label>\n                  <ion-input type=\"number\"  style=\"width: 100px; margin-left : 40%\" (ionChange)=\"change('hour')\"  placeholder=\"0\"  [(ngModel)]=\"hourNbr\" ></ion-input>\n                </ion-item>\n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per hour\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per day\"------------------------------- -->\n              <div *ngIf=\"rent_type =='day'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"today\" [max]=\"maxdate\" (ionChange)=\"change('day')\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                </ion-item>\n                 <!-- return date  -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.return_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"min_retunDate\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"end_date\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"end_time = start_time\"   [min]=\"start_time\" [(ngModel)]=\"start_time\"></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime  display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"   [(ngModel)]=\"end_time\"></ion-datetime>\n                </ion-item>\n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per day\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n           \n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"airport\"------------------------------- -->\n              <div *ngIf=\"rent_type =='airport'\">\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [value]=\"today\" [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\" [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                 <!-- departure -->\n                <ion-item  *ngIf=\"rent_type =='airport' \">\n                  <ion-input [(ngModel)]= \"depart_venue\"  placeholder='{{\"RESERVECAR.departure_venue\"| translate}}' ></ion-input>\n                </ion-item>\n\n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"airport\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n\n                \n                \n\n        </ion-card-content>\n      \n  </ion-card>\n      \n      <!-- type of reservation -->\n\n\n  <!-- optional services -->\n       <ion-card>\n     \n        <ion-card-header>\n          <ion-card-title >{{\"RESERVECAR.otherservices\"| translate}}  </ion-card-title>\n        </ion-card-header>\n        <ion-card-content *ngFor=\"let item of option\">\n                  \n                <!-- <strong> <ion-label style=\"text-decoration: underline; margin-left:4%\"> Optional Services : </ion-label> </strong> -->\n                  \n                  <!-- baby seats -->\n                <ion-item>\n                    <ion-checkbox color=\"primary\" [(ngModel)] =\"item.checked\" slot=\"end\"></ion-checkbox>\n                    <label  textWrap=\"true\">{{item.libelle}}  -   {{item.prix}}F cfa/ {{\"RESERVECAR.day\"| translate}} </label>\n                </ion-item>\n                \n            \n        </ion-card-content>\n        </ion-card>\n\n       \n\n        <!-- Message -->\n        <ion-card  style=\"height: 255px;\">\n     \n            <ion-card-header>\n              <ion-card-title >{{\"RESERVECAR.message\"| translate}}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content >\n                \n                  <ion-textarea [(ngModel)]=\"message\" class=\"cell-input\" auto-grow=\"true\" maxlength=\"400\" placeholder=\"{{'RESERVECAR.messageplaceholder'| translate}}\"></ion-textarea>\n\n            </ion-card-content>\n\n        </ion-card>\n\n           <!-- submit your reservation -->\n        <!-- <ion-button expand=\"round\" class=\"center-button\" >Submit</ion-button> -->\n\n\n</ion-content>\n<ion-footer *ngIf=\"show\">\n  <!-- <ion-toolbar> -->\n      <ion-button  (click)=\"submit(car.id)\" expand=\"full\"> {{\"RESERVECAR.btn_submit\"| translate}} </ion-button>\n  <!-- </ion-toolbar> -->\n</ion-footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n\n    <ion-item>\n      <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n      <ion-title>{{\"RESERVECAR.title\"| translate}}</ion-title>  \n  </ion-item>  \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n\n\n\n\n       <ion-card>\n        <ion-card-header>\n\n         <ion-card-title  title style=\"margin-left: 30%;margin-bottom: 5px;\" > RESERVATION </ion-card-title>\n              <!-- Label only -->\n          <ion-segment [(ngModel)]=\"rent_type\">\n            <ion-segment-button  value=\"hour\">\n              <ion-label>{{\"RESERVECAR.per_hour\"| translate}} </ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"day\">\n              <ion-label>{{\"RESERVECAR.per_day\"| translate}}</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"airport\">\n              <label textWrap=\"true\" style=\"font-size:0.9em\">{{\"RESERVECAR.airport_pick\"| translate}}</label>\n            </ion-segment-button>\n          </ion-segment>\n\n        </ion-card-header>\n\n        <ion-card-content>\n             \n              \n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per hour\"------------------------------- -->\n              <div *ngIf=\"rent_type =='hour'\">\n\n                <!-- Search Bar -->\n                  <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar(1)\" (ionCancel)=\"onCancel($event,1)\" (ionClear)\t=\"onCancel($event,1)\" (ngModelChange)=\"change_query($event,1)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                    <ion-list *ngIf=\"show_list\">\n                      <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                          <ion-label (click)=\"click_item(i, item.id,item.coefficient,1)\"  > {{item.destination}} </ion-label>\n                      </ion-item>\n                    </ion-list>\n\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime readonly [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\" ></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item *ngIf=\"lang=='en'\">\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"change('hour')\"   [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                <ion-item *ngIf=\"lang=='fr'\">\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"\n                   (ionChange)=\"change('hour')\"   [(ngModel)]=\"start_time\"\n                   cancelText=\"Annuler\"\n                   doneText=\"Valider\" ></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item  *ngIf=\"hourNbr > 0\" >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime readonly display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"  [min]=\"end_time\" [(ngModel)]=\"end_time\"> </ion-datetime>\n                </ion-item>\n                <!-- Number of Time-->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.number_hour\"| translate}}</ion-label>\n                  <ion-input type=\"number\"  style=\"width: 100px; margin-left : 40%\" (ionChange)=\"change('hour')\"  placeholder=\"0\"  [(ngModel)]=\"hourNbr\" ></ion-input>\n                </ion-item>\n                <!-- ----------------French version ------------------------------------------->\n              \n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per hour\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per day\"------------------------------- -->\n              <div *ngIf=\"rent_type =='day'\">\n\n\n               <!-- Search Bar -->\n               <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar(1)\" (ionCancel)=\"onCancel($event,1)\" (ionClear)\t=\"onCancel($event,1)\" (ngModelChange)=\"change_query($event,1)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list\">\n                   <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient,1)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n                <!-- start date -->\n                <ion-item *ngIf=\"lang=='en'\" >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"today\" [max]=\"maxdate\" (ionChange)=\"change('day')\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                </ion-item>\n                 <!-- return date  -->\n                <ion-item *ngIf=\"lang=='en'\"  >\n                  <ion-label>{{\"RESERVECAR.return_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"min_retunDate\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"end_date\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item *ngIf=\"lang=='en'\" >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"end_time = start_time\"   [min]=\"start_time\" [(ngModel)]=\"start_time\"></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item *ngIf=\"lang=='en'\">\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime  display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"   [(ngModel)]=\"end_time\"></ion-datetime>\n                </ion-item>\n                <!-- ------------------------french version ----------------------------------------- -->\n                  <ion-item *ngIf=\"lang=='fr'\" >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"today\" [max]=\"maxdate\" (ionChange)=\"change('day')\" \n                    placeholder=\"Select Date\" [(ngModel)]=\"start_date\"\n                    cancelText=\"Annuler\"\n                   doneText=\"Valider\"></ion-datetime>\n                </ion-item>\n                 <!-- return date  -->\n                <ion-item *ngIf=\"lang=='fr'\"  >\n                  <ion-label>{{\"RESERVECAR.return_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"min_retunDate\" [max]=\"maxdate\" placeholder=\"Select Date\" \n                  [(ngModel)]=\"end_date\"\n                  cancelText=\"Annuler\"\n                   doneText=\"Valider\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item *ngIf=\"lang=='fr'\">\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" \n                  (ionChange)=\"end_time = start_time\"   [min]=\"start_time\" [(ngModel)]=\"start_time\"\n                  cancelText=\"Annuler\"\n                   doneText=\"Valider\"></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item *ngIf=\"lang=='fr'\" >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime  display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" \n                    [(ngModel)]=\"end_time\"\n                    cancelText=\"Annuler\"\n                   doneText=\"Valider\" ></ion-datetime>\n                </ion-item>     \n\n\n\n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per day\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n           \n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"airport\"------------------------------- -->\n              <div *ngIf=\"rent_type =='airport'\">\n\n                <!-- Search Bar Departure venue -->\n               <ion-searchbar placeholder=\"{{'RESERVECAR.departure_venue'| translate}} \"[(ngModel)]=\"searchQuery1\" (click)=\"click_bar(0)\" (ionCancel)=\"onCancel($event,0)\" (ionClear)\t=\"onCancel($event,0)\" (ngModelChange)=\"change_query($event,0)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list1\">\n                   <ion-item *ngFor=\"let item of list_to_show1; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient,0)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n                <!-- Search Bar Destination -->\n               <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar(1)\" (ionCancel)=\"onCancel($event,1)\" (ionClear)\t=\"onCancel($event,1)\" (ngModelChange)=\"change_query($event,1)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list\">\n                   <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient,1)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n\n                <!-- departure -->\n                <!-- <ion-item  *ngIf=\"rent_type =='airport' \">\n                  <ion-input [(ngModel)]= \"depart_venue\"  placeholder='{{\"RESERVECAR.departure_venue\"| translate}}' ></ion-input>\n                </ion-item> -->\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n\n                <!-- start date -->\n                <ion-item *ngIf=\"lang=='fr'\" >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [value]=\"today\" [min]=\"today\" [max]=\"maxdate\"\n                   placeholder=\"Select Date\" [(ngModel)]=\"start_date\"\n                   monthShortNames=\"Jan, Fev, Mars, Avr, Mai, Juin, Juil, Août, Sep, Oct, Nov, Dec\"\n                   cancelText=\"Annuler\"\n                  doneText=\"Valider\"></ion-datetime>\n                  \n                </ion-item>\n                <!-- start date in english --> \n                <ion-item *ngIf=\"lang=='en'\" >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [value]=\"today\" [min]=\"today\" [max]=\"maxdate\"\n                   placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                  \n                </ion-item>\n\n\n            \n\n                <!-- start time in french  -->\n                <ion-item *ngIf=\"lang=='fr'\" >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\"\n                   [(ngModel)]=\"start_time\"\n                   cancelText=\"Annuler\"\n                   doneText=\"Valider\" ></ion-datetime>\n                </ion-item>\n                <!-- start time in english-->\n                <ion-item *ngIf=\"lang=='en'\" >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\" [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                 \n\n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"airport\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n\n                \n                \n\n        </ion-card-content>\n      \n  </ion-card>\n      \n      <!-- type of reservation -->\n\n\n   <!-- optional services -->\n   <ion-card>\n     \n    <ion-card-header>\n      <ion-card-title style=\"margin-left: 25%;\">{{\"RESERVECAR.otherservices\"| translate}}  </ion-card-title>\n    </ion-card-header>\n    <ion-card-content *ngFor=\"let item of option\">\n              \n            <!-- <strong> <ion-label style=\"text-decoration: underline; margin-left:4%\"> Optional Services : </ion-label> </strong> -->\n              \n              <!-- baby seats -->\n            <ion-item>\n                <ion-checkbox color=\"primary\" [(ngModel)] =\"item.checked\" slot=\"end\"></ion-checkbox>\n                <label  textWrap=\"true\">{{item.libelle}}  -   {{item.prix}}F cfa/ {{\"RESERVECAR.day\"| translate}} </label>\n            </ion-item>\n            \n        \n    </ion-card-content>\n    </ion-card>\n\n       \n\n        <!-- Message -->\n        <ion-card  style=\"height: 255px;\">\n     \n            <ion-card-header>\n              <ion-card-title style=\"margin-left:32%\">{{\"RESERVECAR.message\"| translate}}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content >\n                \n                  <ion-textarea [(ngModel)]=\"message\" class=\"cell-input\" auto-grow=\"true\" maxlength=\"400\" placeholder=\"{{'RESERVECAR.messageplaceholder'| translate}}\"></ion-textarea>\n\n            </ion-card-content>\n\n        </ion-card>\n\n           <!-- submit your reservation -->\n        <!-- <ion-button expand=\"round\" class=\"center-button\" >Submit</ion-button> -->\n\n\n</ion-content>\n<ion-footer *ngIf=\"show\">\n  <!-- <ion-toolbar> -->\n      <ion-button  (click)=\"submit(car.id)\" expand=\"full\"> {{\"RESERVECAR.btn_submit\"| translate}} </ion-button>\n  <!-- </ion-toolbar> -->\n</ion-footer>");
 
 /***/ }),
 
@@ -107,7 +107,7 @@ ReservationPagePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".center-button {\n  margin-left: 35%;\n  margin-right: 30%;\n}\n\n.cell-input {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n}\n\nion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-card-title {\n  margin-left: 20%;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-chip {\n  color: black;\n  --background: white;\n}\n\nion-button {\n  color: black;\n  --background: #ffa60a;\n  border-color: black;\n}\n\nion-segment-button {\n  color: #ffa60a;\n}\n\nion-card-title, ion-textarea {\n  color: white;\n}\n\nion-searchbar {\n  background: white;\n  color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jcGNraW5nZG9tL0RvY3VtZW50cy9pb25pYy10dXRvcmlhbC1tYXN0ZXIvaW9uaWNfcHJvamVjdC9sb2dpbkNhcC9zcmMvYXBwL3BhZ2VzL3Jlc2VydmF0aW9uLXBhZ2UvcmVzZXJ2YXRpb24tcGFnZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Jlc2VydmF0aW9uLXBhZ2UvcmVzZXJ2YXRpb24tcGFnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBQTtFQUNBLGlCQUFBO0FDQ0o7O0FER0U7RUFDRSxtQkFBQTtFQUNBLG9CQUFBO0VBQ0EsbUJBQUE7RUFBb0IsbUJBQUE7QUNDeEI7O0FERUU7RUFFRSxtQkFBQTtBQ0FKOztBREVBO0VBRUksZ0JBQUE7QUNBSjs7QURJQTtFQUVJLG1CQUFBO0VBQ0EsY0FBQTtBQ0ZKOztBREtBO0VBRUksWUFBQTtFQUNBLG1CQUFBO0FDSEo7O0FES0E7RUFFSSxZQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtBQ0hKOztBRE1BO0VBRUksY0FBQTtBQ0pKOztBRE9BO0VBRUksWUFBQTtBQ0xKOztBRFFBO0VBRUksaUJBQUE7RUFDQSxZQUFBO0FDTkoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9yZXNlcnZhdGlvbi1wYWdlL3Jlc2VydmF0aW9uLXBhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlci1idXR0b257XG4gICAgbWFyZ2luLWxlZnQ6IDM1JTtcbiAgICBtYXJnaW4tcmlnaHQ6IDMwJTtcbiAgXG4gIH1cblxuICAuY2VsbC1pbnB1dCB7XG4gICAgYm9yZGVyLWNvbG9yOiBibGFjazsgXG4gICAgYm9yZGVyLXdpZHRoOiAuMDFlbTsgXG4gICAgYm9yZGVyLXN0eWxlOnNvbGlkOyBtYXJnaW4tYm90dG9tIDogLTFweDtcbiAgfVxuXG4gIGlvbi1jYXJkLGlvbi10b29sYmFyLGlvbi1zZWdtZW50XG57XG4gICAgLS1iYWNrZ3JvdW5kOiBibGFjazsgXG59XG5pb24tY2FyZC10aXRsZVxue1xuICAgIG1hcmdpbi1sZWZ0OjIwJTtcbn1cblxuXG5pb24taXRlbVxue1xuICAgIC0tYmFja2dyb3VuZDogYmxhY2s7IFxuICAgIGNvbG9yOiAgI2ZmYTYwYTtcbn1cblxuaW9uLWNoaXBcbntcbiAgICBjb2xvcjogYmxhY2s7IFxuICAgIC0tYmFja2dyb3VuZDogd2hpdGU7XG59XG5pb24tYnV0dG9uXG57XG4gICAgY29sb3I6IGJsYWNrOyBcbiAgICAtLWJhY2tncm91bmQ6ICNmZmE2MGE7XG4gICAgYm9yZGVyLWNvbG9yOiBibGFjaztcbn1cblxuaW9uLXNlZ21lbnQtYnV0dG9uXG57XG4gICAgY29sb3IgOiAjZmZhNjBhO1xufVxuXG5pb24tY2FyZC10aXRsZSxpb24tdGV4dGFyZWFcbntcbiAgICBjb2xvciA6IHdoaXRlO1xufVxuXG5pb24tc2VhcmNoYmFyXG57XG4gICAgYmFja2dyb3VuZCA6IHdoaXRlO1xuICAgIGNvbG9yIDogYmxhY2s7XG59IiwiLmNlbnRlci1idXR0b24ge1xuICBtYXJnaW4tbGVmdDogMzUlO1xuICBtYXJnaW4tcmlnaHQ6IDMwJTtcbn1cblxuLmNlbGwtaW5wdXQge1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xuICBib3JkZXItd2lkdGg6IDAuMDFlbTtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgbWFyZ2luLWJvdHRvbTogLTFweDtcbn1cblxuaW9uLWNhcmQsIGlvbi10b29sYmFyLCBpb24tc2VnbWVudCB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG59XG5cbmlvbi1jYXJkLXRpdGxlIHtcbiAgbWFyZ2luLWxlZnQ6IDIwJTtcbn1cblxuaW9uLWl0ZW0ge1xuICAtLWJhY2tncm91bmQ6IGJsYWNrO1xuICBjb2xvcjogI2ZmYTYwYTtcbn1cblxuaW9uLWNoaXAge1xuICBjb2xvcjogYmxhY2s7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG59XG5cbmlvbi1idXR0b24ge1xuICBjb2xvcjogYmxhY2s7XG4gIC0tYmFja2dyb3VuZDogI2ZmYTYwYTtcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcbn1cblxuaW9uLXNlZ21lbnQtYnV0dG9uIHtcbiAgY29sb3I6ICNmZmE2MGE7XG59XG5cbmlvbi1jYXJkLXRpdGxlLCBpb24tdGV4dGFyZWEge1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi1zZWFyY2hiYXIge1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgY29sb3I6IGJsYWNrO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".center-button {\n  margin-left: 35%;\n  margin-right: 30%;\n}\n\n.cell-input {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n}\n\nion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-card-title {\n  margin-left: 20%;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-chip {\n  color: black;\n  --background: white;\n}\n\nion-button {\n  color: black;\n  --background: #ffa60a;\n  border-color: black;\n}\n\nion-segment-button {\n  color: #ffa60a;\n}\n\nion-card-title {\n  color: white;\n  font-size: 1.3em;\n}\n\nion-textarea {\n  color: white;\n}\n\nion-searchbar {\n  background: white;\n  color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jcGNraW5nZG9tL0RvY3VtZW50cy9pb25pYy10dXRvcmlhbC1tYXN0ZXIvaW9uaWNfcHJvamVjdC9sb2dpbkNhcC9zcmMvYXBwL3BhZ2VzL3Jlc2VydmF0aW9uLXBhZ2UvcmVzZXJ2YXRpb24tcGFnZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Jlc2VydmF0aW9uLXBhZ2UvcmVzZXJ2YXRpb24tcGFnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBQTtFQUNBLGlCQUFBO0FDQ0o7O0FER0U7RUFDRSxtQkFBQTtFQUNBLG9CQUFBO0VBQ0EsbUJBQUE7RUFBb0IsbUJBQUE7QUNDeEI7O0FERUU7RUFFRSxtQkFBQTtBQ0FKOztBREVBO0VBRUksZ0JBQUE7QUNBSjs7QURJQTtFQUVJLG1CQUFBO0VBQ0EsY0FBQTtBQ0ZKOztBREtBO0VBRUksWUFBQTtFQUNBLG1CQUFBO0FDSEo7O0FES0E7RUFFSSxZQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtBQ0hKOztBRE1BO0VBRUksY0FBQTtBQ0pKOztBRE9BO0VBRUksWUFBQTtFQUNBLGdCQUFBO0FDTEo7O0FEUUE7RUFFSSxZQUFBO0FDTko7O0FEU0E7RUFFSSxpQkFBQTtFQUNBLFlBQUE7QUNQSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Jlc2VydmF0aW9uLXBhZ2UvcmVzZXJ2YXRpb24tcGFnZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyLWJ1dHRvbntcbiAgICBtYXJnaW4tbGVmdDogMzUlO1xuICAgIG1hcmdpbi1yaWdodDogMzAlO1xuICBcbiAgfVxuXG4gIC5jZWxsLWlucHV0IHtcbiAgICBib3JkZXItY29sb3I6IGJsYWNrOyBcbiAgICBib3JkZXItd2lkdGg6IC4wMWVtOyBcbiAgICBib3JkZXItc3R5bGU6c29saWQ7IG1hcmdpbi1ib3R0b20gOiAtMXB4O1xuICB9XG5cbiAgaW9uLWNhcmQsaW9uLXRvb2xiYXIsaW9uLXNlZ21lbnRcbntcbiAgICAtLWJhY2tncm91bmQ6IGJsYWNrOyBcbn1cbmlvbi1jYXJkLXRpdGxlXG57XG4gICAgbWFyZ2luLWxlZnQ6MjAlO1xufVxuXG5cbmlvbi1pdGVtXG57XG4gICAgLS1iYWNrZ3JvdW5kOiBibGFjazsgXG4gICAgY29sb3I6ICAjZmZhNjBhO1xufVxuXG5pb24tY2hpcFxue1xuICAgIGNvbG9yOiBibGFjazsgXG4gICAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbn1cbmlvbi1idXR0b25cbntcbiAgICBjb2xvcjogYmxhY2s7IFxuICAgIC0tYmFja2dyb3VuZDogI2ZmYTYwYTtcbiAgICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5pb24tc2VnbWVudC1idXR0b25cbntcbiAgICBjb2xvciA6ICNmZmE2MGE7XG59XG5cbmlvbi1jYXJkLXRpdGxlXG57XG4gICAgY29sb3IgOiB3aGl0ZTtcbiAgICBmb250LXNpemU6IDEuM2VtIDtcbn1cblxuaW9uLXRleHRhcmVhXG57XG4gICAgY29sb3IgOiB3aGl0ZTtcbn1cblxuaW9uLXNlYXJjaGJhclxue1xuICAgIGJhY2tncm91bmQgOiB3aGl0ZTtcbiAgICBjb2xvciA6IGJsYWNrO1xufSIsIi5jZW50ZXItYnV0dG9uIHtcbiAgbWFyZ2luLWxlZnQ6IDM1JTtcbiAgbWFyZ2luLXJpZ2h0OiAzMCU7XG59XG5cbi5jZWxsLWlucHV0IHtcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcbiAgYm9yZGVyLXdpZHRoOiAwLjAxZW07XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIG1hcmdpbi1ib3R0b206IC0xcHg7XG59XG5cbmlvbi1jYXJkLCBpb24tdG9vbGJhciwgaW9uLXNlZ21lbnQge1xuICAtLWJhY2tncm91bmQ6IGJsYWNrO1xufVxuXG5pb24tY2FyZC10aXRsZSB7XG4gIG1hcmdpbi1sZWZ0OiAyMCU7XG59XG5cbmlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiBibGFjaztcbiAgY29sb3I6ICNmZmE2MGE7XG59XG5cbmlvbi1jaGlwIHtcbiAgY29sb3I6IGJsYWNrO1xuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgY29sb3I6IGJsYWNrO1xuICAtLWJhY2tncm91bmQ6ICNmZmE2MGE7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbmlvbi1zZWdtZW50LWJ1dHRvbiB7XG4gIGNvbG9yOiAjZmZhNjBhO1xufVxuXG5pb24tY2FyZC10aXRsZSB7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxLjNlbTtcbn1cblxuaW9uLXRleHRhcmVhIHtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG5pb24tc2VhcmNoYmFyIHtcbiAgYmFja2dyb3VuZDogd2hpdGU7XG4gIGNvbG9yOiBibGFjaztcbn0iXX0= */");
 
 /***/ }),
 
@@ -148,6 +148,14 @@ let ReservationPagePage = class ReservationPagePage {
                 'coefficient': ''
             }
         ];
+        //for departure
+        this.list_original1 = [
+            {
+                'id': '',
+                'destination': '',
+                'coefficient': ''
+            }
+        ];
         this.list_to_show = [
             {
                 'id': '',
@@ -155,7 +163,16 @@ let ReservationPagePage = class ReservationPagePage {
                 'coefficient': ''
             }
         ];
+        //for departure
+        this.list_to_show1 = [
+            {
+                'id': '',
+                'destination': '',
+                'coefficient': ''
+            }
+        ];
         this.selected_index = -1;
+        this.show_list1 = false; // for destination
         this.show_list = false;
         ///////////////////////end data for destination search ///////////////////
         //////////////////////////////////////////////////
@@ -182,17 +199,13 @@ let ReservationPagePage = class ReservationPagePage {
             "date_debut": "",
             "date_fin": "",
             "montant": 0,
-            "note_client": null,
-            "commentaire_client": "",
-            "note_chauffeur": null,
-            "rapport_chauffeur": "",
+            "message": "",
             "client": 0,
-            "chauffeur": null,
             "voiture": 0,
-            "type_location": 1,
+            "type_location": 0,
             "destination": 0,
             "etape_location": 1,
-            //"lieu_depart": "",
+            "depart": null,
             "optionnel": []
         }; //end of object to send
         /////////////////////////////////////////////////////
@@ -219,6 +232,7 @@ let ReservationPagePage = class ReservationPagePage {
                     console.log("getting Destinations : ", res);
                     if (res) {
                         this.list_original = res;
+                        this.list_original1 = res;
                     }
                     ////////////////////////////////////////////////////////////////////////////////////////////////
                     ////////////////////////Start : Get Optionnels/////////////////////////////////////////////////
@@ -384,14 +398,53 @@ let ReservationPagePage = class ReservationPagePage {
                     }
                 }
                 else if (this.rent_type == "airport") {
-                    ///////set type rent to airport id 
-                    this.dataToSend.type_location = 3;
-                    this.dataToSend.date_fin = this.start_date + "T" + this.start_time + ":44.625Z";
-                    /// set end time /////////////////////////
-                    this.dataToSend.date_fin = "" + " " + this.end_time + "T" + this.start_time + ":44.625Z";
-                    //////////////////////set departure venue ///////////////////////////////////////////////////////
-                    //this.dataToSend.lieu_depart = this.depart_venue;
-                    this.price = this.car.airport * (1 + this.coef);
+                    console.log("Depar Id", this.depart_venue);
+                    if (this.depart_venue) {
+                        //check if depart != destination
+                        if (this.depart_venue != this.destination) {
+                            //check if aeroport is selected 
+                            if (this.depart_venue == 203 || this.destination == 203) {
+                                ///////////////////set depart//////////////////
+                                this.dataToSend.depart = this.depart_venue;
+                                ///////set type rent to airport id 
+                                this.dataToSend.type_location = 3;
+                                this.dataToSend.date_fin = this.start_date + "T" + this.start_time + ":44.625Z";
+                                /// set end time /////////////////////////
+                                this.dataToSend.date_fin = this.start_date + "T" + this.end_time + ":44.625Z";
+                                //////////////////////set departure venue ///////////////////////////////////////////////////////
+                                //this.dataToSend.lieu_depart = this.depart_venue;
+                                var c = (this.coef1 + this.coef) / 2;
+                                this.price = (this.car.airport + this.car.airport * c);
+                            }
+                            else {
+                                if (this.lang == "fr") {
+                                    alert("Assurez-vous d'avoir choisi Aéroport comme départ ou destination.");
+                                }
+                                else {
+                                    alert("Make sure you have chosen Aéroport either as departure or destination.");
+                                }
+                                return;
+                            }
+                        }
+                        else {
+                            if (this.lang == "fr") {
+                                alert("Désolé, le départ doit être différent de la destination.");
+                            }
+                            else {
+                                alert("Sorry, the departure must be different from the destination.");
+                            }
+                            return;
+                        }
+                    }
+                    else {
+                        if (this.lang == "fr") {
+                            alert("Choisissez un Lieu de depart !");
+                        }
+                        else {
+                            alert("Select a Departure venue !");
+                        }
+                        return;
+                    }
                 }
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
                 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -427,18 +480,18 @@ let ReservationPagePage = class ReservationPagePage {
                 this.dataToSend.destination = this.destination;
                 /////////////////////set price ///////////////////////////////////////////////////
                 this.dataToSend.montant = this.price;
-                /////////////////////set commentaire client ///////////////////////////////////////////////////
-                this.dataToSend.commentaire_client = this.message;
+                /////////////////////set message///////////////////////////////////////////////////
+                this.dataToSend.message = this.message;
                 console.log("\n data to send : \n", this.dataToSend);
                 // present alert
                 this.presentAlertConfirm(this.price, this.start_date, this.end_date);
             }
             else {
                 if (this.lang == "fr") {
-                    alert("Remplissez le champ Destination !");
+                    alert("Choisissez une Destination !");
                 }
                 else {
-                    alert("Fill the Destination Field !");
+                    alert("Select one destination !");
                 }
             }
         });
@@ -450,9 +503,13 @@ let ReservationPagePage = class ReservationPagePage {
             var lang = (yield Storage.get({ key: LNG_KEY })).value;
             if (lang == "fr") {
                 var text = "Prix Total : ";
+                var textcancel = "Annuler ";
+                var textok = "Valider ";
             }
             else {
                 var text = "Total Price : ";
+                var textcancel = "Cancel ";
+                var textok = "OK ";
             }
             const alert = yield this.alertController.create({
                 cssClass: 'my-custom-class',
@@ -460,24 +517,29 @@ let ReservationPagePage = class ReservationPagePage {
                 message: '<strong>' + text + '</strong>' + price + ' F CFA',
                 buttons: [
                     {
-                        text: 'Cancel',
+                        text: textcancel,
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
                             console.log('Confirm Cancel: blah');
                         }
                     }, {
-                        text: 'Okay',
+                        text: textok,
                         handler: () => {
                             console.log('Confirm Okay');
+                            //preseent loader
+                            this.webservice.presentLoading();
                             ////send the data to the API
                             this.webservice.postReservation(this.token, this.dataToSend).subscribe(res => {
                                 console.log(res);
                                 if (res) {
+                                    this.webservice.stopLoading();
                                     console.log("done");
                                     this.myAlert(0, lang);
                                 }
                             }, error => {
+                                //stop loader
+                                this.webservice.stopLoading();
                                 console.log("error : \n", error);
                                 this.myAlert(1, lang);
                             });
@@ -556,56 +618,122 @@ let ReservationPagePage = class ReservationPagePage {
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////Search methods //////////////////////////////
-    onCancel(val) {
-        this.show_list = false;
-        this.list_to_show = [
-            {
-                'id': '',
-                'destination': '',
-                'coefficient': ''
-            }
-        ];
+    onCancel(val, i) {
+        if (i == 0) {
+            this.depart_venue = null;
+            this.show_list1 = false;
+            this.list_to_show1 = [
+                {
+                    'id': '',
+                    'destination': '',
+                    'coefficient': ''
+                }
+            ];
+        }
+        else {
+            this.destination = null;
+            this.show_list = false;
+            this.list_to_show = [
+                {
+                    'id': '',
+                    'destination': '',
+                    'coefficient': ''
+                }
+            ];
+        }
     }
-    click_bar() {
-        this.list_to_show = [
-            {
-                'id': '',
-                'destination': '',
-                'coefficient': ''
-            }
-        ];
-        this.show_list = true;
+    click_bar(i) {
+        if (i == 0) {
+            this.list_to_show1 = [
+                {
+                    'id': '',
+                    'destination': '',
+                    'coefficient': ''
+                }
+            ];
+            this.show_list1 = true;
+        }
+        else {
+            this.list_to_show = [
+                {
+                    'id': '',
+                    'destination': '',
+                    'coefficient': ''
+                }
+            ];
+            this.show_list = true;
+        }
     }
-    click_item(val, id, coef) {
-        //set destination
-        this.destination = id;
-        //set coef 
-        this.coef = parseFloat(coef);
-        for (let i = 0; i < this.list_original.length; i++) {
-            if (this.list_to_show[val].destination.toUpperCase() === this.list_original[i].destination.toUpperCase()) {
-                this.selected_index = i;
-                //print the selected destination
-                this.searchQuery = this.list_to_show[val].destination;
-                // set the destinatination to be search
-                this.destination_to_be_search = this.list_to_show[val];
-                break;
+    click_item(val, id, coef, type) {
+        //this.depart_venue = null;
+        //this.destination = null; 
+        if (type == 0) {
+            //set departure
+            this.depart_venue = id;
+            console.log("depart id :", this.depart_venue);
+            //set coef 
+            this.coef1 = parseFloat(coef);
+            for (let i = 0; i < this.list_original1.length; i++) {
+                if (this.list_to_show1[val].destination.toUpperCase() === this.list_original1[i].destination.toUpperCase()) {
+                    this.selected_index = i;
+                    //print the selected departure
+                    this.searchQuery1 = this.list_to_show1[val].destination;
+                    // set the depart to be search
+                    this.depart_to_be_search = this.list_to_show1[val];
+                    break;
+                }
+            }
+            this.show_list1 = false;
+        }
+        else {
+            //set destination
+            this.destination = id;
+            //set coef 
+            this.coef = parseFloat(coef);
+            for (let i = 0; i < this.list_original.length; i++) {
+                if (this.list_to_show[val].destination.toUpperCase() === this.list_original[i].destination.toUpperCase()) {
+                    this.selected_index = i;
+                    //print the selected destination
+                    this.searchQuery = this.list_to_show[val].destination;
+                    // set the destinatination to be search
+                    this.destination_to_be_search = this.list_to_show[val];
+                    break;
+                }
+            }
+            this.show_list = false;
+        }
+    }
+    change_query(query, i) {
+        if (i == 0) {
+            let k = 0;
+            this.list_to_show1 = [
+                {
+                    'id': '',
+                    'destination': '',
+                    'coefficient': ''
+                }
+            ];
+            for (let i = 0; i < this.list_original1.length; i++) {
+                if (this.list_original1[i].destination.toUpperCase().includes(query.toUpperCase())) {
+                    this.list_to_show1[k] = this.list_original1[i];
+                    k += 1;
+                }
             }
         }
-        this.show_list = false;
-    }
-    change_query(query) {
-        let k = 0;
-        this.list_to_show = [
-            {
-                'id': '',
-                'destination': '',
-                'coefficient': ''
-            }
-        ];
-        for (let i = 0; i < this.list_original.length; i++) {
-            if (this.list_original[i].destination.toUpperCase().includes(query.toUpperCase())) {
-                this.list_to_show[k] = this.list_original[i];
-                k += 1;
+        else {
+            let k = 0;
+            this.list_to_show = [
+                {
+                    'id': '',
+                    'destination': '',
+                    'coefficient': ''
+                }
+            ];
+            for (let i = 0; i < this.list_original.length; i++) {
+                if (this.list_original[i].destination.toUpperCase().includes(query.toUpperCase())) {
+                    this.list_to_show[k] = this.list_original[i];
+                    k += 1;
+                }
             }
         }
     }

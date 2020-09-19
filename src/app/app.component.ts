@@ -95,7 +95,7 @@ export class AppComponent {
         }
       }
 
-      console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
+      //console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
       
       
            // //set the initial language of the app
@@ -134,29 +134,31 @@ export class AppComponent {
 
 /////////////////////////////////////////////////////////////////
    openUserProfile(url){
-    console.log('Open this URL: ',url);
+    //console.log('Open this URL: ',url);
   }
 //////////////////////////////////
   async logout()
   {
     //set token free means to null
-    await Storage.set({
-      key: 'accessToken',
-      value: null           
-    }); 
-    //set the userinfos and userInfos to null
-    await Storage.set({
-      key: 'user_infos',
-      value: null           
-    }); 
+    // await Storage.set({
+    //   key: 'accessToken',
+    //   value: null           
+    // }); 
+    // //set the userinfos and userType to null
+    // await Storage.set({
+    //   key: 'user_infos',
+    //   value: null           
+    // }); 
+    // ////////
+    // await Storage.set({
+    //   key: 'user_type',
+    //   value: null           
+    // }); 
     ////////
-     //set the userinfos and userType to null
-     await Storage.set({
-      key: 'user_type',
-      value: null           
-    }); 
-    ////////
-    
+
+    Storage.remove( {key : 'accessToken'})
+    Storage.remove( {key : 'user_infos'})
+    Storage.remove( {key : 'user_type'})
 
       this.webService.getCurrentLanguage().then(val =>{
 
@@ -213,12 +215,12 @@ export class AppComponent {
 
             this.testingToken = data;
         
-                 // alert("Token : "+this.testingToken)
+               //   alert("Token : "+this.testingToken)
          // console.log(" sidemenu token  ",this.testingToken);
            ////////////english side menu ////////////////////////////////////////////         
            if(lang=="en" )
            {
-              if(this.testingToken!=null)
+              if(this.testingToken!=null && this.testingToken!='null')
               {
                 /////////////////////////////////////////////////////////
                 //////////////////check the status of the user///////////////////////////////////////
@@ -278,9 +280,23 @@ export class AppComponent {
                         icon  : "cart"
                       },
                       {
-                        title : "My Testimonials",
-                        url   : "/my-messages",
-                        icon  : "mail"
+                        title : "Testimonials",
+                        icon  : "mail",
+                        children :[
+                  
+                          {
+                            title : "My testimonials",
+                            url   : "/my-messages",
+                            icon  : "mail"
+                          },
+                          
+                          {
+                            title : "Send testimonial",
+                            url   : "/send-feedbacks",
+                            icon  : "send-outline"
+                          }
+                        ]
+
                       },
                       {
                         title : "Support",
@@ -308,11 +324,6 @@ export class AppComponent {
                             title : "Confidentiality principles",
                             url   : "/confidentiality",
                             icon  : "help-circle-outline"
-                          },
-                          {
-                            title : "Send Testimonials",
-                            url   : "/send-feedbacks",
-                            icon  : "send-outline"
                           },
                           
                         ]
@@ -358,14 +369,14 @@ export class AppComponent {
                        },
                        {
                          title : "My Rides",
-                         url   : "/my-rides",
-                         icon  : "cart"
+                         url   : "/send-rides",
+                         icon  : "car"
                        },
-                       {
-                         title : "My Reports",
-                         url   : "/my-reports",
-                         icon  : "mail"
-                       },
+                      //  {
+                      //    title : "My Reports",
+                      //    url   : "/my-reports",
+                      //    icon  : "mail"
+                      //  },
                        {
                          title : "Support",
                          icon  : "help-buoy-outline",
@@ -382,22 +393,22 @@ export class AppComponent {
                              url   : "/our-contacts",
                              icon  : "call-outline"
                            },
-                           {
-                             title : "Term of usage",
-                             url   : "/term-usage",
-                             icon  : "help-circle-outline"
-                           },
+                          //  {
+                          //    title : "Term of usage",
+                          //    url   : "/term-usage",
+                          //    icon  : "help-circle-outline"
+                          //  },
                            
-                           {
-                             title : "Confidentiality principles",
-                             url   : "/confidentiality",
-                             icon  : "help-circle-outline"
-                           },
-                           {
-                             title : "Send Reports",
-                             url   : "/send-reports",
-                             icon  : "send-outline"
-                           },
+                          //  {
+                          //    title : "Confidentiality principles",
+                          //    url   : "/confidentiality",
+                          //    icon  : "help-circle-outline"
+                          //  },
+                          //  {
+                          //    title : "Send Reports",
+                          //    url   : "/send-reports",
+                          //    icon  : "send-outline"
+                          //  },
                            
                          ]
                        },
@@ -512,7 +523,7 @@ export class AppComponent {
             //french side menu
             else if(lang=="fr")
             {
-                if(this.testingToken!=null)
+                if(this.testingToken!=null && this.testingToken!='null')
                 {
                    /////////////////////////////////////////////////////////
                   //////////////////check the status of the user///////////////////////////////////////
@@ -571,9 +582,23 @@ export class AppComponent {
                           icon  : "cart"
                         },
                         {
-                          title : "Mes témoignages",
-                          url   : "/my-messages",
-                          icon  : "mail"
+                          title : "Témoignages",
+                          icon  : "mail",
+                          
+                          children :[
+                  
+                            {
+                              title : "Mes témoignages",
+                              url   : "/my-messages",
+                              icon  : "mail"
+                            },
+                            
+                            {
+                              title : "Postez témoignages",
+                              url   : "/send-feedbacks",
+                              icon  : "send-outline"
+                            }
+                          ]
                         },
                         {
                           title : "Support",
@@ -602,16 +627,12 @@ export class AppComponent {
                               url   : "/confidentiality",
                               icon  : "help-circle-outline"
                             },
-                            {
-                              title : "Postez Témoignages",
-                              url   : "/send-feedbacks",
-                              icon  : "send-outline"
-                            },
+                            
                             
                           ]
                         },
                         {
-                          title : "Réglages",
+                          title : "Paramètres",
                           icon  : "settings",
                           children :[
                   
@@ -649,15 +670,15 @@ export class AppComponent {
                           icon  : "person"
                         },
                         {
-                          title : "Mes Sorties",
-                          url   : "/my-rides",
-                          icon  : "cart"
+                          title : "Mes Trajets",
+                          url   : "/send-rides",
+                          icon  : "car"
                         },
-                        {
-                          title : "Mes Rapports",
-                          url   : "/my-reports",
-                          icon  : "mail"
-                        },
+                        // {
+                        //   title : "Mes Rapports",
+                        //   url   : "/my-reports",
+                        //   icon  : "mail"
+                        // },
                         {
                           title : "Support",
                           icon  : "help-buoy-outline",
@@ -674,27 +695,27 @@ export class AppComponent {
                               url   : "/our-contacts",
                               icon  : "call-outline"
                             },
-                            {
-                              title : "Conditions d'utilisation",
-                              url   : "/term-usage",
-                              icon  : "help-circle-outline"
-                            },
+                            // {
+                            //   title : "Conditions d'utilisation",
+                            //   url   : "/term-usage",
+                            //   icon  : "help-circle-outline"
+                            // },
                             
-                            {
-                              title : "Principes de confidentialités",
-                              url   : "/confidentiality",
-                              icon  : "help-circle-outline"
-                            },
-                            {
-                              title : "Envoyez Rapport",
-                              url   : "/send-reports",
-                              icon  : "send-outline"
-                            },
+                            // {
+                            //   title : "Principes de confidentialités",
+                            //   url   : "/confidentiality",
+                            //   icon  : "help-circle-outline"
+                            // },
+                            // {
+                            //   title : "Envoyez Rapport",
+                            //   url   : "/send-reports",
+                            //   icon  : "send-outline"
+                            // },
                             
                           ]
                         },
                         {
-                          title : "Réglages",
+                          title : "Paramètres",
                           icon  : "settings",
                           children :[
                   
@@ -786,7 +807,7 @@ export class AppComponent {
                       ]
                     },
                     {
-                      title : "Réglages",
+                      title : "Paramètres",
                       icon  : "settings",
                       children :[
               

@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n\n        <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n        <ion-title>{{ 'CARDETAILS.title' | translate }}</ion-title>\n\n      </ion-item>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content  *ngIf=\"show\">\n\n\n        <!-- slider images -->\n\n        <ion-slides [options]=\"slideOptions\"  #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\">\n             <ion-slide *ngFor=\"let item of car.photo\">\n                <img [src]=\"item.image\" />\n            </ion-slide>\n        </ion-slides>\n\n        <!-- tile or designation of the car -->\n          <br>\n        <strong class=\"ion-text-center\">\n            <ion-label style=\"margin-left:5%; \"> {{car.modele.libelle}} </ion-label> \n         </strong>\n\n            <!-- Description of the car -->\n\n     <ion-card>\n     \n        <ion-card-header>\n          <ion-card-subtitle>\n             \n                <!-- price per day -->\n                <ion-chip >\n                  <ion-label > {{car.per_day}} F CFA / {{\"DASHBOARD.day\"|translate}}</ion-label>\n                </ion-chip> \n                <!-- price per hour -->\n                <ion-chip >\n                  <ion-label > {{car.per_hour}} F CFA / {{\"DASHBOARD.hour\"|translate}}</ion-label>\n                </ion-chip> \n                <!-- Price Airport -->\n                <ion-chip >\n                  <ion-label > {{car.per_hour}} F CFA / {{\"DASHBOARD.airport_pick\"|translate}}</ion-label>\n                </ion-chip> \n                <!-- type of motor -->\n                <ion-chip >\n                  <ion-icon name=\"car\"></ion-icon>\n                  <ion-label > {{car.type_caburant}}</ion-label>\n                </ion-chip> \n                <!-- Car Color-->\n                <ion-chip >\n                  <ion-icon name=\"medal\" ></ion-icon>\n                  <ion-label  textWrap=\"true\"> {{ 'DASHBOARD.color' | translate }} {{car.couleur}} </ion-label>\n                </ion-chip> <br>\n                <!-- Number of Seats-->\n                <ion-chip >\n                  <ion-icon name=\"person\"></ion-icon>\n                  <ion-label >{{car.passager}} {{ 'CARDETAILS.seats' | translate }}</ion-label>\n                </ion-chip>\n\n                    <!-- number of baggages -->\n              <ion-chip>\n                <ion-icon name=\"briefcase\"></ion-icon>\n                <ion-label > {{car.bagage}} {{ 'CARDETAILS.baggages' | translate }} </ion-label> \n              </ion-chip> <br>\n                    <!-- Car Number-->\n              <ion-chip>\n                <ion-label > {{ 'CARDETAILS.carnumber' | translate }} {{car.immatriculation}}  </ion-label> \n              </ion-chip>\n\n          </ion-card-subtitle>\n          <ion-card-title>Description</ion-card-title>\n        </ion-card-header>\n        <ion-card-content style=\"text-align : justify \" >\n                            \n            {{car.description}}\n            \n        </ion-card-content>\n      </ion-card>\n\n\n    \n        <!-- Accessories     -->\n    \n     <ion-card>\n     \n        <ion-card-header>\n          <ion-card-title>{{ 'CARDETAILS.accessories' | translate }}</ion-card-title>\n        </ion-card-header>\n        <ion-card-content>\n\n              <ion-grid>\n                 <!-- print each element -->\n                <ion-row *ngFor=\"let item of car.accessoire ;  index as i\">\n                   <!-- column has the name of the accessory -->\n                      <ion-col col-auto class=\"cell-class\">\n                            {{ item.libelle }}\n                      </ion-col>\n                        <!-- column 2 has the status of the accessory -->\n                      <ion-col   text-right  class=\"cell-yes\"   >\n                           <ion-icon name=\"checkmark-outline\"></ion-icon>\n                      </ion-col>\n                      <!-- <ion-col  *ngIf=\"item.status == 'yes' \" text-right  class=\"cell-yes\"   >\n                           <ion-icon name=\"checkmark-outline\"></ion-icon>\n\n                      </ion-col>\n                         column 2 has the status of the accessory -->\n                     <!--  <ion-col  *ngIf=\"item.status == 'no' \"   text-right  class=\"cell-no\"  >\n                           {{ item.status }}\n\n                      </ion-col> -->\n                </ion-row>\n              </ion-grid>\n\n        </ion-card-content>\n      </ion-card>\n\n      <!-- login to reserve or reserve if logged in  -->\n    <!-- <ion-button *ngIf=\"token==null\" expand=\"round\" class=\"center-button\">Login To Reserve</ion-button> -->\n       <!-- if the token is not null -->\n    <!-- <ion-button *ngIf=\"token!=null\" expand=\"round\" class=\"center-button\" (click)=\"goToReservation()\">Reserve Now</ion-button> -->\n\n\n\n\n\n</ion-content>\n\n<ion-footer *ngIf=\"show\" >\n  <!-- <ion-toolbar> -->\n          <!-- login to reserve or reserve if logged in  -->\n    <ion-button *ngIf=\"token==null\" expand=\"full\" (click)=\"goToLogin()\" >{{\"CARDETAILS.logintoreserve\" | translate}}</ion-button>\n       <!-- if the token is not null -->\n    <ion-button *ngIf=\"token!=null\" expand=\"full\"  (click)=\"goToReservation( car.id)\">{{\"CARDETAILS.reservenow\" | translate}}</ion-button>\n\n\n  <!-- </ion-toolbar> -->\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n\r\n    <ion-item>\r\n\r\n      <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\r\n      <ion-title>{{ 'CARDETAILS.title' | translate }}</ion-title>\r\n\r\n    </ion-item>\r\n\r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content  *ngIf=\"show\">\r\n\r\n\r\n        <!-- slider images -->\r\n\r\n        <ion-slides [options]=\"slideOptions\"  #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\">\r\n             <ion-slide *ngFor=\"let item of car.photo\">\r\n                <img [src]=\"item.image\" />\r\n            </ion-slide>\r\n        </ion-slides> <br>\r\n\r\n        <!-- tile or designation of the car -->\r\n          \r\n        <strong class=\"ion-text-center\">\r\n            <ion-label style=\"margin-left:5%; \"> {{car.modele.libelle}} </ion-label> \r\n         </strong>\r\n\r\n            <!-- Description of the car -->\r\n\r\n     <ion-card>\r\n     \r\n        <ion-card-header>\r\n          <ion-card-subtitle>\r\n\r\n             \r\n              <!-- Car Number-->\r\n              <!-- <ion-chip>\r\n                <ion-label > {{ 'CARDETAILS.carnumber' | translate }} {{car.immatriculation}}  </ion-label> \r\n              </ion-chip><br><br> -->\r\n               \r\n\r\n              {{\"CARDETAILS.price\" | translate}} <br><br>\r\n             <!-- price per day -->\r\n                <ion-chip >\r\n                  <ion-label > {{car.per_day}} F CFA / {{\"DASHBOARD.day\"|translate}}</ion-label>\r\n                </ion-chip> <br>\r\n                <!-- price per hour -->\r\n                <ion-chip >\r\n                  <ion-label > {{car.per_hour}} F CFA / {{\"DASHBOARD.hour\"|translate}}</ion-label>\r\n                </ion-chip> <br>\r\n                <!-- Price Airport -->\r\n                <ion-chip >\r\n                  <ion-label > {{car.per_hour}} F CFA / {{\"DASHBOARD.airport_pick\"|translate}}</ion-label>\r\n                </ion-chip> \r\n                \r\n\r\n          </ion-card-subtitle>\r\n\r\n\r\n          <ion-card-title>Description</ion-card-title>\r\n        </ion-card-header>\r\n\r\n\r\n        <ion-card-content style=\"text-align : justify \" >\r\n\r\n                <!-- Number of Seats-->\r\n                <ion-chip ><br>\r\n                  <ion-icon name=\"person\"></ion-icon>\r\n                  <ion-label >{{car.passager}} {{ 'CARDETAILS.seats' | translate }}</ion-label>\r\n                </ion-chip> <br>\r\n\r\n                <!-- type of motor -->\r\n                <ion-chip >\r\n                  <ion-icon name=\"car\"></ion-icon>\r\n                  <ion-label > {{car.type_caburant}}</ion-label>\r\n                </ion-chip> <br>\r\n                    <!-- number of baggages -->\r\n              <ion-chip>\r\n                <ion-icon name=\"briefcase\"></ion-icon>\r\n                <ion-label > {{car.bagage}} {{ 'CARDETAILS.baggages' | translate }} </ion-label> \r\n              </ion-chip> <br>\r\n                \r\n                <!-- Car Color-->\r\n                <ion-chip >\r\n                  <ion-icon name=\"medal\" ></ion-icon>\r\n                  <ion-label  textWrap=\"true\"> {{ 'DASHBOARD.color' | translate }} {{car.couleur}} </ion-label>\r\n                </ion-chip> <br><br>\r\n                \r\n              \r\n                            \r\n            {{car.description}}\r\n            \r\n        </ion-card-content>\r\n      </ion-card>\r\n\r\n\r\n    \r\n        <!-- Accessories     -->\r\n    \r\n     <ion-card>\r\n     \r\n        <ion-card-header>\r\n          <ion-card-title>{{ 'CARDETAILS.accessories' | translate }}</ion-card-title>\r\n        </ion-card-header>\r\n        <ion-card-content>\r\n\r\n              <ion-grid>\r\n                 <!-- print each element -->\r\n                <ion-row *ngFor=\"let item of car.accessoire ;  index as i\">\r\n                   <!-- column has the name of the accessory -->\r\n                      <ion-col col-auto class=\"cell-class\">\r\n                            {{ item.libelle }}\r\n                      </ion-col>\r\n                        <!-- column 2 has the status of the accessory -->\r\n                      <ion-col   text-right  class=\"cell-yes\"   >\r\n                           <ion-icon name=\"checkmark-outline\"></ion-icon>\r\n                      </ion-col>\r\n                      <!-- <ion-col  *ngIf=\"item.status == 'yes' \" text-right  class=\"cell-yes\"   >\r\n                           <ion-icon name=\"checkmark-outline\"></ion-icon>\r\n\r\n                      </ion-col>\r\n                         column 2 has the status of the accessory -->\r\n                     <!--  <ion-col  *ngIf=\"item.status == 'no' \"   text-right  class=\"cell-no\"  >\r\n                           {{ item.status }}\r\n\r\n                      </ion-col> -->\r\n                </ion-row>\r\n              </ion-grid>\r\n\r\n        </ion-card-content>\r\n      </ion-card>\r\n\r\n      <!-- login to reserve or reserve if logged in  -->\r\n    <!-- <ion-button *ngIf=\"token==null\" expand=\"round\" class=\"center-button\">Login To Reserve</ion-button> -->\r\n       <!-- if the token is not null -->\r\n    <!-- <ion-button *ngIf=\"token!=null\" expand=\"round\" class=\"center-button\" (click)=\"goToReservation()\">Reserve Now</ion-button> -->\r\n\r\n\r\n\r\n\r\n\r\n</ion-content>\r\n\r\n<ion-footer *ngIf=\"show\" >\r\n  <!-- <ion-toolbar> -->\r\n          <!-- login to reserve or reserve if logged in  -->\r\n    <ion-button *ngIf=\"token==null\" expand=\"full\" (click)=\"goToLogin()\" >{{\"CARDETAILS.logintoreserve\" | translate}}</ion-button>\r\n       <!-- if the token is not null -->\r\n    <ion-button *ngIf=\"token!=null\" expand=\"full\"  (click)=\"goToReservation( car.id)\">{{\"CARDETAILS.reservenow\" | translate}}</ion-button>\r\n\r\n\r\n  <!-- </ion-toolbar> -->\r\n</ion-footer>";
     /***/
   },
 
@@ -180,7 +180,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".cell-class {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n}\n\n.cell-yes {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n  color: #ffa60a;\n  text-align: right;\n}\n\n.cell-no {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n  color: red;\n  text-align: right;\n}\n\n.center-button {\n  margin-left: 25%;\n  margin-right: 17%;\n}\n\nion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-chip, ion-button {\n  color: black;\n  --background: #ffa60a;\n  border-color: black;\n}\n\nion-segment-button, ion-card-title {\n  color: #ffa60a;\n}\n\nion-card-content {\n  color: white;\n}\n\nion-label {\n  color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jcGNraW5nZG9tL0RvY3VtZW50cy9pb25pYy10dXRvcmlhbC1tYXN0ZXIvaW9uaWNfcHJvamVjdC9sb2dpbkNhcC9zcmMvYXBwL3BhZ2VzL2Nhci1kZXRhaWxzL2Nhci1kZXRhaWxzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvY2FyLWRldGFpbHMvY2FyLWRldGFpbHMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksbUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0VBQW9CLG1CQUFBO0FDRXhCOztBRENFO0VBQ0UsbUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0VBQW9CLG1CQUFBO0VBQ3BCLGNBQUE7RUFDQSxpQkFBQTtBQ0dKOztBRERFO0VBQ0UsbUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0VBQW9CLG1CQUFBO0VBQ3BCLFVBQUE7RUFDQSxpQkFBQTtBQ0tKOztBREhFO0VBQ0UsZ0JBQUE7RUFDQSxpQkFBQTtBQ01KOztBRERFO0VBRUUsbUJBQUE7QUNHSjs7QURDQTtFQUVJLG1CQUFBO0VBQ0EsY0FBQTtBQ0NKOztBREVBO0VBRUksWUFBQTtFQUNBLHFCQUFBO0VBQ0EsbUJBQUE7QUNBSjs7QURHQTtFQUVJLGNBQUE7QUNESjs7QURJQTtFQUVJLFlBQUE7QUNGSjs7QURLQTtFQUVFLFlBQUE7QUNIRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2Nhci1kZXRhaWxzL2Nhci1kZXRhaWxzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZWxsLWNsYXNzIHtcbiAgICBib3JkZXItY29sb3I6IGJsYWNrOyBcbiAgICBib3JkZXItd2lkdGg6IC4wMWVtOyBcbiAgICBib3JkZXItc3R5bGU6c29saWQ7IG1hcmdpbi1ib3R0b20gOiAtMXB4O1xuICB9XG5cbiAgLmNlbGwteWVze1xuICAgIGJvcmRlci1jb2xvcjogYmxhY2s7IFxuICAgIGJvcmRlci13aWR0aDogLjAxZW07IFxuICAgIGJvcmRlci1zdHlsZTpzb2xpZDsgbWFyZ2luLWJvdHRvbSA6IC0xcHg7XG4gICAgY29sb3I6ICNmZmE2MGE7XG4gICAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gIH1cbiAgLmNlbGwtbm97XG4gICAgYm9yZGVyLWNvbG9yOiBibGFjazsgXG4gICAgYm9yZGVyLXdpZHRoOiAuMDFlbTsgXG4gICAgYm9yZGVyLXN0eWxlOnNvbGlkOyBtYXJnaW4tYm90dG9tIDogLTFweDtcbiAgICBjb2xvcjogcmVkO1xuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xuICB9XG4gIC5jZW50ZXItYnV0dG9ue1xuICAgIG1hcmdpbi1sZWZ0OiAyNSU7XG4gICAgbWFyZ2luLXJpZ2h0OiAxNyU7XG4gICAgXG4gIFxuICB9XG5cbiAgaW9uLWNhcmQsaW9uLXRvb2xiYXIsaW9uLXNlZ21lbnRcbntcbiAgICAtLWJhY2tncm91bmQ6IGJsYWNrOyBcbn1cblxuXG5pb24taXRlbVxue1xuICAgIC0tYmFja2dyb3VuZDogYmxhY2s7IFxuICAgIGNvbG9yOiAgI2ZmYTYwYTtcbn1cblxuaW9uLWNoaXAsaW9uLWJ1dHRvblxue1xuICAgIGNvbG9yOiBibGFjazsgXG4gICAgLS1iYWNrZ3JvdW5kOiAjZmZhNjBhO1xuICAgIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbmlvbi1zZWdtZW50LWJ1dHRvbixpb24tY2FyZC10aXRsZVxue1xuICAgIGNvbG9yIDogI2ZmYTYwYTtcbn1cblxuaW9uLWNhcmQtY29udGVudFxue1xuICAgIGNvbG9yIDogd2hpdGU7XG59XG5cbmlvbi1sYWJlbFxue1xuICBjb2xvciA6IGJsYWNrO1xufVxuIiwiLmNlbGwtY2xhc3Mge1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xuICBib3JkZXItd2lkdGg6IDAuMDFlbTtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgbWFyZ2luLWJvdHRvbTogLTFweDtcbn1cblxuLmNlbGwteWVzIHtcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcbiAgYm9yZGVyLXdpZHRoOiAwLjAxZW07XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIG1hcmdpbi1ib3R0b206IC0xcHg7XG4gIGNvbG9yOiAjZmZhNjBhO1xuICB0ZXh0LWFsaWduOiByaWdodDtcbn1cblxuLmNlbGwtbm8ge1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xuICBib3JkZXItd2lkdGg6IDAuMDFlbTtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgbWFyZ2luLWJvdHRvbTogLTFweDtcbiAgY29sb3I6IHJlZDtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG59XG5cbi5jZW50ZXItYnV0dG9uIHtcbiAgbWFyZ2luLWxlZnQ6IDI1JTtcbiAgbWFyZ2luLXJpZ2h0OiAxNyU7XG59XG5cbmlvbi1jYXJkLCBpb24tdG9vbGJhciwgaW9uLXNlZ21lbnQge1xuICAtLWJhY2tncm91bmQ6IGJsYWNrO1xufVxuXG5pb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG4gIGNvbG9yOiAjZmZhNjBhO1xufVxuXG5pb24tY2hpcCwgaW9uLWJ1dHRvbiB7XG4gIGNvbG9yOiBibGFjaztcbiAgLS1iYWNrZ3JvdW5kOiAjZmZhNjBhO1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5pb24tc2VnbWVudC1idXR0b24sIGlvbi1jYXJkLXRpdGxlIHtcbiAgY29sb3I6ICNmZmE2MGE7XG59XG5cbmlvbi1jYXJkLWNvbnRlbnQge1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi1sYWJlbCB7XG4gIGNvbG9yOiBibGFjaztcbn0iXX0= */";
+    __webpack_exports__["default"] = ".cell-class {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n}\n\n.cell-yes {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n  color: #ffa60a;\n  text-align: right;\n}\n\n.cell-no {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n  color: red;\n  text-align: right;\n}\n\n.center-button {\n  margin-left: 25%;\n  margin-right: 17%;\n}\n\nion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-chip, ion-button {\n  color: black;\n  --background: #ffa60a;\n  border-color: black;\n}\n\nion-segment-button, ion-card-title, ion-card-subtitle {\n  color: #ffa60a;\n}\n\nion-card-content {\n  color: white;\n}\n\nion-label {\n  color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jcGNraW5nZG9tL0RvY3VtZW50cy9pb25pYy10dXRvcmlhbC1tYXN0ZXIvaW9uaWNfcHJvamVjdC9sb2dpbkNhcC9zcmMvYXBwL3BhZ2VzL2Nhci1kZXRhaWxzL2Nhci1kZXRhaWxzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvY2FyLWRldGFpbHMvY2FyLWRldGFpbHMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0VBQW9CLG1CQUFBO0FDRXRCOztBRENBO0VBQ0UsbUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0VBQW9CLG1CQUFBO0VBQ3BCLGNBQUE7RUFDQSxpQkFBQTtBQ0dGOztBRERBO0VBQ0UsbUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0VBQW9CLG1CQUFBO0VBQ3BCLFVBQUE7RUFDQSxpQkFBQTtBQ0tGOztBREhBO0VBQ0UsZ0JBQUE7RUFDQSxpQkFBQTtBQ01GOztBRERBO0VBRUUsbUJBQUE7QUNHRjs7QURDQTtFQUVFLG1CQUFBO0VBQ0EsY0FBQTtBQ0NGOztBREVBO0VBRUUsWUFBQTtFQUNBLHFCQUFBO0VBQ0EsbUJBQUE7QUNBRjs7QURHQTtFQUVFLGNBQUE7QUNERjs7QURJQTtFQUVFLFlBQUE7QUNGRjs7QURLQTtFQUVBLFlBQUE7QUNIQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2Nhci1kZXRhaWxzL2Nhci1kZXRhaWxzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZWxsLWNsYXNzIHtcbiAgYm9yZGVyLWNvbG9yOiBibGFjazsgXG4gIGJvcmRlci13aWR0aDogLjAxZW07IFxuICBib3JkZXItc3R5bGU6c29saWQ7IG1hcmdpbi1ib3R0b20gOiAtMXB4O1xufVxuXG4uY2VsbC15ZXN7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7IFxuICBib3JkZXItd2lkdGg6IC4wMWVtOyBcbiAgYm9yZGVyLXN0eWxlOnNvbGlkOyBtYXJnaW4tYm90dG9tIDogLTFweDtcbiAgY29sb3I6ICNmZmE2MGE7XG4gIHRleHQtYWxpZ246IHJpZ2h0O1xufVxuLmNlbGwtbm97XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7IFxuICBib3JkZXItd2lkdGg6IC4wMWVtOyBcbiAgYm9yZGVyLXN0eWxlOnNvbGlkOyBtYXJnaW4tYm90dG9tIDogLTFweDtcbiAgY29sb3I6IHJlZDtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG59XG4uY2VudGVyLWJ1dHRvbntcbiAgbWFyZ2luLWxlZnQ6IDI1JTtcbiAgbWFyZ2luLXJpZ2h0OiAxNyU7XG4gIFxuXG59XG5cbmlvbi1jYXJkLGlvbi10b29sYmFyLGlvbi1zZWdtZW50XG57XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7IFxufVxuXG5cbmlvbi1pdGVtXG57XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7IFxuICBjb2xvcjogICNmZmE2MGE7XG59XG5cbmlvbi1jaGlwLGlvbi1idXR0b25cbntcbiAgY29sb3I6IGJsYWNrOyBcbiAgLS1iYWNrZ3JvdW5kOiAjZmZhNjBhO1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5pb24tc2VnbWVudC1idXR0b24saW9uLWNhcmQtdGl0bGUsaW9uLWNhcmQtc3VidGl0bGVcbntcbiAgY29sb3IgOiAjZmZhNjBhO1xufVxuXG5pb24tY2FyZC1jb250ZW50XG57XG4gIGNvbG9yIDogd2hpdGU7XG59XG5cbmlvbi1sYWJlbFxue1xuY29sb3IgOiBibGFjaztcbn1cbiIsIi5jZWxsLWNsYXNzIHtcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcbiAgYm9yZGVyLXdpZHRoOiAwLjAxZW07XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIG1hcmdpbi1ib3R0b206IC0xcHg7XG59XG5cbi5jZWxsLXllcyB7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG4gIGJvcmRlci13aWR0aDogMC4wMWVtO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBtYXJnaW4tYm90dG9tOiAtMXB4O1xuICBjb2xvcjogI2ZmYTYwYTtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG59XG5cbi5jZWxsLW5vIHtcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcbiAgYm9yZGVyLXdpZHRoOiAwLjAxZW07XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIG1hcmdpbi1ib3R0b206IC0xcHg7XG4gIGNvbG9yOiByZWQ7XG4gIHRleHQtYWxpZ246IHJpZ2h0O1xufVxuXG4uY2VudGVyLWJ1dHRvbiB7XG4gIG1hcmdpbi1sZWZ0OiAyNSU7XG4gIG1hcmdpbi1yaWdodDogMTclO1xufVxuXG5pb24tY2FyZCwgaW9uLXRvb2xiYXIsIGlvbi1zZWdtZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiBibGFjaztcbn1cblxuaW9uLWl0ZW0ge1xuICAtLWJhY2tncm91bmQ6IGJsYWNrO1xuICBjb2xvcjogI2ZmYTYwYTtcbn1cblxuaW9uLWNoaXAsIGlvbi1idXR0b24ge1xuICBjb2xvcjogYmxhY2s7XG4gIC0tYmFja2dyb3VuZDogI2ZmYTYwYTtcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcbn1cblxuaW9uLXNlZ21lbnQtYnV0dG9uLCBpb24tY2FyZC10aXRsZSwgaW9uLWNhcmQtc3VidGl0bGUge1xuICBjb2xvcjogI2ZmYTYwYTtcbn1cblxuaW9uLWNhcmQtY29udGVudCB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuaW9uLWxhYmVsIHtcbiAgY29sb3I6IGJsYWNrO1xufSJdfQ== */";
     /***/
   },
 
@@ -282,75 +282,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(CarDetailsPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this = this;
+          var _this = this;
 
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.next = 2;
-                    return Storage.get({
-                      key: 'SELECTED LANGUAGE'
-                    });
+          this.webservice.presentLoading();
+          this.getCurrentToken();
+          this.subscription = this.route.queryParams.subscribe(function (data) {
+            console.log("selected ->", typeof data.id); //receive the  prev page 
 
-                  case 2:
-                    this.lang = _context.sent.value;
-                    this.webservice.presentLoading();
-                    this.getCurrentToken();
-                    this.subscription = this.route.queryParams.subscribe(function (data) {
-                      console.log("selected ->", typeof data.id); //receive the  prev page 
+            _this.page_prev = data.prev; //get the details of the car
+            //receive the  prev page 
 
-                      _this.page_prev = data.prev; //get the details of the car
-                      //receive the  prev page 
+            _this.page_prev = data.prev; //get the details of the car
 
-                      _this.page_prev = data.prev; //get the details of the car
+            _this.webservice.getCarDetails(data.id).subscribe(function (res) {
+              _this.car = res;
+              console.log(res); // get the differents pice of the car
 
-                      _this.webservice.getCarDetails(data.id).subscribe(function (res) {
-                        _this.car = res;
-                        console.log(res); // get the differents pice of the car
+              _this.webservice.getPriceCar(data.id).subscribe(function (resp) {
+                _this.car.per_day = resp[0].prix;
+                _this.car.per_hour = resp[1].prix;
+                _this.car.airport = resp[2].prix; //stop loading
 
-                        _this.webservice.getPriceCar(data.id).subscribe(function (resp) {
-                          _this.car.per_day = resp[0].prix;
-                          _this.car.per_hour = resp[1].prix;
-                          _this.car.airport = resp[2].prix; //stop loading
-
-                          _this.webservice.stopLoading(); //show the list
+                _this.webservice.stopLoading(); //show the list
 
 
-                          _this.show = true;
-                        }, function (error) {
-                          _this.webservice.stopLoading();
+                _this.show = true;
+              }); //end get prices
 
-                          if (_this.lang == "fr") {
-                            alert("Erreur serveur !! ");
-                          } else {
-                            alert("Server Error !! ");
-                          }
-
-                          _this.router.navigateByUrl("/dashboard");
-                        }); //); //end get prices
-
-                      });
-                    }, function (error) {
-                      _this.webservice.stopLoading();
-
-                      if (_this.lang == "fr") {
-                        alert("Erreur serveur !! ");
-                      } else {
-                        alert("Server Error !! ");
-                      }
-
-                      _this.router.navigateByUrl("/dashboard");
-                    }); //);
-
-                  case 6:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
+            });
+          });
         } //this is used for the auto slider
 
       }, {
@@ -363,28 +323,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCurrentToken",
         value: function getCurrentToken() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             var ret;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
-                switch (_context2.prev = _context2.next) {
+                switch (_context.prev = _context.next) {
                   case 0:
                     ret = Storage.get({
                       key: 'accessToken'
                     });
-                    _context2.next = 3;
+                    _context.next = 3;
                     return ret;
 
                   case 3:
-                    this.token = _context2.sent.value;
+                    this.token = _context.sent.value;
                     console.log("token   ", this.token); //  return (await ret).value;
 
                   case 5:
                   case "end":
-                    return _context2.stop();
+                    return _context.stop();
                 }
               }
-            }, _callee2, this);
+            }, _callee, this);
           }));
         } //////////////////////////////////////////////////////////////
         ////back to home ///

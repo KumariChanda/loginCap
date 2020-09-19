@@ -48,7 +48,7 @@ export class SendFeedbacksPage implements OnInit {
   save()
   {
     this.btnClicked=true;
-      console.log("btnClicked : ",this.btnClicked);     
+      //console.log("btnClicked : ",this.btnClicked);     
       setTimeout( ()=>{
         this.btnClicked=false;
         // this.editableText=true;
@@ -64,7 +64,7 @@ export class SendFeedbacksPage implements OnInit {
 
             if(resp)
             {
-              console.log("done successfully");
+              //console.log("done successfully");
             }
              
             this.myAlert(0,this.lang);
