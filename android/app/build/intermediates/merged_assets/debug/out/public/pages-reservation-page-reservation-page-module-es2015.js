@@ -221,7 +221,7 @@ let ReservationPagePage = class ReservationPagePage {
             ////////////////////////////////////////////////////////////////
             ///////////////receive car id/////////////////////////////////////////////////
             this.subscription = this.route.queryParams.subscribe((data) => {
-                console.log("selected ->", typeof (data.id));
+                //console.log("selected ->", typeof(data.id))
                 //set the prev page
                 this.page_prev = data.prev;
                 //set the Car ID 
@@ -229,7 +229,7 @@ let ReservationPagePage = class ReservationPagePage {
                 ////////////////////////////////////////////////////////////////////////////   
                 //get Destination list
                 this.webservice.getDestinations().subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                    console.log("getting Destinations : ", res);
+                    //console.log("getting Destinations : ",res); 
                     if (res) {
                         this.list_original = res;
                         this.list_original1 = res;
@@ -238,7 +238,7 @@ let ReservationPagePage = class ReservationPagePage {
                     ////////////////////////Start : Get Optionnels/////////////////////////////////////////////////
                     this.webservice.getOption().subscribe(resp => {
                         this.option = resp;
-                        console.log(resp);
+                        //console.log(resp)
                         ///////////////////////////////////////////////////////////////////////////////////////////
                         //////////////////Start : Get Car details/////////////////////////////////////////////////
                         this.webservice.getCarDetails(data.id).subscribe(res => {
@@ -252,7 +252,7 @@ let ReservationPagePage = class ReservationPagePage {
                                 this.webservice.stopLoading();
                                 this.show = true;
                             }); //end get prices
-                            console.log(res);
+                            //console.log(res)
                         });
                         //////////////////Stop : Get Car details//////////////////////////////////////////////////
                         /////////////////////////////////////////////////////////////////////////////////////////
@@ -309,7 +309,7 @@ let ReservationPagePage = class ReservationPagePage {
             day = this.maxdate.getDate();
         }
         this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day;
-        console.log("Today = " + this.today + " \n MAX DATE : " + this.maxdate);
+        // console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
     }
     //////////////////////////////////////////////////////////////
     ////back to prev ///
@@ -325,14 +325,14 @@ let ReservationPagePage = class ReservationPagePage {
             if (this.destination) {
                 //////////////////////////car id ///////////////////////////////////////////////
                 this.dataToSend.voiture = id;
-                console.log("id : ", id, "\n coef : ", this.coef);
+                //console.log("id : ",id,"\n coef : ",this.coef)
                 /////////////////////////////////user id ///////////////////////////////////////////////  
                 var ret = JSON.parse((yield Storage.get({ key: "user_infos" })).value);
                 // console.log("user : ", ret);
                 this.dataToSend.client = ret.id;
                 //////////////////////////////get token storage////////////////////////////////////////
                 this.token = (yield Storage.get({ key: 'accessToken' })).value;
-                console.log("Token : ", this.token);
+                // console.log("Token : ", this.token);
                 /////////////////// set start date /////////////////////////////////////////////////////
                 //this.dataToSend.date_debut = this.start_date
                 this.start_date = this.start_date.split("T")[0];
@@ -398,7 +398,7 @@ let ReservationPagePage = class ReservationPagePage {
                     }
                 }
                 else if (this.rent_type == "airport") {
-                    console.log("Depar Id", this.depart_venue);
+                    // console.log("Depar Id", this.depart_venue)
                     if (this.depart_venue) {
                         //check if depart != destination
                         if (this.depart_venue != this.destination) {
@@ -454,7 +454,7 @@ let ReservationPagePage = class ReservationPagePage {
                     if (this.option[i].checked) {
                         ////////////////////////////////////////////////////////////////////
                         if (this.rent_type == "hour") {
-                            console.log("price : ", typeof (this.price), "\n option price : ", typeof (this.option[i].prix));
+                            //console.log("price : ",typeof(this.price),"\n option price : ", typeof(this.option[i].prix))
                             this.price = parseFloat(this.price) + this.option[i].prix;
                             //add the optionnel id into the dataTosend field array
                             this.dataToSend.optionnel[index] = this.option[i].id;
@@ -473,7 +473,7 @@ let ReservationPagePage = class ReservationPagePage {
                             index = index + 1;
                         }
                         //////////////////////////////////////////////////////////////
-                        console.log(this.option[i]);
+                        //console.log(this.option[i]);
                     }
                 }
                 //////////////////set destination ////////////////////////////////////////////
@@ -482,7 +482,7 @@ let ReservationPagePage = class ReservationPagePage {
                 this.dataToSend.montant = this.price;
                 /////////////////////set message///////////////////////////////////////////////////
                 this.dataToSend.message = this.message;
-                console.log("\n data to send : \n", this.dataToSend);
+                //console.log("\n data to send : \n", this.dataToSend);
                 // present alert
                 this.presentAlertConfirm(this.price, this.start_date, this.end_date);
             }
@@ -521,26 +521,26 @@ let ReservationPagePage = class ReservationPagePage {
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
-                            console.log('Confirm Cancel: blah');
+                            //console.log('Confirm Cancel: blah');
                         }
                     }, {
                         text: textok,
                         handler: () => {
-                            console.log('Confirm Okay');
+                            //console.log('Confirm Okay');
                             //preseent loader
                             this.webservice.presentLoading();
                             ////send the data to the API
                             this.webservice.postReservation(this.token, this.dataToSend).subscribe(res => {
-                                console.log(res);
+                                //console.log(res)
                                 if (res) {
                                     this.webservice.stopLoading();
-                                    console.log("done");
+                                    // console.log("done");
                                     this.myAlert(0, lang);
                                 }
                             }, error => {
                                 //stop loader
                                 this.webservice.stopLoading();
-                                console.log("error : \n", error);
+                                // console.log("error : \n",error); 
                                 this.myAlert(1, lang);
                             });
                         }
@@ -670,7 +670,7 @@ let ReservationPagePage = class ReservationPagePage {
         if (type == 0) {
             //set departure
             this.depart_venue = id;
-            console.log("depart id :", this.depart_venue);
+            //console.log("depart id :", this.depart_venue);
             //set coef 
             this.coef1 = parseFloat(coef);
             for (let i = 0; i < this.list_original1.length; i++) {

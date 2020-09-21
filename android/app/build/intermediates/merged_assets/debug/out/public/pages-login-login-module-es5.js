@@ -298,8 +298,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                         while (1) {
                                           switch (_context2.prev = _context2.next) {
                                             case 0:
-                                              console.log("getting response : ", res);
-
+                                              //console.log("getting response : ",res); 
                                               if (!res.detail) {
                                                 //store user status in storage 
                                                 Storage.set({
@@ -378,7 +377,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                                 }
                                               }
 
-                                            case 2:
+                                            case 1:
                                             case "end":
                                               return _context2.stop();
                                           }
@@ -432,17 +431,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 0:
                     ret = Storage.get({
                       key: 'accessToken'
-                    });
-                    _context5.t0 = console;
-                    _context5.next = 4;
-                    return ret;
+                    }); //console.log((await ret).value);
 
-                  case 4:
-                    _context5.t1 = _context5.sent.value;
-
-                    _context5.t0.log.call(_context5.t0, _context5.t1);
-
-                  case 6:
+                  case 1:
                   case "end":
                     return _context5.stop();
                 }

@@ -141,7 +141,7 @@ let OurContactsPage = class OurContactsPage {
         /////////////////////////////////////////////////     
         ///// start : get our contact
         this.webService.getContacts().subscribe(res => {
-            console.log(" contact  ", res);
+            //console.log(" contact  ",res);
             if (res) {
                 this.mycontact = res;
             }
@@ -157,28 +157,28 @@ let OurContactsPage = class OurContactsPage {
     }
     ///////////////////////////////////////
     openFacebook() {
-        console.log("facebook");
+        //console.log("facebook")
         this.iab.create('https://www.facebook.com/Nyokah-111809566836023/', '_blank');
         //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_system')
     }
     //  ///////////////////////////////////////
     openTwitter() {
-        console.log("twitter");
+        //console.log("twitter")
         //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
     }
     //  ///////////////////////////////////////
     openLinkedin() {
-        console.log("Linkedin");
+        //console.log("Linkedin")
         // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
     }
     //  ///////////////////////////////////////
     openInstagram() {
-        console.log("Instagram");
+        // console.log("Instagram")
         //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
     }
     //  ///////////////////////////////////////
     openGoogleplus() {
-        console.log("Google plus");
+        //console.log("Google plus")
         this.iab.create('https://mail.google.com/', '_system');
     }
     //////////////////////////////////////////////////////
@@ -191,8 +191,10 @@ let OurContactsPage = class OurContactsPage {
     //////////////////////////////////////////////////////
     callNumber(number) {
         this.callnumber.callNumber(number, true)
-            .then(res => console.log('Launched dialer!', res))
-            .catch(err => console.log('Error launching dialer', err));
+            // .then(res => console.log('Launched dialer!', res))
+            // .catch(err => console.log('Error launching dialer', err));
+            .then(res => { })
+            .catch(err => { });
     }
 };
 OurContactsPage.ctorParameters = () => [

@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n\n        <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n        <ion-title style=\"margin-left:15%\">{{\"DASHBOARD.my_report\" | translate }}</ion-title>\n\n      </ion-item>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n    <!-- Trip/voyage Details -->\n \n\n\n     <ion-card >\n    \n        <ion-card-header>\n                 <ion-card-title style=\" margin-left:15%; margin-bottom: 3%;font-size:1.2em\" >{{\"DASHBOARD.question\" | translate}}</ion-card-title>\n\n          <ion-card-subtitle>\n             \n                \n                <ion-radio-group allow-empty-selection [(ngModel)]=\"marks\"  >\n                   \n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.very_good\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.good\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"4\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.average\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"3\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.bad\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"2\"></ion-radio>\n                    </ion-item>\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.very_bad\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"1\"></ion-radio>\n                    </ion-item>\n\n                  </ion-radio-group>\n           \n\n          </ion-card-subtitle>\n        </ion-card-header>\n        <ion-card-content>\n                        \n                <ion-textarea [(ngModel)]=\"comment\" auto-grow=\"true\"  placeholder=\"{{'DASHBOARD.comment'| translate}}\"></ion-textarea>\n\n        </ion-card-content>\n      </ion-card>\n\n    <!-- </ion-item> -->\n\n\n\n</ion-content>\n\n<ion-footer>\n  <!-- <ion-toolbar> -->\n          <!-- Start the trip  -->\n    <ion-button expand=\"full\" *ngIf=\"filterData.etape_location == 4\" (click)=\"end()\" >{{\"DASHBOARD.end_trip\" | translate }} </ion-button>\n   \n  <!-- </ion-toolbar> -->\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n\n        <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n        <ion-title style=\"margin-left:15%\">{{\"DASHBOARD.my_report\" | translate }}</ion-title>\n\n      </ion-item>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n    <!-- Trip/voyage Details -->\n \n\n\n     <ion-card >\n    \n        <ion-card-header>\n                 <ion-card-title style=\" margin-left:15%; margin-bottom: 3%;font-size:1.2em\" >{{\"DASHBOARD.question\" | translate}}</ion-card-title>\n\n          <ion-card-subtitle>\n             \n                \n                <ion-radio-group allow-empty-selection [(ngModel)]=\"marks\"  >\n                   \n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.very_good\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=5></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.good\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=4></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.average\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=3></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.bad\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=2></ion-radio>\n                    </ion-item>\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.very_bad\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=1></ion-radio>\n                    </ion-item>\n\n                  </ion-radio-group>\n           \n\n          </ion-card-subtitle>\n        </ion-card-header>\n        <ion-card-content>\n                        \n                <ion-textarea [(ngModel)]=\"comment\" auto-grow=\"true\"  placeholder=\"{{'DASHBOARD.comment'| translate}}\"></ion-textarea>\n\n        </ion-card-content>\n      </ion-card>\n\n    <!-- </ion-item> -->\n\n\n\n</ion-content>\n\n<ion-footer>\n  <!-- <ion-toolbar> -->\n          <!-- Start the trip  -->\n    <ion-button expand=\"full\" *ngIf=\"filterData.etape_location == 4\" (click)=\"end()\" >{{\"DASHBOARD.end_trip\" | translate }} </ion-button>\n    <ion-button expand=\"full\" *ngIf=\"userType=='client'\" (click)=\"end()\" >{{\"RESERVECAR.btn_submit\" | translate }} </ion-button>\n   \n  <!-- </ion-toolbar> -->\n</ion-footer>";
     /***/
   },
 
@@ -268,7 +268,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           "etape_location": 0,
           "optionnel": [],
           "note_chauffeur": null,
-          "rapport_chauffeur": null,
+          "rapport_chauffeur": null
+        };
+        this.DataTosend1 = {
+          "date_location": "",
+          "date_debut": "",
+          "date_fin": "",
+          "montant": 0,
+          "client": 0,
+          "voiture": 0,
+          "type_location": 0,
+          "depart": null,
+          "destination": 0,
+          "message": "",
+          "etape_location": 0,
+          "optionnel": [],
           "note_client": null,
           "commentaire_client": null
         };
@@ -305,8 +319,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.isSearchbarOpened = false;
         this.term = '';
-        this.marks = 0;
+        this.marks = "";
         this.comment = "";
+        this.userType = "";
       }
 
       _createClass(SendReportsPage, [{
@@ -334,7 +349,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 6:
                     _context2.t1 = _context2.sent.value;
-                    this.userId = _context2.t0.parse.call(_context2.t0, _context2.t1).id;
+                    this.Id = _context2.t0.parse.call(_context2.t0, _context2.t1).id;
                     _context2.next = 10;
                     return Storage.get({
                       key: "user_type"
@@ -350,12 +365,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 13:
                     this.lang = _context2.sent.value;
                     this.subscription = this.route.queryParams.subscribe(function (data) {
-                      console.log("selected ->", typeof data.id); //receive the  prev page 
-
-                      _this.page_prev = data.prev; //get the details of the car
+                      // console.log("selected ->", typeof(data.id));
                       //receive the  prev page 
+                      _this.page_prev = data.prev; //get the details of the car
+                      //receive the driver id 
 
-                      _this.page_prev = data.prev; //present loading
+                      _this.userId = data.id; //present loading
 
                       _this.webService.presentLoading();
 
@@ -372,12 +387,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   if (!res.detail) {
                                     _loop = function _loop(i) {
                                       if (data.id == res[i].id) {
-                                        _this2.filterData = res[i];
-                                        console.log("getting Ride : ", _this2.filterData); //call the car according to the id 
+                                        _this2.filterData = res[i]; // console.log("getting Ride : ",this.filterData);
+                                        //call the car according to the id 
 
                                         _this2.webService.getCarDetails(res[i].voiture).subscribe(function (car) {
-                                          console.log(car); //pictures of car
-
+                                          //console.log(car)
+                                          //pictures of car
                                           _this2.filterData.photo = car.photo; //modele
 
                                           _this2.filterData.modele = car.modele.libelle; //receive the res
@@ -392,17 +407,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                           _this2.filterData.depart_id = res[i].depart; //get the client name
 
                                           _this2.webService.getClient(res[i].client, _this2.token).subscribe(function (resp) {
-                                            console.log("client", resp);
+                                            // console.log("client", resp);
                                             _this2.filterData.clientname = resp.first_name + " " + resp.last_name; //get destination
 
                                             _this2.webService.getSingleDestination(res[i].destination).subscribe(function (dest) {
-                                              console.log(dest);
+                                              //  console.log(dest);
                                               _this2.filterData.destination = dest.destination;
 
                                               if (res[i].depart > 0) {
                                                 //get depart
                                                 _this2.webService.getSingleDestination(res[i].depart).subscribe(function (dep) {
-                                                  console.log(dep);
+                                                  // console.log(dep);
                                                   _this2.filterData.depart = dep.destination; //stop loader
 
                                                   _this2.show = true;
@@ -410,6 +425,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                                   _this2.webService.stopLoading();
                                                 }); //end get depart
 
+                                              } else {
+                                                //stop loader
+                                                _this2.show = true;
+
+                                                _this2.webService.stopLoading();
                                               }
                                             }); //end get destination
 
@@ -489,13 +509,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     if (lang == "fr") {
                       textcancel = "Non ";
                       textok = "Oui ";
-                      message = "Voulez-vous Terminer ce trajet? ";
-                      myheader = "Validation ";
+
+                      if (this.userType == "client") {
+                        message = "Confirmez-vous vos impressions? ";
+                        myheader = "Confirmation ";
+                      } else {
+                        message = "Voulez-vous Terminer ce trajet? ";
+                        myheader = "Validation ";
+                      }
                     } else {
                       textcancel = "No ";
                       textok = "Yes ";
-                      message = "Do you want to End this Trip? ";
-                      myheader = "Validation ";
+
+                      if (this.userType == "client") {
+                        message = "Do you confirm your feedbacks? ";
+                        myheader = "Confirmation ";
+                      } else {
+                        message = "Do you want to End this Trip? ";
+                        myheader = "Validation ";
+                      }
                     }
 
                     _context3.next = 6;
@@ -507,8 +539,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         text: textcancel,
                         role: 'cancel',
                         cssClass: 'secondary',
-                        handler: function handler(blah) {
-                          console.log('Confirm Cancel: blah');
+                        handler: function handler(blah) {//console.log('Confirm Cancel: blah');
                         }
                       }, {
                         text: textok,
@@ -516,33 +547,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           //change the location type ;
                           _this3.filterData.etape_location = 5; //   this.DataTosend.id = this.filterData[id].id;
 
-                          _this3.DataTosend.date_location = _this3.filterData.date_location + "T" + _this3.filterData.heure_debut + ".961Z";
-                          _this3.DataTosend.date_debut = _this3.filterData.date_debut + "T" + _this3.filterData.heure_debut + ".961Z";
-                          _this3.DataTosend.date_fin = _this3.filterData.date_fin + "T" + _this3.filterData.heure_fin + ".961Z";
-                          _this3.DataTosend.montant = _this3.filterData.montant;
-                          _this3.DataTosend.message = _this3.filterData.message;
-                          _this3.DataTosend.client = _this3.filterData.client;
-                          _this3.DataTosend.voiture = _this3.filterData.voiture;
-                          _this3.DataTosend.type_location = _this3.filterData.type_location;
-                          _this3.DataTosend.depart = _this3.filterData.depart_id;
-                          _this3.DataTosend.destination = _this3.filterData.destination_id;
-                          _this3.DataTosend.etape_location = 5;
-                          _this3.DataTosend.optionnel = _this3.filterData.optionnel;
-
                           if (_this3.userType == "chauffeur") {
-                            _this3.DataTosend.note_chauffeur = _this3.marks;
+                            _this3.DataTosend.date_location = _this3.filterData.date_location + "T" + _this3.filterData.heure_debut + ".961Z";
+                            _this3.DataTosend.date_debut = _this3.filterData.date_debut + "T" + _this3.filterData.heure_debut + ".961Z";
+                            _this3.DataTosend.date_fin = _this3.filterData.date_fin + "T" + _this3.filterData.heure_fin + ".961Z";
+                            _this3.DataTosend.montant = _this3.filterData.montant;
+                            _this3.DataTosend.message = _this3.filterData.message;
+                            _this3.DataTosend.client = _this3.filterData.client;
+                            _this3.DataTosend.voiture = _this3.filterData.voiture;
+                            _this3.DataTosend.type_location = _this3.filterData.type_location;
+                            _this3.DataTosend.depart = _this3.filterData.depart_id;
+                            _this3.DataTosend.destination = _this3.filterData.destination_id;
+                            _this3.DataTosend.etape_location = 5;
+                            _this3.DataTosend.optionnel = _this3.filterData.optionnel;
+                            _this3.DataTosend.note_chauffeur = parseInt(_this3.marks);
                             _this3.DataTosend.rapport_chauffeur = _this3.comment;
+                            _this3.Tosend = _this3.DataTosend1;
                           } else {
-                            _this3.DataTosend.note_client = _this3.marks;
-                            _this3.DataTosend.commentaire_client = _this3.comment;
-                          }
+                            _this3.DataTosend1.date_location = _this3.filterData.date_location + "T" + _this3.filterData.heure_debut + ".961Z";
+                            _this3.DataTosend1.date_debut = _this3.filterData.date_debut + "T" + _this3.filterData.heure_debut + ".961Z";
+                            _this3.DataTosend1.date_fin = _this3.filterData.date_fin + "T" + _this3.filterData.heure_fin + ".961Z";
+                            _this3.DataTosend1.montant = _this3.filterData.montant;
+                            _this3.DataTosend1.message = _this3.filterData.message;
+                            _this3.DataTosend1.client = _this3.Id;
+                            _this3.DataTosend1.voiture = _this3.filterData.voiture;
+                            _this3.DataTosend1.type_location = _this3.filterData.type_location;
+                            _this3.DataTosend1.depart = _this3.filterData.depart_id;
+                            _this3.DataTosend1.destination = _this3.filterData.destination_id;
+                            _this3.DataTosend1.etape_location = 5;
+                            _this3.DataTosend1.optionnel = _this3.filterData.optionnel;
+                            _this3.DataTosend1.note_client = parseInt(_this3.marks);
+                            _this3.DataTosend1.commentaire_client = _this3.comment;
+                            _this3.Tosend = _this3.DataTosend1;
+                          } // console.log(this.Tosend,"\n", this.Id);
+                          //call the EditLocation API 
 
-                          console.log(_this3.DataTosend); //call the EditLocation API 
 
                           _this3.webService.presentLoading(); // present loader
 
 
-                          _this3.webService.EditLocation(_this3.filterData.id, _this3.token, _this3.DataTosend).subscribe(function (res) {
+                          _this3.webService.EditLocation(_this3.filterData.id, _this3.token, _this3.Tosend).subscribe(function (res) {
+                            //  console.log(res)
                             if (res.id) {
                               _this3.webService.stopLoading();
 
@@ -586,7 +631,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               alert("Your Request has been sent successfully !");
             }
 
-            this.router.navigateByUrl("/home");
+            if (this.userType == "chauffeur") {
+              this.router.navigateByUrl("/home");
+            } else {
+              this.router.navigateByUrl("/my-bookings");
+            }
           } else {
             if (lang == "fr") {
               alert("Désolé, une erreur s'est produite.");

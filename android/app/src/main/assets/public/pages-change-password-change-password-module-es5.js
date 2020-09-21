@@ -276,17 +276,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 6:
                     _context.t1 = _context.sent.value;
                     this.userInfo = _context.t0.parse.call(_context.t0, _context.t1);
-                    console.log("Storage : ", this.userInfo); //get Language
-
-                    _context.next = 11;
+                    _context.next = 10;
                     return Storage.get({
                       key: 'SELECTED LANGUAGE'
                     });
 
-                  case 11:
+                  case 10:
                     this.lang = _context.sent.value;
 
-                  case 12:
+                  case 11:
                   case "end":
                     return _context.stop();
                 }
@@ -316,8 +314,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               this.webService.changeClientPasssword(this.userInfo.id, this.token, this.dataToSend).subscribe(function (res) {
                 //check if action failed or not
                 if (!res.old_password) {
-                  console.log(res);
-
+                  //console.log(res);
                   _this.webService.stopLoading();
 
                   if (_this.lang == "fr") {

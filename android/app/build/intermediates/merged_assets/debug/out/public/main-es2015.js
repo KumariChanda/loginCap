@@ -501,7 +501,7 @@ let AppComponent = class AppComponent {
                     this.router.navigateByUrl("/home");
                 }
             }
-            console.log("checKing token from storage ", this.testingToken, typeof (this.testingToken));
+            // console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
             // //set the initial language of the app
             this.webService.setInitialAppLanguage().then(val => {
                 // alert("val : "+val);
@@ -524,7 +524,7 @@ let AppComponent = class AppComponent {
     }
     /////////////////////////////////////////////////////////////////
     openUserProfile(url) {
-        console.log('Open this URL: ', url);
+        // console.log('Open this URL: ',url);
     }
     //////////////////////////////////
     logout() {
@@ -1229,9 +1229,17 @@ let AppServiceService = class AppServiceService {
     ////////////////////////////////// START : PRESENTATION LOADING ////////////////////////////////////////////////
     presentLoading() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            console.log("loading starts");
+            var lang = (yield Storage.get({ key: LNG_KEY })).value;
+            var myMessage = "";
+            if (lang == "fr") {
+                myMessage = "Récupération des données";
+            }
+            else {
+                myMessage = 'Fetching data';
+            }
+            // console.log("loading starts");
             this.loading = this.loadingCtrl.create({
-                message: 'Fetching data',
+                message: myMessage,
             });
             (yield this.loading).present();
         });
@@ -1243,7 +1251,7 @@ let AppServiceService = class AppServiceService {
     stopLoading() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             // this.loading = false;
-            console.log("loading stop");
+            // console.log("loading stop");
             if (this.loading)
                 this.loading = false;
             return yield this.loadingCtrl.dismiss().then(() => console.log('loading dismissed'));
@@ -1256,11 +1264,11 @@ let AppServiceService = class AppServiceService {
     //set the initial app language
     setInitialAppLanguage() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            console.log("initialize App Language");
+            //console.log("initialize App Language");
             let language = "fr";
             var ret = Storage.get({ key: LNG_KEY });
             var val = (yield ret).value;
-            console.log("data from storage ", val, typeof (val));
+            // console.log("data from storage ",val,typeof(val));
             if (val != null) {
                 this.selected = (yield ret).value;
                 this.setLanguage(this.selected);
@@ -1321,7 +1329,7 @@ let AppServiceService = class AppServiceService {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////// START : LOGIN SERVICE API////////////////////////////////////////////////////
     postData(url, data) {
-        console.log("data To Send : \n", url, data);
+        //console.log("data To Send : \n", url, data)
         return this.http.post(url, data, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
     }
     login(data) {
@@ -1378,7 +1386,7 @@ let AppServiceService = class AppServiceService {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////STRAT : GET USER ////////////////////////////////////////////////////////////////////////
     getUserDetails(token, id, type) {
-        console.log("is Driver : ", type);
+        // console.log("is Driver : ", type);
         var myToken = 'Token ' + token;
         const httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
@@ -1482,7 +1490,7 @@ let AppServiceService = class AppServiceService {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////STRAT : POST RESERVATION  ////////////////////////////////////////////////////////////////////////
     postData1(url, data, token) {
-        console.log("APP Service : data To Send : \n", url, data, token);
+        // console.log("APP Service : data To Send : \n", url, data,token)
         const httpOption = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
                 'Content-Type': 'application/json',

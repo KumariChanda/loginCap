@@ -104,6 +104,9 @@ export class MyBookingsPage implements OnInit {
                 alert("No Booking \n Back Home Page")
               }
 
+               //stop loader
+               this.webService.stopLoading();
+
               this.router.navigateByUrl("/dashboard");
 
               
@@ -170,7 +173,7 @@ export class MyBookingsPage implements OnInit {
                               this.filterData[i].destination = dest.destination;
 
                               
-                              if(res.depart > 0)
+                              if(res[i].depart > 0)
                               {
                                     //get depart
                                     this.webService.getSingleDestination(res[i].depart).subscribe(dep =>{
@@ -191,8 +194,8 @@ export class MyBookingsPage implements OnInit {
     
     
                             //stop loader
-                            // this.show = true
-                            // this.webService.stopLoading();
+                             //this.show = true
+                             //this.webService.stopLoading();
     
     
                       });
@@ -211,6 +214,17 @@ export class MyBookingsPage implements OnInit {
 
 
             
+          },error=>{
+            this.webService.stopLoading(); 
+            
+            if(this.lang =="fr")
+            {
+              alert("Erreur Serveur !! ")
+            }else{
+              alert("Server Error!! ")
+      
+            }
+          
           });
           ///end get booking list
 
@@ -341,133 +355,8 @@ export class MyBookingsPage implements OnInit {
 
   async Mark(id)
   {
-    var lang = (await Storage.get({ key: LNG_KEY })).value;
-        if(lang =="fr")
-        {
-          var textcancel = "Annuler ";
-          var textok = "Valider ";
-          var message = "Comment était le trajet ? ";
-          var very_bad = "Très Mauvais ";
-          var bad = "Mauvais ";
-          var average = "Moyen ";
-          var good = "Bien ";
-          var very_good = "Très Bien ";
-          
-        }else{
-          var textcancel = "Cancel ";
-          var textok = "OK ";
-          var message = "How was the ride ?";
-          var very_bad = "Very Bad ";
-          var bad = "Bad ";
-          var average = "Average ";
-          var good = "Good ";
-          var very_good = "Very Good ";
-          
-        }
-
-          const alert = await this.alertController.create({
-            cssClass: 'my-custom-class',
-            header: message,
-            inputs: [
-              
-              {
-                name: very_good,
-                type: 'radio',
-                label: very_good,
-                value: 5,
-                checked: true
-
-              },
-              {
-                name: good,
-                type: 'radio',
-                label: good,
-                value: 4
-              },
-              {
-                name: average,
-                type: 'radio',
-                label: average,
-                value: 3
-              },
-              {
-                name: bad,
-                type: 'radio',
-                label: bad,
-                value: 2
-              },
-              {
-                name: very_bad,
-                type: 'radio',
-                label: very_bad,
-                value:1,
-              },
-              
-           
-            ],
-            buttons: [
-              {
-                text: textcancel,
-                role: 'cancel',
-                cssClass: 'secondary',
-                handler: () => {
-                  //console.log('Confirm Cancel');
-                }
-              }, {
-                text: textok,
-                handler: (data:number) => {
-                 // console.log('Radio', data);
-
-                  //change the  Marks given by the customer ;
-                  this.filterData[id].note_client = data;
-
-
-                //   this.DataTosend.id = this.filterData[id].id;
-                   this.DataTosend.date_location = this.filterData[id].date_location+"T"+this.filterData[id].heure_debut+".961Z";
-                   this.DataTosend.date_debut = this.filterData[id].date_debut+"T"+this.filterData[id].heure_debut+".961Z";
-                   this.DataTosend.date_fin = this.filterData[id].date_fin+"T"+this.filterData[id].heure_fin+".961Z";
-                   this.DataTosend.montant = this.filterData[id].montant;
-                   this.DataTosend.message = this.filterData[id].message;
-                   this.DataTosend.note_client = data;
-                   this.DataTosend.client = this.filterData[id].client;
-                   this.DataTosend.voiture = this.filterData[id].voiture;
-                   this.DataTosend.type_location = this.filterData[id].type_location;
-                   this.DataTosend.depart = this.filterData[id].depart_id;
-                   this.DataTosend.destination = this.filterData[id].destination_id;
-                   this.DataTosend.etape_location = this.filterData[id].etape_location;
-                   this.DataTosend.optionnel = this.filterData[id].optionnel;
-   
-                  // console.log(this.DataTosend);
-
-                    //call the EditLocation API 
-                this.webService.presentLoading(); // present loader
-                this.webService.EditLocation(id,this.token,this.filterData[id]).subscribe(res =>{
-                    if(res.id)
-                    {
-                        this.webService.stopLoading();
-                        this.myAlert(0,this.lang);
-
-                    }else{
-                      this.webService.stopLoading();
-                      this.myAlert(1,this.lang);
-
-
-
-                    }
-                },error=>{
-
-                  this.webService.stopLoading();
-                    this.myAlert(1,this.lang);
-
-
-                });
-
-                 }
-              }
-            ]
-          });
-      
-          await alert.present();
+    this.router.navigate(['report-client'],{queryParams:{booked: JSON.stringify(this.filterData[id]), prev : "/my-bookings"}});
+    
         
   }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

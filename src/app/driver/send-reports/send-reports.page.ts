@@ -27,9 +27,6 @@ datauser: any;
 token : any;
 show = false;
 
-logo1 ='../assets/images/logo1.jpg';
-
-reservDetails : any = null;
 DataTosend  = 
 {
   
@@ -46,12 +43,13 @@ DataTosend  =
   "etape_location": 0,
   "optionnel": [],
   "note_chauffeur": null,
-  "rapport_chauffeur": null,
-  "note_client": null,
-    "commentaire_client": null,
+  "rapport_chauffeur": null
+ 
 
 
 };
+
+
 filterData = 
   {
     "id": 0,
@@ -87,15 +85,14 @@ filterData =
 
 //////////////////////////////search barelements
 //////////////////////////////////////
-public isSearchbarOpened = false;
-term = '';
 userId: any;
 lang: any;
 subscription: Subscription;
 page_prev: any;
-marks = 0;
+marks = "";
 comment ="";
-  userType: any;
+userType = "";
+  Id: any;
 
 
 
@@ -111,8 +108,8 @@ async ngOnInit() {
     //get token
     this.token =(await Storage.get({ key: 'accessToken' })).value;
 
-    //get user id
-    this.userId =JSON.parse( (await Storage.get({ key: "user_infos" })).value).id;
+    //get client id
+    this.Id =JSON.parse( (await Storage.get({ key: "user_infos" })).value).id;
     //get user type
     this.userType = (await Storage.get({ key: "user_type" })).value;
     //get Language
@@ -125,8 +122,9 @@ async ngOnInit() {
     this.page_prev = data.prev ;
     //get the details of the car
 
-    //receive the  prev page 
-    this.page_prev = data.prev ;
+    //receive the driver id 
+    this.userId = data.id;
+    
      //present loading
      this.webService.presentLoading();
 
@@ -192,6 +190,10 @@ async ngOnInit() {
                             this.webService.stopLoading();
                           });
                           //end get depart
+                      }else{
+                        //stop loader
+                        this.show = true
+                        this.webService.stopLoading();
                       } 
                     
                 });
@@ -264,14 +266,16 @@ async end()
       {
         var textcancel = "Non ";
         var textok = "Oui ";
-        var message = "Voulez-vous Terminer ce trajet? ";
-        var myheader = "Validation ";
+        
+          var message = "Voulez-vous Terminer ce trajet? ";
+          var myheader = "Validation ";
         
       }else{
         var textcancel = "No ";
         var textok = "Yes ";
         var message = "Do you want to End this Trip? ";
         var myheader = "Validation ";
+        
 
         
       }
@@ -298,34 +302,33 @@ async end()
              
 
            //   this.DataTosend.id = this.filterData[id].id;
-              this.DataTosend.date_location = this.filterData.date_location+"T"+this.filterData.heure_debut+".961Z";
-              this.DataTosend.date_debut = this.filterData.date_debut+"T"+this.filterData.heure_debut+".961Z";
-              this.DataTosend.date_fin = this.filterData.date_fin+"T"+this.filterData.heure_fin+".961Z";
-              this.DataTosend.montant = this.filterData.montant;
-              this.DataTosend.message = this.filterData.message;
-              this.DataTosend.client = this.filterData.client;
-              this.DataTosend.voiture = this.filterData.voiture;
-              this.DataTosend.type_location = this.filterData.type_location;
-              this.DataTosend.depart = this.filterData.depart_id;
-              this.DataTosend.destination = this.filterData.destination_id;
-              this.DataTosend.etape_location = 5;
-              this.DataTosend.optionnel = this.filterData.optionnel;
               if(this.userType == "chauffeur")
               {
-                this.DataTosend.note_chauffeur = this.marks;
+                this.DataTosend.date_location = this.filterData.date_location+"T"+this.filterData.heure_debut+".961Z";
+                this.DataTosend.date_debut = this.filterData.date_debut+"T"+this.filterData.heure_debut+".961Z";
+                this.DataTosend.date_fin = this.filterData.date_fin+"T"+this.filterData.heure_fin+".961Z";
+                this.DataTosend.montant = this.filterData.montant;
+                this.DataTosend.message = this.filterData.message;
+                this.DataTosend.client = this.filterData.client;
+                this.DataTosend.voiture = this.filterData.voiture;
+                this.DataTosend.type_location = this.filterData.type_location;
+                this.DataTosend.depart = this.filterData.depart_id;
+                this.DataTosend.destination = this.filterData.destination_id;
+                this.DataTosend.etape_location = 5;
+                this.DataTosend.optionnel = this.filterData.optionnel;
+               
+                this.DataTosend.note_chauffeur = parseInt(this.marks);
                 this.DataTosend.rapport_chauffeur = this.comment;
-              }else{
 
-                this.DataTosend.note_client = this.marks;
-                this.DataTosend.commentaire_client = this.comment;
+
               }
- 
 
-              //console.log(this.DataTosend);
+             // console.log(this.Tosend,"\n", this.Id);
 
               //call the EditLocation API 
               this.webService.presentLoading(); // present loader
               this.webService.EditLocation(this.filterData.id,this.token,this.DataTosend).subscribe(res =>{
+              //  console.log(res)
                   if(res.id)
                   {
                       this.webService.stopLoading();
@@ -368,11 +371,16 @@ myAlert(id,lang)
  {
     if(lang =="fr" )
     {
-       alert( "Votre Requête a été envoyée avec succès !");
+       alert( "Merci pour votre contribution !");
     }else{
-      alert("Your Request has been sent successfully !");
+      alert("Thank you for your contribution !");
      }
+     if(this.userType=="chauffeur")
+     {
       this.router.navigateByUrl("/home");
+     }else{
+      this.router.navigateByUrl("/my-bookings");
+     }
  }else{
 
     if(lang =="fr" )
@@ -381,6 +389,8 @@ myAlert(id,lang)
     }else{
       alert("Sorry, an error has occurred.");
     }
+
+    
 
  }
 }

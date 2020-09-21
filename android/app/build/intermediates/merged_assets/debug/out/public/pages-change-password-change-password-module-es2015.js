@@ -148,7 +148,7 @@ let ChangePasswordPage = class ChangePasswordPage {
             this.token = (yield Storage.get({ key: 'accessToken' })).value;
             //get user Infos
             this.userInfo = JSON.parse((yield Storage.get({ key: "user_infos" })).value);
-            console.log("Storage : ", this.userInfo);
+            //console.log("Storage : ",this.userInfo);
             //get Language
             this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
         });
@@ -173,7 +173,7 @@ let ChangePasswordPage = class ChangePasswordPage {
                 this.webService.changeClientPasssword(this.userInfo.id, this.token, this.dataToSend).subscribe(res => {
                     //check if action failed or not
                     if (!res.old_password) {
-                        console.log(res);
+                        //console.log(res);
                         this.webService.stopLoading();
                         if (this.lang == "fr") {
                             alert("Opération réussie!!!");

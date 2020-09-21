@@ -337,8 +337,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 10:
                     this.lang = _context2.sent.value;
                     this.subscription = this.route.queryParams.subscribe(function (data) {
-                      console.log("selected ->", typeof data.id); //receive the  prev page 
-
+                      //console.log("selected ->", typeof(data.id));
+                      //receive the  prev page 
                       _this.page_prev = data.prev; //get the details of the car
                       //receive the  prev page 
 
@@ -359,12 +359,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   if (!res.detail) {
                                     _loop = function _loop(i) {
                                       if (data.id == res[i].id) {
-                                        _this2.filterData = res[i];
-                                        console.log("getting Ride : ", _this2.filterData); //call the car according to the id 
+                                        _this2.filterData = res[i]; //console.log("getting Ride : ",this.filterData);
+                                        //call the car according to the id 
 
                                         _this2.webService.getCarDetails(res[i].voiture).subscribe(function (car) {
-                                          console.log(car); //pictures of car
-
+                                          //console.log(car)
+                                          //pictures of car
                                           _this2.filterData.photo = car.photo; //modele
 
                                           _this2.filterData.modele = car.modele.libelle; //receive the res
@@ -379,17 +379,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                           _this2.filterData.depart_id = res[i].depart; //get the client name
 
                                           _this2.webService.getClient(res[i].client, _this2.token).subscribe(function (resp) {
-                                            console.log("client", resp);
+                                            //console.log("client", resp);
                                             _this2.filterData.clientname = resp.first_name + " " + resp.last_name; //get destination
 
                                             _this2.webService.getSingleDestination(res[i].destination).subscribe(function (dest) {
-                                              console.log(dest);
+                                              //console.log(dest);
                                               _this2.filterData.destination = dest.destination;
 
                                               if (res[i].depart > 0) {
                                                 //get depart
                                                 _this2.webService.getSingleDestination(res[i].depart).subscribe(function (dep) {
-                                                  console.log(dep);
+                                                  //console.log(dep);
                                                   _this2.filterData.depart = dep.destination; //stop loader
 
                                                   _this2.show = true;
@@ -397,6 +397,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                                   _this2.webService.stopLoading();
                                                 }); //end get depart
 
+                                              } else {
+                                                //stop loader
+                                                _this2.show = true;
+
+                                                _this2.webService.stopLoading();
                                               }
                                             }); //end get destination
 
@@ -494,8 +499,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         text: textcancel,
                         role: 'cancel',
                         cssClass: 'secondary',
-                        handler: function handler(blah) {
-                          console.log('Confirm Cancel: blah');
+                        handler: function handler(blah) {//console.log('Confirm Cancel: blah');
                         }
                       }, {
                         text: textok,
@@ -514,8 +518,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           _this3.DataTosend.depart = _this3.filterData.depart_id;
                           _this3.DataTosend.destination = _this3.filterData.destination_id;
                           _this3.DataTosend.etape_location = 4;
-                          _this3.DataTosend.optionnel = _this3.filterData.optionnel;
-                          console.log(_this3.DataTosend); //call the EditLocation API 
+                          _this3.DataTosend.optionnel = _this3.filterData.optionnel; //console.log(this.DataTosend);
+                          //call the EditLocation API 
 
                           _this3.webService.presentLoading(); // present loader
 

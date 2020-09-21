@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n\n        <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n        <ion-title style=\"margin-left:15%\">{{\"DASHBOARD.my_report\" | translate }}</ion-title>\n\n      </ion-item>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n    <!-- Trip/voyage Details -->\n \n\n\n     <ion-card >\n    \n        <ion-card-header>\n                 <ion-card-title style=\" margin-left:15%; margin-bottom: 3%;font-size:1.2em\" >{{\"DASHBOARD.question\" | translate}}</ion-card-title>\n\n          <ion-card-subtitle>\n             \n                \n                <ion-radio-group allow-empty-selection [(ngModel)]=\"marks\"  >\n                   \n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.very_good\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"5\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.good\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"4\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.average\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"3\"></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.bad\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"2\"></ion-radio>\n                    </ion-item>\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.very_bad\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=\"1\"></ion-radio>\n                    </ion-item>\n\n                  </ion-radio-group>\n           \n\n          </ion-card-subtitle>\n        </ion-card-header>\n        <ion-card-content>\n                        \n                <ion-textarea [(ngModel)]=\"comment\" auto-grow=\"true\"  placeholder=\"{{'DASHBOARD.comment'| translate}}\"></ion-textarea>\n\n        </ion-card-content>\n      </ion-card>\n\n    <!-- </ion-item> -->\n\n\n\n</ion-content>\n\n<ion-footer>\n  <!-- <ion-toolbar> -->\n          <!-- Start the trip  -->\n    <ion-button expand=\"full\" *ngIf=\"filterData.etape_location == 4\" (click)=\"end()\" >{{\"DASHBOARD.end_trip\" | translate }} </ion-button>\n   \n  <!-- </ion-toolbar> -->\n</ion-footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n\n        <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n        <ion-title style=\"margin-left:15%\">{{\"DASHBOARD.my_report\" | translate }}</ion-title>\n\n      </ion-item>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n    <!-- Trip/voyage Details -->\n \n\n\n     <ion-card >\n    \n        <ion-card-header>\n                 <ion-card-title style=\" margin-left:15%; margin-bottom: 3%;font-size:1.2em\" >{{\"DASHBOARD.question\" | translate}}</ion-card-title>\n\n          <ion-card-subtitle>\n             \n                \n                <ion-radio-group allow-empty-selection [(ngModel)]=\"marks\"  >\n                   \n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.very_good\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=5></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.good\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=4></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.average\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=3></ion-radio>\n                    </ion-item>\n\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.bad\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=2></ion-radio>\n                    </ion-item>\n                    <ion-item>\n                      <ion-label>{{\"DASHBOARD.very_bad\" | translate}}</ion-label>\n                      <ion-radio slot=\"end\" color=\"primary\" value=1></ion-radio>\n                    </ion-item>\n\n                  </ion-radio-group>\n           \n\n          </ion-card-subtitle>\n        </ion-card-header>\n        <ion-card-content>\n                        \n                <ion-textarea [(ngModel)]=\"comment\" auto-grow=\"true\"  placeholder=\"{{'DASHBOARD.comment'| translate}}\"></ion-textarea>\n\n        </ion-card-content>\n      </ion-card>\n\n    <!-- </ion-item> -->\n\n\n\n</ion-content>\n\n<ion-footer>\n  <!-- <ion-toolbar> -->\n          <!-- Start the trip  -->\n    <ion-button expand=\"full\" *ngIf=\"filterData.etape_location == 4\" (click)=\"end()\" >{{\"DASHBOARD.end_trip\" | translate }} </ion-button>\n    <ion-button expand=\"full\" *ngIf=\"userType=='client'\" (click)=\"end()\" >{{\"RESERVECAR.btn_submit\" | translate }} </ion-button>\n   \n  <!-- </ion-toolbar> -->\n</ion-footer>");
 
 /***/ }),
 
@@ -155,9 +155,23 @@ let SendReportsPage = class SendReportsPage {
             "etape_location": 0,
             "optionnel": [],
             "note_chauffeur": null,
-            "rapport_chauffeur": null,
+            "rapport_chauffeur": null
+        };
+        this.DataTosend1 = {
+            "date_location": "",
+            "date_debut": "",
+            "date_fin": "",
+            "montant": 0,
+            "client": 0,
+            "voiture": 0,
+            "type_location": 0,
+            "depart": null,
+            "destination": 0,
+            "message": "",
+            "etape_location": 0,
+            "optionnel": [],
             "note_client": null,
-            "commentaire_client": null,
+            "commentaire_client": null
         };
         this.filterData = {
             "id": 0,
@@ -190,27 +204,28 @@ let SendReportsPage = class SendReportsPage {
         //////////////////////////////////////
         this.isSearchbarOpened = false;
         this.term = '';
-        this.marks = 0;
+        this.marks = "";
         this.comment = "";
+        this.userType = "";
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             /////////////////////////////////////////////////
             //get token
             this.token = (yield Storage.get({ key: 'accessToken' })).value;
-            //get user id
-            this.userId = JSON.parse((yield Storage.get({ key: "user_infos" })).value).id;
+            //get client id
+            this.Id = JSON.parse((yield Storage.get({ key: "user_infos" })).value).id;
             //get user type
             this.userType = (yield Storage.get({ key: "user_type" })).value;
             //get Language
             this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
             this.subscription = this.route.queryParams.subscribe((data) => {
-                console.log("selected ->", typeof (data.id));
+                // console.log("selected ->", typeof(data.id));
                 //receive the  prev page 
                 this.page_prev = data.prev;
                 //get the details of the car
-                //receive the  prev page 
-                this.page_prev = data.prev;
+                //receive the driver id 
+                this.userId = data.id;
                 //present loading
                 this.webService.presentLoading();
                 this.webService.getDriverRide(this.userId, this.token).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -218,10 +233,10 @@ let SendReportsPage = class SendReportsPage {
                         for (let i = 0; i < res.length; i++) {
                             if (data.id == res[i].id) {
                                 this.filterData = res[i];
-                                console.log("getting Ride : ", this.filterData);
+                                // console.log("getting Ride : ",this.filterData);
                                 //call the car according to the id 
                                 this.webService.getCarDetails(res[i].voiture).subscribe(car => {
-                                    console.log(car);
+                                    //console.log(car)
                                     //pictures of car
                                     this.filterData.photo = car.photo;
                                     //modele
@@ -237,22 +252,27 @@ let SendReportsPage = class SendReportsPage {
                                     this.filterData.depart_id = res[i].depart;
                                     //get the client name
                                     this.webService.getClient(res[i].client, this.token).subscribe(resp => {
-                                        console.log("client", resp);
+                                        // console.log("client", resp);
                                         this.filterData.clientname = resp.first_name + " " + resp.last_name;
                                         //get destination
                                         this.webService.getSingleDestination(res[i].destination).subscribe(dest => {
-                                            console.log(dest);
+                                            //  console.log(dest);
                                             this.filterData.destination = dest.destination;
                                             if (res[i].depart > 0) {
                                                 //get depart
                                                 this.webService.getSingleDestination(res[i].depart).subscribe(dep => {
-                                                    console.log(dep);
+                                                    // console.log(dep);
                                                     this.filterData.depart = dep.destination;
                                                     //stop loader
                                                     this.show = true;
                                                     this.webService.stopLoading();
                                                 });
                                                 //end get depart
+                                            }
+                                            else {
+                                                //stop loader
+                                                this.show = true;
+                                                this.webService.stopLoading();
                                             }
                                         });
                                         //end get destination
@@ -297,14 +317,26 @@ let SendReportsPage = class SendReportsPage {
             if (lang == "fr") {
                 var textcancel = "Non ";
                 var textok = "Oui ";
-                var message = "Voulez-vous Terminer ce trajet? ";
-                var myheader = "Validation ";
+                if (this.userType == "client") {
+                    var message = "Confirmez-vous vos impressions? ";
+                    var myheader = "Confirmation ";
+                }
+                else {
+                    var message = "Voulez-vous Terminer ce trajet? ";
+                    var myheader = "Validation ";
+                }
             }
             else {
                 var textcancel = "No ";
                 var textok = "Yes ";
-                var message = "Do you want to End this Trip? ";
-                var myheader = "Validation ";
+                if (this.userType == "client") {
+                    var message = "Do you confirm your feedbacks? ";
+                    var myheader = "Confirmation ";
+                }
+                else {
+                    var message = "Do you want to End this Trip? ";
+                    var myheader = "Validation ";
+                }
             }
             const alert = yield this.alertController.create({
                 cssClass: 'my-custom-class',
@@ -316,7 +348,7 @@ let SendReportsPage = class SendReportsPage {
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
-                            console.log('Confirm Cancel: blah');
+                            //console.log('Confirm Cancel: blah');
                         }
                     }, {
                         text: textok,
@@ -324,30 +356,45 @@ let SendReportsPage = class SendReportsPage {
                             //change the location type ;
                             this.filterData.etape_location = 5;
                             //   this.DataTosend.id = this.filterData[id].id;
-                            this.DataTosend.date_location = this.filterData.date_location + "T" + this.filterData.heure_debut + ".961Z";
-                            this.DataTosend.date_debut = this.filterData.date_debut + "T" + this.filterData.heure_debut + ".961Z";
-                            this.DataTosend.date_fin = this.filterData.date_fin + "T" + this.filterData.heure_fin + ".961Z";
-                            this.DataTosend.montant = this.filterData.montant;
-                            this.DataTosend.message = this.filterData.message;
-                            this.DataTosend.client = this.filterData.client;
-                            this.DataTosend.voiture = this.filterData.voiture;
-                            this.DataTosend.type_location = this.filterData.type_location;
-                            this.DataTosend.depart = this.filterData.depart_id;
-                            this.DataTosend.destination = this.filterData.destination_id;
-                            this.DataTosend.etape_location = 5;
-                            this.DataTosend.optionnel = this.filterData.optionnel;
                             if (this.userType == "chauffeur") {
-                                this.DataTosend.note_chauffeur = this.marks;
+                                this.DataTosend.date_location = this.filterData.date_location + "T" + this.filterData.heure_debut + ".961Z";
+                                this.DataTosend.date_debut = this.filterData.date_debut + "T" + this.filterData.heure_debut + ".961Z";
+                                this.DataTosend.date_fin = this.filterData.date_fin + "T" + this.filterData.heure_fin + ".961Z";
+                                this.DataTosend.montant = this.filterData.montant;
+                                this.DataTosend.message = this.filterData.message;
+                                this.DataTosend.client = this.filterData.client;
+                                this.DataTosend.voiture = this.filterData.voiture;
+                                this.DataTosend.type_location = this.filterData.type_location;
+                                this.DataTosend.depart = this.filterData.depart_id;
+                                this.DataTosend.destination = this.filterData.destination_id;
+                                this.DataTosend.etape_location = 5;
+                                this.DataTosend.optionnel = this.filterData.optionnel;
+                                this.DataTosend.note_chauffeur = parseInt(this.marks);
                                 this.DataTosend.rapport_chauffeur = this.comment;
+                                this.Tosend = this.DataTosend1;
                             }
                             else {
-                                this.DataTosend.note_client = this.marks;
-                                this.DataTosend.commentaire_client = this.comment;
+                                this.DataTosend1.date_location = this.filterData.date_location + "T" + this.filterData.heure_debut + ".961Z";
+                                this.DataTosend1.date_debut = this.filterData.date_debut + "T" + this.filterData.heure_debut + ".961Z";
+                                this.DataTosend1.date_fin = this.filterData.date_fin + "T" + this.filterData.heure_fin + ".961Z";
+                                this.DataTosend1.montant = this.filterData.montant;
+                                this.DataTosend1.message = this.filterData.message;
+                                this.DataTosend1.client = this.Id;
+                                this.DataTosend1.voiture = this.filterData.voiture;
+                                this.DataTosend1.type_location = this.filterData.type_location;
+                                this.DataTosend1.depart = this.filterData.depart_id;
+                                this.DataTosend1.destination = this.filterData.destination_id;
+                                this.DataTosend1.etape_location = 5;
+                                this.DataTosend1.optionnel = this.filterData.optionnel;
+                                this.DataTosend1.note_client = parseInt(this.marks);
+                                this.DataTosend1.commentaire_client = this.comment;
+                                this.Tosend = this.DataTosend1;
                             }
-                            console.log(this.DataTosend);
+                            // console.log(this.Tosend,"\n", this.Id);
                             //call the EditLocation API 
                             this.webService.presentLoading(); // present loader
-                            this.webService.EditLocation(this.filterData.id, this.token, this.DataTosend).subscribe(res => {
+                            this.webService.EditLocation(this.filterData.id, this.token, this.Tosend).subscribe(res => {
+                                //  console.log(res)
                                 if (res.id) {
                                     this.webService.stopLoading();
                                     this.myAlert(0, this.lang);
@@ -377,7 +424,12 @@ let SendReportsPage = class SendReportsPage {
             else {
                 alert("Your Request has been sent successfully !");
             }
-            this.router.navigateByUrl("/home");
+            if (this.userType == "chauffeur") {
+                this.router.navigateByUrl("/home");
+            }
+            else {
+                this.router.navigateByUrl("/my-bookings");
+            }
         }
         else {
             if (lang == "fr") {

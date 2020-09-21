@@ -29,26 +29,26 @@
                    
                     <ion-item>
                       <ion-label>{{"DASHBOARD.very_good" | translate}}</ion-label>
-                      <ion-radio slot="end" color="primary" value="5"></ion-radio>
+                      <ion-radio slot="end" color="primary" value=5></ion-radio>
                     </ion-item>
 
                     <ion-item>
                       <ion-label>{{"DASHBOARD.good" | translate}}</ion-label>
-                      <ion-radio slot="end" color="primary" value="4"></ion-radio>
+                      <ion-radio slot="end" color="primary" value=4></ion-radio>
                     </ion-item>
 
                     <ion-item>
                       <ion-label>{{"DASHBOARD.average" | translate}}</ion-label>
-                      <ion-radio slot="end" color="primary" value="3"></ion-radio>
+                      <ion-radio slot="end" color="primary" value=3></ion-radio>
                     </ion-item>
 
                     <ion-item>
                       <ion-label>{{"DASHBOARD.bad" | translate}}</ion-label>
-                      <ion-radio slot="end" color="primary" value="2"></ion-radio>
+                      <ion-radio slot="end" color="primary" value=2></ion-radio>
                     </ion-item>
                     <ion-item>
                       <ion-label>{{"DASHBOARD.very_bad" | translate}}</ion-label>
-                      <ion-radio slot="end" color="primary" value="1"></ion-radio>
+                      <ion-radio slot="end" color="primary" value=1></ion-radio>
                     </ion-item>
 
                   </ion-radio-group>
@@ -73,6 +73,7 @@
   <!-- <ion-toolbar> -->
           <!-- Start the trip  -->
     <ion-button expand="full" *ngIf="filterData.etape_location == 4" (click)="end()" >{{"DASHBOARD.end_trip" | translate }} </ion-button>
+    <ion-button expand="full" *ngIf="userType=='client'" (click)="end()" >{{"RESERVECAR.btn_submit" | translate }} </ion-button>
    
   <!-- </ion-toolbar> -->
 </ion-footer>

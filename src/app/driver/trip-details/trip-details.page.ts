@@ -179,13 +179,19 @@ export class TripDetailsPage implements OnInit {
                 
                               this.filterData.depart = dep.destination;
                               
-  
                               //stop loader
                               this.show = true
                               this.webService.stopLoading();
+                              
                             });
                             //end get depart
-                        } 
+                        }else{
+
+                          //stop loader
+                          this.show = true
+                          this.webService.stopLoading();
+                        }
+                         
                       
                   });
                       //end get destination

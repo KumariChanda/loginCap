@@ -646,8 +646,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       }
 
                     case 10:
-                      console.log("checKing token from storage ", this.testingToken, typeof this.testingToken); // //set the initial language of the app
-
+                      // console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
+                      // //set the initial language of the app
                       this.webService.setInitialAppLanguage().then(function (val) {
                         // alert("val : "+val);
                         _this3.sideMenu(val);
@@ -657,7 +657,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       this.statusBar.styleDefault();
                       SplashScreen.hide();
 
-                    case 14:
+                    case 13:
                     case "end":
                       return _context.stop();
                   }
@@ -698,8 +698,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       }, {
         key: "openUserProfile",
-        value: function openUserProfile(url) {
-          console.log('Open this URL: ', url);
+        value: function openUserProfile(url) {// console.log('Open this URL: ',url);
         } //////////////////////////////////
 
       }, {
@@ -1503,21 +1502,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "presentLoading",
         value: function presentLoading() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            var lang, myMessage;
             return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
                 switch (_context5.prev = _context5.next) {
                   case 0:
-                    console.log("loading starts");
-                    this.loading = this.loadingCtrl.create({
-                      message: 'Fetching data'
+                    _context5.next = 2;
+                    return Storage.get({
+                      key: LNG_KEY
                     });
-                    _context5.next = 4;
+
+                  case 2:
+                    lang = _context5.sent.value;
+                    myMessage = "";
+
+                    if (lang == "fr") {
+                      myMessage = "Récupération des données";
+                    } else {
+                      myMessage = 'Fetching data';
+                    } // console.log("loading starts");
+
+
+                    this.loading = this.loadingCtrl.create({
+                      message: myMessage
+                    });
+                    _context5.next = 8;
                     return this.loading;
 
-                  case 4:
+                  case 8:
                     _context5.sent.present();
 
-                  case 5:
+                  case 9:
                   case "end":
                     return _context5.stop();
                 }
@@ -1538,17 +1553,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 switch (_context6.prev = _context6.next) {
                   case 0:
                     // this.loading = false;
-                    console.log("loading stop");
+                    // console.log("loading stop");
                     if (this.loading) this.loading = false;
-                    _context6.next = 4;
+                    _context6.next = 3;
                     return this.loadingCtrl.dismiss().then(function () {
                       return console.log('loading dismissed');
                     });
 
-                  case 4:
+                  case 3:
                     return _context6.abrupt("return", _context6.sent);
 
-                  case 5:
+                  case 4:
                   case "end":
                     return _context6.stop();
                 }
@@ -1570,43 +1585,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context7.prev = _context7.next) {
                   case 0:
-                    console.log("initialize App Language");
+                    //console.log("initialize App Language");
                     language = "fr";
                     ret = Storage.get({
                       key: LNG_KEY
                     });
-                    _context7.next = 5;
+                    _context7.next = 4;
                     return ret;
 
-                  case 5:
+                  case 4:
                     val = _context7.sent.value;
-                    console.log("data from storage ", val, typeof val);
 
                     if (!(val != null)) {
-                      _context7.next = 14;
+                      _context7.next = 12;
                       break;
                     }
 
-                    _context7.next = 10;
+                    _context7.next = 8;
                     return ret;
 
-                  case 10:
+                  case 8:
                     this.selected = _context7.sent.value;
                     this.setLanguage(this.selected); // console.log("checKing data from storage ",this.selected,typeof(this.selected));
 
-                    _context7.next = 15;
+                    _context7.next = 13;
                     break;
 
-                  case 14:
+                  case 12:
                     this.selected = language;
 
-                  case 15:
+                  case 13:
                     this.setLanguage(this.selected); //console.log("storage ",this.selected,typeof(this.selected));
                     //  alert(this.selected)
 
                     return _context7.abrupt("return", this.selected);
 
-                  case 17:
+                  case 15:
                   case "end":
                     return _context7.stop();
                 }
@@ -1693,7 +1707,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "postData",
         value: function postData(url, data) {
-          console.log("data To Send : \n", url, data);
+          //console.log("data To Send : \n", url, data)
           return this.http.post(url, data, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
         }
       }, {
@@ -1770,7 +1784,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUserDetails",
         value: function getUserDetails(token, id, type) {
-          console.log("is Driver : ", type);
+          // console.log("is Driver : ", type);
           var myToken = 'Token ' + token;
           var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
@@ -1894,7 +1908,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "postData1",
         value: function postData1(url, data, token) {
-          console.log("APP Service : data To Send : \n", url, data, token);
+          // console.log("APP Service : data To Send : \n", url, data,token)
           var httpOption = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
               'Content-Type': 'application/json',

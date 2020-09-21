@@ -197,7 +197,7 @@ let TripDetailsPage = class TripDetailsPage {
             //get Language
             this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
             this.subscription = this.route.queryParams.subscribe((data) => {
-                console.log("selected ->", typeof (data.id));
+                //console.log("selected ->", typeof(data.id));
                 //receive the  prev page 
                 this.page_prev = data.prev;
                 //get the details of the car
@@ -210,10 +210,10 @@ let TripDetailsPage = class TripDetailsPage {
                         for (let i = 0; i < res.length; i++) {
                             if (data.id == res[i].id) {
                                 this.filterData = res[i];
-                                console.log("getting Ride : ", this.filterData);
+                                //console.log("getting Ride : ",this.filterData);
                                 //call the car according to the id 
                                 this.webService.getCarDetails(res[i].voiture).subscribe(car => {
-                                    console.log(car);
+                                    //console.log(car)
                                     //pictures of car
                                     this.filterData.photo = car.photo;
                                     //modele
@@ -229,22 +229,27 @@ let TripDetailsPage = class TripDetailsPage {
                                     this.filterData.depart_id = res[i].depart;
                                     //get the client name
                                     this.webService.getClient(res[i].client, this.token).subscribe(resp => {
-                                        console.log("client", resp);
+                                        //console.log("client", resp);
                                         this.filterData.clientname = resp.first_name + " " + resp.last_name;
                                         //get destination
                                         this.webService.getSingleDestination(res[i].destination).subscribe(dest => {
-                                            console.log(dest);
+                                            //console.log(dest);
                                             this.filterData.destination = dest.destination;
                                             if (res[i].depart > 0) {
                                                 //get depart
                                                 this.webService.getSingleDestination(res[i].depart).subscribe(dep => {
-                                                    console.log(dep);
+                                                    //console.log(dep);
                                                     this.filterData.depart = dep.destination;
                                                     //stop loader
                                                     this.show = true;
                                                     this.webService.stopLoading();
                                                 });
                                                 //end get depart
+                                            }
+                                            else {
+                                                //stop loader
+                                                this.show = true;
+                                                this.webService.stopLoading();
                                             }
                                         });
                                         //end get destination
@@ -308,7 +313,7 @@ let TripDetailsPage = class TripDetailsPage {
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
-                            console.log('Confirm Cancel: blah');
+                            //console.log('Confirm Cancel: blah');
                         }
                     }, {
                         text: textok,
@@ -328,7 +333,7 @@ let TripDetailsPage = class TripDetailsPage {
                             this.DataTosend.destination = this.filterData.destination_id;
                             this.DataTosend.etape_location = 4;
                             this.DataTosend.optionnel = this.filterData.optionnel;
-                            console.log(this.DataTosend);
+                            //console.log(this.DataTosend);
                             //call the EditLocation API 
                             this.webService.presentLoading(); // present loader
                             this.webService.EditLocation(this.filterData.id, this.token, this.DataTosend).subscribe(res => {

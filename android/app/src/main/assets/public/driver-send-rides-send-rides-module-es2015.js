@@ -221,12 +221,12 @@ let SendRidesPage = class SendRidesPage {
             day = this.maxdate.getDate();
         }
         this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day;
-        console.log("Today = " + this.today + " \n MAX DATE : " + this.maxdate);
+        //console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
         //receive data from
         this.route.queryParams.subscribe(params => {
             if (params && params.special) {
                 this.data = JSON.parse(params.special);
-                console.log("Complex :\n" + this.data.reel + " + i " + this.data.imag);
+                // console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
             }
         });
     }
@@ -242,7 +242,7 @@ let SendRidesPage = class SendRidesPage {
             //present loading
             this.webService.presentLoading();
             this.webService.getDriverRide(this.userId, this.token).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                console.log("getting Rides : ", res);
+                // console.log("getting Rides : ",res);
                 if (!res.detail) {
                     this.filterData = res;
                     for (let i = 0; i < res.length; i++) {
@@ -251,7 +251,7 @@ let SendRidesPage = class SendRidesPage {
                         }
                         //call the car according to the id 
                         this.webService.getCarDetails(res[i].voiture).subscribe(car => {
-                            console.log(car);
+                            // console.log(car)
                             //pictures of car
                             this.filterData[i].photo = car.photo;
                             //modele
@@ -267,16 +267,16 @@ let SendRidesPage = class SendRidesPage {
                             this.filterData[i].depart_id = res[i].depart;
                             //get the client name
                             this.webService.getClient(res[i].client, this.token).subscribe(resp => {
-                                console.log("client", resp);
+                                //console.log("client", resp);
                                 this.filterData[i].clientname = resp.first_name + " " + resp.last_name;
                                 //get destination
                                 this.webService.getSingleDestination(res[i].destination).subscribe(dest => {
-                                    console.log(dest);
+                                    //console.log(dest);
                                     this.filterData[i].destination = dest.destination;
                                     if (res[i].depart > 0) {
                                         //get depart
                                         this.webService.getSingleDestination(res[i].depart).subscribe(dep => {
-                                            console.log(dep);
+                                            //console.log(dep);
                                             this.filterData[i].depart = dep.destination;
                                             this.list_original = this.filterData;
                                             //stop loader
@@ -332,7 +332,7 @@ let SendRidesPage = class SendRidesPage {
     //////////////////////////////////////////////////////
     //this method is used to print the details of a selected trip //////////////
     tripDetails(id) {
-        console.log("selected : -> ", this.filterData[id].id);
+        // console.log("selected : -> ", this.filterData[id].id);
         //call another page and fetch the details of the car
         //this.router.navigateByUrl("/trip-details")
         //call another page and fetch the details of the car

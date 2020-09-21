@@ -330,13 +330,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                       this.webService.stopLoading(); //to stop loading
                                     } else {
                                       nbr = 0;
-                                      this.filterData1 = res;
-                                      console.log("search type : ", this.search_type, "search id : ", this.search_id); //get the different prices of every car
+                                      this.filterData1 = res; //console.log("search type : ", this.search_type, "search id : ", this.search_id);
+                                      //get the different prices of every car
 
                                       _loop = function _loop(i) {
-                                        console.log("res pass : ", _this2.filterData1[i].passager); //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                        // console.log("res pass : ", this.filterData1[i].passager);
+                                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                         ///if search type is other
-
                                         if (_this2.search_type == "other") {
                                           if (_this2.search_id == "5p+" && _this2.filterData1[i].passager >= 5) {
                                             _this2.filterData[nbr] = _this2.filterData1[i];
@@ -348,7 +348,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                             _this2.filterData[nbr] = _this2.filterData1[i];
                                             nbr++;
                                           } else if (_this2.search_id == "5b-" && _this2.filterData1[i].bagage < 5) {
-                                            console.log("5b-");
+                                            //console.log("5b-");
                                             _this2.filterData[nbr] = _this2.filterData1[i];
                                             nbr++;
                                           } else {}
@@ -383,26 +383,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                                           if (_this2.search_type == "price") {
                                             if (_this2.search_id == "50000+" && _this2.filterData1[i].per_day >= parseInt(_this2.search_id.split("+")[0])) {
-                                              console.log("filter data per day : ", _this2.filterData1[i].per_day);
+                                              //console.log("filter data per day : ",this.filterData1[i].per_day);
                                               _this2.filterData[nbr] = _this2.filterData1[i];
                                               nbr++;
                                             } else if (_this2.search_id == "50000-" && _this2.filterData1[i].per_day < parseInt(_this2.search_id.split("-")[0])) {
-                                              console.log("filter data per day : ", _this2.filterData1[i].per_day);
+                                              //console.log("filter data per day : ",this.filterData1[i].per_day);
                                               _this2.filterData[nbr] = _this2.filterData1[i];
                                               nbr++;
                                             } else if (_this2.search_id == "5000+" && _this2.filterData1[i].per_hour >= parseInt(_this2.search_id.split("+")[0])) {
-                                              console.log("filter data per day : ", _this2.filterData1[i].per_hour);
+                                              // console.log("filter data per day : ",this.filterData1[i].per_hour);
                                               _this2.filterData[nbr] = _this2.filterData1[i];
                                               nbr++;
                                             } else if (_this2.search_id == "5000-" && _this2.filterData1[i].per_hour < parseInt(_this2.search_id.split("-")[0])) {
-                                              console.log("filter data per hour : ", _this2.filterData1[i].per_hour);
+                                              //console.log("filter data per hour : ",this.filterData1[i].per_hour);
                                               _this2.filterData[nbr] = _this2.filterData1[i];
                                               nbr++;
-                                            } else {
-                                              console.log("th ", typeof parseInt(_this2.search_id.split("-")[0]), "\n type : ", typeof _this2.filterData1[i].per_day);
-                                            }
+                                            } else {//console.log("th ",typeof(parseInt(this.search_id.split("-")[0] )), "\n type : ",typeof(this.filterData1[i].per_day))
+                                            } //console.log("data ",i," ", this.filterData[i] );
 
-                                            console.log("data ", i, " ", _this2.filterData[i]);
 
                                             if (i == _this2.filterData1.length - 1 && nbr == 0) {
                                               //no  cars

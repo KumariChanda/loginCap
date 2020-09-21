@@ -189,7 +189,7 @@ let EconomiquePage = class EconomiquePage {
                             }
                             // console.log("business voitures : \n ",res.modeles.voitures);
                         }
-                        console.log(this.filterData);
+                        // console.log(this.filterData);
                         //get the different prices of every car
                         for (let i = 0; i < this.filterData.length; i++) {
                             this.webService.getPriceCar(this.filterData[i].id).subscribe(resp => {

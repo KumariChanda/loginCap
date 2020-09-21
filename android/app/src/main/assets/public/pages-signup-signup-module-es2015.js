@@ -156,7 +156,7 @@ let SignupPage = class SignupPage {
         setTimeout(() => {
             this.btnClicked = false;
         }, 1000);
-        console.log("Signup cllicked!.");
+        //console.log("Signup cllicked!.");
         if (this.firstname && this.lastname && this.email && this.password && this.password && this.confirmpassword) {
             if (this.agreement == true) {
                 if (this.password == this.confirmpassword) {
@@ -175,7 +175,7 @@ let SignupPage = class SignupPage {
                     this.webService.presentLoading();
                     this.webService.signup(data).subscribe(res => {
                         if (res) {
-                            console.log(res);
+                            //console.log(res);
                             this.webService.stopLoading();
                             if (this.lang == "fr") {
                                 alert("Inscription réussie !! ");

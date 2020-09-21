@@ -59,7 +59,7 @@
         "my_rides" : "Mes Trajets",
         "empty_list" : "Liste Vide",
         "empty_trip" : "Vous n'êtes associé à aucun Trajet pour le moment",
-        "my_report" : "Mon Impression",
+        "my_report" : "Mes Impressions",
         "very_good" : "Très Bien",
         "good" : "Bien",
         "average" : "Moyen",
@@ -142,7 +142,7 @@
         "booking_destination" : "Destination : ",
         "booking_view_detail" : "Voir Details",
         "cancel" : "Annuler",
-        "marks" : "Vos impressions sur le voyage :",
+        "marks" : "Votre appréciation :",
         "clientname" : "Nom du Client : ",
         "car" : " Véhicule :"
 

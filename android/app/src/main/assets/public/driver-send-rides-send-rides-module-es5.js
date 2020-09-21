@@ -336,13 +336,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           day = this.maxdate.getDate();
         }
 
-        this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day;
-        console.log("Today = " + this.today + " \n MAX DATE : " + this.maxdate); //receive data from
+        this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day; //console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
+        //receive data from
 
         this.route.queryParams.subscribe(function (params) {
           if (params && params.special) {
-            _this.data = JSON.parse(params.special);
-            console.log("Complex :\n" + _this.data.reel + " + i " + _this.data.imag);
+            _this.data = JSON.parse(params.special); // console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
           }
         });
       }
@@ -392,8 +391,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           while (1) {
                             switch (_context.prev = _context.next) {
                               case 0:
-                                console.log("getting Rides : ", res);
-
+                                // console.log("getting Rides : ",res);
                                 if (!res.detail) {
                                   this.filterData = res;
 
@@ -404,8 +402,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
                                     _this3.webService.getCarDetails(res[i].voiture).subscribe(function (car) {
-                                      console.log(car); //pictures of car
-
+                                      // console.log(car)
+                                      //pictures of car
                                       _this3.filterData[i].photo = car.photo; //modele
 
                                       _this3.filterData[i].modele = car.modele.libelle; //receive the res
@@ -420,17 +418,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                       _this3.filterData[i].depart_id = res[i].depart; //get the client name
 
                                       _this3.webService.getClient(res[i].client, _this3.token).subscribe(function (resp) {
-                                        console.log("client", resp);
+                                        //console.log("client", resp);
                                         _this3.filterData[i].clientname = resp.first_name + " " + resp.last_name; //get destination
 
                                         _this3.webService.getSingleDestination(res[i].destination).subscribe(function (dest) {
-                                          console.log(dest);
+                                          //console.log(dest);
                                           _this3.filterData[i].destination = dest.destination;
 
                                           if (res[i].depart > 0) {
                                             //get depart
                                             _this3.webService.getSingleDestination(res[i].depart).subscribe(function (dep) {
-                                              console.log(dep);
+                                              //console.log(dep);
                                               _this3.filterData[i].depart = dep.destination;
                                               _this3.list_original = _this3.filterData; //stop loader
 
@@ -460,7 +458,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   }
                                 }
 
-                              case 2:
+                              case 1:
                               case "end":
                                 return _context.stop();
                             }
@@ -509,10 +507,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "tripDetails",
         value: function tripDetails(id) {
-          console.log("selected : -> ", this.filterData[id].id); //call another page and fetch the details of the car
+          // console.log("selected : -> ", this.filterData[id].id);
+          //call another page and fetch the details of the car
           //this.router.navigateByUrl("/trip-details")
           //call another page and fetch the details of the car
-
           this.router.navigate(['trip-details'], {
             queryParams: {
               id: this.filterData[id].id,

@@ -241,15 +241,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           ///// start : get about us 
 
           this.webService.getAboutUs().subscribe(function (res) {
-            console.log(" about_us  ", res);
-
+            //console.log(" about_us  ",res);
             if (res) {
               _this.about_us = res[0].text; /////////////////////////////////////////////////     
               ///// start : get team 
 
               _this.webService.getTeam().subscribe(function (res) {
-                console.log(" team : ", res);
-
+                // console.log(" team : ",res);
                 if (res) {
                   _this.myteam = res;
                 } else {// alert no response from server
