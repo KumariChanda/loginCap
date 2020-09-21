@@ -35,7 +35,7 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 export class AppServiceService {
 
     // basic api url
- base_url= "http://othnieldona.pythonanywhere.com";
+  base_url= "http://othnieldona.pythonanywhere.com";
 
   public selected = ''; // selected language
   
@@ -44,15 +44,29 @@ export class AppServiceService {
 
 
 
-  constructor( private http:HttpClient,private loadingCtrl:LoadingController, private translate: TranslateService) { }
+  constructor( private http:HttpClient,private loadingCtrl:LoadingController, 
+    private translate: TranslateService) { }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////// START : PRESENTATION LOADING ////////////////////////////////////////////////
         async presentLoading() {
-          console.log("loading starts");
+
+          var lang = (await Storage.get({ key: LNG_KEY })).value;
+
+          var myMessage =""
+          if(lang =="fr")
+          {
+            myMessage = "Récupération des données" 
+          }else{
+
+            myMessage ='Fetching data'
+          }
+
+         
+         // console.log("loading starts");
           this.loading =  this.loadingCtrl.create({
-            message: 'Fetching data',
+            message: myMessage,
           });
           (await this.loading).present();
         }
@@ -64,7 +78,7 @@ export class AppServiceService {
 
         async stopLoading() {
           // this.loading = false;
-         console.log("loading stop");
+        // console.log("loading stop");
 
          if(this.loading)
             this.loading = false;
@@ -85,14 +99,14 @@ export class AppServiceService {
             //set the initial app language
             async setInitialAppLanguage(){
 
-              console.log("initialize App Language");
+              //console.log("initialize App Language");
 
               let language = "fr";
               
 
                 var ret=Storage.get({ key: LNG_KEY });
                 var val = (await ret).value;
-                console.log("data from storage ",val,typeof(val));
+               // console.log("data from storage ",val,typeof(val));
 
                 if(val != null)
                 {
@@ -183,7 +197,7 @@ export class AppServiceService {
   
 
       postData(url,data):Observable<any>{
-        console.log("data To Send : \n", url, data)
+        //console.log("data To Send : \n", url, data)
 
         return this.http.post(url,data,httpOptions
             ).pipe(
@@ -323,7 +337,7 @@ export class AppServiceService {
 
       getUserDetails(token,id,type): Observable<any> {
 
-          console.log("is Driver : ", type);
+         // console.log("is Driver : ", type);
           var myToken = 'Token '+token
 
 
@@ -510,6 +524,35 @@ export class AppServiceService {
 ///////////////////////////////////// END : GET USER TESTIMONIAL////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////STRAT : GET USER DETAILS ////////////////////////////////////////////////////////////////////////
+
+              
+        getClient(id,token) : Observable<any>
+        {
+            const httpOption = {
+              headers: new HttpHeaders
+                              ({
+                                'Content-Type' : 'application/json',
+                                'Authorization': 'Token '+ token
+            
+                              })
+            
+            }
+
+           
+            return this.http.get(base_url+"clients/"+id, httpOption).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+            );
+        }
+
+
+
+
+///////////////////////////////////// END : GET USER details////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -521,7 +564,7 @@ export class AppServiceService {
 /////////////////////////////////////////STRAT : POST RESERVATION  ////////////////////////////////////////////////////////////////////////
           
         postData1(url,data,token):Observable<any>{
-          console.log("APP Service : data To Send : \n", url, data,token)
+         // console.log("APP Service : data To Send : \n", url, data,token)
 
 
             const httpOption = {
@@ -570,7 +613,7 @@ export class AppServiceService {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////STRAT : GET Client Reservation ////////////////////////////////////////////////////////////////////////
+///////////////////////////////START : GET Client Reservation ////////////////////////////////////////////////////////////////////////
 
           getClientReservation(id,token): Observable<any> {
 
@@ -595,10 +638,36 @@ export class AppServiceService {
 ///////////////////////////////////// END : GET Client Reservation  ////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////START : GET Driver Ride ////////////////////////////////////////////////////////////////////////
+
+          getDriverRide(id,token): Observable<any> {
+
+            const httpOption = {
+              headers: new HttpHeaders
+                              ({
+                                'Content-Type' : 'application/json',
+                                'Authorization': 'Token '+ token
+            
+                              })
+            
+            }
+
+
+            return this.http.get(base_url+"chauffeurs/"+id+"/locations", httpOption).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+            );
+
+          }
+
+///////////////////////////////////// END : GET Driver Ride  ////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////STRAT : EDIT CLIENT PROFILE ////////////////////////////////////////////////////////////////////////
+///////////////////////////////START : EDIT CLIENT PROFILE ////////////////////////////////////////////////////////////////////////
 
           EditClientProfile(id,token,data): Observable<any> {
 
@@ -623,9 +692,36 @@ export class AppServiceService {
 ///////////////////////////////////// END : EDIT CLIENT PROFILE  ////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////START : EDIT LOCATION FOR ADDING MARKS ////////////////////////////////////////////////////////////////////////
+
+          EditLocation(id,token,data): Observable<any> 
+          {
+
+            const httpOption = {
+              headers: new HttpHeaders
+                              ({
+                                'Content-Type' : 'application/json',
+                                'Authorization': 'Token '+ token
+            
+                              })
+            
+            }
+
+
+            return this.http.put(base_url+"locations/"+id+"/",data, httpOption).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+            );
+
+          }
+
+//////////////////////////////////////END : EDIT CLIENT PROFILE  ////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////STRAT : EDIT CLIENT PASSWORD ////////////////////////////////////////////////////////////////////////
+///////////////////////////////START : EDIT CLIENT PASSWORD ////////////////////////////////////////////////////////////////////////
 
 changeClientPasssword(id,token,data): Observable<any> {
 

@@ -84,7 +84,7 @@ public  maxdate : any;   // the maximum date of a date picker
 ///////////////////////end data for destination search ///////////////////
   
 
-   show = false // used to show page content
+  show = false // used to show page content
   lang: string;
 
   constructor(private route: ActivatedRoute, private router: Router, 
@@ -110,7 +110,7 @@ public  maxdate : any;   // the maximum date of a date picker
    //present loading
     this.webService.presentLoading();
     this.webService.getVoitures().subscribe(async res=>{
-    console.log("getting voitures : ",res); 
+   // console.log("getting voitures : ",res); 
     if(!res.details)
     {
         
@@ -160,7 +160,7 @@ public  maxdate : any;   // the maximum date of a date picker
       //get Destination list
 
       this.webService.getDestinations().subscribe(async res=>{
-        console.log("getting Destinations : ",res); 
+        //console.log("getting Destinations : ",res); 
         if(!res.details)
         {
            if(res.length>0)
@@ -204,25 +204,25 @@ public  maxdate : any;   // the maximum date of a date picker
   
 
 
-  },error=>{
-    this.webService.stopLoading(); 
-    
-    if(this.lang =="fr")
-    {
-      alert("Erreur server !! ")
-    }else{
-      alert("Server Error!! ")
+    },error=>{
+      this.webService.stopLoading(); 
+      
+      if(this.lang =="fr")
+      {
+        alert("Erreur Serveur !! ")
+      }else{
+        alert("Server Error!! ")
 
-    }
+      }
 
-   });/// end get voitures
+    });/// end get voitures
  ////////////////////////////////////////////////////
 
   }//end of ngOnInit
 
-//////////////////////////////////////////////////////
 
-
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 setDate()
 {
   let date : Date = new Date();
@@ -269,13 +269,13 @@ setDate()
   
 
 
-  console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
+ // console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
 
 
 
 }
-///////////////end set Date//////////////////////////////////////
-//////////////////////////////////////////////////////
+///////////////end set Date////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 
 //this method is used to print the details of a selected car //////////////
@@ -295,7 +295,7 @@ setDate()
 
 openClass()
 {
-   console.log(this.searchClass);
+   //console.log(this.searchClass);
       if(this.searchClass == 'business')
       {
          this.router.navigateByUrl("/business-class");
@@ -336,7 +336,7 @@ openClass()
 
 openPrice()
 {
-   console.log(this.searchPrice);
+   //console.log(this.searchPrice);
       if(this.searchPrice == '50000+')
       {
          this.router.navigate(['car-filter'],{queryParams : {id : this.searchPrice ,type : "price"}} );
@@ -377,7 +377,7 @@ openPrice()
 
 openOther()
 {
-      console.log(this.searchOther);
+     // console.log(this.searchOther);
       if(this.searchOther == '5p+')
       {
          this.router.navigate(['car-filter'],{queryParams : {id : this.searchOther ,type : "other"}} );

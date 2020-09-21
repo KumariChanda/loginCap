@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n\r\n      <ion-item>\r\n          <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\r\n          <ion-title>{{\"RESERVECAR.title\"| translate}}</ion-title>\r\n      </ion-item>  \r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"show\">\r\n\r\n\r\n\r\n\r\n\r\n       <ion-card>\r\n        <ion-card-header>\r\n\r\n         <ion-card-title > RESERVATION </ion-card-title>\r\n              <!-- Label only -->\r\n          <ion-segment [(ngModel)]=\"rent_type\">\r\n            <ion-segment-button  value=\"hour\">\r\n              <ion-label>{{\"RESERVECAR.per_hour\"| translate}} </ion-label>\r\n            </ion-segment-button>\r\n            <ion-segment-button value=\"day\">\r\n              <ion-label>{{\"RESERVECAR.per_day\"| translate}}</ion-label>\r\n            </ion-segment-button>\r\n            <ion-segment-button value=\"airport\">\r\n              <label textWrap=\"true\" style=\"font-size:0.9em\">{{\"RESERVECAR.airport_pick\"| translate}}</label>\r\n            </ion-segment-button>\r\n          </ion-segment>\r\n\r\n        </ion-card-header>\r\n\r\n        <ion-card-content>\r\n             \r\n              <!-- Search Bar -->\r\n               <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar()\" (ionCancel)=\"onCancel($event)\" (ionClear)\t=\"onCancel($event)\" (ngModelChange)=\"change_query($event)\" showCancelButton=\"focus\"></ion-searchbar>\r\n                \r\n                <ion-list *ngIf=\"show_list\">\r\n                   <ion-item *ngFor=\"let item of list_to_show; let i = index\">\r\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient)\"  > {{item.destination}} </ion-label>\r\n                   </ion-item>\r\n                </ion-list>\r\n\r\n\r\n                <!-- Price -->\r\n\r\n                <ion-item>\r\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\r\n                   \r\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\r\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\r\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\r\n\r\n                </ion-item>\r\n\r\n            <!-- ----------------------------------------------------------------------------------- -->\r\n            <!-- ----------------------START rent type = \"per hour\"------------------------------- -->\r\n              <div *ngIf=\"rent_type =='hour'\">\r\n                <!-- start date -->\r\n                <ion-item  >\r\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\r\n                  <ion-datetime readonly [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\" ></ion-datetime>\r\n                </ion-item>\r\n                <!-- start time -->\r\n                <ion-item >\r\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\r\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"change('hour')\"   [(ngModel)]=\"start_time\" ></ion-datetime>\r\n                </ion-item>\r\n                 <!-- return time -->\r\n                <ion-item  *ngIf=\"hourNbr > 0\" >\r\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\r\n                  <ion-datetime readonly display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"  [min]=\"end_time\" [(ngModel)]=\"end_time\"> </ion-datetime>\r\n                </ion-item>\r\n                <!-- Number of Time-->\r\n                <ion-item >\r\n                  <ion-label>{{\"RESERVECAR.number_hour\"| translate}}</ion-label>\r\n                  <ion-input type=\"number\"  style=\"width: 100px; margin-left : 40%\" (ionChange)=\"change('hour')\"  placeholder=\"0\"  [(ngModel)]=\"hourNbr\" ></ion-input>\r\n                </ion-item>\r\n                \r\n               </div>\r\n\r\n\r\n            <!-- ----------------------STOP rent type = \"per hour\"------------------------------------------------------------------ -->\r\n            <!-- ------------------------------------------------------------------------------------------ -->\r\n\r\n            <!-- ----------------------------------------------------------------------------------- -->\r\n            <!-- ----------------------START rent type = \"per day\"------------------------------- -->\r\n              <div *ngIf=\"rent_type =='day'\">\r\n                <!-- start date -->\r\n                <ion-item  >\r\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\r\n                  <ion-datetime [min]=\"today\" [max]=\"maxdate\" (ionChange)=\"change('day')\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\r\n                </ion-item>\r\n                 <!-- return date  -->\r\n                <ion-item  >\r\n                  <ion-label>{{\"RESERVECAR.return_date\"| translate}}</ion-label>\r\n                  <ion-datetime [min]=\"min_retunDate\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"end_date\"></ion-datetime>\r\n                </ion-item>\r\n                <!-- start time -->\r\n                <ion-item >\r\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\r\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"end_time = start_time\"   [min]=\"start_time\" [(ngModel)]=\"start_time\"></ion-datetime>\r\n                </ion-item>\r\n                 <!-- return time -->\r\n                <ion-item >\r\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\r\n                  <ion-datetime  display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"   [(ngModel)]=\"end_time\"></ion-datetime>\r\n                </ion-item>\r\n               </div>\r\n\r\n\r\n            <!-- ----------------------STOP rent type = \"per day\"------------------------------------------------------------------ -->\r\n            <!-- ------------------------------------------------------------------------------------------ -->\r\n           \r\n            <!-- ----------------------------------------------------------------------------------- -->\r\n            <!-- ----------------------START rent type = \"airport\"------------------------------- -->\r\n              <div *ngIf=\"rent_type =='airport'\">\r\n                <!-- start date -->\r\n                <ion-item  >\r\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\r\n                  <ion-datetime [value]=\"today\" [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\r\n                </ion-item>\r\n                <!-- start time -->\r\n                <ion-item >\r\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\r\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\" [(ngModel)]=\"start_time\" ></ion-datetime>\r\n                </ion-item>\r\n                 <!-- departure -->\r\n                <ion-item  *ngIf=\"rent_type =='airport' \">\r\n                  <ion-input [(ngModel)]= \"depart_venue\"  placeholder='{{\"RESERVECAR.departure_venue\"| translate}}' ></ion-input>\r\n                </ion-item>\r\n\r\n                \r\n               </div>\r\n\r\n\r\n            <!-- ----------------------STOP rent type = \"airport\"------------------------------------------------------------------ -->\r\n            <!-- ------------------------------------------------------------------------------------------ -->\r\n\r\n\r\n                \r\n                \r\n\r\n        </ion-card-content>\r\n      \r\n  </ion-card>\r\n      \r\n      <!-- type of reservation -->\r\n\r\n\r\n  <!-- optional services -->\r\n       <ion-card>\r\n     \r\n        <ion-card-header>\r\n          <ion-card-title>{{\"RESERVECAR.otherservices\"| translate}}  </ion-card-title>\r\n        </ion-card-header>\r\n        <ion-card-content *ngFor=\"let item of option\">\r\n                  \r\n                <!-- <strong> <ion-label style=\"text-decoration: underline; margin-left:4%\"> Optional Services : </ion-label> </strong> -->\r\n                  \r\n                  <!-- baby seats -->\r\n                <ion-item>\r\n                    <ion-checkbox color=\"primary\" [(ngModel)] =\"item.checked\" slot=\"end\"></ion-checkbox>\r\n                    <label  textWrap=\"true\">{{item.libelle}}  -   {{item.prix}}F cfa/ {{\"RESERVECAR.day\"| translate}} </label>\r\n                </ion-item>\r\n                \r\n            \r\n        </ion-card-content>\r\n        </ion-card>\r\n\r\n       \r\n\r\n        <!-- Message -->\r\n        <ion-card  style=\"height: 255px;\">\r\n     \r\n            <ion-card-header>\r\n              <ion-card-title>{{\"RESERVECAR.message\"| translate}}</ion-card-title>\r\n            </ion-card-header>\r\n            <ion-card-content >\r\n                \r\n                  <ion-textarea [(ngModel)]=\"message\" class=\"cell-input\" auto-grow=\"true\" maxlength=\"400\" placeholder=\"{{'RESERVECAR.messageplaceholder'| translate}}\"></ion-textarea>\r\n\r\n            </ion-card-content>\r\n\r\n        </ion-card>\r\n\r\n           <!-- submit your reservation -->\r\n        <!-- <ion-button expand=\"round\" class=\"center-button\" >Submit</ion-button> -->\r\n\r\n\r\n</ion-content>\r\n<ion-footer *ngIf=\"show\">\r\n  <!-- <ion-toolbar> -->\r\n      <ion-button  (click)=\"submit(car.id)\" expand=\"full\"> {{\"RESERVECAR.btn_submit\"| translate}} </ion-button>\r\n  <!-- </ion-toolbar> -->\r\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n      <ion-item>\n          <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\n          <ion-title style=\"margin-left:15%\">{{\"RESERVECAR.title\"| translate}}</ion-title>\n      </ion-item>  \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n\n\n\n\n       <ion-card>\n        <ion-card-header>\n\n         <ion-card-title style=\"margin-left:28%\" > RESERVATION </ion-card-title>\n              <!-- Label only -->\n          <ion-segment [(ngModel)]=\"rent_type\">\n            <ion-segment-button  value=\"hour\">\n              <ion-label>{{\"RESERVECAR.per_hour\"| translate}} </ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"day\">\n              <ion-label>{{\"RESERVECAR.per_day\"| translate}}</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value=\"airport\">\n              <label textWrap=\"true\" style=\"font-size:0.9em\">{{\"RESERVECAR.airport_pick\"| translate}}</label>\n            </ion-segment-button>\n          </ion-segment>\n\n        </ion-card-header>\n\n        <ion-card-content>\n             \n              \n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per hour\"------------------------------- -->\n              <div *ngIf=\"rent_type =='hour'\">\n\n                <!-- Search Bar -->\n                  <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar(1)\" (ionCancel)=\"onCancel($event,1)\" (ionClear)\t=\"onCancel($event,1)\" (ngModelChange)=\"change_query($event,1)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                    <ion-list *ngIf=\"show_list\">\n                      <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                          <ion-label (click)=\"click_item(i, item.id,item.coefficient,1)\"  > {{item.destination}} </ion-label>\n                      </ion-item>\n                    </ion-list>\n\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n\n                <!-- start date -->\n                <ion-item  >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime readonly [min]=\"today\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\" ></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item *ngIf=\"lang=='en'\">\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"change('hour')\"   [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                <ion-item *ngIf=\"lang=='fr'\">\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"\n                   (ionChange)=\"change('hour')\"   [(ngModel)]=\"start_time\"\n                   cancelText=\"Annuler\"\n                   doneText=\"Valider\" ></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item  *ngIf=\"hourNbr > 0\" >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime readonly display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"  [min]=\"end_time\" [(ngModel)]=\"end_time\"> </ion-datetime>\n                </ion-item>\n                <!-- Number of Time-->\n                <ion-item >\n                  <ion-label>{{\"RESERVECAR.number_hour\"| translate}}</ion-label>\n                  <ion-input type=\"number\"  style=\"width: 100px; margin-left : 40%\" (ionChange)=\"change('hour')\"  placeholder=\"0\"  [(ngModel)]=\"hourNbr\" ></ion-input>\n                </ion-item>\n                <!-- ----------------French version ------------------------------------------->\n              \n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per hour\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"per day\"------------------------------- -->\n              <div *ngIf=\"rent_type =='day'\">\n\n\n               <!-- Search Bar -->\n               <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar(1)\" (ionCancel)=\"onCancel($event,1)\" (ionClear)\t=\"onCancel($event,1)\" (ngModelChange)=\"change_query($event,1)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list\">\n                   <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient,1)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n                <!-- start date -->\n                <ion-item *ngIf=\"lang=='en'\" >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"today\" [max]=\"maxdate\" (ionChange)=\"change('day')\" placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                </ion-item>\n                 <!-- return date  -->\n                <ion-item *ngIf=\"lang=='en'\"  >\n                  <ion-label>{{\"RESERVECAR.return_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"min_retunDate\" [max]=\"maxdate\" placeholder=\"Select Date\" [(ngModel)]=\"end_date\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item *ngIf=\"lang=='en'\" >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" (ionChange)=\"end_time = start_time\"   [min]=\"start_time\" [(ngModel)]=\"start_time\"></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item *ngIf=\"lang=='en'\">\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime  display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\"   [(ngModel)]=\"end_time\"></ion-datetime>\n                </ion-item>\n                <!-- ------------------------french version ----------------------------------------- -->\n                  <ion-item *ngIf=\"lang=='fr'\" >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"today\" [max]=\"maxdate\" (ionChange)=\"change('day')\" \n                    placeholder=\"Select Date\" [(ngModel)]=\"start_date\"\n                    cancelText=\"Annuler\"\n                   doneText=\"Valider\"></ion-datetime>\n                </ion-item>\n                 <!-- return date  -->\n                <ion-item *ngIf=\"lang=='fr'\"  >\n                  <ion-label>{{\"RESERVECAR.return_date\"| translate}}</ion-label>\n                  <ion-datetime [min]=\"min_retunDate\" [max]=\"maxdate\" placeholder=\"Select Date\" \n                  [(ngModel)]=\"end_date\"\n                  cancelText=\"Annuler\"\n                   doneText=\"Valider\"></ion-datetime>\n                </ion-item>\n                <!-- start time -->\n                <ion-item *ngIf=\"lang=='fr'\">\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" \n                  (ionChange)=\"end_time = start_time\"   [min]=\"start_time\" [(ngModel)]=\"start_time\"\n                  cancelText=\"Annuler\"\n                   doneText=\"Valider\"></ion-datetime>\n                </ion-item>\n                 <!-- return time -->\n                <ion-item *ngIf=\"lang=='fr'\" >\n                  <ion-label>{{\"RESERVECAR.return_time\"| translate}}</ion-label>\n                  <ion-datetime  display-format=\"HH:mm\t\" picker-format=\"HH:mm\t\" \n                    [(ngModel)]=\"end_time\"\n                    cancelText=\"Annuler\"\n                   doneText=\"Valider\" ></ion-datetime>\n                </ion-item>     \n\n\n\n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"per day\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n           \n            <!-- ----------------------------------------------------------------------------------- -->\n            <!-- ----------------------START rent type = \"airport\"------------------------------- -->\n              <div *ngIf=\"rent_type =='airport'\">\n\n                <!-- Search Bar Departure venue -->\n               <ion-searchbar placeholder=\"{{'RESERVECAR.departure_venue'| translate}} \"[(ngModel)]=\"searchQuery1\" (click)=\"click_bar(0)\" (ionCancel)=\"onCancel($event,0)\" (ionClear)\t=\"onCancel($event,0)\" (ngModelChange)=\"change_query($event,0)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list1\">\n                   <ion-item *ngFor=\"let item of list_to_show1; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient,0)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n                <!-- Search Bar Destination -->\n               <ion-searchbar placeholder=\"Destination (*) \"[(ngModel)]=\"searchQuery\" (click)=\"click_bar(1)\" (ionCancel)=\"onCancel($event,1)\" (ionClear)\t=\"onCancel($event,1)\" (ngModelChange)=\"change_query($event,1)\" showCancelButton=\"focus\"></ion-searchbar>\n                \n                <ion-list *ngIf=\"show_list\">\n                   <ion-item *ngFor=\"let item of list_to_show; let i = index\">\n                       <ion-label (click)=\"click_item(i, item.id,item.coefficient,1)\"  > {{item.destination}} </ion-label>\n                   </ion-item>\n                </ion-list>\n\n                <!-- departure -->\n                <!-- <ion-item  *ngIf=\"rent_type =='airport' \">\n                  <ion-input [(ngModel)]= \"depart_venue\"  placeholder='{{\"RESERVECAR.departure_venue\"| translate}}' ></ion-input>\n                </ion-item> -->\n\n\n                <!-- Price -->\n\n                <ion-item>\n                    <ion-label > {{\"RESERVECAR.price\"| translate}}</ion-label>\n                   \n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='day'\"> {{car.per_day}} F CFA </ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='hour'\"> {{car.per_hour}} F CFA</ion-chip>\n                    <ion-chip slot=\"end\"    *ngIf=\"rent_type =='airport'\"> {{car.airport}} F CFA </ion-chip>\n\n                </ion-item>\n\n                <!-- start date -->\n                <ion-item *ngIf=\"lang=='fr'\" >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [value]=\"today\" [min]=\"today\" [max]=\"maxdate\"\n                   placeholder=\"Select Date\" [(ngModel)]=\"start_date\"\n                   monthShortNames=\"Jan, Fev, Mars, Avr, Mai, Juin, Juil, Août, Sep, Oct, Nov, Dec\"\n                   cancelText=\"Annuler\"\n                  doneText=\"Valider\"></ion-datetime>\n                  \n                </ion-item>\n                <!-- start date in english --> \n                <ion-item *ngIf=\"lang=='en'\" >\n                  <ion-label>{{\"RESERVECAR.start_date\"| translate}}</ion-label>\n                  <ion-datetime [value]=\"today\" [min]=\"today\" [max]=\"maxdate\"\n                   placeholder=\"Select Date\" [(ngModel)]=\"start_date\"></ion-datetime>\n                  \n                </ion-item>\n\n\n            \n\n                <!-- start time in french  -->\n                <ion-item *ngIf=\"lang=='fr'\" >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\"\n                   [(ngModel)]=\"start_time\"\n                   cancelText=\"Annuler\"\n                   doneText=\"Valider\" ></ion-datetime>\n                </ion-item>\n                <!-- start time in english-->\n                <ion-item *ngIf=\"lang=='en'\" >\n                  <ion-label>{{\"RESERVECAR.start_time\"| translate}}</ion-label>\n                  <ion-datetime display-format=\"HH:mm\t\" picker-format=\"HH:mm\" [(ngModel)]=\"start_time\" ></ion-datetime>\n                </ion-item>\n                 \n\n                \n               </div>\n\n\n            <!-- ----------------------STOP rent type = \"airport\"------------------------------------------------------------------ -->\n            <!-- ------------------------------------------------------------------------------------------ -->\n\n\n                \n                \n\n        </ion-card-content>\n      \n  </ion-card>\n      \n      <!-- type of reservation -->\n\n\n  <!-- optional services -->\n       <ion-card>\n     \n        <ion-card-header>\n          <ion-card-title style=\"margin-left:20%\">{{\"RESERVECAR.otherservices\"| translate}}  </ion-card-title>\n        </ion-card-header>\n        <ion-card-content *ngFor=\"let item of option\">\n                  \n                <!-- <strong> <ion-label style=\"text-decoration: underline; margin-left:4%\"> Optional Services : </ion-label> </strong> -->\n                  \n                  <!-- baby seats -->\n                <ion-item>\n                    <ion-checkbox color=\"primary\" [(ngModel)] =\"item.checked\" slot=\"end\"></ion-checkbox>\n                    <label  textWrap=\"true\">{{item.libelle}}  -   {{item.prix}}F cfa/ {{\"RESERVECAR.day\"| translate}} </label>\n                </ion-item>\n                \n            \n        </ion-card-content>\n        </ion-card>\n\n       \n\n        <!-- Message -->\n        <ion-card  style=\"height: 255px;\">\n     \n            <ion-card-header>\n              <ion-card-title style=\"margin-left:32%\">{{\"RESERVECAR.message\"| translate}}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content >\n                \n                  <ion-textarea [(ngModel)]=\"message\" class=\"cell-input\" auto-grow=\"true\" maxlength=\"400\" placeholder=\"{{'RESERVECAR.messageplaceholder'| translate}}\"></ion-textarea>\n\n            </ion-card-content>\n\n        </ion-card>\n\n           <!-- submit your reservation -->\n        <!-- <ion-button expand=\"round\" class=\"center-button\" >Submit</ion-button> -->\n\n\n</ion-content>\n<ion-footer *ngIf=\"show\">\n  <!-- <ion-toolbar> -->\n      <ion-button  (click)=\"submit(car.id)\" expand=\"full\"> {{\"RESERVECAR.btn_submit\"| translate}} </ion-button>\n  <!-- </ion-toolbar> -->\n</ion-footer>";
     /***/
   },
 
@@ -186,7 +186,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".center-button {\n  margin-left: 35%;\n  margin-right: 30%;\n}\n\n.cell-input {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n}\n\nion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-card-title {\n  margin-left: 30%;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-chip {\n  color: black;\n  --background: white;\n}\n\nion-button {\n  color: black;\n  --background: #ffa60a;\n  border-color: black;\n}\n\nion-segment-button {\n  color: #ffa60a;\n}\n\nion-card-title, ion-textarea {\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcmVzZXJ2YXRpb24tcGFnZS9EOlxcaW9uaWM0XFxsb2dpbkNhcC9zcmNcXGFwcFxccGFnZXNcXHJlc2VydmF0aW9uLXBhZ2VcXHJlc2VydmF0aW9uLXBhZ2UucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9yZXNlcnZhdGlvbi1wYWdlL3Jlc2VydmF0aW9uLXBhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0JBQUE7RUFDQSxpQkFBQTtBQ0NKOztBREdFO0VBQ0UsbUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0VBQW9CLG1CQUFBO0FDQ3hCOztBREVFO0VBRUUsbUJBQUE7QUNBSjs7QURFQTtFQUVJLGdCQUFBO0FDQUo7O0FESUE7RUFFSSxtQkFBQTtFQUNBLGNBQUE7QUNGSjs7QURLQTtFQUVJLFlBQUE7RUFDQSxtQkFBQTtBQ0hKOztBREtBO0VBRUksWUFBQTtFQUNBLHFCQUFBO0VBQ0EsbUJBQUE7QUNISjs7QURNQTtFQUVJLGNBQUE7QUNKSjs7QURPQTtFQUVJLFlBQUE7QUNMSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Jlc2VydmF0aW9uLXBhZ2UvcmVzZXJ2YXRpb24tcGFnZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyLWJ1dHRvbntcclxuICAgIG1hcmdpbi1sZWZ0OiAzNSU7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDMwJTtcclxuICBcclxuICB9XHJcblxyXG4gIC5jZWxsLWlucHV0IHtcclxuICAgIGJvcmRlci1jb2xvcjogYmxhY2s7IFxyXG4gICAgYm9yZGVyLXdpZHRoOiAuMDFlbTsgXHJcbiAgICBib3JkZXItc3R5bGU6c29saWQ7IG1hcmdpbi1ib3R0b20gOiAtMXB4O1xyXG4gIH1cclxuXHJcbiAgaW9uLWNhcmQsaW9uLXRvb2xiYXIsaW9uLXNlZ21lbnRcclxue1xyXG4gICAgLS1iYWNrZ3JvdW5kOiBibGFjazsgXHJcbn1cclxuaW9uLWNhcmQtdGl0bGVcclxue1xyXG4gICAgbWFyZ2luLWxlZnQ6MzAlXHJcbn1cclxuXHJcblxyXG5pb24taXRlbVxyXG57XHJcbiAgICAtLWJhY2tncm91bmQ6IGJsYWNrOyBcclxuICAgIGNvbG9yOiAgI2ZmYTYwYTtcclxufVxyXG5cclxuaW9uLWNoaXBcclxue1xyXG4gICAgY29sb3I6IGJsYWNrOyBcclxuICAgIC0tYmFja2dyb3VuZDogd2hpdGU7XHJcbn1cclxuaW9uLWJ1dHRvblxyXG57XHJcbiAgICBjb2xvcjogYmxhY2s7IFxyXG4gICAgLS1iYWNrZ3JvdW5kOiAjZmZhNjBhO1xyXG4gICAgYm9yZGVyLWNvbG9yOiBibGFjaztcclxufVxyXG5cclxuaW9uLXNlZ21lbnQtYnV0dG9uXHJcbntcclxuICAgIGNvbG9yIDogI2ZmYTYwYTtcclxufVxyXG5cclxuaW9uLWNhcmQtdGl0bGUsaW9uLXRleHRhcmVhXHJcbntcclxuICAgIGNvbG9yIDogd2hpdGU7XHJcbn0iLCIuY2VudGVyLWJ1dHRvbiB7XG4gIG1hcmdpbi1sZWZ0OiAzNSU7XG4gIG1hcmdpbi1yaWdodDogMzAlO1xufVxuXG4uY2VsbC1pbnB1dCB7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG4gIGJvcmRlci13aWR0aDogMC4wMWVtO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBtYXJnaW4tYm90dG9tOiAtMXB4O1xufVxuXG5pb24tY2FyZCwgaW9uLXRvb2xiYXIsIGlvbi1zZWdtZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiBibGFjaztcbn1cblxuaW9uLWNhcmQtdGl0bGUge1xuICBtYXJnaW4tbGVmdDogMzAlO1xufVxuXG5pb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG4gIGNvbG9yOiAjZmZhNjBhO1xufVxuXG5pb24tY2hpcCB7XG4gIGNvbG9yOiBibGFjaztcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbn1cblxuaW9uLWJ1dHRvbiB7XG4gIGNvbG9yOiBibGFjaztcbiAgLS1iYWNrZ3JvdW5kOiAjZmZhNjBhO1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5pb24tc2VnbWVudC1idXR0b24ge1xuICBjb2xvcjogI2ZmYTYwYTtcbn1cblxuaW9uLWNhcmQtdGl0bGUsIGlvbi10ZXh0YXJlYSB7XG4gIGNvbG9yOiB3aGl0ZTtcbn0iXX0= */";
+    __webpack_exports__["default"] = ".center-button {\n  margin-left: 35%;\n  margin-right: 30%;\n}\n\n.cell-input {\n  border-color: black;\n  border-width: 0.01em;\n  border-style: solid;\n  margin-bottom: -1px;\n}\n\nion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-chip {\n  color: black;\n  --background: white;\n}\n\nion-button {\n  color: black;\n  --background: #ffa60a;\n  border-color: black;\n}\n\nion-segment-button {\n  color: #ffa60a;\n}\n\nion-card-title, ion-textarea {\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcmVzZXJ2YXRpb24tcGFnZS9EOlxcaW9uaWNhcHBcXGxvZ2luQ2FwL3NyY1xcYXBwXFxwYWdlc1xccmVzZXJ2YXRpb24tcGFnZVxccmVzZXJ2YXRpb24tcGFnZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Jlc2VydmF0aW9uLXBhZ2UvcmVzZXJ2YXRpb24tcGFnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBQTtFQUNBLGlCQUFBO0FDQ0o7O0FER0U7RUFDRSxtQkFBQTtFQUNBLG9CQUFBO0VBQ0EsbUJBQUE7RUFBb0IsbUJBQUE7QUNDeEI7O0FERUU7RUFFRSxtQkFBQTtBQ0FKOztBRFFBO0VBRUksbUJBQUE7RUFDQSxjQUFBO0FDTko7O0FEU0E7RUFFSSxZQUFBO0VBQ0EsbUJBQUE7QUNQSjs7QURTQTtFQUVJLFlBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBO0FDUEo7O0FEVUE7RUFFSSxjQUFBO0FDUko7O0FEV0E7RUFFSSxZQUFBO0FDVEoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9yZXNlcnZhdGlvbi1wYWdlL3Jlc2VydmF0aW9uLXBhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlci1idXR0b257XG4gICAgbWFyZ2luLWxlZnQ6IDM1JTtcbiAgICBtYXJnaW4tcmlnaHQ6IDMwJTtcbiAgXG4gIH1cblxuICAuY2VsbC1pbnB1dCB7XG4gICAgYm9yZGVyLWNvbG9yOiBibGFjazsgXG4gICAgYm9yZGVyLXdpZHRoOiAuMDFlbTsgXG4gICAgYm9yZGVyLXN0eWxlOnNvbGlkOyBtYXJnaW4tYm90dG9tIDogLTFweDtcbiAgfVxuXG4gIGlvbi1jYXJkLGlvbi10b29sYmFyLGlvbi1zZWdtZW50XG57XG4gICAgLS1iYWNrZ3JvdW5kOiBibGFjazsgXG59XG4vLyBpb24tY2FyZC10aXRsZVxuLy8ge1xuLy8gICAgIG1hcmdpbi1sZWZ0OjI1JVxuLy8gfVxuXG5cbmlvbi1pdGVtXG57XG4gICAgLS1iYWNrZ3JvdW5kOiBibGFjazsgXG4gICAgY29sb3I6ICAjZmZhNjBhO1xufVxuXG5pb24tY2hpcFxue1xuICAgIGNvbG9yOiBibGFjazsgXG4gICAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbn1cbmlvbi1idXR0b25cbntcbiAgICBjb2xvcjogYmxhY2s7IFxuICAgIC0tYmFja2dyb3VuZDogI2ZmYTYwYTtcbiAgICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5pb24tc2VnbWVudC1idXR0b25cbntcbiAgICBjb2xvciA6ICNmZmE2MGE7XG59XG5cbmlvbi1jYXJkLXRpdGxlLGlvbi10ZXh0YXJlYVxue1xuICAgIGNvbG9yIDogd2hpdGU7XG59IiwiLmNlbnRlci1idXR0b24ge1xuICBtYXJnaW4tbGVmdDogMzUlO1xuICBtYXJnaW4tcmlnaHQ6IDMwJTtcbn1cblxuLmNlbGwtaW5wdXQge1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xuICBib3JkZXItd2lkdGg6IDAuMDFlbTtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgbWFyZ2luLWJvdHRvbTogLTFweDtcbn1cblxuaW9uLWNhcmQsIGlvbi10b29sYmFyLCBpb24tc2VnbWVudCB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG59XG5cbmlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiBibGFjaztcbiAgY29sb3I6ICNmZmE2MGE7XG59XG5cbmlvbi1jaGlwIHtcbiAgY29sb3I6IGJsYWNrO1xuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgY29sb3I6IGJsYWNrO1xuICAtLWJhY2tncm91bmQ6ICNmZmE2MGE7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbmlvbi1zZWdtZW50LWJ1dHRvbiB7XG4gIGNvbG9yOiAjZmZhNjBhO1xufVxuXG5pb24tY2FyZC10aXRsZSwgaW9uLXRleHRhcmVhIHtcbiAgY29sb3I6IHdoaXRlO1xufSJdfQ== */";
     /***/
   },
 
@@ -261,13 +261,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           'id': '',
           'destination': '',
           'coefficient': ''
+        }]; //for departure
+
+        this.list_original1 = [{
+          'id': '',
+          'destination': '',
+          'coefficient': ''
         }];
         this.list_to_show = [{
           'id': '',
           'destination': '',
           'coefficient': ''
+        }]; //for departure
+
+        this.list_to_show1 = [{
+          'id': '',
+          'destination': '',
+          'coefficient': ''
         }];
         this.selected_index = -1;
+        this.show_list1 = false; // for destination
+
         this.show_list = false; ///////////////////////end data for destination search ///////////////////
         //////////////////////////////////////////////////
         //my car : this var will receive the car with all its details
@@ -295,17 +309,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           "date_debut": "",
           "date_fin": "",
           "montant": 0,
-          "note_client": null,
-          "commentaire_client": "",
-          "note_chauffeur": null,
-          "rapport_chauffeur": "",
+          "message": "",
           "client": 0,
-          "chauffeur": null,
           "voiture": 0,
-          "type_location": 1,
+          "type_location": 0,
           "destination": 0,
           "etape_location": 1,
-          //"lieu_depart": "",
+          "depart": null,
           "optionnel": []
         }; //end of object to send
         /////////////////////////////////////////////////////
@@ -338,8 +348,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     ///////////////receive car id/////////////////////////////////////////////////
 
                     this.subscription = this.route.queryParams.subscribe(function (data) {
-                      console.log("selected ->", typeof data.id); //set the prev page
-
+                      //console.log("selected ->", typeof(data.id))
+                      //set the prev page
                       _this.page_prev = data.prev; //set the Car ID 
 
                       _this.carID = data.id; ////////////////////////////////////////////////////////////////////////////   
@@ -353,17 +363,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             while (1) {
                               switch (_context.prev = _context.next) {
                                 case 0:
-                                  console.log("getting Destinations : ", res);
-
+                                  //console.log("getting Destinations : ",res); 
                                   if (res) {
                                     this.list_original = res;
+                                    this.list_original1 = res;
                                   } ////////////////////////////////////////////////////////////////////////////////////////////////
                                   ////////////////////////Start : Get Optionnels/////////////////////////////////////////////////
 
 
                                   this.webservice.getOption().subscribe(function (resp) {
-                                    _this2.option = resp;
-                                    console.log(resp); ///////////////////////////////////////////////////////////////////////////////////////////
+                                    _this2.option = resp; //console.log(resp)
+                                    ///////////////////////////////////////////////////////////////////////////////////////////
                                     //////////////////Start : Get Car details/////////////////////////////////////////////////
 
                                     _this2.webservice.getCarDetails(data.id).subscribe(function (res) {
@@ -378,16 +388,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                                         _this2.show = true;
                                       }); //end get prices
+                                      //console.log(res)
 
-
-                                      console.log(res);
                                     }); //////////////////Stop : Get Car details//////////////////////////////////////////////////
                                     /////////////////////////////////////////////////////////////////////////////////////////
 
                                   }); //////////////////////////Stop : Get  Optionnels//////////////////////////////////////////////////
                                   /////////////////////////////////////////////////////////////////////////////////////////
 
-                                case 3:
+                                case 2:
                                 case "end":
                                   return _context.stop();
                               }
@@ -455,8 +464,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             day = this.maxdate.getDate();
           }
 
-          this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day;
-          console.log("Today = " + this.today + " \n MAX DATE : " + this.maxdate);
+          this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day; // console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
         } //////////////////////////////////////////////////////////////
         ////back to prev ///
 
@@ -477,59 +485,59 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "submit",
         value: function submit(id) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-            var ret, date1, date2, Difference_In_Time, Difference_In_Days, index, i;
+            var ret, date1, date2, Difference_In_Time, Difference_In_Days, c, index, i;
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
                 switch (_context3.prev = _context3.next) {
                   case 0:
                     if (!this.destination) {
-                      _context3.next = 52;
+                      _context3.next = 70;
                       break;
                     }
 
                     //////////////////////////car id ///////////////////////////////////////////////
-                    this.dataToSend.voiture = id;
-                    console.log("id : ", id, "\n coef : ", this.coef); /////////////////////////////////user id ///////////////////////////////////////////////  
+                    this.dataToSend.voiture = id; //console.log("id : ",id,"\n coef : ",this.coef)
+                    /////////////////////////////////user id ///////////////////////////////////////////////  
 
                     _context3.t0 = JSON;
-                    _context3.next = 6;
+                    _context3.next = 5;
                     return Storage.get({
                       key: "user_infos"
                     });
 
-                  case 6:
+                  case 5:
                     _context3.t1 = _context3.sent.value;
                     ret = _context3.t0.parse.call(_context3.t0, _context3.t1);
                     // console.log("user : ", ret);
                     this.dataToSend.client = ret.id; //////////////////////////////get token storage////////////////////////////////////////
 
-                    _context3.next = 11;
+                    _context3.next = 10;
                     return Storage.get({
                       key: 'accessToken'
                     });
 
-                  case 11:
+                  case 10:
                     this.token = _context3.sent.value;
-                    console.log("Token : ", this.token); /////////////////// set start date /////////////////////////////////////////////////////
+                    // console.log("Token : ", this.token);
+                    /////////////////// set start date /////////////////////////////////////////////////////
                     //this.dataToSend.date_debut = this.start_date
-
                     this.start_date = this.start_date.split("T")[0];
                     this.dataToSend.date_debut = this.start_date + "T" + this.start_time + ":44.625Z"; //////////////////// set start hour /////////////////////////////////////////////////////
                     // this.dataToSend.heure_debut = this.start_time;     
                     ///////////////////////////////////////////////////////////////////////////////////////////
 
                     if (!(this.rent_type == "hour")) {
-                      _context3.next = 26;
+                      _context3.next = 24;
                       break;
                     }
 
                     if (!(this.hourNbr > 0)) {
-                      _context3.next = 22;
+                      _context3.next = 20;
                       break;
                     }
 
                     ///////set type rent to hour id 
-                    this.dataToSend.type_location = 1; /////////////////// set end hour /////////////////////////////////////////////////////
+                    this.dataToSend.type_location = 2; /////////////////// set end hour /////////////////////////////////////////////////////
                     //this.dataToSend.heure_fin = this.end_time;
                     /////// set the end date to "";
 
@@ -539,10 +547,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     //////price with number of hour and destination coef included 
 
                     this.price = this.car.per_hour * (1 + this.coef) * this.hourNbr;
-                    _context3.next = 24;
+                    _context3.next = 22;
                     break;
 
-                  case 22:
+                  case 20:
                     if (this.lang == "fr") {
                       alert("Entrez le nombre d'heure ! ( > 0) ");
                     } else {
@@ -551,13 +559,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return _context3.abrupt("return");
 
-                  case 24:
-                    _context3.next = 43;
+                  case 22:
+                    _context3.next = 62;
                     break;
 
-                  case 26:
+                  case 24:
                     if (!(this.rent_type == "day")) {
-                      _context3.next = 42;
+                      _context3.next = 40;
                       break;
                     }
 
@@ -571,12 +579,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
                     if (!(Difference_In_Days > 0)) {
-                      _context3.next = 38;
+                      _context3.next = 36;
                       break;
                     }
 
                     ///////set type rent to day id 
-                    this.dataToSend.type_location = 2; //////////////////////set end date ///////////////////////////////////////////////////////
+                    this.dataToSend.type_location = 1; //////////////////////set end date ///////////////////////////////////////////////////////
                     // this.dataToSend.date_fin = this.end_date
 
                     this.end_date = this.end_date.split("T")[0];
@@ -586,10 +594,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     //this.dataToSend.lieu_depart = "";
 
                     this.price = this.car.per_day * (1 + this.coef) * Difference_In_Days;
-                    _context3.next = 40;
+                    _context3.next = 38;
                     break;
 
-                  case 38:
+                  case 36:
                     if (this.lang == "fr") {
                       alert("Le Nombre de jour doit être > 0 ");
                     } else {
@@ -598,23 +606,81 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return _context3.abrupt("return");
 
-                  case 40:
-                    _context3.next = 43;
+                  case 38:
+                    _context3.next = 62;
                     break;
 
-                  case 42:
-                    if (this.rent_type == "airport") {
-                      ///////set type rent to airport id 
-                      this.dataToSend.type_location = 3;
-                      this.dataToSend.date_fin = this.start_date + "T" + this.start_time + ":44.625Z"; /// set end time /////////////////////////
-
-                      this.dataToSend.date_fin = "" + " " + this.end_time + "T" + this.start_time + ":44.625Z"; //////////////////////set departure venue ///////////////////////////////////////////////////////
-                      //this.dataToSend.lieu_depart = this.depart_venue;
-
-                      this.price = this.car.airport * (1 + this.coef);
+                  case 40:
+                    if (!(this.rent_type == "airport")) {
+                      _context3.next = 62;
+                      break;
                     }
 
-                  case 43:
+                    if (!this.depart_venue) {
+                      _context3.next = 60;
+                      break;
+                    }
+
+                    if (!(this.depart_venue != this.destination)) {
+                      _context3.next = 56;
+                      break;
+                    }
+
+                    if (!(this.depart_venue == 203 || this.destination == 203)) {
+                      _context3.next = 52;
+                      break;
+                    }
+
+                    ///////////////////set depart//////////////////
+                    this.dataToSend.depart = this.depart_venue; ///////set type rent to airport id 
+
+                    this.dataToSend.type_location = 3;
+                    this.dataToSend.date_fin = this.start_date + "T" + this.start_time + ":44.625Z"; /// set end time /////////////////////////
+
+                    this.dataToSend.date_fin = this.start_date + "T" + this.end_time + ":44.625Z"; //////////////////////set departure venue ///////////////////////////////////////////////////////
+                    //this.dataToSend.lieu_depart = this.depart_venue;
+
+                    c = (this.coef1 + this.coef) / 2;
+                    this.price = this.car.airport + this.car.airport * c;
+                    _context3.next = 54;
+                    break;
+
+                  case 52:
+                    if (this.lang == "fr") {
+                      alert("Assurez-vous d'avoir choisi Aéroport comme départ ou destination.");
+                    } else {
+                      alert("Make sure you have chosen Aéroport either as departure or destination.");
+                    }
+
+                    return _context3.abrupt("return");
+
+                  case 54:
+                    _context3.next = 58;
+                    break;
+
+                  case 56:
+                    if (this.lang == "fr") {
+                      alert("Désolé, le départ doit être différent de la destination.");
+                    } else {
+                      alert("Sorry, the departure must be different from the destination.");
+                    }
+
+                    return _context3.abrupt("return");
+
+                  case 58:
+                    _context3.next = 62;
+                    break;
+
+                  case 60:
+                    if (this.lang == "fr") {
+                      alert("Choisissez un Lieu de depart !");
+                    } else {
+                      alert("Select a Departure venue !");
+                    }
+
+                    return _context3.abrupt("return");
+
+                  case 62:
                     ///////////////////////////////////////////////////////////////////////////////////////////////////
                     //////////////////////////////////////////////////////////////////////////////////////////////////
                     ////////////////////////////get the selected option and add price /////////////////////////////////////
@@ -624,7 +690,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       if (this.option[i].checked) {
                         ////////////////////////////////////////////////////////////////////
                         if (this.rent_type == "hour") {
-                          console.log("price : ", typeof this.price, "\n option price : ", typeof this.option[i].prix);
+                          //console.log("price : ",typeof(this.price),"\n option price : ", typeof(this.option[i].prix))
                           this.price = parseFloat(this.price) + this.option[i].prix; //add the optionnel id into the dataTosend field array
 
                           this.dataToSend.optionnel[index] = this.option[i].id;
@@ -640,32 +706,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           this.dataToSend.optionnel[index] = this.option[i].id;
                           index = index + 1;
                         } //////////////////////////////////////////////////////////////
+                        //console.log(this.option[i]);
 
-
-                        console.log(this.option[i]);
                       }
                     } //////////////////set destination ////////////////////////////////////////////
 
 
                     this.dataToSend.destination = this.destination; /////////////////////set price ///////////////////////////////////////////////////
 
-                    this.dataToSend.montant = this.price; /////////////////////set commentaire client ///////////////////////////////////////////////////
+                    this.dataToSend.montant = this.price; /////////////////////set message///////////////////////////////////////////////////
 
-                    this.dataToSend.commentaire_client = this.message;
-                    console.log("\n data to send : \n", this.dataToSend); // present alert
+                    this.dataToSend.message = this.message; //console.log("\n data to send : \n", this.dataToSend);
+                    // present alert
 
                     this.presentAlertConfirm(this.price, this.start_date, this.end_date);
-                    _context3.next = 53;
+                    _context3.next = 71;
                     break;
 
-                  case 52:
+                  case 70:
                     if (this.lang == "fr") {
-                      alert("Remplissez le champ Destination !");
+                      alert("Choisissez une Destination !");
                     } else {
-                      alert("Fill the Destination Field !");
+                      alert("Select one destination !");
                     }
 
-                  case 53:
+                  case 71:
                   case "end":
                     return _context3.stop();
                 }
@@ -681,7 +746,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
             var _this3 = this;
 
-            var lang, text, alert;
+            var lang, text, textcancel, textok, alert;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
                 switch (_context4.prev = _context4.next) {
@@ -696,8 +761,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     if (lang == "fr") {
                       text = "Prix Total : ";
+                      textcancel = "Annuler ";
+                      textok = "Valider ";
                     } else {
                       text = "Total Price : ";
+                      textcancel = "Cancel ";
+                      textok = "OK ";
                     }
 
                     _context4.next = 6;
@@ -706,27 +775,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       header: 'Validation!!',
                       message: '<strong>' + text + '</strong>' + price + ' F CFA',
                       buttons: [{
-                        text: 'Cancel',
+                        text: textcancel,
                         role: 'cancel',
                         cssClass: 'secondary',
-                        handler: function handler(blah) {
-                          console.log('Confirm Cancel: blah');
+                        handler: function handler(blah) {//console.log('Confirm Cancel: blah');
                         }
                       }, {
-                        text: 'Okay',
+                        text: textok,
                         handler: function handler() {
-                          console.log('Confirm Okay'); ////send the data to the API
+                          //console.log('Confirm Okay');
+                          //preseent loader
+                          _this3.webservice.presentLoading(); ////send the data to the API
+
 
                           _this3.webservice.postReservation(_this3.token, _this3.dataToSend).subscribe(function (res) {
-                            console.log(res);
-
+                            //console.log(res)
                             if (res) {
-                              console.log("done");
+                              _this3.webservice.stopLoading(); // console.log("done");
+
 
                               _this3.myAlert(0, lang);
                             }
                           }, function (error) {
-                            console.log("error : \n", error);
+                            //stop loader
+                            _this3.webservice.stopLoading(); // console.log("error : \n",error); 
+
 
                             _this3.myAlert(1, lang);
                           });
@@ -817,59 +890,118 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       }, {
         key: "onCancel",
-        value: function onCancel(val) {
-          this.show_list = false;
-          this.list_to_show = [{
-            'id': '',
-            'destination': '',
-            'coefficient': ''
-          }];
+        value: function onCancel(val, i) {
+          if (i == 0) {
+            this.depart_venue = null;
+            this.show_list1 = false;
+            this.list_to_show1 = [{
+              'id': '',
+              'destination': '',
+              'coefficient': ''
+            }];
+          } else {
+            this.destination = null;
+            this.show_list = false;
+            this.list_to_show = [{
+              'id': '',
+              'destination': '',
+              'coefficient': ''
+            }];
+          }
         }
       }, {
         key: "click_bar",
-        value: function click_bar() {
-          this.list_to_show = [{
-            'id': '',
-            'destination': '',
-            'coefficient': ''
-          }];
-          this.show_list = true;
+        value: function click_bar(i) {
+          if (i == 0) {
+            this.list_to_show1 = [{
+              'id': '',
+              'destination': '',
+              'coefficient': ''
+            }];
+            this.show_list1 = true;
+          } else {
+            this.list_to_show = [{
+              'id': '',
+              'destination': '',
+              'coefficient': ''
+            }];
+            this.show_list = true;
+          }
         }
       }, {
         key: "click_item",
-        value: function click_item(val, id, coef) {
-          //set destination
-          this.destination = id; //set coef 
+        value: function click_item(val, id, coef, type) {
+          //this.depart_venue = null;
+          //this.destination = null; 
+          if (type == 0) {
+            //set departure
+            this.depart_venue = id; //console.log("depart id :", this.depart_venue);
+            //set coef 
 
-          this.coef = parseFloat(coef);
+            this.coef1 = parseFloat(coef);
 
-          for (var i = 0; i < this.list_original.length; i++) {
-            if (this.list_to_show[val].destination.toUpperCase() === this.list_original[i].destination.toUpperCase()) {
-              this.selected_index = i; //print the selected destination
+            for (var i = 0; i < this.list_original1.length; i++) {
+              if (this.list_to_show1[val].destination.toUpperCase() === this.list_original1[i].destination.toUpperCase()) {
+                this.selected_index = i; //print the selected departure
 
-              this.searchQuery = this.list_to_show[val].destination; // set the destinatination to be search
+                this.searchQuery1 = this.list_to_show1[val].destination; // set the depart to be search
 
-              this.destination_to_be_search = this.list_to_show[val];
-              break;
+                this.depart_to_be_search = this.list_to_show1[val];
+                break;
+              }
             }
-          }
 
-          this.show_list = false;
+            this.show_list1 = false;
+          } else {
+            //set destination
+            this.destination = id; //set coef 
+
+            this.coef = parseFloat(coef);
+
+            for (var _i = 0; _i < this.list_original.length; _i++) {
+              if (this.list_to_show[val].destination.toUpperCase() === this.list_original[_i].destination.toUpperCase()) {
+                this.selected_index = _i; //print the selected destination
+
+                this.searchQuery = this.list_to_show[val].destination; // set the destinatination to be search
+
+                this.destination_to_be_search = this.list_to_show[val];
+                break;
+              }
+            }
+
+            this.show_list = false;
+          }
         }
       }, {
         key: "change_query",
-        value: function change_query(query) {
-          var k = 0;
-          this.list_to_show = [{
-            'id': '',
-            'destination': '',
-            'coefficient': ''
-          }];
+        value: function change_query(query, i) {
+          if (i == 0) {
+            var k = 0;
+            this.list_to_show1 = [{
+              'id': '',
+              'destination': '',
+              'coefficient': ''
+            }];
 
-          for (var i = 0; i < this.list_original.length; i++) {
-            if (this.list_original[i].destination.toUpperCase().includes(query.toUpperCase())) {
-              this.list_to_show[k] = this.list_original[i];
-              k += 1;
+            for (var _i2 = 0; _i2 < this.list_original1.length; _i2++) {
+              if (this.list_original1[_i2].destination.toUpperCase().includes(query.toUpperCase())) {
+                this.list_to_show1[k] = this.list_original1[_i2];
+                k += 1;
+              }
+            }
+          } else {
+            var _k = 0;
+            this.list_to_show = [{
+              'id': '',
+              'destination': '',
+              'coefficient': ''
+            }];
+
+            for (var _i3 = 0; _i3 < this.list_original.length; _i3++) {
+              if (this.list_original[_i3].destination.toUpperCase().includes(query.toUpperCase())) {
+                this.list_to_show[_k] = this.list_original[_i3];
+                _k += 1;
+              }
             }
           }
         }

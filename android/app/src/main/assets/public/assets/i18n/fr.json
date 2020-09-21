@@ -2,15 +2,19 @@
     "DASHBOARD": {
         "title": "NYOKAH",
         "start_date": "Date de depart (*)",
-        "start_time": "Heure de depart (*)",
+        "start_time": "Heure de depart:",
         "return_date": "Date de retour (*)",
-        "return_time": "Heure de retour (*)",
+        "return_time": "Heure de retour:",
         "per_hour": "PAR HEURE",
         "per_day": "PAR JOUR",
-        "airport_pick": "AIRPORT PICKUP",
+        "per_class": "CLASSE",
+        "per_price": "TARIF",
+        "other" : "AUTRE",
+        "airport_pick": "AEROPORT",
         "btn_search" : "Rechercher",
         "search_here" : "Recherchez ici",
         "departure_venue" : "Lieu de Depart (*)",
+        "departure" : "Depart:",
         "our_vehicles" : "NOS VEHICULES" ,
         "btn_view_details" : "Voir details"  ,
         "seats" : "places" ,
@@ -23,27 +27,55 @@
         "premium_class" : "PREMIUM",
         "prestige_class" : "PRESTIGE",
         "suv_class" : "CLASSE SUV",
-        "profile" : "MON PROFIL",
+        "profile" : "Mon Profil",
         "edit_profile" : "EDIT PROFIL",
-         "send_feedback":"POSTEZ TÉMOIGNAGE",
+         "send_feedback":"Postez Témoignage",
         "post_a_testimonial":"POSTER UN TÉMOIGNAGE",
-        "my_testimonial": "MES TEMOIGNAGES",
+        "my_testimonial": "Mes Témoignages",
         "testimonial":"Témoignage",
         "post_testimonial":"Envoyer témoignage",
-        "edit_profile_title" : "EDITER PROFIL",
-        "save_profile":"Enregistrer Les Changements",
-        "our_contact" : "Nos contacts",
+        "edit_profile_title" : "Modifier Profil",
+        "save_profile":"Enregistrer",
+        "our_contact" : "Nos Contacts",
         "usage_term" : "Conditions Utilisation",
         "about_us":"À propos de nous",
         "confidentiality":"Confidentialité",
-        "my_bookings":"Mes réservations"
+        "search_car" : "RECHERCHE VEHICULE",
+        "my_bookings":"Mes Réservations",
+        "price_sup_day" :"Prix /Jour >= 50000 F CFA ",
+        "price_sup_hour" :"Prix /Heure >= 50000 F CFA ",
+        "price_less_day" :"Prix /Jour < 50000 F CFA",
+        "price_less_hour" :"Prix /Heure < 50000 F CFA",
+        "place_nbr" : "Nombre de Place ",
+        "place_sup" :"Nbre de places >= 5",
+        "place_less" :"Nbre de places < 5",
+        "baggage_nbr" : "Nombre de Bagage",
+        "baggage_sup" :"Nbre de Bagage >= 5",
+        "baggage_less" :"Nbre de Bagage < 5 ",
+        "my_ride" : "Mes Trajets :",
+        "start_trip" : "Débuter le trajet",
+        "end_trip" : "Terminer le trajet",
+        "trip_details" : "Details Du Trajet",
+        "my_rides" : "Mes Trajets",
+        "empty_list" : "Liste Vide",
+        "empty_trip" : "Vous n'êtes associé à aucun Trajet pour le moment",
+        "my_report" : "Mes Impressions",
+        "very_good" : "Très Bien",
+        "good" : "Bien",
+        "average" : "Moyen",
+        "bad" : "Mauvais",
+        "very_bad" : "Très Mauvais",
+        "question" : "Comment était le Trajet ? ",
+        "comment" : "Laissez un commentaire...."
+
+
         
 
 
     },
 
     "LANGUAGE" : {
-        "title" : "REGLAGE LANGUE",
+        "title" : "Réglage Langue",
         "english" : "Anglais",
         "french" : "Français",
         "select_lang" : "Choisir une langue"
@@ -61,7 +93,7 @@
 
     "CARDETAILS" : {
 
-        "title" : " DETAILS VOITURE",
+        "title" : " Détails Véhicule",
         "seats" : "places" ,
         "day" : "Day" ,
         "hour" : "Hour" ,
@@ -70,12 +102,16 @@
         "logintoreserve" : "SE CONNECTER POUR RESERVER" ,
         "reservenow" : "RESERVEZ MAINTENANT" ,
         "baggages" : "Bagages",
-        "carnumber" : "Immatriculation : " 
+        "carnumber" : "Immatriculation : " ,
+        "price" : "TARIFS ",
+        "airport" : "AEROPORT ",
+        "seat_number" : " Nombre de  Place (s) :",
+        "baggage_number" : "Nombre de Bagage(s) :"
        
     },
 
     "RESERVECAR" : {
-        "title": "RESERVATION VOITURE",
+        "title": "Réservation Véhicule",
         "start_date": "Date de depart (*)",
         "start_time": "Heure de depart (*)",
         "return_date": "Date de retour (*)",
@@ -84,17 +120,32 @@
         "per_day": "PAR JOUR",
         "day" : "Jour" ,
         "hour" : "Heure" ,
-        "airport_pick": "AIRPORT PICKUP",
+        "airport_pick": "AEROPORT",
         "departure_venue" : "Lieu de Depart (*)",
-        "price" : "Prix : ",
-        "otherservices" : " Autres Services",
+        "departure" : "Depart:",
+        "price" : "Tarif : ",
+        "otherservices" : " AUTRES SERVICES",
         "babyseats" : " Siège pour enfant",
         "additionalpilot" : " Copilote supplémentaire",
         "assistanttranslator" : " Assistant traducteur",
-        "message" : "Message",
+        "message" : "MESSAGE",
         "messageplaceholder" : "Laissez votre message ici...",
         "btn_submit" : "SOUMETTRE",
-        "number_hour" : "Nombre d'heure (*)"
+        "number_hour" : "Nombre d'heure (*)",
+        "booking_status" : "Statut :",
+        "booking_date" : "Date Reservation :",
+        "booking_type" : "Type Reservation :",
+        "booking_start_date" : "Date de Debut:",
+        "booking_end_date" : "Date de Retour:",
+        "booking_price" : "Tarif :",
+        "booking_your_message" : "Votre Message :",
+        "booking_destination" : "Destination : ",
+        "booking_view_detail" : "Voir Details",
+        "cancel" : "Annuler",
+        "marks" : "Vos impressions sur le voyage :",
+        "clientname" : "Nom du Client : ",
+        "car" : " Véhicule :"
+
 
     },
 
@@ -120,13 +171,13 @@
         "address":"Adresse",
         "city":"Ville",
         "country":"Pays",
-        "edit_profile":"Editer le profil"
+        "edit_profile":"Modifier votre profil"
     },
     "SIGNUP" : {
         "signup" : "Inscription",
         "signup_btn" : "S'Inscrire",
         "first_name" : "Prénom (*)",
-        "last_name" : "Nom",
+        "last_name" : "Nom(*)",
         "email" : "Adresse Email (*)",
         "password" : "Mot de passe (*)",
         "confirm_password" : "Confirmez mot de passe (*)",
@@ -140,9 +191,9 @@
         "old_password":"Ancien Mot de Passe (*)",
         "new_password":"Nouveau Mot de Passe (*)",
         "confirm_password":"Confirmez  Mot de Passe (*)",
-        "change_password":"Changer mot de passe",
+        "change_password":"Changer Mot De Passe",
         "change_password_btn":"Valider",
-        "reset_password":"Réinitialiser le mot de passe"
+        "reset_password":"Réinitialiser Mot De Passe"
     }
     
 

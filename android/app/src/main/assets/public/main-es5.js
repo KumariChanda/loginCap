@@ -132,7 +132,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\r\n<!-- <div *ngIf=\"showSplash\" class=\"splash\">\r\n  <div class=\"spinner\">  </div>\r\n\r\n</div> -->\r\n<ion-app>\r\n    <ion-menu side=\"start\" menuId=\"first\" contentId=\"content1\">\r\n        <ion-header>\r\n          <ion-toolbar>\r\n\r\n              <!-- menu == null -->\r\n            <div *ngIf=\"testingToken==null\">\r\n              <div >\r\n                <ion-grid>\r\n                  <ion-row>\r\n                    <ion-col size=\"4\" >\r\n                      <img  tappable  menuClose  [src]=\"profile\"  class=\"image-icon\" (click)=\"login_signupPage()\">\r\n                    </ion-col>\r\n                     <ion-col size=\"8\">\r\n                      <div>\r\n                        <ion-icon name=\"warning-outline\" style=\"color: red;\"></ion-icon>\r\n                          <ion-label>{{'MENU.message' | translate}}</ion-label>\r\n                          <ion-button fill=\"outline\" slot=\"end\" (click)=\"login_signupPage()\" >{{'MENU.btn_login' | translate}}</ion-button>\r\n               \r\n                        <!-- <ion-button>\r\n                          Login / Signup\r\n                        </ion-button> -->\r\n                      </div>                    \r\n                    </ion-col>\r\n                    </ion-row>\r\n                    </ion-grid>               \r\n               </div>\r\n              </div>\r\n         \r\n             <!-- menu != null -->\r\n          <div *ngIf=\"testingToken!=null\">\r\n            <div >\r\n              <ion-grid>\r\n                <ion-row>\r\n                  <ion-col size=\"4\" >\r\n                    <img  tappable  menuClose  [src]=\"profile\"  class=\"image-icon\" (click)=\"openUserProfile(defaultProfile)\">\r\n                  </ion-col>\r\n                   <ion-col size=\"8\">\r\n                    <div>                     \r\n                        <ion-label style=\"size: 20vw;\">&nbsp; <b>{{userInf?.first_name}} {{userInf?.last_name}} </b></ion-label><br>\r\n                        <ion-button fill=\"outline\" slot=\"end\" (click)=\"logout()\" >{{'MENU.btn_logout' | translate}}</ion-button>\r\n                    </div>                    \r\n                  </ion-col>\r\n                  </ion-row>\r\n                  </ion-grid>             \r\n              </div>\r\n            </div>\r\n         \r\n               \r\n         \r\n          </ion-toolbar>\r\n        </ion-header>\r\n        <ion-content>\r\n\r\n           <!-- Menu if user is not logged in yet -->\r\n\r\n          <div *ngIf=\"testingToken==null \">\r\n          \r\n          <div  style=\" background: black \" *ngFor=\"let pages of menuNavigatorWithoutLogin\">\r\n              \r\n              <ion-menu-toggle   auto-hide=\"true\" *ngIf=\"pages.url\" >\r\n                <ion-item [routerLink]=\"pages.url\" routerDirection=\"root\" routerLinkActive=\"active\">\r\n                    <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\r\n                     <ion-label> {{pages.title}} </ion-label> \r\n                </ion-item>\r\n              </ion-menu-toggle>\r\n\r\n                    <!-- if there is sub-cat -->\r\n              <ion-item button *ngIf=\"pages.children?.length > 0\" (click) = \"pages.open = !pages.open\"\r\n                [class.active-parent]=\"pages.open\" details=\"false\">\r\n                \r\n                <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\r\n                <ion-icon slot=\"end\" name=\"arrow-forward\" *ngIf=\"!pages.open\"></ion-icon>\r\n                <ion-icon slot=\"end\" name=\"arrow-down\" *ngIf=\"pages.open\"></ion-icon>\r\n                <ion-label> {{pages.title}} </ion-label>\r\n\r\n              </ion-item>\r\n\r\n              <div  *ngIf=\"pages.open\">\r\n\r\n                    <ion-menu-toggle  >\r\n                      <ion-item class=\"sub-item\" *ngFor=\"let sub of pages.children\" [routerLink]=\"sub.url\" routerDirection=\"root\" routerLinkActive=\"active\">\r\n                          <ion-icon [name]=\"sub.icon\" slot=\"start\"></ion-icon>\r\n                            {{sub.title}} \r\n                      </ion-item>\r\n                    </ion-menu-toggle>\r\n\r\n              </div>\r\n\r\n          </div>\r\n\r\n\r\n                   <!-- Menu if user is logged in -->\r\n\r\n        </div>\r\n  \r\n          <div *ngIf=\"testingToken!=null\">\r\n            \r\n             \r\n          <div *ngFor=\"let pages of menuNavigatorLogin\">\r\n          <ion-menu-toggle auto-hide=\"true\" *ngIf=\"pages.url\" >\r\n            <ion-item [routerLink]=\"pages.url\" routerDirection=\"root\" routerLinkActive=\"active\">\r\n                <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\r\n                   {{pages.title}} \r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n\r\n                <!-- if there is sub-cat -->\r\n          <ion-item button *ngIf=\"pages.children?.length > 0\" (click) = \"pages.open = !pages.open\"\r\n            [class.active-parent]=\"pages.open\" details=\"false\">\r\n            \r\n            <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\r\n            <ion-icon slot=\"end\" name=\"arrow-forward\" *ngIf=\"!pages.open\"></ion-icon>\r\n            <ion-icon slot=\"end\" name=\"arrow-down\" *ngIf=\"pages.open\"></ion-icon>\r\n            <ion-label> {{pages.title}} </ion-label>\r\n\r\n          </ion-item>\r\n\r\n          <div  *ngIf=\"pages.open\">\r\n\r\n                <ion-menu-toggle  >\r\n                  <ion-item class=\"sub-item\" auto-hide=\"true\" *ngFor=\"let sub of pages.children\" [routerLink]=\"sub.url\" routerDirection=\"root\" routerLinkActive=\"active\">\r\n                      <ion-icon [name]=\"sub.icon\" slot=\"start\"></ion-icon>\r\n                        {{sub.title}} \r\n                  </ion-item>\r\n                </ion-menu-toggle>\r\n\r\n          </div>\r\n\r\n          </div>\r\n        </div>\r\n        </ion-content>\r\n\r\n        <ion-footer >\r\n            <ion-toolbar>\r\n             <ion-button  expand=\"full\" >NYOKAH VERSION 1.0 </ion-button>\r\n            </ion-toolbar> \r\n        </ion-footer>\r\n\r\n      </ion-menu>\r\n  <ion-router-outlet id=\"content1\"></ion-router-outlet>\r\n\r\n \r\n</ion-app>";
+    __webpack_exports__["default"] = "\r\n<!-- <div *ngIf=\"showSplash\" class=\"splash\">\r\n  <div class=\"spinner\">  </div>\r\n\r\n</div> -->\r\n<ion-app>\r\n    <ion-menu side=\"start\" menuId=\"first\" contentId=\"content1\">\r\n        <ion-header>\r\n          <ion-toolbar>\r\n\r\n              <!-- menu == null -->\r\n            <div *ngIf=\"testingToken==null || testingToken=='null'\">\r\n              <div >\r\n                <ion-grid>\r\n                  <ion-row>\r\n                    <ion-col size=\"4\" >\r\n                      <img  tappable  menuClose  [src]=\"profile\"  class=\"image-icon\" (click)=\"login_signupPage()\">\r\n                    </ion-col>\r\n                     <ion-col size=\"8\">\r\n                      <div>\r\n                        <ion-icon name=\"warning-outline\" style=\"color: red;\"></ion-icon>\r\n                          <ion-label>{{'MENU.message' | translate}}</ion-label>\r\n                          <ion-button fill=\"outline\" slot=\"end\" (click)=\"login_signupPage()\" >{{'MENU.btn_login' | translate}}</ion-button>\r\n               \r\n                        <!-- <ion-button>\r\n                          Login / Signup\r\n                        </ion-button> -->\r\n                      </div>                    \r\n                    </ion-col>\r\n                    </ion-row>\r\n                    </ion-grid>               \r\n               </div>\r\n              </div>\r\n         \r\n             <!-- menu != null -->\r\n          <div *ngIf=\"testingToken!=null && testingToken!='null'\">\r\n            <div >\r\n              <ion-grid>\r\n                <ion-row>\r\n                  <ion-col size=\"4\" >\r\n                    <img  tappable  menuClose  [src]=\"profile\"  class=\"image-icon\" (click)=\"openUserProfile(defaultProfile)\">\r\n                  </ion-col>\r\n                   <ion-col size=\"8\">\r\n                    <div>                     \r\n                        <ion-label style=\"size: 20vw;\">&nbsp; <b>{{userInf?.first_name}} {{userInf?.last_name}} </b></ion-label><br>\r\n                        <ion-button fill=\"outline\" slot=\"end\" (click)=\"logout()\" >{{'MENU.btn_logout' | translate}}</ion-button>\r\n                    </div>                    \r\n                  </ion-col>\r\n                  </ion-row>\r\n                  </ion-grid>             \r\n              </div>\r\n            </div>\r\n         \r\n               \r\n         \r\n          </ion-toolbar>\r\n        </ion-header>\r\n        <ion-content>\r\n\r\n           <!-- Menu if user is not logged in yet -->\r\n\r\n          <div *ngIf=\"testingToken==null || testingToken=='null'\">\r\n          \r\n          <div  style=\" background: black \" *ngFor=\"let pages of menuNavigatorWithoutLogin\">\r\n              \r\n              <ion-menu-toggle   auto-hide=\"true\" *ngIf=\"pages.url\" >\r\n                <ion-item [routerLink]=\"pages.url\" routerDirection=\"root\" routerLinkActive=\"active\">\r\n                    <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\r\n                     <ion-label> {{pages.title}} </ion-label> \r\n                </ion-item>\r\n              </ion-menu-toggle>\r\n\r\n                    <!-- if there is sub-cat -->\r\n              <ion-item button *ngIf=\"pages.children?.length > 0\" (click) = \"pages.open = !pages.open\"\r\n                [class.active-parent]=\"pages.open\" details=\"false\">\r\n                \r\n                <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\r\n                <!-- <ion-icon slot=\"end\" name=\"arrow-forward\" *ngIf=\"!pages.open\"></ion-icon> -->\r\n                <!-- <ion-icon slot=\"end\" name=\"arrow-down\" *ngIf=\"pages.open\"></ion-icon> -->\r\n                <ion-label> {{pages.title}} </ion-label>\r\n\r\n              </ion-item>\r\n\r\n              <div  *ngIf=\"pages.open\">\r\n\r\n                    <ion-menu-toggle  >\r\n                      <ion-item class=\"sub-item\" *ngFor=\"let sub of pages.children\" [routerLink]=\"sub.url\" routerDirection=\"root\" routerLinkActive=\"active\">\r\n                          <ion-icon [name]=\"sub.icon\" slot=\"start\"></ion-icon>\r\n                            {{sub.title}} \r\n                      </ion-item>\r\n                    </ion-menu-toggle>\r\n\r\n              </div>\r\n\r\n          </div>\r\n\r\n\r\n                   <!-- Menu if user is logged in -->\r\n\r\n        </div>\r\n  \r\n          <div *ngIf=\"testingToken!=null && testingToken!='null'\">\r\n            \r\n             \r\n          <div *ngFor=\"let pages of menuNavigatorLogin\">\r\n          <ion-menu-toggle auto-hide=\"true\" *ngIf=\"pages.url\" >\r\n            <ion-item [routerLink]=\"pages.url\" routerDirection=\"root\" routerLinkActive=\"active\">\r\n                <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\r\n                   {{pages.title}} \r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n\r\n                <!-- if there is sub-cat -->\r\n          <ion-item button *ngIf=\"pages.children?.length > 0\" (click) = \"pages.open = !pages.open\"\r\n            [class.active-parent]=\"pages.open\" details=\"false\">\r\n            \r\n            <ion-icon [name]=\"pages.icon\" slot=\"start\"></ion-icon>\r\n            <ion-icon slot=\"end\" name=\"arrow-forward\" *ngIf=\"!pages.open\"></ion-icon>\r\n            <ion-icon slot=\"end\" name=\"arrow-down\" *ngIf=\"pages.open\"></ion-icon>\r\n            <ion-label> {{pages.title}} </ion-label>\r\n\r\n          </ion-item>\r\n\r\n          <div  *ngIf=\"pages.open\">\r\n\r\n                <ion-menu-toggle  >\r\n                  <ion-item class=\"sub-item\" auto-hide=\"true\" *ngFor=\"let sub of pages.children\" [routerLink]=\"sub.url\" routerDirection=\"root\" routerLinkActive=\"active\">\r\n                      <ion-icon [name]=\"sub.icon\" slot=\"start\"></ion-icon>\r\n                        {{sub.title}} \r\n                  </ion-item>\r\n                </ion-menu-toggle>\r\n\r\n          </div>\r\n\r\n          </div>\r\n        </div>\r\n        </ion-content>\r\n\r\n        <ion-footer >\r\n            <ion-toolbar>\r\n             <ion-button  expand=\"full\" >NYOKAH VERSION 1.0 </ion-button>\r\n            </ion-toolbar> \r\n        </ion-footer>\r\n\r\n      </ion-menu>\r\n  <ion-router-outlet id=\"content1\"></ion-router-outlet>\r\n\r\n \r\n</ion-app>";
     /***/
   },
 
@@ -366,17 +366,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
       }
     }, {
-      path: 'suv-class',
-      loadChildren: function loadChildren() {
-        return __webpack_require__.e(
-        /*! import() | pages-suv-class-suv-class-module */
-        "pages-suv-class-suv-class-module").then(__webpack_require__.bind(null,
-        /*! ./pages/suv-class/suv-class.module */
-        "./src/app/pages/suv-class/suv-class.module.ts")).then(function (m) {
-          return m.SuvClassPageModule;
-        });
-      }
-    }, {
       path: 'term-usage',
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
@@ -431,6 +420,50 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return m.EconomiquePageModule;
         });
       }
+    }, {
+      path: 'car-filter',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | pages-car-filter-car-filter-module */
+        "pages-car-filter-car-filter-module").then(__webpack_require__.bind(null,
+        /*! ./pages/car-filter/car-filter.module */
+        "./src/app/pages/car-filter/car-filter.module.ts")).then(function (m) {
+          return m.CarFilterPageModule;
+        });
+      }
+    }, {
+      path: 'my-reports',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | driver-my-reports-my-reports-module */
+        "driver-my-reports-my-reports-module").then(__webpack_require__.bind(null,
+        /*! ./driver/my-reports/my-reports.module */
+        "./src/app/driver/my-reports/my-reports.module.ts")).then(function (m) {
+          return m.MyReportsPageModule;
+        });
+      }
+    }, {
+      path: 'send-reports',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | driver-send-reports-send-reports-module */
+        "driver-send-reports-send-reports-module").then(__webpack_require__.bind(null,
+        /*! ./driver/send-reports/send-reports.module */
+        "./src/app/driver/send-reports/send-reports.module.ts")).then(function (m) {
+          return m.SendReportsPageModule;
+        });
+      }
+    }, {
+      path: 'send-rides',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | driver-send-rides-send-rides-module */
+        "driver-send-rides-send-rides-module").then(__webpack_require__.bind(null,
+        /*! ./driver/send-rides/send-rides.module */
+        "./src/app/driver/send-rides/send-rides.module.ts")).then(function (m) {
+          return m.SendRidesPageModule;
+        });
+      }
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -462,7 +495,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".splash {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 999;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: black;\n}\n\n.spinner {\n  width: 40px;\n  height: 40px;\n  background-color: #ffa60a;\n  margin: 100px auto;\n  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;\n  animation: sk-rotateplane 1.2s infinite ease-in-out;\n}\n\n@-webkit-keyframes sk-rotateplane {\n  0% {\n    -webkit-transform: perspective(120px);\n  }\n  50% {\n    -webkit-transform: perspective(120px) rotateY(180deg);\n  }\n  100% {\n    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);\n  }\n}\n\n@keyframes sk-rotateplane {\n  0% {\n    transform: perspective(120px) rotateX(0deg) rotateY(0deg);\n    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);\n  }\n  50% {\n    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);\n    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);\n  }\n  100% {\n    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);\n    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);\n  }\n}\n\n.active {\n  --ion-text-color: var(--ion-color-primary);\n}\n\n.active ion-icon {\n  --ion-text-color-rgb: var(--ion--color--primary);\n}\n\n.active-parent {\n  font-weight: 500;\n}\n\n.sub-item {\n  padding-left: 20px;\n  font-size: small;\n}\n\n.image-icon {\n  height: 80px;\n  width: 80px;\n  border-radius: 40px;\n}\n\n.btn {\n  background: white;\n  color: black;\n  font-size: smaller;\n  padding: 2px 2px 2px 2px;\n  text-decoration: none;\n  display: inline-block;\n}\n\n.profileImage {\n  height: 0vw;\n  width: 0vw;\n  margin: 0vw;\n  padding: 0vw;\n}\n\n.labelText {\n  padding-left: 80vm;\n}\n\nion-item {\n  --background: black;\n  color: white;\n}\n\nion-content, ion-toolbar {\n  --background: black;\n}\n\nion-label {\n  color: white;\n}\n\nion-icon {\n  color: #ffa60a;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvRDpcXGlvbmljNFxcbG9naW5DYXAvc3JjXFxhcHBcXGFwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0Usa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx1QkFBQTtFQUNBLHVCQUFBO0FDQUY7O0FERUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLHlCQUFBO0VBRUEsa0JBQUE7RUFDQSwyREFBQTtFQUNBLG1EQUFBO0FDQUY7O0FER0E7RUFDRTtJQUFLLHFDQUFBO0VDQ0w7RURBQTtJQUFNLHFEQUFBO0VDR047RURGQTtJQUFPLHFFQUFBO0VDS1A7QUFDRjs7QURIQTtFQUNFO0lBQ0UseURBQUE7SUFDQSxpRUFBQTtFQ0tGO0VESkU7SUFDQSw4REFBQTtJQUNBLHNFQUFBO0VDTUY7RURMRTtJQUNBLGlFQUFBO0lBQ0EseUVBQUE7RUNPRjtBQUNGOztBRERBO0VBRUksMENBQUE7QUNFSjs7QURESTtFQUNJLGdEQUFBO0FDR1I7O0FEQ0E7RUFFSSxnQkFBQTtBQ0NKOztBREdFO0VBQ0ksa0JBQUE7RUFDQSxnQkFBQTtBQ0FOOztBREdFO0VBRUUsWUFBQTtFQUNBLFdBQUE7RUFDQSxtQkFBQTtBQ0RKOztBRElFO0VBQ0UsaUJBQUE7RUFFQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSx3QkFBQTtFQUNBLHFCQUFBO0VBQ0EscUJBQUE7QUNGSjs7QURLRTtFQUNFLFdBQUE7RUFDQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7QUNGSjs7QURNRTtFQUNFLGtCQUFBO0FDSEo7O0FET0E7RUFFSSxtQkFBQTtFQUNBLFlBQUE7QUNMSjs7QURPQTtFQUVJLG1CQUFBO0FDTEo7O0FET0E7RUFFSSxZQUFBO0FDTEo7O0FET0E7RUFFRSxjQUFBO0FDTEYiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuLnNwbGFzaHtcclxuICBwb3NpdGlvbjphYnNvbHV0ZTtcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbiAgei1pbmRleDogOTk5O1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBibGFjaztcclxufVxyXG4uc3Bpbm5lciB7XHJcbiAgd2lkdGg6IDQwcHg7XHJcbiAgaGVpZ2h0OiA0MHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmE2MGE7XHJcblxyXG4gIG1hcmdpbjogMTAwcHggYXV0bztcclxuICAtd2Via2l0LWFuaW1hdGlvbjogc2stcm90YXRlcGxhbmUgMS4ycyBpbmZpbml0ZSBlYXNlLWluLW91dDtcclxuICBhbmltYXRpb246IHNrLXJvdGF0ZXBsYW5lIDEuMnMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XHJcbn1cclxuXHJcbkAtd2Via2l0LWtleWZyYW1lcyBzay1yb3RhdGVwbGFuZSB7XHJcbiAgMCUgeyAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIH1cclxuICA1MCUgeyAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVkoMTgwZGVnKSB9XHJcbiAgMTAwJSB7IC13ZWJraXQtdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWSgxODBkZWcpICByb3RhdGVYKDE4MGRlZykgfVxyXG59XHJcblxyXG5Aa2V5ZnJhbWVzIHNrLXJvdGF0ZXBsYW5lIHtcclxuICAwJSB7IFxyXG4gICAgdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWCgwZGVnKSByb3RhdGVZKDBkZWcpO1xyXG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVYKDBkZWcpIHJvdGF0ZVkoMGRlZykgXHJcbiAgfSA1MCUgeyBcclxuICAgIHRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoLTE4MC4xZGVnKSByb3RhdGVZKDBkZWcpO1xyXG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVYKC0xODAuMWRlZykgcm90YXRlWSgwZGVnKSBcclxuICB9IDEwMCUgeyBcclxuICAgIHRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoLTE4MGRlZykgcm90YXRlWSgtMTc5LjlkZWcpO1xyXG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVYKC0xODBkZWcpIHJvdGF0ZVkoLTE3OS45ZGVnKTtcclxuICB9XHJcbn1cclxuXHJcblxyXG5cclxuLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cclxuLmFjdGl2ZXtcclxuICBcclxuICAgIC0taW9uLXRleHQtY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcclxuICAgIGlvbi1pY29ue1xyXG4gICAgICAgIC0taW9uLXRleHQtY29sb3ItcmdiOiB2YXIoLS1pb24tLWNvbG9yLS1wcmltYXJ5KTsgXHJcbiAgICB9XHJcbiAgXHJcbiAgfVxyXG4uYWN0aXZlLXBhcmVudHtcclxuICBcclxuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbiAgXHJcbiAgfVxyXG4gIFxyXG4gIC5zdWItaXRlbXtcclxuICAgICAgcGFkZGluZy1sZWZ0OiAyMHB4O1xyXG4gICAgICBmb250LXNpemU6IHNtYWxsIDtcclxuICB9XHJcblxyXG4gIC5pbWFnZS1pY29uIHtcclxuXHJcbiAgICBoZWlnaHQ6IDgwcHg7XHJcbiAgICB3aWR0aDogODBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDQwcHg7XHJcbiAgfVxyXG5cclxuICAuYnRuIHtcclxuICAgIGJhY2tncm91bmQ6IHdoaXRlO1xyXG4gICAgLy8gY29sb3I6IGNvbG9yKCRjb2xvcnMsIGJsdWVncmVlbik7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICBmb250LXNpemU6IHNtYWxsZXI7XHJcbiAgICBwYWRkaW5nOiAycHggMnB4IDJweCAycHg7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgfVxyXG5cclxuICAucHJvZmlsZUltYWdle1xyXG4gICAgaGVpZ2h0OjB2dztcclxuICAgIHdpZHRoOiAwdnc7XHJcbiAgICBtYXJnaW46IDB2dztcclxuICAgIHBhZGRpbmc6IDB2dztcclxuXHJcbiAgfVxyXG5cclxuICAubGFiZWxUZXh0e1xyXG4gICAgcGFkZGluZy1sZWZ0OiA4MHZtO1xyXG4gICAgXHJcbiAgfVxyXG5cclxuaW9uLWl0ZW1cclxue1xyXG4gICAgLS1iYWNrZ3JvdW5kOiBibGFjazsgXHJcbiAgICBjb2xvcjogd2hpdGU7IFxyXG59XHJcbmlvbi1jb250ZW50LGlvbi10b29sYmFyXHJcbntcclxuICAgIC0tYmFja2dyb3VuZDogYmxhY2s7IFxyXG59XHJcbmlvbi1sYWJlbFxyXG57XHJcbiAgICBjb2xvcjogd2hpdGU7IFxyXG59XHJcbmlvbi1pY29uXHJcbntcclxuICBjb2xvcjogICNmZmE2MGE7XHJcbiBcclxufVxyXG4iLCIuc3BsYXNoIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICB6LWluZGV4OiA5OTk7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBibGFjaztcbn1cblxuLnNwaW5uZXIge1xuICB3aWR0aDogNDBweDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZhNjBhO1xuICBtYXJnaW46IDEwMHB4IGF1dG87XG4gIC13ZWJraXQtYW5pbWF0aW9uOiBzay1yb3RhdGVwbGFuZSAxLjJzIGluZmluaXRlIGVhc2UtaW4tb3V0O1xuICBhbmltYXRpb246IHNrLXJvdGF0ZXBsYW5lIDEuMnMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XG59XG5cbkAtd2Via2l0LWtleWZyYW1lcyBzay1yb3RhdGVwbGFuZSB7XG4gIDAlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpO1xuICB9XG4gIDUwJSB7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVZKDE4MGRlZyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVZKDE4MGRlZykgcm90YXRlWCgxODBkZWcpO1xuICB9XG59XG5Aa2V5ZnJhbWVzIHNrLXJvdGF0ZXBsYW5lIHtcbiAgMCUge1xuICAgIHRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoMGRlZykgcm90YXRlWSgwZGVnKTtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoMGRlZykgcm90YXRlWSgwZGVnKTtcbiAgfVxuICA1MCUge1xuICAgIHRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoLTE4MC4xZGVnKSByb3RhdGVZKDBkZWcpO1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWCgtMTgwLjFkZWcpIHJvdGF0ZVkoMGRlZyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWCgtMTgwZGVnKSByb3RhdGVZKC0xNzkuOWRlZyk7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVYKC0xODBkZWcpIHJvdGF0ZVkoLTE3OS45ZGVnKTtcbiAgfVxufVxuLmFjdGl2ZSB7XG4gIC0taW9uLXRleHQtY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cbi5hY3RpdmUgaW9uLWljb24ge1xuICAtLWlvbi10ZXh0LWNvbG9yLXJnYjogdmFyKC0taW9uLS1jb2xvci0tcHJpbWFyeSk7XG59XG5cbi5hY3RpdmUtcGFyZW50IHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuLnN1Yi1pdGVtIHtcbiAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICBmb250LXNpemU6IHNtYWxsO1xufVxuXG4uaW1hZ2UtaWNvbiB7XG4gIGhlaWdodDogODBweDtcbiAgd2lkdGg6IDgwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDQwcHg7XG59XG5cbi5idG4ge1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgY29sb3I6IGJsYWNrO1xuICBmb250LXNpemU6IHNtYWxsZXI7XG4gIHBhZGRpbmc6IDJweCAycHggMnB4IDJweDtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG59XG5cbi5wcm9maWxlSW1hZ2Uge1xuICBoZWlnaHQ6IDB2dztcbiAgd2lkdGg6IDB2dztcbiAgbWFyZ2luOiAwdnc7XG4gIHBhZGRpbmc6IDB2dztcbn1cblxuLmxhYmVsVGV4dCB7XG4gIHBhZGRpbmctbGVmdDogODB2bTtcbn1cblxuaW9uLWl0ZW0ge1xuICAtLWJhY2tncm91bmQ6IGJsYWNrO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi1jb250ZW50LCBpb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG59XG5cbmlvbi1sYWJlbCB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuaW9uLWljb24ge1xuICBjb2xvcjogI2ZmYTYwYTtcbn0iXX0= */";
+    __webpack_exports__["default"] = ".splash {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 999;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: black;\n}\n\n.spinner {\n  width: 40px;\n  height: 40px;\n  background-color: #ffa60a;\n  margin: 100px auto;\n  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;\n  animation: sk-rotateplane 1.2s infinite ease-in-out;\n}\n\n@-webkit-keyframes sk-rotateplane {\n  0% {\n    -webkit-transform: perspective(120px);\n  }\n  50% {\n    -webkit-transform: perspective(120px) rotateY(180deg);\n  }\n  100% {\n    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);\n  }\n}\n\n@keyframes sk-rotateplane {\n  0% {\n    transform: perspective(120px) rotateX(0deg) rotateY(0deg);\n    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);\n  }\n  50% {\n    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);\n    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);\n  }\n  100% {\n    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);\n    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);\n  }\n}\n\n.active {\n  --ion-text-color: var(--ion-color-primary);\n}\n\n.active ion-icon {\n  --ion-text-color-rgb: var(--ion--color--primary);\n}\n\n.active-parent {\n  font-weight: 500;\n}\n\n.sub-item {\n  padding-left: 20px;\n  font-size: small;\n}\n\n.image-icon {\n  height: 80px;\n  width: 80px;\n  border-radius: 40px;\n}\n\n.btn {\n  background: white;\n  color: black;\n  font-size: smaller;\n  padding: 2px 2px 2px 2px;\n  text-decoration: none;\n  display: inline-block;\n}\n\n.profileImage {\n  height: 0vw;\n  width: 0vw;\n  margin: 0vw;\n  padding: 0vw;\n}\n\n.labelText {\n  padding-left: 80vm;\n}\n\nion-item {\n  --background: black;\n  color: white;\n}\n\nion-content, ion-toolbar {\n  --background: black;\n}\n\nion-label {\n  color: white;\n}\n\nion-icon {\n  color: #ffa60a;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvRDpcXGlvbmljYXBwXFxsb2dpbkNhcC9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDRSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0VBQ0EsdUJBQUE7QUNBRjs7QURFQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EseUJBQUE7RUFFQSxrQkFBQTtFQUNBLDJEQUFBO0VBQ0EsbURBQUE7QUNBRjs7QURHQTtFQUNFO0lBQUsscUNBQUE7RUNDTDtFREFBO0lBQU0scURBQUE7RUNHTjtFREZBO0lBQU8scUVBQUE7RUNLUDtBQUNGOztBREhBO0VBQ0U7SUFDRSx5REFBQTtJQUNBLGlFQUFBO0VDS0Y7RURKRTtJQUNBLDhEQUFBO0lBQ0Esc0VBQUE7RUNNRjtFRExFO0lBQ0EsaUVBQUE7SUFDQSx5RUFBQTtFQ09GO0FBQ0Y7O0FEREE7RUFFSSwwQ0FBQTtBQ0VKOztBRERJO0VBQ0ksZ0RBQUE7QUNHUjs7QURDQTtFQUVJLGdCQUFBO0FDQ0o7O0FER0U7RUFDSSxrQkFBQTtFQUNBLGdCQUFBO0FDQU47O0FER0U7RUFFRSxZQUFBO0VBQ0EsV0FBQTtFQUNBLG1CQUFBO0FDREo7O0FESUU7RUFDRSxpQkFBQTtFQUVBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLHdCQUFBO0VBQ0EscUJBQUE7RUFDQSxxQkFBQTtBQ0ZKOztBREtFO0VBQ0UsV0FBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQ0ZKOztBRE1FO0VBQ0Usa0JBQUE7QUNISjs7QURPQTtFQUVJLG1CQUFBO0VBQ0EsWUFBQTtBQ0xKOztBRE9BO0VBRUksbUJBQUE7QUNMSjs7QURPQTtFQUVJLFlBQUE7QUNMSjs7QURPQTtFQUVFLGNBQUE7QUNMRiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4uc3BsYXNoe1xyXG4gIHBvc2l0aW9uOmFic29sdXRlO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGhlaWdodDogMTAwJTtcclxuICB6LWluZGV4OiA5OTk7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xyXG59XHJcbi5zcGlubmVyIHtcclxuICB3aWR0aDogNDBweDtcclxuICBoZWlnaHQ6IDQwcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmYTYwYTtcclxuXHJcbiAgbWFyZ2luOiAxMDBweCBhdXRvO1xyXG4gIC13ZWJraXQtYW5pbWF0aW9uOiBzay1yb3RhdGVwbGFuZSAxLjJzIGluZmluaXRlIGVhc2UtaW4tb3V0O1xyXG4gIGFuaW1hdGlvbjogc2stcm90YXRlcGxhbmUgMS4ycyBpbmZpbml0ZSBlYXNlLWluLW91dDtcclxufVxyXG5cclxuQC13ZWJraXQta2V5ZnJhbWVzIHNrLXJvdGF0ZXBsYW5lIHtcclxuICAwJSB7IC13ZWJraXQtdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgfVxyXG4gIDUwJSB7IC13ZWJraXQtdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWSgxODBkZWcpIH1cclxuICAxMDAlIHsgLXdlYmtpdC10cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVZKDE4MGRlZykgIHJvdGF0ZVgoMTgwZGVnKSB9XHJcbn1cclxuXHJcbkBrZXlmcmFtZXMgc2stcm90YXRlcGxhbmUge1xyXG4gIDAlIHsgXHJcbiAgICB0cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVYKDBkZWcpIHJvdGF0ZVkoMGRlZyk7XHJcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoMGRlZykgcm90YXRlWSgwZGVnKSBcclxuICB9IDUwJSB7IFxyXG4gICAgdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWCgtMTgwLjFkZWcpIHJvdGF0ZVkoMGRlZyk7XHJcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoLTE4MC4xZGVnKSByb3RhdGVZKDBkZWcpIFxyXG4gIH0gMTAwJSB7IFxyXG4gICAgdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWCgtMTgwZGVnKSByb3RhdGVZKC0xNzkuOWRlZyk7XHJcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoLTE4MGRlZykgcm90YXRlWSgtMTc5LjlkZWcpO1xyXG4gIH1cclxufVxyXG5cclxuXHJcblxyXG4vLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxyXG4uYWN0aXZle1xyXG4gIFxyXG4gICAgLS1pb24tdGV4dC1jb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xyXG4gICAgaW9uLWljb257XHJcbiAgICAgICAgLS1pb24tdGV4dC1jb2xvci1yZ2I6IHZhcigtLWlvbi0tY29sb3ItLXByaW1hcnkpOyBcclxuICAgIH1cclxuICBcclxuICB9XHJcbi5hY3RpdmUtcGFyZW50e1xyXG4gIFxyXG4gICAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICBcclxuICB9XHJcbiAgXHJcbiAgLnN1Yi1pdGVte1xyXG4gICAgICBwYWRkaW5nLWxlZnQ6IDIwcHg7XHJcbiAgICAgIGZvbnQtc2l6ZTogc21hbGwgO1xyXG4gIH1cclxuXHJcbiAgLmltYWdlLWljb24ge1xyXG5cclxuICAgIGhlaWdodDogODBweDtcclxuICAgIHdpZHRoOiA4MHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogNDBweDtcclxuICB9XHJcblxyXG4gIC5idG4ge1xyXG4gICAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgICAvLyBjb2xvcjogY29sb3IoJGNvbG9ycywgYmx1ZWdyZWVuKTtcclxuICAgIGNvbG9yOiBibGFjaztcclxuICAgIGZvbnQtc2l6ZTogc21hbGxlcjtcclxuICAgIHBhZGRpbmc6IDJweCAycHggMnB4IDJweDtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICB9XHJcblxyXG4gIC5wcm9maWxlSW1hZ2V7XHJcbiAgICBoZWlnaHQ6MHZ3O1xyXG4gICAgd2lkdGg6IDB2dztcclxuICAgIG1hcmdpbjogMHZ3O1xyXG4gICAgcGFkZGluZzogMHZ3O1xyXG5cclxuICB9XHJcblxyXG4gIC5sYWJlbFRleHR7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDgwdm07XHJcbiAgICBcclxuICB9XHJcblxyXG5pb24taXRlbVxyXG57XHJcbiAgICAtLWJhY2tncm91bmQ6IGJsYWNrOyBcclxuICAgIGNvbG9yOiB3aGl0ZTsgXHJcbn1cclxuaW9uLWNvbnRlbnQsaW9uLXRvb2xiYXJcclxue1xyXG4gICAgLS1iYWNrZ3JvdW5kOiBibGFjazsgXHJcbn1cclxuaW9uLWxhYmVsXHJcbntcclxuICAgIGNvbG9yOiB3aGl0ZTsgXHJcbn1cclxuaW9uLWljb25cclxue1xyXG4gIGNvbG9yOiAgI2ZmYTYwYTtcclxuIFxyXG59XHJcbiIsIi5zcGxhc2gge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHotaW5kZXg6IDk5OTtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xufVxuXG4uc3Bpbm5lciB7XG4gIHdpZHRoOiA0MHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmE2MGE7XG4gIG1hcmdpbjogMTAwcHggYXV0bztcbiAgLXdlYmtpdC1hbmltYXRpb246IHNrLXJvdGF0ZXBsYW5lIDEuMnMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XG4gIGFuaW1hdGlvbjogc2stcm90YXRlcGxhbmUgMS4ycyBpbmZpbml0ZSBlYXNlLWluLW91dDtcbn1cblxuQC13ZWJraXQta2V5ZnJhbWVzIHNrLXJvdGF0ZXBsYW5lIHtcbiAgMCUge1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCk7XG4gIH1cbiAgNTAlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVkoMTgwZGVnKTtcbiAgfVxuICAxMDAlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVkoMTgwZGVnKSByb3RhdGVYKDE4MGRlZyk7XG4gIH1cbn1cbkBrZXlmcmFtZXMgc2stcm90YXRlcGxhbmUge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWCgwZGVnKSByb3RhdGVZKDBkZWcpO1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWCgwZGVnKSByb3RhdGVZKDBkZWcpO1xuICB9XG4gIDUwJSB7XG4gICAgdHJhbnNmb3JtOiBwZXJzcGVjdGl2ZSgxMjBweCkgcm90YXRlWCgtMTgwLjFkZWcpIHJvdGF0ZVkoMGRlZyk7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVYKC0xODAuMWRlZykgcm90YXRlWSgwZGVnKTtcbiAgfVxuICAxMDAlIHtcbiAgICB0cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVYKC0xODBkZWcpIHJvdGF0ZVkoLTE3OS45ZGVnKTtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoLTE4MGRlZykgcm90YXRlWSgtMTc5LjlkZWcpO1xuICB9XG59XG4uYWN0aXZlIHtcbiAgLS1pb24tdGV4dC1jb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuLmFjdGl2ZSBpb24taWNvbiB7XG4gIC0taW9uLXRleHQtY29sb3ItcmdiOiB2YXIoLS1pb24tLWNvbG9yLS1wcmltYXJ5KTtcbn1cblxuLmFjdGl2ZS1wYXJlbnQge1xuICBmb250LXdlaWdodDogNTAwO1xufVxuXG4uc3ViLWl0ZW0ge1xuICBwYWRkaW5nLWxlZnQ6IDIwcHg7XG4gIGZvbnQtc2l6ZTogc21hbGw7XG59XG5cbi5pbWFnZS1pY29uIHtcbiAgaGVpZ2h0OiA4MHB4O1xuICB3aWR0aDogODBweDtcbiAgYm9yZGVyLXJhZGl1czogNDBweDtcbn1cblxuLmJ0biB7XG4gIGJhY2tncm91bmQ6IHdoaXRlO1xuICBjb2xvcjogYmxhY2s7XG4gIGZvbnQtc2l6ZTogc21hbGxlcjtcbiAgcGFkZGluZzogMnB4IDJweCAycHggMnB4O1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbn1cblxuLnByb2ZpbGVJbWFnZSB7XG4gIGhlaWdodDogMHZ3O1xuICB3aWR0aDogMHZ3O1xuICBtYXJnaW46IDB2dztcbiAgcGFkZGluZzogMHZ3O1xufVxuXG4ubGFiZWxUZXh0IHtcbiAgcGFkZGluZy1sZWZ0OiA4MHZtO1xufVxuXG5pb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuaW9uLWNvbnRlbnQsIGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiBibGFjaztcbn1cblxuaW9uLWxhYmVsIHtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG5pb24taWNvbiB7XG4gIGNvbG9yOiAjZmZhNjBhO1xufSJdfQ== */";
     /***/
   },
 
@@ -573,7 +606,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               var _this3 = this;
 
-              var ret;
+              var ret, type;
               return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                   switch (_context.prev = _context.next) {
@@ -594,8 +627,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     case 4:
                       this.testingToken = _context.sent.value;
-                      console.log("checKing token from storage ", this.testingToken, typeof this.testingToken); // //set the initial language of the app
 
+                      if (!this.testingToken) {
+                        _context.next = 10;
+                        break;
+                      }
+
+                      _context.next = 8;
+                      return Storage.get({
+                        key: 'user_type'
+                      });
+
+                    case 8:
+                      type = _context.sent.value;
+
+                      if (type == "chauffeur") {
+                        this.router.navigateByUrl("/home");
+                      }
+
+                    case 10:
+                      // console.log("checKing token from storage ",this.testingToken,typeof(this.testingToken));
+                      // //set the initial language of the app
                       this.webService.setInitialAppLanguage().then(function (val) {
                         // alert("val : "+val);
                         _this3.sideMenu(val);
@@ -605,7 +657,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       this.statusBar.styleDefault();
                       SplashScreen.hide();
 
-                    case 9:
+                    case 13:
                     case "end":
                       return _context.stop();
                   }
@@ -646,8 +698,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       }, {
         key: "openUserProfile",
-        value: function openUserProfile(url) {
-          console.log('Open this URL: ', url);
+        value: function openUserProfile(url) {// console.log('Open this URL: ',url);
         } //////////////////////////////////
 
       }, {
@@ -676,11 +727,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 4:
                     _context3.next = 6;
                     return Storage.set({
-                      key: 'user_infos',
+                      key: 'user_type',
                       value: null
                     });
 
                   case 6:
+                    ////////
                     this.webService.getCurrentLanguage().then(function (val) {
                       _this4.webService.sendMessage({
                         'token': "mytoken",
@@ -733,7 +785,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         break;
                       }
 
-                      if (!(this.testingToken != null)) {
+                      if (!(this.testingToken != null && this.testingToken != 'null')) {
                         _context4.next = 14;
                         break;
                       }
@@ -791,12 +843,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           url: "/my-bookings",
                           icon: "cart"
                         }, {
-                          title: "My Testimonials",
-                          url: "/my-messages",
-                          icon: "mail"
+                          title: "Testimonials",
+                          icon: "mail",
+                          children: [{
+                            title: "My testimonials",
+                            url: "/my-messages",
+                            icon: "mail"
+                          }, {
+                            title: "Send testimonial",
+                            url: "/send-feedbacks",
+                            icon: "send-outline"
+                          }]
                         }, {
-                          title: "Contact Us",
-                          icon: "call",
+                          title: "Support",
+                          icon: "help-buoy-outline",
                           children: [{
                             title: "About Us",
                             url: "/about-us",
@@ -813,10 +873,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             title: "Confidentiality principles",
                             url: "/confidentiality",
                             icon: "help-circle-outline"
-                          }, {
-                            title: "Send Testimonials",
-                            url: "/send-feedbacks",
-                            icon: "send-outline"
                           }]
                         }, {
                           title: "Settings",
@@ -833,8 +889,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }];
                       } /////////if type is driver ////////////////////////////
                       else if (type == "chauffeur") {
-                          //not yet ready 
-                          this.menuNavigatorLogin = [];
+                          this.menuNavigatorLogin = [{
+                            title: "Home",
+                            url: "/home",
+                            icon: "home"
+                          }, {
+                            title: "Profile",
+                            url: "/profile",
+                            icon: "person"
+                          }, {
+                            title: "My Rides",
+                            url: "/send-rides",
+                            icon: "car"
+                          }, //  {
+                          //    title : "My Reports",
+                          //    url   : "/my-reports",
+                          //    icon  : "mail"
+                          //  },
+                          {
+                            title: "Support",
+                            icon: "help-buoy-outline",
+                            children: [{
+                              title: "About Us",
+                              url: "/about-us",
+                              icon: "information-circle-outline"
+                            }, {
+                              title: "Our Contacts",
+                              url: "/our-contacts",
+                              icon: "call-outline"
+                            }]
+                          }, {
+                            title: "Settings",
+                            icon: "settings",
+                            children: [{
+                              title: "App Language",
+                              url: "/seetings",
+                              icon: "language-outline"
+                            }, {
+                              title: "Change Password",
+                              url: "/change-password",
+                              icon: "lock-closed-outline"
+                            }]
+                          }];
                         }
 
                       _context4.next = 15;
@@ -866,8 +962,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           icon: "aperture-outline"
                         }]
                       }, {
-                        title: "Contact Us",
-                        icon: "call",
+                        title: "Support",
+                        icon: "help-buoy-outline",
                         children: [{
                           title: "About Us",
                           url: "/about-us",
@@ -905,7 +1001,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         break;
                       }
 
-                      if (!(this.testingToken != null)) {
+                      if (!(this.testingToken != null && this.testingToken != 'null')) {
                         _context4.next = 30;
                         break;
                       }
@@ -963,12 +1059,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           url: "/my-bookings",
                           icon: "cart"
                         }, {
-                          title: "Mes témoignages",
-                          url: "/my-messages",
-                          icon: "mail"
+                          title: "Témoignages",
+                          icon: "mail",
+                          children: [{
+                            title: "Mes témoignages",
+                            url: "/my-messages",
+                            icon: "mail"
+                          }, {
+                            title: "Postez témoignages",
+                            url: "/send-feedbacks",
+                            icon: "send-outline"
+                          }]
                         }, {
-                          title: "Contactez-Nous",
-                          icon: "call",
+                          title: "Support",
+                          icon: "help-buoy-outline",
                           children: [{
                             title: "À propos",
                             url: "/about-us",
@@ -985,13 +1089,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             title: "Principes de confidentialités",
                             url: "/confidentiality",
                             icon: "help-circle-outline"
-                          }, {
-                            title: "Postez Témoignages",
-                            url: "/send-feedbacks",
-                            icon: "send-outline"
                           }]
                         }, {
-                          title: "Réglages",
+                          title: "Paramètres",
                           icon: "settings",
                           children: [{
                             title: "Langue de l'application",
@@ -1006,7 +1106,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       } ///////////if type is driver ////////////////////////////
                       else if (type == "chauffeur") {
                           //not yet ready 
-                          this.menuNavigatorLogin = [];
+                          this.menuNavigatorLogin = [{
+                            title: "Accueil",
+                            url: "/home",
+                            icon: "home"
+                          }, {
+                            title: "Mon Profil",
+                            url: "/profile",
+                            icon: "person"
+                          }, {
+                            title: "Mes Trajets",
+                            url: "/send-rides",
+                            icon: "car"
+                          }, // {
+                          //   title : "Mes Rapports",
+                          //   url   : "/my-reports",
+                          //   icon  : "mail"
+                          // },
+                          {
+                            title: "Support",
+                            icon: "help-buoy-outline",
+                            children: [{
+                              title: "À propos",
+                              url: "/about-us",
+                              icon: "information-circle-outline"
+                            }, {
+                              title: "Nos Contacts",
+                              url: "/our-contacts",
+                              icon: "call-outline"
+                            }]
+                          }, {
+                            title: "Paramètres",
+                            icon: "settings",
+                            children: [{
+                              title: "Langue de l'application",
+                              url: "/seetings",
+                              icon: "language-outline"
+                            }, {
+                              title: "Réinitialiser Password",
+                              url: "/change-password",
+                              icon: "lock-closed-outline"
+                            }]
+                          }];
                         }
 
                       _context4.next = 31;
@@ -1038,8 +1179,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           icon: "aperture-outline"
                         }]
                       }, {
-                        title: "Contactez-Nous",
-                        icon: "call",
+                        title: "Support",
+                        icon: "help-buoy-outline",
                         children: [{
                           title: "À propos",
                           url: "/about-us",
@@ -1058,7 +1199,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           icon: "help-circle-outline"
                         }]
                       }, {
-                        title: "Réglages",
+                        title: "Paramètres",
                         icon: "settings",
                         children: [{
                           title: "Langue de l'application",
@@ -1348,7 +1489,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.loadingCtrl = loadingCtrl;
         this.translate = translate; // basic api url
 
-        this.base_url = "http://othnieldona.pythonanywhere.com/api";
+        this.base_url = "http://othnieldona.pythonanywhere.com";
         this.selected = ''; // selected language
         ///////////////////////////SEND DATA TO UPDATE THE MENU///////////////////////////////////////////////////////////////
 
@@ -1361,21 +1502,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "presentLoading",
         value: function presentLoading() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            var lang, myMessage;
             return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
                 switch (_context5.prev = _context5.next) {
                   case 0:
-                    console.log("loading starts");
-                    this.loading = this.loadingCtrl.create({
-                      message: 'Fetching data'
+                    _context5.next = 2;
+                    return Storage.get({
+                      key: LNG_KEY
                     });
-                    _context5.next = 4;
+
+                  case 2:
+                    lang = _context5.sent.value;
+                    myMessage = "";
+
+                    if (lang == "fr") {
+                      myMessage = "Récupération des données";
+                    } else {
+                      myMessage = 'Fetching data';
+                    } // console.log("loading starts");
+
+
+                    this.loading = this.loadingCtrl.create({
+                      message: myMessage
+                    });
+                    _context5.next = 8;
                     return this.loading;
 
-                  case 4:
+                  case 8:
                     _context5.sent.present();
 
-                  case 5:
+                  case 9:
                   case "end":
                     return _context5.stop();
                 }
@@ -1396,17 +1553,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 switch (_context6.prev = _context6.next) {
                   case 0:
                     // this.loading = false;
-                    console.log("loading stop");
+                    // console.log("loading stop");
                     if (this.loading) this.loading = false;
-                    _context6.next = 4;
+                    _context6.next = 3;
                     return this.loadingCtrl.dismiss().then(function () {
                       return console.log('loading dismissed');
                     });
 
-                  case 4:
+                  case 3:
                     return _context6.abrupt("return", _context6.sent);
 
-                  case 5:
+                  case 4:
                   case "end":
                     return _context6.stop();
                 }
@@ -1428,43 +1585,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context7.prev = _context7.next) {
                   case 0:
-                    console.log("initialize App Language");
+                    //console.log("initialize App Language");
                     language = "fr";
                     ret = Storage.get({
                       key: LNG_KEY
                     });
-                    _context7.next = 5;
+                    _context7.next = 4;
                     return ret;
 
-                  case 5:
+                  case 4:
                     val = _context7.sent.value;
-                    console.log("data from storage ", val, typeof val);
 
                     if (!(val != null)) {
-                      _context7.next = 14;
+                      _context7.next = 12;
                       break;
                     }
 
-                    _context7.next = 10;
+                    _context7.next = 8;
                     return ret;
 
-                  case 10:
+                  case 8:
                     this.selected = _context7.sent.value;
                     this.setLanguage(this.selected); // console.log("checKing data from storage ",this.selected,typeof(this.selected));
 
-                    _context7.next = 15;
+                    _context7.next = 13;
                     break;
 
-                  case 14:
+                  case 12:
                     this.selected = language;
 
-                  case 15:
+                  case 13:
                     this.setLanguage(this.selected); //console.log("storage ",this.selected,typeof(this.selected));
                     //  alert(this.selected)
 
                     return _context7.abrupt("return", this.selected);
 
-                  case 17:
+                  case 15:
                   case "end":
                     return _context7.stop();
                 }
@@ -1551,7 +1707,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "postData",
         value: function postData(url, data) {
-          console.log("data To Send : \n", url, data);
+          //console.log("data To Send : \n", url, data)
           return this.http.post(url, data, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
         }
       }, {
@@ -1619,7 +1775,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCarClass",
         value: function getCarClass(id) {
-          return this.http.get(base_url + "marques/" + id, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+          return this.http.get(base_url + "classes/" + id + "/marques", httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
         } ///////////////////////////////////// END : GET CARS PER CLASS////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1628,7 +1784,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUserDetails",
         value: function getUserDetails(token, id, type) {
-          console.log("is Driver : ", type);
+          // console.log("is Driver : ", type);
           var myToken = 'Token ' + token;
           var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
@@ -1732,12 +1888,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         } ///////////////////////////////////// END : GET USER TESTIMONIAL////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////STRAT : GET USER DETAILS ////////////////////////////////////////////////////////////////////////
+
+      }, {
+        key: "getClient",
+        value: function getClient(id, token) {
+          var httpOption = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+              'Content-Type': 'application/json',
+              'Authorization': 'Token ' + token
+            })
+          };
+          return this.http.get(base_url + "clients/" + id, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        } ///////////////////////////////////// END : GET USER details////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////STRAT : POST RESERVATION  ////////////////////////////////////////////////////////////////////////
 
       }, {
         key: "postData1",
         value: function postData1(url, data, token) {
-          console.log("APP Service : data To Send : \n", url, data, token);
+          // console.log("APP Service : data To Send : \n", url, data,token)
           var httpOption = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
               'Content-Type': 'application/json',
@@ -1762,7 +1933,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         } ///////////////////////////////////// END : Change Password///////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////STRAT : GET Client Reservation ////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////START : GET Client Reservation ////////////////////////////////////////////////////////////////////////
 
       }, {
         key: "getClientReservation",
@@ -1777,7 +1948,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         } ///////////////////////////////////// END : GET Client Reservation  ////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////STRAT : EDIT CLIENT PROFILE ////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////START : GET Driver Ride ////////////////////////////////////////////////////////////////////////
+
+      }, {
+        key: "getDriverRide",
+        value: function getDriverRide(id, token) {
+          var httpOption = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+              'Content-Type': 'application/json',
+              'Authorization': 'Token ' + token
+            })
+          };
+          return this.http.get(base_url + "chauffeurs/" + id + "/locations", httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        } ///////////////////////////////////// END : GET Driver Ride  ////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////START : EDIT CLIENT PROFILE ////////////////////////////////////////////////////////////////////////
 
       }, {
         key: "EditClientProfile",
@@ -1789,6 +1975,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             })
           };
           return this.http.put(base_url + "clients/" + id + "/", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        } ///////////////////////////////////// END : EDIT CLIENT PROFILE  ////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////START : EDIT LOCATION FOR ADDING MARKS ////////////////////////////////////////////////////////////////////////
+
+      }, {
+        key: "EditLocation",
+        value: function EditLocation(id, token, data) {
+          var httpOption = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+              'Content-Type': 'application/json',
+              'Authorization': 'Token ' + token
+            })
+          };
+          return this.http.put(base_url + "locations/" + id + "/", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        } //////////////////////////////////////END : EDIT CLIENT PROFILE  ////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////START : EDIT CLIENT PASSWORD ////////////////////////////////////////////////////////////////////////
+
+      }, {
+        key: "changeClientPasssword",
+        value: function changeClientPasssword(id, token, data) {
+          var httpOption = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+              'Content-Type': 'application/json',
+              'Authorization': 'Token ' + token
+            })
+          };
+          return this.http.post(base_url + "clients/" + id + "/set_password", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
         }
       }]);
 
@@ -1908,7 +2124,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! D:\ionic4\loginCap\src\main.ts */
+    /*! D:\ionicapp\loginCap\src\main.ts */
     "./src/main.ts");
     /***/
   }

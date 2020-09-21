@@ -46,7 +46,7 @@ filterData = [
 
       //basic link
       this.src_link = this.webService.base_url;
-      console.log(this.src_link);
+      //console.log(this.src_link);
       //get Language
      this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
  
@@ -57,19 +57,19 @@ filterData = [
        this.webService.getCarClass(1).subscribe(async res=>{
  
          
-         console.log("getting business voitures : \n ",res); 
+        // console.log("getting business voitures : \n ",res); 
          if(!res.detail)
          {
              if(res.length ==0)
              { 
                   //no  cars
-                 if(this.lang=="fr")
-                 {
-                   alert("La Liste de voitures est vide \n Retour à la page accueil");
-         
-                 }else{
-                   alert("The List of cars is Empty \ n Back Home Page")
-                 }
+                if(this.lang=="fr")
+                {
+                  alert(" Pas de véhicule, veuillez affiner votre recherche.");
+        
+                }else{
+                  alert(" No vehicle, please refine your search.")
+                }
          
                  this.router.navigateByUrl("/dashboard");
                  this.webService.stopLoading();//to stop loading
@@ -87,7 +87,7 @@ filterData = [
                    for(let k=0; k < res[i].modeles[j].voitures.length; k++ )
                    {
                     // console.log("car ",i,j,k)
-                     console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
+                     //console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
                      this.filterData[index] = res[i].modeles[j].voitures[k];
                      
                      index = index + 1;
@@ -96,7 +96,7 @@ filterData = [
                  }
                // console.log("business voitures : \n ",res.modeles.voitures);
                }
-               console.log(this.filterData);
+               //console.log(this.filterData);
  
                //get the different prices of every car
                for(let i=0 ; i< this.filterData.length ; i++)
@@ -120,12 +120,12 @@ filterData = [
          else{
             //no  cars
             if(this.lang=="fr")
-             {
-               alert("Erreur code  voiture !!  \n Retour à la page accueil");
- 
-             }else{
-               alert("Car code error !! \ n Back Home Page")
-             }
+            {
+              alert("Erreur Serveur \n code vehicule incorrect  ");
+
+            }else{
+              alert(" Server error \n incorrect vehicle code ");
+            }
    
             this.router.navigateByUrl("/dashboard");
             this.webService.stopLoading();//to stop loading

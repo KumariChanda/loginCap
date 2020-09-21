@@ -1,9 +1,143 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>send-rides</ion-title>
+
+    <ion-item *ngIf="!isSearchbarOpened">
+
+           <!-- menu icon -->
+      <ion-buttons *ngIf="!isSearchbarOpened" slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+      <!-- title -->
+      <ion-title *ngIf="!isSearchbarOpened" >{{ 'DASHBOARD.my_rides' | translate }}</ion-title>
+
+   
+       <!-- search bar button -->
+       <ion-buttons slot="end">
+          <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" >
+              <ion-icon color="primary" name="search"> </ion-icon>
+          </ion-button>
+      </ion-buttons>
+
+
+    </ion-item>
+
+<!-- Search Bar -->
+   <ion-searchbar *ngIf="isSearchbarOpened" placeholder="{{ 'DASHBOARD.search_here' | translate }}" [(ngModel)]="term" animated="true" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+
+     
   </ion-toolbar>
+    
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="show" >
+
+
+    
+<!-- Default Segment / Search for the car according to the type of reservation -->
+ <!--   First main Search  -->
+
+    <ion-card  *ngIf="nbr==0"> 
+          
+        <label textWrap="true" style="margin-bottom: 20%; margin-top: 20%;margin-left: 40%;color:white;">  
+            {{"DASHBOARD.empty_list" | translate}}
+        
+         </label> 
+    
+     </ion-card>
+
+     
+     
+
+     <ion-card *ngFor="let item of filterData | filter:term ; index as i">
+       <div  *ngIf="item.etape_location == 5">
+        <!-- <img [src]="item?.photo[0]?.image" /> -->
+        <ion-card-header>
+                 <!-- <ion-card-title >{{item.modele}}</ion-card-title> -->
+
+          <ion-card-subtitle>
+
+             
+              <!-- Car title -->
+                <ion-item>
+                    <label textWrap="true" style="width: 150px"> {{ "RESERVECAR.car" | translate }} </label>
+                   <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"  > {{item.modele}}  </label>
+     
+                    <!-- <ion-chip slot="end"> Per Hour </ion-chip> -->
+                </ion-item>
+              <!-- Reservation Type -->
+                <ion-item>
+                    <label textWrap="true" style="width: 120px"> {{ "RESERVECAR.booking_type" | translate }} </label>
+                   <label textWrap="true" style="margin-left: 15%;color:white;width: 150px"  *ngIf="item.type_location == 3"> {{ "RESERVECAR.airport_pick" | translate }}  </label>
+                    <label textWrap="true" style="margin-left: 15%;color:white;width: 150px" *ngIf="item.type_location == 2"> {{ "RESERVECAR.per_hour" | translate }}  </label>
+                    <label textWrap="true" style="margin-left: 15%;color:white;width: 150px" *ngIf="item.type_location == 1"> {{ "RESERVECAR.per_day" | translate }}   </label>
+                
+                    <!-- <ion-chip slot="end"> Per Hour </ion-chip> -->
+                </ion-item>
+              <!-- Depart -->
+                <ion-item  *ngIf="item.type_location == 3">
+                    <label textWrap="true" style="width: 150px"> {{ "RESERVECAR.departure" | translate }} </label>
+                   <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" > {{ item.depart }}  </label>
+                
+                    <!-- <ion-chip slot="end"> Per Hour </ion-chip> -->
+                </ion-item>
+
+
+                <!-- Destination -->
+            
+               <ion-item>
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_destination" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" > {{item.destination}}  </label>
+
+                    <!-- <ion-chip slot="end"> Daoukro </ion-chip> -->
+                </ion-item>
+
+              
+                <!-- Starting date -->
+                <ion-item>
+                    <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_start_date" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"  > {{item.date_debut}} </label>
+                </ion-item>
+                
+                <!-- Starting time -->
+                <ion-item>
+                    <label textWrap="true" style="width: 150px" > {{ "DASHBOARD.start_time" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px"> {{item.heure_debut}} </label>
+
+                    <!-- <ion-chip slot="end"> 12 : 10 </ion-chip> -->
+                </ion-item>
+               
+
+                <!-- Client name -->
+                <ion-item>
+                    <label textWrap="true" style="width: 150px"  > {{ "RESERVECAR.clientname" | translate }} </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" > {{item.clientname}} </label>
+                    <!-- <ion-chip slot="end"> Oumarou Toto </ion-chip> -->
+                </ion-item>
+
+               
+
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+                        
+             
+               <!-- button View details-->
+             <ion-button  *ngIf="item.etape_location == 5 " style="margin-left:30%" (click)="tripDetails(i)" >
+                <ion-label *ngIf="item.etape_location == 5 ">{{"DASHBOARD.btn_view_details" | translate }}</ion-label>
+            </ion-button>
+
+      
+        </ion-card-content>
+         
+     </div>
+
+      </ion-card>
+
+    <!-- </ion-item> -->
+
+
+
+
 
 </ion-content>

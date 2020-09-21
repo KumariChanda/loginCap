@@ -62,13 +62,13 @@ filterData = [
           if(res.length ==0)
           { 
                //no  cars
-              if(this.lang=="fr")
-              {
-                alert("La Liste de voitures est vide \n Retour à la page accueil");
-      
-              }else{
-                alert("The List of cars is Empty \ n Back Home Page")
-              }
+               if(this.lang=="fr")
+               {
+                 alert(" Pas de véhicule, veuillez affiner votre recherche.");
+       
+               }else{
+                 alert(" No vehicle, please refine your search.")
+               }
       
               this.router.navigateByUrl("/dashboard");
               this.webService.stopLoading();//to stop loading
@@ -95,7 +95,7 @@ filterData = [
               }
             // console.log("business voitures : \n ",res.modeles.voitures);
             }
-            console.log(this.filterData);
+           // console.log(this.filterData);
 
             //get the different prices of every car
             for(let i=0 ; i< this.filterData.length ; i++)
@@ -119,10 +119,10 @@ filterData = [
         //no  cars
         if(this.lang=="fr")
         {
-         alert("Erreur code  voiture !!  \n Retour à la page accueil");
+          alert("Erreur Serveur \n code vehicule incorrect  ");
 
         }else{
-          alert("Car code error !! \ n Back Home Page")
+          alert(" Server error \n incorrect vehicle code ");
         }
 
         this.router.navigateByUrl("/dashboard");

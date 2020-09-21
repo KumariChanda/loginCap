@@ -38,13 +38,15 @@
     
         <div *ngFor="let photo of item.photo; let i = index " > 
           
-          <img *ngIf="i== 0"  [src]="src_link + photo.image" />
+          <img *ngIf="i== 0"  [src]="src_link+photo.image" />
           
         </div>
         
         <ion-card-header>
+                    <ion-card-title  > {{item.modele.libelle}}</ion-card-title>
+
           <ion-card-subtitle>
-             
+                      
                 <!-- type of motor -->
                 <ion-chip >
                   <ion-icon name="car"></ion-icon>
@@ -66,15 +68,17 @@
               </ion-chip>
 
           </ion-card-subtitle>
-          <ion-card-title  > {{item.modele.libelle}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
                         
-               <!-- More-->
-             <ion-chip style="margin-left:30%" (click)="carDetails(item.id)" >
+             <!-- More-->
+          <ion-button expand="block"  (click)="carDetails(item.id)"> 
+  
+             <!-- <ion-chip style="margin-left:30%" (click)="carDetails(item.id)" > -->
                 <ion-label >{{ 'DASHBOARD.btn_view_details' | translate }} </ion-label>
                 <ion-icon name="chevron-forward"></ion-icon>
-            </ion-chip>
+            <!-- </ion-chip> -->
+           </ion-button> 
 
       
         </ion-card-content>

@@ -49,7 +49,7 @@ export class SignupPage implements OnInit {
     setTimeout( ()=>{
       this.btnClicked=false;
       }, 1000)
-    console.log("Signup cllicked!.");
+    //console.log("Signup cllicked!.");
 
      if(this.firstname &&  this.lastname && this.email && this.password && this.password && this.confirmpassword)
      {
@@ -78,7 +78,7 @@ export class SignupPage implements OnInit {
 
                   if(res)
                   {
-                    console.log(res);
+                    //console.log(res);
                     this.webService.stopLoading();
                     if(this.lang =="fr")
                   {
@@ -143,7 +143,7 @@ export class SignupPage implements OnInit {
             alert("Remplir tous les chaps obligatoires (*)  ")
           }
           else{
-            alert("Fill Alln the mandatory fields (*) ")
+            alert("Fill All the mandatory fields (*) ")
 
           }
       }

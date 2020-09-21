@@ -58,7 +58,7 @@ export class LoginPage  {
 
 
           this.webService.login(sending_obj).subscribe(async res=>{
-           console.log("getting response : ",res); 
+           //console.log("getting response : ",res); 
 
             if(!res.detail)
             {
@@ -116,12 +116,12 @@ export class LoginPage  {
                 this.webService.stopLoading();
                 if(this.lang =="fr")
                 {
-                  alert("Etes-vous Chauffeur ?? \n Si oui, selectionnez l'option \n se connecter en tant que chaffeur.") ;            
+                  alert("Etes-vous Chauffeur ? \n Si oui, connectez-vous en tant que chaffeur.") ;            
 
                 } 
                 else
                 {
-                  alert("Are you a driver?\n If yes,  choose the option \n login as a driver. ") ;            
+                  alert("Are you a driver ? \n If yes, login as a driver. ") ;            
 
                 }  
 
@@ -192,7 +192,7 @@ export class LoginPage  {
   async getData()
   {
   var ret=Storage.get({ key:'accessToken'});
-    console.log((await ret).value);
+    //console.log((await ret).value);
   }
 
 
