@@ -74,10 +74,13 @@ show = false; //is to show page content
     
   }
 
- async ngOnInit() {
-    this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
-    // this.webservice.presentLoading();
-    
+  ionViewWillEnter()
+   {
+     console.log("Voici le retour");
+   }
+
+  ngOnInit() {
+    this.webservice.presentLoading();
     this.getCurrentToken();
 
     this.subscription = this.route.queryParams.subscribe((data) => {

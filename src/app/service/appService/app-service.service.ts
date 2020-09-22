@@ -80,7 +80,7 @@ export class AppServiceService {
           // this.loading = false;
         // console.log("loading stop");
 
-         if(this.loading)
+         if(this.loading != false)
             this.loading = false;
             return await this.loadingCtrl.dismiss().then(() => console.log('loading dismissed'));
         }

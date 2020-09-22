@@ -76,7 +76,14 @@ export class MyBookingsPage implements OnInit {
   constructor(public webService : AppServiceService, private router : Router,
     public alertController: AlertController) { }
 
-  async ngOnInit() {
+
+    ngOnInit()
+    {
+     // this.ngOnInit();
+    }
+ 
+
+  async  ionViewWillEnter() {
         //start laoder
         this.webService.presentLoading();
         //get token
@@ -187,6 +194,12 @@ export class MyBookingsPage implements OnInit {
                                     this.webService.stopLoading();
                                   });
                                   //end get depart
+                              }else
+                              {
+                                 //stop loader
+                                  this.show = true
+                                  this.webService.stopLoading();
+
                               }
 
                             });

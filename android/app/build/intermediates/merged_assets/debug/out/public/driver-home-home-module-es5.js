@@ -349,7 +349,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       _createClass(HomePage, [{
         key: "ngOnInit",
-        value: function ngOnInit() {
+        value: function ngOnInit() {//this.ngOnInit();
+        }
+      }, {
+        key: "ionViewWillEnter",
+        value: function ionViewWillEnter() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var _this2 = this;
 
@@ -386,51 +390,73 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
                         var _this3 = this;
 
-                        var _loop, i;
+                        var i, _loop, _i;
 
                         return regeneratorRuntime.wrap(function _callee$(_context) {
                           while (1) {
                             switch (_context.prev = _context.next) {
                               case 0:
-                                // console.log("getting Rides : ",res);
-                                if (!res.detail) {
-                                  this.filterData = res;
+                                if (res.detail) {
+                                  _context.next = 13;
+                                  break;
+                                }
 
-                                  _loop = function _loop(i) {
-                                    if (_this3.filterData[i].etape_location == 4 || _this3.filterData[i].etape_location == 2) {
-                                      _this3.nbr = _this3.nbr + 1;
-                                    } //call the car according to the id 
+                                this.filterData = res;
+                                i = 0;
 
+                              case 3:
+                                if (!(i < res.length)) {
+                                  _context.next = 10;
+                                  break;
+                                }
 
-                                    _this3.webService.getCarDetails(res[i].voiture).subscribe(function (car) {
+                                if (!(this.filterData[i].etape_location == 4 || this.filterData[i].etape_location == 2)) {
+                                  _context.next = 7;
+                                  break;
+                                }
+
+                                this.nbr = this.nbr + 1;
+                                return _context.abrupt("break", 10);
+
+                              case 7:
+                                i++;
+                                _context.next = 3;
+                                break;
+
+                              case 10:
+                                //
+                                if (this.nbr > 0) {
+                                  _loop = function _loop(_i) {
+                                    //call the car according to the id 
+                                    _this3.webService.getCarDetails(res[_i].voiture).subscribe(function (car) {
                                       // console.log(car)
                                       //pictures of car
-                                      _this3.filterData[i].photo = car.photo; //modele
+                                      _this3.filterData[_i].photo = car.photo; //modele
 
-                                      _this3.filterData[i].modele = car.modele.libelle; //receive the res
+                                      _this3.filterData[_i].modele = car.modele.libelle; //receive the res
 
-                                      _this3.filterData[i] = res[i];
-                                      _this3.filterData[i].heure_debut = res[i].date_debut.split("T")[1].split(".")[0];
-                                      _this3.filterData[i].date_debut = res[i].date_debut.split("T")[0];
-                                      _this3.filterData[i].heure_fin = res[i].date_fin.split("T")[1].split(".")[0];
-                                      _this3.filterData[i].date_fin = res[i].date_fin.split("T")[0];
-                                      _this3.filterData[i].date_location = res[i].date_location.split("T")[0];
-                                      _this3.filterData[i].destination_id = res[i].destination;
-                                      _this3.filterData[i].depart_id = res[i].depart; //get the client name
+                                      _this3.filterData[_i] = res[_i];
+                                      _this3.filterData[_i].heure_debut = res[_i].date_debut.split("T")[1].split(".")[0];
+                                      _this3.filterData[_i].date_debut = res[_i].date_debut.split("T")[0];
+                                      _this3.filterData[_i].heure_fin = res[_i].date_fin.split("T")[1].split(".")[0];
+                                      _this3.filterData[_i].date_fin = res[_i].date_fin.split("T")[0];
+                                      _this3.filterData[_i].date_location = res[_i].date_location.split("T")[0];
+                                      _this3.filterData[_i].destination_id = res[_i].destination;
+                                      _this3.filterData[_i].depart_id = res[_i].depart; //get the client name
 
-                                      _this3.webService.getClient(res[i].client, _this3.token).subscribe(function (resp) {
+                                      _this3.webService.getClient(res[_i].client, _this3.token).subscribe(function (resp) {
                                         //   console.log("client", resp);
-                                        _this3.filterData[i].clientname = resp.first_name + " " + resp.last_name; //get destination
+                                        _this3.filterData[_i].clientname = resp.first_name + " " + resp.last_name; //get destination
 
-                                        _this3.webService.getSingleDestination(res[i].destination).subscribe(function (dest) {
+                                        _this3.webService.getSingleDestination(res[_i].destination).subscribe(function (dest) {
                                           //    console.log(dest);
-                                          _this3.filterData[i].destination = dest.destination;
+                                          _this3.filterData[_i].destination = dest.destination;
 
-                                          if (res[i].depart > 0) {
+                                          if (res[_i].depart > 0) {
                                             //get depart
-                                            _this3.webService.getSingleDestination(res[i].depart).subscribe(function (dep) {
+                                            _this3.webService.getSingleDestination(res[_i].depart).subscribe(function (dep) {
                                               //   console.log(dep);
-                                              _this3.filterData[i].depart = dep.destination;
+                                              _this3.filterData[_i].depart = dep.destination;
                                               _this3.list_original = _this3.filterData; //stop loader
 
                                               _this3.show = true;
@@ -438,6 +464,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                               _this3.webService.stopLoading();
                                             }); //end get depart
 
+                                          } else {
+                                            //stop loader
+                                            _this3.show = true;
+
+                                            _this3.webService.stopLoading();
                                           }
                                         }); //end get destination
 
@@ -446,20 +477,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                     });
                                   };
 
-                                  for (i = 0; i < res.length; i++) {
-                                    _loop(i);
+                                  for (_i = 0; _i < res.length; _i++) {
+                                    _loop(_i);
                                   }
                                 } else {
+                                  this.show = true;
                                   this.webService.stopLoading();
-
-                                  if (this.lang == "fr") {
-                                    alert("Aucun Trajet disponible !! ");
-                                  } else {
-                                    alert("No Ride available !!  ");
-                                  }
                                 }
 
-                              case 1:
+                                _context.next = 15;
+                                break;
+
+                              case 13:
+                                this.webService.stopLoading();
+
+                                if (this.lang == "fr") {
+                                  alert("Aucun Trajet disponible !! ");
+                                } else {
+                                  alert("No Ride available !!  ");
+                                }
+
+                              case 15:
                               case "end":
                                 return _context.stop();
                             }
@@ -512,13 +550,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "endTrip",
         value: function endTrip(id) {
-          //console.log("selected : -> ", this.filterData[id].id);
-          //call another page and fetch the details of the car
-          //this.router.navigateByUrl("/trip-details")
           //call another page and fetch the details of the car
           this.router.navigate(['send-reports'], {
             queryParams: {
-              id: this.filterData[id].id,
+              booked: JSON.stringify(this.filterData[id]),
               prev: "/home"
             }
           });

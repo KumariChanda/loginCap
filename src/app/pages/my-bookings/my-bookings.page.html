@@ -81,7 +81,7 @@
             <ion-card-content>
 
                   <!-- button View details-->
-                  <ion-button  style="margin-left:25%" (click) = "viewDetails(i)" >
+                  <ion-button  style="margin-left:30%" (click) = "viewDetails(i)" >
                     <ion-label >{{ "RESERVECAR.booking_view_detail" | translate }}</ion-label>
                   </ion-button>
           
@@ -195,7 +195,7 @@
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'fr'"> Très Bien </label>
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'en'"> Very good </label>
                 </ion-item>
-                <label> {{reservDetails.commentaire_client}} </label> <br>
+                <label textWrap="true" style="margin-left: 5%;color:white;" *ngIf="reservDetails.note_client>0"> {{reservDetails.commentaire_client}} </label> <br>
 
                   <!-- your comment/ message -->
             

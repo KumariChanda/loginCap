@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n\n    <ion-item *ngIf=\"!isSearchbarOpened\">\n\n           <!-- menu icon -->\n      <ion-buttons *ngIf=\"!isSearchbarOpened\" slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n\n      <!-- title -->\n      <ion-title *ngIf=\"!isSearchbarOpened\" >{{ 'DASHBOARD.my_rides' | translate }}</ion-title>\n\n   \n       <!-- search bar button -->\n       <ion-buttons slot=\"end\">\n          <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\" >\n              <ion-icon color=\"primary\" name=\"search\"> </ion-icon>\n          </ion-button>\n      </ion-buttons>\n\n\n    </ion-item>\n\n<!-- Search Bar -->\n   <ion-searchbar *ngIf=\"isSearchbarOpened\" placeholder=\"{{ 'DASHBOARD.search_here' | translate }}\" [(ngModel)]=\"term\" animated=\"true\" showCancelButton=\"true\" (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n\n     \n  </ion-toolbar>\n    \n</ion-header>\n\n<ion-content *ngIf=\"show\" >\n\n\n    \n<!-- Default Segment / Search for the car according to the type of reservation -->\n <!--   First main Search  -->\n\n    <ion-card  *ngIf=\"nbr==0\"> \n          \n        <label textWrap=\"true\" style=\"margin-bottom: 20%; margin-top: 20%;margin-left: 40%;color:white;\">  \n            {{\"DASHBOARD.empty_list\" | translate}}\n        \n         </label> \n    \n     </ion-card>\n\n     \n     \n\n     <ion-card *ngFor=\"let item of filterData | filter:term ; index as i\">\n       <div  *ngIf=\"item.etape_location == 5\">\n        <!-- <img [src]=\"item?.photo[0]?.image\" /> -->\n        <ion-card-header>\n                 <!-- <ion-card-title >{{item.modele}}</ion-card-title> -->\n\n          <ion-card-subtitle>\n\n             \n              <!-- Car title -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\"> {{ \"RESERVECAR.car\" | translate }} </label>\n                   <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"  > {{item.modele}}  </label>\n     \n                    <!-- <ion-chip slot=\"end\"> Per Hour </ion-chip> -->\n                </ion-item>\n              <!-- Reservation Type -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 120px\"> {{ \"RESERVECAR.booking_type\" | translate }} </label>\n                   <label textWrap=\"true\" style=\"margin-left: 15%;color:white;width: 150px\"  *ngIf=\"item.type_location == 3\"> {{ \"RESERVECAR.airport_pick\" | translate }}  </label>\n                    <label textWrap=\"true\" style=\"margin-left: 15%;color:white;width: 150px\" *ngIf=\"item.type_location == 2\"> {{ \"RESERVECAR.per_hour\" | translate }}  </label>\n                    <label textWrap=\"true\" style=\"margin-left: 15%;color:white;width: 150px\" *ngIf=\"item.type_location == 1\"> {{ \"RESERVECAR.per_day\" | translate }}   </label>\n                \n                    <!-- <ion-chip slot=\"end\"> Per Hour </ion-chip> -->\n                </ion-item>\n              <!-- Depart -->\n                <ion-item  *ngIf=\"item.type_location == 3\">\n                    <label textWrap=\"true\" style=\"width: 150px\"> {{ \"RESERVECAR.departure\" | translate }} </label>\n                   <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" > {{ item.depart }}  </label>\n                \n                    <!-- <ion-chip slot=\"end\"> Per Hour </ion-chip> -->\n                </ion-item>\n\n\n                <!-- Destination -->\n            \n               <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_destination\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" > {{item.destination}}  </label>\n\n                    <!-- <ion-chip slot=\"end\"> Daoukro </ion-chip> -->\n                </ion-item>\n\n              \n                <!-- Starting date -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_start_date\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"  > {{item.date_debut}} </label>\n                </ion-item>\n                \n                <!-- Starting time -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"DASHBOARD.start_time\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{item.heure_debut}} </label>\n\n                    <!-- <ion-chip slot=\"end\"> 12 : 10 </ion-chip> -->\n                </ion-item>\n               \n\n                <!-- Client name -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\"  > {{ \"RESERVECAR.clientname\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" > {{item.clientname}} </label>\n                    <!-- <ion-chip slot=\"end\"> Oumarou Toto </ion-chip> -->\n                </ion-item>\n\n               \n\n          </ion-card-subtitle>\n        </ion-card-header>\n        <ion-card-content>\n                        \n             \n               <!-- button View details-->\n             <ion-button  *ngIf=\"item.etape_location == 5 \" style=\"margin-left:30%\" (click)=\"tripDetails(i)\" >\n                <ion-label *ngIf=\"item.etape_location == 5 \">{{\"DASHBOARD.btn_view_details\" | translate }}</ion-label>\n            </ion-button>\n\n      \n        </ion-card-content>\n         \n     </div>\n\n      </ion-card>\n\n    <!-- </ion-item> -->\n\n\n\n\n\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n\r\n    <ion-item *ngIf=\"!isSearchbarOpened\">\r\n\r\n           <!-- menu icon -->\r\n      <ion-buttons *ngIf=\"!isSearchbarOpened\" slot=\"start\">\r\n        <ion-menu-button></ion-menu-button>\r\n      </ion-buttons>\r\n\r\n      <!-- title -->\r\n      <ion-title *ngIf=\"!isSearchbarOpened\" >{{ 'DASHBOARD.my_rides' | translate }}</ion-title>\r\n\r\n   \r\n       <!-- search bar button -->\r\n       <ion-buttons slot=\"end\">\r\n          <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\" >\r\n              <ion-icon color=\"primary\" name=\"search\"> </ion-icon>\r\n          </ion-button>\r\n      </ion-buttons>\r\n\r\n\r\n    </ion-item>\r\n\r\n<!-- Search Bar -->\r\n   <ion-searchbar *ngIf=\"isSearchbarOpened\" placeholder=\"{{ 'DASHBOARD.search_here' | translate }}\" [(ngModel)]=\"term\" animated=\"true\" showCancelButton=\"true\" (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\r\n\r\n     \r\n  </ion-toolbar>\r\n    \r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"show\" >\r\n\r\n\r\n    \r\n<!-- Default Segment / Search for the car according to the type of reservation -->\r\n <!--   First main Search  -->\r\n\r\n    <ion-card  *ngIf=\"nbr==0\"> \r\n          \r\n        <label textWrap=\"true\" style=\"margin-bottom: 20%; margin-top: 20%;margin-left: 40%;color:white;\">  \r\n            {{\"DASHBOARD.empty_list\" | translate}}\r\n        \r\n         </label> \r\n    \r\n     </ion-card>\r\n\r\n     \r\n     \r\n\r\n     <ion-card *ngFor=\"let item of filterData | filter:term ; index as i\">\r\n       <div  *ngIf=\"item.etape_location == 5\">\r\n        <!-- <img [src]=\"item?.photo[0]?.image\" /> -->\r\n        <ion-card-header>\r\n                 <!-- <ion-card-title >{{item.modele}}</ion-card-title> -->\r\n\r\n          <ion-card-subtitle>\r\n\r\n             \r\n              <!-- Car title -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\"> {{ \"RESERVECAR.car\" | translate }} </label>\r\n                   <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"  > {{item.modele}}  </label>\r\n     \r\n                    <!-- <ion-chip slot=\"end\"> Per Hour </ion-chip> -->\r\n                </ion-item>\r\n              <!-- Reservation Type -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 120px\"> {{ \"RESERVECAR.booking_type\" | translate }} </label>\r\n                   <label textWrap=\"true\" style=\"margin-left: 15%;color:white;width: 150px\"  *ngIf=\"item.type_location == 3\"> {{ \"RESERVECAR.airport_pick\" | translate }}  </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 15%;color:white;width: 150px\" *ngIf=\"item.type_location == 2\"> {{ \"RESERVECAR.per_hour\" | translate }}  </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 15%;color:white;width: 150px\" *ngIf=\"item.type_location == 1\"> {{ \"RESERVECAR.per_day\" | translate }}   </label>\r\n                \r\n                    <!-- <ion-chip slot=\"end\"> Per Hour </ion-chip> -->\r\n                </ion-item>\r\n              <!-- Depart -->\r\n                <ion-item  *ngIf=\"item.type_location == 3\">\r\n                    <label textWrap=\"true\" style=\"width: 150px\"> {{ \"RESERVECAR.departure\" | translate }} </label>\r\n                   <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" > {{ item.depart }}  </label>\r\n                \r\n                    <!-- <ion-chip slot=\"end\"> Per Hour </ion-chip> -->\r\n                </ion-item>\r\n\r\n\r\n                <!-- Destination -->\r\n            \r\n               <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_destination\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" > {{item.destination}}  </label>\r\n\r\n                    <!-- <ion-chip slot=\"end\"> Daoukro </ion-chip> -->\r\n                </ion-item>\r\n\r\n              \r\n                <!-- Starting date -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_start_date\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"  > {{item.date_debut}} </label>\r\n                </ion-item>\r\n                \r\n                <!-- Starting time -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"DASHBOARD.start_time\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{item.heure_debut}} </label>\r\n\r\n                    <!-- <ion-chip slot=\"end\"> 12 : 10 </ion-chip> -->\r\n                </ion-item>\r\n               \r\n\r\n                <!-- Client name -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\"  > {{ \"RESERVECAR.clientname\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" > {{item.clientname}} </label>\r\n                    <!-- <ion-chip slot=\"end\"> Oumarou Toto </ion-chip> -->\r\n                </ion-item>\r\n\r\n               \r\n\r\n          </ion-card-subtitle>\r\n        </ion-card-header>\r\n        <ion-card-content>\r\n                        \r\n             \r\n               <!-- button View details-->\r\n             <ion-button  *ngIf=\"item.etape_location == 5 \" style=\"margin-left:30%\" (click)=\"tripDetails(i)\" >\r\n                <ion-label *ngIf=\"item.etape_location == 5 \">{{\"DASHBOARD.btn_view_details\" | translate }}</ion-label>\r\n            </ion-button>\r\n\r\n      \r\n        </ion-card-content>\r\n         \r\n     </div>\r\n\r\n      </ion-card>\r\n\r\n    <!-- </ion-item> -->\r\n\r\n\r\n\r\n\r\n\r\n</ion-content>\r\n";
     /***/
   },
 
@@ -244,12 +244,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var SendRidesPage = /*#__PURE__*/function () {
       function SendRidesPage(route, router, webService) {
-        var _this = this;
-
         _classCallCheck(this, SendRidesPage);
 
-        //language
-        // this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
         this.route = route;
         this.router = router;
         this.webService = webService;
@@ -300,57 +296,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.selected_index = -1;
         this.show_list = false;
         this.show = false;
-        this.nbr = 0; // date
-
-        var date = new Date();
-        var month, day; //today's date
-
-        this.today = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-
-        if (date.getMonth() + 1 < 10) {
-          month = "0" + (date.getMonth() + 1);
-        } else {
-          month = date.getMonth() + 1;
-        }
-
-        if (date.getDate() < 10) {
-          day = "0" + date.getDate();
-        } else {
-          day = date.getDate();
-        }
-
-        this.today = date.getFullYear() + "-" + month + "-" + day; //maximum date
-
-        var x = new Date().setDate(date.getDate() + 90);
-        this.maxdate = new Date(x);
-
-        if (this.maxdate.getMonth() + 1 < 10) {
-          month = "0" + (this.maxdate.getMonth() + 1);
-        } else {
-          month = this.maxdate.getMonth() + 1;
-        }
-
-        if (this.maxdate.getDate() < 10) {
-          day = "0" + this.maxdate.getDate();
-        } else {
-          day = this.maxdate.getDate();
-        }
-
-        this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day; //console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
-        //receive data from
-
-        this.route.queryParams.subscribe(function (params) {
-          if (params && params.special) {
-            _this.data = JSON.parse(params.special); // console.log("Complex :\n"+ this.data.reel +" + i "+ this.data.imag  )
-          }
-        });
+        this.nbr = 0;
       }
 
       _createClass(SendRidesPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this2 = this;
+            var _this = this;
 
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
@@ -382,61 +335,88 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     //present loading
                     this.webService.presentLoading();
                     this.webService.getDriverRide(this.userId, this.token).subscribe(function (res) {
-                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                        var _this3 = this;
+                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                        var _this2 = this;
 
-                        var _loop, i;
+                        var i, _loop, _i;
 
                         return regeneratorRuntime.wrap(function _callee$(_context) {
                           while (1) {
                             switch (_context.prev = _context.next) {
                               case 0:
-                                // console.log("getting Rides : ",res);
-                                if (!res.detail) {
-                                  this.filterData = res;
+                                if (res.detail) {
+                                  _context.next = 13;
+                                  break;
+                                }
 
-                                  _loop = function _loop(i) {
-                                    if (_this3.filterData[i].etape_location == 5) {
-                                      _this3.nbr = _this3.nbr + 1;
-                                    } //call the car according to the id 
+                                this.filterData = res;
+                                i = 0;
 
+                              case 3:
+                                if (!(i < res.length)) {
+                                  _context.next = 10;
+                                  break;
+                                }
 
-                                    _this3.webService.getCarDetails(res[i].voiture).subscribe(function (car) {
+                                if (!(this.filterData[i].etape_location == 5)) {
+                                  _context.next = 7;
+                                  break;
+                                }
+
+                                this.nbr = this.nbr + 1;
+                                return _context.abrupt("break", 10);
+
+                              case 7:
+                                i++;
+                                _context.next = 3;
+                                break;
+
+                              case 10:
+                                //
+                                if (this.nbr > 0) {
+                                  _loop = function _loop(_i) {
+                                    //call the car according to the id 
+                                    _this2.webService.getCarDetails(res[_i].voiture).subscribe(function (car) {
                                       // console.log(car)
                                       //pictures of car
-                                      _this3.filterData[i].photo = car.photo; //modele
+                                      _this2.filterData[_i].photo = car.photo; //modele
 
-                                      _this3.filterData[i].modele = car.modele.libelle; //receive the res
+                                      _this2.filterData[_i].modele = car.modele.libelle; //receive the res
 
-                                      _this3.filterData[i] = res[i];
-                                      _this3.filterData[i].heure_debut = res[i].date_debut.split("T")[1].split(".")[0];
-                                      _this3.filterData[i].date_debut = res[i].date_debut.split("T")[0];
-                                      _this3.filterData[i].heure_fin = res[i].date_fin.split("T")[1].split(".")[0];
-                                      _this3.filterData[i].date_fin = res[i].date_fin.split("T")[0];
-                                      _this3.filterData[i].date_location = res[i].date_location.split("T")[0];
-                                      _this3.filterData[i].destination_id = res[i].destination;
-                                      _this3.filterData[i].depart_id = res[i].depart; //get the client name
+                                      _this2.filterData[_i] = res[_i];
+                                      _this2.filterData[_i].heure_debut = res[_i].date_debut.split("T")[1].split(".")[0];
+                                      _this2.filterData[_i].date_debut = res[_i].date_debut.split("T")[0];
+                                      _this2.filterData[_i].heure_fin = res[_i].date_fin.split("T")[1].split(".")[0];
+                                      _this2.filterData[_i].date_fin = res[_i].date_fin.split("T")[0];
+                                      _this2.filterData[_i].date_location = res[_i].date_location.split("T")[0];
+                                      _this2.filterData[_i].destination_id = res[_i].destination;
+                                      _this2.filterData[_i].depart_id = res[_i].depart; //get the client name
 
-                                      _this3.webService.getClient(res[i].client, _this3.token).subscribe(function (resp) {
+                                      _this2.webService.getClient(res[_i].client, _this2.token).subscribe(function (resp) {
                                         //console.log("client", resp);
-                                        _this3.filterData[i].clientname = resp.first_name + " " + resp.last_name; //get destination
+                                        _this2.filterData[_i].clientname = resp.first_name + " " + resp.last_name; //get destination
 
-                                        _this3.webService.getSingleDestination(res[i].destination).subscribe(function (dest) {
+                                        _this2.webService.getSingleDestination(res[_i].destination).subscribe(function (dest) {
                                           //console.log(dest);
-                                          _this3.filterData[i].destination = dest.destination;
+                                          _this2.filterData[_i].destination = dest.destination;
 
-                                          if (res[i].depart > 0) {
+                                          if (res[_i].depart > 0) {
                                             //get depart
-                                            _this3.webService.getSingleDestination(res[i].depart).subscribe(function (dep) {
+                                            _this2.webService.getSingleDestination(res[_i].depart).subscribe(function (dep) {
                                               //console.log(dep);
-                                              _this3.filterData[i].depart = dep.destination;
-                                              _this3.list_original = _this3.filterData; //stop loader
+                                              _this2.filterData[_i].depart = dep.destination;
+                                              _this2.list_original = _this2.filterData; //stop loader
 
-                                              _this3.show = true;
+                                              _this2.show = true;
 
-                                              _this3.webService.stopLoading();
+                                              _this2.webService.stopLoading();
                                             }); //end get depart
 
+                                          } else {
+                                            //stop loader
+                                            _this2.show = true;
+
+                                            _this2.webService.stopLoading();
                                           }
                                         }); //end get destination
 
@@ -445,20 +425,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                     });
                                   };
 
-                                  for (i = 0; i < res.length; i++) {
-                                    _loop(i);
+                                  for (_i = 0; _i < res.length; _i++) {
+                                    _loop(_i);
                                   }
                                 } else {
+                                  this.show = true;
                                   this.webService.stopLoading();
-
-                                  if (this.lang == "fr") {
-                                    alert("Aucun Trajet disponible !! ");
-                                  } else {
-                                    alert("No Ride available !!  ");
-                                  }
                                 }
 
-                              case 1:
+                                _context.next = 15;
+                                break;
+
+                              case 13:
+                                this.webService.stopLoading();
+
+                                if (this.lang == "fr") {
+                                  alert("Aucun Trajet disponible !! ");
+                                } else {
+                                  alert("No Ride available !!  ");
+                                }
+
+                              case 15:
                               case "end":
                                 return _context.stop();
                             }
@@ -466,9 +453,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }, _callee, this);
                       }));
                     }, function (error) {
-                      _this2.webService.stopLoading();
+                      _this.webService.stopLoading();
 
-                      if (_this2.lang == "fr") {
+                      if (_this.lang == "fr") {
                         alert("Erreur Serveur !! ");
                       } else {
                         alert("Server Error!! ");
@@ -484,24 +471,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         } ///////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-        // async getToken()
-        //   {
-        //     var ret=Storage.get({ key:'accessToken'});
-        //     console.log((await ret).value);
-        //   }
-        ///////////////////////////////////////////////////
-
-      }, {
-        key: "logOut",
-        value: function logOut() {
-          //call dashboard page and pass data 
-          this.router.navigateByUrl("/dashboard"); // empty the token
-
-          Storage.set({
-            key: 'accessToken',
-            value: null
-          });
-        } //////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
         //this method is used to print the details of a selected trip //////////////
 
       }, {
@@ -517,44 +487,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               prev: "/send-rides"
             }
           });
-        } //////////////method for destination search //////////////////
-        /////////////////////////////////////////////////////
-
-      }, {
-        key: "onCancel",
-        value: function onCancel(val) {
-          this.show_list = false;
-          this.list_to_show = [];
-        }
-      }, {
-        key: "click_bar",
-        value: function click_bar() {
-          this.list_to_show = [];
-          this.show_list = true;
-        }
-      }, {
-        key: "click_item",
-        value: function click_item(val) {// for (let i = 0 ; i < this.list_original.length; i++)
-          // {
-          //     if (this.list_to_show[val].toUpperCase() === this.list_original[i].toUpperCase()) {
-          //         this.selected_index = i;
-          //         break;
-          //     }
-          // }
-          // this.show_list = false;
-        }
-      }, {
-        key: "change_query",
-        value: function change_query(query) {
-          var k = 0;
-          this.list_to_show = [];
-
-          for (var i = 0; i < this.list_original.length; i++) {
-            if (this.list_original[i].toUpperCase().includes(query.toUpperCase())) {
-              this.list_to_show[k] = this.list_original[i];
-              k += 1;
-            }
-          }
         }
       }]);
 
