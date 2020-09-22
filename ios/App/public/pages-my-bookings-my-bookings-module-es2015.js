@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n\n       <ion-item>\n        <ion-buttons slot=\"start\"  *ngIf=\"reservDetails==null\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n\n      <!-- prev icon -->\n           <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" *ngIf=\"reservDetails!=null\" ></ion-icon>\n        <ion-title size=\"small\"> {{\"DASHBOARD.my_bookings\" | translate}} </ion-title>\n    </ion-item> \n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n    <!-- --------------------- if  reservDetails== null----------------------------------------------------------------- -->\n       \n     <div *ngIf=\"reservDetails==null\">\n        <!-- Start reservation -->\n       <ion-card *ngFor=\"let item of filterData ; index as i\" >\n          \n          \n        <img [src]=\"item?.photo_car[0]?.image\" />\n\n            <ion-card-header>\n                    <ion-item> \n                        <ion-card-title >{{item.modele}}</ion-card-title>\n\n                        <ion-icon *ngIf=\"item.etape_location==1\" style=\"color: #ffa60a\" slot=\"end\"\n                          name=\"close-circle-outline\" (click)=\"cancel(i)\">\n                         \n                         </ion-icon>\n                        \n                        <ion-icon *ngIf=\"item.etape_location==5 && (item.note_client == 0 ||item.note_client==null)\" style=\"color:#ffa60a \" slot=\"end\"\n                          name=\"open-outline\" (click)=\"Mark(i)\">\n                         \n                         </ion-icon> \n\n                    </ion-item>\n              <ion-card-subtitle>\n\n                  \n               <!-- Status -->\n                <ion-item>\n                    <ion-label > {{ \"RESERVECAR.booking_status\" | translate }} </ion-label>\n                    <label textWrap=\"true\" style=\"color:white;width: 150px\" *ngIf=\"item.etape_location == 1 && lang=='fr'\" > En cours de traitement </label>\n                    <label textWrap=\"true\" style=\"color:white;width: 150px\" *ngIf=\"item.etape_location == 1 && lang=='en'\"> Being processed </label>\n                    <label textWrap=\"true\" style=\"color:white;width: 150px\" *ngIf=\"item.etape_location == 2 && lang=='fr'\" > Confirmée </label>\n                    <label  *ngIf=\"item.etape_location == 2 && lang=='en'\" textWrap=\"true\" style=\"color:white;width: 150px\"> Confirmed </label>\n                    <label *ngIf=\"item.etape_location == 3 && lang=='fr'\" textWrap=\"true\" style=\"color:white;width: 150px\"> Rejetée </label>\n                    <label  *ngIf=\"item.etape_location == 3 && lang=='en'\" textWrap=\"true\" style=\"color:white;width: 150px\"> Rejected  </label>\n                    <label  *ngIf=\"item.etape_location == 4 && lang=='fr'\" textWrap=\"true\" style=\"color:white;width: 150px\"> Réservation Débutée </label>\n                    <label  *ngIf=\"item.etape_location == 4 && lang=='en'\" textWrap=\"true\" style=\"color:white;width: 150px\"> Reservation started </label>\n                    <label  *ngIf=\"item.etape_location == 5 && lang=='fr'\" textWrap=\"true\" style=\"color:white;width: 150px\"> Réservation terminée </label>\n                    <label  *ngIf=\"item.etape_location == 5 && lang=='en'\" textWrap=\"true\" style=\"color:white;width: 150px\">Reservation completed </label>\n                    <label  *ngIf=\"item.etape_location == 6 && lang=='fr'\" textWrap=\"true\" style=\"color:white;width: 150px\"> Annulée </label>\n                    <label  *ngIf=\"item.etape_location == 6 && lang=='en'\" textWrap=\"true\" style=\"color:white;width: 150px\"> Cancelled </label>\n                  \n                </ion-item>\n                <!-- Starting date -->\n                <ion-item>\n                    <ion-label > {{ \"RESERVECAR.booking_start_date\" | translate }} </ion-label>\n                    <label textWrap=\"true\" style=\"color:white;width: 150px\"> {{item.date_debut}} </label>\n                </ion-item>\n                  <!-- Destination -->\n            \n               <ion-item>\n                    <label  > {{ \"RESERVECAR.booking_destination\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"color:white; width: 150px\"> {{item.destination}} </label>\n                </ion-item>\n\n                \n\n              </ion-card-subtitle>\n            </ion-card-header>\n\n\n            <ion-card-content>\n\n                  <!-- button View details-->\n                  <ion-button  style=\"margin-left:30%\" (click) = \"viewDetails(i)\" >\n                      <ion-label >{{ \"RESERVECAR.booking_view_detail\" | translate }}</ion-label>\n                  </ion-button>\n          \n            </ion-card-content>\n        </ion-card>\n                  <!-- Stop Reservation -->\n      </div>  \n    <!-- -------------------------------------------------------------------------------------- -->\n    <!-- -------------------------------------------------------------------------------------- -->\n    <!-- -------------------------------------------------------------------------------------- -->\n    <!-- -------------------------------------------------------------------------------------- -->\n\n    <!-- --------------------- if  reservDetails!= null----------------------------------------------------------------- -->\n       \n     <div *ngIf=\"reservDetails!=null\">\n        <!-- Start reservation -->\n       <ion-card *ngIf=\"reservDetails \" >\n          \n          \n        <img [src]=\"reservDetails?.photo_car[0]?.image\" />\n\n            <ion-card-header>\n                    <ion-card-title >{{reservDetails.modele}}</ion-card-title>\n\n              <ion-card-subtitle>\n\n                  \n               <!-- Status -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_status\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 1 && lang=='fr'\" > En cours de traitement </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 1 && lang=='en'\" > Being processed </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 2 && lang=='fr'\" > Confirmée </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 2 && lang=='en'\" > Confirmed </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 3 && lang=='fr'\"> Rejetée </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 3 && lang=='en'\" > Rejected  </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 4 && lang=='fr'\" > Réservation Débutée </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 4 && lang=='en'\" > Reservation started </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 5 && lang=='fr'\" > Réservation terminée </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 5 && lang=='en'\" >Reservation completed </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 6 && lang=='fr'\" > Annulée </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 6 && lang=='en'\" > Cancelled </label>             \n                </ion-item>\n               \n                <!-- Booking Type  -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_type\" | translate }}</label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"  *ngIf=\"reservDetails.type_location == 3\"> {{ \"RESERVECAR.airport_pick\" | translate }}  </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.type_location == 2\"> {{ \"RESERVECAR.per_hour\" | translate }}  </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.type_location == 1\"> {{ \"RESERVECAR.per_day\" | translate }}   </label>\n                </ion-item>\n                <!-- Location date -->\n                 <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\"  > {{ \"RESERVECAR.booking_date\" | translate }}</label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.date_location}} </label>\n                </ion-item>\n                \n                <!-- Starting date -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_start_date\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.date_debut}} </label>\n                </ion-item>\n                  <!-- Starting time -->\n                <ion-item >\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"DASHBOARD.start_time\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.heure_debut}} </label>\n                </ion-item>\n                <!-- Return date -->\n                <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\"> {{ \"RESERVECAR.booking_end_date\" | translate }}</label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.date_fin}} </label>\n                </ion-item>\n              \n                <!-- Return time -->\n                <ion-item *ngIf=\"reservDetails.type_location == 2\">\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"DASHBOARD.return_time\" | translate }}</label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.heure_fin}} </label>\n                </ion-item>\n                  <!-- Departure -->\n            \n               <ion-item  *ngIf=\"reservDetails.type_location == 3\">\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.departure\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.depart}} </label>\n                </ion-item>\n                  <!-- Destination -->\n            \n               <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_destination\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.destination}} </label>\n                </ion-item>\n\n                  <!-- Price -->\n            \n               <ion-item>\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_price\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.montant}} F CFA </label>\n                </ion-item>\n                  <!-- your comment/ message -->\n            \n               <ion-item>\n                    <label > {{ \"RESERVECAR.booking_your_message\" | translate }} </label>\n                </ion-item> \n    \n                <ion-label style=\"color:white;margin-right:10%; margin-left:7%; text-align:justify;\">\n                   {{reservDetails.message}}  \n                </ion-label>\n\n                <!-- your marks: -->\n            \n               <ion-item *ngIf=\"reservDetails.note_client>0\">\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.marks\" | translate }} </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==1 && lang == 'fr'\"> Très Mauvais </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==1 && lang == 'en'\"> Very Bad </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==2 && lang == 'fr'\"> Mauvais </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==2 && lang == 'en'\"> Bad </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==3 && lang == 'fr'\"> Moyen </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==3 && lang == 'en'\"> Average </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==4 && lang == 'fr'\"> Bien </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==4 && lang == 'en'\"> Bien </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==5 && lang == 'fr'\"> Très Bien </label>\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==5 && lang == 'en'\"> Very good </label>\n                </ion-item>\n\n                \n\n              </ion-card-subtitle>\n            </ion-card-header>\n\n\n            <ion-card-content>\n  \n            </ion-card-content>\n          </ion-card>\n        <!-- Stop Reservation -->\n      </div>  \n    <!-- -------------------------------------------------------------------------------------- -->\n\n\n\n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n\r\n       <ion-item>\r\n        <ion-buttons slot=\"start\"  *ngIf=\"reservDetails==null\">\r\n          <ion-menu-button></ion-menu-button>\r\n        </ion-buttons>\r\n\r\n        <ion-buttons slot=\"start\" (click)=\"prev()\"  *ngIf=\"reservDetails!=null\">\r\n          <ion-icon  color=\"light\" name=\"chevron-back\" *ngIf=\"reservDetails!=null\" ></ion-icon>\r\n        </ion-buttons>\r\n\r\n      <!-- prev icon -->\r\n        <ion-title  size=\"small\"> {{\"DASHBOARD.my_bookings\" | translate}} </ion-title>\r\n\r\n        \r\n    </ion-item> \r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"show\">\r\n\r\n    <!-- --------------------- if  reservDetails== null----------------------------------------------------------------- -->\r\n       \r\n     <div *ngIf=\"reservDetails==null\">\r\n        <!-- Start reservation -->\r\n       <ion-card *ngFor=\"let item of filterData ; index as i\" >\r\n          \r\n          \r\n        <img [src]=\"item?.photo_car[0]?.image\" />\r\n\r\n            <ion-card-header>\r\n                    <ion-item> \r\n                        <ion-card-title >{{item.modele}}</ion-card-title>\r\n\r\n                        <ion-icon *ngIf=\"item.etape_location==1\" style=\"color: #ffa60a\" slot=\"end\"\r\n                          name=\"close-circle-outline\" (click)=\"cancel(i)\">\r\n                         \r\n                         </ion-icon>\r\n                        \r\n                        <ion-icon *ngIf=\"(item.etape_location==5 && item.note_client == 0) ||(item.etape_location==5 && item.note_client==null)\" style=\"color:#ffa60a \" slot=\"end\"\r\n                          name=\"open-outline\" (click)=\"Mark(i)\">\r\n                         \r\n                         </ion-icon> \r\n\r\n                    </ion-item>\r\n              <ion-card-subtitle>\r\n\r\n                  \r\n               <!-- Status -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\" width: 150px\" > {{ \"RESERVECAR.booking_status\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\" *ngIf=\"item.etape_location == 1 && lang=='fr'\" > En cours de traitement </label>\r\n                    <label textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\" *ngIf=\"item.etape_location == 1 && lang=='en'\"> Being processed </label>\r\n                    <label textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\" *ngIf=\"item.etape_location == 2 && lang=='fr'\" > Confirmée </label>\r\n                    <label  *ngIf=\"item.etape_location == 2 && lang=='en'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> Confirmed </label>\r\n                    <label *ngIf=\"item.etape_location == 3 && lang=='fr'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> Rejetée </label>\r\n                    <label  *ngIf=\"item.etape_location == 3 && lang=='en'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> Rejected  </label>\r\n                    <label  *ngIf=\"item.etape_location == 4 && lang=='fr'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> Réservation Débutée </label>\r\n                    <label  *ngIf=\"item.etape_location == 4 && lang=='en'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> Reservation started </label>\r\n                    <label  *ngIf=\"item.etape_location == 5 && lang=='fr'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> Réservation terminée </label>\r\n                    <label  *ngIf=\"item.etape_location == 5 && lang=='en'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\">Reservation completed </label>\r\n                    <label  *ngIf=\"item.etape_location == 6 && lang=='fr'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> Annulée </label>\r\n                    <label  *ngIf=\"item.etape_location == 6 && lang=='en'\" textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> Cancelled </label>\r\n                  \r\n                </ion-item>\r\n                <!-- Starting date -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\" width: 150px\" > {{ \"RESERVECAR.booking_start_date\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left:5%;color:white;width: 150px\"> {{item.date_debut}} </label>\r\n                </ion-item>\r\n                  <!-- Destination -->\r\n            \r\n               <ion-item>\r\n                    <label textWrap=\"true\" style=\" width: 150px\"  > {{ \"RESERVECAR.booking_destination\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\" margin-left:5%; color:white; width: 150px\"> {{item.destination}} </label>\r\n                </ion-item>\r\n\r\n                \r\n\r\n              </ion-card-subtitle>\r\n            </ion-card-header>\r\n\r\n\r\n            <ion-card-content>\r\n\r\n                  <!-- button View details-->\r\n                  <ion-button  style=\"margin-left:30%\" (click) = \"viewDetails(i)\" >\r\n                    <ion-label >{{ \"RESERVECAR.booking_view_detail\" | translate }}</ion-label>\r\n                  </ion-button>\r\n          \r\n            </ion-card-content>\r\n        </ion-card>\r\n                  <!-- Stop Reservation -->\r\n      </div>  \r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n\r\n    <!-- --------------------- if  reservDetails!= null----------------------------------------------------------------- -->\r\n       \r\n     <div *ngIf=\"reservDetails!=null\">\r\n        <!-- Start reservation -->\r\n       <ion-card *ngIf=\"reservDetails \" >\r\n          \r\n          \r\n        <img [src]=\"reservDetails?.photo_car[0]?.image\" />\r\n\r\n            <ion-card-header>\r\n                    <ion-card-title >{{reservDetails.modele}}</ion-card-title>\r\n\r\n              <ion-card-subtitle>\r\n\r\n                  \r\n               <!-- Status -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_status\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 1 && lang=='fr'\" > En cours de traitement </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 1 && lang=='en'\" > Being processed </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 2 && lang=='fr'\" > Confirmée </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 2 && lang=='en'\" > Confirmed </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 3 && lang=='fr'\"> Rejetée </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 3 && lang=='en'\" > Rejected  </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 4 && lang=='fr'\" > Réservation Débutée </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 4 && lang=='en'\" > Reservation started </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 5 && lang=='fr'\" > Réservation terminée </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 5 && lang=='en'\" >Reservation completed </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 6 && lang=='fr'\" > Annulée </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.etape_location == 6 && lang=='en'\" > Cancelled </label>             \r\n                </ion-item>\r\n               \r\n                <!-- Booking Type  -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_type\" | translate }}</label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"  *ngIf=\"reservDetails.type_location == 3\"> {{ \"RESERVECAR.airport_pick\" | translate }}  </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.type_location == 2\"> {{ \"RESERVECAR.per_hour\" | translate }}  </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.type_location == 1\"> {{ \"RESERVECAR.per_day\" | translate }}   </label>\r\n                </ion-item>\r\n                <!-- Location date -->\r\n                 <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\"  > {{ \"RESERVECAR.booking_date\" | translate }}</label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.date_location}} </label>\r\n                </ion-item>\r\n                \r\n                <!-- Starting date -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_start_date\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.date_debut}} </label>\r\n                </ion-item>\r\n                  <!-- Starting time -->\r\n                <ion-item >\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"DASHBOARD.start_time\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.heure_debut}} </label>\r\n                </ion-item>\r\n                <!-- Return date -->\r\n                <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\"> {{ \"RESERVECAR.booking_end_date\" | translate }}</label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.date_fin}} </label>\r\n                </ion-item>\r\n              \r\n                <!-- Return time -->\r\n                <ion-item *ngIf=\"reservDetails.type_location == 2\">\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"DASHBOARD.return_time\" | translate }}</label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.heure_fin}} </label>\r\n                </ion-item>\r\n                  <!-- Departure -->\r\n            \r\n               <ion-item  *ngIf=\"reservDetails.type_location == 3\">\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.departure\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.depart}} </label>\r\n                </ion-item>\r\n                  <!-- Destination -->\r\n            \r\n               <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_destination\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.destination}} </label>\r\n                </ion-item>\r\n\r\n                  <!-- Price -->\r\n            \r\n               <ion-item>\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.booking_price\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\"> {{reservDetails.montant}} F CFA </label>\r\n                </ion-item>\r\n\r\n                 <!-- your marks: -->\r\n            \r\n               <ion-item *ngIf=\"reservDetails.note_client>0\">\r\n                    <label textWrap=\"true\" style=\"width: 150px\" > {{ \"RESERVECAR.marks\" | translate }} </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==1 && lang == 'fr'\"> Très Mauvais </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==1 && lang == 'en'\"> Very Bad </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==2 && lang == 'fr'\"> Mauvais </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==2 && lang == 'en'\"> Bad </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==3 && lang == 'fr'\"> Moyen </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==3 && lang == 'en'\"> Average </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==4 && lang == 'fr'\"> Bien </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==4 && lang == 'en'\"> Bien </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==5 && lang == 'fr'\"> Très Bien </label>\r\n                    <label textWrap=\"true\" style=\"margin-left: 5%;color:white;width: 150px\" *ngIf=\"reservDetails.note_client==5 && lang == 'en'\"> Very good </label>\r\n                </ion-item>\r\n                <label *ngIf=\"reservDetails.note_client>0\"> {{reservDetails.commentaire_client}} </label> <br>\r\n\r\n                  <!-- your comment/ message -->\r\n            \r\n               <ion-item>\r\n                    <label > {{ \"RESERVECAR.booking_your_message\" | translate }} </label>\r\n                </ion-item> \r\n    \r\n                <ion-label style=\"color:white;margin-right:10%; margin-left:7%; text-align:justify;\">\r\n                   {{reservDetails.message}}  \r\n                </ion-label>\r\n\r\n               \r\n                \r\n\r\n              </ion-card-subtitle>\r\n            </ion-card-header>\r\n\r\n\r\n            <ion-card-content>\r\n  \r\n            </ion-card-content>\r\n          </ion-card>\r\n        <!-- Stop Reservation -->\r\n      </div>  \r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n\r\n\r\n\r\n\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ MyBookingsPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])(
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-badge {\n  --background: white;\n  color: black;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-button {\n  color: black;\n  --background: #ffa60a;\n}\n\nion-chip {\n  color: black;\n  --background: white;\n  border-color: black;\n}\n\nion-segment-button {\n  color: #ffa60a;\n}\n\nion-card-title {\n  color: white;\n}\n\nion-title {\n  margin-left: -10%;\n  text-overflow: unset;\n  white-space: unset;\n  font-size: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jcGNraW5nZG9tL0RvY3VtZW50cy9pb25pYy10dXRvcmlhbC1tYXN0ZXIvaW9uaWNfcHJvamVjdC9sb2dpbkNhcC9zcmMvYXBwL3BhZ2VzL215LWJvb2tpbmdzL215LWJvb2tpbmdzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvbXktYm9va2luZ3MvbXktYm9va2luZ3MucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUksbUJBQUE7QUNBSjs7QURHQTtFQUVJLG1CQUFBO0VBQ0EsWUFBQTtBQ0RKOztBRElBO0VBRUksbUJBQUE7RUFDQSxjQUFBO0FDRko7O0FES0E7RUFFRSxZQUFBO0VBQ0EscUJBQUE7QUNIRjs7QURPQTtFQUVJLFlBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FDTEo7O0FEUUE7RUFFSSxjQUFBO0FDTko7O0FEU0E7RUFFSSxZQUFBO0FDUEo7O0FEU0E7RUFFSSxpQkFBQTtFQUNBLG9CQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0FDUEoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9teS1ib29raW5ncy9teS1ib29raW5ncy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2FyZCxpb24tdG9vbGJhcixpb24tc2VnbWVudFxue1xuICAgIC0tYmFja2dyb3VuZDogYmxhY2s7IFxufVxuXG5pb24tYmFkZ2VcbntcbiAgICAtLWJhY2tncm91bmQgOiB3aGl0ZTtcbiAgICBjb2xvciA6IGJsYWNrO1xufVxuXG5pb24taXRlbVxue1xuICAgIC0tYmFja2dyb3VuZDogYmxhY2s7IFxuICAgIGNvbG9yOiAgI2ZmYTYwYTtcbn1cblxuaW9uLWJ1dHRvblxue1xuICBjb2xvcjogYmxhY2s7IFxuICAtLWJhY2tncm91bmQ6ICAjZmZhNjBhO1xuXG59XG5cbmlvbi1jaGlwXG57XG4gICAgY29sb3I6IGJsYWNrOyBcbiAgICAtLWJhY2tncm91bmQ6IHdoaXRlO1xuICAgIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbmlvbi1zZWdtZW50LWJ1dHRvblxue1xuICAgIGNvbG9yIDogI2ZmYTYwYTtcbn1cblxuaW9uLWNhcmQtdGl0bGVcbntcbiAgICBjb2xvciA6IHdoaXRlO1xufVxuaW9uLXRpdGxlXG57XG4gICAgbWFyZ2luLWxlZnQgOiAtMTAlO1xuICAgIHRleHQtb3ZlcmZsb3c6IHVuc2V0O1xuICAgIHdoaXRlLXNwYWNlOiB1bnNldDtcbiAgICBmb250LXNpemU6IDIwcHg7XG59IiwiaW9uLWNhcmQsIGlvbi10b29sYmFyLCBpb24tc2VnbWVudCB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG59XG5cbmlvbi1iYWRnZSB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG4gIGNvbG9yOiBibGFjaztcbn1cblxuaW9uLWl0ZW0ge1xuICAtLWJhY2tncm91bmQ6IGJsYWNrO1xuICBjb2xvcjogI2ZmYTYwYTtcbn1cblxuaW9uLWJ1dHRvbiB7XG4gIGNvbG9yOiBibGFjaztcbiAgLS1iYWNrZ3JvdW5kOiAjZmZhNjBhO1xufVxuXG5pb24tY2hpcCB7XG4gIGNvbG9yOiBibGFjaztcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcbn1cblxuaW9uLXNlZ21lbnQtYnV0dG9uIHtcbiAgY29sb3I6ICNmZmE2MGE7XG59XG5cbmlvbi1jYXJkLXRpdGxlIHtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG5pb24tdGl0bGUge1xuICBtYXJnaW4tbGVmdDogLTEwJTtcbiAgdGV4dC1vdmVyZmxvdzogdW5zZXQ7XG4gIHdoaXRlLXNwYWNlOiB1bnNldDtcbiAgZm9udC1zaXplOiAyMHB4O1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-card, ion-toolbar, ion-segment {\n  --background: black;\n}\n\nion-badge {\n  --background: white;\n  color: black;\n}\n\nion-item {\n  --background: black;\n  color: #ffa60a;\n}\n\nion-button {\n  color: black;\n  --background: #ffa60a;\n}\n\nion-chip {\n  color: black;\n  --background: white;\n  border-color: black;\n}\n\nion-segment-button {\n  color: #ffa60a;\n}\n\nion-card-title {\n  color: white;\n}\n\nion-title {\n  margin-left: -10%;\n  text-overflow: unset;\n  white-space: unset;\n  font-size: 20px;\n}\n\nlabel {\n  font-size: 0.79em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jcGNraW5nZG9tL0RvY3VtZW50cy9pb25pYy10dXRvcmlhbC1tYXN0ZXIvaW9uaWNfcHJvamVjdC9sb2dpbkNhcC9zcmMvYXBwL3BhZ2VzL215LWJvb2tpbmdzL215LWJvb2tpbmdzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvbXktYm9va2luZ3MvbXktYm9va2luZ3MucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUksbUJBQUE7QUNBSjs7QURHQTtFQUVJLG1CQUFBO0VBQ0EsWUFBQTtBQ0RKOztBRElBO0VBRUksbUJBQUE7RUFDQSxjQUFBO0FDRko7O0FES0E7RUFFRSxZQUFBO0VBQ0EscUJBQUE7QUNIRjs7QURPQTtFQUVJLFlBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FDTEo7O0FEUUE7RUFFSSxjQUFBO0FDTko7O0FEU0E7RUFFSSxZQUFBO0FDUEo7O0FEU0E7RUFFSSxpQkFBQTtFQUNBLG9CQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0FDUEo7O0FEU0E7RUFDSSxpQkFBQTtBQ05KIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbXktYm9va2luZ3MvbXktYm9va2luZ3MucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNhcmQsaW9uLXRvb2xiYXIsaW9uLXNlZ21lbnRcbntcbiAgICAtLWJhY2tncm91bmQ6IGJsYWNrOyBcbn1cblxuaW9uLWJhZGdlXG57XG4gICAgLS1iYWNrZ3JvdW5kIDogd2hpdGU7XG4gICAgY29sb3IgOiBibGFjaztcbn1cblxuaW9uLWl0ZW1cbntcbiAgICAtLWJhY2tncm91bmQ6IGJsYWNrOyBcbiAgICBjb2xvcjogICNmZmE2MGE7XG59XG5cbmlvbi1idXR0b25cbntcbiAgY29sb3I6IGJsYWNrOyBcbiAgLS1iYWNrZ3JvdW5kOiAgI2ZmYTYwYTtcblxufVxuXG5pb24tY2hpcFxue1xuICAgIGNvbG9yOiBibGFjazsgXG4gICAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5pb24tc2VnbWVudC1idXR0b25cbntcbiAgICBjb2xvciA6ICNmZmE2MGE7XG59XG5cbmlvbi1jYXJkLXRpdGxlXG57XG4gICAgY29sb3IgOiB3aGl0ZTtcbn1cbmlvbi10aXRsZVxue1xuICAgIG1hcmdpbi1sZWZ0IDogLTEwJTtcbiAgICB0ZXh0LW92ZXJmbG93OiB1bnNldDtcbiAgICB3aGl0ZS1zcGFjZTogdW5zZXQ7XG4gICAgZm9udC1zaXplOiAyMHB4O1xufVxubGFiZWx7XG4gICAgZm9udC1zaXplOjAuNzllbTtcbn0iLCJpb24tY2FyZCwgaW9uLXRvb2xiYXIsIGlvbi1zZWdtZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiBibGFjaztcbn1cblxuaW9uLWJhZGdlIHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgY29sb3I6IGJsYWNrO1xufVxuXG5pb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogYmxhY2s7XG4gIGNvbG9yOiAjZmZhNjBhO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgY29sb3I6IGJsYWNrO1xuICAtLWJhY2tncm91bmQ6ICNmZmE2MGE7XG59XG5cbmlvbi1jaGlwIHtcbiAgY29sb3I6IGJsYWNrO1xuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5pb24tc2VnbWVudC1idXR0b24ge1xuICBjb2xvcjogI2ZmYTYwYTtcbn1cblxuaW9uLWNhcmQtdGl0bGUge1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi10aXRsZSB7XG4gIG1hcmdpbi1sZWZ0OiAtMTAlO1xuICB0ZXh0LW92ZXJmbG93OiB1bnNldDtcbiAgd2hpdGUtc3BhY2U6IHVuc2V0O1xuICBmb250LXNpemU6IDIwcHg7XG59XG5cbmxhYmVsIHtcbiAgZm9udC1zaXplOiAwLjc5ZW07XG59Il19 */");
 
 /***/ }),
 
@@ -184,6 +184,9 @@ let MyBookingsPage = class MyBookingsPage {
         ];
     }
     ngOnInit() {
+        // this.ngOnInit();
+    }
+    ionViewWillEnter() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             //start laoder
             this.webService.presentLoading();
@@ -195,7 +198,7 @@ let MyBookingsPage = class MyBookingsPage {
             this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
             //get Booking list
             this.webService.getClientReservation(this.userId, this.token).subscribe(res => {
-                console.log(res);
+                //console.log(res);
                 if (res.detail) // that means the is error or no value exist for this user
                  {
                     if (this.lang == "fr") {
@@ -204,6 +207,8 @@ let MyBookingsPage = class MyBookingsPage {
                     else {
                         alert("No Booking \n Back Home Page");
                     }
+                    //stop loader
+                    this.webService.stopLoading();
                     this.router.navigateByUrl("/dashboard");
                 }
                 else {
@@ -232,7 +237,7 @@ let MyBookingsPage = class MyBookingsPage {
                             this.filterData[i].depart_id = res[i].depart;
                             //call the car according to the id 
                             this.webService.getCarDetails(res[i].voiture).subscribe(car => {
-                                console.log(car);
+                                // console.log(car)
                                 //pictures of car
                                 this.filterData[i].photo_car = car.photo;
                                 //modele
@@ -246,12 +251,12 @@ let MyBookingsPage = class MyBookingsPage {
                                 // //end get depart
                                 //get destination
                                 this.webService.getSingleDestination(res[i].destination).subscribe(dest => {
-                                    console.log(dest);
+                                    // console.log(dest);
                                     this.filterData[i].destination = dest.destination;
-                                    if (res.depart > 0) {
+                                    if (res[i].depart > 0) {
                                         //get depart
                                         this.webService.getSingleDestination(res[i].depart).subscribe(dep => {
-                                            console.log(dep);
+                                            // console.log(dep);
                                             this.filterData[i].depart = dep.destination;
                                             //stop loader
                                             this.show = true;
@@ -259,15 +264,28 @@ let MyBookingsPage = class MyBookingsPage {
                                         });
                                         //end get depart
                                     }
+                                    else {
+                                        //stop loader
+                                        this.show = true;
+                                        this.webService.stopLoading();
+                                    }
                                 });
                                 //end get destination
                                 //stop loader
-                                // this.show = true
-                                // this.webService.stopLoading();
+                                //this.show = true
+                                //this.webService.stopLoading();
                             });
                             //end get car infos
                         } //end for loop
                     }
+                }
+            }, error => {
+                this.webService.stopLoading();
+                if (this.lang == "fr") {
+                    alert("Erreur Serveur !! ");
+                }
+                else {
+                    alert("Server Error!! ");
                 }
             });
             ///end get booking list
@@ -276,20 +294,14 @@ let MyBookingsPage = class MyBookingsPage {
     //////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////prev////////////////////////////////////////////////////
     prev() {
+        console.log("prev");
         this.reservDetails = null;
     }
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////view details////////////////////////////////////////
     viewDetails(i) {
         this.reservDetails = this.filterData[i];
-        // this.reservDetails.date_location = this.filterData[i].date_location.split("T")[0];
-        // this.reservDetails.date_debut = this.filterData[i].date_debut.split(".")[0];
-        // this.reservDetails.date_fin = this.filterData[i].date_fin.split(".")[0];
-        // this.filterData[i].date_debut = res[i].date_debut.split("T")[0];
-        // this.filterData[i].heure_debut = (res[i].date_debut.split("T")[1]).split(".")[0];
-        // this.filterData[i].date_fin = res[i].date_fin.split("T")[0];
-        // this.filterData[i].heure_fin = (res[i].date_fin.split("T")[1]).split(".")[0];
-        console.log(this.reservDetails);
+        //console.log(this.reservDetails)
     }
     //////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////Cancel ////////////////////////////////////////////////////
@@ -318,7 +330,7 @@ let MyBookingsPage = class MyBookingsPage {
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
-                            console.log('Confirm Cancel: blah');
+                            // console.log('Confirm Cancel: blah');
                         }
                     }, {
                         text: textok,
@@ -339,7 +351,7 @@ let MyBookingsPage = class MyBookingsPage {
                             this.DataTosend.destination = this.filterData[id].destination_id;
                             this.DataTosend.etape_location = 6;
                             this.DataTosend.optionnel = this.filterData[id].optionnel;
-                            console.log(this.DataTosend);
+                            // console.log(this.DataTosend);
                             //call the EditLocation API 
                             this.webService.presentLoading(); // present loader
                             this.webService.EditLocation(this.filterData[id].id, this.token, this.DataTosend).subscribe(res => {
@@ -363,115 +375,10 @@ let MyBookingsPage = class MyBookingsPage {
         });
     }
     //////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////prev////////////////////////////////////////////////////
+    /////////////////////////////Mark///////////////////////////////////////////////////
     Mark(id) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            var lang = (yield Storage.get({ key: LNG_KEY })).value;
-            if (lang == "fr") {
-                var textcancel = "Annuler ";
-                var textok = "Valider ";
-                var message = "Comment était le trajet ? ";
-                var very_bad = "Très Mauvais ";
-                var bad = "Mauvais ";
-                var average = "Moyen ";
-                var good = "Bien ";
-                var very_good = "Très Bien ";
-            }
-            else {
-                var textcancel = "Cancel ";
-                var textok = "OK ";
-                var message = "How was the ride ?";
-                var very_bad = "Very Bad ";
-                var bad = "Bad ";
-                var average = "Average ";
-                var good = "Good ";
-                var very_good = "Very Good ";
-            }
-            const alert = yield this.alertController.create({
-                cssClass: 'my-custom-class',
-                header: message,
-                inputs: [
-                    {
-                        name: very_good,
-                        type: 'radio',
-                        label: very_good,
-                        value: 5,
-                        checked: true
-                    },
-                    {
-                        name: good,
-                        type: 'radio',
-                        label: good,
-                        value: 4
-                    },
-                    {
-                        name: average,
-                        type: 'radio',
-                        label: average,
-                        value: 3
-                    },
-                    {
-                        name: bad,
-                        type: 'radio',
-                        label: bad,
-                        value: 2
-                    },
-                    {
-                        name: very_bad,
-                        type: 'radio',
-                        label: very_bad,
-                        value: 1,
-                    },
-                ],
-                buttons: [
-                    {
-                        text: textcancel,
-                        role: 'cancel',
-                        cssClass: 'secondary',
-                        handler: () => {
-                            console.log('Confirm Cancel');
-                        }
-                    }, {
-                        text: textok,
-                        handler: (data) => {
-                            console.log('Radio', data);
-                            //change the  Marks given by the customer ;
-                            this.filterData[id].note_client = data;
-                            //   this.DataTosend.id = this.filterData[id].id;
-                            this.DataTosend.date_location = this.filterData[id].date_location + "T" + this.filterData[id].heure_debut + ".961Z";
-                            this.DataTosend.date_debut = this.filterData[id].date_debut + "T" + this.filterData[id].heure_debut + ".961Z";
-                            this.DataTosend.date_fin = this.filterData[id].date_fin + "T" + this.filterData[id].heure_fin + ".961Z";
-                            this.DataTosend.montant = this.filterData[id].montant;
-                            this.DataTosend.message = this.filterData[id].message;
-                            this.DataTosend.note_client = data;
-                            this.DataTosend.client = this.filterData[id].client;
-                            this.DataTosend.voiture = this.filterData[id].voiture;
-                            this.DataTosend.type_location = this.filterData[id].type_location;
-                            this.DataTosend.depart = this.filterData[id].depart_id;
-                            this.DataTosend.destination = this.filterData[id].destination_id;
-                            this.DataTosend.etape_location = this.filterData[id].etape_location;
-                            this.DataTosend.optionnel = this.filterData[id].optionnel;
-                            console.log(this.DataTosend);
-                            //call the EditLocation API 
-                            this.webService.presentLoading(); // present loader
-                            this.webService.EditLocation(id, this.token, this.filterData[id]).subscribe(res => {
-                                if (res.id) {
-                                    this.webService.stopLoading();
-                                    this.myAlert(0, this.lang);
-                                }
-                                else {
-                                    this.webService.stopLoading();
-                                    this.myAlert(1, this.lang);
-                                }
-                            }, error => {
-                                this.webService.stopLoading();
-                                this.myAlert(1, this.lang);
-                            });
-                        }
-                    }
-                ]
-            });
-            yield alert.present();
+            this.router.navigate(['report-client'], { queryParams: { booked: JSON.stringify(this.filterData[id]), prev: "/my-bookings" } });
         });
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

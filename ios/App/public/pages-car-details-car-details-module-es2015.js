@@ -179,7 +179,7 @@ let CarDetailsPage = class CarDetailsPage {
         this.webservice.presentLoading();
         this.getCurrentToken();
         this.subscription = this.route.queryParams.subscribe((data) => {
-            console.log("selected ->", typeof (data.id));
+            // console.log("selected ->", typeof(data.id));
             //receive the  prev page 
             this.page_prev = data.prev;
             //get the details of the car
@@ -188,7 +188,7 @@ let CarDetailsPage = class CarDetailsPage {
             //get the details of the car
             this.webservice.getCarDetails(data.id).subscribe(res => {
                 this.car = res;
-                console.log(res);
+                // console.log(res)
                 // get the differents pice of the car
                 this.webservice.getPriceCar(data.id).subscribe(resp => {
                     this.car.per_day = resp[0].prix;
@@ -212,7 +212,7 @@ let CarDetailsPage = class CarDetailsPage {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             var ret = Storage.get({ key: 'accessToken' });
             this.token = (yield ret).value;
-            console.log("token   ", this.token);
+            //console.log("token   ", this.token)
             //  return (await ret).value;
         });
     }

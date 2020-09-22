@@ -74,6 +74,7 @@
   <!-- <ion-toolbar> -->
           <!-- Start the trip  -->
     <ion-button expand="full" *ngIf="filterData.etape_location == 4" (click)="end()" >{{"DASHBOARD.end_trip" | translate }} </ion-button>
-   
+    <ion-button expand="full" *ngIf="userType=='client'" (click)="end()" >{{"RESERVECAR.btn_submit" | translate }} </ion-button>
+
   <!-- </ion-toolbar> -->
 </ion-footer>

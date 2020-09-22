@@ -4,7 +4,7 @@
       <ion-item>
 
         <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
-        <ion-title style="margin-left:15%">{{"DASHBOARD.trip_details" | translate }}</ion-title>
+        <ion-title style="margin-left:2%">{{"DASHBOARD.trip_details" | translate }}</ion-title>
 
       </ion-item>
 
@@ -90,6 +90,26 @@
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" > {{filterData.clientname}} </label>
                     <!-- <ion-chip slot="end"> Oumarou Toto </ion-chip> -->
                 </ion-item>
+
+                  <!-- Your marks  -->
+                    <ion-item  *ngIf="filterData.etape_location == 5">
+                      <label textWrap="true" style="width: 150px"  > {{ "RESERVECAR.your_marks" | translate }} </label>
+                    
+                      <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="filterData.note_chauffeur == 5" > {{"DASHBOARD.very_good" | translate}} </label>
+                      <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="filterData.note_chauffeur == 4" > {{"DASHBOARD.good" | translate}} </label>
+                      <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="filterData.note_chauffeur == 3" > {{"DASHBOARD.average" | translate}} </label>
+                      <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="filterData.note_chauffeur == 2" > {{"DASHBOARD.bad" | translate}} </label>
+                      <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="filterData.note_chauffeur == 1" > {{"DASHBOARD.very_bad" | translate}}</label>
+                  </ion-item>
+
+                  <!-- driver Comment  -->
+                    <ion-label textWrap="true" style="margin-left: 5%;color:#ffa60a"  > {{ "RESERVECAR.your_comment" | translate }} </ion-label><br>
+                <ion-item *ngIf="filterData.etape_location == 5">
+                  <label textWrap="true" style="margin-left: 5%;color:white" > {{filterData.rapport_chauffeur}} </label>
+                </ion-item>  
+                 
+                
+                
 
            
 

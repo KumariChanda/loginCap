@@ -156,13 +156,13 @@ let PremiumPage = class PremiumPage {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             //basic link
             this.src_link = this.webService.base_url;
-            console.log(this.src_link);
+            //console.log(this.src_link);
             //get Language
             this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
             //get Business class cars list
             this.webService.presentLoading(); //to start loader
             this.webService.getCarClass(1).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                console.log("getting business voitures : \n ", res);
+                //console.log("getting business voitures : \n ",res); 
                 if (!res.detail) {
                     if (res.length == 0) {
                         //no  cars
@@ -183,14 +183,14 @@ let PremiumPage = class PremiumPage {
                                 // console.log("Modele ",i,j)
                                 for (let k = 0; k < res[i].modeles[j].voitures.length; k++) {
                                     // console.log("car ",i,j,k)
-                                    console.log(" voitures : \n ", res[i].modeles[j].voitures[k]);
+                                    //console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
                                     this.filterData[index] = res[i].modeles[j].voitures[k];
                                     index = index + 1;
                                 }
                             }
                             // console.log("business voitures : \n ",res.modeles.voitures);
                         }
-                        console.log(this.filterData);
+                        //console.log(this.filterData);
                         //get the different prices of every car
                         for (let i = 0; i < this.filterData.length; i++) {
                             this.webService.getPriceCar(this.filterData[i].id).subscribe(resp => {

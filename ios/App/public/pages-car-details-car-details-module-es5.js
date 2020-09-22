@@ -287,16 +287,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.webservice.presentLoading();
           this.getCurrentToken();
           this.subscription = this.route.queryParams.subscribe(function (data) {
-            console.log("selected ->", typeof data.id); //receive the  prev page 
-
+            // console.log("selected ->", typeof(data.id));
+            //receive the  prev page 
             _this.page_prev = data.prev; //get the details of the car
             //receive the  prev page 
 
             _this.page_prev = data.prev; //get the details of the car
 
             _this.webservice.getCarDetails(data.id).subscribe(function (res) {
-              _this.car = res;
-              console.log(res); // get the differents pice of the car
+              _this.car = res; // console.log(res)
+              // get the differents pice of the car
 
               _this.webservice.getPriceCar(data.id).subscribe(function (resp) {
                 _this.car.per_day = resp[0].prix;
@@ -337,9 +337,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 3:
                     this.token = _context.sent.value;
-                    console.log("token   ", this.token); //  return (await ret).value;
 
-                  case 5:
+                  case 4:
                   case "end":
                     return _context.stop();
                 }

@@ -298,8 +298,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function save() {
           var _this = this;
 
-          this.btnClicked = true;
-          console.log("btnClicked : ", this.btnClicked);
+          this.btnClicked = true; //console.log("btnClicked : ",this.btnClicked);     
+
           setTimeout(function () {
             _this.btnClicked = false; // this.editableText=true;
           }, 1000);
@@ -309,8 +309,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.dataToSend.text = this.feedback; //call post feedbacks service
 
             this.webService.postFeedbacks(this.dataToSend, this.token).subscribe(function (resp) {
-              if (resp) {
-                console.log("done successfully");
+              if (resp) {//console.log("done successfully");
               }
 
               _this.myAlert(0, _this.lang);

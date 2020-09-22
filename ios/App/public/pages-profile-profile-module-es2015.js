@@ -148,7 +148,7 @@ let ProfilePage = class ProfilePage {
         this.userId = 0;
         this.show = false;
         this.btnClicked = false;
-        console.log("Before editableText : ", this.editableText);
+        //console.log("Before editableText : ",this.editableText);
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -160,7 +160,7 @@ let ProfilePage = class ProfilePage {
     getdata() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.userInfo = JSON.parse((yield Storage.get({ key: "user_infos" })).value);
-            console.log("Storage : ", this.userInfo);
+            //console.log("Storage : ",this.userInfo);
             this.profileData.address = this.userInfo.address;
             this.profileData.birth_date = this.userInfo.birth_date;
             this.profileData.email = this.userInfo.email;
@@ -183,8 +183,8 @@ let ProfilePage = class ProfilePage {
     editProfile() {
         this.btnClicked = true;
         this.editableText = false;
-        console.log("btnClicked : ", this.btnClicked);
-        console.log("DOB : ", this.userId);
+        //console.log("btnClicked : ",this.btnClicked);
+        //console.log("DOB : ",this.userId);     
         setTimeout(() => {
             this.btnClicked = false;
             // this.editableText=true;
@@ -192,9 +192,9 @@ let ProfilePage = class ProfilePage {
     }
     saveProfile() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            console.log("profileData : ", this.profileData);
+            // console.log("profileData : ",this.profileData);
             this.btnClicked = true;
-            console.log("btnClicked : ", this.btnClicked);
+            //console.log("btnClicked : ",this.btnClicked);
             setTimeout(() => {
                 this.btnClicked = false;
                 // this.editableText=true;

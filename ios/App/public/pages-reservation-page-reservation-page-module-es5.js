@@ -348,8 +348,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     ///////////////receive car id/////////////////////////////////////////////////
 
                     this.subscription = this.route.queryParams.subscribe(function (data) {
-                      console.log("selected ->", typeof data.id); //set the prev page
-
+                      //console.log("selected ->", typeof(data.id))
+                      //set the prev page
                       _this.page_prev = data.prev; //set the Car ID 
 
                       _this.carID = data.id; ////////////////////////////////////////////////////////////////////////////   
@@ -363,8 +363,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             while (1) {
                               switch (_context.prev = _context.next) {
                                 case 0:
-                                  console.log("getting Destinations : ", res);
-
+                                  //console.log("getting Destinations : ",res); 
                                   if (res) {
                                     this.list_original = res;
                                     this.list_original1 = res;
@@ -373,8 +372,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
                                   this.webservice.getOption().subscribe(function (resp) {
-                                    _this2.option = resp;
-                                    console.log(resp); ///////////////////////////////////////////////////////////////////////////////////////////
+                                    _this2.option = resp; //console.log(resp)
+                                    ///////////////////////////////////////////////////////////////////////////////////////////
                                     //////////////////Start : Get Car details/////////////////////////////////////////////////
 
                                     _this2.webservice.getCarDetails(data.id).subscribe(function (res) {
@@ -389,16 +388,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                                         _this2.show = true;
                                       }); //end get prices
+                                      //console.log(res)
 
-
-                                      console.log(res);
                                     }); //////////////////Stop : Get Car details//////////////////////////////////////////////////
                                     /////////////////////////////////////////////////////////////////////////////////////////
 
                                   }); //////////////////////////Stop : Get  Optionnels//////////////////////////////////////////////////
                                   /////////////////////////////////////////////////////////////////////////////////////////
 
-                                case 3:
+                                case 2:
                                 case "end":
                                   return _context.stop();
                               }
@@ -466,8 +464,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             day = this.maxdate.getDate();
           }
 
-          this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day;
-          console.log("Today = " + this.today + " \n MAX DATE : " + this.maxdate);
+          this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day; //console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
         } //////////////////////////////////////////////////////////////
         ////back to prev ///
 
@@ -494,48 +491,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 switch (_context3.prev = _context3.next) {
                   case 0:
                     if (!this.destination) {
-                      _context3.next = 74;
+                      _context3.next = 70;
                       break;
                     }
 
                     //////////////////////////car id ///////////////////////////////////////////////
-                    this.dataToSend.voiture = id;
-                    console.log("id : ", id, "\n coef : ", this.coef); /////////////////////////////////user id ///////////////////////////////////////////////  
+                    this.dataToSend.voiture = id; //console.log("id : ",id,"\n coef : ",this.coef)
+                    /////////////////////////////////user id ///////////////////////////////////////////////  
 
                     _context3.t0 = JSON;
-                    _context3.next = 6;
+                    _context3.next = 5;
                     return Storage.get({
                       key: "user_infos"
                     });
 
-                  case 6:
+                  case 5:
                     _context3.t1 = _context3.sent.value;
                     ret = _context3.t0.parse.call(_context3.t0, _context3.t1);
                     // console.log("user : ", ret);
                     this.dataToSend.client = ret.id; //////////////////////////////get token storage////////////////////////////////////////
 
-                    _context3.next = 11;
+                    _context3.next = 10;
                     return Storage.get({
                       key: 'accessToken'
                     });
 
-                  case 11:
+                  case 10:
                     this.token = _context3.sent.value;
-                    console.log("Token : ", this.token); /////////////////// set start date /////////////////////////////////////////////////////
+                    //console.log("Token : ", this.token);
+                    /////////////////// set start date /////////////////////////////////////////////////////
                     //this.dataToSend.date_debut = this.start_date
-
                     this.start_date = this.start_date.split("T")[0];
                     this.dataToSend.date_debut = this.start_date + "T" + this.start_time + ":44.625Z"; //////////////////// set start hour /////////////////////////////////////////////////////
                     // this.dataToSend.heure_debut = this.start_time;     
                     ///////////////////////////////////////////////////////////////////////////////////////////
 
                     if (!(this.rent_type == "hour")) {
-                      _context3.next = 26;
+                      _context3.next = 24;
                       break;
                     }
 
                     if (!(this.hourNbr > 0)) {
-                      _context3.next = 22;
+                      _context3.next = 20;
                       break;
                     }
 
@@ -550,10 +547,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     //////price with number of hour and destination coef included 
 
                     this.price = this.car.per_hour * (1 + this.coef) * this.hourNbr;
-                    _context3.next = 24;
+                    _context3.next = 22;
                     break;
 
-                  case 22:
+                  case 20:
                     if (this.lang == "fr") {
                       alert("Entrez le nombre d'heure ! ( > 0) ");
                     } else {
@@ -562,13 +559,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return _context3.abrupt("return");
 
-                  case 24:
-                    _context3.next = 65;
+                  case 22:
+                    _context3.next = 62;
                     break;
 
-                  case 26:
+                  case 24:
                     if (!(this.rent_type == "day")) {
-                      _context3.next = 42;
+                      _context3.next = 40;
                       break;
                     }
 
@@ -582,7 +579,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
                     if (!(Difference_In_Days > 0)) {
-                      _context3.next = 38;
+                      _context3.next = 36;
                       break;
                     }
 
@@ -597,10 +594,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     //this.dataToSend.lieu_depart = "";
 
                     this.price = this.car.per_day * (1 + this.coef) * Difference_In_Days;
-                    _context3.next = 40;
+                    _context3.next = 38;
                     break;
 
-                  case 38:
+                  case 36:
                     if (this.lang == "fr") {
                       alert("Le Nombre de jour doit être > 0 ");
                     } else {
@@ -609,30 +606,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return _context3.abrupt("return");
 
-                  case 40:
-                    _context3.next = 65;
+                  case 38:
+                    _context3.next = 62;
                     break;
 
-                  case 42:
+                  case 40:
                     if (!(this.rent_type == "airport")) {
-                      _context3.next = 65;
+                      _context3.next = 62;
                       break;
                     }
 
-                    console.log("Depar Id", this.depart_venue);
-
                     if (!this.depart_venue) {
-                      _context3.next = 63;
+                      _context3.next = 60;
                       break;
                     }
 
                     if (!(this.depart_venue != this.destination)) {
-                      _context3.next = 59;
+                      _context3.next = 56;
                       break;
                     }
 
                     if (!(this.depart_venue == 203 || this.destination == 203)) {
-                      _context3.next = 55;
+                      _context3.next = 52;
                       break;
                     }
 
@@ -647,10 +642,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     c = (this.coef1 + this.coef) / 2;
                     this.price = this.car.airport + this.car.airport * c;
-                    _context3.next = 57;
+                    _context3.next = 54;
                     break;
 
-                  case 55:
+                  case 52:
                     if (this.lang == "fr") {
                       alert("Assurez-vous d'avoir choisi Aéroport comme départ ou destination.");
                     } else {
@@ -659,11 +654,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return _context3.abrupt("return");
 
-                  case 57:
-                    _context3.next = 61;
+                  case 54:
+                    _context3.next = 58;
                     break;
 
-                  case 59:
+                  case 56:
                     if (this.lang == "fr") {
                       alert("Désolé, le départ doit être différent de la destination.");
                     } else {
@@ -672,11 +667,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return _context3.abrupt("return");
 
-                  case 61:
-                    _context3.next = 65;
+                  case 58:
+                    _context3.next = 62;
                     break;
 
-                  case 63:
+                  case 60:
                     if (this.lang == "fr") {
                       alert("Choisissez un Lieu de depart !");
                     } else {
@@ -685,7 +680,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return _context3.abrupt("return");
 
-                  case 65:
+                  case 62:
                     ///////////////////////////////////////////////////////////////////////////////////////////////////
                     //////////////////////////////////////////////////////////////////////////////////////////////////
                     ////////////////////////////get the selected option and add price /////////////////////////////////////
@@ -695,7 +690,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       if (this.option[i].checked) {
                         ////////////////////////////////////////////////////////////////////
                         if (this.rent_type == "hour") {
-                          console.log("price : ", typeof this.price, "\n option price : ", typeof this.option[i].prix);
+                          //console.log("price : ",typeof(this.price),"\n option price : ", typeof(this.option[i].prix))
                           this.price = parseFloat(this.price) + this.option[i].prix; //add the optionnel id into the dataTosend field array
 
                           this.dataToSend.optionnel[index] = this.option[i].id;
@@ -711,9 +706,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           this.dataToSend.optionnel[index] = this.option[i].id;
                           index = index + 1;
                         } //////////////////////////////////////////////////////////////
+                        //console.log(this.option[i]);
 
-
-                        console.log(this.option[i]);
                       }
                     } //////////////////set destination ////////////////////////////////////////////
 
@@ -722,21 +716,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     this.dataToSend.montant = this.price; /////////////////////set message///////////////////////////////////////////////////
 
-                    this.dataToSend.message = this.message;
-                    console.log("\n data to send : \n", this.dataToSend); // present alert
+                    this.dataToSend.message = this.message; //console.log("\n data to send : \n", this.dataToSend);
+                    // present alert
 
                     this.presentAlertConfirm(this.price, this.start_date, this.end_date);
-                    _context3.next = 75;
+                    _context3.next = 71;
                     break;
 
-                  case 74:
+                  case 70:
                     if (this.lang == "fr") {
                       alert("Choisissez une Destination !");
                     } else {
                       alert("Select one destination !");
                     }
 
-                  case 75:
+                  case 71:
                   case "end":
                     return _context3.stop();
                 }
@@ -784,32 +778,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         text: textcancel,
                         role: 'cancel',
                         cssClass: 'secondary',
-                        handler: function handler(blah) {
-                          console.log('Confirm Cancel: blah');
+                        handler: function handler(blah) {//console.log('Confirm Cancel: blah');
                         }
                       }, {
                         text: textok,
                         handler: function handler() {
-                          console.log('Confirm Okay'); //preseent loader
-
+                          //console.log('Confirm Okay');
+                          //preseent loader
                           _this3.webservice.presentLoading(); ////send the data to the API
 
 
                           _this3.webservice.postReservation(_this3.token, _this3.dataToSend).subscribe(function (res) {
-                            console.log(res);
-
+                            //console.log(res)
                             if (res) {
-                              _this3.webservice.stopLoading();
+                              _this3.webservice.stopLoading(); //console.log("done");
 
-                              console.log("done");
 
                               _this3.myAlert(0, lang);
                             }
                           }, function (error) {
                             //stop loader
-                            _this3.webservice.stopLoading();
+                            _this3.webservice.stopLoading(); //console.log("error : \n",error); 
 
-                            console.log("error : \n", error);
 
                             _this3.myAlert(1, lang);
                           });
@@ -945,8 +935,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           //this.destination = null; 
           if (type == 0) {
             //set departure
-            this.depart_venue = id;
-            console.log("depart id :", this.depart_venue); //set coef 
+            this.depart_venue = id; //console.log("depart id :", this.depart_venue);
+            //set coef 
 
             this.coef1 = parseFloat(coef);
 

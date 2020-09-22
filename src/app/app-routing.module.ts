@@ -113,6 +113,10 @@ const routes: Routes = [
   {
     path: 'send-rides',
     loadChildren: () => import('./driver/send-rides/send-rides.module').then( m => m.SendRidesPageModule)
+  },
+  {
+    path: 'report-client',
+    loadChildren: () => import('./pages/report-client/report-client.module').then( m => m.ReportClientPageModule)
   }
 
 

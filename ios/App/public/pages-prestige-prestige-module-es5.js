@@ -322,9 +322,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                         }
                                       } // console.log("business voitures : \n ",res.modeles.voitures);
 
-                                    }
+                                    } //console.log(this.filterData);
+                                    //get the different prices of every car
 
-                                    console.log(this.filterData); //get the different prices of every car
 
                                     _loop = function _loop(_i) {
                                       _this2.webService.getPriceCar(_this2.filterData[_i].id).subscribe(function (resp) {

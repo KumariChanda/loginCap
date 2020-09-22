@@ -254,8 +254,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           ///// start : get our contact
 
           this.webService.getContacts().subscribe(function (res) {
-            console.log(" contact  ", res);
-
+            //console.log(" contact  ",res);
             if (res) {
               _this.mycontact = res;
             } else {// alert no response from server
@@ -272,32 +271,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openFacebook",
         value: function openFacebook() {
-          console.log("facebook");
+          //console.log("facebook")
           this.iab.create('https://www.facebook.com/Nyokah-111809566836023/', '_blank'); //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_system')
         } //  ///////////////////////////////////////
 
       }, {
         key: "openTwitter",
-        value: function openTwitter() {
-          console.log("twitter"); //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+        value: function openTwitter() {//console.log("twitter")
+          //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
         } //  ///////////////////////////////////////
 
       }, {
         key: "openLinkedin",
-        value: function openLinkedin() {
-          console.log("Linkedin"); // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+        value: function openLinkedin() {//console.log("Linkedin")
+          // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
         } //  ///////////////////////////////////////
 
       }, {
         key: "openInstagram",
-        value: function openInstagram() {
-          console.log("Instagram"); //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+        value: function openInstagram() {//console.log("Instagram")
+          //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
         } //  ///////////////////////////////////////
 
       }, {
         key: "openGoogleplus",
         value: function openGoogleplus() {
-          console.log("Google plus");
+          //console.log("Google plus")
           this.iab.create('https://mail.google.com/', '_system');
         } //////////////////////////////////////////////////////
 
@@ -312,11 +311,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "callNumber",
         value: function callNumber(number) {
-          this.callnumber.callNumber(number, true).then(function (res) {
-            return console.log('Launched dialer!', res);
-          })["catch"](function (err) {
-            return console.log('Error launching dialer', err);
-          });
+          this.callnumber.callNumber(number, true) // .then(res => console.log('Launched dialer!', res))
+          // .catch(err => console.log('Error launching dialer', err));
+          .then(function (res) {})["catch"](function (err) {});
         }
       }]);
 

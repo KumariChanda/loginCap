@@ -274,15 +274,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 switch (_context2.prev = _context2.next) {
                   case 0:
                     //basic link
-                    this.src_link = this.webService.base_url;
-                    console.log(this.src_link); //get Language
+                    this.src_link = this.webService.base_url; //console.log(this.src_link);
+                    //get Language
 
-                    _context2.next = 4;
+                    _context2.next = 3;
                     return Storage.get({
                       key: 'SELECTED LANGUAGE'
                     });
 
-                  case 4:
+                  case 3:
                     this.lang = _context2.sent.value;
                     //get Business class cars list
                     this.webService.presentLoading(); //to start loader
@@ -297,8 +297,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           while (1) {
                             switch (_context.prev = _context.next) {
                               case 0:
-                                console.log("getting business voitures : \n ", res);
-
+                                //console.log("getting business voitures : \n ",res); 
                                 if (!res.detail) {
                                   if (res.length == 0) {
                                     //no  cars
@@ -319,15 +318,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                         // console.log("Modele ",i,j)
                                         for (k = 0; k < res[i].modeles[j].voitures.length; k++) {
                                           // console.log("car ",i,j,k)
-                                          console.log(" voitures : \n ", res[i].modeles[j].voitures[k]);
+                                          //console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
                                           this.filterData[index] = res[i].modeles[j].voitures[k];
                                           index = index + 1;
                                         }
                                       } // console.log("business voitures : \n ",res.modeles.voitures);
 
-                                    }
+                                    } //console.log(this.filterData);
+                                    //get the different prices of every car
 
-                                    console.log(this.filterData); //get the different prices of every car
 
                                     _loop = function _loop(_i) {
                                       _this2.webService.getPriceCar(_this2.filterData[_i].id).subscribe(function (resp) {
@@ -357,7 +356,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   this.webService.stopLoading(); //to stop loading
                                 }
 
-                              case 2:
+                              case 1:
                               case "end":
                                 return _context.stop();
                             }
@@ -366,7 +365,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       }));
                     });
 
-                  case 7:
+                  case 6:
                   case "end":
                     return _context2.stop();
                 }

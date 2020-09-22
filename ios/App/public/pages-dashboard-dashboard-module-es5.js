@@ -319,8 +319,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           while (1) {
                             switch (_context2.prev = _context2.next) {
                               case 0:
-                                console.log("getting voitures : ", res);
-
+                                //console.log("getting voitures : ",res); 
                                 if (!res.details) {
                                   if (res.length > 0) {
                                     this.filterData = res; ////get the different prices of every car
@@ -361,8 +360,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                       while (1) {
                                         switch (_context.prev = _context.next) {
                                           case 0:
-                                            console.log("getting Destinations : ", res);
-
+                                            //console.log("getting Destinations : ",res); 
                                             if (!res.details) {
                                               if (res.length > 0) {
                                                 this.list_original = res;
@@ -387,7 +385,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                                             this.webService.stopLoading();
 
-                                          case 3:
+                                          case 2:
                                           case "end":
                                             return _context.stop();
                                         }
@@ -397,7 +395,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 }); //// end get destinations
                                 ////////////////////////////////////////////////////////////////////
 
-                              case 3:
+                              case 2:
                               case "end":
                                 return _context2.stop();
                             }
@@ -463,8 +461,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             day = this.maxdate.getDate();
           }
 
-          this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day;
-          console.log("Today = " + this.today + " \n MAX DATE : " + this.maxdate);
+          this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day; //console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
         } ///////////////end set Date////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////
         //this method is used to print the details of a selected car //////////////
@@ -485,8 +482,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openClass",
         value: function openClass() {
-          console.log(this.searchClass);
-
+          //console.log(this.searchClass);
           if (this.searchClass == 'business') {
             this.router.navigateByUrl("/business-class");
           } else if (this.searchClass == 'economic') {
@@ -509,8 +505,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openPrice",
         value: function openPrice() {
-          console.log(this.searchPrice);
-
+          // console.log(this.searchPrice);
           if (this.searchPrice == '50000+') {
             this.router.navigate(['car-filter'], {
               queryParams: {
@@ -553,8 +548,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openOther",
         value: function openOther() {
-          console.log(this.searchOther);
-
+          //console.log(this.searchOther);
           if (this.searchOther == '5p+') {
             this.router.navigate(['car-filter'], {
               queryParams: {

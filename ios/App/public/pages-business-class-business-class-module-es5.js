@@ -298,8 +298,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           while (1) {
                             switch (_context.prev = _context.next) {
                               case 0:
-                                console.log("getting business voitures : \n ", res);
-
+                                //console.log("getting business voitures : \n ",res); 
                                 if (!res.detail) {
                                   if (res.length == 0) {
                                     //no  cars
@@ -320,15 +319,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                         // console.log("Modele ",i,j)
                                         for (k = 0; k < res[i].modeles[j].voitures.length; k++) {
                                           // console.log("car ",i,j,k)
-                                          console.log(" voitures : \n ", res[i].modeles[j].voitures[k]);
+                                          //console.log(" voitures : \n ",res[i].modeles[j].voitures[k]);
                                           this.filterData[index] = res[i].modeles[j].voitures[k];
                                           index = index + 1;
                                         }
                                       } // console.log("business voitures : \n ",res.modeles.voitures);
 
-                                    }
+                                    } // console.log(this.filterData);
+                                    //get the different prices of every car
 
-                                    console.log(this.filterData); //get the different prices of every car
 
                                     _loop = function _loop(_i) {
                                       _this2.webService.getPriceCar(_this2.filterData[_i].id).subscribe(function (resp) {
@@ -358,7 +357,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   this.webService.stopLoading(); //to stop loading
                                 }
 
-                              case 2:
+                              case 1:
                               case "end":
                                 return _context.stop();
                             }

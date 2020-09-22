@@ -256,8 +256,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.userType = "";
         this.userId = 0;
         this.show = false;
-        this.btnClicked = false;
-        console.log("Before editableText : ", this.editableText);
+        this.btnClicked = false; //console.log("Before editableText : ",this.editableText);
       }
 
       _createClass(ProfilePage, [{
@@ -298,7 +297,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 3:
                     _context3.t1 = _context3.sent.value;
                     this.userInfo = _context3.t0.parse.call(_context3.t0, _context3.t1);
-                    console.log("Storage : ", this.userInfo);
+                    //console.log("Storage : ",this.userInfo);
                     this.profileData.address = this.userInfo.address;
                     this.profileData.birth_date = this.userInfo.birth_date;
                     this.profileData.email = this.userInfo.email;
@@ -307,12 +306,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.profileData.telephone = this.userInfo.telephone;
                     this.userId = this.userInfo.id; //get user type
 
-                    _context3.next = 15;
+                    _context3.next = 14;
                     return Storage.get({
                       key: "user_type"
                     });
 
-                  case 15:
+                  case 14:
                     this.userType = _context3.sent.value;
                     // this.webService.stopLoading();
                     //get the current language of the app   
@@ -340,7 +339,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     this.show = true;
 
-                  case 18:
+                  case 17:
                   case "end":
                     return _context3.stop();
                 }
@@ -354,9 +353,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this2 = this;
 
           this.btnClicked = true;
-          this.editableText = false;
-          console.log("btnClicked : ", this.btnClicked);
-          console.log("DOB : ", this.userId);
+          this.editableText = false; //console.log("btnClicked : ",this.btnClicked);
+          //console.log("DOB : ",this.userId);     
+
           setTimeout(function () {
             _this2.btnClicked = false; // this.editableText=true;
           }, 1000);
@@ -371,26 +370,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context4.prev = _context4.next) {
                   case 0:
-                    console.log("profileData : ", this.profileData);
-                    this.btnClicked = true;
-                    console.log("btnClicked : ", this.btnClicked);
+                    // console.log("profileData : ",this.profileData);
+                    this.btnClicked = true; //console.log("btnClicked : ",this.btnClicked);
+
                     setTimeout(function () {
                       _this3.btnClicked = false; // this.editableText=true;
                     }, 1000); //get token
 
-                    _context4.next = 6;
+                    _context4.next = 4;
                     return Storage.get({
                       key: 'accessToken'
                     });
 
-                  case 6:
+                  case 4:
                     this.token = _context4.sent.value;
-                    _context4.next = 9;
+                    _context4.next = 7;
                     return Storage.get({
                       key: 'SELECTED LANGUAGE'
                     });
 
-                  case 9:
+                  case 7:
                     this.lang = _context4.sent.value;
 
                     if (this.profileData.email) {
@@ -442,7 +441,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       }
                     }
 
-                  case 11:
+                  case 9:
                   case "end":
                     return _context4.stop();
                 }

@@ -155,7 +155,7 @@ let SendFeedbacksPage = class SendFeedbacksPage {
     }
     save() {
         this.btnClicked = true;
-        console.log("btnClicked : ", this.btnClicked);
+        //console.log("btnClicked : ",this.btnClicked);     
         setTimeout(() => {
             this.btnClicked = false;
             // this.editableText=true;
@@ -166,7 +166,7 @@ let SendFeedbacksPage = class SendFeedbacksPage {
             //call post feedbacks service
             this.webService.postFeedbacks(this.dataToSend, this.token).subscribe(resp => {
                 if (resp) {
-                    console.log("done successfully");
+                    //console.log("done successfully");
                 }
                 this.myAlert(0, this.lang);
             }, error => {

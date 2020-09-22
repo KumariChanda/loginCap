@@ -190,7 +190,7 @@ let DashboardPage = class DashboardPage {
             //present loading
             this.webService.presentLoading();
             this.webService.getVoitures().subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                console.log("getting voitures : ", res);
+                //console.log("getting voitures : ",res); 
                 if (!res.details) {
                     if (res.length > 0) {
                         this.filterData = res;
@@ -225,7 +225,7 @@ let DashboardPage = class DashboardPage {
                 ////////////////////////////////////////////////////////////////////////////   
                 //get Destination list
                 this.webService.getDestinations().subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                    console.log("getting Destinations : ", res);
+                    //console.log("getting Destinations : ",res); 
                     if (!res.details) {
                         if (res.length > 0) {
                             this.list_original = res;
@@ -302,7 +302,7 @@ let DashboardPage = class DashboardPage {
             day = this.maxdate.getDate();
         }
         this.maxdate = this.maxdate.getFullYear() + "-" + month + "-" + day;
-        console.log("Today = " + this.today + " \n MAX DATE : " + this.maxdate);
+        //console.log("Today = " + this.today + " \n MAX DATE : "+ this.maxdate); 
     }
     ///////////////end set Date////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -314,7 +314,7 @@ let DashboardPage = class DashboardPage {
     //////////////////////end call carDetails///////////////////////////
     //////////////// search class /////////////////////
     openClass() {
-        console.log(this.searchClass);
+        //console.log(this.searchClass);
         if (this.searchClass == 'business') {
             this.router.navigateByUrl("/business-class");
         }
@@ -340,7 +340,7 @@ let DashboardPage = class DashboardPage {
     ////////////////  End search class ////////////////
     //////////////// search per price /////////////////////
     openPrice() {
-        console.log(this.searchPrice);
+        // console.log(this.searchPrice);
         if (this.searchPrice == '50000+') {
             this.router.navigate(['car-filter'], { queryParams: { id: this.searchPrice, type: "price" } });
         }
@@ -366,7 +366,7 @@ let DashboardPage = class DashboardPage {
     ////////////////  End search per price ////////////////
     //////////////// search per Other /////////////////////
     openOther() {
-        console.log(this.searchOther);
+        //console.log(this.searchOther);
         if (this.searchOther == '5p+') {
             this.router.navigate(['car-filter'], { queryParams: { id: this.searchOther, type: "other" } });
         }

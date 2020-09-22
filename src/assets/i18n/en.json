@@ -140,7 +140,9 @@
         "cancel" : "Cancel",
         "clientname" : "Client Name : ",
         "marks" : "Your impressions about the ride : ",
-        "car" : " Car :"
+        "car" : " Car :",
+        "your_comment" : "Your comment:",
+        "your_marks" : "The marks you gave:"
 
     },
 

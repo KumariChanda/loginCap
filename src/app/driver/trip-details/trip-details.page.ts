@@ -185,6 +185,10 @@ export class TripDetailsPage implements OnInit {
                               this.webService.stopLoading();
                             });
                             //end get depart
+                        }else{
+                          //stop loader
+                          this.show = true
+                          this.webService.stopLoading();
                         } 
                       
                   });

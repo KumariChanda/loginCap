@@ -159,7 +159,7 @@ let LoginPage = class LoginPage {
                 if (this.usernameText && this.passwordText) {
                     this.webService.presentLoading();
                     this.webService.login(sending_obj).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                        console.log("getting response : ", res);
+                        //console.log("getting response : ",res); 
                         if (!res.detail) {
                             //store user status in storage 
                             Storage.set({
@@ -244,7 +244,7 @@ let LoginPage = class LoginPage {
     getData() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             var ret = Storage.get({ key: 'accessToken' });
-            console.log((yield ret).value);
+            //console.log((await ret).value);
         });
     }
     RegisterBtnClicked() {

@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+
+      <ion-item>
+
+        <ion-icon color="light" name="chevron-back" (click)="prev()" ></ion-icon>
+        <ion-title style="margin-left:15%">{{"DASHBOARD.my_report" | translate }}</ion-title>
+
+      </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="show">
+
+    <!-- Trip/voyage Details -->
+ 
+
+
+     <ion-card >
+    
+        <ion-card-header>
+                 <ion-card-title style=" margin-left:15%; margin-bottom: 3%;font-size:1.2em" >{{"DASHBOARD.question" | translate}}</ion-card-title>
+
+          <ion-card-subtitle>
+             
+                
+                <ion-radio-group allow-empty-selection [(ngModel)]="marks"  >
+                   
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.very_good" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value=5></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.good" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value=4></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.average" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value=3></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.bad" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value=2></ion-radio>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>{{"DASHBOARD.very_bad" | translate}}</ion-label>
+                      <ion-radio slot="end" color="primary" value=1></ion-radio>
+                    </ion-item>
+
+                  </ion-radio-group>
+           
+
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+                        
+                <ion-textarea [(ngModel)]="comment" auto-grow="true"  placeholder="{{'DASHBOARD.comment'| translate}}"></ion-textarea>
+
+        </ion-card-content>
+      </ion-card>
+
+    <!-- </ion-item> -->
+
+
+
+</ion-content>
+
+<ion-footer>
+  <!-- <ion-toolbar> -->
+          <!-- end the trip  -->
+    <ion-button expand="full"  (click)="end()" >{{"RESERVECAR.btn_submit" | translate }} </ion-button>
+   
+  <!-- </ion-toolbar> -->
+</ion-footer>

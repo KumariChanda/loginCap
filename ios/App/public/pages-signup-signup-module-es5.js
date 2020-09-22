@@ -290,8 +290,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.btnClicked = true;
           setTimeout(function () {
             _this.btnClicked = false;
-          }, 1000);
-          console.log("Signup cllicked!.");
+          }, 1000); //console.log("Signup cllicked!.");
 
           if (this.firstname && this.lastname && this.email && this.password && this.password && this.confirmpassword) {
             if (this.agreement == true) {
@@ -311,8 +310,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.webService.presentLoading();
                 this.webService.signup(data).subscribe(function (res) {
                   if (res) {
-                    console.log(res);
-
+                    //console.log(res);
                     _this.webService.stopLoading();
 
                     if (_this.lang == "fr") {
