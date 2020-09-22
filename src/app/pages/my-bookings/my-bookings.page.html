@@ -195,7 +195,7 @@
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'fr'"> Très Bien </label>
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'en'"> Very good </label>
                 </ion-item>
-                <label *ngIf="reservDetails.note_client>0"> {{reservDetails.commentaire_client}} </label> <br>
+                <label textWrap="true" style="margin-left: 5%;color:white;" *ngIf="reservDetails.note_client>0"> {{reservDetails.commentaire_client}} </label> <br>
 
                   <!-- your comment/ message -->
             
