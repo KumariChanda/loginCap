@@ -464,6 +464,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return m.SendRidesPageModule;
         });
       }
+    }, {
+      path: 'report-client',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | pages-report-client-report-client-module */
+        "pages-report-client-report-client-module").then(__webpack_require__.bind(null,
+        /*! ./pages/report-client/report-client.module */
+        "./src/app/pages/report-client/report-client.module.ts")).then(function (m) {
+          return m.ReportClientPageModule;
+        });
+      }
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -1554,7 +1565,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 0:
                     // this.loading = false;
                     // console.log("loading stop");
-                    if (this.loading) this.loading = false;
+                    if (this.loading != false) this.loading = false;
                     _context6.next = 3;
                     return this.loadingCtrl.dismiss().then(function () {
                       return console.log('loading dismissed');

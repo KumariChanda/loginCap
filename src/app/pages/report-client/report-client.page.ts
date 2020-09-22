@@ -126,7 +126,7 @@ reservID=0;
          //get the details of the car
      
          //receive the data infos
-         this.filterData = JSON.parse( data.booked);
+         //this.filterData = JSON.parse( data.booked);
          console.log("Filterdata", this.filterData);
 
       
@@ -155,7 +155,9 @@ reservID=0;
 
   async end()
 {
-  var lang = (await Storage.get({ key: LNG_KEY })).value;
+  if(this.marks!="")
+  {
+   var lang = (await Storage.get({ key: LNG_KEY })).value;
       if(lang =="fr")
       {
         var textcancel = "Non ";
@@ -253,6 +255,16 @@ reservID=0;
       });
   
       await alert.present();
+    }else
+    {
+      if(lang =='fr')
+      {
+        alert("SVP\n Attribuez une note au trajet. ");
+      }else{
+        alert("Please\n Mark the ride. ")
+      }
+  
+    }
 }
 
 

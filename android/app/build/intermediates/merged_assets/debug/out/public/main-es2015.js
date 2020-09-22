@@ -398,6 +398,10 @@ const routes = [
     {
         path: 'send-rides',
         loadChildren: () => __webpack_require__.e(/*! import() | driver-send-rides-send-rides-module */ "driver-send-rides-send-rides-module").then(__webpack_require__.bind(null, /*! ./driver/send-rides/send-rides.module */ "./src/app/driver/send-rides/send-rides.module.ts")).then(m => m.SendRidesPageModule)
+    },
+    {
+        path: 'report-client',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-report-client-report-client-module */ "pages-report-client-report-client-module").then(__webpack_require__.bind(null, /*! ./pages/report-client/report-client.module */ "./src/app/pages/report-client/report-client.module.ts")).then(m => m.ReportClientPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -1252,7 +1256,7 @@ let AppServiceService = class AppServiceService {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             // this.loading = false;
             // console.log("loading stop");
-            if (this.loading)
+            if (this.loading != false)
                 this.loading = false;
             return yield this.loadingCtrl.dismiss().then(() => console.log('loading dismissed'));
         });

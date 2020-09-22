@@ -158,7 +158,12 @@ public  maxdate : any;   // the maximum date of a date picker
 
    }
 
-  async ngOnInit() {
+   ngOnInit()
+   {
+     //this.ngOnInit();
+   }
+
+  async ionViewWillEnter() {
       /////////////////////////////////////////////////
       //get token
       this.token =(await Storage.get({ key: 'accessToken' })).value;
@@ -183,67 +188,85 @@ public  maxdate : any;   // the maximum date of a date picker
               if(this.filterData[i].etape_location == 4 || this.filterData[i].etape_location == 2)
               {
                 this.nbr = this.nbr + 1 ;
+                break;
               }
+            }
+            //
+            if(this.nbr>0)
+            {
+              
+              for(let i=0; i< res.length;i++)
+              {
 
-               //call the car according to the id 
-               this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
-    
-               // console.log(car)
-                    //pictures of car
-                    this.filterData[i].photo= car.photo;
-                    //modele
-                    this.filterData[i].modele = car.modele.libelle;
+                //call the car according to the id 
+                this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
+      
+                // console.log(car)
+                      //pictures of car
+                      this.filterData[i].photo= car.photo;
+                      //modele
+                      this.filterData[i].modele = car.modele.libelle;
 
-                    //receive the res
-                    this.filterData[i] = res[i];
-                    this.filterData[i].heure_debut = (res[i].date_debut.split("T")[1]).split(".")[0];
-                    this.filterData[i].date_debut = res[i].date_debut.split("T")[0];
-                    this.filterData[i].heure_fin = (res[i].date_fin.split("T")[1]).split(".")[0];
-                    this.filterData[i].date_fin = res[i].date_fin.split("T")[0];
-                    this.filterData[i].date_location = res[i].date_location.split("T")[0];
-                    this.filterData[i].destination_id = res[i].destination;
-                    this.filterData[i].depart_id = res[i].depart;
+                      //receive the res
+                      this.filterData[i] = res[i];
+                      this.filterData[i].heure_debut = (res[i].date_debut.split("T")[1]).split(".")[0];
+                      this.filterData[i].date_debut = res[i].date_debut.split("T")[0];
+                      this.filterData[i].heure_fin = (res[i].date_fin.split("T")[1]).split(".")[0];
+                      this.filterData[i].date_fin = res[i].date_fin.split("T")[0];
+                      this.filterData[i].date_location = res[i].date_location.split("T")[0];
+                      this.filterData[i].destination_id = res[i].destination;
+                      this.filterData[i].depart_id = res[i].depart;
 
-                  //get the client name
-                  this.webService.getClient(res[i].client,this.token).subscribe(resp=>{
+                    //get the client name
+                    this.webService.getClient(res[i].client,this.token).subscribe(resp=>{
+                      
+                  //   console.log("client", resp);
+                        this.filterData[i].clientname = resp.first_name +" "+resp.last_name;
+
+                  
+                        //get destination
+                      this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
+          
+                  //    console.log(dest);
                     
-                 //   console.log("client", resp);
-                      this.filterData[i].clientname = resp.first_name +" "+resp.last_name;
+                        this.filterData[i].destination = dest.destination;
 
+                        if(res[i].depart > 0)
+                        {
+                              //get depart
+                              this.webService.getSingleDestination(res[i].depart).subscribe(dep =>{
+                    
+                            //   console.log(dep);
                 
-                      //get destination
-                    this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
-        
-                 //    console.log(dest);
-                   
-                      this.filterData[i].destination = dest.destination;
+                              this.filterData[i].depart = dep.destination;
+                              
 
-                      if(res[i].depart > 0)
-                      {
-                            //get depart
-                            this.webService.getSingleDestination(res[i].depart).subscribe(dep =>{
-                  
-                           //   console.log(dep);
-              
-                            this.filterData[i].depart = dep.destination;
-                            
-
-                            this.list_original = this.filterData
-                            //stop loader
-                            this.show = true
-                            this.webService.stopLoading();
-                          });
-                          //end get depart
-                      } 
-                    
-                });
-                    //end get destination
-                  
+                              this.list_original = this.filterData
+                              //stop loader
+                              this.show = true
+                              this.webService.stopLoading();
+                            });
+                            //end get depart
+                        }else{
+                          //stop loader
+                          this.show = true
+                          this.webService.stopLoading();
+                        } 
+                      
                   });
-                  //end get client name
-           
-             });
+                      //end get destination
+                    
+                    });
+                    //end get client name
+            
+              });
               
+
+              }
+            }else{
+              this.show = true;
+              this.webService.stopLoading();
+
             }
 
          }else{
@@ -305,13 +328,9 @@ public  maxdate : any;   // the maximum date of a date picker
   //this method is used to print the details of a selected trip //////////////
   endTrip(id){
 
-    //console.log("selected : -> ", this.filterData[id].id);
-
-    //call another page and fetch the details of the car
-    //this.router.navigateByUrl("/trip-details")
 
       //call another page and fetch the details of the car
-      this.router.navigate(['send-reports'], {queryParams:{id: this.filterData[id].id, prev : "/home"} })
+      this.router.navigate(['send-reports'], {queryParams:{booked: JSON.stringify(this.filterData[id]), prev : "/home"} })
 
 
 

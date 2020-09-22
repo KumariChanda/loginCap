@@ -73,6 +73,11 @@ show = false; //is to show page content
     
   }
 
+  ionViewWillEnter()
+   {
+     console.log("Voici le retour");
+   }
+
   ngOnInit() {
     this.webservice.presentLoading();
     this.getCurrentToken();

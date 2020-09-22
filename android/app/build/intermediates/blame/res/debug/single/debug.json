@@ -28,12 +28,12 @@
         "source": "D:\\ionicapp\\loginCap\\android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "D:\\ionicapp\\loginCap\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-xhdpi_splash.png.flat",
-        "source": "D:\\ionicapp\\loginCap\\android\\app\\src\\main\\res\\drawable-land-xhdpi\\splash.png"
-    },
-    {
         "merged": "D:\\ionicapp\\loginCap\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxhdpi_splash.png.flat",
         "source": "D:\\ionicapp\\loginCap\\android\\app\\src\\main\\res\\drawable-port-xxhdpi\\splash.png"
+    },
+    {
+        "merged": "D:\\ionicapp\\loginCap\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-xhdpi_splash.png.flat",
+        "source": "D:\\ionicapp\\loginCap\\android\\app\\src\\main\\res\\drawable-land-xhdpi\\splash.png"
     },
     {
         "merged": "D:\\ionicapp\\loginCap\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",

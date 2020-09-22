@@ -104,145 +104,36 @@ constructor( private router : Router, private route: ActivatedRoute,
 
 async ngOnInit() {
 
-/////////////////////////////////////////////////
-    //get token
-    this.token =(await Storage.get({ key: 'accessToken' })).value;
+//start laoder
+    // this.webService.presentLoading();
+     //get token
+     this.token =(await Storage.get({ key: 'accessToken' })).value;
 
-    //get client id
-    this.Id =JSON.parse( (await Storage.get({ key: "user_infos" })).value).id;
-    //get user type
-    this.userType = (await Storage.get({ key: "user_type" })).value;
-    //get Language
-     this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
-  
-   this.subscription = this.route.queryParams.subscribe((data) => {
+     //get user id
+     this.userId =JSON.parse( (await Storage.get({ key: "user_infos" })).value).id;
+     //get Language
+      this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+
+      //get data from prev page
+      this.subscription = this.route.queryParams.subscribe((data) => {
    
-   // console.log("selected ->", typeof(data.id));
-     //receive the  prev page 
-    this.page_prev = data.prev ;
-    //get the details of the car
+        // console.log("selected ->", typeof(data.id));
+          //receive the  prev page 
+         this.page_prev = data.prev ;
+         //get the details of the car
+     
+         //receive the data infos
+         this.filterData = JSON.parse( data.booked);
+         console.log("Filterdata", this.filterData);
 
-    //receive the driver id 
-    this.userId = data.id;
-    
-     //present loading
-     this.webService.presentLoading();
-
-     this.webService.getDriverRide(this.userId,this.token).subscribe(async res=>{
-    
-
-       if(!res.detail)
-       {
-
-        
-        
-          for(let i=0; i< res.length;i++)
-          {
-              if(data.id == res[i].id)
-              {
-                this.filterData = res[i];
-               // console.log("getting Ride : ",this.filterData);
-                    //call the car according to the id 
-                this.webService.getCarDetails(res[i].voiture).subscribe(car =>{
-  
-                //console.log(car)
-                    //pictures of car
-                    this.filterData.photo= car.photo;
-                    //modele
-                    this.filterData.modele = car.modele.libelle;
-
-                    //receive the res
-                    this.filterData = res[i];
-                    this.filterData.heure_debut = (res[i].date_debut.split("T")[1]).split(".")[0];
-                    this.filterData.date_debut = res[i].date_debut.split("T")[0];
-                    this.filterData.heure_fin = (res[i].date_fin.split("T")[1]).split(".")[0];
-                    this.filterData.date_fin = res[i].date_fin.split("T")[0];
-                    this.filterData.date_location = res[i].date_location.split("T")[0];
-                    this.filterData.destination_id = res[i].destination;
-                    this.filterData.depart_id = res[i].depart;
-
-                  //get the client name
-                  this.webService.getClient(res[i].client,this.token).subscribe(resp=>{
-                    
-                   // console.log("client", resp);
-                      this.filterData.clientname = resp.first_name +" "+resp.last_name;
-
-                
-                      //get destination
-                    this.webService.getSingleDestination(res[i].destination).subscribe(dest =>{
-        
-                   //  console.log(dest);
-                   
-                      this.filterData.destination = dest.destination;
-
-                      if(res[i].depart > 0)
-                      {
-                            //get depart
-                            this.webService.getSingleDestination(res[i].depart).subscribe(dep =>{
-                  
-                             // console.log(dep);
-              
-                            this.filterData.depart = dep.destination;
-                            
-
-                            //stop loader
-                            this.show = true
-                            this.webService.stopLoading();
-                          });
-                          //end get depart
-                      }else{
-                        //stop loader
-                        this.show = true
-                        this.webService.stopLoading();
-                      } 
-                    
-                });
-                    //end get destination
-                  
-                  });
-                  //end get client name
-           
-             });
-              
-              }
-           
-          }
-
-       }else{
-            this.webService.stopLoading();
-            if(this.lang =="fr")
-            {
-              
-              alert("Aucun Trajet disponible !! ")
-            }else{
-              alert("No Ride available !!  ")
-        
-            }
-
-       }
-
-    },error=>{
-      this.webService.stopLoading(); 
       
-      if(this.lang =="fr")
-      {
-        alert("Erreur Serveur !! ")
-      }else{
-        alert("Server Error!! ")
-  
-      }
-  
-     });
+         this.show = true;
+        //start stop loader
+      // this.webService.stopLoading();
 
 
 
-
-
-
-
-
-   });
-   //end of subscription
+      });
 
 
 }
@@ -261,7 +152,9 @@ prev(){
 
 async end()
 {
-  var lang = (await Storage.get({ key: LNG_KEY })).value;
+  if(this.marks!="")
+  {
+    var lang = (await Storage.get({ key: LNG_KEY })).value;
       if(lang =="fr")
       {
         var textcancel = "Non ";
@@ -299,11 +192,7 @@ async end()
               //change the location type ;
               this.filterData.etape_location = 5;
 
-             
-
-           //   this.DataTosend.id = this.filterData[id].id;
-              if(this.userType == "chauffeur")
-              {
+        
                 this.DataTosend.date_location = this.filterData.date_location+"T"+this.filterData.heure_debut+".961Z";
                 this.DataTosend.date_debut = this.filterData.date_debut+"T"+this.filterData.heure_debut+".961Z";
                 this.DataTosend.date_fin = this.filterData.date_fin+"T"+this.filterData.heure_fin+".961Z";
@@ -321,9 +210,7 @@ async end()
                 this.DataTosend.rapport_chauffeur = this.comment;
 
 
-              }
-
-             // console.log(this.Tosend,"\n", this.Id);
+              console.log(this.DataTosend,"\n");
 
               //call the EditLocation API 
               this.webService.presentLoading(); // present loader
@@ -358,6 +245,16 @@ async end()
       });
   
       await alert.present();
+  }else
+  {
+    if(lang =='fr')
+    {
+      alert("SVP\n Attribuez une note au trajet. ");
+    }else{
+      alert("Please\n Mark  the ride. ")
+    }
+
+  }
 }
 
 
@@ -375,12 +272,9 @@ myAlert(id,lang)
     }else{
       alert("Thank you for your contribution !");
      }
-     if(this.userType=="chauffeur")
-     {
-      this.router.navigateByUrl("/home");
-     }else{
-      this.router.navigateByUrl("/my-bookings");
-     }
+    
+    this.router.navigateByUrl("/home");
+    
  }else{
 
     if(lang =="fr" )
