@@ -64,20 +64,15 @@ export class OurContactsPage implements OnInit {
    openLinkedin()
    {
      //console.log("Linkedin")
-    // this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+     this.iab.create('https://www.linkedin.com/company/nyokah','_blank')
    }
  //  ///////////////////////////////////////
    openInstagram()
    {
     // console.log("Instagram")
-     //this.iab.create('https://www.facebook.com/Nyokah-111809566836023/','_blank')
+     this.iab.create('https://instagram.com/nyokah_infos?igshid=1d2kvuj8z5sgr','_blank')
    }
- //  ///////////////////////////////////////
-   openGoogleplus()
-   {
-     //console.log("Google plus")
-      this.iab.create('https://mail.google.com/','_system')
-   }
+
    //////////////////////////////////////////////////////
    openWhatsapp(number)
    {
