@@ -13,32 +13,40 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/-48477237/capacitor-android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/-48477237/capacitor-android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/capacitor-cordova-android-plugins/capacitor-cordova-android-plugins.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/capacitor-cordova-android-plugins/capacitor-cordova-android-plugins.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/bundle-manifest/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeLibDexDebug/out/classes_0.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeLibDexDebug/out/classes_0.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeLibDexDebug/out/classes_1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeLibDexDebug/out/classes_1.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/out/public/pages-my-bookings-my-bookings-module-es2015.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/out/public/pages-my-bookings-my-bookings-module-es2015.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/out/public/pages-my-bookings-my-bookings-module-es2015.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/out/public/pages-my-bookings-my-bookings-module-es2015.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/out/public/pages-my-bookings-my-bookings-module-es5.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/out/public/pages-my-bookings-my-bookings-module-es5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/out/public/pages-my-bookings-my-bookings-module-es5.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/out/public/pages-my-bookings-my-bookings-module-es5.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/984d714a6168effba80d64f0e5ff45f11919466adb2f6571713efa41926650f4_0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/984d714a6168effba80d64f0e5ff45f11919466adb2f6571713efa41926650f4_0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/984d714a6168effba80d64f0e5ff45f11919466adb2f6571713efa41926650f4_1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/984d714a6168effba80d64f0e5ff45f11919466adb2f6571713efa41926650f4_1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/cpckingdom/nyokah/BuildConfig.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/cpckingdom/nyokah/BuildConfig.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/cpckingdom/nyokah/MainActivity$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/cpckingdom/nyokah/MainActivity$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/cpckingdom/nyokah/MainActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/cpckingdom/nyokah/MainActivity.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-my-bookings-my-bookings-module-es2015.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-my-bookings-my-bookings-module-es2015.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-my-bookings-my-bookings-module-es2015.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-my-bookings-my-bookings-module-es2015.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-my-bookings-my-bookings-module-es5.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-my-bookings-my-bookings-module-es5.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-my-bookings-my-bookings-module-es5.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-my-bookings-my-bookings-module-es5.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/app/pages/my-bookings/my-bookings.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/pages/my-bookings/my-bookings.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/pages/report-client.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="QYJ7N17511000075" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,6 +64,12 @@
       </state>
     </system>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="D:\ionicapp\loginCap\keystore.jks" />
+    <option name="KEY_ALIAS" value="nyokah" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -67,6 +81,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ApkExportedModule" value="app" />
+    <property name="ExportApk.ApkPath" value="D:\ionicapp\loginCap\android\app" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV1" value="true" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
   <component name="RunManager">
@@ -147,13 +166,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1600019240432" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1600064777167">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1603389533716">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600064777167" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1600442075935">
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1603389533716" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1603388450895">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1600442075935" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1603388450895" />
   </component>
 </project>

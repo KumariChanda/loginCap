@@ -126,8 +126,8 @@ reservID=0;
          //get the details of the car
      
          //receive the data infos
-         //this.filterData = JSON.parse( data.booked);
-         console.log("Filterdata", this.filterData);
+         this.filterData = JSON.parse( data.booked);
+         //console.log("Filterdata", this.filterData);
 
       
          this.show = true;

@@ -276,7 +276,7 @@ public  maxdate : any;   // the maximum date of a date picker
                 
                 alert("Aucun Trajet disponible !! ")
               }else{
-                alert("No Ride available !!  ")
+                alert("No Ride available !!")
           
               }
 
@@ -287,7 +287,7 @@ public  maxdate : any;   // the maximum date of a date picker
         
         if(this.lang =="fr")
         {
-          alert("Erreur Serveur !! ")
+          alert("Erreur Serveur !!")
         }else{
           alert("Server Error!! ")
     
