@@ -317,13 +317,13 @@ let HomePage = class HomePage {
                         alert("Aucun Trajet disponible !! ");
                     }
                     else {
-                        alert("No Ride available !!  ");
+                        alert("No Ride available !!");
                     }
                 }
             }), error => {
                 this.webService.stopLoading();
                 if (this.lang == "fr") {
-                    alert("Erreur Serveur !! ");
+                    alert("Erreur Serveur !!");
                 }
                 else {
                     alert("Server Error!! ");

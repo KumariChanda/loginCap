@@ -16,6 +16,8 @@ export class BusinessClassPage implements OnInit {
 
 
   show = false // used to show page content
+  emptylist = true;
+
 
 //////////////////////////////search bar elements for cars ////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -61,7 +63,7 @@ filterData = [
       this.webService.getCarClass(4).subscribe(async res=>{
 
         
-        //console.log("getting business voitures : \n ",res); 
+        console.log("getting business voitures : \n ",res); 
         if(!res.detail)
         {
             if(res.length ==0)
@@ -84,6 +86,10 @@ filterData = [
               var index=0;
               for(let i=0; i< res.length; i++ )
               {
+                if(res[i].modeles.length >0 )
+                {
+                  this.emptylist = false;
+                }
                // console.log("class ",i)
                 for(let j=0; j< res[i].modeles.length; j++ )
                 {
@@ -115,7 +121,23 @@ filterData = [
                 );
               }
               this.webService.stopLoading();//to stop loading
-              this.show = true// used to show page content
+              if(!this.emptylist)
+              {
+                 this.show =true;
+              }
+              else{
+                   //no  cars
+                 if(this.lang=="fr")
+                 {
+                   alert(" Pas de véhicule, veuillez affiner votre recherche.");
+         
+                 }else{
+                   alert(" No vehicle, please refine your search.")
+                 }
+        
+                this.router.navigateByUrl("/dashboard");
+                this.webService.stopLoading();//to stop loading
+              }
             }
              
 

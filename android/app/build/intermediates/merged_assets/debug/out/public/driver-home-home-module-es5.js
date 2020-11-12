@@ -494,7 +494,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 if (this.lang == "fr") {
                                   alert("Aucun Trajet disponible !! ");
                                 } else {
-                                  alert("No Ride available !!  ");
+                                  alert("No Ride available !!");
                                 }
 
                               case 15:
@@ -508,7 +508,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       _this2.webService.stopLoading();
 
                       if (_this2.lang == "fr") {
-                        alert("Erreur Serveur !! ");
+                        alert("Erreur Serveur !!");
                       } else {
                         alert("Server Error!! ");
                       }

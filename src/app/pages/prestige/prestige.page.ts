@@ -16,6 +16,8 @@ const { Storage } = Plugins;
 export class PrestigePage implements OnInit {
 
   show = false;
+  emptylist = true;
+
   //////////////////////////////search bar elements for cars ////////////
 //////////////////////////////////////////////////////////////////////////////
 public isSearchbarOpened = false;
@@ -74,6 +76,10 @@ filterData = [
               var index=0;
               for(let i=0; i< res.length; i++ )
               {
+                if(res[i].modeles.length >0 )
+                {
+                  this.emptylist = false;
+                }
                // console.log("class ",i)
                 for(let j=0; j< res[i].modeles.length; j++ )
                 {
@@ -105,8 +111,24 @@ filterData = [
                 
                 );
               }
-            this.webService.stopLoading();//to stop loading
-            this.show =true;
+              this.webService.stopLoading();//to stop loading
+              if(!this.emptylist)
+              {
+              this.show = true// used to show page content
+              }
+              else{
+                  //no  cars
+                if(this.lang=="fr")
+                {
+                  alert(" Pas de véhicule, veuillez affiner votre recherche.");
+        
+                }else{
+                  alert(" No vehicle, please refine your search.")
+                }
+        
+                this.router.navigateByUrl("/dashboard");
+                this.webService.stopLoading();//to stop loading
+              }
   
             }
         }
