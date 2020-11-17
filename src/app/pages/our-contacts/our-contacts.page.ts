@@ -89,6 +89,12 @@ export class OurContactsPage implements OnInit {
       .then(res => {})
       .catch(err => {});
   }
+  /////////////////////////////////////////////////////////////
+  openNyokah()
+  {
+    // console.log("Nyokah")
+    this.iab.create('https://www.nyokah.ci','_blank')
+  }
 
 }
 

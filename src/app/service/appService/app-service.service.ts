@@ -737,7 +737,7 @@ changeClientPasssword(id,token,data): Observable<any> {
   }
 
 
-  return this.http.post(base_url+"clients/"+id+"/set_password",data, httpOption).pipe(
+  return this.http.post(base_url+"clients/"+id+"/set_password/",data, httpOption).pipe(
     map(this.extractData),
     catchError(this.handleError)
   );

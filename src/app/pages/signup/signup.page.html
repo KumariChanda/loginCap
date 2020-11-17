@@ -29,8 +29,16 @@
           <br>
           <ion-input class="inputcomp" type="text" [(ngModel)]="address"  placeholder="{{'SIGNUP.address' | translate }}"></ion-input>
           <br>
-          <!-- <ion-input class="inputcomp" type="date"  [(ngModel)]="dob"></ion-input> -->
-          <!-- <br> -->
+          <!-- <ion-input class="inputcomp" type="date"  [(ngModel)]="birth_date"></ion-input> -->
+          <ion-datetime *ngIf="lang=='en'" class="inputcomp" [max]="today" placeholder="{{'SIGNUP.dob' | translate }}" [(ngModel)]="birth_date" ></ion-datetime>
+              <!-- french -->
+          <ion-datetime *ngIf="lang=='fr'" class="inputcomp" [(ngModel)]="birth_date"
+                   placeholder="{{'SIGNUP.dob' | translate }}" [max]="today"
+                   monthShortNames="Jan, Fev, Mars, Avr, Mai, Juin, Juil, Août, Sep, Oct, Nov, Dec"
+                   cancelText="Annuler"
+                  doneText="Valider">
+                 </ion-datetime>
+          <br>
           
           <input type="checkbox" [(ngModel)]="agreement">&nbsp;&nbsp;<ion-router-link href="/term-usage" class="register"><b>{{'SIGNUP.term_condition' | translate }}</b></ion-router-link>
           

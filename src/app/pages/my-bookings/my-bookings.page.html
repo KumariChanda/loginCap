@@ -34,7 +34,7 @@
                          
                          </ion-icon>
                         
-                        <ion-icon *ngIf="(item.etape_location==5 && item.note_client == 0) ||(item.etape_location==5 && item.note_client==null)" style="color:#ffa60a " slot="end"
+                        <ion-icon *ngIf="(item.etape_location==3 && item.note_client == 0) ||(item.etape_location==3 && item.note_client==null)" style="color:#ffa60a " slot="end"
                           name="open-outline" (click)="Mark(i)">
                          
                          </ion-icon> 
@@ -50,12 +50,12 @@
                     <label textWrap="true" style="margin-left:5%;color:white;width: 150px" *ngIf="item.etape_location == 1 && lang=='en'"> Being processed </label>
                     <label textWrap="true" style="margin-left:5%;color:white;width: 150px" *ngIf="item.etape_location == 2 && lang=='fr'" > Confirmée </label>
                     <label  *ngIf="item.etape_location == 2 && lang=='en'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Confirmed </label>
-                    <label *ngIf="item.etape_location == 3 && lang=='fr'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Rejetée </label>
-                    <label  *ngIf="item.etape_location == 3 && lang=='en'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Rejected  </label>
+                    <label *ngIf="item.etape_location == 3 && lang=='fr'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Réservation terminée</label>
+                    <label  *ngIf="item.etape_location == 3 && lang=='en'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Reservation completed </label>
                     <label  *ngIf="item.etape_location == 4 && lang=='fr'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Réservation Débutée </label>
                     <label  *ngIf="item.etape_location == 4 && lang=='en'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Reservation started </label>
-                    <label  *ngIf="item.etape_location == 5 && lang=='fr'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Réservation terminée </label>
-                    <label  *ngIf="item.etape_location == 5 && lang=='en'" textWrap="true" style="margin-left:5%;color:white;width: 150px">Reservation completed </label>
+                    <label  *ngIf="item.etape_location == 5 && lang=='fr'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Rejetée  </label>
+                    <label  *ngIf="item.etape_location == 5 && lang=='en'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Rejected </label>
                     <label  *ngIf="item.etape_location == 6 && lang=='fr'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Annulée </label>
                     <label  *ngIf="item.etape_location == 6 && lang=='en'" textWrap="true" style="margin-left:5%;color:white;width: 150px"> Cancelled </label>
                   
@@ -112,18 +112,18 @@
                <!-- Status -->
                 <ion-item>
                     <label textWrap="true" style="width: 150px" > {{ "RESERVECAR.booking_status" | translate }} </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 1 && lang=='fr'" > En cours de traitement </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 1 && lang=='en'" > Being processed </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 2 && lang=='fr'" > Confirmée </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 2 && lang=='en'" > Confirmed </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 3 && lang=='fr'"> Rejetée </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 3 && lang=='en'" > Rejected  </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 1 && lang=='fr'" > En attente de paiement </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 1 && lang=='en'" > Waiting for payment </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 2 && lang=='fr'" > Annulé</label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 2 && lang=='en'" > Canceled </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 3 && lang=='fr'"> Réservation terminée </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 3 && lang=='en'" > Reservation completed  </label>
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 4 && lang=='fr'" > Réservation Débutée </label>
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 4 && lang=='en'" > Reservation started </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 5 && lang=='fr'" > Réservation terminée </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 5 && lang=='en'" >Reservation completed </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 6 && lang=='fr'" > Annulée </label>
-                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 6 && lang=='en'" > Cancelled </label>             
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 5 && lang=='fr'" > Réservation rejetée </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 5 && lang=='en'" >Reservation rejected </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 6 && lang=='fr'" > Confirmé </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.etape_location == 6 && lang=='en'" > Confirmed </label>             
                 </ion-item>
                
                 <!-- Booking Type  -->
@@ -192,20 +192,20 @@
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==3 && lang == 'en'"> Average </label>
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==4 && lang == 'fr'"> Bien </label>
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==4 && lang == 'en'"> Bien </label>
-                    <label 000textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'fr'"> Très Bien </label>
+                    <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'fr'"> Très Bien </label>
                     <label textWrap="true" style="margin-left: 5%;color:white;width: 150px" *ngIf="reservDetails.note_client==5 && lang == 'en'"> Very good </label>
                 </ion-item>
                 <label textWrap="true" style="margin-left: 5%;color:white;" *ngIf="reservDetails.note_client>0"> {{reservDetails.commentaire_client}} </label> <br>
 
                   <!-- your comment/ message -->
             
-               <!-- <ion-item>
+               <ion-item>
                     <label > {{ "RESERVECAR.booking_your_message" | translate }} </label>
                 </ion-item> 
-    
+              
                 <ion-label style="color:white;margin-right:10%; margin-left:7%; text-align:justify;">
                    {{reservDetails.message}}  
-                </ion-label> -->
+                </ion-label> 
 
                
                 

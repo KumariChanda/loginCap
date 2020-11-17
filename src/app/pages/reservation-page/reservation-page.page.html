@@ -231,14 +231,16 @@
                    placeholder="Select Date" [(ngModel)]="start_date"
                    monthShortNames="Jan, Fev, Mars, Avr, Mai, Juin, Juil, Août, Sep, Oct, Nov, Dec"
                    cancelText="Annuler"
-                  doneText="Valider"></ion-datetime>
+                  doneText="Valider">
+                 </ion-datetime>
                   
                 </ion-item>
                 <!-- start date in english --> 
                 <ion-item *ngIf="lang=='en'" >
                   <ion-label>{{"RESERVECAR.start_date"| translate}}</ion-label>
                   <ion-datetime [value]="today" [min]="today" [max]="maxdate"
-                   placeholder="Select Date" [(ngModel)]="start_date"></ion-datetime>
+                   placeholder="Select Date" [(ngModel)]="start_date">
+                  </ion-datetime>
                   
                 </ion-item>
 

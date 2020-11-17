@@ -82,6 +82,13 @@
                         <ion-icon name="at-outline"></ion-icon>
                         <ion-label style="size: 20vw;"  tappable (click)="openGoogleplus()">&nbsp;&nbsp;&nbsp; <b> {{contact.email}}</b></ion-label>
                     </ion-item>
+
+                <!-- Our Website -->
+
+                   <ion-item>
+                        <ion-icon name="globe-outline"></ion-icon>
+                        <ion-label style="size: 20vw;"  tappable (click)="openNyokah()">&nbsp;&nbsp;&nbsp; <b> www.nyokah.ci </b></ion-label>
+                    </ion-item>
               
                 
                 
@@ -97,9 +104,9 @@
 
       
           <!-- Start : Fab button links -->
-          <ion-fab vertical="top" horizontal="end">
+          <ion-fab vertical="bottom" horizontal="end">
               <ion-fab-button><ion-icon name="share-social-outline"></ion-icon></ion-fab-button>
-              <ion-fab-list side="bottom">
+              <ion-fab-list side="start">
                 <!-- facebook -->
                 <ion-fab-button (click)="openFacebook()">
                   <ion-icon name="logo-facebook" ></ion-icon>

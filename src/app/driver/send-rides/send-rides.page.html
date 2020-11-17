@@ -50,7 +50,7 @@
      
 
      <ion-card *ngFor="let item of filterData | filter:term ; index as i">
-       <div  *ngIf="item.etape_location == 5">
+       <div  *ngIf="item.etape_location == 3">
         <!-- <img [src]="item?.photo[0]?.image" /> -->
         <ion-card-header>
                  <!-- <ion-card-title >{{item.modele}}</ion-card-title> -->
@@ -123,8 +123,8 @@
                         
              
                <!-- button View details-->
-             <ion-button  *ngIf="item.etape_location == 5 " style="margin-left:30%" (click)="tripDetails(i)" >
-                <ion-label *ngIf="item.etape_location == 5 ">{{"DASHBOARD.btn_view_details" | translate }}</ion-label>
+             <ion-button  *ngIf="item.etape_location == 3 " style="margin-left:30%" (click)="tripDetails(i)" >
+                <ion-label *ngIf="item.etape_location == 3 ">{{"DASHBOARD.btn_view_details" | translate }}</ion-label>
             </ion-button>
 
       

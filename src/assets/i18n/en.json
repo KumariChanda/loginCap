@@ -176,6 +176,7 @@
         "confirm_password" : "Confirm Password (*)",
         "mobile_num" : "Mobile number",
         "address" : "Address",
+        "dob" : "Date de naissance (*)",
         "already_account":"Already have an account?",
         "term_condition":"I Agree with Terms and Conditions"       
     },

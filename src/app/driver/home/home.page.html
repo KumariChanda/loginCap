@@ -50,7 +50,7 @@
      
 
      <ion-card *ngFor="let item of filterData | filter:term ; index as i">
-       <div  *ngIf="item.etape_location == 2 || item.etape_location == 4 ">
+       <div  *ngIf="item.etape_location == 6 || item.etape_location == 4 ">
         <!-- <img [src]="item?.photo[0]?.image" /> -->
         <ion-card-header>
                  <!-- <ion-card-title >{{item.modele}}</ion-card-title> -->
@@ -122,7 +122,7 @@
         <ion-card-content>
                         
                <!-- button view more and start the trip-->
-             <ion-button  *ngIf="item.etape_location == 2 " style="margin-left:18%" (click)="tripDetails(i)" >
+             <ion-button  *ngIf="item.etape_location == 6 " style="margin-left:18%" (click)="tripDetails(i)" >
                 <ion-label>{{"DASHBOARD.start_trip" | translate }}</ion-label>
                
             </ion-button>
@@ -131,7 +131,7 @@
                 <ion-label > {{"DASHBOARD.end_trip" | translate }}</ion-label>
             </ion-button>
                <!-- button View details-->
-             <ion-button  *ngIf="item.etape_location == 5 " style="margin-left:30%"   >
+             <ion-button  *ngIf="item.etape_location == 5 " style="margin-left:30%">
                 <ion-label *ngIf="item.etape_location == 5 ">{{"DASHBOARD.btn_view_details" | translate }}</ion-label>
             </ion-button>
 

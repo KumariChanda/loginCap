@@ -21,10 +21,12 @@ export class SignupPage implements OnInit {
    email ="";
    password : string ;
    confirmpassword : string;
-   dob = null;
+   birth_date = null;
    address ="";
    agreement : boolean;
    lang: any;
+   today:any;
+   date:any;
 
   constructor(private router: Router,private webService: AppServiceService) { 
     this.btnClicked=false;
@@ -32,8 +34,31 @@ export class SignupPage implements OnInit {
 
   async ngOnInit() {
 
+    //get the current language of the app
     this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+  
+    this.date = new Date();
+     //today's date
+     this.today = this.date.getFullYear() +"-"+ (this.date.getMonth()+1) + "-"+this.date.getDate();
 
+
+  }
+
+
+  //difference of years
+  diff_years(dt2, dt1) 
+  {
+    //check if today's date is greather than the "birth_date
+    if(dt2.getTime() > dt1.getTime())
+    {
+      var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+      diff /= (60 * 60 * 24);
+      return Math.abs(Math.round(diff/365.25));
+    }else
+    {
+      return 0;
+    }
+    
   }
 
   ////////////////////////////////
@@ -51,63 +76,83 @@ export class SignupPage implements OnInit {
       }, 1000)
     //console.log("Signup cllicked!.");
 
-     if(this.firstname &&  this.lastname && this.email && this.password && this.password && this.confirmpassword)
+     if(this.firstname &&  this.lastname && this.email && this.password && this.password && this.confirmpassword && this.birth_date)
      {
           if(this.agreement == true)
         {
             if(this.password == this.confirmpassword)
             {
 
-                // if all the fields are correct
-                //data to be sent
-               // console.log(typeof(this.mobilenumber.toString( )))
-                var data = {
-                  "first_name": this.firstname,
-                  "last_name": this.lastname,
-                  "email": this.email,
-                  "password": this.password,
-                  "birth_date": this.dob,
-                  "telephone": this.mobilenumber.toString(),
-                  "address": this.address,
-                 }
+               //console.log( typeof(this.birth_date), this.birth_date );
+               var annees = this.diff_years(this.date, new Date(this.birth_date) );
+               //console.log( annees);
+               //console.log( typeof(this.birth_date), this.birth_date ); 
+               if( annees >=18)
+               {
+                  // if all the fields are correct
 
-                 this.webService.presentLoading();                
+                  //dob
+                   this.birth_date = this.birth_date.split("T")[0] ;
+
+                    //data to be sent
+                  // console.log(typeof(this.mobilenumber.toString( )))
+                    var data = {
+                      "first_name": this.firstname,
+                      "last_name": this.lastname,
+                      "email": this.email,
+                      "password": this.password,
+                      "birth_date": this.birth_date,
+                      "telephone": this.mobilenumber.toString(),
+                      "address": this.address,
+                    }
+
+                    this.webService.presentLoading();                
 
 
-                 this.webService.signup(data).subscribe(res=>{
+                    this.webService.signup(data).subscribe(res=>{
 
-                  if(res)
-                  {
-                    //console.log(res);
-                    this.webService.stopLoading();
+                      if(res)
+                      {
+                        //console.log(res);
+                        this.webService.stopLoading();
+                        if(this.lang =="fr")
+                      {
+                        alert("Inscription réussie !! ")
+                      }else{
+                        alert("Successful Sign Up   !! ")
+      
+                      }
+                        this.router.navigateByUrl("/login");
+                      }
+
+                                      
+
+                      
+                    },error=>{
+                      this.webService.stopLoading(); 
+                      
+                      if(this.lang =="fr")
+                      {
+                        alert("Erreur Serveur \n Inscription échouée !! ")
+                      }else{
+                        alert("Server Error \n Sign Up Failed !! ")
+      
+                      }
+                      this.router.navigateByUrl("/login");               
+
+                    }
+                    );
+                
+                }else
+                {
                     if(this.lang =="fr")
-                  {
-                    alert("Inscription réussie !! ")
-                  }else{
-                    alert("Successful Sign Up   !! ")
-  
-                  }
-                    this.router.navigateByUrl("/login");
-                  }
-
-                                  
-
-                   
-                 },error=>{
-                  this.webService.stopLoading(); 
-                  
-                  if(this.lang =="fr")
-                  {
-                    alert("Erreur Serveur \n Inscription échouée !! ")
-                  }else{
-                    alert("Server Error \n Sign Up Failed !! ")
-  
-                  }
-                  this.router.navigateByUrl("/login");               
-
-                 }
-                 );
-            
+                    {
+                        alert("Désolé, vous devez avoir au moins 18 ans !! ")
+                    }else{
+                        alert("Sorry, you must be at least 18 years old !! ")
+      
+                    }
+                }
 
             }
             else

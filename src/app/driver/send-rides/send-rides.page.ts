@@ -116,7 +116,7 @@ public  maxdate : any;   // the maximum date of a date picker
             for(let i=0; i< res.length;i++)
             {
 
-              if(this.filterData[i].etape_location == 5)
+              if(this.filterData[i].etape_location == 3)
               {
                 this.nbr = this.nbr + 1 ;
                 break;

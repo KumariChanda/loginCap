@@ -15,11 +15,11 @@
         <!-- Start contact -->
        <ion-card *ngFor="let conf of myconf; " >
           
-            <ion-card-content>
+            <ion-card-content  >
                           
-               
-                    {{conf.text}}
-          
+               <div [innerHTML]="conf.text">
+                    <!-- {{conf.text}} -->
+               </div>
             </ion-card-content>
       </ion-card>
         <!-- Stop Contact -->

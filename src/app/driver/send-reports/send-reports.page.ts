@@ -190,7 +190,7 @@ async end()
             handler: () => {
               
               //change the location type ;
-              this.filterData.etape_location = 5;
+              this.filterData.etape_location = 3;
 
         
                 this.DataTosend.date_location = this.filterData.date_location+"T"+this.filterData.heure_debut+".961Z";
@@ -203,7 +203,7 @@ async end()
                 this.DataTosend.type_location = this.filterData.type_location;
                 this.DataTosend.depart = this.filterData.depart_id;
                 this.DataTosend.destination = this.filterData.destination_id;
-                this.DataTosend.etape_location = 5;
+                this.DataTosend.etape_location = 3;
                 this.DataTosend.optionnel = this.filterData.optionnel;
                
                 this.DataTosend.note_chauffeur = parseInt(this.marks);

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
+import { Plugins } from '@capacitor/core';
+
+
+const { Storage } = Plugins;
 
 
 @Component({
@@ -13,13 +17,18 @@ export class AboutUsPage implements OnInit {
     myteam : any ;
     show =false;
     src_link;
+    lang :any;
 
   constructor( private webService : AppServiceService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
 
     
     this.src_link = this.webService.base_url;
+
+    //get Language
+    this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+
      
     //start loader
     this.webService.presentLoading();

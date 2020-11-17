@@ -183,6 +183,7 @@
         "confirm_password" : "Confirmez mot de passe (*)",
         "mobile_num" : "Numéro de téléphone",
         "address" : "Adresse",
+        "dob" : "Date de naissance (*)",
         "already_account":"Vous avez déjà un compte?",
         "term_condition":"Je suis d'accord avec les termes et les conditions"
        
