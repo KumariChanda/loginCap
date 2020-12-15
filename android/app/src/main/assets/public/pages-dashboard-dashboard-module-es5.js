@@ -319,7 +319,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           while (1) {
                             switch (_context2.prev = _context2.next) {
                               case 0:
-                                // console.log("getting voitures : ",res); 
+                                //console.log("getting voitures : ",res); 
                                 if (!res.details) {
                                   if (res.length > 0) {
                                     this.filterData = res; ////get the different prices of every car
@@ -403,13 +403,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }, _callee2, this);
                       }));
                     }, function (error) {
-                      _this.webService.stopLoading();
-
                       if (_this.lang == "fr") {
                         alert("Erreur Serveur !! ");
                       } else {
                         alert("Server Error!! ");
                       }
+
+                      _this.webService.stopLoading();
                     }); /// end get voitures
                     ////////////////////////////////////////////////////
 

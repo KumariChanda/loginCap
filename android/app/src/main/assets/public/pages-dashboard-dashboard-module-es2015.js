@@ -190,7 +190,7 @@ let DashboardPage = class DashboardPage {
             //present loading
             this.webService.presentLoading();
             this.webService.getVoitures().subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                // console.log("getting voitures : ",res); 
+                //console.log("getting voitures : ",res); 
                 if (!res.details) {
                     if (res.length > 0) {
                         this.filterData = res;
@@ -255,13 +255,13 @@ let DashboardPage = class DashboardPage {
                 })); //// end get destinations
                 ////////////////////////////////////////////////////////////////////
             }), error => {
-                this.webService.stopLoading();
                 if (this.lang == "fr") {
                     alert("Erreur Serveur !! ");
                 }
                 else {
                     alert("Server Error!! ");
                 }
+                this.webService.stopLoading();
             }); /// end get voitures
             ////////////////////////////////////////////////////
         });

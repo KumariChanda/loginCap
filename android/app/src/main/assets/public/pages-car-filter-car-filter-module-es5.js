@@ -321,9 +321,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                     if (res.length == 0) {
                                       //no  cars
                                       if (this.lang == "fr") {
-                                        alert("La Liste de voitures est vide \n Retour à la page accueil");
+                                        alert("La Liste de Vehicules est vide \n Retour à la page accueil");
                                       } else {
-                                        alert("The List of cars is Empty \n Back to Home Page");
+                                        alert("The Vehicle List is Empty \n Back to Home Page");
                                       }
 
                                       this.router.navigateByUrl("/dashboard");
@@ -376,10 +376,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
                                         _this2.webService.getPriceCar(_this2.filterData1[i].id).subscribe(function (resp) {
-                                          _this2.filterData1[i].per_day = resp[0].prix;
-                                          _this2.filterData1[i].per_hour = resp[1].prix;
-                                          _this2.filterData1[i].airport = resp[2].prix; ///////////get cars 
+                                          // this.filterData1[i].per_day =  resp[0].prix;
+                                          // this.filterData1[i].per_hour = resp[1].prix;
+                                          // this.filterData1[i].airport =  resp[2].prix;
+                                          for (var j = 0; j < resp.length; j++) {
+                                            if (resp[j].type_location == 1) // par jour
+                                              {
+                                                _this2.filterData1[i].per_day = resp[j].prix;
+                                              } else if (resp[j].type_location == 2) // par heure
+                                              {
+                                                _this2.filterData1[i].per_hour = resp[j].prix;
+                                              } else if (resp[j].type_location == 3) // par airport
+                                              {
+                                                _this2.filterData1[i].airport = resp[j].prix;
+                                              }
+                                          } ///////////get cars 
                                           //get  every car
+
 
                                           if (_this2.search_type == "price") {
                                             if (_this2.search_id == "50000+" && _this2.filterData1[i].per_day >= parseInt(_this2.search_id.split("+")[0])) {
@@ -470,6 +483,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.router.navigate(['car-details'], {
             queryParams: {
               id: carID,
+              type: this.search_type,
               prev: "/car-filter"
             }
           });

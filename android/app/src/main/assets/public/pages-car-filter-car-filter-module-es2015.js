@@ -187,10 +187,10 @@ let CarFilterPage = class CarFilterPage {
                         if (res.length == 0) {
                             //no  cars
                             if (this.lang == "fr") {
-                                alert("La Liste de voitures est vide \n Retour à la page accueil");
+                                alert("La Liste de Vehicules est vide \n Retour à la page accueil");
                             }
                             else {
-                                alert("The List of cars is Empty \n Back to Home Page");
+                                alert("The Vehicle List is Empty \n Back to Home Page");
                             }
                             this.router.navigateByUrl("/dashboard");
                             this.webService.stopLoading(); //to stop loading
@@ -243,9 +243,23 @@ let CarFilterPage = class CarFilterPage {
                                 }
                                 //////////////////////////////////////if price/////////////////////////////////////////////////////////////////////////////////          
                                 this.webService.getPriceCar(this.filterData1[i].id).subscribe(resp => {
-                                    this.filterData1[i].per_day = resp[0].prix;
-                                    this.filterData1[i].per_hour = resp[1].prix;
-                                    this.filterData1[i].airport = resp[2].prix;
+                                    // this.filterData1[i].per_day =  resp[0].prix;
+                                    // this.filterData1[i].per_hour = resp[1].prix;
+                                    // this.filterData1[i].airport =  resp[2].prix;
+                                    for (let j = 0; j < resp.length; j++) {
+                                        if (resp[j].type_location == 1) // par jour
+                                         {
+                                            this.filterData1[i].per_day = resp[j].prix;
+                                        }
+                                        else if (resp[j].type_location == 2) // par heure
+                                         {
+                                            this.filterData1[i].per_hour = resp[j].prix;
+                                        }
+                                        else if (resp[j].type_location == 3) // par airport
+                                         {
+                                            this.filterData1[i].airport = resp[j].prix;
+                                        }
+                                    }
                                     ///////////get cars 
                                     //get  every car
                                     if (this.search_type == "price") {
@@ -315,7 +329,7 @@ let CarFilterPage = class CarFilterPage {
     //this method is used to print the details of a selected car //////////////
     carDetails(carID) {
         //call another page and fetch the details of the car
-        this.router.navigate(['car-details'], { queryParams: { id: carID, prev: "/car-filter" } });
+        this.router.navigate(['car-details'], { queryParams: { id: carID, type: this.search_type, prev: "/car-filter" } });
     }
 };
 CarFilterPage.ctorParameters = () => [
