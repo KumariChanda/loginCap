@@ -41,9 +41,9 @@
         "search_car" : "SEARCH VEHICLE",
         "my_bookings":"My Bookings",
         "price_sup_day" :"Price/Day >= 50000 F CFA ",
-        "price_sup_hour" :"Price/Hour >= 50000 F CFA ",
+        "price_sup_hour" :"Price/Hour >= 5000 F CFA ",
         "price_less_day" :"Price/Day < 50000 F CFA",
-        "price_less_hour" :"Price/Hour < 50000 F CFA",
+        "price_less_hour" :"Price/Hour < 5000 F CFA",
         "place_sup" :"Seat number >= 5",
         "place_less" :"Seat number < 5",
         "baggage_sup" :"Baggage number >=5",
@@ -140,7 +140,8 @@
         "cancel" : "Cancel",
         "clientname" : "Client Name : ",
         "marks" : "Your impressions about the ride : ",
-        "car" : " Car :"
+        "car" : " Car :",
+        "not_avail" : "This Booking type is not available for This Vehicle"
 
     },
 
@@ -171,7 +172,7 @@
         "signup_btn" : "Sign Up",
         "first_name" : "First name (*)",
         "last_name" : "Last name (*)",
-        "email" : "Email Address (*)",
+        "email" : "Enter your Email Address (*)",
         "password" : "Password (*)",
         "confirm_password" : "Confirm Password (*)",
         "mobile_num" : "Mobile number",
@@ -186,7 +187,9 @@
         "confirm_password":"Confirm Password (*)",
         "change_password":"Change Password",
         "change_password_btn":"Submit",
-        "reset_password":"Reset Password"
+        "reset_password":"Reset Password",
+        "message" : "(***) Please enter the email address you used to create your account, an email will be sent to you to reset your password"
+
     }
 
 

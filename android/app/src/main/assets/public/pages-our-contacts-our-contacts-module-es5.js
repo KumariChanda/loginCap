@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n       <ion-item>\r\n        <ion-buttons slot=\"start\">\r\n          <ion-menu-button></ion-menu-button>\r\n        </ion-buttons>\r\n        <ion-title>{{'DASHBOARD.our_contact' | translate }} </ion-title>\r\n    </ion-item> \r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"show\" >\r\n\r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n        <!-- Start contact -->\r\n       <ion-card *ngFor=\"let contact of mycontact; \" >\r\n          \r\n            <ion-card-content>\r\n\r\n\r\n\r\n               <div >\r\n              <ion-grid >\r\n                 <!--  Address -->\r\n                  <ion-row>\r\n                  \r\n                    <ion-col size=\"2\" style=\"font:30vw\" >\r\n\r\n                        <ion-icon name=\"pin-outline\"></ion-icon>\r\n          \r\n                    </ion-col>\r\n\r\n                    <ion-col size=\"8\">\r\n                      <b>  {{contact.adresse}}  </b> \r\n                    </ion-col>\r\n\r\n                  </ion-row> \r\n              \r\n\r\n              </ion-grid>  \r\n                             \r\n              </div>\r\n\r\n                <!-- Postal Address -->\r\n\r\n                    <ion-item>\r\n                        <ion-icon name=\"mail-outline\"></ion-icon>\r\n                        <ion-label style=\"size: 20vw;\">&nbsp;&nbsp;&nbsp; <b> {{contact.adresse_postal}}</b></ion-label>\r\n                    </ion-item>\r\n\r\n\r\n                <!-- Telephone-->\r\n                  <!-- <ion-item>\r\n                      <ion-icon name=\"call-outline\"></ion-icon>\r\n                      <ion-label style=\"size: 20vw;\">&nbsp;&nbsp;&nbsp; <b> {{contact.telephone}}  </b></ion-label>\r\n                  </ion-item>   -->\r\n\r\n                  <ion-item>\r\n                      <ion-icon name=\"call-outline\"></ion-icon>\r\n                      <ion-label style=\"size: 20vw;\"  (click)=\"callNumber(phone)\" *ngFor=\"let phone of contact.telephone\">&nbsp;&nbsp;&nbsp;\r\n                        <b> {{phone}}</b>\r\n                       </ion-label>\r\n                  </ion-item> \r\n                \r\n               <!-- Whatsapp -->\r\n                    <!-- <ion-item>\r\n                        <ion-icon name=\"logo-whatsapp\"></ion-icon>\r\n                        <ion-label style=\"size: 20vw;\">&nbsp;&nbsp;&nbsp; <b> {{contact.whatsapp}}</b></ion-label>\r\n                    </ion-item>  -->\r\n                    <ion-item>\r\n                        <ion-icon name=\"logo-whatsapp\"></ion-icon>\r\n                        <!-- <a href=\"whatsapp://send?phone=8559080443\">8559080443</a> -->\r\n                        <ion-label style=\"size: 20vw;\" tappable (click)=\"openWhatsapp(whatPhone)\" *ngFor=\"let whatPhone of contact.whatsapp\">&nbsp;&nbsp;&nbsp; \r\n                          <b>{{whatPhone}}</b>\r\n                        </ion-label>\r\n                    </ion-item>\r\n\r\n                <!-- Email -->\r\n\r\n                   <ion-item>\r\n                        <ion-icon name=\"at-outline\"></ion-icon>\r\n                        <ion-label style=\"size: 20vw;\"  tappable (click)=\"openGoogleplus()\">&nbsp;&nbsp;&nbsp; <b> {{contact.email}}</b></ion-label>\r\n                    </ion-item>\r\n              \r\n                \r\n                \r\n                   \r\n              \r\n               \r\n\r\n          \r\n            </ion-card-content>\r\n      </ion-card>\r\n        <!-- Stop Contact -->\r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n\r\n      \r\n          <!-- Start : Fab button links -->\r\n          <ion-fab vertical=\"top\" horizontal=\"end\">\r\n              <ion-fab-button><ion-icon name=\"share-social-outline\"></ion-icon></ion-fab-button>\r\n              <ion-fab-list side=\"bottom\">\r\n                <!-- facebook -->\r\n                <ion-fab-button (click)=\"openFacebook()\">\r\n                  <ion-icon name=\"logo-facebook\" ></ion-icon>\r\n                </ion-fab-button >\r\n                \r\n                  <!-- linkedin -->\r\n                <ion-fab-button (click)=\"openLinkedin()\">\r\n                  <ion-icon name=\"logo-linkedin\"></ion-icon>\r\n                </ion-fab-button>\r\n                <!-- instagram -->\r\n                <ion-fab-button (click)=\"openInstagram()\">\r\n                  <ion-icon name=\"logo-instagram\"></ion-icon>\r\n                </ion-fab-button>\r\n               \r\n              </ion-fab-list>\r\n\r\n          </ion-fab>\r\n        <!-- End Fab button list -->\r\n\r\n\r\n</ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n       <ion-item>\r\n        <ion-buttons slot=\"start\">\r\n          <ion-menu-button></ion-menu-button>\r\n        </ion-buttons>\r\n        <ion-title>{{'DASHBOARD.our_contact' | translate }} </ion-title>\r\n    </ion-item> \r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"show\" >\r\n\r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n        <!-- Start contact -->\r\n       <ion-card *ngFor=\"let contact of mycontact; \" >\r\n          \r\n            <ion-card-content>\r\n\r\n\r\n\r\n               <div >\r\n              <ion-grid >\r\n                 <!--  Address -->\r\n                  <ion-row>\r\n                  \r\n                    <ion-col size=\"2\" style=\"font:30vw\" >\r\n\r\n                        <ion-icon name=\"pin-outline\"></ion-icon>\r\n          \r\n                    </ion-col>\r\n\r\n                    <ion-col size=\"8\">\r\n                      <b>  {{contact.adresse}}  </b> \r\n                    </ion-col>\r\n\r\n                  </ion-row> \r\n              \r\n\r\n              </ion-grid>  \r\n                             \r\n              </div>\r\n\r\n                <!-- Postal Address -->\r\n\r\n                    <ion-item>\r\n                        <ion-icon name=\"mail-outline\"></ion-icon>\r\n                        <ion-label style=\"size: 20vw;\">&nbsp;&nbsp;&nbsp; <b> {{contact.adresse_postal}}</b></ion-label>\r\n                    </ion-item>\r\n\r\n\r\n                <!-- Telephone-->\r\n                  <!-- <ion-item>\r\n                      <ion-icon name=\"call-outline\"></ion-icon>\r\n                      <ion-label style=\"size: 20vw;\">&nbsp;&nbsp;&nbsp; <b> {{contact.telephone}}  </b></ion-label>\r\n                  </ion-item>   -->\r\n\r\n                  <ion-item>\r\n                      <ion-icon name=\"call-outline\"></ion-icon>\r\n                      <ion-label style=\"size: 20vw;\"  (click)=\"callNumber(phone)\" *ngFor=\"let phone of contact.telephone\">&nbsp;&nbsp;&nbsp;\r\n                        <b> {{phone}}</b>\r\n                       </ion-label>\r\n                  </ion-item> \r\n                \r\n               <!-- Whatsapp -->\r\n                    <!-- <ion-item>\r\n                        <ion-icon name=\"logo-whatsapp\"></ion-icon>\r\n                        <ion-label style=\"size: 20vw;\">&nbsp;&nbsp;&nbsp; <b> {{contact.whatsapp}}</b></ion-label>\r\n                    </ion-item>  -->\r\n                    <ion-item>\r\n                        <ion-icon name=\"logo-whatsapp\"></ion-icon>\r\n                        <!-- <a href=\"whatsapp://send?phone=8559080443\">8559080443</a> -->\r\n                        <ion-label style=\"size: 20vw;\" tappable (click)=\"openWhatsapp(whatPhone)\" *ngFor=\"let whatPhone of contact.whatsapp\">&nbsp;&nbsp;&nbsp; \r\n                          <b>{{whatPhone}}</b>\r\n                        </ion-label>\r\n                    </ion-item>\r\n\r\n                <!-- Email -->\r\n\r\n                   <ion-item>\r\n                        <ion-icon name=\"at-outline\"></ion-icon>\r\n                        <ion-label style=\"size: 20vw;\"  tappable (click)=\"openGmail(contact.email)\">&nbsp;&nbsp;&nbsp; <b> {{contact.email}}</b></ion-label>\r\n                    </ion-item>\r\n\r\n                <!-- Our Website -->\r\n\r\n                   <ion-item>\r\n                        <ion-icon name=\"globe-outline\"></ion-icon>\r\n                        <ion-label style=\"size: 20vw;\"  tappable (click)=\"openNyokah()\">&nbsp;&nbsp;&nbsp; <b> www.nyokah.ci </b></ion-label>\r\n                    </ion-item>\r\n              \r\n                \r\n                \r\n                   \r\n              \r\n               \r\n\r\n          \r\n            </ion-card-content>\r\n      </ion-card>\r\n        <!-- Stop Contact -->\r\n    <!-- -------------------------------------------------------------------------------------- -->\r\n\r\n      \r\n          <!-- Start : Fab button links -->\r\n          <ion-fab vertical=\"bottom\" horizontal=\"end\">\r\n              <ion-fab-button><ion-icon name=\"share-social-outline\"></ion-icon></ion-fab-button>\r\n              <ion-fab-list side=\"start\">\r\n                <!-- facebook -->\r\n                <ion-fab-button (click)=\"openFacebook()\">\r\n                  <ion-icon name=\"logo-facebook\" ></ion-icon>\r\n                </ion-fab-button >\r\n                \r\n                  <!-- linkedin -->\r\n                <ion-fab-button (click)=\"openLinkedin()\">\r\n                  <ion-icon name=\"logo-linkedin\"></ion-icon>\r\n                </ion-fab-button>\r\n                <!-- instagram -->\r\n                <ion-fab-button (click)=\"openInstagram()\">\r\n                  <ion-icon name=\"logo-instagram\"></ion-icon>\r\n                </ion-fab-button>\r\n               \r\n              </ion-fab-list>\r\n\r\n          </ion-fab>\r\n        <!-- End Fab button list -->\r\n\r\n\r\n</ion-content>\r\n";
     /***/
   },
 
@@ -233,39 +233,74 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic-native/call-number/ngx */
     "./node_modules/@ionic-native/call-number/__ivy_ngcc__/ngx/index.js");
+    /* harmony import */
+
+
+    var _capacitor_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @capacitor/core */
+    "./node_modules/@capacitor/core/dist/esm/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic-native/email-composer/ngx */
+    "./node_modules/@ionic-native/email-composer/__ivy_ngcc__/ngx/index.js");
+
+    var Storage = _capacitor_core__WEBPACK_IMPORTED_MODULE_5__["Plugins"].Storage;
 
     var OurContactsPage = /*#__PURE__*/function () {
-      function OurContactsPage(iab, webService, callnumber) {
+      function OurContactsPage(iab, webService, callnumber, composer) {
         _classCallCheck(this, OurContactsPage);
 
         this.iab = iab;
         this.webService = webService;
         this.callnumber = callnumber;
+        this.composer = composer;
         this.show = false;
       }
 
       _createClass(OurContactsPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this = this;
 
-          //start loader
-          this.webService.presentLoading(); /////////////////////////////////////////////////     
-          ///// start : get our contact
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return Storage.get({
+                      key: 'SELECTED LANGUAGE'
+                    });
 
-          this.webService.getContacts().subscribe(function (res) {
-            //console.log(" contact  ",res);
-            if (res) {
-              _this.mycontact = res;
-            } else {// alert no response from server
-            } //Stop loader
+                  case 2:
+                    this.lang = _context.sent.value;
+                    //start loader
+                    this.webService.presentLoading(); /////////////////////////////////////////////////     
+                    ///// start : get our contact
+
+                    this.webService.getContacts().subscribe(function (res) {
+                      //console.log(" contact  ",res);
+                      if (res) {
+                        _this.mycontact = res;
+                      } else {// alert no response from server
+                      } //Stop loader
 
 
-            _this.webService.stopLoading();
+                      _this.webService.stopLoading();
 
-            _this.show = true;
-          }); ///// end : get our contact
-          /////////////////////////////////////////////////   
+                      _this.show = true;
+                    }); ///// end : get our contact
+                    /////////////////////////////////////////////////   
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         } ///////////////////////////////////////
 
       }, {
@@ -300,7 +335,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function openWhatsapp(number) {
           //console.log("Number : ",no);
           //  this.iab.create('https://wa.me/+916284134683','_blank');
-          this.iab.create("https://wa.me/" + number + "?text=I'm%20interested%20in%20your%20car%20for%20rent.", '_system'); //this.iab.create('https://wa.me/0916284134683/','_system');
+          if (this.lang == 'en') {
+            this.iab.create("https://wa.me/" + number + "?text= Hi! I'm%20interested%20in%20your%20car%20for%20rent.", '_system');
+          } else if (this.lang == 'fr') {
+            this.iab.create("https://wa.me/" + number + "?text=Salut!%20Je%20suis%20intéressé%20par%20votre%20voiture%20à%20louer.", '_system');
+          } //this.iab.create('https://wa.me/0916284134683/','_system');
+
         } //////////////////////////////////////////////////////
 
       }, {
@@ -309,6 +349,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.callnumber.callNumber(number, true) // .then(res => console.log('Launched dialer!', res))
           // .catch(err => console.log('Error launching dialer', err));
           .then(function (res) {})["catch"](function (err) {});
+        } /////////////////////////////////////////////////////////////
+
+      }, {
+        key: "openNyokah",
+        value: function openNyokah() {
+          // console.log("Nyokah")
+          this.iab.create('https://www.nyokah.ci', '_blank');
+        } ////////////////////////////////////////////////////////////////
+
+      }, {
+        key: "openGmail",
+        value: function openGmail(email) {
+          //console.log("email :",email);
+          if (this.lang == 'en') {
+            this.composer.open({
+              to: email,
+              subject: 'Car Booking',
+              body: ' Hi, i am interested in your car for booking ...',
+              isHtml: true
+            });
+          } else if (this.lang == 'fr') {
+            this.composer.open({
+              to: email,
+              subject: 'Reservation de Voiture',
+              body: ' Salut, je suis intéressé par une de vos voitures...',
+              isHtml: true
+            });
+          }
         }
       }]);
 
@@ -322,6 +390,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_3__["AppServiceService"]
       }, {
         type: _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_4__["CallNumber"]
+      }, {
+        type: _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_6__["EmailComposer"]
       }];
     };
 

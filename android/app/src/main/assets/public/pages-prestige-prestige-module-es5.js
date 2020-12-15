@@ -248,7 +248,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.router = router;
         this.webService = webService;
-        this.show = false; //////////////////////////////search bar elements for cars ////////////
+        this.show = false;
+        this.emptylist = true; //////////////////////////////search bar elements for cars ////////////
         //////////////////////////////////////////////////////////////////////////////
 
         this.isSearchbarOpened = false;
@@ -311,7 +312,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                     index = 0;
 
                                     for (i = 0; i < res.length; i++) {
-                                      // console.log("class ",i)
+                                      if (res[i].modeles.length > 0) {
+                                        this.emptylist = false;
+                                      } // console.log("class ",i)
+
+
                                       for (j = 0; j < res[i].modeles.length; j++) {
                                         // console.log("Modele ",i,j)
                                         for (k = 0; k < res[i].modeles[j].voitures.length; k++) {
@@ -340,7 +345,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                                     this.webService.stopLoading(); //to stop loading
 
-                                    this.show = true;
+                                    if (!this.emptylist) {
+                                      this.show = true; // used to show page content
+                                    } else {
+                                      //no  cars
+                                      if (this.lang == "fr") {
+                                        alert(" Pas de véhicule, veuillez affiner votre recherche.");
+                                      } else {
+                                        alert(" No vehicle, please refine your search.");
+                                      }
+
+                                      this.router.navigateByUrl("/dashboard");
+                                      this.webService.stopLoading(); //to stop loading
+                                    }
                                   }
                                 } else {
                                   //no  cars

@@ -138,6 +138,7 @@ let PremiumPage = class PremiumPage {
         this.router = router;
         this.webService = webService;
         this.show = false;
+        this.emptylist = true;
         //////////////////////////////search bar elements for cars ////////////
         //////////////////////////////////////////////////////////////////////////////
         this.isSearchbarOpened = false;
@@ -178,6 +179,9 @@ let PremiumPage = class PremiumPage {
                     else {
                         var index = 0;
                         for (let i = 0; i < res.length; i++) {
+                            if (res[i].modeles.length > 0) {
+                                this.emptylist = false;
+                            }
                             // console.log("class ",i)
                             for (let j = 0; j < res[i].modeles.length; j++) {
                                 // console.log("Modele ",i,j)
@@ -200,7 +204,20 @@ let PremiumPage = class PremiumPage {
                             });
                         }
                         this.webService.stopLoading(); //to stop loading
-                        this.show = true; // used to show page content
+                        if (!this.emptylist) {
+                            this.show = true; // used to show page content
+                        }
+                        else {
+                            //no  cars
+                            if (this.lang == "fr") {
+                                alert(" Pas de véhicule, veuillez affiner votre recherche.");
+                            }
+                            else {
+                                alert(" No vehicle, please refine your search.");
+                            }
+                            this.router.navigateByUrl("/dashboard");
+                            this.webService.stopLoading(); //to stop loading
+                        }
                     }
                 }
                 else {

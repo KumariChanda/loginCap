@@ -249,7 +249,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.router = router;
         this.webService = webService;
         this.show = false; // used to show page content
-        //////////////////////////////search bar elements for cars ////////////
+
+        this.emptylist = true; //////////////////////////////search bar elements for cars ////////////
         //////////////////////////////////////////////////////////////////////////////
 
         this.isSearchbarOpened = false;
@@ -298,7 +299,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           while (1) {
                             switch (_context.prev = _context.next) {
                               case 0:
-                                //console.log("getting business voitures : \n ",res); 
+                                console.log("getting business voitures : \n ", res);
+
                                 if (!res.detail) {
                                   if (res.length == 0) {
                                     //no  cars
@@ -314,7 +316,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                     index = 0;
 
                                     for (i = 0; i < res.length; i++) {
-                                      // console.log("class ",i)
+                                      if (res[i].modeles.length > 0) {
+                                        this.emptylist = false;
+                                      } // console.log("class ",i)
+
+
                                       for (j = 0; j < res[i].modeles.length; j++) {
                                         // console.log("Modele ",i,j)
                                         for (k = 0; k < res[i].modeles[j].voitures.length; k++) {
@@ -343,7 +349,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                                     this.webService.stopLoading(); //to stop loading
 
-                                    this.show = true; // used to show page content
+                                    if (!this.emptylist) {
+                                      this.show = true;
+                                    } else {
+                                      //no  cars
+                                      if (this.lang == "fr") {
+                                        alert(" Pas de véhicule, veuillez affiner votre recherche.");
+                                      } else {
+                                        alert(" No vehicle, please refine your search.");
+                                      }
+
+                                      this.router.navigateByUrl("/dashboard");
+                                      this.webService.stopLoading(); //to stop loading
+                                    }
                                   }
                                 } else {
                                   //no  cars
@@ -357,7 +375,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   this.webService.stopLoading(); //to stop loading
                                 }
 
-                              case 1:
+                              case 2:
                               case "end":
                                 return _context.stop();
                             }

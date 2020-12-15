@@ -171,11 +171,12 @@
         "signup_btn" : "Sign Up",
         "first_name" : "First name (*)",
         "last_name" : "Last name (*)",
-        "email" : "Email Address (*)",
+        "email" : "Enter your Email Address (*)",
         "password" : "Password (*)",
         "confirm_password" : "Confirm Password (*)",
         "mobile_num" : "Mobile number",
         "address" : "Address",
+        "dob" : "Date de naissance (*)",
         "already_account":"Already have an account?",
         "term_condition":"I Agree with Terms and Conditions"       
     },
@@ -185,7 +186,9 @@
         "confirm_password":"Confirm Password (*)",
         "change_password":"Change Password",
         "change_password_btn":"Submit",
-        "reset_password":"Reset Password"
+        "reset_password":"Reset Password",
+        "message" : "(***) Please enter the email address you used to create your account, an email will be sent to you to reset your password"
+
     }
 
 

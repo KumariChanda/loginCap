@@ -12,25 +12,42 @@
 10-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
 11
 12    <uses-permission android:name="android.permission.CALL_PHONE" />
-12-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:8:1-64
-12-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:8:18-62
+12-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:1-64
+12-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:18-62
 13
 14    <uses-feature
-14-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:1-83
+14-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:1-83
 15        android:name="android.hardware.telephony"
-15-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:15-56
+15-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:15-56
 16        android:required="false" />
-16-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:57-81
+16-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:57-81
 17
 18    <uses-permission android:name="android.permission.INTERNET" />
-18-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:1-62
-18-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:18-60
+18-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:12:1-62
+18-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:12:18-60
 19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-19-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:1-76
-19-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:18-74
+19-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:13:1-76
+19-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:13:18-74
 20
 21    <application>
-21-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:5:1-7:15
-22    </application>
-23
-24</manifest>
+21-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:5:1-9:15
+22        <provider
+22-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:1-8:12
+23            android:name="de.appplant.cordova.emailcomposer.Provider"
+23-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:11-68
+24            android:authorities="${applicationId}.emailcomposer.provider"
+24-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:69-130
+25            android:exported="false"
+25-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:131-155
+26            android:grantUriPermissions="true" >
+26-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:156-190
+27            <meta-data
+27-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:7:3-119
+28                android:name="android.support.FILE_PROVIDER_PATHS"
+28-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:7:14-64
+29                android:resource="@xml/emailcomposer_provider_paths" />
+29-->D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:7:65-117
+30        </provider>
+31    </application>
+32
+33</manifest>

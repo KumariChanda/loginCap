@@ -137,6 +137,7 @@ let BusinessClassPage = class BusinessClassPage {
         this.router = router;
         this.webService = webService;
         this.show = false; // used to show page content
+        this.emptylist = true;
         //////////////////////////////search bar elements for cars ////////////
         //////////////////////////////////////////////////////////////////////////////
         this.isSearchbarOpened = false;
@@ -162,7 +163,7 @@ let BusinessClassPage = class BusinessClassPage {
             //get Business class cars list
             this.webService.presentLoading(); //to start loader
             this.webService.getCarClass(4).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                //console.log("getting business voitures : \n ",res); 
+                console.log("getting business voitures : \n ", res);
                 if (!res.detail) {
                     if (res.length == 0) {
                         //no  cars
@@ -178,6 +179,9 @@ let BusinessClassPage = class BusinessClassPage {
                     else {
                         var index = 0;
                         for (let i = 0; i < res.length; i++) {
+                            if (res[i].modeles.length > 0) {
+                                this.emptylist = false;
+                            }
                             // console.log("class ",i)
                             for (let j = 0; j < res[i].modeles.length; j++) {
                                 // console.log("Modele ",i,j)
@@ -200,7 +204,20 @@ let BusinessClassPage = class BusinessClassPage {
                             });
                         }
                         this.webService.stopLoading(); //to stop loading
-                        this.show = true; // used to show page content
+                        if (!this.emptylist) {
+                            this.show = true;
+                        }
+                        else {
+                            //no  cars
+                            if (this.lang == "fr") {
+                                alert(" Pas de véhicule, veuillez affiner votre recherche.");
+                            }
+                            else {
+                                alert(" No vehicle, please refine your search.");
+                            }
+                            this.router.navigateByUrl("/dashboard");
+                            this.webService.stopLoading(); //to stop loading
+                        }
                     }
                 }
                 else {

@@ -123,6 +123,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/appService/app-service.service */ "./src/app/service/appService/app-service.service.ts");
+/* harmony import */ var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/in-app-browser/ngx */ "./node_modules/@ionic-native/in-app-browser/__ivy_ngcc__/ngx/index.js");
+
 
 
 
@@ -130,9 +132,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const { Storage } = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"];
 let LoginPage = class LoginPage {
-    constructor(webService, router) {
+    constructor(webService, router, iab) {
         this.webService = webService;
         this.router = router;
+        this.iab = iab;
         this.btnClicked = false; // check if the button has been clicked or not
         // this.setItem();
         this.btnClicked = false;
@@ -251,7 +254,9 @@ let LoginPage = class LoginPage {
         this.router.navigateByUrl("/signup");
     }
     forgetPasswordBtnClicked() {
-        this.router.navigateByUrl("/forget-password");
+        // this.router.navigateByUrl("/forget-password");
+        // console.log("Nyokah")
+        this.iab.create('https://nyokah.ci/siteweb/includes/forgotpassword.php', '_blank');
     }
     backToHome() {
         this.router.navigateByUrl("/dashboard");
@@ -259,7 +264,8 @@ let LoginPage = class LoginPage {
 };
 LoginPage.ctorParameters = () => [
     { type: src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_4__["AppServiceService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_5__["InAppBrowser"] }
 ];
 LoginPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

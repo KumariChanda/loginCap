@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header class=\"header_signup\">\r\n   <ion-toolbar>\r\n     <div class=\"header_signup\">\r\n        <ion-buttons slot=\"start\">\r\n        <ion-menu-button></ion-menu-button>\r\n      </ion-buttons>\r\n    </div>\r\n  </ion-toolbar> \r\n</ion-header> -->\r\n\r\n<ion-content >\r\n  <div class=\"backgroundcss\">\r\n    <div id=\"container\">\r\n      <ion-card class=\"cardcss\" >\r\n          <h3 class=\"loginLabel\">{{'SIGNUP.signup' | translate }}</h3>\r\n           <!-- <hr/> -->\r\n        <ion-card-content>\r\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"firstname\"  placeholder=\"{{'SIGNUP.first_name' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"text\"  [(ngModel)]=\"lastname\"  placeholder=\"{{'SIGNUP.last_name' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"email\" [(ngModel)]=\"email\"  placeholder=\"{{'SIGNUP.email' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)]=\"password\"  placeholder=\"{{'SIGNUP.password' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"password\"  [(ngModel)]=\"confirmpassword\" placeholder=\"{{'SIGNUP.confirm_password' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"number\" [(ngModel)]=\"mobilenumber\" placeholder=\"{{'SIGNUP.mobile_num' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"address\"  placeholder=\"{{'SIGNUP.address' | translate }}\"></ion-input>\r\n          <br>\r\n          <!-- <ion-input class=\"inputcomp\" type=\"date\"  [(ngModel)]=\"dob\"></ion-input> -->\r\n          <!-- <br> -->\r\n          \r\n          <input type=\"checkbox\" [(ngModel)]=\"agreement\">&nbsp;&nbsp;<ion-router-link href=\"/term-usage\" class=\"register\"><b>{{'SIGNUP.term_condition' | translate }}</b></ion-router-link>\r\n          \r\n          <div class=\"divloginbtn\">\r\n            <br>\r\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\r\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"signupFun()\">{{'SIGNUP.signup_btn' | translate }}</button>\r\n           </div>\r\n           <br>  \r\n           <div class=\"labelText\">\r\n             <span>{{'SIGNUP.already_account' | translate }} </span>\r\n             <span class=\"register\" clear  (click)=\"loginbtnCliced()\" tappable>{{\"LOGIN.login\"| translate}}</span>\r\n            \r\n             <br>\r\n             <!-- <hr/> -->\r\n             <span class=\"register\" clear  (click)=\"backToHome()\" tappable><u>{{\"LOGIN.back_to_home\"| translate}}</u></span>\r\n             <br>\r\n            </div> \r\n          <br>\r\n        </ion-card-content>\r\n      </ion-card>\r\n     </div>\r\n\r\n    </div>\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header class=\"header_signup\">\r\n   <ion-toolbar>\r\n     <div class=\"header_signup\">\r\n        <ion-buttons slot=\"start\">\r\n        <ion-menu-button></ion-menu-button>\r\n      </ion-buttons>\r\n    </div>\r\n  </ion-toolbar> \r\n</ion-header> -->\r\n\r\n<ion-content >\r\n  <div class=\"backgroundcss\">\r\n    <div id=\"container\">\r\n      <ion-card class=\"cardcss\" >\r\n          <h3 class=\"loginLabel\">{{'SIGNUP.signup' | translate }}</h3>\r\n           <!-- <hr/> -->\r\n        <ion-card-content>\r\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"firstname\"  placeholder=\"{{'SIGNUP.first_name' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"text\"  [(ngModel)]=\"lastname\"  placeholder=\"{{'SIGNUP.last_name' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"email\" [(ngModel)]=\"email\"  placeholder=\"{{'SIGNUP.email' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"password\" [(ngModel)]=\"password\"  placeholder=\"{{'SIGNUP.password' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"password\"  [(ngModel)]=\"confirmpassword\" placeholder=\"{{'SIGNUP.confirm_password' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"number\" [(ngModel)]=\"mobilenumber\" placeholder=\"{{'SIGNUP.mobile_num' | translate }}\"></ion-input>\r\n          <br>\r\n          <ion-input class=\"inputcomp\" type=\"text\" [(ngModel)]=\"address\"  placeholder=\"{{'SIGNUP.address' | translate }}\"></ion-input>\r\n          <br>\r\n          <!-- <ion-input class=\"inputcomp\" type=\"date\"  [(ngModel)]=\"birth_date\"></ion-input> -->\r\n          <ion-datetime *ngIf=\"lang=='en'\" class=\"inputcomp\" [max]=\"today\" placeholder=\"{{'SIGNUP.dob' | translate }}\" [(ngModel)]=\"birth_date\" ></ion-datetime>\r\n              <!-- french -->\r\n          <ion-datetime *ngIf=\"lang=='fr'\" class=\"inputcomp\" [(ngModel)]=\"birth_date\"\r\n                   placeholder=\"{{'SIGNUP.dob' | translate }}\" [max]=\"today\"\r\n                   monthShortNames=\"Jan, Fev, Mars, Avr, Mai, Juin, Juil, Août, Sep, Oct, Nov, Dec\"\r\n                   cancelText=\"Annuler\"\r\n                  doneText=\"Valider\">\r\n                 </ion-datetime>\r\n          <br>\r\n          \r\n          <input type=\"checkbox\" [(ngModel)]=\"agreement\">&nbsp;&nbsp;<ion-router-link href=\"/term-usage\" class=\"register\"><b>{{'SIGNUP.term_condition' | translate }}</b></ion-router-link>\r\n          \r\n          <div class=\"divloginbtn\">\r\n            <br>\r\n            <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\r\n            'loginbtn_yellow':btnClicked == true}\" (click)=\"signupFun()\">{{'SIGNUP.signup_btn' | translate }}</button>\r\n           </div>\r\n           <br>  \r\n           <div class=\"labelText\">\r\n             <span>{{'SIGNUP.already_account' | translate }} </span>\r\n             <span class=\"register\" clear  (click)=\"loginbtnCliced()\" tappable>{{\"LOGIN.login\"| translate}}</span>\r\n            \r\n             <br>\r\n             <!-- <hr/> -->\r\n             <span class=\"register\" clear  (click)=\"backToHome()\" tappable><u>{{\"LOGIN.back_to_home\"| translate}}</u></span>\r\n             <br>\r\n            </div> \r\n          <br>\r\n        </ion-card-content>\r\n      </ion-card>\r\n     </div>\r\n\r\n    </div>\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -138,14 +138,30 @@ let SignupPage = class SignupPage {
         this.lastname = "";
         this.mobilenumber = "";
         this.email = "";
-        this.dob = null;
+        this.birth_date = null;
         this.address = "";
         this.btnClicked = false;
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            //get the current language of the app
             this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+            this.date = new Date();
+            //today's date
+            this.today = this.date.getFullYear() + "-" + (this.date.getMonth() + 1) + "-" + this.date.getDate();
         });
+    }
+    //difference of years
+    diff_years(dt2, dt1) {
+        //check if today's date is greather than the "birth_date
+        if (dt2.getTime() > dt1.getTime()) {
+            var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+            diff /= (60 * 60 * 24);
+            return Math.abs(Math.round(diff / 365.25));
+        }
+        else {
+            return 0;
+        }
     }
     ////////////////////////////////
     loginbtnCliced() {
@@ -157,44 +173,60 @@ let SignupPage = class SignupPage {
             this.btnClicked = false;
         }, 1000);
         //console.log("Signup cllicked!.");
-        if (this.firstname && this.lastname && this.email && this.password && this.password && this.confirmpassword) {
+        if (this.firstname && this.lastname && this.email && this.password && this.password && this.confirmpassword && this.birth_date) {
             if (this.agreement == true) {
                 if (this.password == this.confirmpassword) {
-                    // if all the fields are correct
-                    //data to be sent
-                    // console.log(typeof(this.mobilenumber.toString( )))
-                    var data = {
-                        "first_name": this.firstname,
-                        "last_name": this.lastname,
-                        "email": this.email,
-                        "password": this.password,
-                        "birth_date": this.dob,
-                        "telephone": this.mobilenumber.toString(),
-                        "address": this.address,
-                    };
-                    this.webService.presentLoading();
-                    this.webService.signup(data).subscribe(res => {
-                        if (res) {
-                            //console.log(res);
+                    //console.log( typeof(this.birth_date), this.birth_date );
+                    var annees = this.diff_years(this.date, new Date(this.birth_date));
+                    //console.log( annees);
+                    //console.log( typeof(this.birth_date), this.birth_date ); 
+                    if (annees >= 18) {
+                        // if all the fields are correct
+                        //dob
+                        this.birth_date = this.birth_date.split("T")[0];
+                        //data to be sent
+                        // console.log(typeof(this.mobilenumber.toString( )))
+                        var data = {
+                            "first_name": this.firstname,
+                            "last_name": this.lastname,
+                            "email": this.email,
+                            "password": this.password,
+                            "birth_date": this.birth_date,
+                            "telephone": this.mobilenumber.toString(),
+                            "address": this.address,
+                        };
+                        this.webService.presentLoading();
+                        this.webService.signup(data).subscribe(res => {
+                            if (res) {
+                                //console.log(res);
+                                this.webService.stopLoading();
+                                if (this.lang == "fr") {
+                                    alert("Inscription réussie !! ");
+                                }
+                                else {
+                                    alert("Successful Sign Up   !! ");
+                                }
+                                this.router.navigateByUrl("/login");
+                            }
+                        }, error => {
                             this.webService.stopLoading();
                             if (this.lang == "fr") {
-                                alert("Inscription réussie !! ");
+                                alert("Erreur Serveur \n Inscription échouée !! ");
                             }
                             else {
-                                alert("Successful Sign Up   !! ");
+                                alert("Server Error \n Sign Up Failed !! ");
                             }
                             this.router.navigateByUrl("/login");
-                        }
-                    }, error => {
-                        this.webService.stopLoading();
+                        });
+                    }
+                    else {
                         if (this.lang == "fr") {
-                            alert("Erreur Serveur \n Inscription échouée !! ");
+                            alert("Désolé, vous devez avoir au moins 18 ans !! ");
                         }
                         else {
-                            alert("Server Error \n Sign Up Failed !! ");
+                            alert("Sorry, you must be at least 18 years old !! ");
                         }
-                        this.router.navigateByUrl("/login");
-                    });
+                    }
                 }
                 else {
                     //alert to tell that password and confrim password should be same 

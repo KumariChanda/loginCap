@@ -26,6 +26,14 @@
         ]
         },
       {
+          "id": "cordova-plugin-email-composer.EmailComposer",
+          "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
+          "pluginId": "cordova-plugin-email-composer",
+        "clobbers": [
+          "cordova.plugins.email"
+        ]
+        },
+      {
           "id": "cordova-plugin-globalization.globalization",
           "file": "plugins/cordova-plugin-globalization/www/globalization.js",
           "pluginId": "cordova-plugin-globalization",
@@ -285,6 +293,7 @@
     {
       "mx.ferreyra.callnumber": "0.0.2",
       "cordova-plugin-advanced-http": "2.5.1",
+      "cordova-plugin-email-composer": "0.9.2",
       "cordova-plugin-file": "6.0.2",
       "cordova-plugin-globalization": "1.11.0",
       "cordova-plugin-inappbrowser": "4.0.0"

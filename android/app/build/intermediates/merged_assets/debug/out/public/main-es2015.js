@@ -1120,6 +1120,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
 /* harmony import */ var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/in-app-browser/ngx */ "./node_modules/@ionic-native/in-app-browser/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/email-composer/ngx */ "./node_modules/@ionic-native/email-composer/__ivy_ngcc__/ngx/index.js");
+
 
 
 
@@ -1169,7 +1171,8 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             },
             Storage,
             _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_14__["InAppBrowser"],
-            _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_15__["CallNumber"]
+            _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_15__["CallNumber"],
+            _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_16__["EmailComposer"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })
@@ -1211,7 +1214,7 @@ const LNG_KEY = 'SELECTED LANGUAGE'; // this is used to fetch or manipulate the 
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 // const base_url= "http://othnieldona.pythonanywhere.com/api/";
 // basic api url
-const base_url = proxyurl + "http://othnieldona.pythonanywhere.com/api/";
+const base_url = proxyurl + "http://metier.nyokah.ci/api/";
 //header used for API URL
 const httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
@@ -1224,7 +1227,8 @@ let AppServiceService = class AppServiceService {
         this.loadingCtrl = loadingCtrl;
         this.translate = translate;
         // basic api url
-        this.base_url = "http://othnieldona.pythonanywhere.com";
+        //base_url= "http://othnieldona.pythonanywhere.com";
+        this.base_url = "";
         this.selected = ''; // selected language
         ///////////////////////////SEND DATA TO UPDATE THE MENU///////////////////////////////////////////////////////////////
         this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
@@ -1576,7 +1580,19 @@ let AppServiceService = class AppServiceService {
                 'Authorization': 'Token ' + token
             })
         };
-        return this.http.post(base_url + "clients/" + id + "/set_password", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        return this.http.post(base_url + "clients/" + id + "/set_password/", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+    }
+    ///////////////////////////////////// END : EDIT CLIENT PASSWORD  ////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////START : RESET CLIENT PASSWORD ////////////////////////////////////////////////////////////////////////
+    //////////////////////////// START : VERIFY EMAIL ///////////////////////////////////////
+    verifyEmail(data) {
+        return this.http.post(base_url + "clients/verify_email/", data, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+    }
+    /////////////////////////// END : VERIFY EMAIL ////////////////////////////////////////
+    resetPasssword(data) {
+        return this.http.post(base_url + "/reset_password/", data, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
     }
 };
 AppServiceService.ctorParameters = () => [

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-item>\n        <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title> {{ 'DASHBOARD.about_us' | translate }}</ion-title>\n    </ion-item>    \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n    <!-- ///////////////////////////////////////////////////////////////////////////////// -->\n            <!-- about us text -->\n       <ion-card >\n          \n            <ion-card-content>\n                <ion-label>          \n                  {{about_us}}\n                </ion-label> \n            </ion-card-content>\n      </ion-card>\n<!-- /////////////////////////////////////////////////////////////////////////////////////////// -->\n\n\n\n\n\n         <!-- Start our team -->\n\n        <ion-list-header  style=\" margin-left:30%\"> \n              <ion-chip > Our Team   <br>\n                <ion-icon   name=\"caret-down-sharp\"></ion-icon>\n              </ion-chip >\n\n        </ion-list-header>\n\n\n        <ion-card *ngFor=\"let team of myteam; \" >\n        \n            <div  > \n              \n              <img  [src]= \"team.photo\" />\n              \n            </div>\n          \n            <ion-card-content>\n                            \n                \n                <!-- Full Name -->\n                <ion-item>\n                  <strong>\n                      <ion-label> {{team.nom}} {{team.prenom}}</ion-label>\n                  </strong>\n                </ion-item>\n                <!-- Position -->\n                <ion-item>\n                    <ion-label > {{team.poste}} </ion-label>\n                </ion-item>\n                \n                <!-- Email -->\n                <ion-item>\n                    <ion-label >{{team.email}} </ion-label>\n                </ion-item>\n               \n\n          \n            </ion-card-content>\n      </ion-card>\n\n\n\n              <!-- End :  our Team -->\n      \n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-item>\n        <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title> {{ 'DASHBOARD.about_us' | translate }}</ion-title>\n    </ion-item>    \n  </ion-toolbar>\n</ion-header>\n\n<ion-content *ngIf=\"show\">\n\n    <!-- ///////////////////////////////////////////////////////////////////////////////// -->\n            <!-- about us text -->\n       <ion-card >\n          \n            <ion-card-content>\n                <ion-label [innerHTML]=\"about_us\">          \n                  <!-- {{about_us}} -->\n                </ion-label> \n            </ion-card-content>\n      </ion-card>\n<!-- /////////////////////////////////////////////////////////////////////////////////////////// -->\n\n\n\n\n\n         <!-- Start our team -->\n              <!-- english -->\n        <ion-list-header *ngIf=\"lang=='en'\" style=\" margin-left:28%\"> \n              <ion-chip > Our Team   <br>\n                <ion-icon   name=\"caret-down-sharp\"></ion-icon>\n              </ion-chip >\n            \n        </ion-list-header>\n                <!-- french -->\n        <ion-list-header *ngIf=\"lang=='fr' \" style=\" margin-left:25%\"> \n              <ion-chip > Notre Equipe   <br>\n                <ion-icon   name=\"caret-down-sharp\"></ion-icon>\n              </ion-chip >\n\n        </ion-list-header>\n\n              <!-- Team list -->\n        <ion-card *ngFor=\"let team of myteam; \" >\n        \n            <div  > \n              \n              <img  [src]= \"team.photo\" />\n              \n            </div>\n          \n            <ion-card-content>\n                            \n                \n                <!-- Full Name -->\n                <ion-item>\n                  <strong>\n                      <ion-label> {{team.nom}} {{team.prenom}}</ion-label>\n                  </strong>\n                </ion-item>\n                <!-- Position -->\n                <ion-item>\n                    <ion-label > {{team.poste}} </ion-label>\n                </ion-item>\n                \n                <!-- Email -->\n                <ion-item>\n                    <ion-label >{{team.email}} </ion-label>\n                </ion-item>\n               \n\n          \n            </ion-card-content>\n      </ion-card>\n\n\n\n              <!-- End :  our Team -->\n      \n\n</ion-content>\n");
 
 /***/ }),
 
@@ -121,47 +121,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/appService/app-service.service */ "./src/app/service/appService/app-service.service.ts");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
 
 
 
+
+const { Storage } = _capacitor_core__WEBPACK_IMPORTED_MODULE_3__["Plugins"];
 let AboutUsPage = class AboutUsPage {
     constructor(webService) {
         this.webService = webService;
         this.show = false;
     }
     ngOnInit() {
-        this.src_link = this.webService.base_url;
-        //start loader
-        this.webService.presentLoading();
-        /////////////////////////////////////////////////     
-        ///// start : get about us 
-        this.webService.getAboutUs().subscribe(res => {
-            //console.log(" about_us  ",res);
-            if (res) {
-                this.about_us = res[0].text;
-                /////////////////////////////////////////////////     
-                ///// start : get team 
-                this.webService.getTeam().subscribe(res => {
-                    // console.log(" team : ",res);
-                    if (res) {
-                        this.myteam = res;
-                    }
-                    else {
-                        // alert no response from server
-                    }
-                    //stop loader
-                    this.webService.stopLoading();
-                    this.show = true;
-                });
-                ///// end : get team 
-                /////////////////////////////////////////////////  
-            }
-            else {
-                // alert no response from server
-            }
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.src_link = this.webService.base_url;
+            //get Language
+            this.lang = (yield Storage.get({ key: 'SELECTED LANGUAGE' })).value;
+            //start loader
+            this.webService.presentLoading();
+            /////////////////////////////////////////////////     
+            ///// start : get about us 
+            this.webService.getAboutUs().subscribe(res => {
+                //console.log(" about_us  ",res);
+                if (res) {
+                    this.about_us = res[0].text;
+                    /////////////////////////////////////////////////     
+                    ///// start : get team 
+                    this.webService.getTeam().subscribe(res => {
+                        // console.log(" team : ",res);
+                        if (res) {
+                            this.myteam = res;
+                        }
+                        else {
+                            // alert no response from server
+                        }
+                        //stop loader
+                        this.webService.stopLoading();
+                        this.show = true;
+                    });
+                    ///// end : get team 
+                    /////////////////////////////////////////////////  
+                }
+                else {
+                    // alert no response from server
+                }
+            });
+            ///// end : get about us 
+            /////////////////////////////////////////////////   
         });
-        ///// end : get about us 
-        /////////////////////////////////////////////////   
     }
 };
 AboutUsPage.ctorParameters = () => [

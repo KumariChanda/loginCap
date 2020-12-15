@@ -291,7 +291,7 @@ export class TripDetailsPage implements OnInit {
               text: textok,
               handler: () => {
                 
-                //change the location type ;
+                //change the location type ; started
                 this.filterData.etape_location = 4;
 
 

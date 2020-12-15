@@ -267,24 +267,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 2:
                     this.token = _context.sent.value;
+                    console.log(this.token); //get user Infos
+
                     _context.t0 = JSON;
-                    _context.next = 6;
+                    _context.next = 7;
                     return Storage.get({
                       key: "user_infos"
                     });
 
-                  case 6:
+                  case 7:
                     _context.t1 = _context.sent.value;
                     this.userInfo = _context.t0.parse.call(_context.t0, _context.t1);
-                    _context.next = 10;
+                    _context.next = 11;
                     return Storage.get({
                       key: 'SELECTED LANGUAGE'
                     });
 
-                  case 10:
+                  case 11:
                     this.lang = _context.sent.value;
 
-                  case 11:
+                  case 12:
                   case "end":
                     return _context.stop();
                 }
@@ -312,8 +314,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               this.webService.presentLoading(); //call the web service
 
               this.webService.changeClientPasssword(this.userInfo.id, this.token, this.dataToSend).subscribe(function (res) {
-                //check if action failed or not
-                if (!res.old_password) {
+                console.log(res); //check if action failed or not
+
+                if (res.status == "success") {
                   //console.log(res);
                   _this.webService.stopLoading();
 
@@ -325,27 +328,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   _this.old_password = "";
                   _this.new_password = "";
+                  _this.confirm_pass = "";
 
                   _this.router.navigateByUrl("/dashboard");
                 } else {
                   _this.webService.stopLoading();
 
                   if (_this.lang == "fr") {
-                    alert("Opération pas réussie!!!");
+                    alert("Opération pas réussie,\nEntrez les données correctes SVP!!!");
                   } else {
-                    alert("Unsuccessful operation!!!");
-                  } // this.router.navigateByUrl("/dashboard");
+                    alert("Unsuccessful operation,\nPlease enter the correct data !!!");
+                  }
 
-                }
+                  _this.old_password = "";
+                  _this.new_password = "";
+                  _this.confirm_pass = "";
+                } // this.router.navigateByUrl("/dashboard");
+
               }, function (error) {
                 _this.webService.stopLoading();
 
                 if (_this.lang == "fr") {
-                  alert("Opération pas réussie!!!");
+                  alert("Opération pas réussie,\n entrez les données correctes SVP!!!");
                 } else {
-                  alert("Unsuccessful operation!!!");
-                } // this.router.navigateByUrl("/dashboard");               
+                  alert("Unsuccessful operation,\n Please enter the correct data !!!");
+                }
 
+                _this.old_password = "";
+                _this.new_password = "";
+                _this.confirm_pass = ""; // this.router.navigateByUrl("/dashboard");               
               });
             } else {
               //alert to tell that password and confrim password should be same 

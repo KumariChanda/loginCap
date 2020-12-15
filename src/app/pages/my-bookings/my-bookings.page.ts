@@ -310,7 +310,7 @@ export class MyBookingsPage implements OnInit {
               handler: () => {
                 
                 //change the location type ;
-                this.filterData[id].etape_location = 6;
+                this.filterData[id].etape_location = 2;
 
 
              //   this.DataTosend.id = this.filterData[id].id;
@@ -325,7 +325,7 @@ export class MyBookingsPage implements OnInit {
                 this.DataTosend.type_location = this.filterData[id].type_location;
                 this.DataTosend.depart = this.filterData[id].depart_id;
                 this.DataTosend.destination = this.filterData[id].destination_id;
-                this.DataTosend.etape_location = 6;
+                this.DataTosend.etape_location = 2;
                 this.DataTosend.optionnel = this.filterData[id].optionnel;
 
                // console.log(this.DataTosend);

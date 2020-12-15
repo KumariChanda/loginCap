@@ -12,20 +12,21 @@
 
 
 
-
-
        <ion-card>
         <ion-card-header>
 
          <ion-card-title style="margin-left:28%" > RESERVATION </ion-card-title>
               <!-- Label only -->
           <ion-segment [(ngModel)]="rent_type">
-            <ion-segment-button  value="hour">
-              <ion-label>{{"RESERVECAR.per_hour"| translate}} </ion-label>
-            </ion-segment-button>
+
             <ion-segment-button value="day">
               <ion-label>{{"RESERVECAR.per_day"| translate}}</ion-label>
             </ion-segment-button>
+
+            <ion-segment-button  value="hour">
+              <ion-label>{{"RESERVECAR.per_hour"| translate}} </ion-label>
+            </ion-segment-button>
+            
             <ion-segment-button value="airport">
               <label textWrap="true" style="font-size:0.9em">{{"RESERVECAR.airport_pick"| translate}}</label>
             </ion-segment-button>
@@ -39,7 +40,7 @@
 
             <!-- ----------------------------------------------------------------------------------- -->
             <!-- ----------------------START rent type = "per hour"------------------------------- -->
-              <div *ngIf="rent_type =='hour'">
+              <div *ngIf="rent_type =='hour' && car.per_hour">
 
                 <!-- Search Bar -->
                   <ion-searchbar placeholder="Destination (*) "[(ngModel)]="searchQuery" (click)="click_bar(1)" (ionCancel)="onCancel($event,1)" (ionClear)	="onCancel($event,1)" (ngModelChange)="change_query($event,1)" showCancelButton="focus"></ion-searchbar>
@@ -57,10 +58,9 @@
                 <ion-item>
                     <ion-label > {{"RESERVECAR.price"| translate}}</ion-label>
                    
-                    <ion-chip slot="end"    *ngIf="rent_type =='day'"> {{car.per_day}} F CFA </ion-chip>
-                    <ion-chip slot="end"    *ngIf="rent_type =='hour'"> {{car.per_hour}} F CFA</ion-chip>
-                    <ion-chip slot="end"    *ngIf="rent_type =='airport'"> {{car.airport}} F CFA </ion-chip>
-
+                    <ion-chip slot="end"    *ngIf="rent_type =='hour' && car.per_hour"> {{car.per_hour}} F CFA</ion-chip>
+                    <ion-chip slot="end"    *ngIf="rent_type =='hour' && !car.per_hour"> Service Not Available </ion-chip>
+                    
                 </ion-item>
 
                 <!-- start date -->
@@ -95,13 +95,15 @@
                 
                </div>
 
+              <!-- return a message if this service is not Available -->
+              <ion-chip slot="end"    *ngIf="rent_type =='hour' && !car.per_hour"> {{"RESERVECAR.not_avail"| translate}} </ion-chip>
 
             <!-- ----------------------STOP rent type = "per hour"------------------------------------------------------------------ -->
             <!-- ------------------------------------------------------------------------------------------ -->
 
             <!-- ----------------------------------------------------------------------------------- -->
             <!-- ----------------------START rent type = "per day"------------------------------- -->
-              <div *ngIf="rent_type =='day'">
+              <div *ngIf="rent_type =='day' && car.per_day">
 
 
                <!-- Search Bar -->
@@ -120,10 +122,9 @@
                 <ion-item>
                     <ion-label > {{"RESERVECAR.price"| translate}}</ion-label>
                    
-                    <ion-chip slot="end"    *ngIf="rent_type =='day'"> {{car.per_day}} F CFA </ion-chip>
-                    <ion-chip slot="end"    *ngIf="rent_type =='hour'"> {{car.per_hour}} F CFA</ion-chip>
-                    <ion-chip slot="end"    *ngIf="rent_type =='airport'"> {{car.airport}} F CFA </ion-chip>
-
+                    <ion-chip slot="end"    *ngIf="rent_type =='day' && car.per_day"> {{car.per_day}} F CFA </ion-chip>
+                    <ion-chip slot="end"    *ngIf="rent_type =='day' && !car.per_day"> Service Not Available </ion-chip>
+                   
                 </ion-item>
                 <!-- start date -->
                 <ion-item *ngIf="lang=='en'" >
@@ -182,13 +183,16 @@
 
                </div>
 
+              <!-- return a message if this service is not Available -->
+              <ion-chip slot="end"    *ngIf="rent_type =='day' && !car.per_day"> {{"RESERVECAR.not_avail"| translate}} </ion-chip>
+
 
             <!-- ----------------------STOP rent type = "per day"------------------------------------------------------------------ -->
             <!-- ------------------------------------------------------------------------------------------ -->
            
             <!-- ----------------------------------------------------------------------------------- -->
             <!-- ----------------------START rent type = "airport"------------------------------- -->
-              <div *ngIf="rent_type =='airport'">
+              <div *ngIf="rent_type =='airport' && car.airport">
 
                 <!-- Search Bar Departure venue -->
                <ion-searchbar placeholder="{{'RESERVECAR.departure_venue'| translate}} "[(ngModel)]="searchQuery1" (click)="click_bar(0)" (ionCancel)="onCancel($event,0)" (ionClear)	="onCancel($event,0)" (ngModelChange)="change_query($event,0)" showCancelButton="focus"></ion-searchbar>
@@ -218,9 +222,8 @@
                 <ion-item>
                     <ion-label > {{"RESERVECAR.price"| translate}}</ion-label>
                    
-                    <ion-chip slot="end"    *ngIf="rent_type =='day'"> {{car.per_day}} F CFA </ion-chip>
-                    <ion-chip slot="end"    *ngIf="rent_type =='hour'"> {{car.per_hour}} F CFA</ion-chip>
-                    <ion-chip slot="end"    *ngIf="rent_type =='airport'"> {{car.airport}} F CFA </ion-chip>
+                   <ion-chip slot="end"    *ngIf="rent_type =='airport' && car.airport"> {{car.airport}} F CFA </ion-chip>
+                    <ion-chip slot="end"    *ngIf="rent_type =='airport' && !car.airport"> Service Not Available </ion-chip>
 
                 </ion-item>
 
@@ -264,6 +267,9 @@
 
                 
                </div>
+
+                  <!-- return a message if this service is not Available -->
+              <ion-chip slot="end"    *ngIf="rent_type =='airport' && !car.airport"> {{"RESERVECAR.not_avail"| translate}} </ion-chip>
 
 
             <!-- ----------------------STOP rent type = "airport"------------------------------------------------------------------ -->

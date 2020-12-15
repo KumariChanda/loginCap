@@ -178,11 +178,12 @@
         "signup_btn" : "S'Inscrire",
         "first_name" : "Prénom (*)",
         "last_name" : "Nom(*)",
-        "email" : "Adresse Email (*)",
+        "email" : " Entrez votre adresse Email (*)",
         "password" : "Mot de passe (*)",
         "confirm_password" : "Confirmez mot de passe (*)",
         "mobile_num" : "Numéro de téléphone",
         "address" : "Adresse",
+        "dob" : "Date de naissance (*)",
         "already_account":"Vous avez déjà un compte?",
         "term_condition":"Je suis d'accord avec les termes et les conditions"
        
@@ -193,7 +194,8 @@
         "confirm_password":"Confirmez  Mot de Passe (*)",
         "change_password":"Changer Mot De Passe",
         "change_password_btn":"Valider",
-        "reset_password":"Réinitialiser Mot De Passe"
+        "reset_password":"Réinitialiser Mot De Passe",
+        "message" : "(***) Nous vous prions de renseigner votre adresse email de création de votre compte, un email vous sera envoyé pour réinitialiser votre mot de passe"
     }
     
 

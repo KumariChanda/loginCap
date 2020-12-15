@@ -233,15 +233,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! src/app/service/appService/app-service.service */
     "./src/app/service/appService/app-service.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic-native/in-app-browser/ngx */
+    "./node_modules/@ionic-native/in-app-browser/__ivy_ngcc__/ngx/index.js");
 
     var Storage = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"].Storage;
 
     var LoginPage = /*#__PURE__*/function () {
-      function LoginPage(webService, router) {
+      function LoginPage(webService, router, iab) {
         _classCallCheck(this, LoginPage);
 
         this.webService = webService;
         this.router = router;
+        this.iab = iab;
         this.btnClicked = false; // check if the button has been clicked or not
         // this.setItem();
 
@@ -449,7 +456,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "forgetPasswordBtnClicked",
         value: function forgetPasswordBtnClicked() {
-          this.router.navigateByUrl("/forget-password");
+          // this.router.navigateByUrl("/forget-password");
+          // console.log("Nyokah")
+          this.iab.create('https://nyokah.ci/siteweb/includes/forgotpassword.php', '_blank');
         }
       }, {
         key: "backToHome",
@@ -466,6 +475,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_4__["AppServiceService"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }, {
+        type: _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_5__["InAppBrowser"]
       }];
     };
 

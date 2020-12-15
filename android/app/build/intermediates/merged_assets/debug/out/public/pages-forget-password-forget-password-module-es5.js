@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<!-- <ion-header>\n  <ion-toolbar>\n       <ion-buttons slot=\"start\">\n       <ion-menu-button></ion-menu-button>\n     </ion-buttons>\n   <ion-title class=\"register\">Forget Password</ion-title>\n </ion-toolbar> \n</ion-header> -->\n\n<ion-content >\n <div class=\"backgroundcss\">\n   <div id=\"container\">\n     <ion-card class=\"cardcss\" >\n          <hr/>\n       <ion-card-content>\n          <ion-input class=\"inputcomp\" type=\"text\"  placeholder=\"{{'SIGNUP.email' | translate }}\"></ion-input>\n         <br> \n         <ion-input class=\"inputcomp\" type=\"number\"  placeholder=\"{{'SIGNUP.mobile_num' | translate }}\"></ion-input>\n         <br>\n         <ion-input class=\"inputcomp\" type=\"password\"  placeholder=\"{{'Password.new_password' | translate }}\"></ion-input>\n         <br>\n         <ion-input class=\"inputcomp\" type=\"password\"  placeholder=\"{{'Password.confirm_password' | translate }}\"></ion-input>\n         <br>\n         <div class=\"divloginbtn\">\n           <br>\n           <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n           'loginbtn_yellow':btnClicked == true}\" (click)=\"forgetPassword()\">{{'Password.reset_password' | translate }}</button>\n           <br><br>\n          <span class=\"backtohome\" clear  (click)=\"backToHome()\" tappable> <u>{{\"LOGIN.back_to_home\"| translate}}</u></span>\n          <br>\n          </div>\n          <br>  \n         <br>\n       </ion-card-content>\n     </ion-card>\n    </div>\n\n   </div>\n\n</ion-content>\n\n";
+    __webpack_exports__["default"] = "<!-- <ion-header>\n  <ion-toolbar>\n       <ion-buttons slot=\"start\">\n       <ion-menu-button></ion-menu-button>\n     </ion-buttons>\n   <ion-title class=\"register\">Forget Password</ion-title>\n </ion-toolbar> \n</ion-header> -->\n\n<ion-content >\n <div class=\"backgroundcss\">\n   <div id=\"container\">\n     <ion-card class=\"cardcss\" >\n          <hr/>\n       <ion-card-content>\n          <ion-input class=\"inputcomp\" type=\"email\" [(ngModel)] = \"email\"  placeholder=\"{{'SIGNUP.email' | translate }}\"></ion-input>\n         <br> \n        <ion-label> \n               {{'Password.message' | translate }}\n        </ion-label> <br> \n         <div class=\"divloginbtn\">\n           <br>\n           <button [ngClass]=\"{'loginbtn_black':btnClicked == false,\n           'loginbtn_yellow':btnClicked == true}\" (click)=\"forgetPassword()\">{{'Password.reset_password' | translate }}</button>\n           <br><br>\n          <span class=\"backtohome\" clear  (click)=\"backToHome()\" tappable> <u>{{\"LOGIN.back_to_home\"| translate}}</u></span>\n          <br>\n          </div>\n          <br>  \n         <br>\n       </ion-card-content>\n     </ion-card>\n    </div>\n\n   </div>\n\n</ion-content>\n\n";
     /***/
   },
 
@@ -224,36 +224,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _capacitor_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic-native/email-composer/ngx */
+    "./node_modules/@ionic-native/email-composer/__ivy_ngcc__/ngx/index.js");
+    /* harmony import */
+
+
+    var _capacitor_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @capacitor/core */
     "./node_modules/@capacitor/core/dist/esm/index.js");
     /* harmony import */
 
 
-    var src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! src/app/service/appService/app-service.service */
-    "./src/app/service/appService/app-service.service.ts");
+    "./src/app/service/appService/app-service.service.ts"); //import { SMTPClient } from 'emailjs';
 
-    var Storage = _capacitor_core__WEBPACK_IMPORTED_MODULE_3__["Plugins"].Storage;
+
+    var Storage = _capacitor_core__WEBPACK_IMPORTED_MODULE_4__["Plugins"].Storage;
 
     var ForgetPasswordPage = /*#__PURE__*/function () {
-      function ForgetPasswordPage(router, webService) {
+      function ForgetPasswordPage(router, webService, composer) {
         _classCallCheck(this, ForgetPasswordPage);
 
         this.router = router;
         this.webService = webService;
+        this.composer = composer;
         this.btnClicked = false;
         this.email = "";
         this.password = "";
         this.confirm_pass = "";
         this.dataToSend = {
-          "email": "",
-          "password": "",
-          "first_name": "",
-          "last_name": "",
-          "birth_date": "",
-          "telephone": "",
-          "address": ""
+          "email": ""
         };
       }
 
@@ -288,13 +290,73 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.btnClicked = true;
           setTimeout(function () {
-            _this.btnClicked = false;
-          }, 1000);
+            _this.btnClicked = false; //start the loader 
+
+            _this.webService.presentLoading();
+          }, 1000); //check if the email exist 
+
+          this.dataToSend.email = this.email;
+          this.webService.verifyEmail(this.dataToSend).subscribe(function (res) {
+            if (res.code == 200) {
+              //stop loading
+              _this.webService.stopLoading(); // alert to ask the user to fill all the fields
+
+
+              if (_this.lang == "fr") {
+                alert("Veillez continuer la procedure en cliquant sur le lien qui vous a été envoyé dans votre boite mail.");
+              } else {
+                alert("Please continue the procedure by clicking on the link that was sent to you in your mailbox. ");
+              } //generate a token
+
+
+              var token = _this.randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@%&&*'); //send a mail to the customer 
+              //data to send 
+
+
+              var data = {
+                "email": _this.email,
+                "token": token,
+                "is_active": true
+              };
+
+              _this.webService.resetPasssword(data).subscribe(function (res) {});
+            } else if (res.code == 404) {
+              //stop loading
+              _this.webService.stopLoading(); // alert to ask the user to fill all the fields
+
+
+              if (_this.lang == "fr") {
+                alert("Désolé cette adresse email n'existe pas dans notre system.\n SVP veillez entrer une adresse correcte. ");
+              } else {
+                alert("Sorry this email address doesn't exixts in our system.\n Please kindly enter a correct email. ");
+              }
+            }
+          }, function (error) {
+            _this.webService.stopLoading();
+
+            if (_this.lang == "fr") {
+              alert("Opération pas réussie,\n entrez les données correctes SVP!!!");
+            } else {
+              alert("Unsuccessful operation,\n Please enter the correct data !!!");
+            }
+          });
         }
       }, {
         key: "backToHome",
         value: function backToHome() {
           this.router.navigateByUrl("/dashboard");
+        } ////////////////generate alphanumeric string /////////////////////////////////////////////////////////////
+
+      }, {
+        key: "randomString",
+        value: function randomString(length, chars) {
+          var result = '';
+
+          for (var i = length; i > 0; --i) {
+            result += chars[Math.round(Math.random() * (chars.length - 1))];
+          }
+
+          return result;
         }
       }]);
 
@@ -305,7 +367,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return [{
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }, {
-        type: src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_4__["AppServiceService"]
+        type: src_app_service_appService_app_service_service__WEBPACK_IMPORTED_MODULE_5__["AppServiceService"]
+      }, {
+        type: _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_3__["EmailComposer"]
       }];
     };
 

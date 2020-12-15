@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AppServiceService } from 'src/app/service/appService/app-service.service';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 
 const { Storage } = Plugins;
 
@@ -19,7 +21,7 @@ export class LoginPage  {
   isDriver; // used to check a the user is a driver or not
   lang: string;
 
-  constructor( private webService:AppServiceService, private router: Router  ) {
+  constructor( private webService:AppServiceService, private router: Router,private iab : InAppBrowser,  ) {
     // this.setItem();
     this.btnClicked=false;
 
@@ -203,7 +205,9 @@ export class LoginPage  {
 
   forgetPasswordBtnClicked()
   {
-    this.router.navigateByUrl("/forget-password");
+    // this.router.navigateByUrl("/forget-password");
+    // console.log("Nyokah")
+    this.iab.create('https://nyokah.ci/siteweb/includes/forgotpassword.php','_blank')
   }
 
   backToHome()

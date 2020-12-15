@@ -110,7 +110,7 @@ public  maxdate : any;   // the maximum date of a date picker
    //present loading
     this.webService.presentLoading();
     this.webService.getVoitures().subscribe(async res=>{
-   // console.log("getting voitures : ",res); 
+    //console.log("getting voitures : ",res); 
     if(!res.details)
     {
         
@@ -205,7 +205,7 @@ public  maxdate : any;   // the maximum date of a date picker
 
 
     },error=>{
-      this.webService.stopLoading(); 
+      
       
       if(this.lang =="fr")
       {
@@ -214,6 +214,8 @@ public  maxdate : any;   // the maximum date of a date picker
         alert("Server Error!! ")
 
       }
+
+      this.webService.stopLoading(); 
 
     });/// end get voitures
  ////////////////////////////////////////////////////

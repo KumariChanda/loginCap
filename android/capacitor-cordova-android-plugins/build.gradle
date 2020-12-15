@@ -17,10 +17,10 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 29
     defaultConfig {
-        minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 29
+        minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 21
         targetSdkVersion targetSdkVersion = project.hasProperty('targetSdkVersion') ? rootProject.ext.targetSdkVersion : 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
     }
     lintOptions {
         abortOnError false
@@ -45,6 +45,7 @@ dependencies {
     implementation "org.apache.cordova:framework:$cordovaAndroidVersion"
     // SUB-PROJECT DEPENDENCIES START
     implementation "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
+    implementation "com.android.support:support-v4:27.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

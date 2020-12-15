@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n\r\n      <ion-item>\r\n\r\n        <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\r\n        <ion-title style=\"margin-left : 15%\">{{ 'CARDETAILS.title' | translate }}</ion-title>\r\n\r\n      </ion-item>\r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content  *ngIf=\"show\">\r\n\r\n\r\n        <!-- slider images -->\r\n\r\n        <ion-slides [options]=\"slideOptions\"  #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\">\r\n             <ion-slide *ngFor=\"let item of car.photo\">\r\n                <img [src]=\"item.image\" />\r\n            </ion-slide>\r\n        </ion-slides> <br>\r\n\r\n        <!-- tile or designation of the car -->\r\n          \r\n        <strong class=\"ion-text-center\">\r\n            <ion-label style=\"margin-left:5%; \"> {{car.modele.libelle}} </ion-label> \r\n         </strong>\r\n\r\n            <!-- Description of the car -->\r\n\r\n     <ion-card>\r\n     \r\n        <ion-card-header>\r\n          <ion-card-subtitle>\r\n\r\n             \r\n              <!-- Car Number-->\r\n              <!-- <ion-chip>\r\n                <ion-label > {{ 'CARDETAILS.carnumber' | translate }} {{car.immatriculation}}  </ion-label> \r\n              </ion-chip><br><br> -->\r\n               \r\n\r\n              {{\"CARDETAILS.price\" | translate}} <br><br>\r\n             <!-- price per day -->\r\n                <ion-chip >\r\n                  <ion-label > {{car.per_day}} F CFA / {{\"DASHBOARD.day\"|translate}}</ion-label>\r\n                </ion-chip> <br>\r\n                <!-- price per hour -->\r\n                <ion-chip >\r\n                  <ion-label > {{car.per_hour}} F CFA / {{\"DASHBOARD.hour\"|translate}}</ion-label>\r\n                </ion-chip> <br>\r\n                <!-- Price Airport -->\r\n                <ion-chip >\r\n                  <ion-label > {{car.per_hour}} F CFA / {{\"DASHBOARD.airport_pick\"|translate}}</ion-label>\r\n                </ion-chip> \r\n                \r\n\r\n          </ion-card-subtitle>\r\n\r\n\r\n          <ion-card-title>Description</ion-card-title>\r\n        </ion-card-header>\r\n\r\n\r\n        <ion-card-content style=\"text-align : justify \" >\r\n\r\n                <!-- Number of Seats-->\r\n                <ion-chip ><br>\r\n                  <ion-icon name=\"person\"></ion-icon>\r\n                  <ion-label >{{car.passager}} {{ 'CARDETAILS.seats' | translate }}</ion-label>\r\n                </ion-chip> <br>\r\n\r\n                <!-- type of motor -->\r\n                <ion-chip >\r\n                  <ion-icon name=\"car\"></ion-icon>\r\n                  <ion-label > {{car.type_caburant}}</ion-label>\r\n                </ion-chip> <br>\r\n                    <!-- number of baggages -->\r\n              <ion-chip>\r\n                <ion-icon name=\"briefcase\"></ion-icon>\r\n                <ion-label > {{car.bagage}} {{ 'CARDETAILS.baggages' | translate }} </ion-label> \r\n              </ion-chip> <br>\r\n                \r\n                <!-- Car Color-->\r\n                <ion-chip >\r\n                  <ion-icon name=\"medal\" ></ion-icon>\r\n                  <ion-label  textWrap=\"true\"> {{ 'DASHBOARD.color' | translate }} {{car.couleur}} </ion-label>\r\n                </ion-chip> <br><br>\r\n                \r\n              \r\n                            \r\n            {{car.description}}\r\n            \r\n        </ion-card-content>\r\n      </ion-card>\r\n\r\n\r\n    \r\n        <!-- Accessories     -->\r\n    \r\n     <ion-card>\r\n     \r\n        <ion-card-header>\r\n          <ion-card-title>{{ 'CARDETAILS.accessories' | translate }}</ion-card-title>\r\n        </ion-card-header>\r\n        <ion-card-content>\r\n\r\n              <ion-grid>\r\n                 <!-- print each element -->\r\n                <ion-row *ngFor=\"let item of car.accessoire ;  index as i\">\r\n                   <!-- column has the name of the accessory -->\r\n                      <ion-col col-auto class=\"cell-class\">\r\n                            {{ item.libelle }}\r\n                      </ion-col>\r\n                        <!-- column 2 has the status of the accessory -->\r\n                      <ion-col   text-right  class=\"cell-yes\"   >\r\n                           <ion-icon name=\"checkmark-outline\"></ion-icon>\r\n                      </ion-col>\r\n                      <!-- <ion-col  *ngIf=\"item.status == 'yes' \" text-right  class=\"cell-yes\"   >\r\n                           <ion-icon name=\"checkmark-outline\"></ion-icon>\r\n\r\n                      </ion-col>\r\n                         column 2 has the status of the accessory -->\r\n                     <!--  <ion-col  *ngIf=\"item.status == 'no' \"   text-right  class=\"cell-no\"  >\r\n                           {{ item.status }}\r\n\r\n                      </ion-col> -->\r\n                </ion-row>\r\n              </ion-grid>\r\n\r\n        </ion-card-content>\r\n      </ion-card>\r\n\r\n      <!-- login to reserve or reserve if logged in  -->\r\n    <!-- <ion-button *ngIf=\"token==null\" expand=\"round\" class=\"center-button\">Login To Reserve</ion-button> -->\r\n       <!-- if the token is not null -->\r\n    <!-- <ion-button *ngIf=\"token!=null\" expand=\"round\" class=\"center-button\" (click)=\"goToReservation()\">Reserve Now</ion-button> -->\r\n\r\n\r\n\r\n\r\n\r\n</ion-content>\r\n\r\n<ion-footer *ngIf=\"show\" >\r\n  <!-- <ion-toolbar> -->\r\n          <!-- login to reserve or reserve if logged in  -->\r\n    <ion-button *ngIf=\"token==null\" expand=\"full\" (click)=\"goToLogin()\" >{{\"CARDETAILS.logintoreserve\" | translate}}</ion-button>\r\n       <!-- if the token is not null -->\r\n    <ion-button *ngIf=\"token!=null\" expand=\"full\"  (click)=\"goToReservation( car.id)\">{{\"CARDETAILS.reservenow\" | translate}}</ion-button>\r\n\r\n\r\n  <!-- </ion-toolbar> -->\r\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n\r\n      <ion-item>\r\n\r\n        <ion-icon color=\"light\" name=\"chevron-back\" (click)=\"prev()\" ></ion-icon>\r\n        <ion-title style=\"margin-left : 15%\">{{ 'CARDETAILS.title' | translate }}</ion-title>\r\n\r\n      </ion-item>\r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content  *ngIf=\"show\">\r\n\r\n\r\n        <!-- slider images -->\r\n\r\n        <ion-slides [options]=\"slideOptions\"  #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\">\r\n             <ion-slide *ngFor=\"let item of car.photo\">\r\n                <img [src]=\"item.image\" />\r\n            </ion-slide>\r\n        </ion-slides> <br>\r\n\r\n        <!-- tile or designation of the car -->\r\n          \r\n        <strong class=\"ion-text-center\">\r\n            <ion-label style=\"margin-left:5%; \"> {{car.modele.libelle}} </ion-label> \r\n         </strong>\r\n\r\n            <!-- Description of the car -->\r\n\r\n     <ion-card>\r\n     \r\n        <ion-card-header>\r\n          <ion-card-subtitle>\r\n\r\n             \r\n              <!-- Car Number-->\r\n              <!-- <ion-chip>\r\n                <ion-label > {{ 'CARDETAILS.carnumber' | translate }} {{car.immatriculation}}  </ion-label> \r\n              </ion-chip><br><br> -->\r\n               \r\n\r\n              {{\"CARDETAILS.price\" | translate}} <br><br>\r\n             <!-- price per day -->\r\n                <ion-chip *ngIf=\"car.per_day\">\r\n                  <ion-label > {{car.per_day}} F CFA / {{\"DASHBOARD.day\"|translate}}</ion-label>\r\n                </ion-chip> <br>\r\n                <!-- price per hour -->\r\n                <ion-chip *ngIf=\"car.per_hour\">\r\n                  <ion-label > {{car.per_hour}} F CFA / {{\"DASHBOARD.hour\"|translate}}</ion-label>\r\n                </ion-chip> <br>\r\n                <!-- Price Airport -->\r\n                <ion-chip *ngIf=\"car.airport\" >\r\n                  <ion-label > {{car.airport}} F CFA / {{\"DASHBOARD.airport_pick\"|translate}}</ion-label>\r\n                </ion-chip> \r\n                \r\n\r\n          </ion-card-subtitle>\r\n\r\n\r\n          <ion-card-title>Description</ion-card-title>\r\n        </ion-card-header>\r\n\r\n\r\n        <ion-card-content style=\"text-align : justify \" >\r\n\r\n                <!-- Number of Seats-->\r\n                <ion-chip ><br>\r\n                  <ion-icon name=\"person\"></ion-icon>\r\n                  <ion-label >{{car.passager}} {{ 'CARDETAILS.seats' | translate }}</ion-label>\r\n                </ion-chip> <br>\r\n\r\n                <!-- type of motor -->\r\n                <ion-chip >\r\n                  <ion-icon name=\"car\"></ion-icon>\r\n                  <ion-label > {{car.type_caburant}}</ion-label>\r\n                </ion-chip> <br>\r\n                    <!-- number of baggages -->\r\n              <ion-chip>\r\n                <ion-icon name=\"briefcase\"></ion-icon>\r\n                <ion-label > {{car.bagage}} {{ 'CARDETAILS.baggages' | translate }} </ion-label> \r\n              </ion-chip> <br>\r\n                \r\n                <!-- Car Color-->\r\n                <ion-chip >\r\n                  <ion-icon name=\"medal\" ></ion-icon>\r\n                  <ion-label  textWrap=\"true\"> {{ 'DASHBOARD.color' | translate }} {{car.couleur}} </ion-label>\r\n                </ion-chip> <br><br>\r\n                \r\n              \r\n                            \r\n            {{car.description}}\r\n            \r\n        </ion-card-content>\r\n      </ion-card>\r\n\r\n\r\n    \r\n        <!-- Accessories     -->\r\n    \r\n     <ion-card>\r\n     \r\n        <ion-card-header>\r\n          <ion-card-title>{{ 'CARDETAILS.accessories' | translate }}</ion-card-title>\r\n        </ion-card-header>\r\n        <ion-card-content>\r\n\r\n              <ion-grid>\r\n                 <!-- print each element -->\r\n                <ion-row *ngFor=\"let item of car.accessoire ;  index as i\">\r\n                   <!-- column has the name of the accessory -->\r\n                      <ion-col col-auto class=\"cell-class\">\r\n                            {{ item.libelle }}\r\n                      </ion-col>\r\n                        <!-- column 2 has the status of the accessory -->\r\n                      <ion-col   text-right  class=\"cell-yes\"   >\r\n                           <ion-icon name=\"checkmark-outline\"></ion-icon>\r\n                      </ion-col>\r\n                      <!-- <ion-col  *ngIf=\"item.status == 'yes' \" text-right  class=\"cell-yes\"   >\r\n                           <ion-icon name=\"checkmark-outline\"></ion-icon>\r\n\r\n                      </ion-col>\r\n                         column 2 has the status of the accessory -->\r\n                     <!--  <ion-col  *ngIf=\"item.status == 'no' \"   text-right  class=\"cell-no\"  >\r\n                           {{ item.status }}\r\n\r\n                      </ion-col> -->\r\n                </ion-row>\r\n              </ion-grid>\r\n\r\n        </ion-card-content>\r\n      </ion-card>\r\n\r\n      <!-- login to reserve or reserve if logged in  -->\r\n    <!-- <ion-button *ngIf=\"token==null\" expand=\"round\" class=\"center-button\">Login To Reserve</ion-button> -->\r\n       <!-- if the token is not null -->\r\n    <!-- <ion-button *ngIf=\"token!=null\" expand=\"round\" class=\"center-button\" (click)=\"goToReservation()\">Reserve Now</ion-button> -->\r\n\r\n\r\n\r\n\r\n\r\n</ion-content>\r\n\r\n<ion-footer *ngIf=\"show\" >\r\n  <!-- <ion-toolbar> -->\r\n          <!-- login to reserve or reserve if logged in  -->\r\n    <ion-button *ngIf=\"token==null || token =='null'\" expand=\"full\" (click)=\"goToLogin()\" >{{\"CARDETAILS.logintoreserve\" | translate}}</ion-button>\r\n       <!-- if the token is not null -->\r\n    <ion-button *ngIf=\"token!=null && token!='null'\" expand=\"full\"  (click)=\"goToReservation( car.id)\">{{\"CARDETAILS.reservenow\" | translate}}</ion-button>\r\n\r\n\r\n  <!-- </ion-toolbar> -->\r\n</ion-footer>";
     /***/
   },
 
@@ -240,6 +240,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function CarDetailsPage(router, route, webservice) {
         _classCallCheck(this, CarDetailsPage);
 
+        //get Language
         this.router = router;
         this.route = route;
         this.webservice = webservice; //used for auomatic slider
@@ -281,41 +282,86 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       _createClass(CarDetailsPage, [{
         key: "ionViewWillEnter",
-        value: function ionViewWillEnter() {
-          console.log("Voici le retour");
+        value: function ionViewWillEnter() {//console.log("Voici le retour");
         }
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this = this;
 
-          this.webservice.presentLoading();
-          this.getCurrentToken();
-          this.subscription = this.route.queryParams.subscribe(function (data) {
-            //console.log("selected ->", typeof(data.id));
-            //receive the  prev page 
-            _this.page_prev = data.prev; //get the details of the car
-            //receive the  prev page 
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return Storage.get({
+                      key: 'SELECTED LANGUAGE'
+                    });
 
-            _this.page_prev = data.prev; //get the details of the car
+                  case 2:
+                    this.lang = _context.sent.value;
+                    this.webservice.presentLoading();
+                    this.getCurrentToken();
+                    this.subscription = this.route.queryParams.subscribe(function (data) {
+                      //console.log("selected ->", typeof(data.id));
+                      //receive the  prev page 
+                      _this.page_prev = data.prev; //get the details of the car
+                      //receive the  prev page 
 
-            _this.webservice.getCarDetails(data.id).subscribe(function (res) {
-              _this.car = res; // console.log(res)
-              // get the differents pice of the car
+                      _this.page_prev = data.prev;
 
-              _this.webservice.getPriceCar(data.id).subscribe(function (resp) {
-                _this.car.per_day = resp[0].prix;
-                _this.car.per_hour = resp[1].prix;
-                _this.car.airport = resp[2].prix; //stop loading
-
-                _this.webservice.stopLoading(); //show the list
+                      if (data.prev == "/car-filter") {
+                        _this.page_id = data.id;
+                        _this.page_type = data.type;
+                      } //get the details of the car
 
 
-                _this.show = true;
-              }); //end get prices
+                      _this.webservice.getCarDetails(data.id).subscribe(function (res) {
+                        _this.car = res; //console.log(res)
+                        // get the differents pice of the car
 
-            });
-          });
+                        _this.webservice.getPriceCar(data.id).subscribe(function (resp) {
+                          //this.car.per_hour = resp[1].prix;
+                          //this.car.airport = resp[2].prix;
+                          for (var i = 0; i < resp.length; i++) {
+                            if (resp[i].type_location == 1) // par jour
+                              {
+                                _this.car.per_day = resp[i].prix;
+                              } else if (resp[i].type_location == 2) // par heure
+                              {
+                                _this.car.per_hour = resp[i].prix;
+                              } else if (resp[i].type_location == 3) // par airport
+                              {
+                                _this.car.airport = resp[i].prix;
+                              }
+                          } //stop loading
+
+
+                          _this.webservice.stopLoading(); //show the list
+
+
+                          _this.show = true;
+                        }); //end get prices
+
+                      }, function (error) {
+                        if (_this.lang == "fr") {
+                          alert("Erreur Serveur !! ");
+                        } else {
+                          alert("Server Error!! ");
+                        }
+
+                        _this.webservice.stopLoading();
+                      });
+                    });
+
+                  case 6:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         } //this is used for the auto slider
 
       }, {
@@ -328,27 +374,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCurrentToken",
         value: function getCurrentToken() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var ret;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
-                switch (_context.prev = _context.next) {
+                switch (_context2.prev = _context2.next) {
                   case 0:
                     ret = Storage.get({
                       key: 'accessToken'
                     });
-                    _context.next = 3;
+                    _context2.next = 3;
                     return ret;
 
                   case 3:
-                    this.token = _context.sent.value;
+                    this.token = _context2.sent.value;
 
                   case 4:
                   case "end":
-                    return _context.stop();
+                    return _context2.stop();
                 }
               }
-            }, _callee, this);
+            }, _callee2, this);
           }));
         } //////////////////////////////////////////////////////////////
         ////back to home ///
@@ -366,12 +412,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           // this.router.navigateByUrl("/reservation-page")
           //console.log("car id", carID);
           //call another page and make the reservation of the car
-          this.router.navigate(['reservation-page'], {
-            queryParams: {
-              id: carID,
-              prev: this.page_prev
-            }
-          });
+          if (this.page_prev == "/car-filter") {
+            this.router.navigate(['car-filter'], {
+              queryParams: {
+                id: this.page_id,
+                type: this.page_type,
+                prev: this.page_prev
+              }
+            });
+          } else {
+            this.router.navigate(['reservation-page'], {
+              queryParams: {
+                id: carID,
+                prev: this.page_prev
+              }
+            });
+          }
         } ////////////////////////////////////////////////////////////
         /// call the login page  ////////////////////////////
 

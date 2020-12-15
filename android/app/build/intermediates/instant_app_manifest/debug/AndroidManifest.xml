@@ -113,6 +113,16 @@
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
+
+        <provider
+            android:name="de.appplant.cordova.emailcomposer.Provider"
+            android:authorities="com.cpckingdom.nyokah.emailcomposer.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/emailcomposer_provider_paths" />
+        </provider>
         <!--
              FirebaseMessagingService performs security checks at runtime,
              but set to not exported to explicitly avoid allowing another app to call it.

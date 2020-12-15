@@ -417,7 +417,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         text: textok,
                         handler: function handler() {
                           //change the location type ;
-                          _this2.filterData.etape_location = 5;
+                          _this2.filterData.etape_location = 3;
                           _this2.DataTosend.date_location = _this2.filterData.date_location + "T" + _this2.filterData.heure_debut + ".961Z";
                           _this2.DataTosend.date_debut = _this2.filterData.date_debut + "T" + _this2.filterData.heure_debut + ".961Z";
                           _this2.DataTosend.date_fin = _this2.filterData.date_fin + "T" + _this2.filterData.heure_fin + ".961Z";
@@ -428,7 +428,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                           _this2.DataTosend.type_location = _this2.filterData.type_location;
                           _this2.DataTosend.depart = _this2.filterData.depart_id;
                           _this2.DataTosend.destination = _this2.filterData.destination_id;
-                          _this2.DataTosend.etape_location = 5;
+                          _this2.DataTosend.etape_location = 3;
                           _this2.DataTosend.optionnel = _this2.filterData.optionnel;
                           _this2.DataTosend.note_chauffeur = parseInt(_this2.marks);
                           _this2.DataTosend.rapport_chauffeur = _this2.comment;

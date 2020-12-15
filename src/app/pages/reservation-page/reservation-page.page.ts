@@ -92,7 +92,7 @@ subscription: Subscription;
   page_prev ="" 
   /////////////////////////////////////
    ////var data to be sent //////////
-   rent_type : any ="hour";
+   rent_type : any ="day";
    destination : any;
    price : any;
    start_date : string;
@@ -195,9 +195,26 @@ subscription: Subscription;
                     // get the differents pice of the car
                     this.webservice.getPriceCar(data.id).subscribe( resp =>{
 
-                      this.car.per_day = resp[0].prix;
-                      this.car.per_hour = resp[1].prix;
-                      this.car.airport = resp[2].prix;
+                      // this.car.per_day = resp[0].prix;
+                      // this.car.per_hour = resp[1].prix;
+                      // this.car.airport = resp[2].prix;
+
+                      for(let i=0; i< resp.length; i++)
+                      {
+                        if(resp[i].type_location == 1) // par jour
+                        {
+                          this.car.per_day = resp[i].prix;
+                        }
+                        else if(resp[i].type_location == 2) // par heure
+                        {
+                          this.car.per_hour = resp[i].prix;
+                        }
+                        else if(resp[i].type_location == 3) // par airport
+                        {
+                          this.car.airport = resp[i].prix;
+                        }
+            
+                      }
 
                       //stop loading
                     this.webservice.stopLoading();

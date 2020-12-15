@@ -66,19 +66,25 @@ show = false; //is to show page content
 
   //prev page
   page_prev ="" 
+  lang: string;
+  page_id: any;
+  page_type: any;
  
 
   constructor( private router : Router, private route: ActivatedRoute, private webservice : AppServiceService) {  
 
+   //get Language
     
   }
 
   ionViewWillEnter()
    {
-     console.log("Voici le retour");
+     //console.log("Voici le retour");
    }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    this.lang = (await Storage.get({ key: 'SELECTED LANGUAGE' })).value; 
     this.webservice.presentLoading();
     this.getCurrentToken();
 
@@ -91,28 +97,65 @@ show = false; //is to show page content
 
      //receive the  prev page 
      this.page_prev = data.prev ;
+     if(data.prev == "/car-filter")
+     {
+       this.page_id =  data.id;
+       this.page_type =  data.type;
+     }
      //get the details of the car
      this.webservice.getCarDetails(data.id).subscribe(res =>{
 
           this.car = res;
-         // console.log(res)
+          //console.log(res)
 
         // get the differents pice of the car
         this.webservice.getPriceCar(data.id).subscribe( resp =>{
 
-          this.car.per_day = resp[0].prix;
-          this.car.per_hour = resp[1].prix;
-          this.car.airport = resp[2].prix;
+          //this.car.per_hour = resp[1].prix;
+          //this.car.airport = resp[2].prix;
 
+          for(let i=0; i< resp.length; i++)
+          {
+            if(resp[i].type_location == 1) // par jour
+            {
+              this.car.per_day = resp[i].prix;
+            }
+            else if(resp[i].type_location == 2) // par heure
+            {
+              this.car.per_hour = resp[i].prix;
+            }
+            else if(resp[i].type_location == 3) // par airport
+            {
+              this.car.airport = resp[i].prix;
+            }
+
+          }
+
+         
           //stop loading
           this.webservice.stopLoading();
           //show the list
           this.show = true;
 
+          
+
 
          }); //end get prices
 
           
+      },error=>{
+      
+      
+        if(this.lang =="fr")
+        {
+          alert("Erreur Serveur !! ")
+        }else{
+          alert("Server Error!! ")
+  
+        }
+  
+        this.webservice.stopLoading(); 
+  
       });  
     });
   }
@@ -153,8 +196,13 @@ show = false; //is to show page content
 
     //console.log("car id", carID);
      //call another page and make the reservation of the car
-     this.router.navigate(['reservation-page'], {queryParams:{id: carID,  prev : this.page_prev }})
-
+     if(this.page_prev == "/car-filter")
+     {
+      this.router.navigate(['car-filter'],{queryParams : {id : this.page_id, type : this.page_type,  prev : this.page_prev }});
+     }
+     else{
+      this.router.navigate(['reservation-page'], {queryParams:{id: carID,  prev : this.page_prev }})
+     }
 
   }
 

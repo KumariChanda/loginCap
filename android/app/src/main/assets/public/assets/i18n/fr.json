@@ -43,9 +43,9 @@
         "search_car" : "RECHERCHE VEHICULE",
         "my_bookings":"Mes Réservations",
         "price_sup_day" :"Prix /Jour >= 50000 F CFA ",
-        "price_sup_hour" :"Prix /Heure >= 50000 F CFA ",
+        "price_sup_hour" :"Prix /Heure >= 5000 F CFA ",
         "price_less_day" :"Prix /Jour < 50000 F CFA",
-        "price_less_hour" :"Prix /Heure < 50000 F CFA",
+        "price_less_hour" :"Prix /Heure < 5000 F CFA",
         "place_nbr" : "Nombre de Place ",
         "place_sup" :"Nbre de places >= 5",
         "place_less" :"Nbre de places < 5",
@@ -144,7 +144,8 @@
         "cancel" : "Annuler",
         "marks" : "Votre appréciation :",
         "clientname" : "Nom du Client : ",
-        "car" : " Véhicule :"
+        "car" : " Véhicule :",
+        "not_avail" : "Ce type de reservation n'est pas disponible pour ce Véhicule"
 
 
     },
@@ -178,11 +179,12 @@
         "signup_btn" : "S'Inscrire",
         "first_name" : "Prénom (*)",
         "last_name" : "Nom(*)",
-        "email" : "Adresse Email (*)",
+        "email" : " Entrez votre adresse Email (*)",
         "password" : "Mot de passe (*)",
         "confirm_password" : "Confirmez mot de passe (*)",
         "mobile_num" : "Numéro de téléphone",
         "address" : "Adresse",
+        "dob" : "Date de naissance (*)",
         "already_account":"Vous avez déjà un compte?",
         "term_condition":"Je suis d'accord avec les termes et les conditions"
        
@@ -193,7 +195,8 @@
         "confirm_password":"Confirmez  Mot de Passe (*)",
         "change_password":"Changer Mot De Passe",
         "change_password_btn":"Valider",
-        "reset_password":"Réinitialiser Mot De Passe"
+        "reset_password":"Réinitialiser Mot De Passe",
+        "message" : "(***) Nous vous prions de renseigner votre adresse email de création de votre compte, un email vous sera envoyé pour réinitialiser votre mot de passe"
     }
     
 

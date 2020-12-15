@@ -189,7 +189,7 @@ async end()
             text: textok,
             handler: () => {
               
-              //change the location type ;
+              //change the location type ; ended
               this.filterData.etape_location = 3;
 
         

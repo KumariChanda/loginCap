@@ -146,6 +146,7 @@ let ChangePasswordPage = class ChangePasswordPage {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             //get token
             this.token = (yield Storage.get({ key: 'accessToken' })).value;
+            console.log(this.token);
             //get user Infos
             this.userInfo = JSON.parse((yield Storage.get({ key: "user_infos" })).value);
             //console.log("Storage : ",this.userInfo);
@@ -171,8 +172,9 @@ let ChangePasswordPage = class ChangePasswordPage {
                     this.webService.presentLoading();
                 //call the web service
                 this.webService.changeClientPasssword(this.userInfo.id, this.token, this.dataToSend).subscribe(res => {
+                    console.log(res);
                     //check if action failed or not
-                    if (!res.old_password) {
+                    if (res.status == "success") {
                         //console.log(res);
                         this.webService.stopLoading();
                         if (this.lang == "fr") {
@@ -183,26 +185,33 @@ let ChangePasswordPage = class ChangePasswordPage {
                         }
                         this.old_password = "";
                         this.new_password = "";
+                        this.confirm_pass = "";
                         this.router.navigateByUrl("/dashboard");
                     }
                     else {
                         this.webService.stopLoading();
                         if (this.lang == "fr") {
-                            alert("Opération pas réussie!!!");
+                            alert("Opération pas réussie,\nEntrez les données correctes SVP!!!");
                         }
                         else {
-                            alert("Unsuccessful operation!!!");
+                            alert("Unsuccessful operation,\nPlease enter the correct data !!!");
                         }
-                        // this.router.navigateByUrl("/dashboard");
+                        this.old_password = "";
+                        this.new_password = "";
+                        this.confirm_pass = "";
                     }
+                    // this.router.navigateByUrl("/dashboard");
                 }, error => {
                     this.webService.stopLoading();
                     if (this.lang == "fr") {
-                        alert("Opération pas réussie!!!");
+                        alert("Opération pas réussie,\n entrez les données correctes SVP!!!");
                     }
                     else {
-                        alert("Unsuccessful operation!!!");
+                        alert("Unsuccessful operation,\n Please enter the correct data !!!");
                     }
+                    this.old_password = "";
+                    this.new_password = "";
+                    this.confirm_pass = "";
                     // this.router.navigateByUrl("/dashboard");               
                 });
             }

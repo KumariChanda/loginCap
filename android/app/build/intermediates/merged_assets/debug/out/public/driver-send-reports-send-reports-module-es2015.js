@@ -250,7 +250,7 @@ let SendReportsPage = class SendReportsPage {
                             text: textok,
                             handler: () => {
                                 //change the location type ;
-                                this.filterData.etape_location = 5;
+                                this.filterData.etape_location = 3;
                                 this.DataTosend.date_location = this.filterData.date_location + "T" + this.filterData.heure_debut + ".961Z";
                                 this.DataTosend.date_debut = this.filterData.date_debut + "T" + this.filterData.heure_debut + ".961Z";
                                 this.DataTosend.date_fin = this.filterData.date_fin + "T" + this.filterData.heure_fin + ".961Z";
@@ -261,7 +261,7 @@ let SendReportsPage = class SendReportsPage {
                                 this.DataTosend.type_location = this.filterData.type_location;
                                 this.DataTosend.depart = this.filterData.depart_id;
                                 this.DataTosend.destination = this.filterData.destination_id;
-                                this.DataTosend.etape_location = 5;
+                                this.DataTosend.etape_location = 3;
                                 this.DataTosend.optionnel = this.filterData.optionnel;
                                 this.DataTosend.note_chauffeur = parseInt(this.marks);
                                 this.DataTosend.rapport_chauffeur = this.comment;

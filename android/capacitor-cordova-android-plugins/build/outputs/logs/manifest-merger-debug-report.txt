@@ -1,12 +1,12 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
-INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
-INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
-INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
-INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
-INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
-INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
 	xmlns:amazon
 		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:4:1-57
 	package
@@ -15,34 +15,50 @@ INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src
 		INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
-		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
 		INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
-		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-12:12
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:2:1-14:12
 		INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:3:1-59
 application
-ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:5:1-7:15
+ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:5:1-9:15
+provider#de.appplant.cordova.emailcomposer.Provider
+ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:1-8:12
+	android:grantUriPermissions
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:156-190
+	android:authorities
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:69-130
+	android:exported
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:131-155
+	android:name
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:6:11-68
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:7:3-119
+	android:resource
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:7:65-117
+	android:name
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:7:14-64
 uses-permission#android.permission.CALL_PHONE
-ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:8:1-64
+ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:1-64
 	android:name
-		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:8:18-62
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:18-62
 uses-feature#android.hardware.telephony
-ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:1-83
+ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:1-83
 	android:required
-		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:57-81
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:57-81
 	android:name
-		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:9:15-56
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:15-56
 uses-permission#android.permission.INTERNET
-ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:1-62
+ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:12:1-62
 	android:name
-		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:10:18-60
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:12:18-60
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:1-76
+ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:13:1-76
 	android:name
-		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:11:18-74
+		ADDED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml:13:18-74
 uses-sdk
 INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\ionicapp\loginCap\android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml

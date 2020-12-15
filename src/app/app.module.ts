@@ -15,7 +15,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {IonicStorageModule} from '@ionic/storage'
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-
+import {EmailComposer} from '@ionic-native/email-composer/ngx'
 
 
 export function LanguageLoader(http: HttpClient) {
@@ -51,7 +51,8 @@ export function LanguageLoader(http: HttpClient) {
     },
     Storage,
     InAppBrowser,
-    CallNumber
+    CallNumber,
+    EmailComposer
 
   ],
   bootstrap: [AppComponent]

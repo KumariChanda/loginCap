@@ -1380,6 +1380,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @ionic-native/call-number/ngx */
     "./node_modules/@ionic-native/call-number/__ivy_ngcc__/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! @ionic-native/email-composer/ngx */
+    "./node_modules/@ionic-native/email-composer/__ivy_ngcc__/ngx/index.js");
 
     function LanguageLoader(http) {
       return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_12__["TranslateHttpLoader"](http, './assets/i18n/', '.json');
@@ -1402,7 +1408,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
-      }, Storage, _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_14__["InAppBrowser"], _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_15__["CallNumber"]],
+      }, Storage, _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_14__["InAppBrowser"], _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_15__["CallNumber"], _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_16__["EmailComposer"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })], AppModule);
     /***/
@@ -1484,7 +1490,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var proxyurl = "https://cors-anywhere.herokuapp.com/"; // const base_url= "http://othnieldona.pythonanywhere.com/api/";
     // basic api url
 
-    var base_url = proxyurl + "http://othnieldona.pythonanywhere.com/api/"; //header used for API URL
+    var base_url = proxyurl + "http://metier.nyokah.ci/api/"; //header used for API URL
 
     var httpOptions = {
       headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
@@ -1499,8 +1505,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.http = http;
         this.loadingCtrl = loadingCtrl;
         this.translate = translate; // basic api url
+        //base_url= "http://othnieldona.pythonanywhere.com";
 
-        this.base_url = "http://othnieldona.pythonanywhere.com";
+        this.base_url = "";
         this.selected = ''; // selected language
         ///////////////////////////SEND DATA TO UPDATE THE MENU///////////////////////////////////////////////////////////////
 
@@ -2015,7 +2022,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Authorization': 'Token ' + token
             })
           };
-          return this.http.post(base_url + "clients/" + id + "/set_password", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+          return this.http.post(base_url + "clients/" + id + "/set_password/", data, httpOption).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        } ///////////////////////////////////// END : EDIT CLIENT PASSWORD  ////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////START : RESET CLIENT PASSWORD ////////////////////////////////////////////////////////////////////////
+        //////////////////////////// START : VERIFY EMAIL ///////////////////////////////////////
+
+      }, {
+        key: "verifyEmail",
+        value: function verifyEmail(data) {
+          return this.http.post(base_url + "clients/verify_email/", data, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
+        } /////////////////////////// END : VERIFY EMAIL ////////////////////////////////////////
+
+      }, {
+        key: "resetPasssword",
+        value: function resetPasssword(data) {
+          return this.http.post(base_url + "/reset_password/", data, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(this.handleError));
         }
       }]);
 

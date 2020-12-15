@@ -3,3 +3,4 @@ local
 drawable ic_action_next_item
 drawable ic_action_previous_item
 drawable ic_action_remove
+xml emailcomposer_provider_paths

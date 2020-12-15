@@ -12,10 +12,11 @@ const { Storage } = Plugins; // this used for storage
 const LNG_KEY = 'SELECTED LANGUAGE'; // this is used to fetch or manipulate the var(containing the selected language) present in the storage
 
   //proxy url
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
-// const base_url= "http://othnieldona.pythonanywhere.com/api/";
+ const proxyurl = "https://cors-anywhere.herokuapp.com/";
+ //const base_url= "http://othnieldona.pythonanywhere.com/api/";
   // basic api url
-  const base_url= proxyurl+"http://metier.nyokah.ci/api/";
+  //const base_url=proxyurl+"http://othnieldona.pythonanywhere.com/api/";
+  const base_url=proxyurl+"http://metier.nyokah.ci/api/";
  
   //header used for API URL
   const httpOptions = {
@@ -53,6 +54,7 @@ export class AppServiceService {
 ////////////////////////////////// START : PRESENTATION LOADING ////////////////////////////////////////////////
         async presentLoading() {
 
+          //console.log("start loader")
           var lang = (await Storage.get({ key: LNG_KEY })).value;
 
           var myMessage =""
@@ -81,9 +83,12 @@ export class AppServiceService {
           // this.loading = false;
         // console.log("loading stop");
 
-         if(this.loading != false)
-            this.loading = false;
-            return await this.loadingCtrl.dismiss().then(() => console.log('loading dismissed'));
+         if(this.loading)
+         {
+             //console.log("stop loader")
+             this.loading = false;
+             return await this.loadingCtrl.dismiss().then(() => console.log('loading dismissed'));
+         }
         }
 
 //////////////////////////////////////// END : PRESENTATION LOADING//////////////////////////////////////////////////////////
@@ -745,6 +750,37 @@ changeClientPasssword(id,token,data): Observable<any> {
 }
 
 ///////////////////////////////////// END : EDIT CLIENT PASSWORD  ////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////START : RESET CLIENT PASSWORD ////////////////////////////////////////////////////////////////////////
+
+
+    //////////////////////////// START : VERIFY EMAIL ///////////////////////////////////////
+      verifyEmail(data) : Observable<any>
+      {
+        return this.http.post(base_url+"clients/verify_email/",data, httpOptions).pipe(
+          map(this.extractData),
+          catchError(this.handleError)
+        );
+      }
+ 
+    /////////////////////////// END : VERIFY EMAIL ////////////////////////////////////////
+
+
+
+
+    resetPasssword(data): Observable<any> {
+
+
+      return this.http.post(base_url+"/reset_password/",data, httpOptions).pipe(
+        map(this.extractData),
+        catchError(this.handleError)
+      );
+
+    }
+
+///////////////////////////////////// END : RESET CLIENT PASSWORD  ////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
